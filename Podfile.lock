@@ -1,0 +1,20 @@
+PODS:
+  - ParallaxHeader (3.0.0)
+  - PreviewTransition (4.1.0)
+
+DEPENDENCIES:
+  - ParallaxHeader (~> 3.0.0)
+  - PreviewTransition
+
+SPEC REPOS:
+  trunk:
+    - ParallaxHeader
+    - PreviewTransition
+
+SPEC CHECKSUMS:
+  ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
+  PreviewTransition: b030422e53d050b0bb05ec05a0629b2aa6c15269
+
+PODFILE CHECKSUM: afe9a2a7166871a3a6ab0368ec5edf6aa377644c
+
+COCOAPODS: 1.11.3
