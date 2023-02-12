@@ -8,6 +8,7 @@
 import UIKit
 class NewsTableViewCell: UITableViewCell{
     
+    @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var tagLbl: UILabel!
@@ -19,6 +20,7 @@ class NewsTableViewCell: UITableViewCell{
     private lazy var setupOnce: Void = {
         self.newsImgView.layer.cornerRadius = 5.0
         self.tagView.layer.cornerRadius = 14.0
+        self.dataContainerView.addShadow(cornerRadius: 5, color: UIColor(white: 48.0 / 255.0, alpha: 0.26), offset: CGSize(width: 0.5, height: 0.5), opacity: 1, shadowRadius: 5)
     }()
     
     override func awakeFromNib() {

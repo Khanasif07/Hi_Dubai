@@ -36,6 +36,8 @@ class NewsListVC: UIViewController {
     private func setUpTableView(){
         self.newsTableView.delegate = self
         self.newsTableView.dataSource = self
+        self.newsTableView.separatorColor = .clear
+        self.newsTableView.separatorStyle = .none
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
         self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
     }

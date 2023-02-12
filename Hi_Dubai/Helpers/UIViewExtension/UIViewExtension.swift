@@ -7,50 +7,13 @@
 
 import UIKit
 extension UIView{
-    private func createAnimationFromKey(key: String, duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) -> CABasicAnimation {
-        let animation = CABasicAnimation(keyPath: key)
-        animation.duration = duration
-        animation.toValue = to
-        animation.fromValue = from
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-        animation.beginTime = CACurrentMediaTime() + delay
-        if remove == false {
-            animation.isRemovedOnCompletion = remove
-            animation.fillMode = CAMediaTimingFillMode.forwards
-        }
-        return animation
-    }
     
-    func rotateDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-        let animation = createAnimationFromKey(key: "transform.rotation.z",
-                                               duration: duration,
-                                               from: from,
-                                               to: to,
-                                               delay: delay,
-                                               remove: remove)
-        layer.add(animation, forKey: nil)
+    func addShadow(cornerRadius: CGFloat, maskedCorners: CACornerMask = [.layerMaxXMinYCorner, .layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner], color: UIColor, offset: CGSize, opacity: Float, shadowRadius: CGFloat) {
+        self.layer.cornerRadius = cornerRadius
+        self.layer.maskedCorners = maskedCorners
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = offset
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = shadowRadius
     }
-    
-    func scaleDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-        let animation = createAnimationFromKey(key: "transform.scale",
-                                               duration: duration,
-                                               from: from,
-                                               to: to,
-                                               delay: delay,
-                                               remove: remove)
-        
-        layer.add(animation, forKey: nil)
-    }
-    
-    func opacityDuration(duration: Double, from: CGFloat, to: CGFloat, delay: Double = 0, remove: Bool = true) {
-        let animation = createAnimationFromKey(key: "opacity",
-                                               duration: duration,
-                                               from: from,
-                                               to: to,
-                                               delay: delay,
-                                               remove: remove)
-        
-        layer.add(animation, forKey: nil)
-    }
-    
 }
