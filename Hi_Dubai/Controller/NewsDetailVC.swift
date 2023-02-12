@@ -9,6 +9,7 @@ import UIKit
 import ParallaxHeader
 class NewsDetailVC: UIViewController {
     //MARK:- IBoutlets
+    @IBOutlet weak var mainTableViewTopConst: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     var viewModel: NewsDetailViewModel = NewsDetailViewModel()
     lazy var headerView: HeaderView = {
@@ -31,7 +32,9 @@ class NewsDetailVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        mainTableViewTopConst.constant = -(UIApplication.shared.currentWindow?.safeAreaInsets.top ?? 0.0)
         headerView.topContainerHeight?.constant = UIScreen.main.bounds.width * 1.25
+        headerView.backBtnTopConst?.constant = (UIApplication.shared.currentWindow?.safeAreaInsets.top ?? 0.0)
         positionHeaderView()
     }
     
@@ -48,7 +51,7 @@ class NewsDetailVC: UIViewController {
     
     private func parallelHeaderSetUp() {
         let HeaderHight = CGFloat(UIScreen.main.bounds.width * 1.25)
-        let parallexHeaderMinHeight = 100.0
+        let parallexHeaderMinHeight = 125.0
         self.mainTableView.parallaxHeader.view = self.headerView
         self.mainTableView.parallaxHeader.minimumHeight = parallexHeaderMinHeight
         self.mainTableView.parallaxHeader.height = HeaderHight

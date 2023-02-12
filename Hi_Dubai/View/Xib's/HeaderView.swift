@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class HeaderView: UIView {
+    @IBOutlet weak var backBtnTopConst: NSLayoutConstraint!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var tagLbl: UILabel!
     @IBOutlet weak var topContainerView: UIView!
