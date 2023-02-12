@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c3n-Tm-QBs">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController storyboardIdentifier="NewsListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NewsListVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZYV-Td-peW">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -44,31 +44,46 @@
             <objects>
                 <viewController storyboardIdentifier="NewsDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tgh-WJ-pL5" customClass="NewsDetailVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GK2-pZ-QHc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7N4-no-lwh">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfH-CE-KLx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7N4-no-lwh">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <color key="sectionIndexColor" red="0.86078917980000003" green="0.78737360430000003" blue="0.28266730309999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="sectionIndexBackgroundColor" systemColor="systemMintColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7N4-no-lwh" secondAttribute="bottom" id="FTG-b0-GaC"/>
+                                    <constraint firstItem="7N4-no-lwh" firstAttribute="top" secondItem="WfH-CE-KLx" secondAttribute="top" id="GoD-Oc-I3A"/>
+                                    <constraint firstItem="7N4-no-lwh" firstAttribute="leading" secondItem="WfH-CE-KLx" secondAttribute="leading" id="JrD-za-up8"/>
+                                    <constraint firstAttribute="bottom" secondItem="7N4-no-lwh" secondAttribute="bottom" id="Vbe-KE-LhD"/>
+                                    <constraint firstAttribute="trailing" secondItem="7N4-no-lwh" secondAttribute="trailing" id="fNP-uQ-2q7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="osw-LL-kBO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="osw-LL-kBO" firstAttribute="trailing" secondItem="7N4-no-lwh" secondAttribute="trailing" id="Ma1-Ub-H95"/>
-                            <constraint firstItem="7N4-no-lwh" firstAttribute="leading" secondItem="osw-LL-kBO" secondAttribute="leading" id="eh9-kf-f8Z"/>
-                            <constraint firstItem="7N4-no-lwh" firstAttribute="top" secondItem="osw-LL-kBO" secondAttribute="top" id="rTQ-je-KXq"/>
-                            <constraint firstAttribute="bottom" secondItem="7N4-no-lwh" secondAttribute="bottom" id="zev-JO-O5Z"/>
+                            <constraint firstItem="WfH-CE-KLx" firstAttribute="top" secondItem="GK2-pZ-QHc" secondAttribute="top" id="20z-gJ-1xq"/>
+                            <constraint firstItem="WfH-CE-KLx" firstAttribute="leading" secondItem="GK2-pZ-QHc" secondAttribute="leading" id="M0N-G6-rD7"/>
+                            <constraint firstItem="WfH-CE-KLx" firstAttribute="top" secondItem="GK2-pZ-QHc" secondAttribute="top" id="dsQ-Kg-weN"/>
+                            <constraint firstAttribute="trailing" secondItem="WfH-CE-KLx" secondAttribute="trailing" id="qcu-us-gP9"/>
+                            <constraint firstAttribute="bottom" secondItem="WfH-CE-KLx" secondAttribute="bottom" id="xS8-jM-WMa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="t7t-pA-FFt"/>
                     <connections>
                         <outlet property="mainTableView" destination="7N4-no-lwh" id="Bvu-Q7-SQX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8j3-Ac-nuZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2843.5114503816794" y="-5.6338028169014089"/>
+            <point key="canvasLocation" x="2843.4782608695655" y="-6.0267857142857144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Un1-gu-cHh">
@@ -95,6 +110,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

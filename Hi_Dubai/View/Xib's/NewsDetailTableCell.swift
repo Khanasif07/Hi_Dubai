@@ -41,9 +41,9 @@ class NewsDetailTableCell: UITableViewCell {
         dateLbl.font = UIFont.boldSystemFont(ofSize: 14)
         readTimeLbl.font = UIFont.boldSystemFont(ofSize: 14)
         tagLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        dateLbl.textColor = .lightGray
+        dateLbl.textColor = .tertiaryLabel
         descLbl.textColor = .lightGray
-        readTimeLbl.textColor = .lightGray
+        readTimeLbl.textColor = .tertiaryLabel
         tagLbl.textColor = .white
         self.tagView.backgroundColor = .orange
     }

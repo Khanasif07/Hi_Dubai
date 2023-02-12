@@ -16,6 +16,7 @@ class NewsDetailVC: UIViewController {
 
         return view
     }()
+    var backButton: UIButton?
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +31,13 @@ class NewsDetailVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        headerView.topContainerHeight?.constant = UIScreen.main.bounds.width * 1.272 - 66.0
+        headerView.topContainerHeight?.constant = UIScreen.main.bounds.width * 1.25
         positionHeaderView()
     }
     
     private func positionHeaderView() {
         let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        headerView.frame.size = size
+        headerView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
     }
     
     private func setUpTableView(){
@@ -46,25 +47,22 @@ class NewsDetailVC: UIViewController {
     }
     
     private func parallelHeaderSetUp() {
-        let HeaderHight = CGFloat(UIScreen.main.bounds.width * 1.272 - 66.0)
-        let parallexHeaderMinHeight = self.navigationController?.navigationBar.bounds.height ?? 74
-        self.headerView.playerImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.mainTableView.sectionHeaderHeight = CGFloat.leastNormalMagnitude
+        let HeaderHight = CGFloat(UIScreen.main.bounds.width * 1.25)
+        let parallexHeaderMinHeight = 100.0
         self.mainTableView.parallaxHeader.view = self.headerView
         self.mainTableView.parallaxHeader.minimumHeight = parallexHeaderMinHeight
         self.mainTableView.parallaxHeader.height = HeaderHight
         self.mainTableView.parallaxHeader.mode = ParallaxHeaderMode.fill
-        self.headerView.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
             mainTableView.contentInsetAdjustmentBehavior = .always
         }
     }
     
     private func headerViewDataSetup(){
+        self.headerView.backBtn.addTarget(self, action: #selector(self.backButtonHandler), for: .touchUpInside)
         self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.newsModel?.postImageURL ?? "")
         self.headerView.tagLbl.text = self.viewModel.newsModel?.primaryTag ?? ""
     }
-    
 }
 
 //MARK:- Extension TableView Delegate and DataSource
@@ -81,5 +79,12 @@ extension NewsDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+// MARK: actions
+extension NewsDetailVC {
+    @objc func backButtonHandler() {
+        dismiss(animated: true)
     }
 }

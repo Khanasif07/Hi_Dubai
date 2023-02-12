@@ -18,9 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let launchVC = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         launchVC?.overrideUserInterfaceStyle = .light
         window?.rootViewController = launchVC
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0) {
-            self.setupDashBoard()
-        }
+        self.setupDashBoard()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -6,15 +6,20 @@
 //
 
 import UIKit
-import PreviewTransition
 class NewsTableViewCell: UITableViewCell{
     
+    @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var tagLbl: UILabel!
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var newsImgView: UIImageView!
+    
+    private lazy var setupOnce: Void = {
+        self.newsImgView.layer.cornerRadius = 5.0
+        self.tagView.layer.cornerRadius = 14.0
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +30,7 @@ class NewsTableViewCell: UITableViewCell{
         super.prepareForReuse()
         newsImgView.image = nil
         descLbl.text = nil
+        timeLbl.text = nil
         titleLbl.text = nil
         dateLbl.text = nil
         tagLbl.text = nil
@@ -32,8 +38,7 @@ class NewsTableViewCell: UITableViewCell{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.newsImgView.layer.cornerRadius = 5.0
-        self.tagView.layer.cornerRadius = 14.0
+        _ = setupOnce
     }
     
     private func setupfont(){
@@ -41,8 +46,10 @@ class NewsTableViewCell: UITableViewCell{
         descLbl.font = UIFont.boldSystemFont(ofSize: 14)
         dateLbl.font = UIFont.boldSystemFont(ofSize: 14)
         tagLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        dateLbl.textColor = .lightGray
+        timeLbl.font = UIFont.boldSystemFont(ofSize: 14)
+        dateLbl.textColor = .tertiaryLabel
         descLbl.textColor = .lightGray
+        timeLbl.textColor = .tertiaryLabel
         tagLbl.textColor = .white
         self.tagView.backgroundColor = .orange
     }
@@ -51,7 +58,8 @@ class NewsTableViewCell: UITableViewCell{
         titleLbl.text = model.title
         dateLbl.text  = model.dateString
         descLbl.text  = model.content
-        tagLbl.text =   model.primaryTag
+        tagLbl.text   = model.primaryTag
+        timeLbl.text  = "- \(model.readTime)" + " min read"
         newsImgView.setImageFromUrl(ImageURL: model.postImageURL)
     }
 }
