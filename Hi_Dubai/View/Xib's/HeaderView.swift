@@ -4,10 +4,7 @@
 //
 //  Created by Admin on 11/02/23.
 //
-
-import Foundation
 import UIKit
-
 class HeaderView: UIView {
     @IBOutlet weak var backBtnTopConst: NSLayoutConstraint!
     @IBOutlet weak var backBtn: UIButton!
@@ -20,6 +17,10 @@ class HeaderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.initialSetup()
+    }
+    
+    private func initialSetup(){
         tagLbl.font = UIFont.boldSystemFont(ofSize: 24)
         tagLbl.textColor = .white
         let cross = #imageLiteral(resourceName: "iconfinder_cross-24_103181").withRenderingMode(.alwaysTemplate)

@@ -111,17 +111,15 @@
 		8470C56729974D640091A7C5 /* Hi_Dubai */ = {
 			isa = PBXGroup;
 			children = (
+				8470C5CB299960450091A7C5 /* Storyboard */,
 				8470C5B22997DA4B0091A7C5 /* Helpers */,
-				8470C596299764EC0091A7C5 /* Controller */,
 				8470C58D299753C50091A7C5 /* View */,
 				8470C58A2997519F0091A7C5 /* ViewModel */,
 				8470C58129974E760091A7C5 /* Model */,
 				8470C57C29974D810091A7C5 /* Networking */,
 				8470C56829974D640091A7C5 /* AppDelegate.swift */,
 				8470C56A29974D640091A7C5 /* SceneDelegate.swift */,
-				8470C56E29974D640091A7C5 /* Main.storyboard */,
 				8470C57129974D660091A7C5 /* Assets.xcassets */,
-				8470C57329974D660091A7C5 /* LaunchScreen.storyboard */,
 				8470C57629974D660091A7C5 /* Info.plist */,
 			);
 			path = Hi_Dubai;
@@ -172,6 +170,9 @@
 		8470C58D299753C50091A7C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8470C56C29974D640091A7C5 /* NewsListVC.swift */,
+				8470C5972997651A0091A7C5 /* NewsDetailVC.swift */,
+				8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
@@ -196,16 +197,6 @@
 				8470C594299757400091A7C5 /* UIImageExtension.swift */,
 			);
 			path = UIImageExtension;
-			sourceTree = "<group>";
-		};
-		8470C596299764EC0091A7C5 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8470C56C29974D640091A7C5 /* NewsListVC.swift */,
-				8470C5972997651A0091A7C5 /* NewsDetailVC.swift */,
-				8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		8470C5992997656B0091A7C5 /* UITableViewExtension */ = {
@@ -252,6 +243,15 @@
 				8470C5C92998DAD30091A7C5 /* ActivityIndicator.swift */,
 			);
 			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		8470C5CB299960450091A7C5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8470C57329974D660091A7C5 /* LaunchScreen.storyboard */,
+				8470C56E29974D640091A7C5 /* Main.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		CE4E57A0BE257C5BBC524F30 /* Pods */ = {

@@ -36,7 +36,7 @@ class NewsTableViewCell: UITableViewCell{
         titleLbl.text = nil
         dateLbl.text = nil
         tagLbl.text = nil
-      }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -56,12 +56,14 @@ class NewsTableViewCell: UITableViewCell{
         self.tagView.backgroundColor = .orange
     }
     
-    func populateCell(_ model: Record){
-        titleLbl.text = model.title
-        dateLbl.text  = model.dateString
-        descLbl.text  = model.content
-        tagLbl.text   = model.primaryTag
-        timeLbl.text  = "- \(model.readTime)" + " min read"
-        newsImgView.setImageFromUrl(ImageURL: model.postImageURL)
+    var cellViewModel: Record?{
+        didSet{
+            titleLbl.text = cellViewModel?.title
+            dateLbl.text  = cellViewModel?.dateString
+            descLbl.text  = cellViewModel?.content
+            tagLbl.text   = cellViewModel?.primaryTag
+            timeLbl.text  = "- \(cellViewModel?.readTime ?? "")" + " min read"
+            newsImgView.setImageFromUrl(ImageURL: cellViewModel?.postImageURL ?? "")
+        }
     }
 }

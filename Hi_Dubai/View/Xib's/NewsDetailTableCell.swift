@@ -6,9 +6,7 @@
 //
 
 import UIKit
-
 class NewsDetailTableCell: UITableViewCell {
-    
     @IBOutlet weak var readTimeLbl: UILabel!
     @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var tagLbl: UILabel!
@@ -48,12 +46,13 @@ class NewsDetailTableCell: UITableViewCell {
         self.tagView.backgroundColor = .orange
     }
     
-    func populateCell(_ model: Record?){
-        titleLbl.text = model?.title ?? ""
-        dateLbl.text  = model?.dateString ?? ""
-        descLbl.text  = model?.content ?? ""
-        tagLbl.text =   model?.primaryTag ?? ""
-        readTimeLbl.text = "- \(model?.readTime ?? "")" + " min read"
+    var cellViewModel: Record?{
+        didSet{
+            titleLbl.text = cellViewModel?.title
+            dateLbl.text  = cellViewModel?.dateString
+            descLbl.text  = cellViewModel?.content
+            tagLbl.text =   cellViewModel?.primaryTag
+            readTimeLbl.text = "- \(cellViewModel?.readTime ?? "")" + " min read"
+        }
     }
-    
 }

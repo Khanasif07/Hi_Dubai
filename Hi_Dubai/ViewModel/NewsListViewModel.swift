@@ -27,4 +27,8 @@ class NewsListViewModel{
             }
         }
     }
+    
+    func getCellViewModel(at indexpath: IndexPath) -> Record{
+        return newsData[indexpath.row]
+    }
 }

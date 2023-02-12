@@ -51,21 +51,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7N4-no-lwh">
-                                        <rect key="frame" x="0.0" y="-59" width="414" height="955"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <color key="sectionIndexColor" red="0.86078917980000003" green="0.78737360430000003" blue="0.28266730309999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="sectionIndexBackgroundColor" systemColor="systemMintColor"/>
-                                        <imageView key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OJp-25-1ch">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="288"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="7N4-no-lwh" secondAttribute="bottom" id="FTG-b0-GaC"/>
                                     <constraint firstItem="7N4-no-lwh" firstAttribute="leading" secondItem="WfH-CE-KLx" secondAttribute="leading" id="JrD-za-up8"/>
-                                    <constraint firstItem="7N4-no-lwh" firstAttribute="top" secondItem="WfH-CE-KLx" secondAttribute="top" constant="-59" id="UmF-SF-8OR"/>
+                                    <constraint firstItem="7N4-no-lwh" firstAttribute="top" secondItem="WfH-CE-KLx" secondAttribute="top" id="UmF-SF-8OR"/>
                                     <constraint firstAttribute="bottom" secondItem="7N4-no-lwh" secondAttribute="bottom" id="Vbe-KE-LhD"/>
                                     <constraint firstAttribute="trailing" secondItem="7N4-no-lwh" secondAttribute="trailing" id="fNP-uQ-2q7"/>
                                 </constraints>

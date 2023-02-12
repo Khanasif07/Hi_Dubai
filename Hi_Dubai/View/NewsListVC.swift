@@ -7,11 +7,12 @@
 
 import UIKit
 class NewsListVC: UIViewController {
-
     //MARK:- IBoutlets
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
-    var viewModel = NewsListViewModel()
+    lazy var viewModel = {
+        NewsListViewModel()
+    }()
     var selectedCell: NewsTableViewCell?
     var selectedCellImageViewSnapshot: UIView?
     var animator: Animator?
@@ -79,7 +80,8 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
-        cell.populateCell(viewModel.newsData[indexPath.row])
+        let cellVM = viewModel.getCellViewModel(at: indexPath)
+        cell.cellViewModel = cellVM
         return cell
     }
     

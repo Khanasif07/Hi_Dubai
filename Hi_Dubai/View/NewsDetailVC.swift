@@ -11,10 +11,10 @@ class NewsDetailVC: UIViewController {
     //MARK:- IBoutlets
     @IBOutlet weak var mainTableViewTopConst: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
+    //MARK:- IBProperties
     var viewModel: NewsDetailViewModel = NewsDetailViewModel()
     lazy var headerView: HeaderView = {
         let view = UINib(nibName: "HeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! HeaderView
-
         return view
     }()
     var backButton: UIButton?
@@ -75,8 +75,9 @@ extension NewsDetailVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsDetailTableCell", for: indexPath) as? NewsDetailTableCell else { return UITableViewCell()}
-        cell.populateCell(viewModel.newsModel)
+        let cell = tableView.dequeueCell(with: NewsDetailTableCell.self)
+        let cellVM = viewModel.getCellViewModel()
+        cell.cellViewModel = cellVM
         return cell
     }
     
