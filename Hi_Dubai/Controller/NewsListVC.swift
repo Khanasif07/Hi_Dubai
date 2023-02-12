@@ -9,9 +9,8 @@ import UIKit
 class NewsListVC: UIViewController {
 
     //MARK:- IBoutlets
-    @IBOutlet weak var newsCollectionView: UICollectionView!
     @IBOutlet weak var newsTableView: UITableView!
-    
+    //MARK:- IBProperties
     var viewModel = NewsListViewModel()
     var selectedCell: NewsTableViewCell?
     var selectedCellImageViewSnapshot: UIView?
@@ -23,30 +22,27 @@ class NewsListVC: UIViewController {
         super.viewDidLoad()
         self.initialSetup()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
     private func  initialSetup(){
+        self.viewModel.delegate = self
         self.setUpTableView()
-        self.gitNewsListingApi()
-        self.createSpinnerView()
+        self.fetchAPIData()
     }
     private func setUpTableView(){
         self.newsTableView.delegate = self
         self.newsTableView.dataSource = self
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
+        self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
     }
-    
-    private func gitNewsListingApi(){
-        self.viewModel.delegate = self
+    private func fetchAPIData(){
+        self.createSpinnerView()
         self.viewModel.getNewsListing()
     }
-    
     private func presentSecondViewController(with data: Record) {
         let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
         secondVC.transitioningDelegate = self
@@ -54,7 +50,6 @@ class NewsListVC: UIViewController {
         secondVC.viewModel.newsModel = data
         present(secondVC, animated: true)
     }
-    
     private func createSpinnerView() {
         activity = SpinnerViewController()
         addChild(activity!)
@@ -62,11 +57,14 @@ class NewsListVC: UIViewController {
         view.addSubview(activity!.view)
         activity?.didMove(toParent: self)
     }
-    
     private func removeSpinnerView(){
         activity?.willMove(toParent: nil)
         activity?.view.removeFromSuperview()
         activity?.removeFromParent()
+    }
+    @objc func refreshWhenPull(_ sender: UIRefreshControl){
+        sender.endRefreshing()
+        self.fetchAPIData()
     }
 }
 
