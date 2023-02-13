@@ -15,18 +15,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Dubai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGZ-rO-JZj">
-                                <rect key="frame" x="114.33333333333333" y="412.33333333333331" width="164.66666666666669" height="52.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="44"/>
-                                <color key="textColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HiDubai_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dBM-sM-cIa">
+                                <rect key="frame" x="76.666666666666686" y="374.66666666666669" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="W40-v8-nFB"/>
+                                    <constraint firstAttribute="height" constant="128" id="blL-PT-Nto"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.86078917980194092" green="0.66320032127635975" blue="0.21109929674217939" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yGZ-rO-JZj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7IA-tt-IGj"/>
-                            <constraint firstItem="yGZ-rO-JZj" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="SQO-7a-gO5"/>
+                            <constraint firstItem="dBM-sM-cIa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vu5-Dy-iEJ"/>
+                            <constraint firstItem="dBM-sM-cIa" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="aCU-pW-pLp"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -35,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HiDubai_Logo" width="1200" height="253"/>
+    </resources>
 </document>
