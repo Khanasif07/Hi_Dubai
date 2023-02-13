@@ -31,6 +31,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" largeTitleDisplayMode="always" id="hd7-uI-yvR"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="newsTableView" destination="ZYV-Td-peW" id="hVC-nE-WvE"/>
                     </connections>

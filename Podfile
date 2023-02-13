@@ -5,7 +5,7 @@ target 'Hi_Dubai' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'ParallaxHeader', '~> 3.0.0'
-  pod "PreviewTransition"
+  pod "SkeletonView"
   # Pods for Hi_Dubai
 
 end

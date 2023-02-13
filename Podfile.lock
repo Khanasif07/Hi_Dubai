@@ -1,20 +1,20 @@
 PODS:
   - ParallaxHeader (3.0.0)
-  - PreviewTransition (4.1.0)
+  - SkeletonView (1.30.4)
 
 DEPENDENCIES:
   - ParallaxHeader (~> 3.0.0)
-  - PreviewTransition
+  - SkeletonView
 
 SPEC REPOS:
   trunk:
     - ParallaxHeader
-    - PreviewTransition
+    - SkeletonView
 
 SPEC CHECKSUMS:
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
-  PreviewTransition: b030422e53d050b0bb05ec05a0629b2aa6c15269
+  SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
 
-PODFILE CHECKSUM: afe9a2a7166871a3a6ab0368ec5edf6aa377644c
+PODFILE CHECKSUM: 8da475d13c613dc0aa855b53ea472335b5988cf4
 
 COCOAPODS: 1.11.3

@@ -30,15 +30,15 @@ class NewsDetailTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.tagView.layer.cornerRadius = 16.0
+        self.tagView.layer.cornerRadius = 18.0
     }
     
     private func setupfont(){
-        titleLbl.font = UIFont.boldSystemFont(ofSize: 15)
-        descLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        dateLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        readTimeLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        tagLbl.font = UIFont.boldSystemFont(ofSize: 14)
+        titleLbl.font = UIFont.boldSystemFont(ofSize: 16)
+        descLbl.font = UIFont.boldSystemFont(ofSize: 15)
+        dateLbl.font = UIFont.boldSystemFont(ofSize: 15)
+        readTimeLbl.font = UIFont.boldSystemFont(ofSize: 15)
+        tagLbl.font = UIFont.boldSystemFont(ofSize: 15)
         dateLbl.textColor = .tertiaryLabel
         descLbl.textColor = .lightGray
         readTimeLbl.textColor = .tertiaryLabel

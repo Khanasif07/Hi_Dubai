@@ -12,11 +12,6 @@ enum AppRouter {
         goToNewsVC(window)
     }
     
-    static func goToDashboard(_ window: UIWindow) {
-//        let homeScene = TabBarController.instantiate(fromAppStoryboard: .Dashboard)
-//        setAsWindowRoot(homeScene,window)
-    }
-    
     static func goToNewsVC(_ window: UIWindow){
         let scene = NewsListVC.instantiate(fromAppStoryboard: .Main)
         setAsWindowRoot(scene,window)
@@ -32,23 +27,6 @@ enum AppRouter {
 }
 
 extension UIViewController{
-    func showAlert( title : String = "", msg : String,_ completion : (()->())? = nil) {
-        let titleFont = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
-        let messageFont = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]
-        
-        _ = NSMutableAttributedString(string: title, attributes: titleFont)
-        _ = NSMutableAttributedString(string: msg, attributes: messageFont)
-        DispatchQueue.main.async {
-            let alertViewController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (action : UIAlertAction) -> Void in
-                alertViewController.dismiss(animated: true, completion: nil)
-                completion?()
-            }
-            alertViewController.addAction(okAction)
-            self.present(alertViewController, animated: true, completion: nil)
-        }
-    }
-    
     static func instantiate(fromAppStoryboard appStoryboard: AppStoryboard) -> Self {
         return appStoryboard.viewController(self)
     }

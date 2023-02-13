@@ -13,7 +13,7 @@ protocol NewsListViewModelDelegate: NSObject {
 
 class NewsListViewModel{
     weak var delegate: NewsListViewModelDelegate?
-    var newsData = [Record]()
+    private (set) var newsData = [Record]()
     var error : Error?
     func getNewsListing(){
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in

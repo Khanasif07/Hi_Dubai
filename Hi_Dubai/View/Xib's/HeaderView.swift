@@ -21,7 +21,7 @@ class HeaderView: UIView {
     }
     
     private func initialSetup(){
-        tagLbl.font = UIFont.boldSystemFont(ofSize: 24)
+        tagLbl.font = UIFont.boldSystemFont(ofSize: 28)
         tagLbl.textColor = .white
         let cross = #imageLiteral(resourceName: "iconfinder_cross-24_103181").withRenderingMode(.alwaysTemplate)
         backBtn.setImage(cross, for: .normal)

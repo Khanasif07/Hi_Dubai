@@ -18,3 +18,9 @@ public enum AppNetworkingHttpMethods: String {
     case delete  = "DELETE"
     case patch   = "PATCH"
 }
+
+enum ShimmerState {
+    case toBeApply // Shimmer will show
+    case applied // shimmer applied
+    case none // When api failed return 0 in cases
+}

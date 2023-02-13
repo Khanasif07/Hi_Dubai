@@ -7,7 +7,6 @@
 
 import UIKit
 class NewsTableViewCell: UITableViewCell{
-    
     @IBOutlet weak var dataContainerView: UIView!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var tagView: UIView!
