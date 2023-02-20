@@ -103,6 +103,20 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             presentSecondViewController(with: viewModel.newsData[indexPath.row])
         }
     }
+    
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.25) {
+            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath){
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.25) {
+            cell?.transform = .identity
+        }
+    }
 }
 
 //MARK:- Extension NewsListViewModelDelegate
