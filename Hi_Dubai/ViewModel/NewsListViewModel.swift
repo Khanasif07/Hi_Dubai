@@ -23,6 +23,7 @@ class NewsListViewModel{
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error
+                self.newsData = []
                 self.delegate?.newsListingFailure(error: error)
             }
         }

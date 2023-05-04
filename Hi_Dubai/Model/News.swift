@@ -46,3 +46,4 @@ struct Record: Codable {
         case readTime, primaryTag, content
     }
 }
+

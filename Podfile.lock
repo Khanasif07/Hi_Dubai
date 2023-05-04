@@ -1,20 +1,24 @@
 PODS:
+  - MXParallaxHeader (1.1.0)
   - ParallaxHeader (3.0.0)
   - SkeletonView (1.30.4)
 
 DEPENDENCIES:
+  - MXParallaxHeader
   - ParallaxHeader (~> 3.0.0)
   - SkeletonView
 
 SPEC REPOS:
   trunk:
+    - MXParallaxHeader
     - ParallaxHeader
     - SkeletonView
 
 SPEC CHECKSUMS:
+  MXParallaxHeader: de3c867e10ba46e8f6e20c8ee1f2a910372b3b94
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
 
-PODFILE CHECKSUM: 8da475d13c613dc0aa855b53ea472335b5988cf4
+PODFILE CHECKSUM: 91b04f82dd6cc9ed1121df4c8a5a2298e973bcc0
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

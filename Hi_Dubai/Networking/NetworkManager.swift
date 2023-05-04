@@ -6,6 +6,11 @@
 //
 
 import Foundation
+extension Error {
+    var errorCode:Int? {
+        return (self as NSError).code
+    }
+}
 class NetworkManager{
     static let shared = NetworkManager()
     private init(){}
@@ -17,7 +22,12 @@ class NetworkManager{
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue
         urlRequest.setValue(EndPoint.x_master_key.rawValue, forHTTPHeaderField: "X-MASTER-KEY")
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest  = 5.0
+        sessionConfig.timeoutIntervalForResource = 5.0
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
             if let error = error{
                 completion(.failure(error))
                 return

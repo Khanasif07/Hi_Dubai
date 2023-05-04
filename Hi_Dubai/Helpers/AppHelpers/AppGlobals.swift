@@ -18,3 +18,18 @@ extension UIApplication {
         }
     }
 }
+
+let screen_size  = UIScreen.main.bounds.size
+let screen_width  = UIScreen.main.bounds.size.width
+let screen_height = UIScreen.main.bounds.size.height
+let statusBarHeight: CGFloat = {
+    var heightToReturn: CGFloat = 0.0
+         for window in UIApplication.shared.windows {
+             if let height = window.windowScene?.statusBarManager?.statusBarFrame.height, height > heightToReturn {
+                 heightToReturn = height
+             }
+         }
+    return heightToReturn
+}()
+
+
