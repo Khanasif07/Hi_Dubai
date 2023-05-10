@@ -1,24 +1,32 @@
 PODS:
+  - CarbonKit (2.3.1)
   - MXParallaxHeader (1.1.0)
   - ParallaxHeader (3.0.0)
+  - Parchment (3.2.0)
   - SkeletonView (1.30.4)
 
 DEPENDENCIES:
+  - CarbonKit
   - MXParallaxHeader
   - ParallaxHeader (~> 3.0.0)
+  - Parchment (~> 3.2)
   - SkeletonView
 
 SPEC REPOS:
   trunk:
+    - CarbonKit
     - MXParallaxHeader
     - ParallaxHeader
+    - Parchment
     - SkeletonView
 
 SPEC CHECKSUMS:
+  CarbonKit: b60e24dbdb47179990d5e074efa87ab819c8de98
   MXParallaxHeader: de3c867e10ba46e8f6e20c8ee1f2a910372b3b94
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
+  Parchment: a43c440b22c8a60f7e0196b74339446d4d1d18ea
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
 
-PODFILE CHECKSUM: 91b04f82dd6cc9ed1121df4c8a5a2298e973bcc0
+PODFILE CHECKSUM: 4611bf1483d8532c10be36cb1e8def0cf4f41f90
 
 COCOAPODS: 1.12.1

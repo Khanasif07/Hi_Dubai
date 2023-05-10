@@ -147,7 +147,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
 //            vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
 //            self.navigationController?.pushViewController(vc, animated: false)
      
-            let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
+            let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(vc, animated: false)
             
             

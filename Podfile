@@ -7,6 +7,8 @@ target 'Hi_Dubai' do
   pod 'ParallaxHeader', '~> 3.0.0'
   pod "SkeletonView"
   pod 'MXParallaxHeader'
+  pod 'Parchment', '~> 3.2'
+  pod 'CarbonKit'
   # Pods for Hi_Dubai
   
 end

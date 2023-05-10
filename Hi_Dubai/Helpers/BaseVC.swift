@@ -15,8 +15,22 @@ extension UIDevice {
     }
 }
 
+extension UIViewController{
+    ///Adds Child View Controller to Parent View Controller
+    func add(childViewController:UIViewController){
+        
+        self.addChild(childViewController)
+        let frame = self.view.bounds
+        
+        childViewController.view.frame = frame
+        self.view.addSubview(childViewController.view)
+        
+        childViewController.didMove(toParent: self)
+    }
+}
 
-class BaseVC: UIViewController {
+
+class BaseVC: UIViewController,UIGestureRecognizerDelegate {
     
     var statusbarView = UIView()
     
@@ -74,6 +88,25 @@ class BaseVC: UIViewController {
             }
             
         }
+    }
+    
+    ///Adds Child View Controller to Parent View Controller
+//    @objc @objc func add(childViewController:UIViewController){
+//        
+//        self.addChild(childViewController)
+//        let frame = self.view.bounds
+//        
+//        childViewController.view.frame = frame
+//        self.view.addSubview(childViewController.view)
+//        
+//        childViewController.didMove(toParent: self)
+//    }
+    
+    ///Removes Child View Controller From Parent View Controller
+    var removeFromParentVC:Void{
+        self.willMove(toParent: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParent()
     }
     
      var shouldChangeNavigationItem: Bool = false {

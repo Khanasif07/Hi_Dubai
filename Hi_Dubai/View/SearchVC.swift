@@ -32,7 +32,6 @@ class SearchVC: BaseVC{
         setColorsOfSelectedButton(businessSearchBtn)
         setColorsOfDefaultButton(listsSearchBtn)
         setColorsOfDefaultButton(peopleSearchBtn)
-        let topInset: CGFloat = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
 
         // 44 is the assumed nav bar height
         
@@ -41,6 +40,12 @@ class SearchVC: BaseVC{
         gradient_MIN_HEIGHT = 64.0
         gradient_MAX_HEIGHT = 90.0
         // Do any additional setup after loading the view.
+        
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows.first
+            gradientHeight.constant = gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+            //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,11 +87,27 @@ class SearchVC: BaseVC{
         button?.setTitleColor(UIColor.blue, for: .normal)
     }
     
+    func showFilterVC(_ vc: BaseVC, index: Int? = nil) {
+        if let obj = UIApplication.topViewController() {
+            let ob = HotelFilterVC.instantiate(fromAppStoryboard: .Main)
+//            ob.delegate = vc as? HotelFilteVCDelegate
+            if let idx = index {
+                ob.selectedIndex = idx
+            }
+            (obj).add(childViewController: ob)
+        }
+    }
+    
     func setColorsOfDefaultButton(_ button: UIButton?) {
         button?.borderColor = UIColor.clear
         button?.backgroundColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.2)
         button?.setTitleColor(UIColor.white, for: .normal)
     }
+    
+    @IBAction func filterBtnAction(_ sender: UIButton) {
+        showFilterVC(self)
+    }
+    
     @IBAction func tabAction(_ sender: UIButton) {
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         switch sender.tag {
@@ -161,8 +182,13 @@ class SearchVC: BaseVC{
     @objc func enableScrolling(_ offset: CGFloat) {
             scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
             baseViewHeight.constant = scrollView.frame.size.height + offset
+        print("----================----")
             print("Offset:- \(offset)")
             print("BaseViewHeight:- \(baseViewHeight.constant)")
+            print("ScrollView Content Size:- \(scrollView.contentSize)")
+            print("ScrollView Frame Size Height:- \(scrollView.frame.size.height)")
+        print("ScrollView Content Offset Y:- \(scrollView.contentOffset.y)")
+        
     }
 
 }

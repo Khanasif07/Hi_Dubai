@@ -34,6 +34,17 @@
 		8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */; };
 		8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470C5CC299A13D30091A7C5 /* ShimmerCell.swift */; };
 		8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470C5CD299A13D30091A7C5 /* ShimmerCell.xib */; };
+		E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */; };
+		E00AE4E42A0A68C700A43133 /* MainDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */; };
+		E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */; };
+		E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */; };
+		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
+		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
+		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
+		E02CF3C42A044A4B00400F08 /* HotelFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02CF3C32A044A4B00400F08 /* HotelFilterVC.swift */; };
+		E02CF3C72A044B9B00400F08 /* MenuItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02CF3C52A044B9B00400F08 /* MenuItemCollectionCell.swift */; };
+		E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */; };
+		E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02CF3C92A0450DC00400F08 /* AppFonts.swift */; };
 		E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA722A00F49F00C98601 /* ExploreVC.swift */; };
 		E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA742A010BD700C98601 /* ExploreViewController.swift */; };
 		E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA762A03A2DC00C98601 /* SearchVC.swift */; };
@@ -81,6 +92,17 @@
 		8470C5CD299A13D30091A7C5 /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
 		9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hi_Dubai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		972BB423FBE9BDBBD90AE070 /* Pods-Hi_Dubai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.release.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.release.xcconfig"; sourceTree = "<group>"; };
+		E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNestedScrollViewController.swift; sourceTree = "<group>"; };
+		E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailsTableViewController.swift; sourceTree = "<group>"; };
+		E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBusinessTabViewController.swift; sourceTree = "<group>"; };
+		E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControlller.swift; sourceTree = "<group>"; };
+		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
+		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
+		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
+		E02CF3C32A044A4B00400F08 /* HotelFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelFilterVC.swift; sourceTree = "<group>"; };
+		E02CF3C52A044B9B00400F08 /* MenuItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionCell.swift; sourceTree = "<group>"; };
+		E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemCollectionCell.xib; sourceTree = "<group>"; };
+		E02CF3C92A0450DC00400F08 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		E041CA722A00F49F00C98601 /* ExploreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		E041CA742A010BD700C98601 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		E041CA762A03A2DC00C98601 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
@@ -202,6 +224,10 @@
 				E041CA722A00F49F00C98601 /* ExploreVC.swift */,
 				E041CA742A010BD700C98601 /* ExploreViewController.swift */,
 				E041CA762A03A2DC00C98601 /* SearchVC.swift */,
+				E02CF3C32A044A4B00400F08 /* HotelFilterVC.swift */,
+				E02BC0A82A05891600860893 /* PartnersViewController.swift */,
+				E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */,
+				E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
@@ -222,6 +248,10 @@
 				E0722B8529FFE1FB00BB9B6D /* OtherArtistDetail.xib */,
 				E0722B8729FFE25500BB9B6D /* OtherArtistDetail.swift */,
 				E0722B8D29FFE83100BB9B6D /* OtherArtistHeaderView.swift */,
+				E02CF3C52A044B9B00400F08 /* MenuItemCollectionCell.swift */,
+				E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */,
+				E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */,
+				E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -253,6 +283,9 @@
 				8470C5992997656B0091A7C5 /* UITableViewExtension */,
 				E0722B7F29FFDC9D00BB9B6D /* BaseVC.swift */,
 				E0722B8129FFDE2E00BB9B6D /* StatsVC.swift */,
+				E02CF3C92A0450DC00400F08 /* AppFonts.swift */,
+				E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */,
+				E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -356,8 +389,10 @@
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
+				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
 				8470C57229974D660091A7C5 /* Assets.xcassets in Resources */,
 				8470C592299753EB0091A7C5 /* NewsTableViewCell.xib in Resources */,
+				E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */,
 				8470C57029974D640091A7C5 /* Main.storyboard in Resources */,
 				E0722B8429FFE00900BB9B6D /* OtherArtistHeaderView.xib in Resources */,
 			);
@@ -413,13 +448,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8470C58329974E890091A7C5 /* News.swift in Sources */,
+				E00AE4E42A0A68C700A43133 /* MainDetailsTableViewController.swift in Sources */,
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
+				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
 				E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */,
 				8470C591299753EB0091A7C5 /* NewsTableViewCell.swift in Sources */,
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,
+				E02CF3C72A044B9B00400F08 /* MenuItemCollectionCell.swift in Sources */,
 				8470C5B72997EFC50091A7C5 /* UIViewExtension.swift in Sources */,
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
@@ -431,14 +469,20 @@
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
 				8470C58029974E340091A7C5 /* Enums.swift in Sources */,
+				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,
 				8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */,
 				E0722B7E29FFDBC500BB9B6D /* HomeVC.swift in Sources */,
+				E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */,
 				E0722B8229FFDE2E00BB9B6D /* StatsVC.swift in Sources */,
 				8470C5B029977EC50091A7C5 /* NewsDetailTableCell.swift in Sources */,
 				8470C5B42997E1470091A7C5 /* Animator.swift in Sources */,
+				E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */,
+				E02CF3C42A044A4B00400F08 /* HotelFilterVC.swift in Sources */,
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
+				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
+				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,
 				8470C56B29974D640091A7C5 /* SceneDelegate.swift in Sources */,
 			);
