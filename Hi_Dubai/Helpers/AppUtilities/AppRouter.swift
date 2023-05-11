@@ -21,6 +21,7 @@ enum AppRouter {
     //=========================================
     static func setAsWindowRoot(_ viewController: UIViewController,_ window: UIWindow) {
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.hidesBarsOnSwipe = false
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }

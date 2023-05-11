@@ -25,6 +25,8 @@ class NewsListVC: UIViewController {
     lazy var viewModel = {
         NewsListViewModel()
     }()
+    var emptyView: EmptyStateView? = EmptyStateView.instanciateFromNib()
+    var emptyViewPersonal: EmptyView?
    
     internal var selectedCell: NewsTableViewCell?
     internal var selectedCellImageViewSnapshot: UIView?
@@ -76,8 +78,11 @@ class NewsListVC: UIViewController {
     }
     private func  initialSetup(){
         self.viewModel.delegate = self
+        self.emptyViewPersonal?.delegate = self
         self.setUpTableView()
-        self.fetchAPIData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+            self.fetchAPIData()
+        })
     }
     private func setUpTableView(){
         self.newsTableView.delegate = self
@@ -90,11 +95,14 @@ class NewsListVC: UIViewController {
     }
     
     private func fetchAPIData(){
+        self.emptyView?.hide()
         self.currentShimmerStatus = .toBeApply
+        self.newsTableView.reloadData()
         self.viewModel.getNewsListing()
     }
     private func presentSecondViewController(with data: Record) {
         let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
+        secondVC.isBackBtnShow = true
         secondVC.transitioningDelegate = self
         secondVC.modalPresentationStyle = .overCurrentContext
         secondVC.viewModel.newsModel = data
@@ -143,18 +151,28 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.currentShimmerStatus == .applied {
-//            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-//            vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
-//            self.navigationController?.pushViewController(vc, animated: false)
-     
-            let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
-            self.navigationController?.pushViewController(vc, animated: false)
-            
-            
-//            self.indexPath = indexPath
-//            selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
-//            selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
-//            presentSecondViewController(with: viewModel.newsData[indexPath.row])
+            switch indexPath.row {
+            case 0:
+                let vc = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
+                vc.isBackBtnShow = false
+                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 1:
+                self.indexPath = indexPath
+                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
+                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
+                presentSecondViewController(with: viewModel.newsData[indexPath.row])
+            case 2:
+                let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 3:
+                let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            default:
+                let vc = ExploreViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
         }
     }
     
@@ -202,52 +220,66 @@ extension NewsListVC: NewsListViewModelDelegate{
 
 extension NewsListVC{
     func setEmptyMessage(_ message: String,isTimeOutError: Bool = false) {
-        let emptyView = UIView(frame: CGRect(x: self.newsTableView.centerX, y: self.newsTableView.centerY, width: self.newsTableView.size.width, height: self.newsTableView.size.height - 50))
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        let retryButton = UIButton()
-        retryButton.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.black
-        retryButton.setTitle("Retry", for: .normal)
-        retryButton.addTarget(self, action: #selector(retryBtnTapped), for: .touchDown)
-        retryButton.setTitleColor(.red, for: .normal)
-        retryButton.setTitleColor(.red, for: .selected)
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(retryButton)
-        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
+        // Custom way to add view
+//        let frame = CGRect(x: 0, y: 0, width: newsTableView.frame.width, height: newsTableView.frame.height)
+//        emptyView?.frame = frame
+//        emptyView?.show()
+//        newsTableView.backgroundView = emptyView
         
-        retryButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
-        retryButton.leftAnchor.constraint(equalTo: messageLabel.leftAnchor, constant: 10).isActive = true
-        retryButton.rightAnchor.constraint(equalTo: messageLabel.rightAnchor, constant: -10).isActive = true
-        titleLabel.text = "You don't have any contact."
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        emptyView.backgroundColor = .yellow
-        emptyView.roundCorners([.allCorners], radius: 10.0)
-        // The only tricky part is here:
-        newsTableView.backgroundView = emptyView
-        newsTableView.separatorStyle = .none
+        
+        // Custom way to add view
+        if emptyViewPersonal != nil {
+        } else{
+            emptyViewPersonal = nil
+            emptyViewPersonal = EmptyView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: self.view.frame.height)), inView: self.view, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal?.delegate = self
+            emptyViewPersonal?.show()
+        }
+        //        let titleLabel = UILabel()
+        //        let messageLabel = UILabel()
+        //        let retryButton = UIButton()
+        //        retryButton.translatesAutoresizingMaskIntoConstraints = false
+        //        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        //        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        //        titleLabel.textColor = UIColor.black
+        //        retryButton.setTitle("Retry", for: .normal)
+        //        retryButton.addTarget(self, action: #selector(retryBtnTapped), for: .touchDown)
+        //        retryButton.setTitleColor(.red, for: .normal)
+        //        retryButton.setTitleColor(.red, for: .selected)
+        //        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+        //        messageLabel.textColor = UIColor.lightGray
+        //        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        //        emptyView.addSubview(titleLabel)
+        //        emptyView.addSubview(messageLabel)
+        //        emptyView.addSubview(retryButton)
+        //        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        //        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        //        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
+        //        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
+        //        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
+        //
+        //        retryButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
+        //        retryButton.leftAnchor.constraint(equalTo: messageLabel.leftAnchor, constant: 10).isActive = true
+        //        retryButton.rightAnchor.constraint(equalTo: messageLabel.rightAnchor, constant: -10).isActive = true
+        //        titleLabel.text = "You don't have any contact."
+        //        messageLabel.text = message
+        //        messageLabel.numberOfLines = 0
+        //        messageLabel.textAlignment = .center
+        //        emptyView.backgroundColor = .yellow
+        //        emptyView.roundCorners([.allCorners], radius: 10.0)
+        //        // The only tricky part is here:
+        //        newsTableView.backgroundView = emptyView
+        //        newsTableView.separatorStyle = .none
     }
     
-    @objc func retryBtnTapped(){
-        print("retry btn tapped.")
-        self.fetchAPIData()
-    }
+//    @objc func retryBtnTapped(){
+//        print("retry btn tapped.")
+//        self.fetchAPIData()
+//    }
     
     func restore() {
         newsTableView.backgroundView = nil
-        newsTableView.separatorStyle = .singleLine
+        emptyViewPersonal?.hide()
     }
 }
 
@@ -255,7 +287,6 @@ extension NewsListVC{
 extension NewsListVC{
     func enableGlobalScrolling(_ offset: CGFloat) {
         (self.parent as? SearchVC)?.enableScrolling(offset)
-
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
@@ -296,5 +327,15 @@ extension NewsListVC{
 //                getData()
 //            }
 //        }
+    }
+}
+
+extension NewsListVC: EmptyStateViewDelegate{
+    func loginAction() {
+        self.fetchAPIData()
+    }
+    
+    func learnHowAction() {
+        self.fetchAPIData()
     }
 }

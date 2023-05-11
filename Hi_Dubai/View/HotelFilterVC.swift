@@ -102,7 +102,6 @@ class HotelFilterVC: BaseVC {
         self.setupPagerView()
         self.hide(animated: false)
         delay(seconds: 0.01) { [weak self] in
-            //  self?.show(animated: true)
             self?.mainContainerView.roundCorners([.bottomLeft, .bottomRight], radius: 10.0)
         }
         blurBackGroundView.backgroundColor = AppColors.white
@@ -117,7 +116,7 @@ class HotelFilterVC: BaseVC {
     }
     
     private func show(animated: Bool) {
-        UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
+        UIView.animate(withDuration: animated ? 0.7 : 0.0, animations: {
             self.mainContainerViewTopConstraint.constant = 0.0
             self.mainBackView.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -125,7 +124,7 @@ class HotelFilterVC: BaseVC {
     }
     
     private func hide(animated: Bool, shouldRemove: Bool = false) {
-        UIView.animate(withDuration: animated ? 0.4 : 0.0, animations: {
+        UIView.animate(withDuration: animated ? 0.7 : 0.0, animations: {
             self.mainContainerViewTopConstraint.constant = -(self.mainContainerView.height)
             self.mainBackView.alpha = 0.0
             self.view.layoutIfNeeded()

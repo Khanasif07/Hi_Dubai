@@ -38,6 +38,10 @@
 		E00AE4E42A0A68C700A43133 /* MainDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */; };
 		E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */; };
 		E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */; };
+		E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4EA2A0B914100A43133 /* EmptyStateView.swift */; };
+		E00AE4ED2A0B919D00A43133 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */; };
+		E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00AE4EE2A0BA62200A43133 /* EmptyView.xib */; };
+		E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F02A0BA68400A43133 /* EmptyView.swift */; };
 		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
 		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
 		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
@@ -96,6 +100,10 @@
 		E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailsTableViewController.swift; sourceTree = "<group>"; };
 		E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBusinessTabViewController.swift; sourceTree = "<group>"; };
 		E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControlller.swift; sourceTree = "<group>"; };
+		E00AE4EA2A0B914100A43133 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
+		E00AE4EE2A0BA62200A43133 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		E00AE4F02A0BA68400A43133 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
 		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
 		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
@@ -237,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				8470C5A829976DC60091A7C5 /* HeaderView.xib */,
+				E00AE4EA2A0B914100A43133 /* EmptyStateView.swift */,
+				E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */,
 				8470C5AA29976DDF0091A7C5 /* HeaderView.swift */,
 				8470C58F299753EB0091A7C5 /* NewsTableViewCell.swift */,
 				8470C590299753EB0091A7C5 /* NewsTableViewCell.xib */,
@@ -252,6 +262,8 @@
 				E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */,
 				E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */,
 				E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */,
+				E00AE4EE2A0BA62200A43133 /* EmptyView.xib */,
+				E00AE4F02A0BA68400A43133 /* EmptyView.swift */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -390,8 +402,10 @@
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
+				E00AE4ED2A0B919D00A43133 /* EmptyStateView.xib in Resources */,
 				8470C57229974D660091A7C5 /* Assets.xcassets in Resources */,
 				8470C592299753EB0091A7C5 /* NewsTableViewCell.xib in Resources */,
+				E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */,
 				E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */,
 				8470C57029974D640091A7C5 /* Main.storyboard in Resources */,
 				E0722B8429FFE00900BB9B6D /* OtherArtistHeaderView.xib in Resources */,
@@ -465,6 +479,7 @@
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,
 				E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */,
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
+				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
@@ -482,6 +497,7 @@
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
+				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
 				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,
 				8470C56B29974D640091A7C5 /* SceneDelegate.swift in Sources */,

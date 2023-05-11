@@ -17,6 +17,7 @@ class NewsDetailVC: UIViewController {
         let view = UINib(nibName: "HeaderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! HeaderView
         return view
     }()
+    var isBackBtnShow: Bool = true
     var backButton: UIButton?
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -62,6 +63,7 @@ class NewsDetailVC: UIViewController {
     }
     
     private func headerViewDataSetup(){
+        self.headerView.backBtn.isHidden = !isBackBtnShow
         self.headerView.backBtn.addTarget(self, action: #selector(self.backButtonHandler), for: .touchUpInside)
         self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.newsModel?.postImageURL ?? "")
         self.headerView.tagLbl.text = self.viewModel.newsModel?.primaryTag ?? ""

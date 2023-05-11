@@ -29,17 +29,15 @@ import UIKit
 //
 
 let TOOLBAR_DEFAULT_HEIGHT: CGFloat = 50.0
-//let TOP_ANCHOR_POINT: CGFloat = 0.0 + 47.0
-var promoDealsSectionHeight:CGFloat = 80.0  // section 1
+var promoDealsSectionHeight:CGFloat = 82.0  // section 1
 var fireworkViewCurrentHeight: CGFloat = 233.0
-//let DEALSSECTIONHEIGHT: CGFloat = 233 + 50.0 + 3.0   // view Height + header height + bottom seperator height
+let DEALSSECTIONHEIGHT: CGFloat = 233 + 50.0 + 3.0   // view Height + header height + bottom seperator height
 let FEATUREDARTICLESSECTIONHEIGHT: CGFloat = 260.0 + 50.0 + 3.0
-var featuredArticlesViewCurrentHeight: CGFloat = 0
+var featuredArticlesViewCurrentHeight: CGFloat = 1000.0
 //let TopicSectionCurrentHeight:CGFloat = 326.0// section 2 // 50+273+3
 let TopicSectionCurrentHeight:CGFloat = 80.0// section 2 // 50+273+3
 let trendingSectionHeight:CGFloat = 614.0 // section 3
 let trendingSectionHeaderHeight:CGFloat = 48.0 // section 3
-let trendingSectionSeperatorHeight:CGFloat = 0.0 // section 3
 
 var SCROLL_BREAK_POINT_1: CGFloat {
     return  TopicSectionCurrentHeight // trending
@@ -47,27 +45,36 @@ var SCROLL_BREAK_POINT_1: CGFloat {
 }
 
 var SCROLL_BREAK_POINT_2: CGFloat {
-    return  TopicSectionCurrentHeight + trendingSectionHeight + trendingSectionSeperatorHeight + 0.0 // 7.0 extra space to go underneath
+    return  TopicSectionCurrentHeight + trendingSectionHeight // 7.0 extra space to go underneath
     //return 1171.0
 }
 
 var SCROLL_BREAK_POINT_fireWorkSectionInitial: CGFloat {
-    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight + trendingSectionSeperatorHeight
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight
     //return 1212.0  //547+48 +614+3
 }
 
 var SCROLL_BREAK_POINT_fireWorkSectionFinal: CGFloat {
-    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight + trendingSectionSeperatorHeight + fireworkViewCurrentHeight + 3
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight + fireworkViewCurrentHeight + 3
     //233 = height of video container view
     //return 1398.0 + 53.0
 }
 
 var SCROLL_BREAK_POINT_FeaturedArticlesSectionInitial: CGFloat {
-    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight + trendingSectionSeperatorHeight + fireworkViewCurrentHeight + 3 + 50.0
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight  + fireworkViewCurrentHeight + 3 + 48.0
 }
 
 var SCROLL_BREAK_POINT_FeaturedArticlesSectionFinal: CGFloat {
-    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight + trendingSectionSeperatorHeight + fireworkViewCurrentHeight + 520.0 + 3
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight  + fireworkViewCurrentHeight + 260.0 + 3 + 48.0 + 3.0
+    //260 = height of deals container view
+}
+
+var SCROLL_BREAK_POINT_DealsSectionInitial: CGFloat {
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight  + fireworkViewCurrentHeight + 260.0 + 3.0 + 48.0 + 3.0 +  48.0
+}
+
+var SCROLL_BREAK_POINT_DealsSectionFinal: CGFloat {
+    return promoDealsSectionHeight + TopicSectionCurrentHeight + trendingSectionHeaderHeight + trendingSectionHeight  + fireworkViewCurrentHeight + featuredArticlesViewCurrentHeight + 260.0 + 3.0 + 48.0 +  90.0 + 3.0 + 48.0
     //260 = height of deals container view
 }
 
@@ -87,8 +94,9 @@ var TOP_ANCHOR_POINT:CGFloat {
 
 class ExploreViewController: UIViewController,UIScrollViewDelegate {
 
+    @IBOutlet weak var dealsView: UIView!
+    @IBOutlet weak var topBigView: UIView!
     @IBOutlet weak var fakeNavBar: UIImageView!
-    @IBOutlet var realTabBarDealsSectionTitleView: UIView!
     @IBOutlet var realTabBar1: UIView!
     @IBOutlet var realTabBarFeaturedArticlesSectionTitleView: UIView!
     @IBOutlet var realTabBarFireworkSectionTitleView: UIView!
@@ -96,12 +104,16 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var fakeTabBarFeaturedArticlesSectionTitleView: UIView!
     @IBOutlet weak var fakeTabBarFireworkSectionTitleView: UIView!
     @IBOutlet weak var fakeTabBar1: UIView!
+    @IBOutlet var realTabBarLastSectionTitleView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var containerStackView: UIStackView!
     
+    var emptyViewPersonal: EmptyView?
+    var emptyView: EmptyStateView? = EmptyStateView.instanciateFromNib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.hidesBarsOnSwipe = false
         scrollView.delegate = self
     }
     
@@ -122,7 +134,26 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         realTabBarFeaturedArticlesSectionTitleView.frame = CGRect(x: 0.0, y: yyValue, width: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.width, height: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.height)
         print("realTabBarFeaturedArticlesSectionTitleView frame =\(realTabBarFeaturedArticlesSectionTitleView.frame)")
         view.addSubview(realTabBarFeaturedArticlesSectionTitleView)
+        //realTabBarLastSectionTitleView
+        let yyyValue = (self.fakeTabBarFeaturedDealsSectionTitleView.frame.origin.y) + (self.scrollView.frame.origin.y) + TOOLBAR_DEFAULT_HEIGHT
+        realTabBarLastSectionTitleView.frame = CGRect(x: 0.0, y: yyyValue, width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+        print("realTabBarFeaturedArticlesSectionTitleView frame =\(realTabBarLastSectionTitleView.frame)")
+        view.addSubview(realTabBarLastSectionTitleView)
         view.bringSubviewToFront(fakeNavBar)
+        
+        // Custom way to add view
+        let frame = CGRect(x: 0, y: 0, width: dealsView.width, height: dealsView.height)
+        emptyView?.frame = frame
+        emptyView?.show()
+        self.dealsView.addSubview(self.emptyView!)
+        
+        // Custom way to add view
+        if emptyViewPersonal != nil {
+            emptyViewPersonal?.hide()
+        } else{
+            emptyViewPersonal = EmptyView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.topBigView.frame.width, height: self.topBigView.frame.height)), inView: topBigView, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal?.show()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,9 +179,7 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
             realTabBar1.frame = CGRect(x: 0, y: TOP_ANCHOR_POINT, width: fakeTabBar1.frame.size.width, height: fakeTabBar1.frame.size.height)
             print("realTabBar1.frame 2= \(realTabBar1.frame)")
         } else {
-            
             realTabBar1.frame = CGRect(x: 0, y: CGFloat(TOP_ANCHOR_POINT - (yOffset - SCROLL_BREAK_POINT_2)), width: fakeTabBar1.frame.size.width, height: fakeTabBar1.frame.size.height)
-            
             print("realTabBar1.frame 3= \(realTabBar1.frame)")
         }
         
@@ -172,7 +201,6 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         /*======== firework section end ========= */
         
         /*========  featured Articles section start ========= */
-        //Deals section
         if yOffset < SCROLL_BREAK_POINT_FeaturedArticlesSectionInitial {
             realTabBarFeaturedArticlesSectionTitleView.frame = CGRect(x: 0, y: fakeTabBarFeaturedArticlesSectionTitleView.frame.origin.y + self.scrollView.frame.origin.y - CGFloat(yOffset), width: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.width, height: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.height)
             print("realTabBarFeaturedArticlesSectionTitleView.frame 1= \(realTabBarFeaturedArticlesSectionTitleView.frame)")
@@ -184,6 +212,28 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
             realTabBarFeaturedArticlesSectionTitleView.frame = CGRect(x: 0, y: CGFloat(TOP_ANCHOR_POINT - (yOffset - SCROLL_BREAK_POINT_FeaturedArticlesSectionFinal)), width: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.width, height: fakeTabBarFeaturedArticlesSectionTitleView.frame.size.height)
             print("realTabBarFeaturedArticlesSectionTitleView.frame 3= \(realTabBarFeaturedArticlesSectionTitleView.frame)")
         }
+        /*========  featured Articles section End ========= */
+        
+        /*======== Deals section start ========= */
+        //Deals section
+           if yOffset < SCROLL_BREAK_POINT_DealsSectionInitial {
+               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: fakeTabBarFeaturedDealsSectionTitleView.frame.origin.y + self.scrollView.frame.origin.y - CGFloat(yOffset), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+               print("realTabBarDealsSectionTitleView.frame 1= \(realTabBarLastSectionTitleView.frame)")
+           } else if yOffset >= SCROLL_BREAK_POINT_DealsSectionInitial && yOffset < SCROLL_BREAK_POINT_DealsSectionFinal {
+               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: TOP_ANCHOR_POINT, width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+               print("realTabBarDealsSectionTitleView.frame 2= \(realTabBarLastSectionTitleView.frame)")
+           } else {
+            
+               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: CGFloat(TOP_ANCHOR_POINT - (yOffset - SCROLL_BREAK_POINT_DealsSectionFinal)), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+               print("realTabBarDealsSectionTitleView.frame 3= \(realTabBarLastSectionTitleView.frame)")
+           }
+        
+        /*======== Deals section end ========= */
     }
+    
+//    func showEmptyView() {
+//        emptyView = EmptyStateView(whitFrame: topBigView.frame, in: topBigView, centered: true, icon: UIImage(named: "ogimage-hidubai"), message: "There are no results for your search. Try again!", showLoginBtn: false)
+//        emptyView?.show()
+//    }
 
 }
