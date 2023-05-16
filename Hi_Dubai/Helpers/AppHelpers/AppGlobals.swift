@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 extension UIApplication {
     var currentWindow: UIWindow? {
         if #available(iOS 13.0, *) {
@@ -18,27 +19,38 @@ extension UIApplication {
         }
     }
     
-    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func getWindowsFirstObject() -> UIWindow! {
+           //isMemberOfClass
+           var windowRef:UIWindow! = UIApplication.shared.windows.first
+           let windowList:[AnyObject]! = UIApplication.shared.windows
+        for aWindow:AnyObject? in windowList {
+            if ((aWindow?.isMember(of: UIWindow.self)) != nil) {
+                let windowObj:UIWindow! = aWindow as? UIWindow
+                if windowObj.isHidden == false {
+                       windowRef = windowObj
+                       break
+                   }
+               }
+            }
+           return windowRef
+       }
+    
+    class func topViewController(base: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
         
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
         }
-        
         if let tab = base as? UITabBarController {
-            
             let moreNavigationController = tab.moreNavigationController
-            
             if let top = moreNavigationController.topViewController, top.view.window != nil {
                 return topViewController(base: top)
             } else if let selected = tab.selectedViewController {
                 return topViewController(base: selected)
             }
         }
-        
         if let presented = base?.presentedViewController {
             return topViewController(base: presented)
         }
-        
         return base
     }
 }

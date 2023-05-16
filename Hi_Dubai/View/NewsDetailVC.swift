@@ -19,6 +19,19 @@ class NewsDetailVC: UIViewController {
     }()
     var isBackBtnShow: Bool = true
     var backButton: UIButton?
+//    private let navigator: LoginNavigator?
+    
+    init(user: Record) {
+        self.viewModel.newsModel = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.viewModel.newsModel = nil
+
+    }
+
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +81,26 @@ class NewsDetailVC: UIViewController {
         self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.newsModel?.postImageURL ?? "")
         self.headerView.tagLbl.text = self.viewModel.newsModel?.primaryTag ?? ""
     }
+    //MARK: - Navigator
+    private func handleLoginButtonTap() {
+//            performLogin { [weak self] result in
+//                switch result {
+//                case .success(let user):
+//                    self?.navigator.navigate(to: .loginCompleted(user: user))
+//                case .failure(let error):
+//                    self?.show(error)
+//                }
+//            }
+        }
+
+        private func handleForgotPasswordButtonTap() {
+//            navigator?.navigate(to: .forgotPassword)
+        }
+
+        private func handleSignUpButtonTap() {
+//            navigator?.navigate(to: .signup)
+        }
+    //
 }
 
 //MARK:- Extension TableView Delegate and DataSource

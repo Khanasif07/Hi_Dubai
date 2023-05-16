@@ -42,6 +42,13 @@
 		E00AE4ED2A0B919D00A43133 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */; };
 		E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00AE4EE2A0BA62200A43133 /* EmptyView.xib */; };
 		E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F02A0BA68400A43133 /* EmptyView.swift */; };
+		E00AE4F32A0D07AA00A43133 /* BaseNestedTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F22A0D07AA00A43133 /* BaseNestedTabViewController.swift */; };
+		E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F42A0DF62200A43133 /* BaseMyProfileTabsViewController.swift */; };
+		E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F62A0DF67800A43133 /* LightStatusBarViewController.swift */; };
+		E00AE4F92A0DFEC800A43133 /* UserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4F82A0DFEC800A43133 /* UserInfoHeaderViewController.swift */; };
+		E00AE4FB2A0DFF7300A43133 /* PresentationHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */; };
+		E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */; };
+		E00DED262A13440200828D34 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED252A13440100828D34 /* Navigator.swift */; };
 		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
 		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
 		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
@@ -104,6 +111,13 @@
 		E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		E00AE4EE2A0BA62200A43133 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		E00AE4F02A0BA68400A43133 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		E00AE4F22A0D07AA00A43133 /* BaseNestedTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNestedTabViewController.swift; sourceTree = "<group>"; };
+		E00AE4F42A0DF62200A43133 /* BaseMyProfileTabsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMyProfileTabsViewController.swift; sourceTree = "<group>"; };
+		E00AE4F62A0DF67800A43133 /* LightStatusBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightStatusBarViewController.swift; sourceTree = "<group>"; };
+		E00AE4F82A0DFEC800A43133 /* UserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderViewController.swift; sourceTree = "<group>"; };
+		E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHeaderViewController.swift; sourceTree = "<group>"; };
+		E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelResultVC.swift; sourceTree = "<group>"; };
+		E00DED252A13440100828D34 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
 		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
 		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
@@ -208,6 +222,7 @@
 		8470C58729974F530091A7C5 /* AppUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				E02CF3C92A0450DC00400F08 /* AppFonts.swift */,
 				8470C58829974F6E0091A7C5 /* AppRouter.swift */,
 			);
 			path = AppUtilities;
@@ -236,6 +251,10 @@
 				E02BC0A82A05891600860893 /* PartnersViewController.swift */,
 				E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */,
 				E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */,
+				E00AE4F42A0DF62200A43133 /* BaseMyProfileTabsViewController.swift */,
+				E00AE4F82A0DFEC800A43133 /* UserInfoHeaderViewController.swift */,
+				E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */,
+				E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
@@ -287,17 +306,14 @@
 		8470C5B22997DA4B0091A7C5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E00DED242A1343E600828D34 /* Navigator */,
 				8470C5B8299801EE0091A7C5 /* CustomAnimator */,
 				8470C5B52997EFB10091A7C5 /* UIViewExtension */,
 				8470C58429974EF20091A7C5 /* AppHelpers */,
 				8470C58729974F530091A7C5 /* AppUtilities */,
 				8470C593299757020091A7C5 /* UIImageExtension */,
 				8470C5992997656B0091A7C5 /* UITableViewExtension */,
-				E0722B7F29FFDC9D00BB9B6D /* BaseVC.swift */,
-				E0722B8129FFDE2E00BB9B6D /* StatsVC.swift */,
-				E02CF3C92A0450DC00400F08 /* AppFonts.swift */,
-				E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */,
-				E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */,
+				E00DED272A13463A00828D34 /* BaseVC */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -334,6 +350,27 @@
 				972BB423FBE9BDBBD90AE070 /* Pods-Hi_Dubai.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E00DED242A1343E600828D34 /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				E00DED252A13440100828D34 /* Navigator.swift */,
+			);
+			path = Navigator;
+			sourceTree = "<group>";
+		};
+		E00DED272A13463A00828D34 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				E0722B7F29FFDC9D00BB9B6D /* BaseVC.swift */,
+				E0722B8129FFDE2E00BB9B6D /* StatsVC.swift */,
+				E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */,
+				E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */,
+				E00AE4F22A0D07AA00A43133 /* BaseNestedTabViewController.swift */,
+				E00AE4F62A0DF67800A43133 /* LightStatusBarViewController.swift */,
+			);
+			path = BaseVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,17 +498,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00AE4FB2A0DFF7300A43133 /* PresentationHeaderViewController.swift in Sources */,
 				8470C58329974E890091A7C5 /* News.swift in Sources */,
 				E00AE4E42A0A68C700A43133 /* MainDetailsTableViewController.swift in Sources */,
+				E00AE4F32A0D07AA00A43133 /* BaseNestedTabViewController.swift in Sources */,
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
 				E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */,
+				E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */,
 				8470C591299753EB0091A7C5 /* NewsTableViewCell.swift in Sources */,
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,
 				E02CF3C72A044B9B00400F08 /* MenuItemCollectionCell.swift in Sources */,
+				E00AE4F92A0DFEC800A43133 /* UserInfoHeaderViewController.swift in Sources */,
 				8470C5B72997EFC50091A7C5 /* UIViewExtension.swift in Sources */,
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
@@ -479,10 +520,13 @@
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,
 				E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */,
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
+				E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */,
+				E00DED262A13440200828D34 /* Navigator.swift in Sources */,
 				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
+				E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */,
 				8470C58029974E340091A7C5 /* Enums.swift in Sources */,
 				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,

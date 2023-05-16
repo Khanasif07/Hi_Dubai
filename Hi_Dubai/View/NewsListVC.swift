@@ -76,6 +76,7 @@ class NewsListVC: UIViewController {
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
+    
     private func  initialSetup(){
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
@@ -121,7 +122,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         viewModel.newsData.isEmpty ? self.setEmptyMessage(self.viewModel.error?.localizedDescription ?? "",isTimeOutError: error?.errorCode == CustomError.timeOut.rawValue) : self.restore()
         switch self.currentShimmerStatus {
         case .toBeApply:
-            return 5
+            return 0
         case .applied:
             return self.viewModel.newsData.count
         case .none:
@@ -169,8 +170,12 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 3:
                 let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 4:
+                let vc = HotelResultVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
             default:
-                let vc = ExploreViewController.instantiate(fromAppStoryboard: .Main)
+                let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
+                vc.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: false)
             }
         }
@@ -225,57 +230,29 @@ extension NewsListVC{
 //        emptyView?.frame = frame
 //        emptyView?.show()
 //        newsTableView.backgroundView = emptyView
-        
+        var offset:CGFloat = 0
+        var bottomOffset = 0.0
+        var fakenavHeightRef:CGFloat = 0.0
+        if #available(iOS 13.0, *) {
+            let window:UIWindow! = UIApplication.shared.keyWindow
+                fakenavHeightRef =  fakenavHeightRef + window.safeAreaInsets.top
+                bottomOffset =  window.safeAreaInsets.bottom
+        }else {
+            let window:UIWindow! = UIApplication.shared.keyWindow
+            fakenavHeightRef = fakenavHeightRef + window.safeAreaInsets.top
+            bottomOffset =  window.safeAreaInsets.bottom
+        }
+        offset = self.navigationController?.navigationBar.height ?? 0.0
         
         // Custom way to add view
         if emptyViewPersonal != nil {
         } else{
             emptyViewPersonal = nil
-            emptyViewPersonal = EmptyView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: self.view.frame.height)), inView: self.view, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal = EmptyView(frame: CGRect(x: 0, y: fakenavHeightRef + offset, width: self.view.frame.width, height: self.view.frame.height -  fakenavHeightRef - offset - bottomOffset), inView: self.view, centered: true, icon: UIImage(named: ""), message: "")
             emptyViewPersonal?.delegate = self
             emptyViewPersonal?.show()
         }
-        //        let titleLabel = UILabel()
-        //        let messageLabel = UILabel()
-        //        let retryButton = UIButton()
-        //        retryButton.translatesAutoresizingMaskIntoConstraints = false
-        //        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        titleLabel.textColor = UIColor.black
-        //        retryButton.setTitle("Retry", for: .normal)
-        //        retryButton.addTarget(self, action: #selector(retryBtnTapped), for: .touchDown)
-        //        retryButton.setTitleColor(.red, for: .normal)
-        //        retryButton.setTitleColor(.red, for: .selected)
-        //        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        //        messageLabel.textColor = UIColor.lightGray
-        //        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        //        emptyView.addSubview(titleLabel)
-        //        emptyView.addSubview(messageLabel)
-        //        emptyView.addSubview(retryButton)
-        //        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        //        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        //        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        //        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        //        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
-        //
-        //        retryButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
-        //        retryButton.leftAnchor.constraint(equalTo: messageLabel.leftAnchor, constant: 10).isActive = true
-        //        retryButton.rightAnchor.constraint(equalTo: messageLabel.rightAnchor, constant: -10).isActive = true
-        //        titleLabel.text = "You don't have any contact."
-        //        messageLabel.text = message
-        //        messageLabel.numberOfLines = 0
-        //        messageLabel.textAlignment = .center
-        //        emptyView.backgroundColor = .yellow
-        //        emptyView.roundCorners([.allCorners], radius: 10.0)
-        //        // The only tricky part is here:
-        //        newsTableView.backgroundView = emptyView
-        //        newsTableView.separatorStyle = .none
     }
-    
-//    @objc func retryBtnTapped(){
-//        print("retry btn tapped.")
-//        self.fetchAPIData()
-//    }
     
     func restore() {
         newsTableView.backgroundView = nil
@@ -291,22 +268,19 @@ extension NewsListVC{
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
         var scrollDirection: ScrollDirection
-
+        
         if lastContentOffset > scroll.contentOffset.y {
             scrollDirection = .down
         } else {
             scrollDirection = .up
         }
-
+        
         let offsetY = scroll.contentOffset.y
         var stopScroll: CGFloat = 85.0
         
         if UIDevice.current.hasNotch{
             stopScroll = 95.0
         }
-//        if !filtersButtonsView.isHidden {
-//            stopScroll = stopScroll - 10.0
-//        }
         lastContentOffset = scroll.contentOffset.y
         
         if scrollDirection == .up {
@@ -319,14 +293,14 @@ extension NewsListVC{
             enableGlobalScrolling(offsetY)
         }
         
-//        if !isShowingLatest {
-//            let currentOffset = Int(scroll.contentOffset.y)
-//            let maximumOffset = Int(scroll.contentSize.height - scroll.frame.size.height)
-//            if Double(maximumOffset - currentOffset) <= 80.0 && ((pageToDownload?.intValue ?? 0) + 1) * Int(ITEMS_PER_PAGE) == (searchResults?.count ?? 0) {
-//                pageToDownload = NSNumber(value: (pageToDownload?.intValue ?? 0) + 1)
-//                getData()
-//            }
-//        }
+        //        if !isShowingLatest {
+        //            let currentOffset = Int(scroll.contentOffset.y)
+        //            let maximumOffset = Int(scroll.contentSize.height - scroll.frame.size.height)
+        //            if Double(maximumOffset - currentOffset) <= 80.0 && ((pageToDownload?.intValue ?? 0) + 1) * Int(ITEMS_PER_PAGE) == (searchResults?.count ?? 0) {
+        //                pageToDownload = NSNumber(value: (pageToDownload?.intValue ?? 0) + 1)
+        //                getData()
+        //            }
+        //        }
     }
 }
 
@@ -338,4 +312,6 @@ extension NewsListVC: EmptyStateViewDelegate{
     func learnHowAction() {
         self.fetchAPIData()
     }
+    
+    //Grouped BY:-
 }

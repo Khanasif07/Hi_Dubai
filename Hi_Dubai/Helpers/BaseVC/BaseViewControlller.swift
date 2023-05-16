@@ -126,7 +126,7 @@ func getBottomSafeArea() -> CGFloat {
     }
 }
 
-    func navigationController(_ navigationController:UINavigationController!, didShow viewController:UIViewController!, animated:Bool) {
+    func navigationController(_ navigationController:UINavigationController, didShow viewController:UIViewController, animated:Bool) {
     let isRootVC:Bool = viewController == navigationController.viewControllers.first
     navigationController.interactivePopGestureRecognizer?.isEnabled = !isRootVC
 }
@@ -134,7 +134,7 @@ func getBottomSafeArea() -> CGFloat {
     
 // MARK: - TexField Delegate
 
-    func textFieldShouldReturn(_ textField:UITextField!) -> Bool {
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
     textField.resignFirstResponder()
     return true
 }

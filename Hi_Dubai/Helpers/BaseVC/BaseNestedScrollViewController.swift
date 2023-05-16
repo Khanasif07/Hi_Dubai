@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-var NAVBAR_CHANGE_POINT = 64.0
+var NAVBAR_CHANGE_POINT = 44.0
 class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate {
     private var lastContentOffset: CGFloat = 0
 
@@ -26,7 +26,7 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
     private var tabContainer:UIView = UIView()
     private var tabContainerHeightConstraint:NSLayoutConstraint!
     private var fakeNavBar:UIImageView =  UIImageView()
-    internal var titleLabel:UILabel = UILabel()
+    private var titleLabel:UILabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
         swipeGesture.direction = .up
         swipeGesture.delegate = self
         self.scrollView.addGestureRecognizer(swipeGesture)
-        self.scrollView.isUserInteractionEnabled = true
+//        self.scrollView.isUserInteractionEnabled = true
         let swipeGestureD:UISwipeGestureRecognizer! = UISwipeGestureRecognizer(target:self, action:#selector(handleSwipeGesture(_:)))
         swipeGestureD.direction = .down
         swipeGestureD.delegate = self
@@ -110,41 +110,22 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(true)
         self.scrollViewDidScroll(self.scrollView)
-
         var offset:CGFloat = 0
-
-
-        var fakenavHeightRef:CGFloat = 44.0
-
+        var fakenavHeightRef:CGFloat = 0.0
         if #available(iOS 13.0, *) {
             let window:UIWindow! = UIApplication.shared.currentWindow
             fakenavHeightRef =  fakenavHeightRef + window.safeAreaInsets.top
-
-        }else if #available(iOS 11.0, *) {
+        }else {
             let window:UIWindow! = UIApplication.shared.keyWindow
             fakenavHeightRef = fakenavHeightRef + window.safeAreaInsets.top
         }
-
-        if #available(iOS 11.0, *) {
-            let window:UIWindow! = UIApplication.shared.currentWindow
-            offset = window.safeAreaInsets.bottom
-
-        }
-
-        if offset < 0 {
-            offset = 0
-        }
-
-       // fakenavHeightRef = 79;
-
-       /* if (@available(iOS 11.0, *)) {
-            if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-                if ((int)[[UIScreen mainScreen] nativeBounds].size.height == 2436) {
-                    offset = 30;
-                }
-            }
-        }*/
-        self.tabContainerHeightConstraint.constant = UIScreen.main.bounds.size.height-fakenavHeightRef-49-offset
+        offset = self.navbar.height
+        // NOTE:- Responsible for blocking tab container..
+        self.tabContainerHeightConstraint.constant = UIScreen.main.bounds.size.height-fakenavHeightRef-offset
+//        UIScreen.main.bounds.size.height-fakenavHeightRef-45.0-offset
+        //45.0 is static view height
+        //fakenavHeightRef is  safe area
+        //offset is nav bar height
         self.view.layoutIfNeeded()
     }
 

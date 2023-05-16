@@ -30,8 +30,7 @@ class EmptyView : UIView{
 
     override init(frame: CGRect) {
         super.init(frame:frame)
-        let view = self.loadFromnib()
-        view?.backgroundColor = .blue
+        self.loadFromnib()
         self.xibSetup()
     }
 
@@ -80,11 +79,11 @@ class EmptyView : UIView{
     
     
     func xibSetup() {
-        self.tempView = self.loadFromnib()
-        self.tempView?.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.bounds.width, height: self.bounds.height))
-        self.tempView?.autoresizingMask = [.flexibleHeight,.flexibleWidth]
-        self.addSubview(self.tempView!)
-        self.autoresizingMask = [.flexibleHeight,.flexibleWidth]
+//        self.tempView = self.loadFromnib()
+//        self.tempView?.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.bounds.width, height: self.bounds.height))
+//        self.tempView?.autoresizingMask = [.flexibleHeight,.flexibleWidth]
+//        self.addSubview(self.tempView!)
+//        self.autoresizingMask = [.flexibleHeight,.flexibleWidth]
     }
 
     func loadFromnib() -> UIView! {
@@ -92,6 +91,7 @@ class EmptyView : UIView{
         view?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         view?.frame = bounds
         addSubview(view!)
+        self.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         return view
     }
 }

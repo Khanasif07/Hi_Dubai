@@ -7,55 +7,60 @@
 
 import UIKit
 import Foundation
-class MainDetailsTableViewController: BaseNestedScrollViewController {
+@objc class MainDetailsTableViewController: BaseNestedScrollViewController{
+    @IBOutlet weak var mainImgView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tabContainer: UIView!
     @IBOutlet weak var tabContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tagsCollectionView: UICollectionView!
     @IBOutlet weak var  fakeNavBar: UIImageView!
     @IBOutlet weak var fakeNavBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var newsModel: Record?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var topPaddingRef: CGFloat = 20.0
+        super.navbar = navBar
+        var bottomoffset: CGFloat = 0
+        var topoffset: CGFloat = 0
+        var topPaddingRef: CGFloat = 0.0
         if #available(iOS 13.0, *) {
             let window = UIApplication.shared.windows.first
+            bottomoffset = window?.safeAreaInsets.bottom ?? 0
             if let topPadding = window?.safeAreaInsets.top{
+                topoffset = topPadding
                 topPaddingRef = topPadding + 0.0
                 navBarTopConstraint.constant = topPaddingRef
-                fakeNavBarHeightConstraint.constant = topPaddingRef + 44.0 //44 is nav bar height
+                fakeNavBarHeightConstraint.constant = topPaddingRef + self.navBar.height //44 is nav bar height
                 fakeNavBar.layoutIfNeeded()
-                
                 navBar.layoutIfNeeded()
-
-                super.navbar = navBar
-
             }
         }
+//        tabContainerHeightConstraint.constant = UIScreen.main.bounds.size.height - 52 - 49 - bottomoffset - topoffset
+           view.layoutIfNeeded()
         setUIObjectsScrollView(scrollView: scrollView, tabContainer: tabContainer, heightConstraint: tabContainerHeightConstraint, fakeNavBar: fakeNavBar, titleLabel: titleLabel)
         scrollView.isScrollEnabled = false
 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainImgView.setImageFromUrl(ImageURL: self.newsModel?.postImageURL ?? "")
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         scrollView.isScrollEnabled = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        //        parent?.navigationController?.isNavigationBarHidden = false
+        //        navigationController?.isNavigationBarHidden = false
     }
-    */
-
 }
 
 
