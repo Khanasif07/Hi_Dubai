@@ -173,6 +173,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 4:
                 let vc = HotelResultVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 5:
+                let vc = ExploreViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]

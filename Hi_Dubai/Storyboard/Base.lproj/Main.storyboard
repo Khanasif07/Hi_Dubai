@@ -988,47 +988,37 @@
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_oblique" translatesAutoresizingMaskIntoConstraints="NO" id="2Nh-e8-cn3">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqd-o7-2eA" userLabel="header">
                                                         <rect key="frame" x="0.0" y="10" width="375" height="36"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cOx-zy-ve6">
-                                                                <rect key="frame" x="10" y="0.0" width="355" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="365" height="36"/>
                                                                 <subviews>
-                                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4T-yk-kMc">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="36"/>
-                                                                        <subviews>
-                                                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJ5-sz-v42">
-                                                                                <rect key="frame" x="5" y="10.666666666666671" width="15" height="15"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="15" id="U2K-5N-0X1"/>
-                                                                                    <constraint firstAttribute="width" constant="15" id="vQH-8Q-HrA"/>
-                                                                                </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                                <state key="normal" image="Back"/>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3tO-lw-rEk">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <gestureRecognizers/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="25" id="Zoa-nm-ZPl"/>
-                                                                            <constraint firstItem="FJ5-sz-v42" firstAttribute="centerX" secondItem="l4T-yk-kMc" secondAttribute="centerX" id="dxW-V1-0gz"/>
-                                                                            <constraint firstItem="FJ5-sz-v42" firstAttribute="centerY" secondItem="l4T-yk-kMc" secondAttribute="centerY" id="of8-uB-3uc"/>
+                                                                            <constraint firstAttribute="width" id="fRv-9V-SBG"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwj-U5-dgj">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="36"/>
-                                                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwj-U5-dgj" customClass="NewSearchTextField" customModule="Hi_Dubai">
+                                                                        <rect key="frame" x="10" y="0.0" width="355" height="36"/>
                                                                     </view>
-                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAB-g2-yHZ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="39" height="36"/>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-VE-N6s">
+                                                                        <rect key="frame" x="365" y="0.0" width="45" height="36"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="39" id="W0x-0i-AtY"/>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="gxq-nm-r78"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                                         <state key="normal" title="Cancel">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="cancelSearch:" destination="5Ib-Pj-S5U" eventType="touchUpInside" id="Grq-Am-Z9A"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
@@ -1043,7 +1033,7 @@
                                                             <constraint firstItem="cOx-zy-ve6" firstAttribute="top" secondItem="Iqd-o7-2eA" secondAttribute="top" id="BOp-im-44Y"/>
                                                             <constraint firstAttribute="height" constant="36" id="JQY-dF-v6Q"/>
                                                             <constraint firstAttribute="bottom" secondItem="cOx-zy-ve6" secondAttribute="bottom" id="mch-w5-2V5"/>
-                                                            <constraint firstItem="cOx-zy-ve6" firstAttribute="leading" secondItem="Iqd-o7-2eA" secondAttribute="leading" constant="10" id="s8b-dB-V2E"/>
+                                                            <constraint firstItem="cOx-zy-ve6" firstAttribute="leading" secondItem="Iqd-o7-2eA" secondAttribute="leading" id="s8b-dB-V2E"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search across 150,000 businesses in Dubai" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUJ-La-mF7">
@@ -1053,7 +1043,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="2Nh-e8-cn3" firstAttribute="top" secondItem="4MM-6M-7sH" secondAttribute="top" id="06Q-dJ-CVm"/>
                                                     <constraint firstItem="MUJ-La-mF7" firstAttribute="leading" secondItem="4MM-6M-7sH" secondAttribute="leading" constant="20" id="44P-yU-IGD"/>
@@ -1419,6 +1409,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1500"/>
                     <connections>
+                        <outlet property="cancelBtn" destination="ZMZ-VE-N6s" id="aXa-sp-jSF"/>
                         <outlet property="containerStackView" destination="9TG-LA-o56" id="LAp-iZ-gNz"/>
                         <outlet property="dealsView" destination="qSM-ke-KBy" id="sqI-0x-uPL"/>
                         <outlet property="fakeNavBar" destination="4Ut-7E-yQS" id="iEx-Sl-R0I"/>
@@ -1431,6 +1422,7 @@
                         <outlet property="realTabBarFireworkSectionTitleView" destination="jMX-V1-rGm" id="e03-GE-iq9"/>
                         <outlet property="realTabBarLastSectionTitleView" destination="CHb-4J-WOC" id="PV2-U2-hmj"/>
                         <outlet property="scrollView" destination="10v-k4-n47" id="jjB-zP-SK6"/>
+                        <outlet property="searchTextField" destination="cwj-U5-dgj" id="zTf-oE-ONM"/>
                         <outlet property="topBigView" destination="VmT-dA-AEP" id="oZb-I7-BO3"/>
                     </connections>
                 </viewController>
@@ -1666,7 +1658,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-237.59999999999999" y="-92.653673163418304"/>
+            <point key="canvasLocation" x="-190" y="-67"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AoW-Dr-D71">
@@ -3141,8 +3133,8 @@
         <image name="add_follow_icon_white" width="20" height="17"/>
         <image name="camera_icon_green" width="36" height="28"/>
         <image name="check_blue" width="35" height="35"/>
-        <image name="down_arrow_blue" width="24" height="24"/>
-        <image name="down_arrow_white" width="18" height="10"/>
+        <image name="down_arrow_blue" width="32" height="32"/>
+        <image name="down_arrow_white" width="32" height="32"/>
         <image name="followers_icon_green" width="25" height="25"/>
         <image name="following_green_icon" width="26" height="25"/>
         <image name="gradient_oblique" width="250" height="189"/>

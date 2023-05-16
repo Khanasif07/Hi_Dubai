@@ -94,6 +94,8 @@ var TOP_ANCHOR_POINT:CGFloat {
 
 class ExploreViewController: UIViewController,UIScrollViewDelegate {
 
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var searchTextField: NewSearchTextField!
     @IBOutlet weak var dealsView: UIView!
     @IBOutlet weak var topBigView: UIView!
     @IBOutlet weak var fakeNavBar: UIImageView!
@@ -115,6 +117,13 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         super.viewDidLoad()
         navigationController?.hidesBarsOnSwipe = false
         scrollView.delegate = self
+        searchTextField.delegate = self
+        searchTextField.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
+        cancelBtn.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +175,10 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         scrollView.setContentOffset(CGPoint.init(x: 0, y: 1), animated: true)
     }
     
+    @IBAction func cancelSearch(_ sender: Any?) {
+        closeSearchingArea(true)
+        self.view.endEditing(true)
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -235,5 +248,34 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
 //        emptyView = EmptyStateView(whitFrame: topBigView.frame, in: topBigView, centered: true, icon: UIImage(named: "ogimage-hidubai"), message: "There are no results for your search. Try again!", showLoginBtn: false)
 //        emptyView?.show()
 //    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.cancelBtn.isHidden = isTrue
+        })
+    }
 
+}
+
+// MARK: - WalifSearchTextFieldDelegate
+extension ExploreViewController: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: NewSearchTextField!) {
+        closeSearchingArea(false)
+    }
+    
+    func walifSearchTextFieldEndEditing(sender: NewSearchTextField!) {
+        print(sender.text())
+        closeSearchingArea(true)
+        searchTextField.cancelBtn.isHidden = true
+    }
+    
+    func walifSearchTextFieldChanged(sender: NewSearchTextField!) {
+        print(sender.text())
+    }
+    
+    func walifSearchTextFieldIconPressed(sender: NewSearchTextField!) {
+        print(sender.text())
+    }
+    
+    
 }
