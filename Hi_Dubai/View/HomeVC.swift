@@ -26,7 +26,7 @@ class HomeVC: BaseVC {
     var newsVC     : StatsVC!
     var eventsVC   : StatsVC!
     var musicVC    : StatsVC!
-    var socialVC   : ExploreVC!
+    var socialVC   : StatsVC!
     
     var artistSymbol: String = "ARIG"
     private var scrollToTop: Bool = false
@@ -41,24 +41,36 @@ class HomeVC: BaseVC {
     //====================
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        navTitle = "Home"
+        self.statusBarStyle = .lightContent
+        //
+        setNavigationBar(title: "Home", subTitle: "Home", backButton: true, titleView: false, backButtonImage: UIImage(named: "back"), buttonTitle: "", largeTitles: true, leftTitle: "")
+        //
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.statusBarStyle = .lightContent
+        self.navigationController?.navigationBar.isHidden = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         fakeNavBarHC.constant = (navigationController?.navigationBar.frame.size.height ?? 0.0) + (navigationController?.navigationBar.frame.origin.y ?? 0.0)
         view.layoutIfNeeded()
-        let tabBarHeight    = (self.tabBarController?.tabBar.frame.size.height == nil) ? 70 : (self.tabBarController!.tabBar.frame.size.height)
+//        let tabBarHeight    = (self.tabBarController?.tabBar.frame.size.height == nil) ? 70 : (self.tabBarController!.tabBar.frame.size.height)
         let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         var frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         self.mainScrollView.frame = frame
         self.mainScrollView.contentSize = frame.size
         frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
-        frame.size.height = frame.size.height - (self.mainScrollView.parallaxHeader.minimumHeight + statusBarHeight)
+        frame.size.height = frame.size.height - (self.mainScrollView.parallaxHeader.minimumHeight + statusBarHeight - 55.0)
         self.detailView.frame = frame
         scrollFrameSetup()
         
@@ -75,16 +87,6 @@ class HomeVC: BaseVC {
         self.addButtonOnRight()
     }
     
-//    override func configureNavigationBar() {
-////        super.configureNavigationBar()
-////        if !scrollToTop {
-////            let navbar = self.navigationController?.navigationBar
-////            navbar?.tintColor = .white
-////            self.setNavigationBarClear = true
-////            self.statusBarStyle = .lightContent
-////        }
-//    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.HeaderDataSetUp()
@@ -92,7 +94,7 @@ class HomeVC: BaseVC {
     
     private func parallelHeaderSetUp() {
         //TODO: Deprecated method to be change
-        let parallexHeaderHeight = 200.0
+        let parallexHeaderHeight = 250.0
         let parallexHeaderMinHeight = (navigationController?.navigationBar.frame.size.height ?? 0.0) + (navigationController?.navigationBar.frame.origin.y ?? 0.0) + 55.0// stack view hieght
         self.headerView.frame = CGRect(x: 0, y: 0, width: screen_width, height: parallexHeaderHeight)
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -163,7 +165,7 @@ class HomeVC: BaseVC {
         self.detailView.scrollView.addSubview(self.musicVC.view)
         self.musicVC.didMove(toParent: self)
         
-        self.socialVC = ExploreVC.instantiate(fromAppStoryboard: .Main)
+        self.socialVC = StatsVC.instantiate(fromAppStoryboard: .Main)
         self.addChild(self.socialVC)
         self.socialVC.view.frame = CGRect(x: 3 * screen_width, y: 0, width: screen_width, height: vcHeight )
         self.detailView.scrollView.frame = self.socialVC.view.frame
@@ -216,34 +218,32 @@ extension HomeVC : MXParallaxHeaderDelegate ,MXScrollViewDelegate {
     
     func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
           print(parallaxHeader.progress)
-//        let prallexProgress = parallaxHeader.progress
-//
-//        if isScrollingFirstTime && prallexProgress > 1.0 {
-//            maxValue = prallexProgress
-//            minValue = abs(1 - prallexProgress)
-//            finalMaxValue = Int(maxValue * 100)
-//            isScrollingFirstTime = false
-//        }
-//
+        let prallexProgress = parallaxHeader.progress
+
+        if isScrollingFirstTime && prallexProgress > 1.0 {
+            maxValue = prallexProgress
+            minValue = abs(1 - prallexProgress)
+            finalMaxValue = Int(maxValue * 100)
+            isScrollingFirstTime = false
+        }
+
 //        if minValue...maxValue ~= prallexProgress {
 //            let intValue =  finalMaxValue - Int(prallexProgress * 100)
-//
 //            let newProgress: Float = (Float(1) - (Float(1.3)  * (Float(intValue) / 100)))
-//            self.currentProgressIntValue = intValue
-//            self.currentProgress = newProgress.toCGFloat
+////            self.currentProgressIntValue = intValue
+////            self.currentProgress = newProgress.toCGFloat
 //        }
-//        //
-//        if prallexProgress  <= 0.25 {
-//            scrollToTop = true
-//            self.setNavigationBarClear = false
-//            self.addButtonOnRight(initial: false)
-//            self.animateBackView(isHidden: false)
-//        } else {
-//            self.setNavigationBarClear = true
-//            scrollToTop = false
-//            self.animateBackView(isHidden: true)
-//            self.addButtonOnRight()
-//        }
+        //
+        fakeNavBar.alpha = (1.0 - prallexProgress)
+        if prallexProgress  <= 0.05 {
+            scrollToTop = true
+            self.setNavigationBarClear = false
+            self.addButtonOnRight(initial: false)
+        } else {
+            self.setNavigationBarClear = true
+            scrollToTop = false
+            self.addButtonOnRight()
+        }
         
     }
     
@@ -260,13 +260,9 @@ extension HomeVC : OtherArtistHeaderViewDelegate {
     func otherInfomation() {
         
     }
-    
-    
     func detailBtnAction(sender: UIButton) {
         self.buttonTapAction(senderTag: sender.tag)
     }
-    
-    
 }
 
 
@@ -277,6 +273,7 @@ extension HomeVC {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.detailView.scrollView {
+            print("DetailView ScrollView.contentOffset.y:- \(self.detailView.scrollView.contentOffset.y)")
             switch scrollView.contentOffset.x {
             case screen_width * 0:
                 self.buttonTapAction(senderTag: 0)
@@ -292,29 +289,25 @@ extension HomeVC {
                 break
             }
         }
-        print(mainScrollView.contentOffset.y)
-        if scrollView.isEqual(mainScrollView) {
-            let offsetY = mainScrollView.contentOffset.y
-            if offsetY > CGFloat(64) {
-                let value = CGFloat(64)
-                let offsetVal = CGFloat((value + CGFloat(64.0) - offsetY))
-                
-                let alpha = min(1, 1 - (offsetVal / 64))
-                fakeNavBar.alpha = alpha
-            } else {
-                fakeNavBar.alpha = 0
-            }
-        }
+       
+//        if scrollView.isEqual(mainScrollView) {
+//            print("Main ScrollView.contentOffset.y:- \(mainScrollView.contentOffset.y)")
+//            let offsetY: CGFloat = mainScrollView.contentOffset.y
+//            if (offsetY) > CGFloat(NAVBAR_CHANGE_POINT) + 297.0{
+////                let value = CGFloat(64)
+////                let offsetVal = CGFloat((value + CGFloat(64.0) - offsetY))
+//                let alpha:CGFloat = min(1, 1 - ((NAVBAR_CHANGE_POINT + 79 - (offsetY)) / 79))
+////                let alpha = min(1, 1 - (offsetVal / 64))
+//                fakeNavBar.alpha = alpha
+//            } else {
+//                fakeNavBar.alpha = 0
+//            }
+//        }
         if UIDevice.current.hasNotch {
             //... consider notch
         } else {
             //... don't have to consider notch
         }
-//        if WalifUtils.hasTopNotch() {
-//            selectorTopMargin.constant = CGFloat(SELECTOR_TOP_MARGIN_NOTCH) - offsetY
-//        } else {
-//            selectorTopMargin.constant = CGFloat(SELECTOR_TOP_MARGIN) - offsetY
-//        }
     }
     
 }
@@ -325,17 +318,16 @@ extension HomeVC {
 
 extension HomeVC {
     
-    
     func addButtonOnRight(initial: Bool = true){
         let shareBtn : UIButton = UIButton.init(type: .custom)
-        let img = UIImage.init(named: "icShare")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        let img = UIImage.init(named: "iconfinder_cross-24_103181")?.withRenderingMode(.alwaysTemplate)
         shareBtn.setImage(img, for: .normal)
         shareBtn.tintColor = initial ? .white : UIColor.AppColor.changeBlack
         shareBtn.addTarget(self, action: #selector(gotSharePage), for: .touchUpInside)
         shareBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let shareButton = UIBarButtonItem(customView: shareBtn)
         let searchBtn : UIButton = UIButton.init(type: .custom)
-        let img1 = UIImage.init(named: "icSearch")?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        let img1 = UIImage.init(named: "iconfinder_cross-24_103181")?.withRenderingMode(.alwaysTemplate)
         searchBtn.setImage(img1, for: .normal)
         searchBtn.tintColor = initial ? .white : UIColor.AppColor.changeBlack
         searchBtn.addTarget(self, action: #selector(gotSearchPage), for: .touchUpInside)

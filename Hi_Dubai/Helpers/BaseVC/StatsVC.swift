@@ -7,18 +7,27 @@
 
 import UIKit
 
-class StatsVC: UIViewController {
+class StatsVC: UIViewController, EmptyStateViewDelegate {
+    func loginAction() {
+        self.fetchAPIData()
+    }
     
-    //MARK:- IBOUTLETS
+    func learnHowAction() {
+        self.fetchAPIData()
+    }
+    
+    
+    //MARK: - IBOUTLETS
     //==================
     @IBOutlet weak var mainTableView: UITableView!
     
+    var emptyViewPersonal: EmptyView?
      var artistSymbol: String = "ARIG"
     lazy var viewModel = {
         NewsListViewModel()
     }()
     
-    //MARK:- VIEW LIFE CYCLE
+    //MARK: - VIEW LIFE CYCLE
     //==================
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +35,7 @@ class StatsVC: UIViewController {
     }
     
     
-    //MARK:- PRIVATE FUNCTIONS
+    //MARK: - PRIVATE FUNCTIONS
     //==================
     
     private func initialSetUp() {
@@ -116,43 +125,29 @@ extension StatsVC: NewsListViewModelDelegate{
 
 extension StatsVC{
     func setEmptyMessage(_ message: String,isTimeOutError: Bool = true) {
-        let emptyView = UIView(frame: CGRect(x: self.mainTableView.centerX, y: self.mainTableView.centerY, width: self.mainTableView.size.width, height: self.mainTableView.size.height - 50))
-        let titleLabel = UILabel()
-        let messageLabel = UILabel()
-        let retryButton = UIButton()
-        retryButton.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = UIColor.black
-        retryButton.setTitle("Retry", for: .normal)
-        retryButton.addTarget(self, action: #selector(retryBtnTapped), for: .touchDown)
-        retryButton.setTitleColor(.red, for: .normal)
-        retryButton.setTitleColor(.red, for: .selected)
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        messageLabel.textColor = UIColor.lightGray
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
-        emptyView.addSubview(titleLabel)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(retryButton)
-        titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 10).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -10).isActive = true
+        // Custom way to add view
+        var offset:CGFloat = 0
+        var bottomOffset = 0.0
+        var fakenavHeightRef:CGFloat = 0.0
+        if #available(iOS 13.0, *) {
+            let window:UIWindow! = UIApplication.shared.keyWindow
+            fakenavHeightRef =  fakenavHeightRef + window.safeAreaInsets.top
+            bottomOffset =  window.safeAreaInsets.bottom
+        }else {
+            let window:UIWindow! = UIApplication.shared.keyWindow
+            fakenavHeightRef = fakenavHeightRef + window.safeAreaInsets.top
+            bottomOffset =  window.safeAreaInsets.bottom
+        }
+        offset = self.navigationController?.navigationBar.height ?? 0.0
         
-        retryButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
-        retryButton.leftAnchor.constraint(equalTo: messageLabel.leftAnchor, constant: 10).isActive = true
-        retryButton.rightAnchor.constraint(equalTo: messageLabel.rightAnchor, constant: -10).isActive = true
-        titleLabel.text = "You don't have any contact."
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        emptyView.backgroundColor = .yellow
-        emptyView.roundCorners([.allCorners], radius: 10.0)
-        // The only tricky part is here:
-        mainTableView.backgroundView = emptyView
-        mainTableView.separatorStyle = .none
-        
+        // Custom way to add view
+        if emptyViewPersonal != nil {
+        } else{
+            emptyViewPersonal = nil
+            emptyViewPersonal = EmptyView(frame: CGRect(x: 0, y: fakenavHeightRef + offset, width: self.view.frame.width, height: self.view.frame.height -  fakenavHeightRef - offset - bottomOffset), inView: self.view, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal?.delegate = self
+            emptyViewPersonal?.show()
+        }
         
     }
     
@@ -163,6 +158,6 @@ extension StatsVC{
     
     func restore() {
         mainTableView.backgroundView = nil
-        mainTableView.separatorStyle = .singleLine
+        emptyViewPersonal?.hide()
     }
 }

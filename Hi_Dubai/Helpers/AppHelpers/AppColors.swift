@@ -28,6 +28,7 @@ class AppColors : UIColor{
         case graphVertical
         case appBlueDark
         case appBlueColor
+        case showcaseBGColor
         
         var name : String{
             return self.rawValue
@@ -51,7 +52,7 @@ class AppColors : UIColor{
     static let appBlueDark = UIColor(named: ColorName.appBlueDark.name)!
     static let graphHorizontalColor = UIColor(named: ColorName.graphHorizontal.name)!
     static let graphVerticalColor = UIColor(named: ColorName.graphVertical.name)!
-    static let appBlueColor = UIColor(named: ColorName.appBlueColor.name)!
+    static let appBlueColor = UIColor(named: ColorName.showcaseBGColor.name)!
     
 }
 

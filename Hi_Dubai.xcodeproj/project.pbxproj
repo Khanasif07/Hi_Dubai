@@ -49,6 +49,7 @@
 		E00AE4FB2A0DFF7300A43133 /* PresentationHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */; };
 		E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */; };
 		E00DED262A13440200828D34 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED252A13440100828D34 /* Navigator.swift */; };
+		E00DED292A13732300828D34 /* WalifTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED282A13732300828D34 /* WalifTheme.swift */; };
 		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
 		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
 		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
@@ -118,6 +119,7 @@
 		E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationHeaderViewController.swift; sourceTree = "<group>"; };
 		E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelResultVC.swift; sourceTree = "<group>"; };
 		E00DED252A13440100828D34 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		E00DED282A13732300828D34 /* WalifTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalifTheme.swift; sourceTree = "<group>"; };
 		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
 		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
 		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				8470C58529974F0C0091A7C5 /* AppGlobals.swift */,
 				E0722B8B29FFE31700BB9B6D /* AppColors.swift */,
+				E00DED282A13732300828D34 /* WalifTheme.swift */,
 			);
 			path = AppHelpers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				E00AE4F92A0DFEC800A43133 /* UserInfoHeaderViewController.swift in Sources */,
 				8470C5B72997EFC50091A7C5 /* UIViewExtension.swift in Sources */,
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
+				E00DED292A13732300828D34 /* WalifTheme.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
 				8470C56D29974D640091A7C5 /* NewsListVC.swift in Sources */,
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,

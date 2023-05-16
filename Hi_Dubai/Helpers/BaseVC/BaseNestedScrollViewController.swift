@@ -53,7 +53,7 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
 
     func scrollViewDidScroll(_ scrollView:UIScrollView) {
         let offsetY:CGFloat = scrollView.contentOffset.y
-        //    NSLog(@"Scroll offset y = %.2f",offsetY);
+        print("Scroll offset y:-\(offsetY)")
         if scrollView.isEqual(self.scrollView) {
             if offsetY > NAVBAR_CHANGE_POINT {
                 let alpha:CGFloat = min(1, 1 - ((NAVBAR_CHANGE_POINT + 79 - offsetY) / 79))
@@ -66,9 +66,9 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
             
         }
         let scrollViewBottomEdge:CGFloat = scrollView.contentOffset.y + CGRectGetHeight(scrollView.frame)
-        print("scrollView.contentOffset.y:- \(scrollView.contentOffset.y)")
-        print("CGRectGetHeight(scrollView.frame:- \(CGRectGetHeight(scrollView.frame))")
-        print("self.scrollView.contentSize.height:- \(self.scrollView.contentSize.height)")
+//        print("scrollView.contentOffset.y:- \(scrollView.contentOffset.y)")
+//        print("CGRectGetHeight(scrollView.frame:- \(CGRectGetHeight(scrollView.frame))")
+//        print("self.scrollView.contentSize.height:- \(self.scrollView.contentSize.height)")
         if floorf(Float(scrollViewBottomEdge)*100)/100 >= floorf(Float(self.scrollView.contentSize.height)*100)/100 {
             self.childScrollView.isScrollEnabled = true
         }

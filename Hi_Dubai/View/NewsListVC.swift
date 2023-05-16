@@ -226,10 +226,6 @@ extension NewsListVC: NewsListViewModelDelegate{
 extension NewsListVC{
     func setEmptyMessage(_ message: String,isTimeOutError: Bool = false) {
         // Custom way to add view
-//        let frame = CGRect(x: 0, y: 0, width: newsTableView.frame.width, height: newsTableView.frame.height)
-//        emptyView?.frame = frame
-//        emptyView?.show()
-//        newsTableView.backgroundView = emptyView
         var offset:CGFloat = 0
         var bottomOffset = 0.0
         var fakenavHeightRef:CGFloat = 0.0

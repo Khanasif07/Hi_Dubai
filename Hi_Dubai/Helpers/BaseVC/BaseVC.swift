@@ -55,11 +55,16 @@ class BaseVC: UIViewController,UIGestureRecognizerDelegate {
                 self.navigationController?.navigationBar.tintColor = UIColor.white
                 self.statusBarStyle = .lightContent
                 self.navigationController?.navigationBar.isTranslucent = setNavigationBarClear
+                let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+                self.navigationController?.navigationBar.titleTextAttributes = textAttributes
             } else {
-                self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-                self.navigationController?.navigationBar.shadowImage = nil
+                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+                self.navigationController?.navigationBar.shadowImage = UIImage()
                 self.navigationController?.navigationBar.tintColor = UIColor.black
                 self.statusBarStyle = .darkContent
+                let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+                self.navigationController?.navigationBar.titleTextAttributes = textAttributes
+//                self.navigationController?.navigationBar.backgroundColor = AppColors.appBlueColor.withAlphaComponent(0.5)
             }
         }
     }
@@ -190,7 +195,7 @@ class BaseVC: UIViewController,UIGestureRecognizerDelegate {
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .always
-            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font:  UIFont(name: "Regular", size: 15) ]
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font:  AppFonts.Bold.withSize(15.0) ]
         }
     }
     
@@ -253,9 +258,9 @@ class BaseVC: UIViewController,UIGestureRecognizerDelegate {
     final func setNavigationBar(title: String = "", subTitle: String = "", backButton : Bool = true, titleView : Bool = false, backButtonImage: UIImage? = #imageLiteral(resourceName: "arrowBack"), buttonTitle: String = "", largeTitles: Bool = false, leftTitle: String = "") {
         
         self.navigationItem.title = title
-        
-        self.privateInitialSetup()
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        self.navigationItem.largeTitleDisplayMode = .automatic
+//        self.privateInitialSetup()
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         self.navigationController?.navigationBar.largeTitleTextAttributes = [
