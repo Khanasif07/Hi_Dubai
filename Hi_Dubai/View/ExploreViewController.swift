@@ -93,7 +93,7 @@ var TOP_ANCHOR_POINT:CGFloat {
 }
 
 class ExploreViewController: UIViewController,UIScrollViewDelegate {
-
+    
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var searchTextField: NewSearchTextField!
     @IBOutlet weak var dealsView: UIView!
@@ -164,7 +164,7 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
             emptyViewPersonal?.show()
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -229,32 +229,37 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         
         /*======== Deals section start ========= */
         //Deals section
-           if yOffset < SCROLL_BREAK_POINT_DealsSectionInitial {
-               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: fakeTabBarFeaturedDealsSectionTitleView.frame.origin.y + self.scrollView.frame.origin.y - CGFloat(yOffset), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
-               print("realTabBarDealsSectionTitleView.frame 1= \(realTabBarLastSectionTitleView.frame)")
-           } else if yOffset >= SCROLL_BREAK_POINT_DealsSectionInitial && yOffset < SCROLL_BREAK_POINT_DealsSectionFinal {
-               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: TOP_ANCHOR_POINT, width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
-               print("realTabBarDealsSectionTitleView.frame 2= \(realTabBarLastSectionTitleView.frame)")
-           } else {
+        if yOffset < SCROLL_BREAK_POINT_DealsSectionInitial {
+            realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: fakeTabBarFeaturedDealsSectionTitleView.frame.origin.y + self.scrollView.frame.origin.y - CGFloat(yOffset), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+            print("realTabBarDealsSectionTitleView.frame 1= \(realTabBarLastSectionTitleView.frame)")
+        } else if yOffset >= SCROLL_BREAK_POINT_DealsSectionInitial && yOffset < SCROLL_BREAK_POINT_DealsSectionFinal {
+            realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: TOP_ANCHOR_POINT, width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+            print("realTabBarDealsSectionTitleView.frame 2= \(realTabBarLastSectionTitleView.frame)")
+        } else {
             
-               realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: CGFloat(TOP_ANCHOR_POINT - (yOffset - SCROLL_BREAK_POINT_DealsSectionFinal)), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
-               print("realTabBarDealsSectionTitleView.frame 3= \(realTabBarLastSectionTitleView.frame)")
-           }
+            realTabBarLastSectionTitleView.frame = CGRect(x: 0, y: CGFloat(TOP_ANCHOR_POINT - (yOffset - SCROLL_BREAK_POINT_DealsSectionFinal)), width: fakeTabBarFeaturedDealsSectionTitleView.frame.size.width, height: fakeTabBarFeaturedDealsSectionTitleView.frame.size.height)
+            print("realTabBarDealsSectionTitleView.frame 3= \(realTabBarLastSectionTitleView.frame)")
+        }
         
         /*======== Deals section end ========= */
     }
     
-//    func showEmptyView() {
-//        emptyView = EmptyStateView(whitFrame: topBigView.frame, in: topBigView, centered: true, icon: UIImage(named: "ogimage-hidubai"), message: "There are no results for your search. Try again!", showLoginBtn: false)
-//        emptyView?.show()
-//    }
+    //    func showEmptyView() {
+    //        emptyView = EmptyStateView(whitFrame: topBigView.frame, in: topBigView, centered: true, icon: UIImage(named: "ogimage-hidubai"), message: "There are no results for your search. Try again!", showLoginBtn: false)
+    //        emptyView?.show()
+    //    }
     
     func closeSearchingArea(_ isTrue: Bool) {
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0,options: .curveEaseInOut) {
             self.cancelBtn.isHidden = isTrue
-        })
+            self.searchTextField.cancelBtn.isHidden = isTrue
+            self.searchTextField.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.searchTextField.layoutIfNeeded()
+        } completion: { value in
+//            self.searchTextField.cancelBtn.isHidden = isTrue
+        }
     }
-
+    
 }
 
 // MARK: - WalifSearchTextFieldDelegate
@@ -264,9 +269,7 @@ extension ExploreViewController: WalifSearchTextFieldDelegate{
     }
     
     func walifSearchTextFieldEndEditing(sender: NewSearchTextField!) {
-        print(sender.text())
         closeSearchingArea(true)
-        searchTextField.cancelBtn.isHidden = true
     }
     
     func walifSearchTextFieldChanged(sender: NewSearchTextField!) {
@@ -274,6 +277,7 @@ extension ExploreViewController: WalifSearchTextFieldDelegate{
     }
     
     func walifSearchTextFieldIconPressed(sender: NewSearchTextField!) {
+        closeSearchingArea(true)
         print(sender.text())
     }
     

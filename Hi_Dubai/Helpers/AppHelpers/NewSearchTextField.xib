@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewSearchTextField" customModule="Hi_Dubai">
             <connections>
                 <outlet property="cancelBtn" destination="3sd-Fp-Fl5" id="CQh-9m-pMv"/>
+                <outlet property="crossBtnWidthConstant" destination="Hni-tv-WKt" id="SYD-ha-0N4"/>
                 <outlet property="icon" destination="CVh-ZI-xVH" id="LV4-Lp-3nj"/>
                 <outlet property="mainLabel" destination="HNr-xG-xhF" id="Oiv-jc-WFe"/>
                 <outlet property="mainTF" destination="1vT-zX-vaF" id="Bon-WR-nch"/>
@@ -52,13 +53,13 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNr-xG-xhF">
-                                    <rect key="frame" x="34" y="0.0" width="3.3333333333333357" height="36"/>
+                                    <rect key="frame" x="34" y="0.0" width="3.6666666666666643" height="36"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="1vT-zX-vaF">
-                                    <rect key="frame" x="40.333333333333343" y="0.0" width="281.66666666666663" height="36"/>
+                                    <rect key="frame" x="40.666666666666657" y="0.0" width="281.33333333333337" height="36"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="12"/>
@@ -108,6 +109,9 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="circleBorder" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gzY-ia-efm" appends="YES" id="MHs-Zu-yih"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="G30-Rn-6vV"/>
@@ -126,7 +130,6 @@
         <tapGestureRecognizer id="gzY-ia-efm">
             <connections>
                 <action selector="tapOnViewWithSender:" destination="-1" id="CtZ-EE-NVd"/>
-                <outlet property="delegate" destination="IJx-wm-E6o" id="BUj-BQ-BPy"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

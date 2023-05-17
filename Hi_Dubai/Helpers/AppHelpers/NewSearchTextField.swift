@@ -20,12 +20,10 @@ protocol WalifSearchTextFieldDelegate : NSObject {
 
 @IBDesignable class NewSearchTextField : UIView, UITextFieldDelegate {
     
-    
-    
     //MARK: - IBOutlets
+    @IBOutlet weak var crossBtnWidthConstant: NSLayoutConstraint!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var mainTF: UITextField!
-    @IBOutlet weak var labelWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var icon: UIButton!
     @IBOutlet weak var cancelBtn: UIView!
     
@@ -60,7 +58,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
         addSubview(view!)
         self.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         defaultImage = UIImage(named: "search")
-        
+        self.crossBtnWidthConstant.constant = 0.0
         return view
     }
     
@@ -98,29 +96,27 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     }
     
     @IBAction func textChanged(_ sender: UITextField){
-        var userInput:String! = mainTF.text
+        var userInput: String  = mainTF.text ?? ""
         if userInput.count > 0 {
-            //            userInput = String(format:"%@%@",userInput.substring(to: 1).uppercased(),userInput.substring(from:))
+            userInput = String(format:"%@%@",userInput.substring(to: userInput.index(userInput.startIndex, offsetBy: 1)).uppercased(),userInput.substring(from: userInput.index(userInput.startIndex, offsetBy: 1)))
             mainTF.text = userInput
         }
         delegate?.walifSearchTextFieldChanged(sender: self)
     }
     
-    
     @IBAction func iconAction(sender:AnyObject!) {
         delegate?.walifSearchTextFieldIconPressed(sender: self)
-        if mainTF.isFirstResponder {
-            cancelBtn.isHidden = true
-            mainTF.text = ""
-            mainTF.resignFirstResponder()
-        }
+        cancelSearch()
     }
     
     func cancelSearch() {
-        if mainTF.isFirstResponder {
-            cancelBtn.isHidden = true
-            mainTF.text = ""
-            mainTF.resignFirstResponder()
+        UIView.animate(withDuration: 0.5,delay: 0.0,options: .curveEaseInOut) {
+            if self.mainTF.isFirstResponder {
+                self.cancelBtn.isHidden = true
+                self.crossBtnWidthConstant.constant = 0.0
+                self.mainTF.text = ""
+                self.mainTF.resignFirstResponder()
+            }
         }
     }
     
@@ -148,7 +144,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         mainLabel.isHidden = true
-        cancelBtn.isHidden = false
+//        cancelBtn.isHidden = false
         delegate?.walifSearchTextFieldBeginEditing(sender: self)
     }
     
@@ -163,13 +159,13 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     
     func walifSearchTextFieldIconPressed(sender:NewSearchTextField!) {
         delegate?.walifSearchTextFieldIconPressed(sender: self)
-        cancelBtn.isHidden = true
+//        cancelBtn.isHidden = true
     }
     
     func textFieldShouldReturn(_ textField:UITextField) -> Bool {
         delegate?.walifSearchTextFieldEndEditing(sender: self)
-        mainLabel.isHidden = false
-        cancelBtn.isHidden = true
+//        mainLabel.isHidden = false
+//        cancelBtn.isHidden = true
         textField.resignFirstResponder()
         return true
     }
