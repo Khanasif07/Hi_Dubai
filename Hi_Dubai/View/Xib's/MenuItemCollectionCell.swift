@@ -36,6 +36,7 @@ struct MenuItem : PagingItem ,Hashable, Comparable {
 
 class MenuItemCollectionCell: PagingCell {
     
+    @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var dotView: UIView!
     
@@ -43,6 +44,9 @@ class MenuItemCollectionCell: PagingCell {
         super.awakeFromNib()
         self.dotView.layer.cornerRadius = 2.0
         self.dotView.backgroundColor = AppColors.green
+        //superyouhome
+        self.dataView.layer.cornerRadius = 20.0
+        self.dataView.setCircleBorder(weight: 1.0, color: .white)
     }
     
     open override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options: PagingOptions) {
@@ -56,4 +60,9 @@ class MenuItemCollectionCell: PagingCell {
 //            self.title.font = selected ? AppFonts.SemiBold.withSize(16.0) : AppFonts.Regular.withSize(16.0)
         }
      }
+    
+    func populateCell(model: Record?){
+        self.title.text = model?.primaryTag
+        self.dotView.isHidden = true
+    }
 }

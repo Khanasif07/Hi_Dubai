@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FranklinGotMed.ttf">
+            <string>FranklinGotItcTEE-Medi</string>
+        </array>
+        <array key="SFUIText.ttf">
+            <string>.SFUIText</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="f9i-lr-YFJ" customClass="TalksHomeTableHeader" customModule="Hi_Dubai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vm8-ea-sM1">
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-62-fQD">
+                            <rect key="frame" x="75" y="22" width="300" height="20"/>
+                            <fontDescription key="fontDescription" name=".SFUIText" family=".SF UI Text" pointSize="18"/>
+                            <color key="textColor" red="0.8980392157" green="0.035294117649999998" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qx-bw-pav">
+                            <rect key="frame" x="374" y="16" width="58" height="32"/>
+                            <fontDescription key="fontDescription" name="FranklinGotItcTEE-Medi" family="FranklinGotItcTEEMed" pointSize="17"/>
+                            <state key="normal" title="View all">
+                                <color key="titleColor" red="0.8980392157" green="0.035294117649999998" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnViewAllAction:" destination="f9i-lr-YFJ" eventType="touchUpInside" id="dl3-Cj-RGC"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gsa-62-fQD" firstAttribute="centerY" secondItem="Vm8-ea-sM1" secondAttribute="centerY" id="0IV-83-C26"/>
+                        <constraint firstAttribute="trailing" secondItem="gsa-62-fQD" secondAttribute="trailing" constant="75" id="Mip-oM-yCV"/>
+                        <constraint firstItem="8Qx-bw-pav" firstAttribute="centerY" secondItem="Vm8-ea-sM1" secondAttribute="centerY" id="bUH-9W-F2Q"/>
+                        <constraint firstItem="gsa-62-fQD" firstAttribute="centerX" secondItem="Vm8-ea-sM1" secondAttribute="centerX" id="byB-nc-ANJ"/>
+                        <constraint firstAttribute="trailing" secondItem="8Qx-bw-pav" secondAttribute="trailing" constant="18" id="hde-yo-8PO"/>
+                        <constraint firstItem="gsa-62-fQD" firstAttribute="leading" secondItem="Vm8-ea-sM1" secondAttribute="leading" constant="75" id="vRz-KN-MPg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="o7m-wV-tfU"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Vm8-ea-sM1" firstAttribute="leading" secondItem="f9i-lr-YFJ" secondAttribute="leading" id="0Or-lk-1Lm"/>
+                <constraint firstAttribute="bottom" secondItem="Vm8-ea-sM1" secondAttribute="bottom" id="34n-Ms-wTw"/>
+                <constraint firstAttribute="trailing" secondItem="Vm8-ea-sM1" secondAttribute="trailing" id="9CD-lJ-3SV"/>
+                <constraint firstItem="Vm8-ea-sM1" firstAttribute="top" secondItem="f9i-lr-YFJ" secondAttribute="top" id="Nm1-tv-EyM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnViewAll" destination="8Qx-bw-pav" id="PJR-pS-uyg"/>
+                <outlet property="mainLabel" destination="gsa-62-fQD" id="mgb-1A-z38"/>
+                <outlet property="outerView" destination="Vm8-ea-sM1" id="h65-hS-2OP"/>
+                <outlet property="titleLeadingConstraint" destination="vRz-KN-MPg" id="iK0-N2-WRq"/>
+                <outlet property="trailingLeadingConstraint" destination="Mip-oM-yCV" id="rHc-hw-CpD"/>
+            </connections>
+            <point key="canvasLocation" x="-21" y="-333"/>
+        </view>
+    </objects>
+</document>

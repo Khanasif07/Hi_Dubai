@@ -9,6 +9,7 @@ target 'Hi_Dubai' do
   pod 'MXParallaxHeader'
   pod 'Parchment', '~> 3.2'
   pod 'CarbonKit'
+  pod 'SwiftyJSON', '~> 4.0'
   # Pods for Hi_Dubai
   
 end

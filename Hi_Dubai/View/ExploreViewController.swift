@@ -243,20 +243,17 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
         
         /*======== Deals section end ========= */
     }
-    
-    //    func showEmptyView() {
-    //        emptyView = EmptyStateView(whitFrame: topBigView.frame, in: topBigView, centered: true, icon: UIImage(named: "ogimage-hidubai"), message: "There are no results for your search. Try again!", showLoginBtn: false)
-    //        emptyView?.show()
-    //    }
-    
     func closeSearchingArea(_ isTrue: Bool) {
-        UIView.animate(withDuration: 0.4, delay: 0.0,options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
             self.cancelBtn.isHidden = isTrue
-            self.searchTextField.cancelBtn.isHidden = isTrue
             self.searchTextField.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
-            self.searchTextField.layoutIfNeeded()
+            if !isTrue {
+                self.searchTextField.cancelBtn.isHidden = isTrue
+            }
+            self.view.layoutIfNeeded()
         } completion: { value in
-//            self.searchTextField.cancelBtn.isHidden = isTrue
+            self.searchTextField.cancelBtn.isHidden = isTrue
+            self.view.layoutIfNeeded()
         }
     }
     

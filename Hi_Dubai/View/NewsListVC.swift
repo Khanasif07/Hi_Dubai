@@ -154,9 +154,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         if self.currentShimmerStatus == .applied {
             switch indexPath.row {
             case 0:
-                let vc = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
-                vc.isBackBtnShow = false
-                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
+                let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
+//                vc.isBackBtnShow = false
+//                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
                 self.indexPath = indexPath
@@ -175,6 +175,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: false)
             case 5:
                 let vc = ExploreViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 6:
+                let vc = SuperSheVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)

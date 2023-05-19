@@ -4,6 +4,7 @@ PODS:
   - ParallaxHeader (3.0.0)
   - Parchment (3.2.0)
   - SkeletonView (1.30.4)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - CarbonKit
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - ParallaxHeader (~> 3.0.0)
   - Parchment (~> 3.2)
   - SkeletonView
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - ParallaxHeader
     - Parchment
     - SkeletonView
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   CarbonKit: b60e24dbdb47179990d5e074efa87ab819c8de98
@@ -26,7 +29,8 @@ SPEC CHECKSUMS:
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
   Parchment: a43c440b22c8a60f7e0196b74339446d4d1d18ea
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 4611bf1483d8532c10be36cb1e8def0cf4f41f90
+PODFILE CHECKSUM: 62f551889cd5de18b96fba7b559a67f5d0429a5f
 
 COCOAPODS: 1.12.1

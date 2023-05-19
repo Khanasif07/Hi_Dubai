@@ -25,7 +25,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var mainTF: UITextField!
     @IBOutlet weak var icon: UIButton!
-    @IBOutlet weak var cancelBtn: UIView!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     //MARK: - Properties
     weak var delegate:WalifSearchTextFieldDelegate?
@@ -59,6 +59,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
         self.autoresizingMask = [.flexibleHeight,.flexibleWidth]
         defaultImage = UIImage(named: "search")
         self.crossBtnWidthConstant.constant = 0.0
+        self.cancelBtn.isHidden = true
         return view
     }
     

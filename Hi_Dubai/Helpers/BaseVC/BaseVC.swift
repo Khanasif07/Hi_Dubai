@@ -152,6 +152,16 @@ class BaseVC: UIViewController,UIGestureRecognizerDelegate {
                  NSAttributedString.Key.font: UIFont(name: "Regular", size: 15)]
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.setupLayout()
+    }
+    
+    /// Setup Layout
+    @objc func setupLayout() {
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        Router.shared.currentTabNavigation = self.navigationController

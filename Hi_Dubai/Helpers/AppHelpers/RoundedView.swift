@@ -62,7 +62,7 @@ class RoundedView : UIView {
         if self.tag == 100 {
             self.layer.borderColor = UIColor.white.cgColor
         }
-        if (self.circleBorder != nil) {
+        if (self.circleBorder) {
             self.layer.cornerRadius = self.layer.frame.size.height/2
             self.layer.masksToBounds = true
         }

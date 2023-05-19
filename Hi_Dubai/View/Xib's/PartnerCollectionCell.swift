@@ -8,24 +8,16 @@
 import UIKit
 import Foundation
 
-//protocol PartnerCollectionCellDelegate:NSObject {
-//    func resetAllPartnerOverLayFlag()
-//
-//}
-//
-//
-
 class PartnerCollectionCell: UICollectionViewCell {
 //    var partnerObj: Partner?
-   
-    
+    @IBOutlet weak var bgView1StackBtmCost: NSLayoutConstraint!
     @IBOutlet weak var bgView1: UIView!
     @IBOutlet weak var photo1: UIImageView!
     @IBOutlet weak var titleLabel1: UILabel!
     
     @IBOutlet weak var bgView2: UIView!
     @IBOutlet weak var titleLabel2: UILabel!
-       @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var readMoreBtn: UIButton!
 //    weak var delegate:PartnerCollectionCellDelegate?
     
@@ -35,8 +27,8 @@ class PartnerCollectionCell: UICollectionViewCell {
         bgView1.clipsToBounds = true
         bgView1.layer.borderWidth = 1.0
         bgView1.layer.borderColor = UIColor(named: "separatorColor")?.cgColor
-        
-        photo1.contentMode = .scaleAspectFit
+//        photo1.roundCorners([.allCorners], radius: 10.0)
+//        photo1.contentMode = .scaleAspectFill
         photo1.clipsToBounds = true
         
         bgView2.layer.cornerRadius = 5.0
@@ -123,40 +115,6 @@ class PartnerCollectionCell: UICollectionViewCell {
     
     
     func setPatnerImageAsPerThemeMode() {
-
-//        var imageUrlStr:String?
-//        var cardImageModel = partnerObj?.cardImg
-//
-//        if #available(iOS 12.0, *) {
-//            if self.traitCollection.userInterfaceStyle == .dark, let darkModelCardImageMode = partnerObj?.cardImgDarkTheme  {
-//                cardImageModel =  darkModelCardImageMode
-//            }
-//        }
-
-
-
-//        if let smallImageUrl = cardImageModel?.small {
-//            imageUrlStr = smallImageUrl
-//        }else if let mediumImageUrl = cardImageModel?.medium {
-//             imageUrlStr = mediumImageUrl
-//        }
-//        else if let largeImageUrl = cardImageModel?.large {
-//             imageUrlStr = largeImageUrl
-//        }
-//        else if let thumbnailImageUrl = cardImageModel?.thumbnail {
-//             imageUrlStr = thumbnailImageUrl
-//        }
-//        else if let sourceImageUrl = cardImageModel?.source {
-//             imageUrlStr = sourceImageUrl
-//        }
-//
-//        var imageUrl:URL?
-//
-//        if let imageUrlStrRef = imageUrlStr {
-//            imageUrl =  URL(string: imageUrlStrRef)
-//        }
-//
-//        photo1.sd_setImage(with: imageUrl, placeholderImage: UIImage(from: WalifTheme.lightGrey()))
     }
     
     func flipCard(isFlipped:Bool) {
@@ -222,32 +180,12 @@ class PartnerCollectionCell: UICollectionViewCell {
 //        }
 
     }
+    
+    func populateCell(model: Record?){
+        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
+        self.titleLabel1.text = model?.title ?? ""
+    }
 
-//    @IBAction func readMoreButtonAction(_ sender: Any) {
-//
-//        delegate?.resetAllPartnerOverLayFlag()
-//
-//         if let destinationUrl = self.partnerObj?.destinationUrl, let partnerUrl = URL(string: destinationUrl), UIApplication.shared.canOpenURL(partnerUrl) {
-//
-//           if let code = self.partnerObj?.code {
-//
-//            Analytics.logEvent(GA_ACTION_CLICKED_PARTNER, parameters: [
-//                WE_EVENT_NAME: GA_ACTION_CLICKED_PARTNER,
-//                GA_EVENT_CATEGORY: GA_CATEGORY_HOMEPAGE,
-//                GA_EVENT_LABEL: code
-//                ])
-//           }
-//
-//            UIApplication.shared.open(partnerUrl, options: [:], completionHandler: nil)
-//
-//         }else {
-//             //dont have valid url
-//         }
-//
-//
-//
-//
-//    }
 }
 
 

@@ -53,6 +53,30 @@
 		E00DED2D2A138D2800828D34 /* NewSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED2C2A138D2800828D34 /* NewSearchTextField.swift */; };
 		E00DED2F2A138D8400828D34 /* NewSearchTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED2E2A138D8400828D34 /* NewSearchTextField.xib */; };
 		E00DED312A138E9300828D34 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED302A138E9300828D34 /* RoundedView.swift */; };
+		E00DED332A14B90400828D34 /* SuperSheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED322A14B90400828D34 /* SuperSheVC.swift */; };
+		E00DED352A14B96400828D34 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED342A14B96400828D34 /* Router.swift */; };
+		E00DED372A14BC3D00828D34 /* PlacesAndSuperShesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED362A14BC3D00828D34 /* PlacesAndSuperShesView.swift */; };
+		E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED382A14BC5B00828D34 /* PlacesAndSuperShesView.xib */; };
+		E00DED3B2A14BED700828D34 /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED3A2A14BED700828D34 /* AppUserDefaults.swift */; };
+		E00DED3E2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED3C2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift */; };
+		E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */; };
+		E00DED412A14C0E600828D34 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED402A14C0E600828D34 /* AppButton.swift */; };
+		E00DED432A14E3A600828D34 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED422A14E3A600828D34 /* MainTabBarViewController.swift */; };
+		E00DED462A151B3700828D34 /* SuperYouHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */; };
+		E00DED4A2A151CD900828D34 /* SuperYouTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED482A151CD900828D34 /* SuperYouTitleTableViewCell.swift */; };
+		E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED492A151CD900828D34 /* SuperYouTitleTableViewCell.xib */; };
+		E00DED4D2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED4C2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift */; };
+		E00DED502A151DD700828D34 /* SuperViewCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED4E2A151DD700828D34 /* SuperViewCardTableViewCell.swift */; };
+		E00DED512A151DD700828D34 /* SuperViewCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED4F2A151DD700828D34 /* SuperViewCardTableViewCell.xib */; };
+		E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED522A1520AA00828D34 /* TalksHomeTableHeader.swift */; };
+		E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED542A1520CD00828D34 /* TalksHomeTableHeader.xib */; };
+		E00DED572A15214400828D34 /* SuperYourHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED562A15214400828D34 /* SuperYourHomeVM.swift */; };
+		E00DED592A15217D00828D34 /* SuperYouHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED582A15217D00828D34 /* SuperYouHomeModel.swift */; };
+		E00DED5B2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED5A2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift */; };
+		E00DED5D2A155ED400828D34 /* HeaderScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED5C2A155ED400828D34 /* HeaderScrollView.swift */; };
+		E00DED5F2A155F3C00828D34 /* UpdatedTopNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED5E2A155F3C00828D34 /* UpdatedTopNavigationBar.swift */; };
+		E00DED612A155F5400828D34 /* UpdatedTopNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED602A155F5400828D34 /* UpdatedTopNavigationBar.xib */; };
+		E00DED632A15656600828D34 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED622A15656600828D34 /* ApiKey.swift */; };
 		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
 		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
 		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
@@ -126,6 +150,30 @@
 		E00DED2C2A138D2800828D34 /* NewSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchTextField.swift; sourceTree = "<group>"; };
 		E00DED2E2A138D8400828D34 /* NewSearchTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewSearchTextField.xib; sourceTree = "<group>"; };
 		E00DED302A138E9300828D34 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		E00DED322A14B90400828D34 /* SuperSheVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSheVC.swift; sourceTree = "<group>"; };
+		E00DED342A14B96400828D34 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E00DED362A14BC3D00828D34 /* PlacesAndSuperShesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAndSuperShesView.swift; sourceTree = "<group>"; };
+		E00DED382A14BC5B00828D34 /* PlacesAndSuperShesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlacesAndSuperShesView.xib; sourceTree = "<group>"; };
+		E00DED3A2A14BED700828D34 /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
+		E00DED3C2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesAndSuperShesViewTableViewCell.swift; sourceTree = "<group>"; };
+		E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlacesAndSuperShesViewTableViewCell.xib; sourceTree = "<group>"; };
+		E00DED402A14C0E600828D34 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
+		E00DED422A14E3A600828D34 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouHomeVC.swift; sourceTree = "<group>"; };
+		E00DED482A151CD900828D34 /* SuperYouTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouTitleTableViewCell.swift; sourceTree = "<group>"; };
+		E00DED492A151CD900828D34 /* SuperYouTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperYouTitleTableViewCell.xib; sourceTree = "<group>"; };
+		E00DED4C2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuperYouHomeVC+Delegates.swift"; sourceTree = "<group>"; };
+		E00DED4E2A151DD700828D34 /* SuperViewCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperViewCardTableViewCell.swift; sourceTree = "<group>"; };
+		E00DED4F2A151DD700828D34 /* SuperViewCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperViewCardTableViewCell.xib; sourceTree = "<group>"; };
+		E00DED522A1520AA00828D34 /* TalksHomeTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalksHomeTableHeader.swift; sourceTree = "<group>"; };
+		E00DED542A1520CD00828D34 /* TalksHomeTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalksHomeTableHeader.xib; sourceTree = "<group>"; };
+		E00DED562A15214400828D34 /* SuperYourHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYourHomeVM.swift; sourceTree = "<group>"; };
+		E00DED582A15217D00828D34 /* SuperYouHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouHomeModel.swift; sourceTree = "<group>"; };
+		E00DED5A2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuperYouHomeVC+TableCells.swift"; sourceTree = "<group>"; };
+		E00DED5C2A155ED400828D34 /* HeaderScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderScrollView.swift; sourceTree = "<group>"; };
+		E00DED5E2A155F3C00828D34 /* UpdatedTopNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTopNavigationBar.swift; sourceTree = "<group>"; };
+		E00DED602A155F5400828D34 /* UpdatedTopNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatedTopNavigationBar.xib; sourceTree = "<group>"; };
+		E00DED622A15656600828D34 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
 		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
 		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
@@ -227,6 +275,9 @@
 				E00DED2C2A138D2800828D34 /* NewSearchTextField.swift */,
 				E00DED2E2A138D8400828D34 /* NewSearchTextField.xib */,
 				E00DED302A138E9300828D34 /* RoundedView.swift */,
+				E00DED5C2A155ED400828D34 /* HeaderScrollView.swift */,
+				E00DED5E2A155F3C00828D34 /* UpdatedTopNavigationBar.swift */,
+				E00DED602A155F5400828D34 /* UpdatedTopNavigationBar.xib */,
 			);
 			path = AppHelpers;
 			sourceTree = "<group>";
@@ -236,6 +287,9 @@
 			children = (
 				E02CF3C92A0450DC00400F08 /* AppFonts.swift */,
 				8470C58829974F6E0091A7C5 /* AppRouter.swift */,
+				E00DED3A2A14BED700828D34 /* AppUserDefaults.swift */,
+				E00DED402A14C0E600828D34 /* AppButton.swift */,
+				E00DED622A15656600828D34 /* ApiKey.swift */,
 			);
 			path = AppUtilities;
 			sourceTree = "<group>";
@@ -252,6 +306,7 @@
 		8470C58D299753C50091A7C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E00DED442A151AED00828D34 /* SuperYou */,
 				8470C56C29974D640091A7C5 /* NewsListVC.swift */,
 				8470C5972997651A0091A7C5 /* NewsDetailVC.swift */,
 				8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */,
@@ -267,6 +322,7 @@
 				E00AE4F82A0DFEC800A43133 /* UserInfoHeaderViewController.swift */,
 				E00AE4FA2A0DFF7300A43133 /* PresentationHeaderViewController.swift */,
 				E00AE4FC2A0EF23000A43133 /* HotelResultVC.swift */,
+				E00DED322A14B90400828D34 /* SuperSheVC.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
@@ -275,9 +331,9 @@
 		8470C58E299753CF0091A7C5 /* Xib's */ = {
 			isa = PBXGroup;
 			children = (
-				8470C5A829976DC60091A7C5 /* HeaderView.xib */,
 				E00AE4EA2A0B914100A43133 /* EmptyStateView.swift */,
 				E00AE4EC2A0B919D00A43133 /* EmptyStateView.xib */,
+				8470C5A829976DC60091A7C5 /* HeaderView.xib */,
 				8470C5AA29976DDF0091A7C5 /* HeaderView.swift */,
 				8470C58F299753EB0091A7C5 /* NewsTableViewCell.swift */,
 				8470C590299753EB0091A7C5 /* NewsTableViewCell.xib */,
@@ -295,6 +351,10 @@
 				E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */,
 				E00AE4EE2A0BA62200A43133 /* EmptyView.xib */,
 				E00AE4F02A0BA68400A43133 /* EmptyView.swift */,
+				E00DED362A14BC3D00828D34 /* PlacesAndSuperShesView.swift */,
+				E00DED382A14BC5B00828D34 /* PlacesAndSuperShesView.xib */,
+				E00DED3C2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift */,
+				E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -368,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				E00DED252A13440100828D34 /* Navigator.swift */,
+				E00DED342A14B96400828D34 /* Router.swift */,
 			);
 			path = Navigator;
 			sourceTree = "<group>";
@@ -381,8 +442,35 @@
 				E00AE4E82A0B65DB00A43133 /* BaseViewControlller.swift */,
 				E00AE4F22A0D07AA00A43133 /* BaseNestedTabViewController.swift */,
 				E00AE4F62A0DF67800A43133 /* LightStatusBarViewController.swift */,
+				E00DED422A14E3A600828D34 /* MainTabBarViewController.swift */,
 			);
 			path = BaseVC;
+			sourceTree = "<group>";
+		};
+		E00DED442A151AED00828D34 /* SuperYou */ = {
+			isa = PBXGroup;
+			children = (
+				E00DED472A151C9000828D34 /* XIB'S */,
+				E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */,
+				E00DED4C2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift */,
+				E00DED562A15214400828D34 /* SuperYourHomeVM.swift */,
+				E00DED582A15217D00828D34 /* SuperYouHomeModel.swift */,
+				E00DED5A2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift */,
+			);
+			path = SuperYou;
+			sourceTree = "<group>";
+		};
+		E00DED472A151C9000828D34 /* XIB'S */ = {
+			isa = PBXGroup;
+			children = (
+				E00DED482A151CD900828D34 /* SuperYouTitleTableViewCell.swift */,
+				E00DED492A151CD900828D34 /* SuperYouTitleTableViewCell.xib */,
+				E00DED4E2A151DD700828D34 /* SuperViewCardTableViewCell.swift */,
+				E00DED4F2A151DD700828D34 /* SuperViewCardTableViewCell.xib */,
+				E00DED522A1520AA00828D34 /* TalksHomeTableHeader.swift */,
+				E00DED542A1520CD00828D34 /* TalksHomeTableHeader.xib */,
+			);
+			path = "XIB'S";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,15 +534,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8470C57529974D660091A7C5 /* LaunchScreen.storyboard in Resources */,
+				E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */,
 				8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */,
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
+				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
+				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
+				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
 				E00DED2F2A138D8400828D34 /* NewSearchTextField.xib in Resources */,
 				E00AE4ED2A0B919D00A43133 /* EmptyStateView.xib in Resources */,
 				8470C57229974D660091A7C5 /* Assets.xcassets in Resources */,
+				E00DED512A151DD700828D34 /* SuperViewCardTableViewCell.xib in Resources */,
 				8470C592299753EB0091A7C5 /* NewsTableViewCell.xib in Resources */,
+				E00DED612A155F5400828D34 /* UpdatedTopNavigationBar.xib in Resources */,
 				E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */,
 				E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */,
 				8470C57029974D640091A7C5 /* Main.storyboard in Resources */,
@@ -515,47 +609,65 @@
 				8470C58329974E890091A7C5 /* News.swift in Sources */,
 				E00AE4E42A0A68C700A43133 /* MainDetailsTableViewController.swift in Sources */,
 				E00AE4F32A0D07AA00A43133 /* BaseNestedTabViewController.swift in Sources */,
+				E00DED3B2A14BED700828D34 /* AppUserDefaults.swift in Sources */,
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
+				E00DED5D2A155ED400828D34 /* HeaderScrollView.swift in Sources */,
+				E00DED4A2A151CD900828D34 /* SuperYouTitleTableViewCell.swift in Sources */,
 				E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */,
 				E00DED312A138E9300828D34 /* RoundedView.swift in Sources */,
 				E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */,
 				8470C591299753EB0091A7C5 /* NewsTableViewCell.swift in Sources */,
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
+				E00DED352A14B96400828D34 /* Router.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
+				E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */,
+				E00DED632A15656600828D34 /* ApiKey.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,
 				E02CF3C72A044B9B00400F08 /* MenuItemCollectionCell.swift in Sources */,
 				E00AE4F92A0DFEC800A43133 /* UserInfoHeaderViewController.swift in Sources */,
+				E00DED372A14BC3D00828D34 /* PlacesAndSuperShesView.swift in Sources */,
 				8470C5B72997EFC50091A7C5 /* UIViewExtension.swift in Sources */,
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
 				E00DED292A13732300828D34 /* WalifTheme.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
 				8470C56D29974D640091A7C5 /* NewsListVC.swift in Sources */,
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,
+				E00DED3E2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift in Sources */,
 				E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */,
+				E00DED5B2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift in Sources */,
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
 				E00DED2D2A138D2800828D34 /* NewSearchTextField.swift in Sources */,
 				E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */,
+				E00DED432A14E3A600828D34 /* MainTabBarViewController.swift in Sources */,
 				E00DED262A13440200828D34 /* Navigator.swift in Sources */,
 				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
+				E00DED572A15214400828D34 /* SuperYourHomeVM.swift in Sources */,
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
+				E00DED4D2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
 				E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */,
 				8470C58029974E340091A7C5 /* Enums.swift in Sources */,
+				E00DED5F2A155F3C00828D34 /* UpdatedTopNavigationBar.swift in Sources */,
 				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,
 				8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */,
 				E0722B7E29FFDBC500BB9B6D /* HomeVC.swift in Sources */,
+				E00DED502A151DD700828D34 /* SuperViewCardTableViewCell.swift in Sources */,
 				E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */,
 				E0722B8229FFDE2E00BB9B6D /* StatsVC.swift in Sources */,
 				8470C5B029977EC50091A7C5 /* NewsDetailTableCell.swift in Sources */,
 				8470C5B42997E1470091A7C5 /* Animator.swift in Sources */,
 				E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */,
 				E02CF3C42A044A4B00400F08 /* HotelFilterVC.swift in Sources */,
+				E00DED412A14C0E600828D34 /* AppButton.swift in Sources */,
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
+				E00DED592A15217D00828D34 /* SuperYouHomeModel.swift in Sources */,
+				E00DED462A151B3700828D34 /* SuperYouHomeVC.swift in Sources */,
+				E00DED332A14B90400828D34 /* SuperSheVC.swift in Sources */,
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
 				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
 				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,

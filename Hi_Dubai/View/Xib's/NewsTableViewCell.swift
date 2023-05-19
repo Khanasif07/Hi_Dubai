@@ -29,12 +29,12 @@ class NewsTableViewCell: UITableViewCell{
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        newsImgView.image = nil
-//        descLbl.text = nil
-//        timeLbl.text = nil
-//        titleLbl.text = nil
-//        dateLbl.text = nil
-//        tagLbl.text = nil
+        newsImgView.image = nil
+        descLbl.text = nil
+        timeLbl.text = nil
+        titleLbl.text = nil
+        dateLbl.text = nil
+        tagLbl.text = nil
     }
     
     override func layoutSubviews() {

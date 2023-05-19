@@ -21,23 +21,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PartnerCollectionCell" customModule="Hi_Dubai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJi-jX-cRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTH-vC-hmd">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KL7-mn-f3F">
-                                        <rect key="frame" x="18" y="20" width="204" height="140"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KL7-mn-f3F">
+                                        <rect key="frame" x="5" y="5" width="365" height="325"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ogimage-hidubai" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-aF-pBP" customClass="RoundedImageView">
-                                                <rect key="frame" x="0.0" y="0.0" width="204" height="104"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ogimage-hidubai" translatesAutoresizingMaskIntoConstraints="NO" id="0P1-aF-pBP" customClass="RoundedImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="365" height="298.66666666666669"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -46,11 +46,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaQ-ZZ-Hzh">
-                                                <rect key="frame" x="0.0" y="119" width="204" height="21"/>
+                                                <rect key="frame" x="0.0" y="308.66666666666669" width="365" height="16.333333333333314"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Spb-Sm-aJg"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" name="primaryTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -61,32 +58,32 @@
                                 <color key="backgroundColor" name="whiteBlack"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="KL7-mn-f3F" secondAttribute="trailing" constant="18" id="405-em-QpO"/>
+                                    <constraint firstAttribute="trailing" secondItem="KL7-mn-f3F" secondAttribute="trailing" constant="5" id="405-em-QpO"/>
                                     <constraint firstAttribute="bottom" secondItem="KL7-mn-f3F" secondAttribute="bottom" constant="20" id="7Pm-RE-nuZ"/>
-                                    <constraint firstItem="KL7-mn-f3F" firstAttribute="top" secondItem="tTH-vC-hmd" secondAttribute="top" constant="20" id="B9C-ra-YJs"/>
-                                    <constraint firstItem="KL7-mn-f3F" firstAttribute="leading" secondItem="tTH-vC-hmd" secondAttribute="leading" constant="18" id="kBr-LA-M9l"/>
+                                    <constraint firstItem="KL7-mn-f3F" firstAttribute="top" secondItem="tTH-vC-hmd" secondAttribute="top" constant="5" id="B9C-ra-YJs"/>
+                                    <constraint firstItem="KL7-mn-f3F" firstAttribute="leading" secondItem="tTH-vC-hmd" secondAttribute="leading" constant="5" id="kBr-LA-M9l"/>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ff-Zu-fHC">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-E3-dRL">
-                                        <rect key="frame" x="15" y="5" width="210" height="170"/>
+                                        <rect key="frame" x="15" y="5" width="345" height="340"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkj-JX-PlO">
-                                                <rect key="frame" x="0.0" y="0.0" width="210" height="101.66666666666667"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="271.66666666666669"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="No public access to hero dubai desert classic tomarrow due to rain" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVJ-ES-zPU">
-                                                <rect key="frame" x="0.0" y="106.66666666666667" width="210" height="30.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="276.66666666666669" width="345" height="30.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xst-ia-sAI">
-                                                <rect key="frame" x="0.0" y="142" width="210" height="28"/>
+                                                <rect key="frame" x="0.0" y="312" width="345" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="5jW-tr-7tz"/>
                                                 </constraints>
@@ -132,6 +129,7 @@
             <size key="customSize" width="237" height="114"/>
             <connections>
                 <outlet property="bgView1" destination="tTH-vC-hmd" id="qLL-Ky-tK9"/>
+                <outlet property="bgView1StackBtmCost" destination="7Pm-RE-nuZ" id="BOT-dk-ZiE"/>
                 <outlet property="bgView2" destination="3Ff-Zu-fHC" id="c65-cp-Jhd"/>
                 <outlet property="descLabel" destination="FVJ-ES-zPU" id="JOD-To-a0s"/>
                 <outlet property="photo1" destination="0P1-aF-pBP" id="ThN-1M-HfY"/>

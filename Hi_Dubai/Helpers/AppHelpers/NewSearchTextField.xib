@@ -15,7 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewSearchTextField" customModule="Hi_Dubai">
             <connections>
-                <outlet property="cancelBtn" destination="3sd-Fp-Fl5" id="CQh-9m-pMv"/>
+                <outlet property="cancelBtn" destination="3sd-Fp-Fl5" id="6Bv-GO-8tZ"/>
                 <outlet property="crossBtnWidthConstant" destination="Hni-tv-WKt" id="SYD-ha-0N4"/>
                 <outlet property="icon" destination="CVh-ZI-xVH" id="LV4-Lp-3nj"/>
                 <outlet property="mainLabel" destination="HNr-xG-xhF" id="Oiv-jc-WFe"/>
@@ -72,7 +72,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lu5-YK-aIu">
                                     <rect key="frame" x="325" y="0.0" width="50" height="36"/>
                                     <subviews>
-                                        <button hidden="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sd-Fp-Fl5">
+                                        <button contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sd-Fp-Fl5">
                                             <rect key="frame" x="14" y="7" width="22" height="22"/>
                                             <state key="normal" image="cancel_icon"/>
                                             <connections>

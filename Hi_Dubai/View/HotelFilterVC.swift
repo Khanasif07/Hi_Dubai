@@ -334,4 +334,16 @@ extension String {
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
+    
+    func sizeCount(withFont font: UIFont, boundingSize size: CGSize) -> CGSize {
+        let mutableParagraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        mutableParagraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.paragraphStyle: mutableParagraphStyle]
+        let tempStr = NSString(string: self)
+        
+        let rect: CGRect = tempStr.boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes, context: nil)
+        let height = ceilf(Float(rect.size.height))
+        let width = ceilf(Float(rect.size.width))
+        return CGSize(width: CGFloat(width), height: CGFloat(height))
+    }
 }
