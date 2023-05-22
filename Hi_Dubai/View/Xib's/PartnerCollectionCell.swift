@@ -25,8 +25,8 @@ class PartnerCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         bgView1.layer.cornerRadius = 5.0
         bgView1.clipsToBounds = true
-        bgView1.layer.borderWidth = 1.0
-        bgView1.layer.borderColor = UIColor(named: "separatorColor")?.cgColor
+//        bgView1.layer.borderWidth = 1.0
+//        bgView1.layer.borderColor = UIColor(named: "separatorColor")?.cgColor
 //        photo1.roundCorners([.allCorners], radius: 10.0)
 //        photo1.contentMode = .scaleAspectFill
         photo1.clipsToBounds = true

@@ -18,9 +18,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5q-2M-N7X">
                     <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Dq-i5G">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Dq-i5G" customClass="DynamicHeightCollectionView" customModule="Hi_Dubai" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qqx-vv-xM0">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +36,7 @@
                             </constraints>
                         </pageControl>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="8NL-qD-AIS" secondAttribute="trailing" constant="100" id="BM2-Jc-T3P"/>
                         <constraint firstAttribute="bottom" secondItem="8NL-qD-AIS" secondAttribute="bottom" id="GBs-7R-UvD"/>
@@ -58,7 +58,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cardCollectionView" destination="oty-Dq-i5G" id="e42-dF-o5e"/>
+                <outlet property="cardCollectionView" destination="oty-Dq-i5G" id="H1y-r7-PW9"/>
                 <outlet property="cardCollectionViewBottomCons" destination="gfR-0g-WSY" id="sWD-1B-6Wk"/>
                 <outlet property="cardCollectionViewTopCons" destination="hMs-k8-66V" id="U4f-gH-nAk"/>
                 <outlet property="pageControl" destination="8NL-qD-AIS" id="avW-K5-wHA"/>

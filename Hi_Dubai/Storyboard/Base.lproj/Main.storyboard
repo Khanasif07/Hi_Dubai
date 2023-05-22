@@ -3466,7 +3466,8 @@
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="aVC-3y-QNw">
                                         <rect key="frame" x="0.0" y="44" width="375" height="718"/>
-                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3482,7 +3483,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="khq-wG-1xQ"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="feL-uI-CcS" secondAttribute="trailing" id="1Qa-NX-URW"/>
                             <constraint firstItem="feL-uI-CcS" firstAttribute="top" secondItem="khq-wG-1xQ" secondAttribute="top" id="ABA-6p-2pz"/>
@@ -3491,7 +3492,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RRd-r6-PFP"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="feL-uI-CcS" id="YXd-zO-rqq"/>
                         <outlet property="dataTableView" destination="aVC-3y-QNw" id="qtC-r5-FmG"/>

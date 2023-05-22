@@ -16,14 +16,12 @@ class SuperViewCardTableViewCell: UITableViewCell {
     var cardData: SuperYouCardData? = SuperYouCardData()
     var currentCell: CellContents = .cardCell
     var superYouData: SuperYouHomeModel?
-    var myProfileData: MyProfileModel?
-    private var inviteImgArray: [UIImage] = [#imageLiteral(resourceName: "filter"),#imageLiteral(resourceName: "filter"),#imageLiteral(resourceName: "filter")]
     var shimmerStatus: ShimmerState = .applied
     private var itemWidth: CGFloat = 0.0
     private var currentItem: Int = 0
     
     //MARK:- IBOutlets
-    @IBOutlet weak var cardCollectionView: UICollectionView!
+    @IBOutlet weak var cardCollectionView: DynamicHeightCollectionView!
     @IBOutlet weak var cardCollectionViewTopCons: NSLayoutConstraint!
     @IBOutlet weak var cardCollectionViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl! {
@@ -51,6 +49,22 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.dataSource = self
         self.flowLayoutSetup()
     }
+    //MARK: - Two column only collectionViewFlowLayout
+    func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(44))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        let spacing = CGFloat(10)
+        group.interItemSpacing = .fixed(spacing)
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
     
     ///Call to populates data
     func configureCell() {
@@ -63,11 +77,14 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.cardCollectionView.isPagingEnabled = false
         case .featuredCell:
             self.cardCollectionView.isPagingEnabled = true
-            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : self.inviteImgArray.count
-            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : self.inviteImgArray.count < 2
+            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
+            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
         case .categories:
             self.pageControl.isHidden = true
-            
+//            self.cardCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        case .upcomingCell:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.collectionViewLayout = PinterestLayout()
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -169,9 +186,6 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .applied:
             switch self.currentCell {
             case .cardCell:
-//                if let cardData = self.cardData {
-//                    return cardData.cellData.count
-//                }
                 return 5
             case .upcomingCell:
                 return self.superYouData?.upcomingDataArr.count ?? 0
@@ -235,9 +249,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-        case .upcomingCell:
-            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-            
+//        case .upcomingCell:
+//            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
+//
         case .liveClassesCell, .pastLive:
             return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
             
@@ -251,6 +265,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         case .categories:
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
+        default:
+            return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         }
     }
     
@@ -258,9 +274,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         if let cardData =  superYouData?.categories, self.shimmerStatus == .applied {
             let dataSource = cardData[indexPath.item].primaryTag
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
-            return CGSize(width: textSize.width + 45.0, height: 40.0)
+            return CGSize(width: textSize.width + 50.0, height: 40.0)
         }
-        return CGSize(width: 50.0, height: 44.0)
+        return CGSize(width: 50.0, height: 40.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -386,3 +402,141 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     
 }
 
+
+// MARK: - UICollectionViewFlowLayout
+//===========================
+public class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+        
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            layoutAttribute.frame.origin.x = leftMargin
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+        
+        return attributes
+    }
+}
+
+
+class DynamicHeightCollectionView: UICollectionView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if bounds.size != intrinsicContentSize {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    override var intrinsicContentSize: CGSize {
+        return collectionViewLayout.collectionViewContentSize
+    }
+}
+
+
+protocol PinterestLayoutDelegate {
+   func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
+}
+
+class PinterestLayout: UICollectionViewLayout {
+
+   var delegate: PinterestLayoutDelegate?
+
+   var controller: SuperYouHomeVC?
+   var numberOfColumns: CGFloat = 2
+   var cellPadding: CGFloat = 5.0
+
+   private var contentHeight: CGFloat = 0.0
+   private var contentWidth: CGFloat {
+      let insets = collectionView!.contentInset
+      return (collectionView!.bounds.width - (insets.left + insets.right))
+   }
+
+   private var attributesCache = [PinterestLayoutAttributes]()
+
+   override func prepare() {
+      if attributesCache.isEmpty {
+         let columnWidth = contentWidth / numberOfColumns
+         var xOffsets = [CGFloat]()
+         for column in 0 ..< Int(numberOfColumns) {
+            xOffsets.append(CGFloat(column) * columnWidth)
+         }
+
+         var column = 0
+         var yOffsets = [CGFloat](repeating: 0, count: Int(numberOfColumns))
+
+         for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+
+             let width = columnWidth - cellPadding * 2
+
+            // Calculate the frame
+             let photoHeight: CGFloat = Double.random(in: 220...400)
+//             (delegate?.collectionView(collectionView: collectionView!, heightForPhotoAt: indexPath, with: width))!
+
+
+            let height = cellPadding + photoHeight + cellPadding
+            let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+
+            // Create layout attributes
+            let attributes = PinterestLayoutAttributes(forCellWith: indexPath)
+            attributes.photoHeight = photoHeight
+            attributes.frame = insetFrame
+            attributesCache.append(attributes)
+
+            // Update column, yOffest
+            contentHeight = max(contentHeight, frame.maxY)
+            yOffsets[column] = yOffsets[column] + height
+
+            if column >= Int(numberOfColumns - 1) {
+               column = 0
+            } else {
+               column += 1
+            }
+         }
+      }
+   }
+
+   override var collectionViewContentSize: CGSize {
+      return CGSize(width: contentWidth, height: contentHeight)
+   }
+
+   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+      var layoutAttributes = [UICollectionViewLayoutAttributes]()
+
+      for attributes in attributesCache {
+         if attributes.frame.intersects(rect) {
+            layoutAttributes.append(attributes)
+         }
+      }
+
+      return layoutAttributes
+   }
+
+}
+
+class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
+   var photoHeight: CGFloat = 0.0
+
+   override func copy(with zone: NSZone? = nil) -> Any {
+      let copy = super.copy(with: zone) as! PinterestLayoutAttributes
+      copy.photoHeight = photoHeight
+      return copy
+   }
+
+   override func isEqual(_ object: Any?) -> Bool {
+      if let attributes = object as? PinterestLayoutAttributes {
+         if attributes.photoHeight == photoHeight {
+            return super.isEqual(object)
+         }
+      }
+
+      return false
+   }
+}

@@ -49,9 +49,6 @@ class SuperYouHomeVC: BaseVC {
     @IBOutlet weak var dataTableViewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var navBar: UpdatedTopNavigationBar!
     @IBOutlet weak var dataTableView: UITableView!
-    @IBOutlet weak var newPostBtn: AppButton!
-    @IBOutlet weak var newPostBtnWidthOutlet: NSLayoutConstraint!
-    @IBOutlet weak var newPostBtnTopConstraints: NSLayoutConstraint!
     
     
     //MARK:- LifeCycle
@@ -76,31 +73,22 @@ class SuperYouHomeVC: BaseVC {
         if #available(iOS 15.0, *) {
             dataTableView.sectionHeaderTopPadding = 0.0
         }
-//        self.dataTableView.refreshBlock = { [weak self] in
-//            self?.pullToRefresh()
-//        }
         
         let navBarHeight: CGFloat = 44
         //imp...
         //        self.navContainerView.setup(constraint: headerViewTopConstraints, maxFollowPoint: navBarHeight + self.statusBarHeight, minFollowPoint: 0)
         self.navContainerView.setup(constraint: headerViewTopConstraints, maxFollowPoint: navBarHeight, minFollowPoint: 0)
-        self.navContainerView.setupDelayPoints(pointOfStartingHiding: 44, pointOfStartingShowing: 0)
+        self.navContainerView.setupDelayPoints(pointOfStartingHiding: 22, pointOfStartingShowing: 0)
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         if self.shimmerStatus == .applied, self.viewModel.superYouData != nil {
             if self.viewModel.superYouData != nil {
-                
                 self.dataTableView.alpha = 1.0
-                
-                //                self.navBar.rightImageView.setImage(imageString: UserModel.main.profilePicture, localUri: AppUserDefaults.value(forKey: .profilePlaceHolder).string ?? "", placeHolderImage: nil, imageQuality: .low,isWhiteBorder: true)
-                
-                if let cell = self.dataTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SuperYouTitleTableViewCell, let dataSource = self.viewModel.superYouData?.titleData {
-                    //                    cell.configureCell(startTitle: dataSource.topTitle, firstName: UserModel.main.firstName, subtitle: dataSource.bottomTtitle)
-                }
             }
         }
     }
@@ -114,6 +102,10 @@ class SuperYouHomeVC: BaseVC {
         super.viewDidAppear(animated)
         checkFirstTime = false
         self.dataTableView.reloadData()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -161,33 +153,7 @@ class SuperYouHomeVC: BaseVC {
     @objc func hitApi() {
         self.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
-    
-    func newPostBtnAnimationSetUp(isStart: Bool) {
-        if isStart {
-            UIView.animate(withDuration: 0.2) { [weak self] in
-                guard let `self` = self else { return }
-                self.newPostBtnWidthOutlet.constant = 34.5
-                self.newPostBtn.superview?.layoutIfNeeded()
-            }
-        } else {
-            self.newPostBtnWidthOutlet.constant = 90
-            self.newPostBtn.isHidden = true
-        }
-    }
-    
-    func newPostBtnScrollingAnimation(_ scrollView: UIScrollView, topConstraintsValue: CGFloat) {
-        UIView.animate(withDuration: 0.1) { [weak self] in
-            guard let `self` = self else { return }
-            if scrollView.contentOffset.x > topConstraintsValue {
-                //                self.newPostBtnTopConstraints.constant = 77.0
-                self.newPostBtn.superview?.layoutIfNeeded()
-                
-            } else {
-                //                self.newPostBtnTopConstraints.constant = topConstraintsValue
-                self.newPostBtn.superview?.layoutIfNeeded()
-            }
-        }
-    }
+  
 }
 
 //MARK:- Extension NewsListViewModelDelegate
@@ -211,7 +177,7 @@ extension UIViewController {
     func addStatusBarBackgroundView(viewController: UIViewController) -> Void {
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIDevice.width, height:UIDevice.topSafeArea))
         let view : UIView = UIView.init(frame: rect)
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         viewController.view?.addSubview(view)
     }
 }

@@ -45,8 +45,8 @@ class MenuItemCollectionCell: PagingCell {
         self.dotView.layer.cornerRadius = 2.0
         self.dotView.backgroundColor = AppColors.green
         //superyouhome
-        self.dataView.layer.cornerRadius = 20.0
-        self.dataView.setCircleBorder(weight: 1.0, color: .white)
+        self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
+        self.dataView.setCircleBorder(weight: 0.75, color: .white)
     }
     
     open override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options: PagingOptions) {
@@ -57,11 +57,12 @@ class MenuItemCollectionCell: PagingCell {
                 self.title.text = item.title
             }
             self.dotView.isHidden = item.isSelected
-//            self.title.font = selected ? AppFonts.SemiBold.withSize(16.0) : AppFonts.Regular.withSize(16.0)
+            self.title.font = selected ? AppFonts.BlackItalic.withSize(16.0) : AppFonts.BlackItalic.withSize(15.0)
         }
      }
     
     func populateCell(model: Record?){
+        self.title.textColor = AppColors.white
         self.title.text = model?.primaryTag
         self.dotView.isHidden = true
     }

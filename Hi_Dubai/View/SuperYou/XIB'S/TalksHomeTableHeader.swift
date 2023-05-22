@@ -25,13 +25,13 @@ class TalksHomeTableHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         btnViewAll.isHidden = true
-        mainLabel.textColor = AppColors.appBlueColor
+        mainLabel.textColor = AppColors.white
         mainLabel.font  = AppFonts.BoldItalic.withSize(15.0)
         btnViewAll.titleLabel?.font = AppFonts.BoldItalic.withSize(14.0)
     }
     
     func isClass() {
-        mainLabel.textColor = AppColors.appBlueColor
+        mainLabel.textColor = AppColors.white
         btnViewAll.isHidden = false
     
     }
@@ -61,11 +61,11 @@ class TalksHomeTableHeader: UITableViewHeaderFooterView {
         self.btnViewAll.titleLabel?.font = AppFonts.BoldItalic.withSize(12)
         self.btnViewAll.isHidden = false
         let attributedString = NSMutableAttributedString()
-        let boldAttribute = [NSAttributedString.Key.font: AppFonts.BoldItalic.withSize(14.0), NSAttributedString.Key.foregroundColor: AppColors.appBlueColor] as [NSAttributedString.Key : Any]
+        let boldAttribute = [NSAttributedString.Key.font: AppFonts.BoldItalic.withSize(15.0), NSAttributedString.Key.foregroundColor: AppColors.white] as [NSAttributedString.Key : Any]
         
         let clearAtrribute = [NSAttributedString.Key.font: AppFonts.SemiBoldItalic.withSize(12.0), NSAttributedString.Key.foregroundColor: UIColor.clear] as [NSAttributedString.Key : Any]
 
-        let regularAtrribute = [NSAttributedString.Key.font: AppFonts.BoldItalic.withSize(12.0), NSAttributedString.Key.foregroundColor: AppColors.appBlueColor]
+        let regularAtrribute = [NSAttributedString.Key.font: AppFonts.BoldItalic.withSize(12.0), NSAttributedString.Key.foregroundColor: AppColors.white]
         
         let boldAttributedString = NSAttributedString(string: title.uppercased(), attributes: boldAttribute)
         

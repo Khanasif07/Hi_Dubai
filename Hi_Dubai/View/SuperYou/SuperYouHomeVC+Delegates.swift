@@ -29,12 +29,6 @@ extension SuperYouHomeVC {
         return cell
     }
     
-    /// Get Video Cell
-    internal func getVideoCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouVideoData) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: NewsTableViewCell.self, indexPath: indexPath)
-        return cell
-    }
-    
     /// Get Upcoming Cell
     internal func getUpcomingCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)

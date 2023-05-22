@@ -52,7 +52,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             case 1:
                 return self.getCardCell(tableView, indexPath: indexPath, dataSource: SuperYouCardData())
             case 2:
-                return self.getVideoCell(tableView, indexPath: indexPath, dataSource: SuperYouVideoData())
+                return self.getCardCell(tableView, indexPath: indexPath, dataSource: SuperYouCardData())
 
             default:
                 return self.getUpcomingCell(tableView, indexPath: indexPath, dataSource: SuperYouHomeModel(nextPageStatus: true))
@@ -73,10 +73,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     
                 case .cardCells:
                     return self.getCardCell(tableView, indexPath: indexPath, dataSource: superYouData.cardData ?? SuperYouCardData())
-                    
-                case .videoCell:
-                    return self.getVideoCell(tableView, indexPath: indexPath, dataSource: superYouData.videoData ?? SuperYouVideoData())
-                    
+        
                 case .upcomingCell:
                     return self.getUpcomingCell(tableView, indexPath: indexPath, dataSource: superYouData)
                     
@@ -103,6 +100,8 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     
                 case .superPowers:
                     return self.getCategoriesCell(tableView, indexPath: indexPath, dataSource: superYouData)
+                default:
+                    return UITableViewCell()
                 }
             } else {
                 return UITableViewCell()
@@ -151,11 +150,11 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     return headerView
                     
                 case .liveClassesCell:
-                    headerView.headerViewSetUpForSuperYou(title: "Super She LiveNow", toShowSeeAll: superYouData.liveNowDataArr.count >= 2)
+                    headerView.headerViewSetUpForSuperYou(title: "Super She Live Now", toShowSeeAll: superYouData.liveNowDataArr.count >= 2)
                     return headerView
                     
                 case .favoritesCell:
-                    headerView.headerViewSetUpForSuperYou(title: "newFromMyFriends", toShowSeeAll: superYouData.favouriteDataArr.count > 3)
+                    headerView.headerViewSetUpForSuperYou(title: "New From MyFriends", toShowSeeAll: superYouData.favouriteDataArr.count > 3)
                     return headerView
                 case .mostLovedClassesCell:
                     headerView.headerViewSetUpForSuperYou(title: "Most Loved Vids This Week", toShowSeeAll: superYouData.mostLovedArr.count > 2)
@@ -230,29 +229,14 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         
         switch self.shimmerStatus {
         case .toBeApply:
-            switch indexPath.section {
-            case 0,1:
-                return UITableView.automaticDimension
-            default:
-                //return ClassInitalLayoutConstants.collUpcomingCellHeight
-                return screen_height * 0.7
-            }
-
+            return UITableView.automaticDimension
         case .applied:
             if let superYouData = self.viewModel.superYouData {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
 
-                case .videoCell:
-                    if let height = superYouData.videoData?.height, let width = superYouData.videoData?.width {
-                        let aspectRatio = CGFloat(height) / CGFloat(width)
-                        if (screen_width * aspectRatio) > screen_height * 0.7 {
-                            return screen_height * 0.75//screenHeight - self.statusBarHeight - self.tabBarHeight
-                        }
-                        return (screen_width * aspectRatio).isNaN ? 0.0 : (screen_width * aspectRatio)
-                    }
-                    return 220.0
                 case .upcomingCell:
-                    return 220.0
+                    return UITableView.automaticDimension
+//                    return 220.0
                 case .liveClassesCell:
                     return TalksTablePropertyHeight.tableFooter
                 case .pastLive:
@@ -265,8 +249,11 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     return CGFloat(0.30 * screen_height)
                 case .featuredCell:
                     return TalksTablePropertyHeight.featuredHomeCellHeight
+                case .categories:
+                    return 40.0
+//                    return UITableView.automaticDimension
                 default:
-                    return UITableView.automaticDimension
+                    return 220.0
                 }
             }
             return 220.0
@@ -276,9 +263,6 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section > 1 {
-//            return 34.0//72.0
-//        }
         return CGFloat.leastNonzeroMagnitude
     }
 }
