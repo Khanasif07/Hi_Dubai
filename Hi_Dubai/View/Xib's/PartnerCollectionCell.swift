@@ -7,7 +7,7 @@
 
 import UIKit
 import Foundation
-
+import Combine
 class PartnerCollectionCell: UICollectionViewCell {
 //    var partnerObj: Partner?
     @IBOutlet weak var bgView1StackBtmCost: NSLayoutConstraint!
@@ -21,6 +21,9 @@ class PartnerCollectionCell: UICollectionViewCell {
     @IBOutlet weak var readMoreBtn: UIButton!
 //    weak var delegate:PartnerCollectionCellDelegate?
     
+    private var cancellable: AnyCancellable?
+       private var animator: UIViewPropertyAnimator?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView1.layer.cornerRadius = 5.0
@@ -30,7 +33,7 @@ class PartnerCollectionCell: UICollectionViewCell {
 //        photo1.roundCorners([.allCorners], radius: 10.0)
 //        photo1.contentMode = .scaleAspectFill
         photo1.clipsToBounds = true
-        
+        titleLabel1.textColor = .black
         bgView2.layer.cornerRadius = 5.0
         bgView2.clipsToBounds = true
         bgView2.layer.borderWidth = 1.0
@@ -45,6 +48,14 @@ class PartnerCollectionCell: UICollectionViewCell {
         //bgView2.backgroundColor = UIColor(red: 26.0/255.0, green: 170.0/255.0, blue: 193.0/255.0, alpha: 0.8)
         //bgView2.backgroundColor = UIColor(named: "blackAndWhiteColor")?.withAlphaComponent(0.6)
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photo1.image = nil
+        photo1.alpha = 0.0
+        animator?.stopAnimation(true)
+        cancellable?.cancel()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -182,8 +193,27 @@ class PartnerCollectionCell: UICollectionViewCell {
     }
     
     func populateCell(model: Record?){
-        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
+        cancellable = loadImage(for: model).sink { [unowned self] image in self.showImage(image: image) }
+//        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
         self.titleLabel1.text = model?.title ?? ""
+    }
+    
+    private func showImage(image: UIImage?) {
+        photo1.alpha = 0.0
+        animator?.stopAnimation(false)
+        photo1.image = image
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            self.photo1.alpha = 1.0
+        })
+    }
+    
+    private func loadImage(for movie: Record?) -> AnyPublisher<UIImage?, Never> {
+        return Just(movie?.postImageURL ?? "")
+            .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
+                let url = URL(string: movie?.postImageURL ?? "")!
+                return ImageLoader.shared.loadImage(from: url)
+            })
+            .eraseToAnyPublisher()
     }
 
 }

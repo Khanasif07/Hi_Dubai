@@ -3452,10 +3452,10 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Oy-PWC" customClass="UpdatedTopNavigationBar" customModule="Hi_Dubai" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="gc1-Oy-PWC" firstAttribute="leading" secondItem="Yum-Hi-lkK" secondAttribute="leading" id="M6J-AY-cBU"/>
                                             <constraint firstAttribute="trailing" secondItem="gc1-Oy-PWC" secondAttribute="trailing" id="abz-Xf-d0f"/>
@@ -3523,6 +3523,32 @@
             <point key="canvasLocation" x="1572" y="-746"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="4NT-zH-FZz">
+            <size key="intrinsicContentSize" width="30" height="27"/>
+        </designable>
+        <designable name="H3C-ox-2NL">
+            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
+        </designable>
+        <designable name="Xhe-3H-EIb">
+            <size key="intrinsicContentSize" width="30" height="27"/>
+        </designable>
+        <designable name="dvR-2V-V1a">
+            <size key="intrinsicContentSize" width="30" height="27"/>
+        </designable>
+        <designable name="ea2-KM-dya">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="fUj-ai-zSP">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="qEU-L7-9h6">
+            <size key="intrinsicContentSize" width="30" height="27"/>
+        </designable>
+        <designable name="waP-WT-jnj">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="N3P-fi-i6Y"/>
     </inferredMetricsTieBreakers>

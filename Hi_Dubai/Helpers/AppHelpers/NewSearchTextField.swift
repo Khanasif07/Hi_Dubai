@@ -11,11 +11,11 @@ import UIKit
 
 protocol WalifSearchTextFieldDelegate : NSObject {
     // all the delegate functions that need to be implemented
-    func walifSearchTextFieldBeginEditing(sender: NewSearchTextField!)
-    func walifSearchTextFieldEndEditing(sender: NewSearchTextField!)
-    func walifSearchTextFieldChanged(sender: NewSearchTextField!)
+    func walifSearchTextFieldBeginEditing(sender: UITextField!)
+    func walifSearchTextFieldEndEditing(sender: UITextField!)
+    func walifSearchTextFieldChanged(sender: UITextField!)
     ///tap on icon
-    func walifSearchTextFieldIconPressed(sender: NewSearchTextField!)
+    func walifSearchTextFieldIconPressed(sender: UITextField!)
 }
 
 @IBDesignable class NewSearchTextField : UIView, UITextFieldDelegate {
@@ -33,11 +33,8 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     @IBInspectable var searchLabel: String!
     @IBInspectable var defaultSearch: String!
     private var tempView:UIView!
-    private var _defaultImage:UIImage!
-    private var defaultImage:UIImage! {
-        get { return _defaultImage }
-        set { _defaultImage = newValue }
-    }
+    private var defaultImage:UIImage!
+   
     
     //MARK: - Init View
     required init?(coder: NSCoder){
@@ -102,11 +99,11 @@ protocol WalifSearchTextFieldDelegate : NSObject {
             userInput = String(format:"%@%@",userInput.substring(to: userInput.index(userInput.startIndex, offsetBy: 1)).uppercased(),userInput.substring(from: userInput.index(userInput.startIndex, offsetBy: 1)))
             mainTF.text = userInput
         }
-        delegate?.walifSearchTextFieldChanged(sender: self)
+        delegate?.walifSearchTextFieldChanged(sender: mainTF)
     }
     
     @IBAction func iconAction(sender:AnyObject!) {
-        delegate?.walifSearchTextFieldIconPressed(sender: self)
+        delegate?.walifSearchTextFieldIconPressed(sender: mainTF)
         cancelSearch()
     }
     
@@ -146,7 +143,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         mainLabel.isHidden = true
 //        cancelBtn.isHidden = false
-        delegate?.walifSearchTextFieldBeginEditing(sender: self)
+        delegate?.walifSearchTextFieldBeginEditing(sender: textField)
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -158,13 +155,13 @@ protocol WalifSearchTextFieldDelegate : NSObject {
         cancelBtn.isHidden = true
     }
     
-    func walifSearchTextFieldIconPressed(sender:NewSearchTextField!) {
-        delegate?.walifSearchTextFieldIconPressed(sender: self)
+    func walifSearchTextFieldIconPressed(sender: NewSearchTextField!) {
+        delegate?.walifSearchTextFieldIconPressed(sender: sender.mainTF)
 //        cancelBtn.isHidden = true
     }
     
     func textFieldShouldReturn(_ textField:UITextField) -> Bool {
-        delegate?.walifSearchTextFieldEndEditing(sender: self)
+        delegate?.walifSearchTextFieldEndEditing(sender: textField)
 //        mainLabel.isHidden = false
 //        cancelBtn.isHidden = true
         textField.resignFirstResponder()

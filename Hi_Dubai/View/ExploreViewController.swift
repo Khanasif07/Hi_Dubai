@@ -261,21 +261,21 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
 
 // MARK: - WalifSearchTextFieldDelegate
 extension ExploreViewController: WalifSearchTextFieldDelegate{
-    func walifSearchTextFieldBeginEditing(sender: NewSearchTextField!) {
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
         closeSearchingArea(false)
     }
     
-    func walifSearchTextFieldEndEditing(sender: NewSearchTextField!) {
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
         closeSearchingArea(true)
     }
     
-    func walifSearchTextFieldChanged(sender: NewSearchTextField!) {
-        print(sender.text())
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        print(sender.text)
     }
     
-    func walifSearchTextFieldIconPressed(sender: NewSearchTextField!) {
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
         closeSearchingArea(true)
-        print(sender.text())
+        print(sender.text)
     }
     
     

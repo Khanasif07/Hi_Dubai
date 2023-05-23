@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-SemiBold.ttf">
+            <string>Cairo-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
+            <connections>
+                <outlet property="icon" destination="ESc-Nl-emo" id="2NY-el-bqp"/>
+                <outlet property="labelWidthConstraint" destination="r56-h7-mHO" id="ZrY-2S-XYU"/>
+                <outlet property="mainLabel" destination="IOE-bV-lKn" id="4jE-x4-iJG"/>
+                <outlet property="mainTF" destination="ILS-Mn-aBz" id="rGz-id-M1w"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ouj-Xa-loX">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCy-K4-IPc" customClass="RoundedView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="wxl-BB-8k1">
+                            <rect key="frame" x="15" y="0.0" width="345" height="42"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESc-Nl-emo">
+                                    <rect key="frame" x="0.0" y="0.0" width="22" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="22" id="mre-Zf-7Aq"/>
+                                    </constraints>
+                                    <state key="normal" image="magnifier_icon"/>
+                                    <connections>
+                                        <action selector="iconActionWithSender:" destination="-1" eventType="touchUpInside" id="YGk-Uk-PkG"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.55000001192092896" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am looking for: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOE-bV-lKn">
+                                    <rect key="frame" x="26" y="0.0" width="126" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="126" id="r56-h7-mHO"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ILS-Mn-aBz">
+                                    <rect key="frame" x="156" y="0.0" width="189" height="42"/>
+                                    <color key="tintColor" red="0.59025204180000002" green="0.85304868219999996" blue="0.1851339042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                    <connections>
+                                        <action selector="textChanged:" destination="-1" eventType="editingChanged" id="YsD-Yw-vHo"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20178724319999999" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="wxl-BB-8k1" firstAttribute="leading" secondItem="GCy-K4-IPc" secondAttribute="leading" constant="15" id="9ur-Gg-SSj"/>
+                        <constraint firstAttribute="bottom" secondItem="wxl-BB-8k1" secondAttribute="bottom" id="I8c-oQ-L3E"/>
+                        <constraint firstItem="wxl-BB-8k1" firstAttribute="top" secondItem="GCy-K4-IPc" secondAttribute="top" id="SOu-zE-dbG"/>
+                        <constraint firstAttribute="trailing" secondItem="wxl-BB-8k1" secondAttribute="trailing" constant="15" id="cHz-um-78y"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="13"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="zuP-2o-SD4" appends="YES" id="vOt-Mm-6OT"/>
+                    </connections>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Ohc-u8-4PA"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GCy-K4-IPc" secondAttribute="trailing" id="2cL-y1-Jfp"/>
+                <constraint firstItem="GCy-K4-IPc" firstAttribute="top" secondItem="ouj-Xa-loX" secondAttribute="top" id="JoF-ox-f0G"/>
+                <constraint firstAttribute="bottom" secondItem="GCy-K4-IPc" secondAttribute="bottom" id="iaq-IB-EuQ"/>
+                <constraint firstItem="GCy-K4-IPc" firstAttribute="leading" secondItem="ouj-Xa-loX" secondAttribute="leading" id="s2w-9B-Tad"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="41.600000000000001" y="91.754122938530742"/>
+        </view>
+        <tapGestureRecognizer id="zuP-2o-SD4">
+            <connections>
+                <action selector="tapOnViewWithSender:" destination="-1" id="zZr-TA-SCb"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="magnifier_icon" width="21" height="21"/>
+    </resources>
+</document>

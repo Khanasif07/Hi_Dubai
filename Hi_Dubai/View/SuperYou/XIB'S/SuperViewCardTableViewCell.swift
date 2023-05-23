@@ -21,13 +21,14 @@ class SuperViewCardTableViewCell: UITableViewCell {
     private var currentItem: Int = 0
     
     //MARK:- IBOutlets
-    @IBOutlet weak var cardCollectionView: DynamicHeightCollectionView!
+    @IBOutlet weak var cardCollectionViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var cardCollectionViewTopCons: NSLayoutConstraint!
     @IBOutlet weak var cardCollectionViewBottomCons: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl! {
         didSet {
             self.pageControl.isUserInteractionEnabled = false
-            self.pageControl.pageIndicatorTintColor = .white
+            self.pageControl.pageIndicatorTintColor = .yellow
             self.pageControl.currentPageIndicatorTintColor = .red
         }
     }
@@ -73,19 +74,27 @@ class SuperViewCardTableViewCell: UITableViewCell {
         
         switch self.currentCell {
         case .cardCell:
+//            self.cardCollectionViewHeightCons.isActive = false
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         case .featuredCell:
+//            self.cardCollectionViewHeightCons.isActive = false
             self.cardCollectionView.isPagingEnabled = true
             self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
             self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
         case .categories:
             self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+//            self.cardCollectionViewHeightCons.isActive = false
 //            self.cardCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
-            self.cardCollectionView.collectionViewLayout = PinterestLayout()
+            self.cardCollectionView.isPagingEnabled = false
+//            self.cardCollectionViewHeightCons.constant = 440.0
+//            self.cardCollectionViewHeightCons.isActive = true
+//            self.cardCollectionView.collectionViewLayout = PinterestLayout()
         default:
+//            self.cardCollectionViewHeightCons.isActive = false
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         }
@@ -249,9 +258,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-//        case .upcomingCell:
-//            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-//
+        case .upcomingCell:
+            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 215.0)
+
         case .liveClassesCell, .pastLive:
             return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
             
@@ -265,8 +274,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         case .categories:
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
-        default:
-            return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+//        default:
+//            return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         }
     }
     
@@ -282,7 +291,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
         case .upcomingCell :
-            return 18.0
+            return 9.0
         case .featuredCell:
             return 0.0
         default : // .cardCell, .liveClassesCell, .mostLovedClassesCell, .newSuperSheCell, .whatsNewCell, .yourClassesCell, .savedClassesCell
@@ -306,7 +315,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         switch self.currentCell {
             
         case .mostLovedClassesCell:
-            paddingInset = 18.0
+            paddingInset = 9.0
             
         case .featuredCell:
             paddingInset = 0.0

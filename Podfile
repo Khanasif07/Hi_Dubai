@@ -10,6 +10,7 @@ target 'Hi_Dubai' do
   pod 'Parchment', '~> 3.2'
   pod 'CarbonKit'
   pod 'SwiftyJSON', '~> 4.0'
+  pod "PromiseKit", "~> 6.8"
   # Pods for Hi_Dubai
   
 end

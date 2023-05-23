@@ -95,6 +95,13 @@
 		E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B8729FFE25500BB9B6D /* OtherArtistDetail.swift */; };
 		E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B8B29FFE31700BB9B6D /* AppColors.swift */; };
 		E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B8D29FFE83100BB9B6D /* OtherArtistHeaderView.swift */; };
+		E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */; };
+		E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639672A1C092500DD4DE4 /* ImageCache.swift */; };
+		E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */; };
+		E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6396B2A1C111C00DD4DE4 /* URLCache.swift */; };
+		E0B6396E2A1C767500DD4DE4 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */; };
+		E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */; };
+		E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */; };
 		F1AE3FD62C61603A5A17976C /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +199,13 @@
 		E0722B8729FFE25500BB9B6D /* OtherArtistDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherArtistDetail.swift; sourceTree = "<group>"; };
 		E0722B8B29FFE31700BB9B6D /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		E0722B8D29FFE83100BB9B6D /* OtherArtistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherArtistHeaderView.swift; sourceTree = "<group>"; };
+		E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		E0B639672A1C092500DD4DE4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		E0B6396B2A1C111C00DD4DE4 /* URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCache.swift; sourceTree = "<group>"; };
+		E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTextField.xib; sourceTree = "<group>"; };
+		E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +292,10 @@
 				E00DED5C2A155ED400828D34 /* HeaderScrollView.swift */,
 				E00DED5E2A155F3C00828D34 /* UpdatedTopNavigationBar.swift */,
 				E00DED602A155F5400828D34 /* UpdatedTopNavigationBar.xib */,
+				E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */,
+				E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */,
+				E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */,
+				E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */,
 			);
 			path = AppHelpers;
 			sourceTree = "<group>";
@@ -378,6 +396,7 @@
 		8470C5B22997DA4B0091A7C5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E0B639662A1C091500DD4DE4 /* ImageCache */,
 				E00DED242A1343E600828D34 /* Navigator */,
 				8470C5B8299801EE0091A7C5 /* CustomAnimator */,
 				8470C5B52997EFB10091A7C5 /* UIViewExtension */,
@@ -473,6 +492,16 @@
 			path = "XIB'S";
 			sourceTree = "<group>";
 		};
+		E0B639662A1C091500DD4DE4 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				E0B639672A1C092500DD4DE4 /* ImageCache.swift */,
+				E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */,
+				E0B6396B2A1C111C00DD4DE4 /* URLCache.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -539,6 +568,7 @@
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
 				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
+				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
@@ -613,6 +643,7 @@
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
+				E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */,
 				E00DED5D2A155ED400828D34 /* HeaderScrollView.swift in Sources */,
 				E00DED4A2A151CD900828D34 /* SuperYouTitleTableViewCell.swift in Sources */,
 				E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */,
@@ -633,8 +664,10 @@
 				E00DED292A13732300828D34 /* WalifTheme.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
 				8470C56D29974D640091A7C5 /* NewsListVC.swift in Sources */,
+				E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */,
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,
 				E00DED3E2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift in Sources */,
+				E0B6396E2A1C767500DD4DE4 /* SearchTextField.swift in Sources */,
 				E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */,
 				E00DED5B2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift in Sources */,
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
@@ -644,12 +677,15 @@
 				E00DED262A13440200828D34 /* Navigator.swift in Sources */,
 				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
+				E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */,
 				E00DED572A15214400828D34 /* SuperYourHomeVM.swift in Sources */,
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
+				E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */,
 				E00DED4D2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
 				E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */,
 				8470C58029974E340091A7C5 /* Enums.swift in Sources */,
+				E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */,
 				E00DED5F2A155F3C00828D34 /* UpdatedTopNavigationBar.swift in Sources */,
 				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,

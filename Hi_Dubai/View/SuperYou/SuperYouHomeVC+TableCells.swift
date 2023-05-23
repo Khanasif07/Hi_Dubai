@@ -209,14 +209,6 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         return CGFloat.leastNonzeroMagnitude
     }
     
-//    self.tableCellAtIndexPath.append([.mostLovedClassesCell])
-//    self.tableCellAtIndexPath.append([.upcomingCell])
-//    self.tableCellAtIndexPath.append([.liveClassesCell])
-//    self.tableCellAtIndexPath.append([.featuredCell])
-//    self.tableCellAtIndexPath.append([.newSuperShesCell])
-//    self.tableCellAtIndexPath.append([.favoritesCell])
-//    self.tableCellAtIndexPath.append([.pastLive])
-    
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         print(indexPath)
         if cellHeightDictionary.object(forKey: indexPath) != nil, let height = cellHeightDictionary.object(forKey: indexPath) as? CGFloat {
@@ -235,8 +227,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
 
                 case .upcomingCell:
-                    return UITableView.automaticDimension
-//                    return 220.0
+                    return 440.0
                 case .liveClassesCell:
                     return TalksTablePropertyHeight.tableFooter
                 case .pastLive:
@@ -250,7 +241,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .featuredCell:
                     return TalksTablePropertyHeight.featuredHomeCellHeight
                 case .categories:
-                    return 40.0
+                    return 90.0
 //                    return UITableView.automaticDimension
                 default:
                     return 220.0
@@ -268,115 +259,13 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SuperYouHomeVC: SuperYouHomeVMDelegate {
-    
     func willHitSuperYouApi() {
-        
     }
-    
     func getSuperYouDataSuccess(successMsg: String, isPullToRefresh: Bool, lastPageScrolled: Int) {
-
-//        if self.viewModel.apiHitCount == 1 {
-//            self.viewModel.getSuperMeData(isPullToRefresh: false)
-//        }
-//
-//        if self.shimmerStatus == .toBeApply {
-//            self.shimmerStatus = .applied
-//            isRemoveImgBg = true
-//            self.dataTableView.removeShimmerFromTableView(isCollVwInContentView: true)
-//        }
-//        self.dataTableView.restore()
-//        if !isPullToRefresh {
-//            self.navBar.imageViewSetUp(withDuration: self.isDataInitializeFromCache ? 0.0 : 1.5, imageUrl: UserModel.main.profilePicture)
-//        } else {
-//            self.shimmerStatus = .applied
-//            self.cellHeightDictionary.removeAllObjects()
-////            self.dataTableView.refresh.endRefreshing()
-////            self.dataTableView.layoutIfNeeded()
-//        }
         self.dataTableView.reloadData()
-//        checkFirstTime = false
-//        if !self.newPostBtn.isHidden {
-//            self.newPostBtn.stopActivityLoader(title: "New Post")
-//            self.newPostBtnAnimationSetUp(isStart: false)
-//        }
     }
-    
-//    func getSuperYouDataFailed(failedToGetData: String, isPullToRefresh: Bool,errorType: ErrorType) {
-//
-//        if self.shimmerStatus == .toBeApply {
-//            self.shimmerStatus = .applied
-//            isRemoveImgBg = true
-//            self.dataTableView.removeShimmerFromTableView(isCollVwInContentView: true)
-//        }
-//        if (JSON(localData as Any).isEmpty) , self.viewModel.superYouData == nil  {
-//
-//            self.dataTableView.setEmptyMessage(failedToGetData, retry: true, retryAction: {[weak self] in
-//
-//                self?.shimmerStatus = .toBeApply
-//                self?.dataTableView.alpha = 1.0
-//                self?.dataTableView.reloadData()
-//                self?.view.layoutIfNeeded()
-//                self?.showShimmerAndHitApi()
-//                }, errorType : errorType)
-//
-//        } else {
-//            self.dataTableView.restore()
-//        }
-//
-//
-//        if !isPullToRefresh {
-//            self.navBar.imageViewSetUp(withDuration: self.isDataInitializeFromCache ? 0.0 : 1.5, imageUrl:  UserModel.main.profilePicture)
-//            if (failedToGetData != "cancelled") {
-//                showToast(failedToGetData, position: .top)
-//            }
-//        } else {
-//            self.shimmerStatus = .applied
-////            self.dataTableView.refresh.endRefreshing()
-////            self.dataTableView.layoutIfNeeded()
-//        }
-//
-//        self.dataTableView.reloadData()
-//        checkFirstTime = false
-//        if !self.newPostBtn.isHidden {
-//            self.newPostBtn.stopActivityLoader(title: "New Post")
-//            self.newPostBtnAnimationSetUp(isStart: false)
-//        }
-//    }
-    
-    
     func endPullTorefreshRequest(lastPageScrolled: Int) {
-        
-        
-//        guard let tableCellAtIndexPath = self.viewModel.superYouData?.tableCellAtIndexPath else { return }
-//
-//        let startIndex = tableCellAtIndexPath.count - lastPageScrolled
-//        let endIndex = startIndex + lastPageScrolled - 1
-//        let newIndexPaths = (startIndex...endIndex).map { i in
-//            return IndexPath(row: 0, section: i)
-//        }
-//        let visibleIndexPaths = Set(
-//            self.dataTableView.indexPathsForVisibleRows ?? [])
-//        let indexPathsNeedingReload = Set(newIndexPaths)
-//            .intersection(visibleIndexPaths)
-//        self.dataTableView.reloadRows(at: Array(indexPathsNeedingReload),
-//                                  with: .fade)
     }
-    
-//    func updateDeviceTokenSuccess(successMsg: String) {
-//        printDebug(successMsg)
-//        if DeviceDetail.voipToken == "DummyVoipToken", !UserModel.main.id.isEmpty {
-//            AppDelegate.shared.pushKitRegistration()
-////            self.viewModel.updateVoipToken()
-//        }
-//    }
-    
-//    func updateDeviceTokenFailed(failedToGetData: String) {
-//        printDebug(failedToGetData)
-//        if DeviceDetail.voipToken == "DummyVoipToken", !UserModel.main.id.isEmpty {
-//             AppDelegate.shared.pushKitRegistration()
-////            self.viewModel.updateVoipToken()
-//        }
-//    }
 }
 
 extension SuperYouHomeVC {

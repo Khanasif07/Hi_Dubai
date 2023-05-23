@@ -24,6 +24,7 @@ class UpdatedTopNavigationBar: UIView {
     internal weak var delegate: UpdatedTopNavigationBarDelegate?
     
     //MARK:- IBOutlets -
+    @IBOutlet weak var searchTextField: NewSearchTextField!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -56,6 +57,7 @@ class UpdatedTopNavigationBar: UIView {
         self.rightImageView.isUserInteractionEnabled = true
         self.rightImageView.addGestureRecognizer(tapGesture)
         self.rightImageView.layer.cornerRadius = self.rightImageView.height/2.0
+        searchTextField.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
     }
     
     internal func configureUI(title: String = "" , isTitle: Bool = false, mainImage: UIImage = #imageLiteral(resourceName: "supersheLogo") , isMainImage: Bool = true, leftButtonImage: UIImage = #imageLiteral(resourceName: "Back Icon") ,isLeftButton: Bool = true , rightButtonImage: UIImage = #imageLiteral(resourceName: "Back Icon") , isRightButton: Bool = false) {

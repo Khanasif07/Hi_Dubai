@@ -3,6 +3,15 @@ PODS:
   - MXParallaxHeader (1.1.0)
   - ParallaxHeader (3.0.0)
   - Parchment (3.2.0)
+  - PromiseKit (6.18.1):
+    - PromiseKit/CorePromise (= 6.18.1)
+    - PromiseKit/Foundation (= 6.18.1)
+    - PromiseKit/UIKit (= 6.18.1)
+  - PromiseKit/CorePromise (6.18.1)
+  - PromiseKit/Foundation (6.18.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.18.1):
+    - PromiseKit/CorePromise
   - SkeletonView (1.30.4)
   - SwiftyJSON (4.3.0)
 
@@ -11,6 +20,7 @@ DEPENDENCIES:
   - MXParallaxHeader
   - ParallaxHeader (~> 3.0.0)
   - Parchment (~> 3.2)
+  - PromiseKit (~> 6.8)
   - SkeletonView
   - SwiftyJSON (~> 4.0)
 
@@ -20,6 +30,7 @@ SPEC REPOS:
     - MXParallaxHeader
     - ParallaxHeader
     - Parchment
+    - PromiseKit
     - SkeletonView
     - SwiftyJSON
 
@@ -28,9 +39,10 @@ SPEC CHECKSUMS:
   MXParallaxHeader: de3c867e10ba46e8f6e20c8ee1f2a910372b3b94
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
   Parchment: a43c440b22c8a60f7e0196b74339446d4d1d18ea
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 62f551889cd5de18b96fba7b559a67f5d0429a5f
+PODFILE CHECKSUM: 4ed81939b0e54541c1d9fbff97838de7c8171807
 
 COCOAPODS: 1.12.1

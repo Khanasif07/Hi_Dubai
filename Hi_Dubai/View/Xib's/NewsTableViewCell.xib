@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,7 +34,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PRg-Ov-d9w">
-                                <rect key="frame" x="185" y="15" width="206" height="104"/>
+                                <rect key="frame" x="185" y="15" width="206" height="96.333333333333329"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UAE to ease COVID-19 19 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLA-wN-5du">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="20.333333333333332"/>
@@ -46,33 +45,17 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgk-Oj-R9Z">
-                                        <rect key="frame" x="0.0" y="25.333333333333336" width="109" height="28"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Government" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-8y-8cx">
-                                                <rect key="frame" x="7.3333333333333428" y="4" width="94" height="20.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="UpL-8y-8cx" secondAttribute="trailing" constant="7.5" id="DK9-QG-IJJ"/>
-                                            <constraint firstItem="UpL-8y-8cx" firstAttribute="leading" secondItem="jgk-Oj-R9Z" secondAttribute="leading" constant="7.5" id="Svx-po-6Kw"/>
-                                            <constraint firstAttribute="height" constant="28" id="l95-8a-Vse"/>
-                                            <constraint firstItem="UpL-8y-8cx" firstAttribute="centerX" secondItem="jgk-Oj-R9Z" secondAttribute="centerX" id="qmu-jG-AV0"/>
-                                            <constraint firstItem="UpL-8y-8cx" firstAttribute="centerY" secondItem="jgk-Oj-R9Z" secondAttribute="centerY" id="toQ-kg-moD"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Government" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpL-8y-8cx" customClass="UserTagLabel" customModule="Hi_Dubai" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="25.333333333333336" width="94" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                    </view>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2.5" translatesAutoresizingMaskIntoConstraints="NO" id="vVV-rW-sj0">
-                                        <rect key="frame" x="0.0" y="58.333333333333336" width="202.66666666666666" height="20.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="50.666666666666671" width="202.66666666666666" height="20.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 dec, 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OZ-Yp-lNp">
                                                 <rect key="frame" x="0.0" y="0.0" width="102" height="20.333333333333332"/>
@@ -98,7 +81,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Lorem ipsum dolor sit" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b60-VL-wyJ">
-                                        <rect key="frame" x="0.0" y="83.666666666666671" width="164.33333333333334" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="76" width="164.33333333333334" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -140,18 +123,19 @@
                 <outlet property="dateLbl" destination="7OZ-Yp-lNp" id="eXj-mF-ggR"/>
                 <outlet property="descLbl" destination="b60-VL-wyJ" id="zj0-MT-nPc"/>
                 <outlet property="newsImgView" destination="VaB-kB-N2c" id="hap-RS-MY8"/>
-                <outlet property="tagLbl" destination="UpL-8y-8cx" id="sHb-pO-B7j"/>
-                <outlet property="tagView" destination="jgk-Oj-R9Z" id="adi-t6-BAK"/>
+                <outlet property="tagLbl" destination="UpL-8y-8cx" id="2u2-Xu-tSq"/>
                 <outlet property="timeLbl" destination="Vs5-Yj-Dzu" id="btg-8Y-ws8"/>
                 <outlet property="titleLbl" destination="NLA-wN-5du" id="vXG-qJ-h3n"/>
             </connections>
             <point key="canvasLocation" x="172.51908396946564" y="63.028169014084511"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="UpL-8y-8cx">
+            <size key="intrinsicContentSize" width="94" height="20.333333333333332"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ogimage-hidubai" width="1200" height="630"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

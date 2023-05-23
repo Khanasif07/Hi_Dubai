@@ -18,7 +18,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5q-2M-N7X">
                     <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Dq-i5G" customClass="DynamicHeightCollectionView" customModule="Hi_Dubai" customModuleProvider="target">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oty-Dq-i5G">
                             <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qqx-vv-xM0">
@@ -58,7 +58,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cardCollectionView" destination="oty-Dq-i5G" id="H1y-r7-PW9"/>
+                <outlet property="cardCollectionView" destination="oty-Dq-i5G" id="UeY-2g-OqW"/>
                 <outlet property="cardCollectionViewBottomCons" destination="gfR-0g-WSY" id="sWD-1B-6Wk"/>
                 <outlet property="cardCollectionViewTopCons" destination="hMs-k8-66V" id="U4f-gH-nAk"/>
                 <outlet property="pageControl" destination="8NL-qD-AIS" id="avW-K5-wHA"/>

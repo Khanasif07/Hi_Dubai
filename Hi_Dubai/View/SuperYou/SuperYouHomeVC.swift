@@ -177,7 +177,7 @@ extension UIViewController {
     func addStatusBarBackgroundView(viewController: UIViewController) -> Void {
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIDevice.width, height:UIDevice.topSafeArea))
         let view : UIView = UIView.init(frame: rect)
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.black
         viewController.view?.addSubview(view)
     }
 }
