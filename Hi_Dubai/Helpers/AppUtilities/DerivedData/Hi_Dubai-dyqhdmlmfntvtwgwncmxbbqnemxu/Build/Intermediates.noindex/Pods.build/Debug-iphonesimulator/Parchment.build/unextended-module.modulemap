@@ -1,0 +1,10 @@
+framework module Parchment {
+  umbrella header "Parchment-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Parchment.__Swift {
+  exclude header "Parchment-Swift.h"
+}

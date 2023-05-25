@@ -29,10 +29,13 @@ import UIKit
     }
 
     func setCornerRadius(cornerRadius: CGFloat) {
-        DispatchQueue.main.async {
             self.layer.cornerRadius = cornerRadius
             self.layer.masksToBounds = cornerRadius > 0
-        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadius(cornerRadius: size.height/2)
     }
     
 
@@ -40,7 +43,6 @@ import UIKit
         var size:CGSize = super.intrinsicContentSize
         size.width  += 16
         size.height += 10
-        self.setCornerRadius(cornerRadius: size.height/2.0)
         return size
     }
     override func invalidateIntrinsicContentSize() {
@@ -112,13 +114,5 @@ import UIKit
         }
         return UIColor.clear
     }
-
-
-//    func intrinsicContentSize() -> CGSize {
-//        var size:CGSize = super.intrinsicContentSize
-//        size.width  += 16
-//        size.height += 10
-//        return size
-//    }
 }
 

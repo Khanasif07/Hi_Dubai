@@ -1,0 +1,112 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "28f93098c4f15b498bf8e21d890e2210c59780c6bfe4da909656af8844a9d28c"
+build_start_time: [1685038641, 845531000]
+build_end_time: [1685038642, 718397000]
+inputs:
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/AnimationBuilder/SkeletonAnimationBuilder.swift"
+  : [1682868387, 733121125]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Appearance/SkeletonAppearance.swift": [1682868387, 729154042]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Collections/CollectionViews/SkeletonCollectionViewProtocols.swift"
+  : [1682868387, 731337667]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Collections/TableViews/SkeletonTableViewProtocols.swift"
+  : [1682868387, 731051917]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Deprecated.swift": [1682868387, 730640500]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/FoundationExtensions/Notification+SkeletonFlow.swift"
+  : [1682868387, 729408084]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/GradientDirection.swift": [1682868387, 729971125]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/SkeletonGradient.swift": [1682868387, 729669376]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/SkeletonTextLineHeight.swift": [1682868387, 730121834]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/SkeletonTextNumberOfLines.swift"
+  : [1682868387, 729828042]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/SkeletonTransitionStyle.swift": [1682868387, 730451542]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/Models/SkeletonType.swift": [1682868387, 730274292]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/SkeletonExtended.swift": [1682868387, 728723584]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/SkeletonView.swift": [1682868387, 728878709]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/CALayer+Animations.swift"
+  : [1682868387, 732160000]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UICollectionView+Extensions.swift"
+  : [1684732223, 834277640]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UILabel+IBInspectable.swift"
+  : [1682868387, 731661208]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UILabel+SKExtensions.swift"
+  : [1682868387, 731975917]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UITextView+IBInspectable.swift"
+  : [1682868387, 731823167]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UITextView+SKExtensions.swift"
+  : [1682868387, 732331375]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UIView+IBInspectable.swift"
+  : [1682868387, 732842958]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/API/UIKitExtensions/UIView+SKExtensions.swift"
+  : [1682868387, 732505375]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Collections/CollectionSkeleton.swift"
+  : [1682868387, 724708877]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Collections/SkeletonCollectionDataSource.swift"
+  : [1682868387, 724347669]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Collections/SkeletonCollectionDelegate.swift"
+  : [1682868387, 724526710]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Collections/SkeletonReusableCell.swift"
+  : [1682868387, 724179419]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Debug/SkeletonDebug.swift": [1682868387, 728447918]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/FoundationExtensions/DispatchQueue+Extensions.swift"
+  : [1682868387, 721686711]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/FoundationExtensions/Int+Extensions.swift"
+  : [1682868387, 721530503]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/FoundationExtensions/Notification+Extensions.swift"
+  : [1682868387, 721867253]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/FoundationExtensions/ProcessInfo+Extensions.swift"
+  : [1682868387, 722035586]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Helpers/AssociationPolicy.swift": [1682868387, 728042334]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Helpers/Recursive.swift": [1682868387, 728194668]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Helpers/Swizzling.swift": [1682868387, 727891001]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Models/RecoverableViewState.swift"
+  : [1682868387, 722465544]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/Models/SkeletonLayer.swift": [1682868387, 722315795]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonConfigs/SkeletonConfig.swift"
+  : [1682868387, 721102837]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonConfigs/SkeletonMultilinesLayerConfig.swift"
+  : [1682868387, 721267378]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonExtensions/GradientDirection+Animations.swift"
+  : [1682868387, 723347544]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonExtensions/PrepareViewForSkeleton.swift"
+  : [1682868387, 723014377]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonExtensions/Recoverable.swift"
+  : [1682868387, 723520627]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonExtensions/SkeletonTextNode.swift"
+  : [1682868387, 723684336]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonExtensions/SubviewsSkeletonables.swift"
+  : [1682868387, 723169378]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonFlowHandler.swift": [1682868387, 723849836]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonLayerBuilders/SkeletonLayerBuilder.swift"
+  : [1682868387, 727632209]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonLayerBuilders/SkeletonMultilineLayerBuilder.swift"
+  : [1682868387, 727479876]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/SkeletonTree/SkeletonTreeNode.swift"
+  : [1682868387, 722739544]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/CALayer+Extensions.swift"
+  : [1682868387, 726183335]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/SkeletonTreeNode+Extensions.swift"
+  : [1682868387, 725547210]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UICollectionView+CollectionSkeleton.swift"
+  : [1682868387, 725706752]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIColor+Skeleton.swift"
+  : [1682868387, 725864960]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UILabel+Extensions.swift"
+  : [1682868387, 726665043]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UITableView+CollectionSkeleton.swift"
+  : [1682868387, 726014793]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UITableView+Extensions.swift"
+  : [1682868387, 726354960]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+AppLifecycleNotifications.swift"
+  : [1682868387, 725018877]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+AssociatedObjects.swift"
+  : [1682868387, 726507960]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+CollectionSkeleton.swift"
+  : [1682868387, 727017043]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+Extensions.swift"
+  : [1682868387, 725190960]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+SkeletonView.swift"
+  : [1682868387, 725365627]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+Swizzling.swift"
+  : [1682868387, 727191543]
+  ? "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SkeletonView/SkeletonViewCore/Sources/Internal/UIKitExtensions/UIView+Transitions.swift"
+  : [1682868387, 726833001]

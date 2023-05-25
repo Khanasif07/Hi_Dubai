@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "9399b9fe3be2c4c6d2e5f9994dc1f5995360ca749b53636e985b044eda234ae6"
+build_start_time: [1685037860, 854221000]
+build_end_time: [1685037863, 31267000]
+inputs:
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SwiftyJSON/Source/SwiftyJSON/SwiftyJSON.swift": [1684335781, 650769995]

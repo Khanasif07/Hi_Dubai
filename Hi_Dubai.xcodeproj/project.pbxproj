@@ -102,6 +102,8 @@
 		E0B6396E2A1C767500DD4DE4 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */; };
 		E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */; };
 		E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */; };
+		E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639752A1DF44000DD4DE4 /* LoadingView.swift */; };
+		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
 		F1AE3FD62C61603A5A17976C /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -206,6 +208,8 @@
 		E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTextField.xib; sourceTree = "<group>"; };
 		E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagLabel.swift; sourceTree = "<group>"; };
+		E0B639752A1DF44000DD4DE4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E0B639772A1DF45300DD4DE4 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +377,8 @@
 				E00DED382A14BC5B00828D34 /* PlacesAndSuperShesView.xib */,
 				E00DED3C2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift */,
 				E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */,
+				E0B639752A1DF44000DD4DE4 /* LoadingView.swift */,
+				E0B639772A1DF45300DD4DE4 /* LoadingView.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
+				E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
 				E00DED2F2A138D8400828D34 /* NewSearchTextField.xib in Resources */,
@@ -703,6 +710,7 @@
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
 				E00DED592A15217D00828D34 /* SuperYouHomeModel.swift in Sources */,
 				E00DED462A151B3700828D34 /* SuperYouHomeVC.swift in Sources */,
+				E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */,
 				E00DED332A14B90400828D34 /* SuperSheVC.swift in Sources */,
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
 				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
@@ -864,6 +872,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -898,6 +907,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

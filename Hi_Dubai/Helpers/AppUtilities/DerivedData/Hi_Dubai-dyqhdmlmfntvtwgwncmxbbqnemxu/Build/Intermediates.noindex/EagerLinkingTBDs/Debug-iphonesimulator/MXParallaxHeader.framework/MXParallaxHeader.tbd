@@ -1,0 +1,12 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ arm64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/MXParallaxHeader.framework/MXParallaxHeader'
+exports:
+  - targets:         [ arm64-ios-simulator ]
+    symbols:         [ _MXParallaxHeaderVersionNumber, _MXParallaxHeaderVersionString ]
+    objc-classes:    [ MXParallaxHeader, MXParallaxHeaderSegue, MXParallaxView, MXScrollView, 
+                       MXScrollViewController, MXScrollViewControllerSegue, MXScrollViewDelegateForwarder, 
+                       PodsDummy_MXParallaxHeader ]
+...

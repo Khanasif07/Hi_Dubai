@@ -57,6 +57,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
         defaultImage = UIImage(named: "search")
         self.crossBtnWidthConstant.constant = 0.0
         self.cancelBtn.isHidden = true
+        setPlaceholder()
         return view
     }
     
@@ -75,7 +76,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     }
     
     //MARK: - Function
-    func setPlaceholder(placeholder:String!) {
+    func setPlaceholder(placeholder:String! = " Search...") {
         mainTF.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     

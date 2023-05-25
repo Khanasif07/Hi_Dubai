@@ -17,6 +17,9 @@ class SuperYouHomeVC: BaseVC {
     //MARK:- Variables
     
     //    let localData = DataCache.instance.readObject(forKey: "SuperYouHome")
+    var statusBarHeight : CGFloat {
+        return UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+    }
     let viewModel = SuperYouHomeVM()
     var shimmerStatus: ShimmerState = .applied
     var cellHeightDictionary: NSMutableDictionary = NSMutableDictionary()
@@ -25,9 +28,6 @@ class SuperYouHomeVC: BaseVC {
     var talkRefHandlFlag: Bool = false
     var classRefHandleFlag: Bool = false
     var liveRefHandleFlag: Bool = false
-    var statusBarHeight: CGFloat {
-        return UIApplication.shared.statusBarFrame.size.height
-    }
     var tabBarHeight: CGFloat {
         return self.tabBarController?.tabBar.frame.size.height ?? 0.0
     }
@@ -49,7 +49,7 @@ class SuperYouHomeVC: BaseVC {
     @IBOutlet weak var dataTableViewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var navBar: UpdatedTopNavigationBar!
     @IBOutlet weak var dataTableView: UITableView!
-    
+    @IBOutlet weak var statusBarHC: NSLayoutConstraint!
     
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class SuperYouHomeVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = true
         self.viewModel.superYouData?.delegate = self
         //.....................................
-        addStatusBarBackgroundView(viewController: self)
+//        addStatusBarBackgroundView(viewController: self)
         self.dataTableView.refreshControl = refresher
     }
     
@@ -78,7 +78,7 @@ class SuperYouHomeVC: BaseVC {
         //imp...
         //        self.navContainerView.setup(constraint: headerViewTopConstraints, maxFollowPoint: navBarHeight + self.statusBarHeight, minFollowPoint: 0)
         self.navContainerView.setup(constraint: headerViewTopConstraints, maxFollowPoint: navBarHeight, minFollowPoint: 0)
-        self.navContainerView.setupDelayPoints(pointOfStartingHiding: 22, pointOfStartingShowing: 0)
+        self.navContainerView.setupDelayPoints(pointOfStartingHiding: navBarHeight, pointOfStartingShowing: 0)
     }
     
     
@@ -95,6 +95,7 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        statusBarHC.constant = statusBarHeight
         //        setUpBtn()
     }
     
@@ -107,6 +108,8 @@ class SuperYouHomeVC: BaseVC {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

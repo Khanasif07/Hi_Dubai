@@ -1,0 +1,82 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "a1dc0ecb1e82aa20f8065336731b7786457e70ee544565681d510124b8f3912f"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd427d9b1326700f4c95d14df05158ed9e68"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42a44d3d62e576f431e6cdb9b91a57df47"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd426900418473f95d2ca123ead00545a9a8"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd429a95f2407ea1005a2f6b243e22cb95db"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42052968df9d8a21c965cd28f3e4534f51"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd42ab0fe3debe3d80421252d844030e7120"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd4210f95f96c9da093b6a2c30db091f31b9"
+    },
+    {
+      "guid" : "8699adb1dd336b26511df848a716bd425573af9a813ef587595e0d82d4190f2e"
+    }
+  ],
+  "containerPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai.xcworkspace",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator16.4",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Products",
+      "pchPath" : "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

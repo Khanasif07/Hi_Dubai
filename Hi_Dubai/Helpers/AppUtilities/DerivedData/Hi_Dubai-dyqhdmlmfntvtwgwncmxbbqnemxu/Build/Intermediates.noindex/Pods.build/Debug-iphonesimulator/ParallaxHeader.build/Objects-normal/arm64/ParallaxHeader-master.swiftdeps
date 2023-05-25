@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "82a530d2f43d758524dd7e09f85454f49f32b5662086230ec5fd466805377238"
+build_start_time: [1685037923, 851188000]
+build_end_time: [1685037925, 761347000]
+inputs:
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/ParallaxHeader/ParallaxHeader/ParallaxHeader.swift": [1682868385, 767372837]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/ParallaxHeader/ParallaxHeader/ParallaxHeaderMode.swift": [1682868385, 767003004]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/ParallaxHeader/ParallaxHeader/UIScrollView+ParallaxHeader.swift": [1682868385, 767182920]

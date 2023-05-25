@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="Hi_Dubai" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Lrs-ui-rqK">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="78f-M1-BWA">
+                    <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="ARa-Eb-6Xn"/>
+                        <constraint firstAttribute="width" constant="37" id="TdY-XW-X2B"/>
+                    </constraints>
+                    <color key="color" red="0.090196078430000007" green="0.71372549019999998" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="y8u-ZP-wh8"/>
+            <color key="backgroundColor" name="separatorColor"/>
+            <constraints>
+                <constraint firstItem="78f-M1-BWA" firstAttribute="centerY" secondItem="Lrs-ui-rqK" secondAttribute="centerY" id="SxH-Jb-nxq"/>
+                <constraint firstItem="78f-M1-BWA" firstAttribute="centerX" secondItem="Lrs-ui-rqK" secondAttribute="centerX" id="w4z-1o-fYJ"/>
+            </constraints>
+            <point key="canvasLocation" x="77.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="separatorColor">
+            <color red="0.87058823529411766" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

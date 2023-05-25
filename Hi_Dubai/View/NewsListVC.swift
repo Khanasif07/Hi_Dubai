@@ -27,6 +27,8 @@ class NewsListVC: UIViewController {
     }()
     var emptyView: EmptyStateView? = EmptyStateView.instanciateFromNib()
     var emptyViewPersonal: EmptyView?
+    var loadingView: LoadingView?
+    var isHitApiInProgress: Bool = true
    
     internal var selectedCell: NewsTableViewCell?
     internal var selectedCellImageViewSnapshot: UIView?
@@ -79,6 +81,10 @@ class NewsListVC: UIViewController {
     }
     
     private func  initialSetup(){
+        //
+        loadingView = LoadingView(frame: view.frame, inView: view)
+        loadingView?.show()
+        //
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
         self.setUpTableView()
@@ -97,6 +103,7 @@ class NewsListVC: UIViewController {
     }
     
     private func fetchAPIData(){
+        self.isHitApiInProgress = true
         self.emptyView?.hide()
         self.currentShimmerStatus = .toBeApply
         self.newsTableView.reloadData()
@@ -202,25 +209,29 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return businessHeader.frame.size.height
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return businessHeader
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return businessHeader.frame.size.height
+//    }
+//    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return businessHeader
+//    }
 }
 
 //MARK:- Extension NewsListViewModelDelegate
 extension NewsListVC: NewsListViewModelDelegate{
     func newsListingSuccess() {
+        self.isHitApiInProgress = false
         DispatchQueue.main.async {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
             self.currentShimmerStatus = .applied
             self.newsTableView.reloadData()
         }
     }
     
     func newsListingFailure(error: Error) {
+        self.isHitApiInProgress = false
         self.error = error
         DispatchQueue.main.async {
             self.currentShimmerStatus = .none
@@ -231,7 +242,7 @@ extension NewsListVC: NewsListViewModelDelegate{
 
 
 extension NewsListVC{
-    func setEmptyMessage(_ message: String,isTimeOutError: Bool = false) {
+    func setEmptyMessage(_ message: String = "",isTimeOutError: Bool = false) {
         // Custom way to add view
         var offset:CGFloat = 0
         var bottomOffset = 0.0
@@ -248,9 +259,8 @@ extension NewsListVC{
         offset = self.navigationController?.navigationBar.height ?? 0.0
         
         // Custom way to add view
-        if emptyViewPersonal != nil {
-        } else{
-            emptyViewPersonal = nil
+        if emptyViewPersonal == nil && !isHitApiInProgress{
+            emptyViewPersonal?.removeFromSuperview()
             emptyViewPersonal = EmptyView(frame: CGRect(x: 0, y: fakenavHeightRef + offset, width: self.view.frame.width, height: self.view.frame.height -  fakenavHeightRef - offset - bottomOffset), inView: self.view, centered: true, icon: UIImage(named: ""), message: "")
             emptyViewPersonal?.delegate = self
             emptyViewPersonal?.show()
@@ -260,13 +270,15 @@ extension NewsListVC{
     func restore() {
         newsTableView.backgroundView = nil
         emptyViewPersonal?.hide()
+        emptyViewPersonal?.removeFromSuperview()
+        
     }
 }
 
 
 extension NewsListVC{
-    func enableGlobalScrolling(_ offset: CGFloat) {
-        (self.parent as? SearchVC)?.enableScrolling(offset)
+    func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
+        (self.parent as? SearchVC)?.enableScrolling(offset,isSearchHidden)
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
@@ -279,10 +291,10 @@ extension NewsListVC{
         }
         
         let offsetY = scroll.contentOffset.y
-        var stopScroll: CGFloat = 85.0
+        var stopScroll: CGFloat = 80.0
         
         if UIDevice.current.hasNotch{
-            stopScroll = 95.0
+            stopScroll += 10.0
         }
         lastContentOffset = scroll.contentOffset.y
         
@@ -290,7 +302,7 @@ extension NewsListVC{
             if offsetY < stopScroll {
                 enableGlobalScrolling(offsetY)
             } else {
-                enableGlobalScrolling(stopScroll)
+                enableGlobalScrolling(stopScroll,false)
             }
         } else if (scrollDirection == .down) && (offsetY < stopScroll) {
             enableGlobalScrolling(offsetY)
@@ -309,10 +321,12 @@ extension NewsListVC{
 
 extension NewsListVC: EmptyStateViewDelegate{
     func loginAction() {
+        self.setEmptyMessage()
         self.fetchAPIData()
     }
     
     func learnHowAction() {
+        self.setEmptyMessage()
         self.fetchAPIData()
     }
     

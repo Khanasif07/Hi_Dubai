@@ -241,7 +241,8 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .featuredCell:
                     return TalksTablePropertyHeight.featuredHomeCellHeight
                 case .categories:
-                    return 90.0
+                    return  self.viewModel.superYouData!.isFirstTime ? 90.0
+                    : 45.0
 //                    return UITableView.automaticDimension
                 default:
                     return 220.0

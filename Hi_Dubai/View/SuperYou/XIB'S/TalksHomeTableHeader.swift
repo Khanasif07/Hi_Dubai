@@ -26,7 +26,7 @@ class TalksHomeTableHeader: UITableViewHeaderFooterView {
         super.awakeFromNib()
         btnViewAll.isHidden = true
         mainLabel.textColor = AppColors.white
-        mainLabel.font  = AppFonts.BoldItalic.withSize(15.0)
+        mainLabel.font  = AppFonts.Bold.withSize(16.0)
         btnViewAll.titleLabel?.font = AppFonts.BoldItalic.withSize(14.0)
     }
     
@@ -46,7 +46,7 @@ class TalksHomeTableHeader: UITableViewHeaderFooterView {
         self.titleLeadingConstraint.constant = 18.0
         self.trailingLeadingConstraint.constant = 18.0
         self.mainLabel.text = title.uppercased()
-        self.mainLabel.font = AppFonts.BoldItalic.withSize(15.0)
+        self.mainLabel.font = AppFonts.Bold.withSize(16.0)
 //        self.btnViewAll.setTitle(LS.viewAll.localized, for: .normal)
         self.btnViewAll.titleLabel?.font = AppFonts.BoldItalic.withSize(14.0)
         self.btnViewAll.isHidden = false
@@ -61,7 +61,7 @@ class TalksHomeTableHeader: UITableViewHeaderFooterView {
         self.btnViewAll.titleLabel?.font = AppFonts.BoldItalic.withSize(12)
         self.btnViewAll.isHidden = false
         let attributedString = NSMutableAttributedString()
-        let boldAttribute = [NSAttributedString.Key.font: AppFonts.BoldItalic.withSize(15.0), NSAttributedString.Key.foregroundColor: AppColors.white] as [NSAttributedString.Key : Any]
+        let boldAttribute = [NSAttributedString.Key.font: AppFonts.Bold.withSize(16.0), NSAttributedString.Key.foregroundColor: AppColors.white] as [NSAttributedString.Key : Any]
         
         let clearAtrribute = [NSAttributedString.Key.font: AppFonts.SemiBoldItalic.withSize(12.0), NSAttributedString.Key.foregroundColor: UIColor.clear] as [NSAttributedString.Key : Any]
 

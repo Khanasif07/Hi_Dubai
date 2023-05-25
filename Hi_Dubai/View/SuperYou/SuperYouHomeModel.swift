@@ -72,17 +72,16 @@ class SuperYouHomeModel {
         self.tableCellAtIndexPath.removeAll()
         if isFirstTime{
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
-//            self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.featuredCell])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
+            self.tableCellAtIndexPath.append([.categories])
         }else{
            
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
-//            self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])

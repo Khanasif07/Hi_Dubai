@@ -1,0 +1,25 @@
+Target dependency graph (9 targets)
+CarbonKit in Pods, no dependencies
+MXParallaxHeader in Pods, no dependencies
+ParallaxHeader in Pods, no dependencies
+Parchment in Pods, no dependencies
+PromiseKit in Pods, no dependencies
+SkeletonView in Pods, no dependencies
+SwiftyJSON in Pods, no dependencies
+Pods-Hi_Dubai in Pods, depends on:
+CarbonKit in Pods (explicit)
+MXParallaxHeader in Pods (explicit)
+ParallaxHeader in Pods (explicit)
+Parchment in Pods (explicit)
+PromiseKit in Pods (explicit)
+SkeletonView in Pods (explicit)
+SwiftyJSON in Pods (explicit)
+Hi_Dubai in Hi_Dubai, depends on:
+Pods-Hi_Dubai in Pods (implicit dependency via file 'Pods_Hi_Dubai.framework' in build phase 'Link Binary')
+CarbonKit in Pods (implicit dependency via options '-framework CarbonKit' in build setting 'OTHER_LDFLAGS')
+MXParallaxHeader in Pods (implicit dependency via options '-framework MXParallaxHeader' in build setting 'OTHER_LDFLAGS')
+ParallaxHeader in Pods (implicit dependency via options '-framework ParallaxHeader' in build setting 'OTHER_LDFLAGS')
+Parchment in Pods (implicit dependency via options '-framework Parchment' in build setting 'OTHER_LDFLAGS')
+PromiseKit in Pods (implicit dependency via options '-framework PromiseKit' in build setting 'OTHER_LDFLAGS')
+SkeletonView in Pods (implicit dependency via options '-framework SkeletonView' in build setting 'OTHER_LDFLAGS')
+SwiftyJSON in Pods (implicit dependency via options '-framework SwiftyJSON' in build setting 'OTHER_LDFLAGS')

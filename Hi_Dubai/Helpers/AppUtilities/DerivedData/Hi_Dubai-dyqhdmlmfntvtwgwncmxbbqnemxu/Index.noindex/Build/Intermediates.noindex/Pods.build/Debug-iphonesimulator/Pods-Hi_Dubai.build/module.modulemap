@@ -1,0 +1,6 @@
+framework module Pods_Hi_Dubai {
+  umbrella header "Pods-Hi_Dubai-umbrella.h"
+
+  export *
+  module * { export * }
+}

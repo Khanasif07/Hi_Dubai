@@ -9,14 +9,12 @@ import UIKit
 
 class SearchVC: BaseVC{
 
+    @IBOutlet weak var searchTxtFld: NewSearchTextField!
     @IBOutlet weak var peopleSearchBtn: UIButton!
     @IBOutlet weak var businessSearchBtn: UIButton!
     @IBOutlet weak var listsSearchBtn: UIButton!
     @IBOutlet weak var gradientTopDistance: NSLayoutConstraint!
     @IBOutlet weak var gradientHeight: NSLayoutConstraint!
-    @IBOutlet weak var fakeNavTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var fakeNavHeight: NSLayoutConstraint!
-    @IBOutlet weak var fakeNavBar: UIImageView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var scrollViewTopDistance: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
@@ -29,6 +27,7 @@ class SearchVC: BaseVC{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTxtFld.isHidden = true
         setColorsOfSelectedButton(businessSearchBtn)
         setColorsOfDefaultButton(listsSearchBtn)
         setColorsOfDefaultButton(peopleSearchBtn)
@@ -38,7 +37,7 @@ class SearchVC: BaseVC{
         scrollView.delegate = self
 
         gradient_MIN_HEIGHT = 64.0
-        gradient_MAX_HEIGHT = 90.0
+        gradient_MAX_HEIGHT = 134.0 - 44.0
         // Do any additional setup after loading the view.
         
         if #available(iOS 11.0, *) {
@@ -60,10 +59,6 @@ class SearchVC: BaseVC{
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.windows.first
             let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
-            if topInset > 44 {
-                fakeNavHeight.constant = topInset
-                fakeNavTopConstraint.constant = -topInset
-            }
             print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
             print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
             print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")
@@ -71,7 +66,6 @@ class SearchVC: BaseVC{
             gradientTopDistance.constant = -((window?.safeAreaInsets.top) ?? 0.0)
             gradient_MIN_HEIGHT = 64 + (window?.safeAreaInsets.top ?? 0.0)
             gradient_MAX_HEIGHT = 90 + (window?.safeAreaInsets.top ?? 0.0)
-            //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);
         }
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
@@ -156,7 +150,7 @@ class SearchVC: BaseVC{
     func initUI(){
         if self.navBar != nil {
             let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
-            secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
+//            secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
             
             if children.count == 0 {
                 removeChildrenVC()
@@ -179,14 +173,42 @@ class SearchVC: BaseVC{
     }
 
     
-    @objc func enableScrolling(_ offset: CGFloat) {
-            scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
-            baseViewHeight.constant = scrollView.frame.size.height + offset
+    @objc func enableScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+        baseViewHeight.constant = scrollView.frame.size.height + offset
+        // New Logic
+        var isProcess: Bool = false
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows.first
+            if isSearchHidden{
+                gradient_MAX_HEIGHT = 90.0
+                if !self.searchTxtFld.isHidden && !isProcess{
+                    isProcess = true
+                    UIView.animate(withDuration: 0.10) {
+                        self.searchTxtFld.isHidden = isSearchHidden
+                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+                        isProcess = false
+                    }
+                }
+            }else{
+                gradient_MAX_HEIGHT = 134.0
+                if self.searchTxtFld.isHidden && !isProcess{
+                    isProcess = true
+                    
+                    UIView.animate(withDuration: 0.25) {
+                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+                        self.searchTxtFld.isHidden = isSearchHidden
+                        isProcess = false
+                    }
+                }
+            }
+            //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);
+        }
         print("----================----")
-            print("Offset:- \(offset)")
-            print("BaseViewHeight:- \(baseViewHeight.constant)")
-            print("ScrollView Content Size:- \(scrollView.contentSize)")
-            print("ScrollView Frame Size Height:- \(scrollView.frame.size.height)")
+        print("Offset:- \(offset)")
+        print("BaseViewHeight:- \(baseViewHeight.constant)")
+        print("ScrollView Content Size:- \(scrollView.contentSize)")
+        print("ScrollView Frame Size Height:- \(scrollView.frame.size.height)")
         print("ScrollView Content Offset Y:- \(scrollView.contentOffset.y)")
         
     }

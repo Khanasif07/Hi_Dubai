@@ -1,0 +1,11 @@
+--- !tapi-tbd
+tbd-version:     4
+targets:         [ x86_64-ios-simulator ]
+flags:           [ not_app_extension_safe ]
+install-name:    '@rpath/CarbonKit.framework/CarbonKit'
+exports:
+  - targets:         [ x86_64-ios-simulator ]
+    symbols:         [ _CarbonKitVersionNumber, _CarbonKitVersionString ]
+    objc-classes:    [ CarbonSwipeRefresh, CarbonTabSwipeNavigation, CarbonTabSwipeScrollView, 
+                       CarbonTabSwipeSegmentedControl, PodsDummy_CarbonKit ]
+...
