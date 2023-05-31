@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>010FB991-7C3E-4E7A-82C2-1F167F2BDCBD</key>
+		<key>0BDE20A5-BED2-48F5-9F4F-D1413F2EF265</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>010FB991-7C3E-4E7A-82C2-1F167F2BDCBD.xcactivitylog</string>
+			<string>0BDE20A5-BED2-48F5-9F4F-D1413F2EF265.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -32,15 +32,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706734693.20278895</real>
+			<real>707210501.85870695</real>
 			<key>timeStoppedRecording</key>
-			<real>706734693.81763196</real>
+			<real>707210507.47522295</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>010FB991-7C3E-4E7A-82C2-1F167F2BDCBD</string>
+			<string>0BDE20A5-BED2-48F5-9F4F-D1413F2EF265</string>
 		</dict>
-		<key>09A9744D-A048-4BA8-9E43-5196FE09AC57</key>
+		<key>37B10028-50E4-4B3C-954B-27525F45477D</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -49,7 +49,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>09A9744D-A048-4BA8-9E43-5196FE09AC57.xcactivitylog</string>
+			<string>37B10028-50E4-4B3C-954B-27525F45477D.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -66,15 +66,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706734634.71878695</real>
+			<real>707210685.02257299</real>
 			<key>timeStoppedRecording</key>
-			<real>706734635.42312098</real>
+			<real>707210686.09293997</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>09A9744D-A048-4BA8-9E43-5196FE09AC57</string>
+			<string>37B10028-50E4-4B3C-954B-27525F45477D</string>
 		</dict>
-		<key>134298EE-85A5-4ED7-B0D8-82BAFF1069FD</key>
+		<key>39F944A6-A2E7-4A2D-A059-BC865388F955</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -83,7 +83,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>134298EE-85A5-4ED7-B0D8-82BAFF1069FD.xcactivitylog</string>
+			<string>39F944A6-A2E7-4A2D-A059-BC865388F955.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -100,15 +100,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706734031.26472795</real>
+			<real>707210731.34208405</real>
 			<key>timeStoppedRecording</key>
-			<real>706734034.06533003</real>
+			<real>707210734.34023094</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>134298EE-85A5-4ED7-B0D8-82BAFF1069FD</string>
+			<string>39F944A6-A2E7-4A2D-A059-BC865388F955</string>
 		</dict>
-		<key>148F67A0-28D4-44C1-95F7-D86A248C5A74</key>
+		<key>3EB9133A-88CE-44D6-8A7A-884B7169B255</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -117,7 +117,41 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>148F67A0-28D4-44C1-95F7-D86A248C5A74.xcactivitylog</string>
+			<string>3EB9133A-88CE-44D6-8A7A-884B7169B255.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Hi_Dubai project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Hi_Dubai</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Clean Hi_Dubai</string>
+			<key>timeStartedRecording</key>
+			<real>707210625.96713102</real>
+			<key>timeStoppedRecording</key>
+			<real>707210625.98233998</real>
+			<key>title</key>
+			<string>Clean Hi_Dubai</string>
+			<key>uniqueIdentifier</key>
+			<string>3EB9133A-88CE-44D6-8A7A-884B7169B255</string>
+		</dict>
+		<key>4790A795-3B56-4601-9F6C-156BFD9BBA82</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>4790A795-3B56-4601-9F6C-156BFD9BBA82.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -134,15 +168,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706738391.71993303</real>
+			<real>707210992.53099895</real>
 			<key>timeStoppedRecording</key>
-			<real>706738395.07726896</real>
+			<real>707210997.64183998</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>148F67A0-28D4-44C1-95F7-D86A248C5A74</string>
+			<string>4790A795-3B56-4601-9F6C-156BFD9BBA82</string>
 		</dict>
-		<key>15761F86-EBEA-41C9-A6FD-1F796E812930</key>
+		<key>57A01360-B0D9-4406-8538-1D7780C037B7</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -151,7 +185,41 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>15761F86-EBEA-41C9-A6FD-1F796E812930.xcactivitylog</string>
+			<string>57A01360-B0D9-4406-8538-1D7780C037B7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Hi_Dubai project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Hi_Dubai</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build for Previews Hi_Dubai</string>
+			<key>timeStartedRecording</key>
+			<real>707210082.39120996</real>
+			<key>timeStoppedRecording</key>
+			<real>707210094.12493396</real>
+			<key>title</key>
+			<string>Build for Previews Hi_Dubai</string>
+			<key>uniqueIdentifier</key>
+			<string>57A01360-B0D9-4406-8538-1D7780C037B7</string>
+		</dict>
+		<key>825F2355-CC84-4B66-A986-0A6AC5BDE4C9</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>825F2355-CC84-4B66-A986-0A6AC5BDE4C9.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -168,15 +236,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706737478.27583802</real>
+			<real>707210671.66931105</real>
 			<key>timeStoppedRecording</key>
-			<real>706737479.25695896</real>
+			<real>707210673.14072704</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>15761F86-EBEA-41C9-A6FD-1F796E812930</string>
+			<string>825F2355-CC84-4B66-A986-0A6AC5BDE4C9</string>
 		</dict>
-		<key>1A17FFC0-0C37-494F-A28B-B37D6E297215</key>
+		<key>8B98064B-41F3-4356-A0C0-A4B6303A7042</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -185,517 +253,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>1A17FFC0-0C37-494F-A28B-B37D6E297215.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735821.78080797</real>
-			<key>timeStoppedRecording</key>
-			<real>706735823.37793601</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>1A17FFC0-0C37-494F-A28B-B37D6E297215</string>
-		</dict>
-		<key>1AE07ABA-5895-47E0-A5C7-2BD37BC12859</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>1AE07ABA-5895-47E0-A5C7-2BD37BC12859.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706733401.17674899</real>
-			<key>timeStoppedRecording</key>
-			<real>706733402.92581904</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>1AE07ABA-5895-47E0-A5C7-2BD37BC12859</string>
-		</dict>
-		<key>219E9DA9-2295-4100-BEFC-CA2CB4FCB4A2</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>219E9DA9-2295-4100-BEFC-CA2CB4FCB4A2.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736917.75692403</real>
-			<key>timeStoppedRecording</key>
-			<real>706736919.17104602</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>219E9DA9-2295-4100-BEFC-CA2CB4FCB4A2</string>
-		</dict>
-		<key>2FD87052-A57E-4B2F-9399-A711F446F9BC</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>2FD87052-A57E-4B2F-9399-A711F446F9BC.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736497.45864105</real>
-			<key>timeStoppedRecording</key>
-			<real>706736498.92606294</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>2FD87052-A57E-4B2F-9399-A711F446F9BC</string>
-		</dict>
-		<key>304683B1-A9C9-4124-A3ED-1DC4D7D20565</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>304683B1-A9C9-4124-A3ED-1DC4D7D20565.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706738774.60227501</real>
-			<key>timeStoppedRecording</key>
-			<real>706738778.64969003</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>304683B1-A9C9-4124-A3ED-1DC4D7D20565</string>
-		</dict>
-		<key>38B3CE4B-27CA-401C-A341-71BEA4D2ED94</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>38B3CE4B-27CA-401C-A341-71BEA4D2ED94.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706733577.68583202</real>
-			<key>timeStoppedRecording</key>
-			<real>706733579.40806603</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>38B3CE4B-27CA-401C-A341-71BEA4D2ED94</string>
-		</dict>
-		<key>60BC4895-A223-4A4A-A1D2-FE4D41329D7A</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>60BC4895-A223-4A4A-A1D2-FE4D41329D7A.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706734756.55809104</real>
-			<key>timeStoppedRecording</key>
-			<real>706734760.63356698</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>60BC4895-A223-4A4A-A1D2-FE4D41329D7A</string>
-		</dict>
-		<key>625315E8-9480-4A22-92E6-A591859B674F</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>625315E8-9480-4A22-92E6-A591859B674F.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736969.314363</real>
-			<key>timeStoppedRecording</key>
-			<real>706736970.74067903</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>625315E8-9480-4A22-92E6-A591859B674F</string>
-		</dict>
-		<key>69523367-32E0-442B-927F-CFCFADC14519</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>69523367-32E0-442B-927F-CFCFADC14519.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706737049.03389001</real>
-			<key>timeStoppedRecording</key>
-			<real>706737050.47351301</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>69523367-32E0-442B-927F-CFCFADC14519</string>
-		</dict>
-		<key>6F33F4C3-5307-4866-A201-49813E37B63A</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>6F33F4C3-5307-4866-A201-49813E37B63A.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706732541.43269598</real>
-			<key>timeStoppedRecording</key>
-			<real>706732542.96347296</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>6F33F4C3-5307-4866-A201-49813E37B63A</string>
-		</dict>
-		<key>6F900383-FAF2-4B95-B897-BA6948C4AEAB</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>6F900383-FAF2-4B95-B897-BA6948C4AEAB.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736393.63263798</real>
-			<key>timeStoppedRecording</key>
-			<real>706736395.04320502</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>6F900383-FAF2-4B95-B897-BA6948C4AEAB</string>
-		</dict>
-		<key>710E650F-0F3C-4B07-94FA-B58689B9D434</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>710E650F-0F3C-4B07-94FA-B58689B9D434.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736653.45788801</real>
-			<key>timeStoppedRecording</key>
-			<real>706736655.11648202</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>710E650F-0F3C-4B07-94FA-B58689B9D434</string>
-		</dict>
-		<key>7365B2D9-1F98-44FB-8C82-D3CEB620EF85</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>7365B2D9-1F98-44FB-8C82-D3CEB620EF85.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736855.13014197</real>
-			<key>timeStoppedRecording</key>
-			<real>706736856.71138704</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>7365B2D9-1F98-44FB-8C82-D3CEB620EF85</string>
-		</dict>
-		<key>7DC776C4-2300-4440-B899-B03C2151D478</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>7DC776C4-2300-4440-B899-B03C2151D478.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735155.625929</real>
-			<key>timeStoppedRecording</key>
-			<real>706735157.08723402</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>7DC776C4-2300-4440-B899-B03C2151D478</string>
-		</dict>
-		<key>7EFD7BE7-5306-4BC6-81AF-F4A0D741021F</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>7EFD7BE7-5306-4BC6-81AF-F4A0D741021F.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736710.45622504</real>
-			<key>timeStoppedRecording</key>
-			<real>706736711.89043498</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>7EFD7BE7-5306-4BC6-81AF-F4A0D741021F</string>
-		</dict>
-		<key>83538FAD-8D62-4097-A75E-E280B9249C1E</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>83538FAD-8D62-4097-A75E-E280B9249C1E.xcactivitylog</string>
+			<string>8B98064B-41F3-4356-A0C0-A4B6303A7042.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -712,15 +270,15 @@
 			<key>signature</key>
 			<string>Build Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706734739.54754806</real>
+			<real>707210650.89567995</real>
 			<key>timeStoppedRecording</key>
-			<real>706734740.16090906</real>
+			<real>707210661.88761306</real>
 			<key>title</key>
 			<string>Build Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>83538FAD-8D62-4097-A75E-E280B9249C1E</string>
+			<string>8B98064B-41F3-4356-A0C0-A4B6303A7042</string>
 		</dict>
-		<key>84CF4F1F-F9DC-4EB2-B98B-EAD7FC558817</key>
+		<key>BCD30B55-DE29-4457-805A-6E6AF3234312</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -729,13 +287,13 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>84CF4F1F-F9DC-4EB2-B98B-EAD7FC558817.xcactivitylog</string>
+			<string>BCD30B55-DE29-4457-805A-6E6AF3234312.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>W</string>
+				<string>S</string>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>Hi_Dubai project</string>
@@ -744,559 +302,15 @@
 			<key>schemeIdentifier-sharedScheme</key>
 			<integer>1</integer>
 			<key>signature</key>
-			<string>Build Hi_Dubai</string>
+			<string>Clean Hi_Dubai</string>
 			<key>timeStartedRecording</key>
-			<real>706730721.33187795</real>
+			<real>707210619.04039001</real>
 			<key>timeStoppedRecording</key>
-			<real>706730732.01558495</real>
+			<real>707210619.70555794</real>
 			<key>title</key>
-			<string>Build Hi_Dubai</string>
+			<string>Clean Hi_Dubai</string>
 			<key>uniqueIdentifier</key>
-			<string>84CF4F1F-F9DC-4EB2-B98B-EAD7FC558817</string>
-		</dict>
-		<key>88EFEB5F-B604-4A99-8086-D1D60793D777</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>88EFEB5F-B604-4A99-8086-D1D60793D777.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706732614.35432303</real>
-			<key>timeStoppedRecording</key>
-			<real>706732615.84049904</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>88EFEB5F-B604-4A99-8086-D1D60793D777</string>
-		</dict>
-		<key>8BA2D1E9-BE59-4AFB-AD7C-66F4029DE5BD</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>8BA2D1E9-BE59-4AFB-AD7C-66F4029DE5BD.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706738870.06757104</real>
-			<key>timeStoppedRecording</key>
-			<real>706738870.39939702</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>8BA2D1E9-BE59-4AFB-AD7C-66F4029DE5BD</string>
-		</dict>
-		<key>AFB46FAB-52B7-42AD-9A5D-4AB01A6AD631</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>AFB46FAB-52B7-42AD-9A5D-4AB01A6AD631.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>E</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735505.42273498</real>
-			<key>timeStoppedRecording</key>
-			<real>706735506.079229</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>AFB46FAB-52B7-42AD-9A5D-4AB01A6AD631</string>
-		</dict>
-		<key>B0257093-B0AF-4DA5-9476-D02A8782AEE8</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B0257093-B0AF-4DA5-9476-D02A8782AEE8.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706730946.46726501</real>
-			<key>timeStoppedRecording</key>
-			<real>706730948.90366805</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B0257093-B0AF-4DA5-9476-D02A8782AEE8</string>
-		</dict>
-		<key>B3423B26-1DDD-4B81-9C32-B2B685DFEACC</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B3423B26-1DDD-4B81-9C32-B2B685DFEACC.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706734890.59009802</real>
-			<key>timeStoppedRecording</key>
-			<real>706734892.12696397</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B3423B26-1DDD-4B81-9C32-B2B685DFEACC</string>
-		</dict>
-		<key>B378C89C-51A3-4825-813B-F902E94EEA5A</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B378C89C-51A3-4825-813B-F902E94EEA5A.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706737520.37147105</real>
-			<key>timeStoppedRecording</key>
-			<real>706737523.23053396</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B378C89C-51A3-4825-813B-F902E94EEA5A</string>
-		</dict>
-		<key>B5763D1B-ED1B-440A-BA5C-0B3D133ACBDE</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B5763D1B-ED1B-440A-BA5C-0B3D133ACBDE.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735680.45044196</real>
-			<key>timeStoppedRecording</key>
-			<real>706735682.05135202</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B5763D1B-ED1B-440A-BA5C-0B3D133ACBDE</string>
-		</dict>
-		<key>B5C27DD4-6F56-49CF-A1C4-0B9A4855ECD4</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B5C27DD4-6F56-49CF-A1C4-0B9A4855ECD4.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706734075.31279695</real>
-			<key>timeStoppedRecording</key>
-			<real>706734076.91776097</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B5C27DD4-6F56-49CF-A1C4-0B9A4855ECD4</string>
-		</dict>
-		<key>B5E5176C-9BA7-49B2-B0E1-C2602F3782AF</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>B5E5176C-9BA7-49B2-B0E1-C2602F3782AF.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736332.56833899</real>
-			<key>timeStoppedRecording</key>
-			<real>706736334.11968398</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>B5E5176C-9BA7-49B2-B0E1-C2602F3782AF</string>
-		</dict>
-		<key>CDF40432-05A1-49CC-AED0-EC1BF17AD36B</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>CDF40432-05A1-49CC-AED0-EC1BF17AD36B.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706736756.66051197</real>
-			<key>timeStoppedRecording</key>
-			<real>706736758.19374895</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>CDF40432-05A1-49CC-AED0-EC1BF17AD36B</string>
-		</dict>
-		<key>D83AFBA6-EE64-4DE6-96D9-54B469DC4220</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>D83AFBA6-EE64-4DE6-96D9-54B469DC4220.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706738093.91109705</real>
-			<key>timeStoppedRecording</key>
-			<real>706738098.15438402</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>D83AFBA6-EE64-4DE6-96D9-54B469DC4220</string>
-		</dict>
-		<key>DFC102BD-7F59-4EBC-A57D-15215E017B12</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>DFC102BD-7F59-4EBC-A57D-15215E017B12.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735586.98286903</real>
-			<key>timeStoppedRecording</key>
-			<real>706735588.54328597</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>DFC102BD-7F59-4EBC-A57D-15215E017B12</string>
-		</dict>
-		<key>E5E4B10C-C7BC-447A-ABB6-0BBAC3043180</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>E5E4B10C-C7BC-447A-ABB6-0BBAC3043180.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706732407.45081794</real>
-			<key>timeStoppedRecording</key>
-			<real>706732411.49128604</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>E5E4B10C-C7BC-447A-ABB6-0BBAC3043180</string>
-		</dict>
-		<key>EA72D7A0-79DF-4D0C-A7C3-91EC501880B4</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>EA72D7A0-79DF-4D0C-A7C3-91EC501880B4.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706735863.40446103</real>
-			<key>timeStoppedRecording</key>
-			<real>706735865.05727804</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>EA72D7A0-79DF-4D0C-A7C3-91EC501880B4</string>
-		</dict>
-		<key>ECE5F69F-BB19-4F1C-A866-B1367E57FE4A</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>ECE5F69F-BB19-4F1C-A866-B1367E57FE4A.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706733879.03939402</real>
-			<key>timeStoppedRecording</key>
-			<real>706733883.03856003</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>ECE5F69F-BB19-4F1C-A866-B1367E57FE4A</string>
-		</dict>
-		<key>FC5157F9-40DF-483D-8CA0-F4E137D9F2A9</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>FC5157F9-40DF-483D-8CA0-F4E137D9F2A9.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Hi_Dubai project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Hi_Dubai</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Hi_Dubai</string>
-			<key>timeStartedRecording</key>
-			<real>706733143.253878</real>
-			<key>timeStoppedRecording</key>
-			<real>706733147.13472903</real>
-			<key>title</key>
-			<string>Build Hi_Dubai</string>
-			<key>uniqueIdentifier</key>
-			<string>FC5157F9-40DF-483D-8CA0-F4E137D9F2A9</string>
+			<string>BCD30B55-DE29-4457-805A-6E6AF3234312</string>
 		</dict>
 	</dict>
 </dict>

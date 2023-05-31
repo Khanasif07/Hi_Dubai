@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/ParallaxHeader-Swift.h</key>
 		<data>
-		zOCDj2+itKGg7VssAnljsbFjj2U=
+		lERZTSneBmYHgxxq+6QgeDcvcsA=
 		</data>
 		<key>Headers/ParallaxHeader-umbrella.h</key>
 		<data>
@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		AkpfyPz8Bsyax4yMXX1oySzm/Ag=
+		XjvnCUDbJFDHzSaFc76a44Yejwc=
 		</data>
 		<key>Modules/ParallaxHeader.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		brj2ADEyXoXvfz1AdJbzWI56Vp8=
+		kDtaKXWAqmsxQsaj7EHaSfzK1us=
 		</data>
 		<key>Modules/ParallaxHeader.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/ParallaxHeader.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		pVOYrVXQEad/SmjtP/U24Og1Z9Q=
+		SrnmLYdRR+466ge0mN1qdT8wzYA=
 		</data>
 		<key>Modules/ParallaxHeader.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3+UDC1MQlHumJ1/HWHFUaShCShE=
+		v80EXFmF8XmUbCsbx7WR1v/Ub7Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wbgd9413iocAHlTJN3r1pan2aZc6YSp2gUYaKrO2N9g=
+			+SQazYZFt7SZVIAaNI7FNX2bxEzr5aNNjlC3c+p7BK4=
 			</data>
 		</dict>
 		<key>Headers/ParallaxHeader-umbrella.h</key>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q59TQBTaUzyqi3peCoW45E/YOmVcDTxlltQolDzvPcE=
+			QosnwApPJ89CmsgO1VyqjP7kzo0LOsKllD5yixnU7j4=
 			</data>
 		</dict>
 		<key>Modules/ParallaxHeader.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v+tdAkyl9k+4kbUQzNGxQPGQAl3GumpxuxqB0Pb7aB0=
+			OcW6KrnwRJ1Mp46Pq5/AHhwCTPI9j1lPNgQVBI0o/a0=
 			</data>
 		</dict>
 		<key>Modules/ParallaxHeader.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WHAWr1fCHdWxxKRIl9z/0i8J7wQdaZ2/MKyPAWZb6oE=
+			SnzETe3eK96rcjX5Om7wZRQEvmV3+OJyXH99kf93HBw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

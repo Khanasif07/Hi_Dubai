@@ -16,12 +16,12 @@ import CarbonKit
     @IBOutlet weak var targetView: UIView!
     private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
     private var tabs: [String]?
-    private var listVC: NewsListVC?
-    private var savedListVC: NewsListVC?
-    private var viewController: NewsListVC?
-    private var tipsVC: NewsListVC?
-    private var pointsVC: NewsListVC?
-    private var rewardsVC: NewsListVC?
+    public var listVC: NewsListVC?
+    public var savedListVC: NewsListVC?
+    public var viewController: NewsListVC?
+    public var tipsVC: NewsListVC?
+    public var pointsVC: NewsListVC?
+    public var rewardsVC: NewsListVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()

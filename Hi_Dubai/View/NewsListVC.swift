@@ -38,6 +38,7 @@ class NewsListVC: UIViewController {
     var error: Error?
     
     //
+    var stopScroll = 80.0
     internal var containerViewMinY: Float = 0.0
     var lastContentOffset: CGFloat = 0.0
     internal var headerTitle: String = "POPULAR BUSINESS"
@@ -162,7 +163,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         if self.currentShimmerStatus == .applied {
             switch indexPath.row {
             case 0:
-                let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
+                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
 //                vc.isBackBtnShow = false
 //                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -186,6 +187,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: false)
             case 6:
                 let vc = SuperSheVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 7:
+                let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
@@ -279,6 +283,7 @@ extension NewsListVC{
 extension NewsListVC{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
         (self.parent as? SearchVC)?.enableScrolling(offset,isSearchHidden)
+//        (self.parent?.parent?.parent?.parent as? HomeVCC)?.enableScrolling(offset,isSearchHidden)
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
@@ -291,7 +296,6 @@ extension NewsListVC{
         }
         
         let offsetY = scroll.contentOffset.y
-        var stopScroll: CGFloat = 80.0
         
         if UIDevice.current.hasNotch{
             stopScroll += 10.0

@@ -3,14 +3,14 @@
 <plist version="1.0">
 <array>
 	<string>Foundation</string>
+	<string>GoogleMaps</string>
 	<string>SwiftyJSON</string>
 	<string>objc</string>
-	<string>GoogleMaps</string>
 	<string>Dispatch</string>
 	<string>CoreGraphics</string>
 	<string>ParallaxHeader</string>
-	<string>AVFoundation</string>
 	<string>MaterialShowcase</string>
+	<string>AVFoundation</string>
 	<string>Alamofire</string>
 	<string>libkern</string>
 	<string>FoundationNetworking</string>
@@ -19,12 +19,12 @@
 	<string>UIKit</string>
 	<string>Combine</string>
 	<string>ObjectiveC</string>
-	<string>SkeletonView</string>
-	<string>UserNotifications</string>
 	<string>CoreLocation</string>
+	<string>UserNotifications</string>
+	<string>SkeletonView</string>
 	<string>DataCache</string>
-	<string>Parchment</string>
 	<string>dispatch</string>
+	<string>Parchment</string>
 	<string>CoreFoundation</string>
 	<string>MXParallaxHeader</string>
 	<string>AVKit</string>

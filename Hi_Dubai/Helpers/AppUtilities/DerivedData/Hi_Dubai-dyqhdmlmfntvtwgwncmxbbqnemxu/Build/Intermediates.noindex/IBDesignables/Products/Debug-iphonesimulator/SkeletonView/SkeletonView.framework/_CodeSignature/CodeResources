@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SkeletonView-Swift.h</key>
 		<data>
-		yxvYldGzojnyqTmyDDeLsOSgiFc=
+		XoEX04WE3tmeEVCyt2zTS003Gs4=
 		</data>
 		<key>Headers/SkeletonView-umbrella.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hhz9+AiHaixLIdwFwlFIn3BcJKA=
+		YOPlSaPTbwWZjnBstULnyFqIZ00=
 		</data>
-		<key>Modules/SkeletonView.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/SkeletonView.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		YFIWbqlwsZdJXvYbiWjXdII9jYg=
+		Oh5PljLsjVEtSl55+oTQqkHmyWw=
 		</data>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
 		FSPnLbho3G+LL9smI3XgVOqBIQ4=
 		</data>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ynjymVJ+uW8tjN1vX+DacnwFkAA=
+		skmHfPJa0u46OvLlc8pfIXMxOUY=
 		</data>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DSF6jCRBK6p9ivH4q51/e3u6oqY=
+		e2aTu9pvLAaOckbm9jFppEdZs50=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+HsTAT3Y3O4kV+hcAfEYtH2RcHvETQ4bhknzP+97DAk=
+			eqyIoNYREFxoKQkF9cxZWuFz6HLh1vJh1Ct+Bwjpam4=
 			</data>
 		</dict>
 		<key>Headers/SkeletonView-umbrella.h</key>
@@ -53,32 +53,32 @@
 			VPKxBIUpEbSLV6fCaBbL7Spt4rRG8rFJDzQrd8XyRdQ=
 			</data>
 		</dict>
-		<key>Modules/SkeletonView.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/SkeletonView.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IOoP09CEKHsSUSJ0dQwqVpj2LO9zmEXWUvfIZjFhM2k=
+			IKs4obwSCv4aH/TDH6OJxYsAQldOAOAFm0XHngNBsls=
 			</data>
 		</dict>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
 			</data>
 		</dict>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			M4wJrJ2j3SnmQQz5Hus01MAqxthFIazw+rGLxbwhkGA=
+			MGs3w04H5xOVLnIyRlC1ZZdWx8T/XRyxxdp3+vlKoj0=
 			</data>
 		</dict>
-		<key>Modules/SkeletonView.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ej84deeofz2imkCEXPxb/RB+1m9iuSyw/84nuKY639c=
+			JMxA+whSUnswzYiFX/8WPnIzQ4KY4u7l8Ty8fnKr/YI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

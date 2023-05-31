@@ -10,14 +10,5 @@
       'name': "module.modulemap",
       'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Parchment.build/unextended-module.modulemap",
     }]
-    },
-    {
-    'type': 'directory',
-    'name': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Products/Debug-iphonesimulator/Parchment/Parchment.framework/Headers"
-    'contents': [{
-      'type': 'file',
-      'name': "Parchment-Swift.h",
-      'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/Parchment.build/unextended-interface-header.h",
-    }]
-    }]
+  }]
 }

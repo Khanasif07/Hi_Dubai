@@ -20,7 +20,8 @@ class StatsVC: UIViewController, EmptyStateViewDelegate {
     //MARK: - IBOUTLETS
     //==================
     @IBOutlet weak var mainTableView: UITableView!
-    
+    internal var containerViewMinY: Float = 0.0
+    var lastContentOffset: CGFloat = 0.0
     var emptyViewPersonal: EmptyView?
      var artistSymbol: String = "ARIG"
     lazy var viewModel = {
@@ -40,7 +41,7 @@ class StatsVC: UIViewController, EmptyStateViewDelegate {
     
     private func initialSetUp() {
         self.tableViewSetUp()
-//        self.footerViewSetUp()
+        self.footerViewSetUp()
         self.registerXib()
         self.fetchAPIData()
     }
@@ -161,3 +162,39 @@ extension StatsVC{
         emptyViewPersonal?.hide()
     }
 }
+
+
+extension StatsVC{
+    func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
+        (self.parent as? HomeViewController)?.enableScrolling(offset,isSearchHidden)
+    }
+    
+    func scrollViewDidScroll(_ scroll: UIScrollView) {
+        var scrollDirection: ScrollDirection
+        
+        if lastContentOffset > scroll.contentOffset.y {
+            scrollDirection = .down
+        } else {
+            scrollDirection = .up
+        }
+        
+        let offsetY = scroll.contentOffset.y
+        var stopScroll: CGFloat = 170.0
+        
+        if UIDevice.current.hasNotch{
+            stopScroll += 10.0
+        }
+        lastContentOffset = scroll.contentOffset.y
+        
+        if scrollDirection == .up {
+            if offsetY < stopScroll {
+                enableGlobalScrolling(offsetY)
+            } else {
+                enableGlobalScrolling(stopScroll,false)
+            }
+        } else if (scrollDirection == .down) && (offsetY < stopScroll) {
+            enableGlobalScrolling(offsetY)
+        }
+    }
+}
+

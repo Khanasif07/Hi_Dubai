@@ -39,7 +39,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9Q-B7-FbP" customClass="GradientView" customModule="CelebrityTradingApp" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9Q-B7-FbP" customClass="GradientView" customModule="Hi_Dubai" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -270,7 +270,7 @@
                                 <constraint firstAttribute="height" constant="33" id="ULA-hA-FkZ"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pz5-8O-QEz">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pz5-8O-QEz">
                             <rect key="frame" x="0.0" y="325" width="375" height="0.0"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
@@ -333,6 +333,7 @@
                 <outlet property="bottomAnimationHC" destination="uHE-kv-m2y" id="WkF-sc-KQ8"/>
                 <outlet property="mainImgBackView" destination="T9Q-B7-FbP" id="NbO-au-JDV"/>
                 <outlet property="mainImgView" destination="IY8-e9-zYz" id="Hio-kr-bEe"/>
+                <outlet property="mainStackView" destination="7Ma-vM-456" id="ipO-aC-V54"/>
                 <outlet property="watchIconView" destination="Rda-g1-Apn" id="hkJ-od-cbV"/>
                 <outletCollection property="detailImgView" destination="ya0-vo-FrD" collectionClass="NSMutableArray" id="IJ4-nQ-gVU"/>
                 <outletCollection property="detailImgView" destination="BvF-RB-OjT" collectionClass="NSMutableArray" id="bo7-Zg-Ego"/>

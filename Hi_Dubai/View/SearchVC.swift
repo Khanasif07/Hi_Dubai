@@ -54,6 +54,23 @@ class SearchVC: BaseVC{
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows.first
+            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+            print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
+            print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
+            print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")
+//            scrollViewTopDistance.constant = window?.safeAreaInsets.top ?? 0.0
+//            gradientTopDistance.constant = -((window?.safeAreaInsets.top) ?? 0.0)
+//            gradient_MIN_HEIGHT = 64 + (window?.safeAreaInsets.top ?? 0.0)
+            gradient_MAX_HEIGHT = 90 + (window?.safeAreaInsets.top ?? 0.0)
+            baseViewHeight.constant = screen_height - (window?.safeAreaInsets.top ?? 0.0)
+        }
+       
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if #available(iOS 11.0, *) {
@@ -188,6 +205,7 @@ class SearchVC: BaseVC{
                         self.searchTxtFld.isHidden = isSearchHidden
                         self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
                         isProcess = false
+                        self.view.layoutIfNeeded()
                     }
                 }
             }else{
@@ -199,6 +217,7 @@ class SearchVC: BaseVC{
                         self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
                         self.searchTxtFld.isHidden = isSearchHidden
                         isProcess = false
+                        self.view.layoutIfNeeded()
                     }
                 }
             }

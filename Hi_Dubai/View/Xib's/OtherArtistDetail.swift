@@ -14,13 +14,10 @@ class OtherArtistDetail: UIView {
   
     //MARK:- IBOUTLETS
     //==================
-    
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-   
-    
-    
-    
+
     override func setNeedsLayout() {
         super.setNeedsLayout()
     }
@@ -45,8 +42,12 @@ class OtherArtistDetail: UIView {
     
     private func initialSetUp() {
 //        self.headerImgSetUp()
+//        let vc = BaseMyProfileTabsViewController.instantiate(fromAppStoryboard: .Main)
+//        vc.view.frame = self.bounds
+//        self.addSubview(vc.view)
+//        vc.didMove(toParent: self)
+//        self.addChild(vc)
+//        addChild(vc)
     }
-    
 
-    
 }

@@ -2,6 +2,7 @@
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Model/News.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/MainDetailsTableViewController.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/BaseVC/BaseNestedTabViewController.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Model/VideoModel.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/AppUserDefaults.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/BaseVC/BaseVC.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/BaseBusinessTabViewController.swift
@@ -42,6 +43,7 @@
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppHelpers/AppGlobals.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/ImageCache/ImageCache.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/SuperYourHomeVM.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/SwiftUIView/VideoListView.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/AppRouter.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/ImageCache/ImageLoader.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/SuperYouHomeVC+Delegates.swift
@@ -51,12 +53,15 @@
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppHelpers/UserTagLabel.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppHelpers/UpdatedTopNavigationBar.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/AppFonts.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/HomeVCC.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/AppDelegate.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/SwiftUIView/VideoListItemView.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/NewsListVC+Transition.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/HomeVC.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB\'S/SuperViewCardTableViewCell.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/PartnersViewController.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/BaseVC/StatsVC.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/HomeViewController.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/Xib\'s/NewsDetailTableCell.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/CustomAnimator/Animator.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/Xib\'s/PartnerCollectionCell.swift
@@ -65,6 +70,7 @@
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/ViewModel/NewsDetailViewModel.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/NewsDetailVC.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/SuperYouHomeModel.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/VideoPlayerhelper/VideoPlayerHelper.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/SuperYouHomeVC.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/Xib\'s/LoadingView.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/SuperSheVC.swift
@@ -73,3 +79,4 @@
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/Helpers/BaseVC/BaseNestedScrollViewController.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/View/Xib\'s/OtherArtistDetail.swift
 /Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/SceneDelegate.swift
+/Users/asif/Documents/Old\ Projects/Hi_Dubai/Hi_Dubai/SwiftUIView/VideoPlayerView.swift

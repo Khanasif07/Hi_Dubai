@@ -14,11 +14,7 @@ fileprivate var currentSliderWidth: CGFloat = 0.0
 
 class SuperSheVC: BaseVC ,VCConfigurator{
     
-//    func configureWithParameters(param: (UserModel)) {
-//        self.userModel  = param
-//        self.comingFrom = .otherUserProfile
-//    }
-    
+
     enum ComingFromProfile {
         case otherUserProfile, userProfile
     }
@@ -37,9 +33,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     private var isMaptap: Bool = true
     private var isZoomLevelMax: Bool = false
     private var userCount:Int? = 0
-//    private var userNewPostion: CLLocationCoordinate2D?
-//    private var deviceLocation: CLLocationCoordinate2D?
-//    internal var viewModel = SuperSheVM()
+
     internal var isBottomSheetOpen: Bool = false
     private var placesView: PlacesAndSuperShesView?
     private var supershesView: PlacesAndSuperShesView?
@@ -68,18 +62,11 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     //    private var isTabBarHidden: Bool = false
     
     //Map
-//    private var kCameraLatitude: Double = AppUserDefaults.value(forKey: .initialLat).double ?? 0.0
-//    private var kCameraLongitude: Double = AppUserDefaults.value(forKey: .initialLong).double ?? 0.0
-//    private var beforeUpdatingLocationData: (lat: Double, long: Double) = (0.0,0.0)
-//    private var locationManager = CLLocationManager()
+
     private var isSettingNewLoc: Bool = false
     var clearMap: Bool = true
-//    private var gmsMarker: GMSMarker?
-//    private var gmsMarkerforUser: GMSMarker?
-//    private var userNewLocMarkerView: MarkerIcon?
     private var isDistanceFromFlg: Bool = false
     private var deviceLocationDetail: String = ""
-//    private var locationModel : LocationModel?
     var comeBackFromOtherUserProfile : Bool = false
     var isCameFromSearchPlace: Bool = true
     
@@ -412,19 +399,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     
     ///Call to close Bottom sheet
     internal func closeBottomSheet(withAnimation: Bool = true, duration: TimeInterval = 0.5) {
-        
-        //        if withAnimation {
-        //            self.tabBarController?.tabBar.isHidden = false
-        //            self.edgesForExtendedLayout = []
-        //            self.extendedLayoutIncludesOpaqueBars = false
-        //            self.view.setNeedsDisplay()
-        //            self.view.layoutIfNeeded()
-        //        }
-        //        stopAllSessions()
-//        stopSpecificSession(url: .userSearch)
-//        self.supershesView?.clearSuperSheViewData()
-//        self.placesView?.clearPlaceViewData()
-        
         self.searchTextField.text = ""
         self.searchTextField.resignFirstResponder()
         self.textFieldCancelButton.isHidden = true

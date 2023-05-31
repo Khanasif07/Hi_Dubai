@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Parchment-Swift.h</key>
 		<data>
-		EIzgLGcbNypo4QnvnAfBrHUtp7E=
+		NjgmocZA+uDWAx4fW3vSrR83zy8=
 		</data>
 		<key>Headers/Parchment-umbrella.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		UNBbC2KwdCzztoWeeuLCFTN26/I=
+		u+WS3W8cHe5c87QikT+aOdauZx4=
 		</data>
-		<key>Modules/Parchment.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/Parchment.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		/eicVOy+Z7Wg/Fjpfg3+zrmwjkk=
+		1ZJzPQyGcs/Dtf/7E2KG4PUo7Hk=
 		</data>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
 		FSPnLbho3G+LL9smI3XgVOqBIQ4=
 		</data>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		qbJzTRGd9fo8n/auE5HGKUUNG/I=
+		HqlaqmPcfcEtC5m+9tJd9EvRX5I=
 		</data>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		b3jWJZIJRCurXhmEenO/lGiQuFA=
+		XLld6mkZd/tkluldmuwgVtGJXT0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cRkL91jMX3lCP36zjXUvixpjvE5L15iODdKXdw9PmDs=
+			+RMtRrGZ7baei+3lWrOKoiSfs6iNxZS/tOlx0Mg9z60=
 			</data>
 		</dict>
 		<key>Headers/Parchment-umbrella.h</key>
@@ -53,32 +53,32 @@
 			uYJPt0kRD1Rl7TveBNv9MLl4q8gU8bpsJ+SQF7beWkI=
 			</data>
 		</dict>
-		<key>Modules/Parchment.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
+		<key>Modules/Parchment.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YN6S/lS2f/gj/SPDi2izlHSc7Vs1tVXGXIapPuMB05I=
+			iO5xNiioBCWNkrPBor+5CSBtyWRVwz7iPiy3pm7ZZH0=
 			</data>
 		</dict>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
 			</data>
 		</dict>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ANVJmDX+QsDofyVl7bj4R31XA/qVNL8NAZK0v85ljiE=
+			nSQcqrfK/c5A0m7MAjMJ1ejopPr3x8No2GURrj9QBMQ=
 			</data>
 		</dict>
-		<key>Modules/Parchment.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Io5e4obGKrCF3h8zcNYDIMLkOIkrOSQ3Lqvsw7opLag=
+			JpXMZJh/GmLqoKFFodUTpNYMZX28bhLcG2c8yob8cjk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

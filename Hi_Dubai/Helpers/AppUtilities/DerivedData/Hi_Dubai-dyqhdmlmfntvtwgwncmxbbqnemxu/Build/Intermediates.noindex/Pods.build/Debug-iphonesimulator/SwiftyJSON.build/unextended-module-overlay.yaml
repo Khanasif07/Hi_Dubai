@@ -10,14 +10,5 @@
       'name': "module.modulemap",
       'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SwiftyJSON.build/unextended-module.modulemap",
     }]
-    },
-    {
-    'type': 'directory',
-    'name': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework/Headers"
-    'contents': [{
-      'type': 'file',
-      'name': "SwiftyJSON-Swift.h",
-      'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/SwiftyJSON.build/unextended-interface-header.h",
-    }]
-    }]
+  }]
 }

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SwiftyJSON-Swift.h</key>
 		<data>
-		UaNI3obSzuAPkZZI7/QzWaCXYaQ=
+		//nA4d71ienM8PNEf85sGa2+mRM=
 		</data>
 		<key>Headers/SwiftyJSON-umbrella.h</key>
 		<data>
@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1TKspYsOuQDjJ+hDqLoSbsAI29A=
+		aZ1Mym23pMmzyHM10tR/ZOfoD8o=
 		</data>
 		<key>Modules/SwiftyJSON.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		+XLl+nELzzB31J1+lltPmaCijxA=
+		qM0n6pwu+lgsDnehqlVl0wsdZcI=
 		</data>
 		<key>Modules/SwiftyJSON.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/SwiftyJSON.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		e+jlEu+hbgmZLBaU5jm9NcOnrWY=
+		wRXGtfVVA9Iok+4NWSIiWs0s7uQ=
 		</data>
 		<key>Modules/SwiftyJSON.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ZPHJlpTTjjo6C6q/mwaaJcco23E=
+		YV1aSSsy6h/Bf0xUCCHaU2bcvKs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fkC5ut0evf5jGPjORca75zv68Vs3y02OFyR9gguUk2U=
+			5jKgwinZBIuHwShmAtjv6T7s8Sy6kk0cb62IJ1tYry4=
 			</data>
 		</dict>
 		<key>Headers/SwiftyJSON-umbrella.h</key>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gELfTlcuFPJZjuQ82fCqaLraVwcvp8jrEhnmHVOJSDg=
+			D9SecEC9HwTHfTRUdMiKFXUmkHoo656RtzO9s8gxTlE=
 			</data>
 		</dict>
 		<key>Modules/SwiftyJSON.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			67kz25Zpc8CiLxUFEzJJuX+hB6726Cl59gNWk2nIi3E=
+			8QsqmEcmzCLXtnKbuDzbcwPEgzb5Ul6JIk9p0anUhPI=
 			</data>
 		</dict>
 		<key>Modules/SwiftyJSON.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wM3JFawS8blVhnT0O/kuzDtxiMPRUu8jPl9ea4l9lOw=
+			NNMzNi6V1eNU4moHtPvaQVEOjGUHckBIebp4vcWLnxg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

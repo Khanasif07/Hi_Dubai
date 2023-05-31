@@ -35,7 +35,9 @@ class HotelResultVC: BaseVC {
     }()
     var emptyView: EmptyStateView? = EmptyStateView.instanciateFromNib()
     var emptyViewPersonal: EmptyView?
-    let topContentSpace: CGFloat = 96
+//    let topContentSpace: CGFloat = 96
+    let topContentSpace: CGFloat = 0
+    // header container height
     internal var selectedCell: NewsTableViewCell?
     private var indexPath: IndexPath?
     internal var currentShimmerStatus: ShimmerState = .toBeApply
@@ -71,25 +73,18 @@ class HotelResultVC: BaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.isViewDidAppear = true
-//        self.sta = UIColor.clear
         self.statusBarStyle = .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        // addCustomBackgroundBlurView()
-//        self.statusBarColor = AppColors.clear
         self.statusBarStyle = .lightContent
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
-//        self.statusBarColor = AppColors.clear
-        //        self.headerBlurView.removeFromSuperview()
-        //        self.statusBarBlurView.removeFromSuperview()
-        
     }
     
     override func viewDidLayoutSubviews() {

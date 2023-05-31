@@ -226,14 +226,7 @@ extension HomeVC : MXParallaxHeaderDelegate ,MXScrollViewDelegate {
             finalMaxValue = Int(maxValue * 100)
             isScrollingFirstTime = false
         }
-
-//        if minValue...maxValue ~= prallexProgress {
-//            let intValue =  finalMaxValue - Int(prallexProgress * 100)
-//            let newProgress: Float = (Float(1) - (Float(1.3)  * (Float(intValue) / 100)))
-////            self.currentProgressIntValue = intValue
-////            self.currentProgress = newProgress.toCGFloat
-//        }
-        //
+        
         fakeNavBar.alpha = (1.0 - prallexProgress)
         if prallexProgress  <= 0.05 {
             scrollToTop = true

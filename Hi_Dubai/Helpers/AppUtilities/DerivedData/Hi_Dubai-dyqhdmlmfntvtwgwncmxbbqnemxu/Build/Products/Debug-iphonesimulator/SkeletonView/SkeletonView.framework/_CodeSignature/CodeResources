@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/SkeletonView-Swift.h</key>
 		<data>
-		TVwR9S94raH8XzivW6nAYqLOS+Y=
+		XoEX04WE3tmeEVCyt2zTS003Gs4=
 		</data>
 		<key>Headers/SkeletonView-umbrella.h</key>
 		<data>
@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		hhz9+AiHaixLIdwFwlFIn3BcJKA=
+		YOPlSaPTbwWZjnBstULnyFqIZ00=
 		</data>
 		<key>Modules/SkeletonView.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		kTNmAQPTq4bI4mngBxnutV9dO7w=
+		Oh5PljLsjVEtSl55+oTQqkHmyWw=
 		</data>
 		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		2kiqIqz7uYrlnOeqSicOoCIEuko=
+		skmHfPJa0u46OvLlc8pfIXMxOUY=
 		</data>
 		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LYhOdD8A+EAq5n5Wr3rWsPXSsSY=
+		DBro+frH0d+bAo//tBCJwObDAw8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o28HvgYRPllTqzcRVoC4fTcNoMiQQ6O8nIKTkMLkS+Y=
+			eqyIoNYREFxoKQkF9cxZWuFz6HLh1vJh1Ct+Bwjpam4=
 			</data>
 		</dict>
 		<key>Headers/SkeletonView-umbrella.h</key>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MdpenSvDb7VS4aqx3vplmAgSkbUbs80JLsx07IZnqGM=
+			IKs4obwSCv4aH/TDH6OJxYsAQldOAOAFm0XHngNBsls=
 			</data>
 		</dict>
 		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1w8T51nOXoS/E7TdT13z8aR+StoDWFJUB8JzDenVRzY=
+			MGs3w04H5xOVLnIyRlC1ZZdWx8T/XRyxxdp3+vlKoj0=
 			</data>
 		</dict>
 		<key>Modules/SkeletonView.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xF7euS1iNxzIoB5Ql4QvnV0NieQQy+mz4PhJ0xTV7DM=
+			gucYpr+Yda8S5AN9OvQCSDMvV+E3tUf+PGpoyvGks2w=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

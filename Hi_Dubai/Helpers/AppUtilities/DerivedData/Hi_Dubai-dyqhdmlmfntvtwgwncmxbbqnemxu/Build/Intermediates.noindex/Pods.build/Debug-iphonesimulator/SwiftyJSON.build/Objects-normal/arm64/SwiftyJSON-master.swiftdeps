@@ -1,6 +1,6 @@
-version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
-options: "cef766fe0081ecd7201fe609d1761e51c82a9bec7433d980a794060490a2a7ce"
-build_start_time: [1685037922, 66587000]
-build_end_time: [1685037925, 628340000]
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)"
+options: "41caac9064fcc033d30d141dfb5e6638a2a3b32e6da289be26c8511e2b81073f"
+build_start_time: [1685517851, 258116960]
+build_end_time: [1685517855, 439954042]
 inputs:
-  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SwiftyJSON/Source/SwiftyJSON/SwiftyJSON.swift": [1684335781, 650769995]
+  "/Users/asif/Documents/Old Projects/Hi_Dubai/Pods/SwiftyJSON/Source/SwiftyJSON/SwiftyJSON.swift": [1684335781, 650769948]

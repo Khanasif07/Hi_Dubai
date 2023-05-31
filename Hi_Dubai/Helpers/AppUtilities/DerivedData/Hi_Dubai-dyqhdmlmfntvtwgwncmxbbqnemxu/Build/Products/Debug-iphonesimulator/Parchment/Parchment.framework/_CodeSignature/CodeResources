@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Parchment-Swift.h</key>
 		<data>
-		yxnwNFFqXsnMp4B+ZFUXVGI/eTg=
+		NjgmocZA+uDWAx4fW3vSrR83zy8=
 		</data>
 		<key>Headers/Parchment-umbrella.h</key>
 		<data>
@@ -14,11 +14,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		UNBbC2KwdCzztoWeeuLCFTN26/I=
+		u+WS3W8cHe5c87QikT+aOdauZx4=
 		</data>
 		<key>Modules/Parchment.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		8eDJyuZMyMV1jHrNbX8ig0mHRsE=
+		1ZJzPQyGcs/Dtf/7E2KG4PUo7Hk=
 		</data>
 		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		qzlwjiS2LxXHUJCQYbIIdeu5iQ8=
+		HqlaqmPcfcEtC5m+9tJd9EvRX5I=
 		</data>
 		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		s7EBWs0gL0WIv8xXrIYdW+91RmY=
+		RA56/hDr1DgWvFbDUeBP4GSdnY8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,7 +43,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iK4qVzzmLl5lOvLXrMvk9LZl8eHQ5w5PalpP5qwkmj8=
+			+RMtRrGZ7baei+3lWrOKoiSfs6iNxZS/tOlx0Mg9z60=
 			</data>
 		</dict>
 		<key>Headers/Parchment-umbrella.h</key>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TMlMq4OlLRrmdbNfakcx44T+MmVpy8KxnRlLOv/coCo=
+			iO5xNiioBCWNkrPBor+5CSBtyWRVwz7iPiy3pm7ZZH0=
 			</data>
 		</dict>
 		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -71,14 +71,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0c8oIWPv1NsIcr9hXtaDT6l7uWG81XrFe3z1JKH4zKc=
+			nSQcqrfK/c5A0m7MAjMJ1ejopPr3x8No2GURrj9QBMQ=
 			</data>
 		</dict>
 		<key>Modules/Parchment.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nHLoGm7s9dzNe1+QicN6iNR8eqWTWp6js9ewlFKt+TA=
+			HE/xFEqRPQ9NQmVaRis9bNR7ig7BgWxp9HkzYlr2Tq8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

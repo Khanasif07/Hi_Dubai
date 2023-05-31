@@ -26,6 +26,7 @@ class OtherArtistHeaderView: UIView {
     
     //MARK:- IBOUTLETS
     //==================
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet var detailBtn: [UIButton]!
     @IBOutlet weak var profileNameLbl: UILabel!
     @IBOutlet weak var mainImgBackView: GradientView!

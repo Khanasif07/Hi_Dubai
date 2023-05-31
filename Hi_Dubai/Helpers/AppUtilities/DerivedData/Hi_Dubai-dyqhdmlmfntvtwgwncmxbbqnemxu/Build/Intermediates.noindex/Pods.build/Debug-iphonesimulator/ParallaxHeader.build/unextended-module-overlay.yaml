@@ -10,14 +10,5 @@
       'name': "module.modulemap",
       'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/ParallaxHeader.build/unextended-module.modulemap",
     }]
-    },
-    {
-    'type': 'directory',
-    'name': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Products/Debug-iphonesimulator/ParallaxHeader/ParallaxHeader.framework/Headers"
-    'contents': [{
-      'type': 'file',
-      'name': "ParallaxHeader-Swift.h",
-      'external-contents': "/Users/asif/Documents/Old Projects/Hi_Dubai/Hi_Dubai/Helpers/AppUtilities/DerivedData/Hi_Dubai-dyqhdmlmfntvtwgwncmxbbqnemxu/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/ParallaxHeader.build/unextended-interface-header.h",
-    }]
-    }]
+  }]
 }
