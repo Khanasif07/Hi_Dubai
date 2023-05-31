@@ -18,7 +18,7 @@ class HomeVCC: BaseVC {
         
         let childView = UIHostingController(rootView: VideoListView())
         addChild(childView)
-        childView.view.frame = containerView.bounds
+        childView.view.frame = self.view.bounds
         containerView.addSubview(childView.view)
         childView.didMove(toParent: self)
     }

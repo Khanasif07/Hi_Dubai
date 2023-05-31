@@ -116,6 +116,16 @@
 		E0765C522A273A6200574230 /* ostrich.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E0765C482A273A6200574230 /* ostrich.mp4 */; };
 		E0765C532A273A6200574230 /* rhino.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E0765C492A273A6200574230 /* rhino.mp4 */; };
 		E0765C542A273A6200574230 /* zebra.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E0765C4A2A273A6200574230 /* zebra.mp4 */; };
+		E0765C562A274BFC00574230 /* AnimalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C552A274BFC00574230 /* AnimalDetailView.swift */; };
+		E0765C582A274C2900574230 /* HeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C572A274C2900574230 /* HeadingView.swift */; };
+		E0765C5A2A274CD300574230 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C592A274CD300574230 /* Animal.swift */; };
+		E0765C5C2A274D1400574230 /* InsetGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C5B2A274D1400574230 /* InsetGalleryView.swift */; };
+		E0765C5E2A274D3000574230 /* InsetFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C5D2A274D3000574230 /* InsetFactView.swift */; };
+		E0765C602A274D4D00574230 /* InsetMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C5F2A274D4D00574230 /* InsetMapView.swift */; };
+		E0765C622A274D6B00574230 /* ExternalWeblinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C612A274D6B00574230 /* ExternalWeblinkView.swift */; };
+		E0765C642A274DAB00574230 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C632A274DAB00574230 /* MapView.swift */; };
+		E0765C662A274DD900574230 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C652A274DD900574230 /* MapAnnotationView.swift */; };
+		E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C672A27630B00574230 /* AnimalListItemView.swift */; };
 		E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */; };
 		E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639672A1C092500DD4DE4 /* ImageCache.swift */; };
 		E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */; };
@@ -243,6 +253,16 @@
 		E0765C482A273A6200574230 /* ostrich.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ostrich.mp4; path = ../../../../../Desktop/ostrich.mp4; sourceTree = "<group>"; };
 		E0765C492A273A6200574230 /* rhino.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = rhino.mp4; path = ../../../../../Desktop/rhino.mp4; sourceTree = "<group>"; };
 		E0765C4A2A273A6200574230 /* zebra.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = zebra.mp4; path = ../../../../../Desktop/zebra.mp4; sourceTree = "<group>"; };
+		E0765C552A274BFC00574230 /* AnimalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalDetailView.swift; sourceTree = "<group>"; };
+		E0765C572A274C2900574230 /* HeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingView.swift; sourceTree = "<group>"; };
+		E0765C592A274CD300574230 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		E0765C5B2A274D1400574230 /* InsetGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetGalleryView.swift; sourceTree = "<group>"; };
+		E0765C5D2A274D3000574230 /* InsetFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetFactView.swift; sourceTree = "<group>"; };
+		E0765C5F2A274D4D00574230 /* InsetMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetMapView.swift; sourceTree = "<group>"; };
+		E0765C612A274D6B00574230 /* ExternalWeblinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalWeblinkView.swift; sourceTree = "<group>"; };
+		E0765C632A274DAB00574230 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E0765C652A274DD900574230 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		E0765C672A27630B00574230 /* AnimalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListItemView.swift; sourceTree = "<group>"; };
 		E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E0B639672A1C092500DD4DE4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -326,6 +346,7 @@
 			children = (
 				8470C58229974E890091A7C5 /* News.swift */,
 				E0765C1F2A272BF500574230 /* VideoModel.swift */,
+				E0765C592A274CD300574230 /* Animal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -553,6 +574,15 @@
 				E0765C192A272B4000574230 /* VideoListView.swift */,
 				E0765C1B2A272BA000574230 /* VideoListItemView.swift */,
 				E0765C1D2A272BC600574230 /* VideoPlayerView.swift */,
+				E0765C552A274BFC00574230 /* AnimalDetailView.swift */,
+				E0765C572A274C2900574230 /* HeadingView.swift */,
+				E0765C5B2A274D1400574230 /* InsetGalleryView.swift */,
+				E0765C5D2A274D3000574230 /* InsetFactView.swift */,
+				E0765C5F2A274D4D00574230 /* InsetMapView.swift */,
+				E0765C612A274D6B00574230 /* ExternalWeblinkView.swift */,
+				E0765C632A274DAB00574230 /* MapView.swift */,
+				E0765C652A274DD900574230 /* MapAnnotationView.swift */,
+				E0765C672A27630B00574230 /* AnimalListItemView.swift */,
 			);
 			path = SwiftUIView;
 			sourceTree = "<group>";
@@ -758,6 +788,7 @@
 				E0765C202A272BF500574230 /* VideoModel.swift in Sources */,
 				E00DED3B2A14BED700828D34 /* AppUserDefaults.swift in Sources */,
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
+				E0765C642A274DAB00574230 /* MapView.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
 				E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */,
@@ -770,6 +801,7 @@
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
 				E00DED352A14B96400828D34 /* Router.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
+				E0765C582A274C2900574230 /* HeadingView.swift in Sources */,
 				E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */,
 				E00DED632A15656600828D34 /* ApiKey.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,
@@ -788,10 +820,14 @@
 				E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */,
 				E00DED5B2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift in Sources */,
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
+				E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */,
 				E00DED2D2A138D2800828D34 /* NewSearchTextField.swift in Sources */,
 				E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */,
+				E0765C622A274D6B00574230 /* ExternalWeblinkView.swift in Sources */,
 				E00DED432A14E3A600828D34 /* MainTabBarViewController.swift in Sources */,
+				E0765C602A274D4D00574230 /* InsetMapView.swift in Sources */,
 				E00DED262A13440200828D34 /* Navigator.swift in Sources */,
+				E0765C5E2A274D3000574230 /* InsetFactView.swift in Sources */,
 				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
 				E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */,
@@ -809,6 +845,7 @@
 				E032EC3D2A24E70E00337D0E /* HomeVCC.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,
 				E0765C1C2A272BA000574230 /* VideoListItemView.swift in Sources */,
+				E0765C5C2A274D1400574230 /* InsetGalleryView.swift in Sources */,
 				8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */,
 				E0722B7E29FFDBC500BB9B6D /* HomeVC.swift in Sources */,
 				E00DED502A151DD700828D34 /* SuperViewCardTableViewCell.swift in Sources */,
@@ -819,6 +856,7 @@
 				8470C5B42997E1470091A7C5 /* Animator.swift in Sources */,
 				E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */,
 				E02CF3C42A044A4B00400F08 /* HotelFilterVC.swift in Sources */,
+				E0765C5A2A274CD300574230 /* Animal.swift in Sources */,
 				E00DED412A14C0E600828D34 /* AppButton.swift in Sources */,
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
@@ -828,11 +866,13 @@
 				E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */,
 				E00DED332A14B90400828D34 /* SuperSheVC.swift in Sources */,
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
+				E0765C562A274BFC00574230 /* AnimalDetailView.swift in Sources */,
 				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
 				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,
 				8470C56B29974D640091A7C5 /* SceneDelegate.swift in Sources */,
 				E0765C1E2A272BC600574230 /* VideoPlayerView.swift in Sources */,
+				E0765C662A274DD900574230 /* MapAnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
