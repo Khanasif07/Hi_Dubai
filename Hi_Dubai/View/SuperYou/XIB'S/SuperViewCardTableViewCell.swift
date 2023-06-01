@@ -138,7 +138,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     ///Get Classes cell
     private func getClassesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.liveNowDataArr[indexPath.row])
+        cell.populateCell(model: superYouData?.mostLovedArr[indexPath.row])
         cell.bgView1StackBtmCost.constant = 12.0
         return cell
     }

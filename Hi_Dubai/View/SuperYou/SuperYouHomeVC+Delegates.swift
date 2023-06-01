@@ -21,8 +21,6 @@ extension SuperYouHomeVC {
     /// Get Card Cell
     internal func getCardCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouCardData) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .cardCell
         cell.cardData = dataSource
         cell.configureCell()
@@ -41,8 +39,6 @@ extension SuperYouHomeVC {
     /// Get Live Now Cell
     internal func getLiveNowCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .liveClassesCell
         cell.superYouData = dataSource
         cell.configureCell()
@@ -56,9 +52,7 @@ extension SuperYouHomeVC {
         //
         if #available(iOS 16.0, *) {
             cell.configureCell()
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                InsetGalleryView(animal: animals[0])
-            })
+            cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
@@ -70,8 +64,6 @@ extension SuperYouHomeVC {
     /// Get Favourite Cell
     internal func getFavouriteCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .favoritesCell
         cell.superYouData = dataSource
         cell.configureCell()
@@ -85,9 +77,7 @@ extension SuperYouHomeVC {
         //
         if #available(iOS 16.0, *) {
             cell.configureCell()
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                InsetGalleryView(animal: animals[0])
-            })
+            cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
@@ -104,9 +94,7 @@ extension SuperYouHomeVC {
 //
         if #available(iOS 16.0, *) {
             cell.configureCell()
-            cell.contentConfiguration = UIHostingConfiguration(content: {
-                InsetGalleryView(animal: animals[0])
-            })
+            cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource

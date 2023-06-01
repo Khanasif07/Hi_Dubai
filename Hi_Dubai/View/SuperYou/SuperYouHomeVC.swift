@@ -60,7 +60,7 @@ class SuperYouHomeVC: BaseVC {
     
     override func initialSetup() {
         self.navBar.delegate = self
-        self.navBar.configureUI(isMainImage: true, isLeftButton: true, isRightButton: false)
+        self.navBar.configureUI(isMainImage: true, isLeftButton: false, isRightButton: false)
         self.navBar.delegate = self
         self.viewModel.delegate = self
         self.registerNibs()
