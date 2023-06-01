@@ -7,16 +7,13 @@
 
 
 import UIKit
-import AVKit
-import AVFoundation
-
-
+import SwiftUI
 
 class SuperYouHomeVC: BaseVC {
     
     //MARK:- Variables
-    
-    //    let localData = DataCache.instance.readObject(forKey: "SuperYouHome")
+    var loadingView: LoadingView?
+    @State var animals: [Animal] = Bundle.main.decode("animals.json")
     var statusBarHeight : CGFloat {
         return UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     }
@@ -86,11 +83,8 @@ class SuperYouHomeVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-        if self.shimmerStatus == .applied, self.viewModel.superYouData != nil {
-            if self.viewModel.superYouData != nil {
-                self.dataTableView.alpha = 1.0
-            }
-        }
+        self.dataTableView.alpha = 1.0
+        showLoader()
     }
     
     override func viewWillLayoutSubviews() {
@@ -113,10 +107,6 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //        if let cell = self.dataTableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? SuperYouVideoTableViewCell, self.viewModel.superYouData != nil {
-        //            cell.playVideo()
-        //        }
-        //
         if let superYouData = self.viewModel.superYouData, superYouData.titleData == nil {
             self.shimmerStatus = .toBeApply
         }
@@ -136,9 +126,35 @@ class SuperYouHomeVC: BaseVC {
         self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
         self.dataTableView.registerCell(with: NewsTableViewCell.self)
         self.dataTableView.registerHeaderFooter(with: TalksHomeTableHeader.self)
+        self.showTableHeaderView()
     }
     
-    func showShimmerAndHitApi() {
+    private func showLoader(){
+        if loadingView == nil{
+            loadingView?.removeFromSuperview()
+            //
+            loadingView = LoadingView(frame: view.frame, inView: view)
+            loadingView?.show()
+            //
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
+        })
+    }
+   
+    func showTableHeaderView() {
+        let containerView = UIView()
+        containerView.backgroundColor = AppColors.black
+        let childView = UIHostingController(rootView: TabGalleryView())
+        self.containerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screen_width, height: 245.0))
+        childView.view.frame = self.containerView.bounds
+        addChild(childView)
+        childView.view.backgroundColor = .clear
+        containerView.addSubview(childView.view)
+        childView.didMove(toParent: self)
+        self.dataTableView.tableHeaderView = containerView
+        self.dataTableView.tableHeaderView?.height = 245.0
     }
     
     

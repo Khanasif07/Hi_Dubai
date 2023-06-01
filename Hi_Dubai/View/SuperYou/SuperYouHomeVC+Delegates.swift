@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import SwiftUI
 
 //MARK:- TableViewCells
 extension SuperYouHomeVC {
@@ -32,8 +32,6 @@ extension SuperYouHomeVC {
     /// Get Upcoming Cell
     internal func getUpcomingCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .upcomingCell
         cell.superYouData = dataSource
         cell.configureCell()
@@ -54,11 +52,18 @@ extension SuperYouHomeVC {
     /// Get Most Loved Cell
     internal func getMostLovedClassesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .mostLovedClassesCell
-        cell.superYouData = dataSource
-        cell.configureCell()
+        //
+        if #available(iOS 16.0, *) {
+            cell.configureCell()
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                InsetGalleryView(animal: animals[0])
+            })
+        } else {
+            // Fallback on earlier versions
+            cell.superYouData = dataSource
+            cell.configureCell()
+        }
         return cell
     }
     
@@ -76,22 +81,38 @@ extension SuperYouHomeVC {
     /// Get NewSuperShes Cell
     internal func getNewSuperShesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .newSuperSheCell
-        cell.superYouData = dataSource
-        cell.configureCell()
+        //
+        if #available(iOS 16.0, *) {
+            cell.configureCell()
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                InsetGalleryView(animal: animals[0])
+            })
+        } else {
+            // Fallback on earlier versions
+            cell.superYouData = dataSource
+            cell.configureCell()
+        }
+        //
         return cell
     }
     
     /// Get Featured Cell
     internal func getFeaturedCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-//        cell.shimmerStatus = self.shimmerStatus
-//        cell.clipsToBounds = true
         cell.currentCell = .featuredCell
-        cell.superYouData = dataSource
-        cell.configureCell()
+//
+        if #available(iOS 16.0, *) {
+            cell.configureCell()
+            cell.contentConfiguration = UIHostingConfiguration(content: {
+                InsetGalleryView(animal: animals[0])
+            })
+        } else {
+            // Fallback on earlier versions
+            cell.superYouData = dataSource
+            cell.configureCell()
+        }
+//
         return cell
     }
     

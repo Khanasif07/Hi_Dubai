@@ -74,27 +74,22 @@ class SuperViewCardTableViewCell: UITableViewCell {
         
         switch self.currentCell {
         case .cardCell:
-//            self.cardCollectionViewHeightCons.isActive = false
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         case .featuredCell:
-//            self.cardCollectionViewHeightCons.isActive = false
-            self.cardCollectionView.isPagingEnabled = true
-            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
-            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
+            self.cardCollectionView.isPagingEnabled = false
+            self.pageControl.isHidden = true
+//            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
+//            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionViewHeightCons.isActive = false
 //            self.cardCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionViewHeightCons.constant = 440.0
-//            self.cardCollectionViewHeightCons.isActive = true
 //            self.cardCollectionView.collectionViewLayout = PinterestLayout()
         default:
-//            self.cardCollectionViewHeightCons.isActive = false
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         }
