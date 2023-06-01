@@ -127,11 +127,9 @@
 		E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */; };
 		E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639752A1DF44000DD4DE4 /* LoadingView.swift */; };
 		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
-		F1AE3FD62C61603A5A17976C /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77A58C2918CE9681109D3294 /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 		8470C56529974D640091A7C5 /* Hi_Dubai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hi_Dubai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8470C56829974D640091A7C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8470C56A29974D640091A7C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,8 +159,6 @@
 		8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsListVC+Transition.swift"; sourceTree = "<group>"; };
 		8470C5CC299A13D30091A7C5 /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
 		8470C5CD299A13D30091A7C5 /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
-		9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hi_Dubai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		972BB423FBE9BDBBD90AE070 /* Pods-Hi_Dubai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.release.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.release.xcconfig"; sourceTree = "<group>"; };
 		E00AE4E12A0A600B00A43133 /* BaseNestedScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNestedScrollViewController.swift; sourceTree = "<group>"; };
 		E00AE4E32A0A68C700A43133 /* MainDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailsTableViewController.swift; sourceTree = "<group>"; };
 		E00AE4E52A0A6A1800A43133 /* BaseBusinessTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBusinessTabViewController.swift; sourceTree = "<group>"; };
@@ -263,28 +259,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1AE3FD62C61603A5A17976C /* Pods_Hi_Dubai.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A1E478393F785EFA9A0E072 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9346700F1A5CD57BF039927A /* Pods_Hi_Dubai.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8470C55C29974D640091A7C5 = {
 			isa = PBXGroup;
 			children = (
 				8470C56729974D640091A7C5 /* Hi_Dubai */,
 				8470C56629974D640091A7C5 /* Products */,
 				CE4E57A0BE257C5BBC524F30 /* Pods */,
-				5A1E478393F785EFA9A0E072 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -496,8 +482,6 @@
 		CE4E57A0BE257C5BBC524F30 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				77A58C2918CE9681109D3294 /* Pods-Hi_Dubai.debug.xcconfig */,
-				972BB423FBE9BDBBD90AE070 /* Pods-Hi_Dubai.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -608,11 +592,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8470C57929974D660091A7C5 /* Build configuration list for PBXNativeTarget "Hi_Dubai" */;
 			buildPhases = (
-				C522F790B9142558162FC305 /* [CP] Check Pods Manifest.lock */,
 				8470C56129974D640091A7C5 /* Sources */,
 				8470C56229974D640091A7C5 /* Frameworks */,
 				8470C56329974D640091A7C5 /* Resources */,
-				215B767377D22C47CC2CB5F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -691,48 +673,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		215B767377D22C47CC2CB5F3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C522F790B9142558162FC305 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Hi_Dubai-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8470C56129974D640091A7C5 /* Sources */ = {
@@ -974,7 +914,6 @@
 		};
 		8470C57A29974D660091A7C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77A58C2918CE9681109D3294 /* Pods-Hi_Dubai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1009,7 +948,6 @@
 		};
 		8470C57B29974D660091A7C5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 972BB423FBE9BDBBD90AE070 /* Pods-Hi_Dubai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
