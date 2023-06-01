@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "186230F3-970A-4CAE-83BF-D875FDF9272E"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA1425EB-C396-48E9-A421-366E082B4C7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "getDataFromServer(requestType:endPoint:_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA1425EB-C396-48E9-A421-366E082B4C7B - 3d5a4d88c2dea42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hi_Dubai.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Documents/Old%20Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "2924">
+               </Location>
+               <Location
+                  uuid = "FA1425EB-C396-48E9-A421-366E082B4C7B - 8ccc6fcf178f5f37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Hi_Dubai.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Documents/Old%20Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "624">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BCCC14E2-F6E8-46B1-9E3C-27B378142706"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/Networking/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "getDataFromServer(requestType:endPoint:_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
