@@ -12,6 +12,9 @@ protocol NewsListViewModelDelegate: NSObject {
 }
 
 class NewsListViewModel{
+    
+    //will implement viewmodel by implementing depedency injection like SwiftUIInUICollectionViewAndUITableView-main project
+    //
     weak var delegate: NewsListViewModelDelegate?
     private (set) var newsData = [Record]()
     var error : Error?
