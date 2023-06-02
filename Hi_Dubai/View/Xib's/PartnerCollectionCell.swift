@@ -52,6 +52,7 @@ class PartnerCollectionCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        contentConfiguration = nil
         photo1.image = nil
         photo1.alpha = 0.0
         animator?.stopAnimation(true)

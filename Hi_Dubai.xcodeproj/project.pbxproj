@@ -127,6 +127,8 @@
 		E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */; };
 		E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639752A1DF44000DD4DE4 /* LoadingView.swift */; };
 		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
+		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
+		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -255,6 +257,8 @@
 		E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagLabel.swift; sourceTree = "<group>"; };
 		E0B639752A1DF44000DD4DE4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E0B639772A1DF45300DD4DE4 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
+		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,7 +401,9 @@
 				E00DED322A14B90400828D34 /* SuperSheVC.swift */,
 				E02BC79E2A220892004CB9B2 /* HomeViewController.swift */,
 				E032EC3C2A24E70E00337D0E /* HomeVCC.swift */,
+				E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
+				E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,6 +754,7 @@
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
 				E0765C642A274DAB00574230 /* MapView.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
+				E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
 				E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */,
 				E00DED5D2A155ED400828D34 /* HeaderScrollView.swift in Sources */,
@@ -798,6 +805,7 @@
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
 				E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */,
 				8470C58029974E340091A7C5 /* Enums.swift in Sources */,
+				E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */,
 				E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */,
 				E00DED5F2A155F3C00828D34 /* UpdatedTopNavigationBar.swift in Sources */,
 				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,

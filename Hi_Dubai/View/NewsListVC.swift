@@ -163,7 +163,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         if self.currentShimmerStatus == .applied {
             switch indexPath.row {
             case 0:
-                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
+                let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
 //                vc.isBackBtnShow = false
 //                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)

@@ -30,9 +30,9 @@ class NetworkManager{
         urlRequest.setValue(EndPoint.x_master_key.rawValue, forHTTPHeaderField: "X-MASTER-KEY")
         //
         let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.requestCachePolicy = .returnCacheDataDontLoad
-        sessionConfig.timeoutIntervalForRequest  = 0.0
-        sessionConfig.timeoutIntervalForResource = 0.0
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
         sessionConfig.urlCache = cache
         //
         //==URLCache==//

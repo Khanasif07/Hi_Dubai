@@ -71,7 +71,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     func configureCell() {
         self.cardCollectionViewTopCons.constant = 0.0
         self.cardCollectionViewBottomCons.constant = 0.0
-        
+        self.cardCollectionView.isHidden = false
         switch self.currentCell {
         case .cardCell:
             self.pageControl.isHidden = true
@@ -79,6 +79,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .featuredCell:
             self.cardCollectionView.isPagingEnabled = false
             self.pageControl.isHidden = true
+            self.cardCollectionView.isHidden = true
 //            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
 //            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
         case .categories:

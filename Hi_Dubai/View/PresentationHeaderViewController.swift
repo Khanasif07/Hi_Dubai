@@ -8,9 +8,8 @@
 import UIKit
 
 @objc class PresentationHeaderViewController: UIViewController {
-//    @objc var baseUserObj: WALIFUserProfileResource?
-//    @objc var tabVC: BaseGeneralProfileTabViewController?
-//    @objc var pagerVC: ProfileHeaderPagerViewController?
+
+    @objc var pagerVC: ProfileHeaderPagerViewController?
     
 //    @IBOutlet weak var verticalAlignmentConstraint: NSLayoutConstraint?
 //    @IBOutlet weak var tagLabel: UserTagLabel?

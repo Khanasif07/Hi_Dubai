@@ -94,7 +94,9 @@ extension SuperYouHomeVC {
 //
         if #available(iOS 16.0, *) {
             cell.configureCell()
-            cell.superYouData = dataSource
+            cell.contentConfiguration = UIHostingConfiguration {
+                InsetGalleryView(animal: animals.last!)
+            }
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource

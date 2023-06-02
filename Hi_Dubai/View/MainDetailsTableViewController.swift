@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 @objc class MainDetailsTableViewController: BaseNestedScrollViewController{
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var mainImgView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tabContainer: UIView!
