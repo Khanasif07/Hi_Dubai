@@ -12,6 +12,7 @@ import SwiftUI
 class SuperYouHomeVC: BaseVC {
     
     //MARK:- Variables
+    private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
     var statusBarHeight : CGFloat {
@@ -40,11 +41,13 @@ class SuperYouHomeVC: BaseVC {
     var checkFirstTime: Bool = true
     
     //MARK:- IBOutlets
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var searchTxtFld: NewSearchTextField!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navContainerView: HeaderScrollingView!
     @IBOutlet weak var headerViewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var dataTableViewTopConstraints: NSLayoutConstraint!
-    @IBOutlet weak var navBar: UpdatedTopNavigationBar!
+//    @IBOutlet weak var navBar: UpdatedTopNavigationBar!
     @IBOutlet weak var dataTableView: UITableView!
     @IBOutlet weak var statusBarHC: NSLayoutConstraint!
     
@@ -53,15 +56,18 @@ class SuperYouHomeVC: BaseVC {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         self.viewModel.superYouData?.delegate = self
+        searchTxtFld.delegate = self
+        searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
+        cancelBtn.isHidden = true
         //.....................................
 //        addStatusBarBackgroundView(viewController: self)
         self.dataTableView.refreshControl = refresher
     }
     
     override func initialSetup() {
-        self.navBar.delegate = self
-        self.navBar.configureUI(isMainImage: true, isLeftButton: false, isRightButton: false)
-        self.navBar.delegate = self
+//        self.navBar.delegate = self
+//        self.navBar.configureUI(isMainImage: true, isLeftButton: false, isRightButton: false)
+//        self.navBar.delegate = self
         self.viewModel.delegate = self
         self.registerNibs()
         self.dataTableView.delegate = self
@@ -90,20 +96,26 @@ class SuperYouHomeVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         statusBarHC.constant = statusBarHeight
-        //        setUpBtn()
+        self.placesView?.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkFirstTime = false
         self.dataTableView.reloadData()
+        self.addSeachTableView()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    
+   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -127,6 +139,24 @@ class SuperYouHomeVC: BaseVC {
         self.dataTableView.registerCell(with: NewsTableViewCell.self)
         self.dataTableView.registerHeaderFooter(with: TalksHomeTableHeader.self)
         self.showTableHeaderView()
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.pop()
+    }
+    
+    @IBAction func cancelSearch(_ sender: Any?) {
+        self.cancelBtn.isHidden = true
+        closeSearchingArea(true)
+        self.placesView?.isHidden = true
+        self.view.endEditing(true)
+    }
+    
+    private  func addSeachTableView(){
+        self.placesView?.removeFromSuperview()
+        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height)))
+        self.view.addSubview(self.placesView!)
+        self.placesView?.isHidden = true
     }
     
     private func showLoader(){
@@ -205,4 +235,39 @@ extension SuperYouHomeVC: UpdatedTopNavigationBarDelegate{
     func leftButtonAction() {
         self.pop()
     }
+}
+
+
+// MARK: - WalifSearchTextFieldDelegate
+extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+        self.placesView?.isHidden = false
+        self.cancelBtn.isHidden = false
+        closeSearchingArea(false)
+    }
+    
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+        closeSearchingArea(true)
+    }
+    
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        self.placesView?.isHidden = false
+        print(sender.text as Any)
+    }
+    
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        closeSearchingArea(true)
+        print(sender.text as Any)
+    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+            self.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.view.layoutIfNeeded()
+        } completion: { value in
+            self.searchTxtFld.cancelBtn.isHidden = isTrue
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }

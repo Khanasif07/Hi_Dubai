@@ -35,14 +35,22 @@
                                 <constraint firstAttribute="height" constant="25" id="KZY-IT-jMS"/>
                             </constraints>
                         </pageControl>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf4-Aa-Q4K" customClass="EmptyView" customModule="Hi_Dubai" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="Wf4-Aa-Q4K" firstAttribute="leading" secondItem="U5q-2M-N7X" secondAttribute="leading" id="2Mm-eI-OTJ"/>
                         <constraint firstAttribute="trailing" secondItem="8NL-qD-AIS" secondAttribute="trailing" constant="100" id="BM2-Jc-T3P"/>
+                        <constraint firstAttribute="bottom" secondItem="Wf4-Aa-Q4K" secondAttribute="bottom" id="EII-k1-MTG"/>
                         <constraint firstAttribute="bottom" secondItem="8NL-qD-AIS" secondAttribute="bottom" id="GBs-7R-UvD"/>
+                        <constraint firstItem="Wf4-Aa-Q4K" firstAttribute="top" secondItem="U5q-2M-N7X" secondAttribute="top" id="M3x-Lg-Mco"/>
                         <constraint firstItem="oty-Dq-i5G" firstAttribute="leading" secondItem="U5q-2M-N7X" secondAttribute="leading" id="d11-1C-KBg"/>
                         <constraint firstItem="8NL-qD-AIS" firstAttribute="leading" secondItem="U5q-2M-N7X" secondAttribute="leading" constant="100" id="ftR-aw-tUN"/>
                         <constraint firstAttribute="bottom" secondItem="oty-Dq-i5G" secondAttribute="bottom" id="gfR-0g-WSY"/>
+                        <constraint firstAttribute="trailing" secondItem="Wf4-Aa-Q4K" secondAttribute="trailing" id="hJI-cd-hzW"/>
                         <constraint firstItem="oty-Dq-i5G" firstAttribute="top" secondItem="U5q-2M-N7X" secondAttribute="top" id="hMs-k8-66V"/>
                         <constraint firstAttribute="trailing" secondItem="oty-Dq-i5G" secondAttribute="trailing" id="jfU-c8-0Zb"/>
                     </constraints>
@@ -61,6 +69,7 @@
                 <outlet property="cardCollectionView" destination="oty-Dq-i5G" id="UeY-2g-OqW"/>
                 <outlet property="cardCollectionViewBottomCons" destination="gfR-0g-WSY" id="sWD-1B-6Wk"/>
                 <outlet property="cardCollectionViewTopCons" destination="hMs-k8-66V" id="U4f-gH-nAk"/>
+                <outlet property="emptyView" destination="Wf4-Aa-Q4K" id="WxO-Pd-6LT"/>
                 <outlet property="pageControl" destination="8NL-qD-AIS" id="avW-K5-wHA"/>
             </connections>
             <point key="canvasLocation" x="-416.03053435114504" y="-244.36619718309859"/>

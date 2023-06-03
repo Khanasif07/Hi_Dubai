@@ -982,12 +982,12 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="25" height="36"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfJ-Vl-zye">
-                                                                                <rect key="frame" x="5" y="0.0" width="15" height="36"/>
+                                                                                <rect key="frame" x="5" y="3.6666666666666643" width="15" height="29"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="15" id="yqJ-oX-0de"/>
                                                                                 </constraints>
                                                                                 <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" image="cancel_icon"/>
+                                                                                <buttonConfiguration key="configuration" style="plain" image="arrow_left"/>
                                                                             </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3438,17 +3438,61 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yum-Hi-lkK" customClass="HeaderScrollingView" customModule="Hi_Dubai" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Oy-PWC" customClass="UpdatedTopNavigationBar" customModule="Hi_Dubai" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-UW-QaJ">
+                                                <rect key="frame" x="5" y="4" width="355" height="36"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ueF-OZ-ZwH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="36"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KK2-5z-dOg">
+                                                                <rect key="frame" x="5" y="3.6666666666666643" width="15" height="29"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="15" id="7iK-w7-lKS"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="arrow_left"/>
+                                                                <connections>
+                                                                    <action selector="backAction:" destination="eXY-iG-tY6" eventType="touchUpInside" id="kpI-wX-Lb3"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstItem="KK2-5z-dOg" firstAttribute="centerY" secondItem="ueF-OZ-ZwH" secondAttribute="centerY" id="02b-JH-gCH"/>
+                                                            <constraint firstItem="KK2-5z-dOg" firstAttribute="centerX" secondItem="ueF-OZ-ZwH" secondAttribute="centerX" id="VRI-0Z-9lb"/>
+                                                            <constraint firstAttribute="width" constant="25" id="bWZ-nh-UOo"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-61-zyO" customClass="NewSearchTextField" customModule="Hi_Dubai">
+                                                        <rect key="frame" x="35" y="0.0" width="320" height="36"/>
+                                                    </view>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqF-vF-i5s">
+                                                        <rect key="frame" x="355" y="0.0" width="45" height="36"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="oh4-Bn-o30"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="cancelSearch:" destination="eXY-iG-tY6" eventType="touchUpInside" id="Ffq-B6-XTb"/>
+                                                            <action selector="cancelSearch:" destination="5Ib-Pj-S5U" eventType="touchUpInside" id="eOY-RR-nmK"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="gy0-dw-wxE"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="gc1-Oy-PWC" firstAttribute="leading" secondItem="Yum-Hi-lkK" secondAttribute="leading" id="M6J-AY-cBU"/>
-                                            <constraint firstAttribute="trailing" secondItem="gc1-Oy-PWC" secondAttribute="trailing" id="abz-Xf-d0f"/>
-                                            <constraint firstAttribute="bottom" secondItem="gc1-Oy-PWC" secondAttribute="bottom" id="lB4-vK-FBc"/>
-                                            <constraint firstItem="gc1-Oy-PWC" firstAttribute="top" secondItem="Yum-Hi-lkK" secondAttribute="top" id="t7M-xP-Won"/>
+                                            <constraint firstAttribute="trailing" secondItem="DpK-UW-QaJ" secondAttribute="trailing" constant="15" id="Spb-jS-rLa"/>
+                                            <constraint firstAttribute="bottom" secondItem="DpK-UW-QaJ" secondAttribute="bottom" constant="4" id="Ulr-9a-LI0"/>
+                                            <constraint firstItem="DpK-UW-QaJ" firstAttribute="top" secondItem="Yum-Hi-lkK" secondAttribute="top" constant="4" id="gb6-8C-m0J"/>
+                                            <constraint firstItem="DpK-UW-QaJ" firstAttribute="leading" secondItem="Yum-Hi-lkK" secondAttribute="leading" constant="5" id="tJ9-Jc-PRL"/>
                                             <constraint firstAttribute="height" constant="44" id="xh3-7Y-FfE"/>
                                         </constraints>
                                     </view>
@@ -3508,12 +3552,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="RRd-r6-PFP"/>
                     <connections>
+                        <outlet property="cancelBtn" destination="dqF-vF-i5s" id="TEa-z0-UT4"/>
                         <outlet property="containerView" destination="feL-uI-CcS" id="YXd-zO-rqq"/>
                         <outlet property="dataTableView" destination="aVC-3y-QNw" id="qtC-r5-FmG"/>
                         <outlet property="dataTableViewTopConstraints" destination="zfH-Sc-6ga" id="hvM-Wf-UYM"/>
                         <outlet property="headerViewTopConstraints" destination="BjZ-Mm-3hx" id="AdX-Pq-M3q"/>
-                        <outlet property="navBar" destination="gc1-Oy-PWC" id="acC-1w-sOi"/>
                         <outlet property="navContainerView" destination="Yum-Hi-lkK" id="ncW-IY-p8t"/>
+                        <outlet property="searchTxtFld" destination="KCc-61-zyO" id="kJz-Ia-1kP"/>
                         <outlet property="statusBarHC" destination="huO-hr-tnA" id="8W3-2x-7G0"/>
                     </connections>
                 </viewController>
@@ -3690,8 +3735,8 @@
         <image name="Back Icon" width="44" height="44"/>
         <image name="CancelLarge" width="44" height="44"/>
         <image name="add_follow_icon_white" width="20" height="17"/>
+        <image name="arrow_left" width="15" height="15"/>
         <image name="camera_icon_green" width="36" height="28"/>
-        <image name="cancel_icon" width="22" height="22"/>
         <image name="check_blue" width="35" height="35"/>
         <image name="down_arrow_blue" width="32" height="32"/>
         <image name="down_arrow_white" width="32" height="32"/>

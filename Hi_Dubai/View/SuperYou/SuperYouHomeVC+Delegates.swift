@@ -91,18 +91,19 @@ extension SuperYouHomeVC {
     internal func getFeaturedCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .featuredCell
+        
 //
         if #available(iOS 16.0, *) {
             cell.configureCell()
-            cell.contentConfiguration = UIHostingConfiguration {
-                InsetGalleryView(animal: animals.last!)
-            }
+            cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
             cell.configureCell()
         }
 //
+        cell.emptyView.isHidden = !dataSource.featuredDataArr.isEmpty
+        cell.pageControl.isHidden = dataSource.featuredDataArr.isEmpty
         return cell
     }
     

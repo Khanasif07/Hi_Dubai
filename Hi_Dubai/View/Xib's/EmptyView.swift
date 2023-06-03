@@ -24,8 +24,10 @@ class EmptyView : UIView{
     var tempView: UIView?
     private var learnHowAction:(()->Void)?
 
-     required init?(coder: NSCoder){
+    required init?(coder: NSCoder){
         super.init(coder: coder)
+        self.loadFromnib()
+        self.xibSetup()
     }
 
     override init(frame: CGRect) {

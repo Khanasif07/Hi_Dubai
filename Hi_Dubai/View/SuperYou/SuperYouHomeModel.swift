@@ -54,7 +54,7 @@ class SuperYouHomeModel {
                 self.mostLovedArr = result.record
                 self.upcomingDataArr = result.record
                 self.liveNowDataArr = result.record
-                self.featuredDataArr = result.record
+//                self.featuredDataArr = result.record
                 self.newSuperShesArr = result.record
                 self.categories =  result.record
                 self.pastLiveData = result.record

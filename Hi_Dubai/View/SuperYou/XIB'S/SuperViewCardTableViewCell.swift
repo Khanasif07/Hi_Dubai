@@ -21,7 +21,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     private var currentItem: Int = 0
     
     //MARK:- IBOutlets
-    @IBOutlet weak var cardCollectionViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var emptyView: EmptyView!
     @IBOutlet weak var cardCollectionView: UICollectionView!
     @IBOutlet weak var cardCollectionViewTopCons: NSLayoutConstraint!
     @IBOutlet weak var cardCollectionViewBottomCons: NSLayoutConstraint!
@@ -48,6 +48,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.registerCell(with: MenuItemCollectionCell.self)
         self.cardCollectionView.delegate = self
         self.cardCollectionView.dataSource = self
+        self.emptyView.isHidden = true
         self.flowLayoutSetup()
     }
     //MARK: - Two column only collectionViewFlowLayout
@@ -77,9 +78,8 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         case .featuredCell:
-            self.cardCollectionView.isPagingEnabled = false
-            self.pageControl.isHidden = true
-            self.cardCollectionView.isHidden = true
+            self.cardCollectionView.isPagingEnabled = true
+            self.pageControl.isHidden = false
 //            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
 //            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
         case .categories:
