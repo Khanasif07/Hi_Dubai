@@ -35,6 +35,11 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     //MARK:- LifeCycle
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.emptyView.isHidden = true
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.configureUI()
@@ -49,6 +54,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.delegate = self
         self.cardCollectionView.dataSource = self
         self.emptyView.isHidden = true
+        self.emptyView.delegate = self
         self.flowLayoutSetup()
     }
     //MARK: - Two column only collectionViewFlowLayout
@@ -558,4 +564,14 @@ class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
 
       return false
    }
+}
+
+
+extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
+    func loginAction(){
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+    }
+    func learnHowAction(){
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+    }
 }
