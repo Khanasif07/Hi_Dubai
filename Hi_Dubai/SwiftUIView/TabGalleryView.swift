@@ -15,7 +15,7 @@ struct TabGalleryView: View {
     TabView {
       ForEach(animals) { animal in
           GalleryView(animal: animal)
-              .padding(.horizontal, 7.5)
+              .padding(.horizontal, 5.0)
       }
     } //: TAB
     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
