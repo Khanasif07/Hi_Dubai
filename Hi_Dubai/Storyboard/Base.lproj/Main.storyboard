@@ -42,7 +42,7 @@
         <!--News-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="NewsListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NewsListVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NewsListVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,7 +300,7 @@
         <!--News DetailVC-->
         <scene sceneID="dhW-Rh-rEj">
             <objects>
-                <viewController storyboardIdentifier="NewsDetailVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tgh-WJ-pL5" customClass="NewsDetailVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsDetailVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tgh-WJ-pL5" customClass="NewsDetailVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GK2-pZ-QHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
         <!--StatsVC-->
         <scene sceneID="eLI-Rc-QV5">
             <objects>
-                <viewController storyboardIdentifier="StatsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pl8-nf-SdE" customClass="StatsVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pl8-nf-SdE" customClass="StatsVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3qM-jq-sbX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,7 +399,7 @@
         <!--HomeVC-->
         <scene sceneID="W6V-s6-51w">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BHC-i9-FOV" customClass="HomeVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BHC-i9-FOV" customClass="HomeVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5fL-c8-9Up">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -465,7 +465,7 @@
         <!--ExploreVC-->
         <scene sceneID="s1a-Sz-AYI">
             <objects>
-                <viewController storyboardIdentifier="ExploreVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t2Q-qh-5Hv" customClass="ExploreVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t2Q-qh-5Hv" customClass="ExploreVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FDj-qo-YIm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -643,7 +643,7 @@
         <!--SearchVC-->
         <scene sceneID="nlU-UA-ZWK">
             <objects>
-                <viewController storyboardIdentifier="SearchVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="88c-6y-4lO" customClass="SearchVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="88c-6y-4lO" customClass="SearchVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gck-XE-pmZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -826,7 +826,7 @@
                                                                     <constraint firstAttribute="height" constant="30" id="Lg9-Ln-Pvu"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0a-Ea-1TJ" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0a-Ea-1TJ" customClass="NewSearchTextField" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="40" width="355" height="36"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -947,7 +947,7 @@
         <!--Explore-->
         <scene sceneID="C8Y-xZ-M1J">
             <objects>
-                <viewController storyboardIdentifier="ExploreViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ib-Pj-S5U" customClass="ExploreViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ib-Pj-S5U" customClass="ExploreViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cHS-VR-xMf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1674,7 +1674,7 @@
         <!--Hotel FilterVC-->
         <scene sceneID="giJ-n5-uSG">
             <objects>
-                <viewController storyboardIdentifier="HotelFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qvp-RW-fZ3" customClass="HotelFilterVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotelFilterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Qvp-RW-fZ3" customClass="HotelFilterVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNq-oS-vca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1792,7 +1792,7 @@
         <!--Partners View Controller-->
         <scene sceneID="ifm-BE-d3O">
             <objects>
-                <viewController storyboardIdentifier="PartnersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mqt-WZ-tE8" customClass="PartnersViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PartnersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mqt-WZ-tE8" customClass="PartnersViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dt0-kx-7xw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1886,7 +1886,7 @@
         <!--Base Business Tab View Controller-->
         <scene sceneID="FkJ-ZL-blj">
             <objects>
-                <viewController storyboardIdentifier="BaseBusinessTabViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wun-2w-nJL" customClass="BaseBusinessTabViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseBusinessTabViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wun-2w-nJL" customClass="BaseBusinessTabViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s5y-iV-iQb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1946,7 +1946,7 @@
         <!--Base My Profile Tabs View Controller-->
         <scene sceneID="DPS-gB-keq">
             <objects>
-                <viewController storyboardIdentifier="BaseMyProfileTabsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xJO-SH-JUp" customClass="BaseMyProfileTabsViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseMyProfileTabsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xJO-SH-JUp" customClass="BaseMyProfileTabsViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="75O-0N-JLW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="478"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2006,7 +2006,7 @@
         <!--Main Details Table View Controller-->
         <scene sceneID="yQw-rd-iYW">
             <objects>
-                <viewController storyboardIdentifier="MainDetailsTableViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JhX-wS-H2n" customClass="MainDetailsTableViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainDetailsTableViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JhX-wS-H2n" customClass="MainDetailsTableViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fk5-hb-5b0">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2392,7 +2392,7 @@
         <!--Profile Header Pager View Controller-->
         <scene sceneID="7bq-sF-nUM">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="p5t-Sw-1HY" customClass="ProfileHeaderPagerViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="p5t-Sw-1HY" customClass="ProfileHeaderPagerViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PyE-6O-R5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3757" y="-956"/>
@@ -2400,7 +2400,7 @@
         <!--Presentation Header View Controller-->
         <scene sceneID="XlC-EH-ZVv">
             <objects>
-                <viewController storyboardIdentifier="PresentationHeaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7oJ-oW-EPS" customClass="PresentationHeaderViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PresentationHeaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7oJ-oW-EPS" customClass="PresentationHeaderViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xh0-gZ-tLx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2589,7 +2589,7 @@
         <!--User Info Header View Controller-->
         <scene sceneID="ACo-bh-Wdi">
             <objects>
-                <viewController storyboardIdentifier="UserInfoHeaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zch-bS-jRK" customClass="UserInfoHeaderViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoHeaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zch-bS-jRK" customClass="UserInfoHeaderViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jP4-dG-7qQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2849,12 +2849,12 @@
         <!--Hotel ResultVC-->
         <scene sceneID="pKq-nE-Ok2">
             <objects>
-                <viewController storyboardIdentifier="HotelResultVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NXJ-bF-fWz" customClass="HotelResultVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HotelResultVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NXJ-bF-fWz" customClass="HotelResultVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Kq-8M-aad">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ux-Tz-n9g" customClass="ATTableView" customModule="Hi_Dubai" customModuleProvider="target">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ux-Tz-n9g" customClass="ATTableView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="147" width="375" height="665"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3024,7 +3024,7 @@
                                             <constraint firstAttribute="height" constant="30" id="5wu-RA-3md"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TV-UM-7X9" customClass="ATDividerView" customModule="Hi_Dubai" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TV-UM-7X9" customClass="ATDividerView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="95.666666666666657" width="375" height="0.3333333333333286"/>
                                         <color key="backgroundColor" red="0.81960784310000001" green="0.81960784310000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -3073,7 +3073,7 @@
                                     <constraint firstAttribute="height" constant="47" id="niD-Sp-D7C"/>
                                 </constraints>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-K3-hMc" customClass="AppProgressView" customModule="Hi_Dubai" customModuleProvider="target">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i7J-K3-hMc" customClass="AppProgressView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="146" width="375" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="yOX-Qm-Bo1"/>
@@ -3121,7 +3121,7 @@
         <!--Super SheVC-->
         <scene sceneID="wcH-dE-lGf">
             <objects>
-                <viewController storyboardIdentifier="SuperSheVC" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7T-ha-SsZ" customClass="SuperSheVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuperSheVC" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7T-ha-SsZ" customClass="SuperSheVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jOC-09-TmE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3144,7 +3144,7 @@
                                     <constraint firstAttribute="width" constant="95" id="j8N-eF-DDY"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-Ay-7jK" customClass="AppButton" customModule="Hi_Dubai" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-Ay-7jK" customClass="AppButton" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                 <rect key="frame" x="102.66666666666669" y="640" width="170" height="44"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.035294117649999998" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -3427,7 +3427,7 @@
         <!--Super You HomeVC-->
         <scene sceneID="GIo-i5-T71">
             <objects>
-                <viewController storyboardIdentifier="SuperYouHomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eXY-iG-tY6" customClass="SuperYouHomeVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SuperYouHomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eXY-iG-tY6" customClass="SuperYouHomeVC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nlZ-sW-ePz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3435,7 +3435,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feL-uI-CcS">
                                 <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yum-Hi-lkK" customClass="HeaderScrollingView" customModule="Hi_Dubai" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yum-Hi-lkK" customClass="HeaderScrollingView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-UW-QaJ">
@@ -3586,7 +3586,7 @@
         <!--Home View Controller-->
         <scene sceneID="X2x-WT-yjw">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="64G-Ge-Ih3" customClass="HomeViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="64G-Ge-Ih3" customClass="HomeViewController" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nta-qs-mRc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3658,7 +3658,7 @@
         <!--HomeVCC-->
         <scene sceneID="mRU-wE-pgh">
             <objects>
-                <viewController storyboardIdentifier="HomeVCC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9ZV-31-nzG" customClass="HomeVCC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeVCC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9ZV-31-nzG" customClass="HomeVCC" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RXf-R8-P1V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3688,7 +3688,7 @@
         <!--Page View Controllers-->
         <scene sceneID="PGM-Z2-bb1">
             <objects>
-                <viewController storyboardIdentifier="PageViewControllers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6PB-2p-xT6" customClass="PageViewControllers" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewControllers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6PB-2p-xT6" customClass="PageViewControllers" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XCt-Vo-drb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

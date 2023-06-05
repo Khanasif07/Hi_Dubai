@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewSearchTextField" customModule="Hi_Dubai">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewSearchTextField" customModule="Hi_Dubai_Dev" customModuleProvider="target">
             <connections>
                 <outlet property="cancelBtn" destination="3sd-Fp-Fl5" id="6Bv-GO-8tZ"/>
                 <outlet property="crossBtnWidthConstant" destination="Hni-tv-WKt" id="SYD-ha-0N4"/>
@@ -28,7 +28,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-wm-E6o" customClass="RoundedView" customModule="Hi_Dubai" customModuleProvider="target">
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-wm-E6o" customClass="RoundedView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="olg-yL-CDM">

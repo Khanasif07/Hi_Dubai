@@ -62,7 +62,6 @@
 		E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */; };
 		E00DED412A14C0E600828D34 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED402A14C0E600828D34 /* AppButton.swift */; };
 		E00DED432A14E3A600828D34 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED422A14E3A600828D34 /* MainTabBarViewController.swift */; };
-		E00DED462A151B3700828D34 /* SuperYouHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */; };
 		E00DED4A2A151CD900828D34 /* SuperYouTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED482A151CD900828D34 /* SuperYouTitleTableViewCell.swift */; };
 		E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00DED492A151CD900828D34 /* SuperYouTitleTableViewCell.xib */; };
 		E00DED4D2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED4C2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift */; };
@@ -130,6 +129,7 @@
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
 		E0C442792A2DF51F0058C745 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C442782A2DF51F0058C745 /* Environment.swift */; };
+		E0C4427A2A2DF90B0058C745 /* SuperYouHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -769,6 +769,7 @@
 				E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */,
 				E0765C642A274DAB00574230 /* MapView.swift in Sources */,
 				E00AE4E62A0A6A1800A43133 /* BaseBusinessTabViewController.swift in Sources */,
+				E0C4427A2A2DF90B0058C745 /* SuperYouHomeVC.swift in Sources */,
 				E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */,
 				8470C57E29974DE30091A7C5 /* NetworkManager.swift in Sources */,
 				E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */,
@@ -845,7 +846,6 @@
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
 				E00DED592A15217D00828D34 /* SuperYouHomeModel.swift in Sources */,
 				E0765C2C2A272D5700574230 /* VideoPlayerHelper.swift in Sources */,
-				E00DED462A151B3700828D34 /* SuperYouHomeVC.swift in Sources */,
 				E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */,
 				E00DED332A14B90400828D34 /* SuperSheVC.swift in Sources */,
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
