@@ -3464,7 +3464,7 @@
                                                             <constraint firstAttribute="width" constant="25" id="bWZ-nh-UOo"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-61-zyO" customClass="NewSearchTextField" customModule="Hi_Dubai">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-61-zyO" customClass="NewSearchTextField" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="0.0" width="320" height="36"/>
                                                     </view>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqF-vF-i5s">
