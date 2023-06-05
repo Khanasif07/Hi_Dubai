@@ -18,7 +18,7 @@ private class EmptyPromise: Error { }
 
 public class ImageRepository: ImageRepositoryProtocol {
     public static let shared = ImageRepository()
-    let cache = URLCache.shared
+    let cache = CacheManager.shared.cache
    
     func getImage(imageURL: URL) -> Promise<UIImage> {
 

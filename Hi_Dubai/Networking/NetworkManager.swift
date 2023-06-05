@@ -13,13 +13,13 @@ extension Error {
 }
 class CacheManager {
     static let shared = CacheManager()
-    let cache: URLCache
+    var cache: URLCache
 
     private init() {
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
         let cacheDir = documentsDirectory.appendingPathComponent("cache")
-        cache = URLCache(memoryCapacity: 16 * 1024 * 1024, diskCapacity: 80 * 1024 * 1024, diskPath: cacheDir.path)
+        cache = URLCache(memoryCapacity: 16 * 1024 * 1024, diskCapacity: 80 * 1024 * 1024, directory: cacheDir)
     }
 }
 class NetworkManager{
