@@ -83,22 +83,33 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
         case .featuredCell:
             self.cardCollectionView.isPagingEnabled = true
             self.pageControl.isHidden = false
-//            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
-//            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
+            self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
+            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+//            self.cardCollectionView.collectionViewLayout = createLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionView.collectionViewLayout = PinterestLayout()
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
         }
         self.cardCollectionView.reloadData()
     }
@@ -287,11 +298,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return CGSize(width: ClassInitalLayoutConstants.mostLovedHomeCollCellWidth, height: collectionView.bounds.height)
             
         case .featuredCell:
-            return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
+            return CGSize(width: collectionView.bounds.width - 10, height: collectionView.bounds.height)
         case .categories:
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
-//        default:
-//            return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         }
     }
     
@@ -317,7 +326,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
-        case .featuredCell, .cardCell:
+        case .featuredCell:
+            return 10.0
+        case .cardCell:
             return 0.0
         default:
             return 10.0
@@ -334,7 +345,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             paddingInset = 9.0
             
         case .featuredCell:
-            paddingInset = 0.0
+            paddingInset = 5.0
             
         case .cardCell:
             paddingInset = 9.0
@@ -411,9 +422,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
 //    }
     
     func flowLayoutSetup() {
-//        if self.currentCell == .inviteCell {
-//            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//            itemWidth = UIScreen.main.bounds.width - 36
+//        if self.currentCell == .categories {
+//            let layout: UICollectionViewFlowLayout = LeftAlignedCollectionViewFlowLayout()
+////            itemWidth = UIScreen.main.bounds.width - 36
 //            layout.scrollDirection = .horizontal
 //            cardCollectionView.collectionViewLayout = layout
 //            cardCollectionView?.decelerationRate = UIScrollView.DecelerationRate.normal
