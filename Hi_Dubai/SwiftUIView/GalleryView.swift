@@ -10,15 +10,15 @@ import SwiftUI
 struct GalleryView: View {
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
     
-    var animal: Animal
+    var animal: Animal?
     var body: some View {
         ZStack(alignment: .bottomTrailing){
-            Image(animal.image)
+            Image(animal?.image ?? "")
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(12)
             
-            Text(animal.name)
+            Text(animal?.name ?? "")
                 .fontWeight(.heavy)
                 .background(.black)
                 .foregroundColor(.white)
