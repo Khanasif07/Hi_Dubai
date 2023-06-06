@@ -132,6 +132,10 @@
 		E0C4427A2A2DF90B0058C745 /* SuperYouHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */; };
 		E0C4427D2A2EF9270058C745 /* PhotoCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4427B2A2EF9270058C745 /* PhotoCollCell.swift */; };
 		E0C4427E2A2EF9270058C745 /* PhotoCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0C4427C2A2EF9270058C745 /* PhotoCollCell.xib */; };
+		E0C442812A2F22590058C745 /* HeaderViewCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4427F2A2F22590058C745 /* HeaderViewCV.swift */; };
+		E0C442822A2F22590058C745 /* HeaderViewCV.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0C442802A2F22590058C745 /* HeaderViewCV.xib */; };
+		E0C442852A2F22720058C745 /* FooterViewCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C442832A2F22720058C745 /* FooterViewCV.swift */; };
+		E0C442862A2F22720058C745 /* FooterViewCV.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0C442842A2F22720058C745 /* FooterViewCV.xib */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -268,6 +272,10 @@
 		E0C442782A2DF51F0058C745 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E0C4427B2A2EF9270058C745 /* PhotoCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollCell.swift; sourceTree = "<group>"; };
 		E0C4427C2A2EF9270058C745 /* PhotoCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollCell.xib; sourceTree = "<group>"; };
+		E0C4427F2A2F22590058C745 /* HeaderViewCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewCV.swift; sourceTree = "<group>"; };
+		E0C442802A2F22590058C745 /* HeaderViewCV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderViewCV.xib; sourceTree = "<group>"; };
+		E0C442832A2F22720058C745 /* FooterViewCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterViewCV.swift; sourceTree = "<group>"; };
+		E0C442842A2F22720058C745 /* FooterViewCV.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FooterViewCV.xib; sourceTree = "<group>"; };
 		F660DD2F1AD7E43131BACF07 /* Pods-Hi_Dubai.debug development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug development.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug development.xcconfig"; sourceTree = "<group>"; };
 		FA3A5DCB9710D5B4DD6D9AAD /* Pods-Hi_Dubai.release production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.release production.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.release production.xcconfig"; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -415,8 +423,8 @@
 				E02BC79E2A220892004CB9B2 /* HomeViewController.swift */,
 				E032EC3C2A24E70E00337D0E /* HomeVCC.swift */,
 				E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */,
-				8470C58E299753CF0091A7C5 /* Xib's */,
 				E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */,
+				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +458,10 @@
 				E00DED3D2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib */,
 				E0B639752A1DF44000DD4DE4 /* LoadingView.swift */,
 				E0B639772A1DF45300DD4DE4 /* LoadingView.xib */,
+				E0C4427F2A2F22590058C745 /* HeaderViewCV.swift */,
+				E0C442802A2F22590058C745 /* HeaderViewCV.xib */,
+				E0C442832A2F22720058C745 /* FooterViewCV.swift */,
+				E0C442842A2F22720058C745 /* FooterViewCV.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -697,7 +709,9 @@
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
 				E0C4427E2A2EF9270058C745 /* PhotoCollCell.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
+				E0C442862A2F22720058C745 /* FooterViewCV.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
+				E0C442822A2F22590058C745 /* HeaderViewCV.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
@@ -851,6 +865,7 @@
 				E0765C5A2A274CD300574230 /* Animal.swift in Sources */,
 				E00DED412A14C0E600828D34 /* AppButton.swift in Sources */,
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
+				E0C442852A2F22720058C745 /* FooterViewCV.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,
 				E00DED592A15217D00828D34 /* SuperYouHomeModel.swift in Sources */,
 				E0765C2C2A272D5700574230 /* VideoPlayerHelper.swift in Sources */,
@@ -860,6 +875,7 @@
 				E0765C562A274BFC00574230 /* AnimalDetailView.swift in Sources */,
 				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
 				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,
+				E0C442812A2F22590058C745 /* HeaderViewCV.swift in Sources */,
 				E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */,
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,
 				8470C56B29974D640091A7C5 /* SceneDelegate.swift in Sources */,

@@ -23,6 +23,10 @@ class PageViewControllers: BaseVC{
         self.setNavigationBarHidden = false
         self.collViewSetup()
     }
+    //MARK: - How to use SwiftUI as UIView in Storyboard
+    @IBSegueAction func embedSwiftUIView(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: GalleryView(animal: animals[0]))
+    }
     
     //MARK: - Function..
     //MARK: - Two column only collectionViewFlowLayout
@@ -40,13 +44,26 @@ class PageViewControllers: BaseVC{
         group.interItemSpacing = .fixed(spacing)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        //MARK: - Add Header..
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(67))
+        let headerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        //
+        //MARK: - Add Footer..
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(67))
+        let footerElement = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+        //
+        section.boundarySupplementaryItems = [headerElement,footerElement]
+       
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
     
     private func collViewSetup(){
+        mainCollView.contentInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 0.0, right: 0.0)
         mainCollView.registerCell(with: PhotoCollCell.self)
+        mainCollView.register(UINib(nibName: "HeaderViewCV", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderViewCV")
+        mainCollView.register(UINib(nibName: "FooterViewCV", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterViewCV")
         mainCollView.delegate = self
         mainCollView.dataSource = self
         mainCollView.collectionViewLayout = createLayout()
@@ -66,6 +83,34 @@ extension PageViewControllers: UICollectionViewDelegate,UICollectionViewDataSour
         //
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIHostingController(rootView: AnimalDetailView(animal: animals[indexPath.item]))
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       switch kind {
+       case UICollectionView.elementKindSectionHeader:
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderViewCV", for: indexPath)
+                return headerView
+        case UICollectionView.elementKindSectionFooter:
+                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterViewCV", for: indexPath)
+                return footerView
+         default:
+                assert(false, "Unexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.mainCollView.frame.width, height: 67)
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: self.mainCollView.frame.width, height: 67)
+    }
+    
     //MARK: - createLayout is using..
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let width = self.mainCollView.frame.width - 30.0
@@ -87,3 +132,5 @@ extension PageViewControllers: UICollectionViewDelegate,UICollectionViewDataSour
 //    }
 
 }
+
+
