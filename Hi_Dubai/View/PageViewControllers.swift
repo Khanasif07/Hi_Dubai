@@ -7,63 +7,84 @@
 
 import Foundation
 import UIKit
-
-class PageViewControllers: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    var pageController: UIPageViewController!
-    var controllers = [UIViewController]()
-
+import SwiftUI
+class PageViewControllers: BaseVC{
+    
+    //MARK: - IBOutlets..
+    @IBOutlet weak var mainCollView: UICollectionView!
+    
+    //MARK: - Properties..
+    @State var animals: [Animal] = Bundle.main.decode("animals.json")
+    
+    //MARK: - View Life Cycle..
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        pageController = UIPageViewController(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: nil)
-        pageController.dataSource = self
-        pageController.delegate = self
-
-        addChild(pageController)
-        view.addSubview(pageController.view)
-
-        let views = ["pageController": pageController.view] as [String: AnyObject]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
-
-        for _ in 1 ... 5 {
-            let vc = UIViewController()
-            vc.view.backgroundColor = randomColor()
-            controllers.append(vc)
-        }
-
-        pageController.setViewControllers([controllers[0]], direction: .forward, animated: false)
+        self.setNavigationBarClear = false
+        self.setNavigationBarHidden = false
+        self.collViewSetup()
     }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let index = controllers.firstIndex(of: viewController) {
-            if index > 0 {
-                return controllers[index - 1]
-            } else {
-                return nil
-            }
-        }
-
-        return nil
+    
+    //MARK: - Function..
+    //MARK: - Two column only collectionViewFlowLayout
+    func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        //MARK: - Height logic is here...(.fixed and .estimated)
+        let width = self.view.frame.width - 50.0
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .estimated(width/3))
+        //
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let spacing = CGFloat(10)
+        group.interItemSpacing = .fixed(spacing)
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let index = controllers.firstIndex(of: viewController) {
-            if index < controllers.count - 1 {
-                return controllers[index + 1]
-            } else {
-                return nil
-            }
-        }
-
-        return nil
+    
+    private func collViewSetup(){
+        mainCollView.registerCell(with: PhotoCollCell.self)
+        mainCollView.delegate = self
+        mainCollView.dataSource = self
+        mainCollView.collectionViewLayout = createLayout()
     }
+}
 
-    func randomCGFloat() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+//MARK: - Extension..
+extension PageViewControllers: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return animals.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = mainCollView.dequeueCell(with: PhotoCollCell.self, indexPath: indexPath)
+        //
+        cell.animal = animals[indexPath.item]
+        cell.embed(in: self)
+        //
+        return cell
+    }
+    //MARK: - createLayout is using..
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = self.mainCollView.frame.width - 30.0
+//        return CGSize(width: width / 3.0 , height: width / 3.0)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10.0
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 10.0
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        let paddingInset: CGFloat = 5.0
+//        return UIEdgeInsets(top: 0, left: paddingInset, bottom: 0, right: paddingInset)
+//    }
 
-    func randomColor() -> UIColor {
-        return UIColor(red: randomCGFloat(), green: randomCGFloat(), blue: randomCGFloat(), alpha: 1)
-    }
 }

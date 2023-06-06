@@ -130,6 +130,8 @@
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
 		E0C442792A2DF51F0058C745 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C442782A2DF51F0058C745 /* Environment.swift */; };
 		E0C4427A2A2DF90B0058C745 /* SuperYouHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DED452A151B3700828D34 /* SuperYouHomeVC.swift */; };
+		E0C4427D2A2EF9270058C745 /* PhotoCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C4427B2A2EF9270058C745 /* PhotoCollCell.swift */; };
+		E0C4427E2A2EF9270058C745 /* PhotoCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0C4427C2A2EF9270058C745 /* PhotoCollCell.xib */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +266,8 @@
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
 		E0C442782A2DF51F0058C745 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		E0C4427B2A2EF9270058C745 /* PhotoCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollCell.swift; sourceTree = "<group>"; };
+		E0C4427C2A2EF9270058C745 /* PhotoCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollCell.xib; sourceTree = "<group>"; };
 		F660DD2F1AD7E43131BACF07 /* Pods-Hi_Dubai.debug development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug development.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug development.xcconfig"; sourceTree = "<group>"; };
 		FA3A5DCB9710D5B4DD6D9AAD /* Pods-Hi_Dubai.release production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.release production.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.release production.xcconfig"; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -568,6 +572,8 @@
 				E00DED4F2A151DD700828D34 /* SuperViewCardTableViewCell.xib */,
 				E00DED522A1520AA00828D34 /* TalksHomeTableHeader.swift */,
 				E00DED542A1520CD00828D34 /* TalksHomeTableHeader.xib */,
+				E0C4427B2A2EF9270058C745 /* PhotoCollCell.swift */,
+				E0C4427C2A2EF9270058C745 /* PhotoCollCell.xib */,
 			);
 			path = "XIB'S";
 			sourceTree = "<group>";
@@ -689,6 +695,7 @@
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
 				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
+				E0C4427E2A2EF9270058C745 /* PhotoCollCell.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
@@ -784,6 +791,7 @@
 				E00DED352A14B96400828D34 /* Router.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
 				E0765C582A274C2900574230 /* HeadingView.swift in Sources */,
+				E0C4427D2A2EF9270058C745 /* PhotoCollCell.swift in Sources */,
 				E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */,
 				E00DED632A15656600828D34 /* ApiKey.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,

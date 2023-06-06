@@ -89,7 +89,7 @@ class NewsListVC: UIViewController {
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
         self.setUpTableView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.fetchAPIData()
         })
     }
@@ -164,8 +164,6 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
-//                vc.isBackBtnShow = false
-//                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
                 self.indexPath = indexPath

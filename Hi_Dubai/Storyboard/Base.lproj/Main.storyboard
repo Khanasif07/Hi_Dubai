@@ -3688,13 +3688,35 @@
         <!--Page View Controllers-->
         <scene sceneID="PGM-Z2-bb1">
             <objects>
-                <viewController storyboardIdentifier="PageViewControllers" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6PB-2p-xT6" customClass="PageViewControllers" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewControllers" id="6PB-2p-xT6" customClass="PageViewControllers" customModule="Hi_Dubai_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XCt-Vo-drb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-pu-mi0">
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOl-ZC-8e0">
+                                    <size key="itemSize" width="128" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="lEB-WC-nKW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LnW-pu-mi0" firstAttribute="leading" secondItem="lEB-WC-nKW" secondAttribute="leading" id="4tI-ZJ-jb4"/>
+                            <constraint firstItem="LnW-pu-mi0" firstAttribute="top" secondItem="lEB-WC-nKW" secondAttribute="top" id="9hl-kR-9ZU"/>
+                            <constraint firstAttribute="bottom" secondItem="LnW-pu-mi0" secondAttribute="bottom" id="bcP-SX-gDl"/>
+                            <constraint firstItem="lEB-WC-nKW" firstAttribute="trailing" secondItem="LnW-pu-mi0" secondAttribute="trailing" id="qwJ-pS-2RP"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainCollView" destination="LnW-pu-mi0" id="NPo-25-df9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4X-k0-oUO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
