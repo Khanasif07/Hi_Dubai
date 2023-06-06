@@ -9,12 +9,7 @@ import UIKit
 import SwiftUI
 class PhotoCollCell: UICollectionViewCell {
     
-    var animal: Animal?  {
-        didSet{
-            host?.rootView.animal = animal
-            host?.view.layoutIfNeeded()
-        }
-    }
+    var animal: Animal?
 
     @IBOutlet weak var dataView: UIView!
     
@@ -31,7 +26,8 @@ class PhotoCollCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func embed(in parent: UIViewController) {
+    func embed(in parent: UIViewController, withContent: Animal?) {
+        self.animal = withContent
         if let host = self.host {
             host.rootView.animal = animal
             host.view.layoutIfNeeded()

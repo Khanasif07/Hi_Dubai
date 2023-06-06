@@ -16,15 +16,16 @@ struct GalleryView: View {
             Image(animal?.image ?? "")
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(12)
+//                .aspectRatio(contentMode: .fill)
+                .cornerRadius(10)
             
-//            Text(animal?.name ?? "")
-//                .fontWeight(.heavy)
-//                .background(.black)
-//                .foregroundColor(.white)
-//                .padding(5)
-//                .offset(x: -5, y: -5)
-//                .cornerRadius(5)
+            Text(animal?.name ?? "")
+                .fontWeight(.heavy)
+                .background(.black)
+                .foregroundColor(.white)
+                .padding(5)
+                .offset(x: -5, y: -5)
+                .cornerRadius(5)
         }
     }
 }

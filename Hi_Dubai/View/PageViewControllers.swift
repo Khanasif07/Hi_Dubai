@@ -62,8 +62,7 @@ extension PageViewControllers: UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = mainCollView.dequeueCell(with: PhotoCollCell.self, indexPath: indexPath)
         //
-        cell.animal = animals[indexPath.item]
-        cell.embed(in: self)
+        cell.embed(in: self,withContent: animals[indexPath.item])
         //
         return cell
     }
