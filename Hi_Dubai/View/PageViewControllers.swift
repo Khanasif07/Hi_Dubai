@@ -18,6 +18,7 @@ class PageViewControllers: BaseVC{
     
     //MARK: - View Life Cycle..
     override func viewDidLoad() {
+        self.navTitle = "Learn about Animals"
         super.viewDidLoad()
         self.setNavigationBarClear = false
         self.setNavigationBarHidden = false

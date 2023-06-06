@@ -105,14 +105,11 @@
                         <constraint firstAttribute="bottom" secondItem="olg-yL-CDM" secondAttribute="bottom" id="nYg-eG-rpp"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <userDefinedRuntimeAttribute type="number" keyPath="corner_Radius">
                             <real key="value" value="18"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="circleBorder" value="YES"/>
-                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="color" keyPath="_borderColor">
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="circle_Border" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="border_Color">
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>

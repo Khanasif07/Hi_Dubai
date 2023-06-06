@@ -20,36 +20,6 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 1dd3c24036a90b24"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2284">
-               </Location>
-               <Location
-                  uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 92ca0957ad0bbcd1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Hi_Dubai.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "648">
-               </Location>
-               <Location
                   uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 1c19f6977844ce30"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -62,7 +32,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
                   endingLineNumber = "65"
-                  offsetFromSymbolStart = "2284">
+                  offsetFromSymbolStart = "2252">
                </Location>
                <Location
                   uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 77d4e7d760373254"

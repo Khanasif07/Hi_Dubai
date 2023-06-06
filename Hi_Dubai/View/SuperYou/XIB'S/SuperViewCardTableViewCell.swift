@@ -9,10 +9,12 @@ import UIKit
 class SuperViewCardTableViewCell: UITableViewCell {
     
     enum CellContents {
-        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive
+        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive , music
     }
     
     //MARK:- Variables
+    // Velocity is measured in points per millisecond.
+    private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
     var cardData: SuperYouCardData? = SuperYouCardData()
     var currentCell: CellContents = .cardCell
     var superYouData: SuperYouHomeModel?
@@ -49,6 +51,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     /// Call to configure ui
     private func configureUI() {
+        self.cardCollectionView.registerCell(with: MusicCollCell.self)
         self.cardCollectionView.registerCell(with: PartnerCollectionCell.self)
         self.cardCollectionView.registerCell(with: MenuItemCollectionCell.self)
         self.cardCollectionView.delegate = self
@@ -80,6 +83,12 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionViewBottomCons.constant = 0.0
         self.cardCollectionView.isHidden = false
         switch self.currentCell {
+        case .music:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -112,6 +121,14 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.cardCollectionView.collectionViewLayout = layout
         }
         self.cardCollectionView.reloadData()
+    }
+    
+
+    ///Get Music Cell
+    private func getMusicCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(with: MusicCollCell.self, indexPath: indexPath)
+        cell.titleLabel.text = "Awesome App #\(indexPath.item)"
+        return cell
     }
     
     ///Get Card Cell
@@ -193,18 +210,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
 extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         switch self.shimmerStatus {
-            
-        case .toBeApply:
-            switch self.currentCell {
-            case .cardCell:
-                return 4
-            case .upcomingCell:
-                return 4
-            default:
-                return 0
-            }
         case .applied:
             switch self.currentCell {
             case .cardCell:
@@ -225,15 +231,18 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
                 return self.superYouData?.categories.count ?? 0
             case .pastLive:
                 return self.superYouData?.pastLiveData.count ?? 0
+            case .music:
+                return self.superYouData?.musicData.count ?? 0
             }
         case .none:
             return 0
         }
-        //        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch self.currentCell {
+        case .music:
+            return self.getMusicCell(collectionView, indexPath: indexPath)
             
         case .cardCell:
             return self.getCardCell(collectionView, indexPath: indexPath)
@@ -282,7 +291,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch self.currentCell {
-            
+        case .music:
+            return CGSize(width: 250.0, height: 55.0)
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
         case .upcomingCell:
@@ -359,7 +369,6 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             paddingInset = 0.0
             //whatsNewCell, superPowers, yourClassesCell, newSuperSheCell, savedClassesCell, upcomingCell, favoritesCell, talksCell,
         }
-        
         return UIEdgeInsets(top: 0, left: paddingInset, bottom: 0, right: paddingInset)
     }
     
@@ -390,36 +399,36 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         }
     }
     
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//
-//        guard self.currentCell == .inviteCell else { return }
-//
-//        let pageWidth = Float(itemWidth + 9)
-//        let targetXContentOffset = Float(targetContentOffset.pointee.x)
-//        let contentWidth = Float(cardCollectionView.contentSize.width)
-//        var newPage : Float = 0
-//
-//        if velocity.x == 0 {
-//            newPage = floor( (targetXContentOffset - Float(pageWidth) / 2) / Float(pageWidth)) + 1.0
-//        }
-//        else {
-//            newPage = Float(velocity.x > 0 ? self.currentItem + 1 : self.currentItem - 1)
-//            if newPage < 0 {
-//                newPage = 0
-//            }
-//            if (newPage > contentWidth / pageWidth) {
-//                newPage = ceil(contentWidth / pageWidth) - 1.0
-//            }
-//        }
-//
-//        self.currentItem = Int(newPage)
-//        let point = CGPoint (x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
-//        targetContentOffset.pointee = point
-//
-//        if Int(newPage) < 3 {
-//            //  lblTier.text =  "TIER \(Int(newPage) + 1)/\(totalLevel)"
-//        }
-//    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        guard self.currentCell == .music else { return }
+        
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let bounds = scrollView.bounds
+        let xTarget = targetContentOffset.pointee.x
+        
+        // This is the max contentOffset.x to allow. With this as contentOffset.x, the right edge of the last column of cells is at the right edge of the collection view's frame.
+        let xMax = scrollView.contentSize.width - scrollView.bounds.width
+        
+        if abs(velocity.x) <= snapToMostVisibleColumnVelocityThreshold {
+            let xCenter = scrollView.bounds.midX
+            let poses = layout.layoutAttributesForElements(in: bounds) ?? []
+            // Find the column whose center is closest to the collection view's visible rect's center.
+            let x = poses.min(by: { abs($0.center.x - xCenter) < abs($1.center.x - xCenter) })?.frame.origin.x ?? 0
+            targetContentOffset.pointee.x = x
+        } else if velocity.x > 0 {
+            let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+            // Find the leftmost column beyond the current position.
+            let xCurrent = scrollView.contentOffset.x
+            let x = poses.filter({ $0.frame.origin.x > xCurrent}).min(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? xMax
+            targetContentOffset.pointee.x = min(x, xMax)
+        } else {
+            let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget - bounds.size.width, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+            // Find the rightmost column.
+            let x = poses.max(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? 0
+            targetContentOffset.pointee.x = max(x, 0)
+        }
+    }
     
     func flowLayoutSetup() {
 //        if self.currentCell == .categories {
