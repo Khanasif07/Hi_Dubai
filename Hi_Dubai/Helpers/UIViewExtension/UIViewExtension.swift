@@ -297,3 +297,92 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
+extension UIView {
+    
+    func setUp(to superView: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
+    }
+    
+    func setGradient(withColors colors: [CGColor] , startPoint: CGPoint , endPoint: CGPoint) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = colors
+        gradient.startPoint = startPoint
+        gradient.endPoint = endPoint
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
+
+struct windowConstant {
+    
+    private static let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    
+    static var getTopPadding: CGFloat {
+        return window?.safeAreaInsets.top ?? 0
+    }
+    
+    static var getBottomPadding: CGFloat {
+        return window?.safeAreaInsets.bottom ?? 0
+    }
+    
+}
+
+
+extension NSTextAttachment {
+    func setImageHeight(height: CGFloat) {
+        guard let image = image else { return }
+        let ratio = image.size.width / image.size.height
+        
+        bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: ratio * height, height: height)
+    }
+}
+
+extension UIButton {
+    
+    func setButtonTitleWithLeftImage(title: String, btnImage: String , customFont: UIFont , color: UIColor, imageColor: UIColor , imageSize: CGFloat, isImageOriginal: Bool = false) {
+        let attributedText = NSMutableAttributedString(string:"" , attributes:[NSAttributedString.Key.font: customFont, NSAttributedString.Key.foregroundColor: color])
+        
+        let font = customFont
+        var Img = UIImage()
+        if isImageOriginal {
+            Img = UIImage(named: btnImage)!
+        } else {
+            Img = (UIImage(named: btnImage)?.withRenderingMode(.alwaysTemplate).withTintColor(imageColor))!
+        }
+        let Image = NSTextAttachment()
+        Image.image = Img
+        Image.bounds = CGRect(x: 0, y: (font.capHeight - imageSize).rounded() / 2, width: imageSize, height: imageSize)
+        Image.setImageHeight(height: imageSize)
+        let imgString = NSAttributedString(attachment: Image)
+        attributedText.append(imgString)
+        
+        attributedText.append(NSAttributedString(string: " \(title)", attributes: [NSAttributedString.Key.font: customFont, NSAttributedString.Key.foregroundColor: color]))
+        
+        self.setAttributedTitle(attributedText, for: .normal)
+    }
+
+    func setButtonTitleWithRightImage(title: String, btnImage: String , customFont: UIFont , color: UIColor, imageColor: UIColor ,imageSize: CGFloat, isImageOriginal: Bool = false) {
+        let attributedText = NSMutableAttributedString(string:"\(title) " , attributes:[NSAttributedString.Key.font: customFont, NSAttributedString.Key.foregroundColor: color])
+        
+        let font = customFont
+        var Img = UIImage()
+        if isImageOriginal {
+            Img = UIImage(named: btnImage)!
+        } else {
+            Img = (UIImage(named: btnImage)?.withRenderingMode(.alwaysTemplate).withTintColor(imageColor))!
+        }
+        let Image = NSTextAttachment()
+        Image.image = Img
+        Image.bounds = CGRect(x: 0, y: (font.capHeight - imageSize).rounded() / 2, width: imageSize, height: imageSize)
+        Image.setImageHeight(height: imageSize)
+        let imgString = NSAttributedString(attachment: Image)
+        attributedText.append(imgString)
+        
+        self.setAttributedTitle(attributedText, for: .normal)
+    }
+    
+}

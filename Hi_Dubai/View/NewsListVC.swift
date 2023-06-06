@@ -164,14 +164,14 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
-//                vc.isBackBtnShow = false
-//                vc.viewModel.newsModel = viewModel.newsData[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
-                self.indexPath = indexPath
-                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
-                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
-                presentSecondViewController(with: viewModel.newsData[indexPath.row])
+                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
+//                self.indexPath = indexPath
+//                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
+//                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
+//                presentSecondViewController(with: viewModel.newsData[indexPath.row])
             case 2:
                 let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
                 vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
@@ -190,6 +190,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: false)
             case 7:
                 let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 8:
+                let vc = FoodViewController()
                 self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
