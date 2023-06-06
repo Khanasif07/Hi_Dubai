@@ -16,7 +16,7 @@ typealias ResponseMessage = (_ message : String) -> ()
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
     enum TableViewCell {
-        case titleAndSubTitle, cardCells, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories
+        case titleAndSubTitle, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
     }
     
     var tableCellAtIndexPath: [[TableViewCell]] = []
@@ -33,6 +33,7 @@ class SuperYouHomeModel {
     var featuredDataArr: [Record] = []
     var pastLiveData: [Record] = []
     var categories: [Record] = []
+    var musicData: [Record] = []
     var isFirstTime: Bool = true
     
     convenience init(nextPageStatus: Bool) {
@@ -51,6 +52,7 @@ class SuperYouHomeModel {
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
             switch results {
             case .success(let result):
+                self.musicData = result.record
                 self.mostLovedArr = result.record
                 self.upcomingDataArr = result.record
                 self.liveNowDataArr = result.record
@@ -73,6 +75,7 @@ class SuperYouHomeModel {
         if isFirstTime{
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
+            self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
@@ -83,6 +86,7 @@ class SuperYouHomeModel {
            
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
+            self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.featuredCell])
