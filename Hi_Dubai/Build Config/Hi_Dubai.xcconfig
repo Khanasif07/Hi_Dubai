@@ -1,0 +1,23 @@
+//
+//  Hi_Dubai.xcconfig
+//  Hi_Dubai
+//
+//  Created by Asif Khan on 07/06/2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+clientId = 680560028799-lh7tjn0bstpg572240qnhnfk5uk0vukk.apps.googleusercontent.com
+facebookAppId = 267340607059399
+reversedClientId = com.googleusercontent.apps.680560028799-lh7tjn0bstpg572240qnhnfk5uk0vukk
+wegLicenseCode = ~c2ab275a
+productName = HiDubai Stg
+productBundleIdentifier = com.tejuri.app.walif-staging
+buildType = BUILD_STG
+googleAppId = 1:680560028799:ios:1adece42bf994a06
+handOffBundleId = com.tejuri.app.walif-staging.business
+firTimeInterval = 0
+applinkId = www-qa.hidubai.com
+fireworkVideoAppID = 2232d483a6d1fb4222caa659ef819153db9bab416f80810ed1756a86824d7bc2
+facebookClientToken = bdfe24e602e95700d15d0fb7ce9032a8
