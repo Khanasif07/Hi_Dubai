@@ -141,6 +141,8 @@
 		E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C672A27630B00574230 /* AnimalListItemView.swift */; };
 		E0765C6A2A28AFF200574230 /* TabGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C692A28AFF200574230 /* TabGalleryView.swift */; };
 		E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C6B2A28B6B800574230 /* GalleryView.swift */; };
+		E0B447632A30638A00423DE2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447622A30638A00423DE2 /* RoundedImageView.swift */; };
+		E0B447662A30645D00423DE2 /* CompostionalLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */; };
 		E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */; };
 		E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639672A1C092500DD4DE4 /* ImageCache.swift */; };
 		E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */; };
@@ -294,6 +296,8 @@
 		E0765C672A27630B00574230 /* AnimalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListItemView.swift; sourceTree = "<group>"; };
 		E0765C692A28AFF200574230 /* TabGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGalleryView.swift; sourceTree = "<group>"; };
 		E0765C6B2A28B6B800574230 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		E0B447622A30638A00423DE2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostionalLayoutVC.swift; sourceTree = "<group>"; };
 		E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E0B639672A1C092500DD4DE4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 				E0B6396D2A1C767500DD4DE4 /* SearchTextField.swift */,
 				E0B6396F2A1C787900DD4DE4 /* SearchTextField.xib */,
 				E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */,
+				E0B447622A30638A00423DE2 /* RoundedImageView.swift */,
 			);
 			path = AppHelpers;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 		8470C58D299753C50091A7C5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0B447642A30644400423DE2 /* CompostionalLayout */,
 				E00DED442A151AED00828D34 /* SuperYou */,
 				8470C56C29974D640091A7C5 /* NewsListVC.swift */,
 				8470C5972997651A0091A7C5 /* NewsDetailVC.swift */,
@@ -706,6 +712,14 @@
 			path = VideoPlayerhelper;
 			sourceTree = "<group>";
 		};
+		E0B447642A30644400423DE2 /* CompostionalLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */,
+			);
+			path = CompostionalLayout;
+			sourceTree = "<group>";
+		};
 		E0B639662A1C091500DD4DE4 /* ImageCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,6 +909,7 @@
 				E00AE4F92A0DFEC800A43133 /* UserInfoHeaderViewController.swift in Sources */,
 				E00DED372A14BC3D00828D34 /* PlacesAndSuperShesView.swift in Sources */,
 				E00450A02A2FDD0D00A9A64E /* FoodViewController.swift in Sources */,
+				E0B447662A30645D00423DE2 /* CompostionalLayoutVC.swift in Sources */,
 				8470C5B72997EFC50091A7C5 /* UIViewExtension.swift in Sources */,
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
 				E00DED292A13732300828D34 /* WalifTheme.swift in Sources */,
@@ -946,6 +961,7 @@
 				E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */,
 				E0722B8229FFDE2E00BB9B6D /* StatsVC.swift in Sources */,
 				E02BC79F2A220892004CB9B2 /* HomeViewController.swift in Sources */,
+				E0B447632A30638A00423DE2 /* RoundedImageView.swift in Sources */,
 				8470C5B029977EC50091A7C5 /* NewsDetailTableCell.swift in Sources */,
 				8470C5B42997E1470091A7C5 /* Animator.swift in Sources */,
 				E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */,

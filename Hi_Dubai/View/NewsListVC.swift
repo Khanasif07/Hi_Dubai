@@ -194,6 +194,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 8:
                 let vc = FoodViewController()
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 9:
+                let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]

@@ -20,9 +20,9 @@ class PhotoCollCell: UICollectionViewCell {
        
     override func awakeFromNib() {
         super.awakeFromNib()
-        dataView.isHidden = true
-        host?.view.frame = self.contentView.bounds
-        contentView.addSubview((host?.view)!)
+//        dataView.isHidden = true
+//        host?.view.frame = self.contentView.bounds
+//        contentView.addSubview((host?.view)!)
         // Initialization code
     }
     
