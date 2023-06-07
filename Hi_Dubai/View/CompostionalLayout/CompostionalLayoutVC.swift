@@ -26,7 +26,12 @@ class CompostionalLayoutVC: BaseVC {
 
         // Item
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fraction), heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        //Supplementary Item
+        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.1), heightDimension: .absolute(30))
+        let containerAnchor = NSCollectionLayoutAnchor(edges: [.bottom], absoluteOffset: CGPoint(x: 0, y: 10))
+        let supplementaryItem = NSCollectionLayoutSupplementaryItem(layoutSize: layoutSize, elementKind: "new-banner", containerAnchor: containerAnchor)
+        //
+        let item = NSCollectionLayoutItem(layoutSize: itemSize,supplementaryItems: [supplementaryItem])
         // after item declaration…
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         
@@ -38,6 +43,10 @@ class CompostionalLayoutVC: BaseVC {
         let section = NSCollectionLayoutSection(group: group)
         // after section delcaration…
         section.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
+        // section header delcaration…
+        let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44.0))
+        let headerItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [headerItem]
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
@@ -56,6 +65,9 @@ class CompostionalLayoutVC: BaseVC {
     }
     
     private func collViewSetUp(){
+        cardCollView.register(UINib(nibName: "HeaderViewCV", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderViewCV")
+        cardCollView.register(UINib(nibName: "FooterViewCV", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterViewCV")
+        cardCollView.register(UINib(nibName: "NewBannerSupplementaryView", bundle: nil), forSupplementaryViewOfKind: "new-banner", withReuseIdentifier: "NewBannerSupplementaryView")
         cardCollView.registerCell(with: PhotoCollCell.self)
         cardCollView.delegate = self
         cardCollView.dataSource = self
@@ -99,6 +111,32 @@ extension CompostionalLayoutVC: UICollectionViewDelegate,UICollectionViewDataSou
         cell.dataView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         //
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       switch kind {
+       case UICollectionView.elementKindSectionHeader:
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderViewCV", for: indexPath)
+                return headerView
+       case "new-banner":
+           let bannerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewBannerSupplementaryView", for: indexPath)
+           bannerView.isHidden = indexPath.row % 5 != 0 // show on every 5th item
+           return bannerView
+        case UICollectionView.elementKindSectionFooter:
+                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterViewCV", for: indexPath)
+                return footerView
+         default:
+                assert(false, "Unexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.cardCollView.frame.width, height: 44)
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: self.cardCollView.frame.width, height: 44)
     }
     
 }

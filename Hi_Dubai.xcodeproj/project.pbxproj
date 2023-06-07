@@ -143,6 +143,8 @@
 		E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C6B2A28B6B800574230 /* GalleryView.swift */; };
 		E0B447632A30638A00423DE2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447622A30638A00423DE2 /* RoundedImageView.swift */; };
 		E0B447662A30645D00423DE2 /* CompostionalLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */; };
+		E0B447692A30701100423DE2 /* NewBannerSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447672A30701100423DE2 /* NewBannerSupplementaryView.swift */; };
+		E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B447682A30701100423DE2 /* NewBannerSupplementaryView.xib */; };
 		E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */; };
 		E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639672A1C092500DD4DE4 /* ImageCache.swift */; };
 		E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */; };
@@ -298,6 +300,8 @@
 		E0765C6B2A28B6B800574230 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		E0B447622A30638A00423DE2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostionalLayoutVC.swift; sourceTree = "<group>"; };
+		E0B447672A30701100423DE2 /* NewBannerSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBannerSupplementaryView.swift; sourceTree = "<group>"; };
+		E0B447682A30701100423DE2 /* NewBannerSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewBannerSupplementaryView.xib; sourceTree = "<group>"; };
 		E0B639642A1B85BF00DD4DE4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		E0B639672A1C092500DD4DE4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E0B639692A1C095B00DD4DE4 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -716,6 +720,8 @@
 			isa = PBXGroup;
 			children = (
 				E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */,
+				E0B447672A30701100423DE2 /* NewBannerSupplementaryView.swift */,
+				E0B447682A30701100423DE2 /* NewBannerSupplementaryView.xib */,
 			);
 			path = CompostionalLayout;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				E00450AA2A2FDFB600A9A64E /* MusicCollCell.xib in Resources */,
 				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
+				E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */,
 				E00450A62A2FDF9800A9A64E /* PhotoCollCell.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
@@ -924,6 +931,7 @@
 				E041CA732A00F49F00C98601 /* ExploreVC.swift in Sources */,
 				E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */,
 				E00DED2D2A138D2800828D34 /* NewSearchTextField.swift in Sources */,
+				E0B447692A30701100423DE2 /* NewBannerSupplementaryView.swift in Sources */,
 				E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */,
 				E0765C622A274D6B00574230 /* ExternalWeblinkView.swift in Sources */,
 				E00DED432A14E3A600828D34 /* MainTabBarViewController.swift in Sources */,
