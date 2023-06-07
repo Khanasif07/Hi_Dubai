@@ -280,7 +280,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         
         let config = UIContextMenuConfiguration(
             identifier: nil,
-            previewProvider: nil) {[weak self] _ in
+            previewProvider: nil) { [weak self] _ in
                 let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
 //                    self?.downloadTitleAt(indexPath: indexPath)
                 }
@@ -294,23 +294,25 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch self.currentCell {
         case .music:
-            return CGSize(width: screen_width - 20.0, height: 55.0)
+            let numberOfColumn: CGFloat = 3
+            let spacing: CGFloat = 10.0 // mininteritemspacing
+            let availableWidth = screen_width - spacing * (numberOfColumn - 1)
+            return CGSize(width: availableWidth, height: 55.0)
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
         case .upcomingCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 215.0)
-
         case .liveClassesCell, .pastLive:
             return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
-            
         case .favoritesCell, .newSuperSheCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-            
         case .mostLovedClassesCell:
             return CGSize(width: ClassInitalLayoutConstants.mostLovedHomeCollCellWidth, height: collectionView.bounds.height)
-            
         case .featuredCell:
-            return CGSize(width: collectionView.bounds.width - 10, height: collectionView.bounds.height)
+            let numberOfColumn: CGFloat = 2
+            let spacing: CGFloat = 10.0 // mininteritemspacing
+            let availableWidth = screen_width - spacing * (numberOfColumn - 1)
+            return CGSize(width: availableWidth, height: collectionView.bounds.height)
         case .categories:
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
@@ -340,8 +342,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         switch self.currentCell {
         case .featuredCell:
             return 10.0
-        case .cardCell:
-            return 0.0
+        case .music:
+            return 10.0
         default:
             return 10.0
         }

@@ -221,11 +221,20 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             if let superYouData = self.viewModel.superYouData {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
                 case .music:
+                    let numberOfColumn: CGFloat = 3
+                    let sizeForItemHeight : CGFloat = 55
+                    let spacing: CGFloat = 10.0 // mininteritemspacing
+                    let availableHeight = (sizeForItemHeight * numberOfColumn) + spacing * (numberOfColumn - 1)
                     // triple height + gap * 2
-                    return 185.0
+                    return  availableHeight
                 case .upcomingCell:
                     // double height + gap * 1
-                    return 440.0
+                    let numberOfColumn: CGFloat = 2
+                    let sizeForItemHeight : CGFloat = 215.0
+                    let spacing: CGFloat = 10.0 // mininteritemspacing
+                    let availableHeight = (sizeForItemHeight * numberOfColumn) + spacing * (numberOfColumn - 1)
+                    // triple height + gap * 2
+                    return  availableHeight
                 case .liveClassesCell:
                     return TalksTablePropertyHeight.tableFooter
                 case .pastLive:
