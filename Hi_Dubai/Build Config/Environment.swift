@@ -33,6 +33,7 @@ open class Environment: NSObject {
 
    open func configuration(_ key: PList) -> String {
         if let infoDict = Bundle.main.infoDictionary {
+            print(infoDict)
             switch key {
             case .buildType:
                 return infoDict[PList.buildType.value()] as? String ?? ""
