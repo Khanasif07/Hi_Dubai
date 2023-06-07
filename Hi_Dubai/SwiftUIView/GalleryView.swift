@@ -32,7 +32,7 @@ struct GalleryView: View {
 struct GalleryView_Previews: PreviewProvider {
     static let animals: [Animal] = Bundle.main.decode("animals.json")
     static var previews: some View {
-        GalleryView(animal: animals[0])
+        GalleryView(animal: animals.first)
             .previewLayout(.sizeThatFits)
             .padding()
     }
