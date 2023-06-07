@@ -47,6 +47,8 @@ class CompostionalLayoutVC: BaseVC {
         let headerItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44.0))
         let headerItem = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerItemSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [headerItem]
+        // AppStore like design
+        //section.orthogonalScrollingBehavior = .groupPaging
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
