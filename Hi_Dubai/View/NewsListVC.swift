@@ -197,6 +197,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 9:
                 let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 10:
+                let vc = HomeViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]
@@ -294,7 +297,7 @@ extension NewsListVC{
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
         var scrollDirection: ScrollDirection
-        
+        stopScroll = 80.0
         if lastContentOffset > scroll.contentOffset.y {
             scrollDirection = .down
         } else {

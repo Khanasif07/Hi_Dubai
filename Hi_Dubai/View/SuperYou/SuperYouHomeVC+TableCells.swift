@@ -15,43 +15,30 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         switch self.shimmerStatus {
-        case .toBeApply:
-            return 3
         case .applied:
             if let superYouData = self.viewModel.superYouData {
                 return superYouData.tableCellAtIndexPath.count
             }
             return 0
-        case .none:
+        default:
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.shimmerStatus {
-        case .toBeApply:
-
-            return 1
         case .applied:
             if let superYouData = self.viewModel.superYouData {
                 return superYouData.tableCellAtIndexPath[section].count
             }
             return 0
-        case .none:
+        default:
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.shimmerStatus {
-
-        case .toBeApply:
-            switch indexPath.section {
-            case 0:
-                return self.getTitleCell(tableView, indexPath: indexPath, dataSource: SuperYouHomeTitleData())
-            default:
-                return self.getUpcomingCell(tableView, indexPath: indexPath, dataSource: SuperYouHomeModel(nextPageStatus: true))
-            }
         case .applied:
         
             if let superYouData = self.viewModel.superYouData {
@@ -99,7 +86,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 return UITableViewCell()
             }
-        case .none:
+        default:
             return UITableViewCell()
         }
     }

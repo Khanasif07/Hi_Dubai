@@ -146,9 +146,7 @@ class SuperYouHomeVC: BaseVC {
     
     
     internal override func registerNibs() {
-        self.dataTableView.registerCell(with: SuperYouTitleTableViewCell.self)
         self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
-        self.dataTableView.registerCell(with: NewsTableViewCell.self)
         self.dataTableView.registerHeaderFooter(with: TalksHomeTableHeader.self)
         self.showTableHeaderView()
     }
