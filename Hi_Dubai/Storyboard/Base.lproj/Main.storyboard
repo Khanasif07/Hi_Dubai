@@ -999,7 +999,7 @@
                                                                             <constraint firstAttribute="width" constant="25" id="fRv-9V-SBG"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwj-U5-dgj" customClass="NewSearchTextField" customModule="Hi_Dubai">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwj-U5-dgj" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
                                                                         <rect key="frame" x="35" y="0.0" width="330" height="36"/>
                                                                     </view>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMZ-VE-N6s">
@@ -2304,12 +2304,12 @@
                                 <items>
                                     <navigationItem id="gWO-Up-EZf">
                                         <nil key="title"/>
-                                        <view key="titleView" contentMode="scaleToFill" misplaced="YES" id="Yb6-aX-e7A">
+                                        <view key="titleView" contentMode="scaleToFill" id="Yb6-aX-e7A">
                                             <rect key="frame" x="16" y="0.0" width="300" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY PROFILE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM8-0t-hw5" userLabel="LOADING">
-                                                    <rect key="frame" x="0.0" y="489.66666666666669" width="1000" height="21"/>
+                                                    <rect key="frame" x="0.0" y="11.666666666666686" width="300" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="yob-q2-1kg"/>
                                                     </constraints>
@@ -3465,7 +3465,7 @@
                                                             <constraint firstAttribute="width" constant="25" id="bWZ-nh-UOo"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-61-zyO" customClass="NewSearchTextField" customModule="Hi_Dubai">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCc-61-zyO" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
                                                         <rect key="frame" x="35" y="0.0" width="320" height="36"/>
                                                     </view>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqF-vF-i5s">

@@ -55,10 +55,10 @@ class NewsTableViewCell: UITableViewCell{
         dateLbl.font = UIFont.boldSystemFont(ofSize: 14)
 //        tagLbl.font = UIFont.boldSystemFont(ofSize: 14)
         timeLbl.font = UIFont.boldSystemFont(ofSize: 14)
-        dateLbl.textColor = .tertiaryLabel
+        dateLbl.textColor = UIColor.systemBrown
         descLbl.textColor = .lightGray
-        timeLbl.textColor = .tertiaryLabel
-//        tagLbl.textColor = .white
+        timeLbl.textColor = UIColor.systemBrown
+        titleLbl.textColor = .black
 //        self.tagView.backgroundColor = .orange
     }
     

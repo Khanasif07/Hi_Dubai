@@ -28,10 +28,10 @@ public enum PList: Int {
 
 open class Environment: NSObject {
     public static var shared = Environment()
-
-   public var isForceUpdateOnScreen: Bool = false
-
-   open func configuration(_ key: PList) -> String {
+    
+    public var isForceUpdateOnScreen: Bool = false
+    
+    @discardableResult open func configuration(_ key: PList) -> String {
         if let infoDict = Bundle.main.infoDictionary {
             print(infoDict)
             switch key {

@@ -18,14 +18,12 @@ class SuperYouHomeVC: BaseVC {
     var statusBarHeight : CGFloat {
         return UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     }
+    var cellType : [TableViewCell] = [.categories]
     let viewModel = SuperYouHomeVM()
     var shimmerStatus: ShimmerState = .applied
     var cellHeightDictionary: NSMutableDictionary = NSMutableDictionary()
     var collectionViewCachedPosition: [IndexPath: CGFloat] = [:]
     var isDataInitializeFromCache: Bool = false
-    var talkRefHandlFlag: Bool = false
-    var classRefHandleFlag: Bool = false
-    var liveRefHandleFlag: Bool = false
     var tabBarHeight: CGFloat {
         return self.tabBarController?.tabBar.frame.size.height ?? 0.0
     }
@@ -47,18 +45,19 @@ class SuperYouHomeVC: BaseVC {
     @IBOutlet weak var navContainerView: HeaderScrollingView!
     @IBOutlet weak var headerViewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var dataTableViewTopConstraints: NSLayoutConstraint!
-//    @IBOutlet weak var navBar: UpdatedTopNavigationBar!
     @IBOutlet weak var dataTableView: UITableView!
     @IBOutlet weak var statusBarHC: NSLayoutConstraint!
     
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cellType = (self.viewModel.superYouData?.tableCellAtIndexPath.randomElement())!
         self.navigationController?.navigationBar.isHidden = true
         self.viewModel.superYouData?.delegate = self
         searchTxtFld.delegate = self
         searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
         cancelBtn.isHidden = true
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(scrollToRowMethod), userInfo: nil, repeats: false)
         //.....................................
 //        addStatusBarBackgroundView(viewController: self)
         self.dataTableView.refreshControl = refresher
@@ -85,6 +84,19 @@ class SuperYouHomeVC: BaseVC {
     }
     
     
+    @objc func scrollToRowMethod(){
+        if let index = self.viewModel.superYouData?.tableCellAtIndexPath.firstIndex(where: {$0 == cellType}){
+            UIView.animate(withDuration: 0.5, delay: 0.0) {
+                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: index), at: .top, animated: false)
+            } completion: { value in
+                if let cell = self.dataTableView.cellForRow(at: IndexPath(row: 0, section: index)) as? SuperViewCardTableViewCell{
+                    if cell.cardCollectionView.numberOfItems(inSection: 0) > index {
+                        cell.cardCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
+                    }
+                }
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -167,7 +179,7 @@ class SuperYouHomeVC: BaseVC {
             loadingView?.show()
             //
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.loadingView?.hide()
             self.loadingView?.removeFromSuperview()
         })

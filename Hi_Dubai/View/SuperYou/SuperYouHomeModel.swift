@@ -13,12 +13,13 @@ typealias JSONDictionaryArray = [JSONDictionary]
 typealias SuccessJSONResponse = (_ json : JSON) -> Void
 typealias FailureResponse = (NSError) -> (Void)
 typealias ResponseMessage = (_ message : String) -> ()
+// Enums
+enum TableViewCell {
+    case titleAndSubTitle, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
+}
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
-    enum TableViewCell {
-        case titleAndSubTitle, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
-    }
-    
+   
     var tableCellAtIndexPath: [[TableViewCell]] = []
     var sectionData: [Int] = []
     var titleData: SuperYouHomeTitleData?
@@ -34,7 +35,7 @@ class SuperYouHomeModel {
     var pastLiveData: [Record] = []
     var categories: [Record] = []
     var musicData: [Record] = []
-    var isFirstTime: Bool = true
+    var isFirstTime: Bool = false
     
     convenience init(nextPageStatus: Bool) {
         self.init(jsonArr: [[:]], isDataFromLocalDB: false, nextPageStatus: nextPageStatus)
