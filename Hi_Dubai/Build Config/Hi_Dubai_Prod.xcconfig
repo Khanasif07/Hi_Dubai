@@ -7,9 +7,6 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-
-//#include "Pods⁩/Target Support Files⁩/Pods-HiDubai⁩/Pods-HiDubai.production.xcconfig"
-
 clientId = 680560028799-lvchpfcslil9e9ctsqf2sr961pejh2mc.apps.googleusercontent.com
 facebookAppId = 663649493841807
 reversedClientId = com.googleusercontent.apps.680560028799-lvchpfcslil9e9ctsqf2sr961pejh2mc
