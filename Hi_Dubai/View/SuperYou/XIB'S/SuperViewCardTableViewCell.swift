@@ -87,9 +87,6 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.cardCollectionView.decelerationRate = .fast
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .horizontal
-//            self.cardCollectionView.collectionViewLayout = layout
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -107,7 +104,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionView.collectionViewLayout = createLayout()
+            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -437,160 +434,151 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     
    
     func flowLayoutSetup() {
-//        if self.currentCell == .categories {
-//            let layout: UICollectionViewFlowLayout = LeftAlignedCollectionViewFlowLayout()
-////            itemWidth = UIScreen.main.bounds.width - 36
-//            layout.scrollDirection = .horizontal
-//            cardCollectionView.collectionViewLayout = layout
-//            cardCollectionView?.decelerationRate = UIScrollView.DecelerationRate.normal
-//        }
-//        else {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
             self.cardCollectionView.collectionViewLayout = layout
-//        }
     }
     
 }
 
 
-// MARK: - UICollectionViewFlowLayout
+// MARK: -  LeftAlignedVerticalCollectionViewFlowLayout
 //===========================
-//public class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-//
-//    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-//        let attributes = super.layoutAttributesForElements(in: rect)
-//
-//        var leftMargin = sectionInset.left
-//        var maxY: CGFloat = -1.0
-//        attributes?.forEach { layoutAttribute in
-//            if layoutAttribute.frame.origin.y >= maxY {
-//                leftMargin = sectionInset.left
-//            }
-//            layoutAttribute.frame.origin.x = leftMargin
-//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-//            maxY = max(layoutAttribute.frame.maxY , maxY)
-//        }
-//
-//        return attributes
-//    }
-//}
+public class LeftAlignedVerticalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElements(in: rect)
+
+        var leftMargin = sectionInset.left
+        var maxY: CGFloat = -1.0
+        attributes?.forEach { layoutAttribute in
+            if layoutAttribute.frame.origin.y >= maxY {
+                leftMargin = sectionInset.left
+            }
+            layoutAttribute.frame.origin.x = leftMargin
+            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+            maxY = max(layoutAttribute.frame.maxY , maxY)
+        }
+
+        return attributes
+    }
+}
 
 
-//class DynamicHeightCollectionView: UICollectionView {
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        if bounds.size != intrinsicContentSize {
-//            self.invalidateIntrinsicContentSize()
-//        }
-//    }
-//    override var intrinsicContentSize: CGSize {
-//        return collectionViewLayout.collectionViewContentSize
-//    }
-//}
+class DynamicHeightCollectionView: UICollectionView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if bounds.size != intrinsicContentSize {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+    override var intrinsicContentSize: CGSize {
+        return collectionViewLayout.collectionViewContentSize
+    }
+}
 
 
-//protocol PinterestLayoutDelegate {
-//   func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
-//}
+protocol PinterestLayoutDelegate {
+   func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
+}
 
-//class PinterestLayout: UICollectionViewLayout {
-//
-//   var delegate: PinterestLayoutDelegate?
-//
-//   var controller: SuperYouHomeVC?
-//   var numberOfColumns: CGFloat = 2
-//   var cellPadding: CGFloat = 5.0
-//
-//   private var contentHeight: CGFloat = 0.0
-//   private var contentWidth: CGFloat {
-//      let insets = collectionView!.contentInset
-//      return (collectionView!.bounds.width - (insets.left + insets.right))
-//   }
-//
-//   private var attributesCache = [PinterestLayoutAttributes]()
-//
-//   override func prepare() {
-//      if attributesCache.isEmpty {
-//         let columnWidth = contentWidth / numberOfColumns
-//         var xOffsets = [CGFloat]()
-//         for column in 0 ..< Int(numberOfColumns) {
-//            xOffsets.append(CGFloat(column) * columnWidth)
-//         }
-//
-//         var column = 0
-//         var yOffsets = [CGFloat](repeating: 0, count: Int(numberOfColumns))
-//
-//         for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
-//            let indexPath = IndexPath(item: item, section: 0)
-//
-//             let width = columnWidth - cellPadding * 2
-//
-//            // Calculate the frame
-//             let photoHeight: CGFloat = Double.random(in: 220...400)
-////             (delegate?.collectionView(collectionView: collectionView!, heightForPhotoAt: indexPath, with: width))!
-//
-//
-//            let height = cellPadding + photoHeight + cellPadding
-//            let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
-//            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-//
-//            // Create layout attributes
-//            let attributes = PinterestLayoutAttributes(forCellWith: indexPath)
-//            attributes.photoHeight = photoHeight
-//            attributes.frame = insetFrame
-//            attributesCache.append(attributes)
-//
-//            // Update column, yOffest
-//            contentHeight = max(contentHeight, frame.maxY)
-//            yOffsets[column] = yOffsets[column] + height
-//
-//            if column >= Int(numberOfColumns - 1) {
-//               column = 0
-//            } else {
-//               column += 1
-//            }
-//         }
-//      }
-//   }
-//
-//   override var collectionViewContentSize: CGSize {
-//      return CGSize(width: contentWidth, height: contentHeight)
-//   }
-//
-//   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-//      var layoutAttributes = [UICollectionViewLayoutAttributes]()
-//
-//      for attributes in attributesCache {
-//         if attributes.frame.intersects(rect) {
-//            layoutAttributes.append(attributes)
-//         }
-//      }
-//
-//      return layoutAttributes
-//   }
-//
-//}
+class PinterestLayout: UICollectionViewLayout {
 
-//class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
-//   var photoHeight: CGFloat = 0.0
-//
-//   override func copy(with zone: NSZone? = nil) -> Any {
-//      let copy = super.copy(with: zone) as! PinterestLayoutAttributes
-//      copy.photoHeight = photoHeight
-//      return copy
-//   }
-//
-//   override func isEqual(_ object: Any?) -> Bool {
-//      if let attributes = object as? PinterestLayoutAttributes {
-//         if attributes.photoHeight == photoHeight {
-//            return super.isEqual(object)
-//         }
-//      }
-//
-//      return false
-//   }
-//}
+   var delegate: PinterestLayoutDelegate?
+
+   var controller: SuperYouHomeVC?
+   var numberOfColumns: CGFloat = 2
+   var cellPadding: CGFloat = 5.0
+
+   private var contentHeight: CGFloat = 0.0
+   private var contentWidth: CGFloat {
+      let insets = collectionView!.contentInset
+      return (collectionView!.bounds.width - (insets.left + insets.right))
+   }
+
+   private var attributesCache = [PinterestLayoutAttributes]()
+
+   override func prepare() {
+      if attributesCache.isEmpty {
+         let columnWidth = contentWidth / numberOfColumns
+         var xOffsets = [CGFloat]()
+         for column in 0 ..< Int(numberOfColumns) {
+            xOffsets.append(CGFloat(column) * columnWidth)
+         }
+
+         var column = 0
+         var yOffsets = [CGFloat](repeating: 0, count: Int(numberOfColumns))
+
+         for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+
+             let width = columnWidth - cellPadding * 2
+
+            // Calculate the frame
+             let photoHeight: CGFloat = Double.random(in: 220...400)
+//             (delegate?.collectionView(collectionView: collectionView!, heightForPhotoAt: indexPath, with: width))!
+
+
+            let height = cellPadding + photoHeight + cellPadding
+            let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+
+            // Create layout attributes
+            let attributes = PinterestLayoutAttributes(forCellWith: indexPath)
+            attributes.photoHeight = photoHeight
+            attributes.frame = insetFrame
+            attributesCache.append(attributes)
+
+            // Update column, yOffest
+            contentHeight = max(contentHeight, frame.maxY)
+            yOffsets[column] = yOffsets[column] + height
+
+            if column >= Int(numberOfColumns - 1) {
+               column = 0
+            } else {
+               column += 1
+            }
+         }
+      }
+   }
+
+   override var collectionViewContentSize: CGSize {
+      return CGSize(width: contentWidth, height: contentHeight)
+   }
+
+   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+      var layoutAttributes = [UICollectionViewLayoutAttributes]()
+
+      for attributes in attributesCache {
+         if attributes.frame.intersects(rect) {
+            layoutAttributes.append(attributes)
+         }
+      }
+
+      return layoutAttributes
+   }
+
+}
+
+class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
+   var photoHeight: CGFloat = 0.0
+
+   override func copy(with zone: NSZone? = nil) -> Any {
+      let copy = super.copy(with: zone) as! PinterestLayoutAttributes
+      copy.photoHeight = photoHeight
+      return copy
+   }
+
+   override func isEqual(_ object: Any?) -> Bool {
+      if let attributes = object as? PinterestLayoutAttributes {
+         if attributes.photoHeight == photoHeight {
+            return super.isEqual(object)
+         }
+      }
+
+      return false
+   }
+}
 
 
 extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
@@ -599,5 +587,57 @@ extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
     }
     func learnHowAction(){
         (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+    }
+}
+// MARK: - LeftAlignedHorizontalCollectionViewFlowLayout
+class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    required override init() {super.init(); common()}
+        required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
+        
+        private func common() {
+            scrollDirection = .horizontal
+            estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            minimumLineSpacing = 10
+            minimumInteritemSpacing = 8
+        }
+        
+        override func layoutAttributesForElements(
+                        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+            
+            guard let att = super.layoutAttributesForElements(in:rect) else {return []}
+            
+            let group = att.group(by: {$0.frame.origin.y})
+            
+            var x: CGFloat = sectionInset.left
+            
+            for attr in group {
+                x = sectionInset.left
+                for (_,a) in attr.enumerated() {
+                    if a.representedElementCategory != .cell { continue }
+                    a.frame.origin.x = x
+                    x += a.frame.width + minimumInteritemSpacing
+                }
+            }
+            return att
+        }
+}
+
+extension Array {
+    func group<T: Hashable>(by key: (_ element: Element) -> T) -> [[Element]] {
+        var categories: [T: [Element]] = [:]
+        var groups = [[Element]]()
+        for element in self {
+            let key = key(element)
+            if case nil = categories[key]?.append(element) {
+                categories[key] = [element]
+            }
+        }
+        categories.keys.forEach { key in
+            if let group = categories[key] {
+                groups.append(group)
+            }
+        }
+        return groups
     }
 }
