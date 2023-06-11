@@ -9,7 +9,7 @@ import UIKit
 class SuperViewCardTableViewCell: UITableViewCell {
     
     enum CellContents {
-        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive , music
+        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive , music,video
     }
     
     //MARK:- Variables
@@ -83,6 +83,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionViewBottomCons.constant = 0.0
         self.cardCollectionView.isHidden = false
         switch self.currentCell {
+        case .video:
+            self.cardCollectionView.isHidden = true
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
         case .music:
             self.cardCollectionView.decelerationRate = .fast
             self.pageControl.isHidden = true
@@ -200,7 +204,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.categories[indexPath.row])
+        cell.populateCell(model: superYouData?.categories[indexPath.row],index: indexPath.row)
         return cell
     }
 }
@@ -231,6 +235,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             case .pastLive:
                 return self.superYouData?.pastLiveData.count ?? 0
             case .music:
+                return self.superYouData?.musicData.count ?? 0
+            case .video:
                 return self.superYouData?.musicData.count ?? 0
             }
         default:
@@ -267,6 +273,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .categories:
             return self.getCategoriesCell(collectionView, indexPath: indexPath)
             
+        case .video:
+            return UICollectionViewCell()
         case .pastLive:
             return self.getPastLiveNowCell(collectionView, indexPath: indexPath)
         }
@@ -310,6 +318,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             let spacing: CGFloat = 10.0 // mininteritemspacing
             let availableWidth = screen_width - spacing * (numberOfColumn - 1)
             return CGSize(width: availableWidth, height: collectionView.bounds.height)
+        case .video:
+            return CGSize.zero
         case .categories:
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
@@ -605,13 +615,14 @@ class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout 
         override func layoutAttributesForElements(
                         in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
             
-            guard let att = super.layoutAttributesForElements(in:rect) else {return []}
+            guard let att = super.layoutAttributesForElements(in: rect) else {return []}
             
             let group = att.group(by: {$0.frame.origin.y})
-            
+            print("group:-\(group)")
             var x: CGFloat = sectionInset.left
             
             for attr in group {
+                print("attr:-\(attr)")
                 x = sectionInset.left
                 for (_,a) in attr.enumerated() {
                     if a.representedElementCategory != .cell { continue }

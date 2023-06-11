@@ -30,7 +30,6 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.shimmerStatus {
         case .toBeApply:
-
             return 1
         case .applied:
             if let superYouData = self.viewModel.superYouData {
@@ -44,14 +43,8 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.shimmerStatus {
-
         case .toBeApply:
-            switch indexPath.section {
-            case 0:
-                return self.getTitleCell(tableView, indexPath: indexPath, dataSource: SuperYouHomeTitleData())
-            default:
-                return self.getUpcomingCell(tableView, indexPath: indexPath, dataSource: SuperYouHomeModel(nextPageStatus: true))
-            }
+           return UITableViewCell()
         case .applied:
         
             if let superYouData = self.viewModel.superYouData {
@@ -61,11 +54,11 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
 //                }
                 
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
+               
+                case .videoCell:
+                    return self.getTitleCell(tableView, indexPath: indexPath, dataSource: superYouData)
                 case .music:
                     return self.getMusicCell(tableView, indexPath: indexPath, dataSource: superYouData)
-                    
-                case .titleAndSubTitle:
-                    return self.getTitleCell(tableView, indexPath: indexPath, dataSource: superYouData.titleData ?? SuperYouHomeTitleData())
                     
                 case .upcomingCell:
                     return self.getUpcomingCell(tableView, indexPath: indexPath, dataSource: superYouData)
@@ -128,13 +121,9 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TalksHomeTableHeader") as? TalksHomeTableHeader {
                 print("\(superYouData.tableCellAtIndexPath[section][0])")
                 switch superYouData.tableCellAtIndexPath[section][0] {
-                    
-                case .titleAndSubTitle:
-                    headerView.headerViewSetUpForSuperYou(title: "Upcoming", toShowSeeAll: superYouData.upcomingDataArr.count > 2)
-                    
                 case .videoCell:
-                    headerView.headerViewSetUpForSuperYou(title: "Video Cell", toShowSeeAll: superYouData.upcomingDataArr.count > 2)
-                    
+                    headerView.headerViewSetUpForSuperYou(title: "Video Cell", toShowSeeAll: superYouData.videoData.count > 2)
+                    return headerView
                 case .upcomingCell:
                     headerView.headerViewSetUpForSuperYou(title: "Upcoming Deals", toShowSeeAll: superYouData.upcomingDataArr.count > 2)
                     return headerView
@@ -186,6 +175,8 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         if let superYouData = self.viewModel.superYouData //self.shimmerStatus == .applied {
         {
             switch superYouData.tableCellAtIndexPath[section][0] {
+            case .videoCell:
+                return 50.0
             case .favoritesCell:
                 return 50.0
             case .upcomingCell, .pastLive, .liveClassesCell,.featuredCell:
@@ -220,6 +211,8 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         case .applied:
             if let superYouData = self.viewModel.superYouData {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
+                case .videoCell:
+                    return 625.0
                 case .music:
                     let numberOfColumn: CGFloat = 3
                     let sizeForItemHeight : CGFloat = 55

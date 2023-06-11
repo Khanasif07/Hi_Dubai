@@ -22,6 +22,7 @@ class NewsListVC: UIViewController {
     @IBOutlet var businessHeader: UIView!
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
+    var isScrollingTrue: Bool = true
     lazy var viewModel = {
         NewsListViewModel()
     }()
@@ -46,6 +47,7 @@ class NewsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
+        newsTableView.isScrollEnabled = true
         //
         self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
@@ -69,7 +71,6 @@ class NewsListVC: UIViewController {
             businessHeader.layer.shadowOpacity = 1.0
             businessHeader.layer.shadowRadius = 3.0
         }
-        newsTableView.isScrollEnabled = true
         businessHeader.backgroundColor = UIColor(named: "lightWhiteBlack")
         //
     }
@@ -81,14 +82,19 @@ class NewsListVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        newsTableView.isScrollEnabled = isScrollingTrue
+    }
+    
     private func  initialSetup(){
+        self.setUpTableView()
         //
         loadingView = LoadingView(frame: view.frame, inView: view)
         loadingView?.show()
         //
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
-        self.setUpTableView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
             self.fetchAPIData()
         })

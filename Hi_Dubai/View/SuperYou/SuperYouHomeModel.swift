@@ -15,16 +15,15 @@ typealias FailureResponse = (NSError) -> (Void)
 typealias ResponseMessage = (_ message : String) -> ()
 // Enums
 enum TableViewCell {
-    case titleAndSubTitle, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
+    case videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
 }
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
    
     var tableCellAtIndexPath: [[TableViewCell]] = []
     var sectionData: [Int] = []
-    var titleData: SuperYouHomeTitleData?
     var cardData: SuperYouCardData?
-    var videoData: SuperYouVideoData?
+    var videoData: [Record] = []
     var upcomingDataArr: [Record] = []
     var liveNowDataArr: [Record] = []
     var favouriteDataArr: [Record] = []
@@ -53,6 +52,7 @@ class SuperYouHomeModel {
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
             switch results {
             case .success(let result):
+                self.videoData = result.record
                 self.musicData = result.record
                 self.mostLovedArr = result.record
                 self.upcomingDataArr = result.record
@@ -74,6 +74,7 @@ class SuperYouHomeModel {
     func dataMappingInModel(jsonArr: [JSONDictionary]) {
         self.tableCellAtIndexPath.removeAll()
         if isFirstTime{
+            self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
@@ -84,7 +85,7 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.pastLive])
             self.tableCellAtIndexPath.append([.categories])
         }else{
-           
+            self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
