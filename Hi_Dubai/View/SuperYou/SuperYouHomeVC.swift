@@ -160,14 +160,13 @@ class SuperYouHomeVC: BaseVC {
        
         tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
         tabSwipe.toolbar.isTranslucent = false
-        tabSwipe.setTabExtraWidth(30)
         tabSwipe.setTabBarHeight(44.0)
         tabSwipe.setIndicatorHeight(2.5)
         tabSwipe.delegate = self
         
         tabSwipe.toolbar.isTranslucent = false
         tabSwipe.setIndicatorColor(UIColor.blue)
-        tabSwipe.setTabExtraWidth(30)
+//        tabSwipe.setTabExtraWidth(30)
 //        var frameRect: CGRect = (tabSwipe.carbonSegmentedControl?.frame)!
 //        frameRect.size.width = screen_width
 //        tabSwipe.carbonSegmentedControl?.frame = frameRect
@@ -175,7 +174,7 @@ class SuperYouHomeVC: BaseVC {
         tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
         for i in 0..<tabs.count {
             let screenRect = UIScreen.main.bounds
-            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+            var width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
             tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
         }
     }
