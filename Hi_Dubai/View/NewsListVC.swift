@@ -208,7 +208,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: false)
             case 10:
                 let vc = HomeViewController.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: false)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]

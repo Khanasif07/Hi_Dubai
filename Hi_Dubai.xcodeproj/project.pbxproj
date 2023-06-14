@@ -140,6 +140,8 @@
 		E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C672A27630B00574230 /* AnimalListItemView.swift */; };
 		E0765C6A2A28AFF200574230 /* TabGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C692A28AFF200574230 /* TabGalleryView.swift */; };
 		E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C6B2A28B6B800574230 /* GalleryView.swift */; };
+		E08EC0742A3A71B2003507B9 /* ArtistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */; };
+		E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */; };
 		E0B447632A30638A00423DE2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447622A30638A00423DE2 /* RoundedImageView.swift */; };
 		E0B447662A30645D00423DE2 /* CompostionalLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */; };
 		E0B447692A30701100423DE2 /* NewBannerSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B447672A30701100423DE2 /* NewBannerSupplementaryView.swift */; };
@@ -303,6 +305,8 @@
 		E0765C672A27630B00574230 /* AnimalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListItemView.swift; sourceTree = "<group>"; };
 		E0765C692A28AFF200574230 /* TabGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGalleryView.swift; sourceTree = "<group>"; };
 		E0765C6B2A28B6B800574230 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHeaderView.swift; sourceTree = "<group>"; };
+		E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistHeaderView.xib; sourceTree = "<group>"; };
 		E0B447622A30638A00423DE2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		E0B447652A30645D00423DE2 /* CompostionalLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostionalLayoutVC.swift; sourceTree = "<group>"; };
 		E0B447672A30701100423DE2 /* NewBannerSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBannerSupplementaryView.swift; sourceTree = "<group>"; };
@@ -507,6 +511,8 @@
 				E00450AC2A2FE09A00A9A64E /* HeaderViewCV.xib */,
 				E00450AF2A2FE0E900A9A64E /* FooterViewCV.swift */,
 				E00450B02A2FE0E900A9A64E /* FooterViewCV.xib */,
+				E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */,
+				E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -830,6 +836,7 @@
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
 				E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */,
 				E00450A62A2FDF9800A9A64E /* PhotoCollCell.xib in Resources */,
+				E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
@@ -987,6 +994,7 @@
 				E0765C1C2A272BA000574230 /* VideoListItemView.swift in Sources */,
 				E0765C5C2A274D1400574230 /* InsetGalleryView.swift in Sources */,
 				8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */,
+				E08EC0742A3A71B2003507B9 /* ArtistHeaderView.swift in Sources */,
 				E0722B7E29FFDBC500BB9B6D /* HomeVC.swift in Sources */,
 				E00DED502A151DD700828D34 /* SuperViewCardTableViewCell.swift in Sources */,
 				E00450AD2A2FE09A00A9A64E /* HeaderViewCV.swift in Sources */,

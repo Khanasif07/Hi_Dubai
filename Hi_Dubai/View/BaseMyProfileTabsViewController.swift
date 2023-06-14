@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CarbonKit
 
-@objc class BaseMyProfileTabsViewController: LightStatusBarViewController, CarbonTabSwipeNavigationDelegate {
+@objc class BaseMyProfileTabsViewController: LightStatusBarViewController {
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var targetView: UIView!
@@ -90,7 +90,7 @@ import CarbonKit
     }
 
     
-    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
+     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         switch index {
         case 0:
             // MY LISTS
@@ -117,7 +117,7 @@ import CarbonKit
         return UIViewController()
     }
     
-    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
         
         print("I'm on index \(Int(index))")
         let parent = self.parent as? MainDetailsTableViewController

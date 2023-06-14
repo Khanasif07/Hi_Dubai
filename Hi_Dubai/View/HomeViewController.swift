@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import CarbonKit
 class HomeViewController: BaseVC {
-    
-    var headerView = OtherArtistHeaderView.instanciateFromNib()
+    //Notes:- header height == 325.0
+    //  sticky height == 235.0
+    var headerView = ArtistHeaderView.instanciateFromNib()
     var detailView = OtherArtistDetail.instanciateFromNib()
   
-    var statsVC    : StatsVC!
-    var newsVC     : StatsVC!
-    var eventsVC   : StatsVC!
-    var musicVC    : StatsVC!
-    var socialVC   : StatsVC!
+    var tabVC1    : StatsVC!
+    var tabVC2     : StatsVC!
+    var tabVC3   : StatsVC!
     var isProcess : Bool = false
+    var lastOffset: CGFloat = 0.0
+    var isFirstTime: Bool = true
+    private var tabSwipe: CarbonTabSwipeNavigation = CarbonTabSwipeNavigation()
 
     @IBOutlet weak var baseViewHeight: NSLayoutConstraint!
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -54,11 +57,35 @@ class HomeViewController: BaseVC {
         let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         var frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         self.mainScrollView.frame = frame
-        self.mainScrollView.contentSize = frame.size
+//        self.mainScrollView.contentSize = frame.size
         frame = CGRect(x: 0, y: 325, width: screen_width, height: screen_height)
         frame.size.height = frame.size.height - (325)
         self.detailView.frame = frame
         scrollFrameSetup()
+    }
+    
+    func initCarbonSwipeUI(targetView: UIView){
+        let tabs: [String] = ["TRENDING", "WHAT'S NEW", "LATEST LISTS"]
+        tabVC1 = StatsVC.instantiate(fromAppStoryboard: .Main)
+        tabVC2 = StatsVC.instantiate(fromAppStoryboard: .Main)
+        tabVC3 = StatsVC.instantiate(fromAppStoryboard: .Main)
+        tabSwipe.navigationController?.navigationBar.isHidden = true
+        tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
+        
+        tabSwipe.tabBarController?.tabBar.tintColor = .black
+        tabSwipe.setTabBarHeight(50.0)
+        tabSwipe.toolbar.tintColor = .black
+        tabSwipe.setIndicatorHeight(2.5)
+        tabSwipe.delegate = self
+        tabSwipe.toolbar.isTranslucent = false
+        tabSwipe.setIndicatorColor(UIColor.blue)
+        tabSwipe.view.backgroundColor = .clear
+        tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
+        for i in 0..<tabs.count {
+            let screenRect = UIScreen.main.bounds
+            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+            tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
+        }
     }
     
     private func scrollFrameSetup() {
@@ -68,16 +95,6 @@ class HomeViewController: BaseVC {
     
     ///SET THE FRAME OF VIEWS
     private func setTheFrameOfViews() {
-
-      let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 64
-      let vcHeight = screen_height - (45+40+tabBarHeight)
-        
-        self.statsVC.view.frame = CGRect(x: 0, y: 0, width: screen_width, height: vcHeight)
-        self.newsVC.view.frame = CGRect(x: screen_width, y: 0, width: screen_width, height: vcHeight)
-        self.musicVC.view.frame = CGRect(x: screen_width * 2, y: 0, width: screen_width, height: vcHeight)
-        self.socialVC.view.frame = CGRect(x: screen_width * 3, y: 0, width: screen_width, height: vcHeight)
-        self.eventsVC.view.frame = CGRect(x: screen_width * 4, y: 0, width: screen_width, height: vcHeight)
-
     }
     
     override func initialSetup() {
@@ -96,11 +113,10 @@ class HomeViewController: BaseVC {
     
     private func parallelHeaderSetUp() {
         //TODO: Deprecated method to be change
-        let parallexHeaderHeight = 250 + 44.0
+        let parallexHeaderHeight = 325.0
         self.headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(parallexHeaderHeight))
         self.headerView.isUserInteractionEnabled = true
         self.mainScrollView.delegate = self
-        self.headerView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -111,86 +127,18 @@ class HomeViewController: BaseVC {
     private func instantiateViewController() {
         self.mainScrollView.addSubview(self.detailView)
         self.mainScrollView.addSubview(headerView)
-        let tabBarHeight = self.tabBarController?.tabBar.frame.size.height ?? 70
-        let vcHeight = screen_height-(45+40+tabBarHeight)
-
-        self.statsVC = StatsVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(statsVC)
-        self.statsVC.view.frame = CGRect(x: 0, y: 0, width: screen_width, height: vcHeight )
-        self.detailView.scrollView.frame = self.statsVC.view.frame
-        self.detailView.scrollView.addSubview(self.statsVC.view)
-        self.statsVC.didMove(toParent: self)
-        
-        self.newsVC = StatsVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(self.newsVC)
-        newsVC.view.frame = CGRect(x: screen_width, y: 0, width: screen_width, height: vcHeight )
-        self.detailView.scrollView.frame = self.newsVC.view.frame
-        self.detailView.scrollView.addSubview(self.newsVC.view)
-        self.newsVC.didMove(toParent: self)
-        
-        self.musicVC = StatsVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(self.musicVC)
-        self.musicVC.view.frame = CGRect(x: 2 * screen_width, y: 0, width: screen_width, height: vcHeight )
-        self.detailView.scrollView.frame = self.musicVC.view.frame
-        self.detailView.scrollView.addSubview(self.musicVC.view)
-        self.musicVC.didMove(toParent: self)
-        
-        self.socialVC = StatsVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(self.socialVC)
-        self.socialVC.view.frame = CGRect(x: 3 * screen_width, y: 0, width: screen_width, height: vcHeight )
-        self.detailView.scrollView.frame = self.socialVC.view.frame
-        self.detailView.scrollView.addSubview(self.socialVC.view)
-        self.socialVC.didMove(toParent: self)
-        
-        self.eventsVC = StatsVC.instantiate(fromAppStoryboard: .Main)
-        self.addChild(self.eventsVC)
-        self.eventsVC.view.frame = CGRect(x: 4 * screen_width, y: 0, width: screen_width, height: vcHeight )
-        self.detailView.scrollView.frame = self.eventsVC.view.frame
-        self.detailView.scrollView.addSubview(self.eventsVC.view)
-        self.eventsVC.didMove(toParent: self)
-        
-        
-        self.detailView.scrollView.delegate = self
-        
-        self.configureScrollView()
-        
+        self.detailView.scrollView.isHidden = true
+        initCarbonSwipeUI(targetView: self.detailView.containerView)
     }
-    
+
     private func configureScrollView() {
-        self.detailView.scrollView.contentSize = CGSize(width: screen_width * 5.0, height: 1.0)
+//        self.detailView.scrollView.contentSize = CGSize(width: screen_width * 5.0, height: 1.0)
     }
     
-    
-    private func buttonTapAction(senderTag: Int ) {
-        self.isProcess = true
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.1) {
-            self.detailView.scrollView.setContentOffset(CGPoint(x: screen_width * CGFloat(senderTag), y: 0), animated: true)
-            self.headerView.detailImgView.forEach { (btn) in
-                if btn.tag == senderTag{
-                    self.headerView.detailImgView[senderTag].alpha = 1.0
-                    self.headerView.detailBtn[senderTag].alpha = 1.0
-                    self.headerView.detailBtn[senderTag].alpha = 1.0
-                    self.headerView.detailBtn[senderTag].backgroundColor = .blue
-                    self.headerView.detailBtn[senderTag].setTitleColor(.white, for: .normal)
-                }else{
-                    self.headerView.detailImgView[btn.tag].alpha = 0.0
-                    self.headerView.detailBtn[btn.tag].alpha = 0.70
-                    self.headerView.detailBtn[btn.tag].backgroundColor = .white
-                    self.headerView.detailBtn[btn.tag].setTitleColor(.blue, for: .normal)
-                }
-            }
-            self.detailView.frame.size.height =  screen_height - (325 - 55.0)
-            self.view.layoutIfNeeded()
-        }
-        
-    }
-    
-
 }
 extension HomeViewController : OtherArtistHeaderViewDelegate{
     func detailBtnAction(sender: UIButton) {
-        self.buttonTapAction(senderTag: sender.tag)
+//        self.buttonTapAction(senderTag: sender.tag)
     }
     
     func otherInfomation() {
@@ -246,59 +194,56 @@ extension HomeViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.detailView.scrollView {
             print("DetailView ScrollView.contentOffset.y:- \(self.detailView.scrollView.contentOffset.y)")
-            switch scrollView.contentOffset.x {
-            case screen_width * 0:
-                self.buttonTapAction(senderTag: 0)
-            case screen_width * 1:
-                self.buttonTapAction(senderTag: 1)
-            case screen_width * 2:
-                self.buttonTapAction(senderTag: 2)
-            case screen_width * 3:
-                self.buttonTapAction(senderTag: 3)
-            case screen_width * 4:
-                self.buttonTapAction(senderTag: 4)
-            default:
-                break
-            }
+//            switch scrollView.contentOffset.x {
+//            case screen_width * 0:
+//                self.buttonTapAction(senderTag: 0)
+//            case screen_width * 1:
+//                self.buttonTapAction(senderTag: 1)
+//            case screen_width * 2:
+//                self.buttonTapAction(senderTag: 2)
+//            case screen_width * 3:
+//                self.buttonTapAction(senderTag: 3)
+//            case screen_width * 4:
+//                self.buttonTapAction(senderTag: 4)
+//            default:
+//                break
+//            }
         }
         
-        if scrollView.isEqual(mainScrollView){
-           self.setNavBar(mainScrollView)
-           if self.mainScrollView.contentOffset.y > 0.0 {
-                UIView.animate(withDuration: 0.1) {
-                    print("MainScrollView .contentOffset.y:- \(self.mainScrollView.contentOffset.y)")
-                    let offsett =  self.mainScrollView.contentOffset.y >= 180.0 ? 180.0 : self.mainScrollView.contentOffset.y
-                    switch self.detailView.scrollView.contentOffset.x {
-                    case screen_width * 0:
-                        self.statsVC.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
-                    case screen_width * 1:
-                        self.newsVC.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
-                    case screen_width * 2:
-                        self.musicVC.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
-                    case screen_width * 3:
-                        self.socialVC.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
-                    case screen_width * 4:
-                        self.eventsVC.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
-                    default:
-                        break
-                    }
-                    self.detailView.frame.size.height =  screen_height - (325 + statusBarHeight - 55.0) + offsett
-                    self.baseViewHeight.constant = screen_height + offsett
-                    if self.mainScrollView.contentOffset.y >= 180.0 {
-                        self.mainScrollView.setContentOffset(CGPoint(x: 0, y: 180.0), animated: false)
-                    }
+        if scrollView.isEqual(mainScrollView) && (!isProcess || isFirstTime){
+            self.setNavBar(mainScrollView)
+            if self.mainScrollView.contentOffset.y > 0.0 {
+                let offsett =  self.mainScrollView.contentOffset.y >= 235.0 ? 235.0 : self.mainScrollView.contentOffset.y
+                self.detailView.frame.size.height =  screen_height - (325) + offsett
+                self.baseViewHeight.constant = mainScrollView.frame.size.height + offsett
+                if self.mainScrollView.contentOffset.y >= 235.0 {
+                    self.mainScrollView.setContentOffset(CGPoint(x: 0, y: 235.0), animated: false)
+                }else{
+                    self.mainScrollView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
                 }
-           }else{
-               self.mainScrollView.setContentOffset(CGPoint(x: 0, y: 0.0), animated: false)
-           }
+                //==// smooth scrolling causing reason
+                (tabSwipe.viewControllers[tabSwipe.currentTabIndex] as? StatsVC)?.mainTableView.setContentOffset(CGPoint(x: 0, y: offsett), animated: false)
+                //==//
+            }else{
+                self.mainScrollView.setContentOffset(CGPoint(x: 0, y: 0.0), animated: false)
+                //==// smooth scrolling causing reason
+                (tabSwipe.viewControllers[tabSwipe.currentTabIndex] as? StatsVC)?.mainTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+                //==//
+            }
+        }else if scrollView.isEqual(mainScrollView){
+            //==// smooth scrolling causing reason
+            (tabSwipe.viewControllers[tabSwipe.currentTabIndex] as? StatsVC)?.mainTableView.setContentOffset(CGPoint(x: 0, y: lastOffset), animated: false)
+            //==//
         }
+        isProcess = false
+        isFirstTime = false
     }
     
     @objc func enableScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
-        if !isProcess {
+        if !isProcess && offset > 0.0 {
             mainScrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
             print("detailView ScrollView.contentOffset.y:- \(offset)")
-            detailView.frame.size.height =  screen_height - (325 + statusBarHeight - 55.0) + offset
+            detailView.frame.size.height =  screen_height - (325) + offset
             baseViewHeight.constant = mainScrollView.frame.size.height + offset
             print("----================----")
             print("Offset:- \(offset)")
@@ -318,5 +263,47 @@ extension UIViewController {
         view.addSubview(viewController.view)
         self.addChild(viewController)
         viewController.didMove(toParent: self)
+    }
+}
+
+
+extension HomeViewController: CarbonTabSwipeNavigationDelegate{
+    public func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
+        switch index {
+        case 0:
+            isProcess =  true
+            return tabVC1 ?? UIViewController();
+        case 1:
+            isProcess =  true
+            return tabVC2 ?? UIViewController();
+        case 2:
+            isProcess =  true
+            return tabVC3 ?? UIViewController();
+        default:
+            break
+        }
+        return UIViewController()
+    }
+    
+    public func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+        let parent = self.parent as? HomeViewController
+        print("I'm on index \(String(describing: parent)) (Int(index))")
+        switch index {
+        case 0:
+            isProcess =  true
+            lastOffset = (carbonTabSwipeNavigation.viewControllers[0] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+        case 1:
+            isProcess =  true
+            lastOffset = (carbonTabSwipeNavigation.viewControllers[1] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+        case 2:
+            isProcess =  true
+            lastOffset = (carbonTabSwipeNavigation.viewControllers[2] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+        default:
+            break
+        }
+    }
+    
+    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, willMoveAt index: UInt) {
+        isProcess =  true
     }
 }
