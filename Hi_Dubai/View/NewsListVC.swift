@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 enum ScrollDirection : Int {
     case none
     case right
@@ -167,6 +168,14 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.currentShimmerStatus == .applied {
+            //
+            Analytics.logEvent("GA_ACTION_BUSINESS_CARD_SELECT_BUSINESS", parameters: [
+                "WE_EVENT_NAME": "GA_ACTION_BUSINESS_CARD_SELECT_BUSINESS",
+                "WE_BUSINESS_ID": "12132432432",
+                "WE_BUSINESS_NAME": "Testing",
+                "GA_EVENT_CATEGORY": "GA_CATEGORY_BUSINESS_CARD"
+            ])
+            //
             switch indexPath.row {
             case 0:
                 let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
