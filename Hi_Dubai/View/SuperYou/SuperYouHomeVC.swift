@@ -8,10 +8,11 @@
 
 import UIKit
 import SwiftUI
-
+import CarbonKit
 class SuperYouHomeVC: BaseVC {
     
     //MARK:- Variables
+//    var searchView: UIView?
     private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
@@ -27,12 +28,15 @@ class SuperYouHomeVC: BaseVC {
     var tabBarHeight: CGFloat {
         return self.tabBarController?.tabBar.frame.size.height ?? 0.0
     }
+    private var tabSwipe: CarbonTabSwipeNavigation = CarbonTabSwipeNavigation()
+    var tabVC1: NewsListVC?
+    var tabVC2: NewsListVC?
+    var tabVC3: NewsListVC?
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = AppColors.red
         refreshControl.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
-        
         return refreshControl
     }()
     
@@ -64,9 +68,6 @@ class SuperYouHomeVC: BaseVC {
     }
     
     override func initialSetup() {
-//        self.navBar.delegate = self
-//        self.navBar.configureUI(isMainImage: true, isLeftButton: false, isRightButton: false)
-//        self.navBar.delegate = self
         self.viewModel.delegate = self
         self.registerNibs()
         self.dataTableView.delegate = self
@@ -121,6 +122,9 @@ class SuperYouHomeVC: BaseVC {
         checkFirstTime = false
         self.dataTableView.reloadData()
         self.addSeachTableView()
+        tabVC1?.isScrollingTrue = false
+        tabVC2?.isScrollingTrue = false
+        tabVC3?.isScrollingTrue = false
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -131,10 +135,6 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let superYouData = self.viewModel.superYouData, superYouData.titleData == nil {
-            self.shimmerStatus = .toBeApply
-        }
-        
         checkFirstTime = true
     }
     
@@ -146,9 +146,37 @@ class SuperYouHomeVC: BaseVC {
     
     
     internal override func registerNibs() {
+        self.dataTableView.registerCell(with: SuperYouTitleTableViewCell.self)
         self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
         self.dataTableView.registerHeaderFooter(with: TalksHomeTableHeader.self)
         self.showTableHeaderView()
+    }
+    
+    func initCarbonSwipeUI(targetView: UIView){
+        let tabs: [String] = ["TRENDING", "WHAT'S NEW", "LATEST LISTS"]
+        tabVC1 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC2 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC3 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+       
+        tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
+        tabSwipe.toolbar.isTranslucent = false
+        tabSwipe.setTabBarHeight(44.0)
+        tabSwipe.setIndicatorHeight(2.5)
+        tabSwipe.delegate = self
+        
+        tabSwipe.toolbar.isTranslucent = false
+        tabSwipe.setIndicatorColor(UIColor.blue)
+//        tabSwipe.setTabExtraWidth(30)
+//        var frameRect: CGRect = (tabSwipe.carbonSegmentedControl?.frame)!
+//        frameRect.size.width = screen_width
+//        tabSwipe.carbonSegmentedControl?.frame = frameRect
+//        tabSwipe.carbonSegmentedControl?.apportionsSegmentWidthsByContent = false
+        tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
+        for i in 0..<tabs.count {
+            let screenRect = UIScreen.main.bounds
+            var width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+            tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
+        }
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -164,8 +192,9 @@ class SuperYouHomeVC: BaseVC {
     
     private  func addSeachTableView(){
         self.placesView?.removeFromSuperview()
-        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height)))
-        self.view.addSubview(self.placesView!)
+        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
+        self.containerView.addSubview(placesView!)
+        self.placesView?.backgroundColor = .yellow
         self.placesView?.isHidden = true
     }
     
@@ -279,5 +308,26 @@ extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
             self.view.layoutIfNeeded()
         }
     }
+    
+}
+
+extension SuperYouHomeVC: CarbonTabSwipeNavigationDelegate{
+    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
+        switch index {
+        case 0:
+            tabVC1?.isScrollingTrue = false
+            return tabVC1 ?? UIViewController();
+        case 1:
+            tabVC2?.isScrollingTrue = false
+            return tabVC2 ?? UIViewController();
+        case 2:
+            tabVC3?.isScrollingTrue = false
+            return tabVC3 ?? UIViewController();
+        default:
+            break
+        }
+        return UIViewController()
+    }
+    
     
 }

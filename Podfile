@@ -11,6 +11,7 @@ target 'Hi_Dubai' do
   pod 'CarbonKit'
   pod 'SwiftyJSON', '~> 4.0'
   pod "PromiseKit", "~> 6.8"
+  pod 'FirebaseAnalytics'
   # Pods for Hi_Dubai
   
 end

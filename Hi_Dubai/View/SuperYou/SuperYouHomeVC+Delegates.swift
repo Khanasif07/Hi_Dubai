@@ -13,8 +13,11 @@ import SwiftUI
 extension SuperYouHomeVC {
     
     /// Get Title Cell
-    internal func getTitleCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeTitleData) -> UITableViewCell {
+    internal func getTitleCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperYouTitleTableViewCell.self, indexPath: indexPath)
+        if cell.containerView.subviews.isEmpty{
+            initCarbonSwipeUI(targetView: cell.containerView)
+        }
         return cell
     }
     

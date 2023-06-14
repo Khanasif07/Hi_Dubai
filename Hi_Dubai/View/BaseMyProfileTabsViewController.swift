@@ -14,8 +14,10 @@ import CarbonKit
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var targetView: UIView!
+    //
     private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
     private var tabs: [String]?
+    //
     public var listVC: NewsListVC?
     public var savedListVC: NewsListVC?
     public var viewController: NewsListVC?
@@ -143,16 +145,5 @@ import CarbonKit
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, willMoveAt index: UInt) {
         
         print("I'm on index \(index)")
-//        switch index {
-//        case 0:
-//            listVC?.forceRefresh = true
-//        case 1:
-//            savedListVC?.forceRefresh = true
-//        default:
-//            break
-//        }
     }
-
-    
-    
 }

@@ -61,9 +61,9 @@ class MenuItemCollectionCell: PagingCell {
         }
      }
     
-    func populateCell(model: Record?){
+    func populateCell(model: Record?, index: Int){
         self.title.textColor = AppColors.white
-        self.title.text = model?.primaryTag
+        self.title.text = (model?.primaryTag ?? "") + " " + String(index)
         self.dotView.isHidden = true
     }
 }
