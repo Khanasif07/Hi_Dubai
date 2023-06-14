@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 import CarbonKit
 class SuperYouHomeVC: BaseVC {
-    
     //MARK:- Variables
 //    var searchView: UIView?
     private var placesView: PlacesAndSuperShesView?
@@ -101,6 +100,7 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         setNeedsStatusBarAppearanceUpdate()
         self.dataTableView.alpha = 1.0
         showLoader()
@@ -119,6 +119,7 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         checkFirstTime = false
         self.dataTableView.reloadData()
         self.addSeachTableView()
@@ -157,24 +158,21 @@ class SuperYouHomeVC: BaseVC {
         tabVC1 = NewsListVC.instantiate(fromAppStoryboard: .Main)
         tabVC2 = NewsListVC.instantiate(fromAppStoryboard: .Main)
         tabVC3 = NewsListVC.instantiate(fromAppStoryboard: .Main)
-       
+        tabSwipe.navigationController?.navigationBar.isHidden = true
         tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
-        tabSwipe.toolbar.isTranslucent = false
-        tabSwipe.setTabBarHeight(44.0)
+        
+        tabSwipe.tabBarController?.tabBar.tintColor = .black
+        tabSwipe.setTabBarHeight(50.0)
+        tabSwipe.toolbar.tintColor = .black
         tabSwipe.setIndicatorHeight(2.5)
         tabSwipe.delegate = self
-        
         tabSwipe.toolbar.isTranslucent = false
         tabSwipe.setIndicatorColor(UIColor.blue)
-//        tabSwipe.setTabExtraWidth(30)
-//        var frameRect: CGRect = (tabSwipe.carbonSegmentedControl?.frame)!
-//        frameRect.size.width = screen_width
-//        tabSwipe.carbonSegmentedControl?.frame = frameRect
-//        tabSwipe.carbonSegmentedControl?.apportionsSegmentWidthsByContent = false
+        tabSwipe.view.backgroundColor = .clear
         tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
         for i in 0..<tabs.count {
             let screenRect = UIScreen.main.bounds
-            var width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
             tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
         }
     }
@@ -327,6 +325,21 @@ extension SuperYouHomeVC: CarbonTabSwipeNavigationDelegate{
             break
         }
         return UIViewController()
+    }
+    
+    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+        let parent = self.parent as? SuperYouHomeVC
+        print("I'm on index \(parent) (Int(index))")
+        switch index {
+        case 0:
+            (carbonTabSwipeNavigation.viewControllers[0] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        case 1:
+            (carbonTabSwipeNavigation.viewControllers[1] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        case 2:
+            (carbonTabSwipeNavigation.viewControllers[2] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        default:
+            break
+        }
     }
     
     

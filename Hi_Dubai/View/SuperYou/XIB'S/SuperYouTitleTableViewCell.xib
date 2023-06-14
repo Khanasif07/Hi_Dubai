@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MG-cU-KKF" customClass="ShimmerContainerView" customModule="Hi_Dubai" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <viewLayoutGuide key="safeArea" id="Nx3-UD-O3T"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

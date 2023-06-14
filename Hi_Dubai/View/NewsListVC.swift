@@ -48,6 +48,8 @@ class NewsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
         //
         self.popularLbl.text = headerTitle
@@ -77,7 +79,7 @@ class NewsListVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.navigationBar.isHidden = false
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -168,14 +170,6 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.currentShimmerStatus == .applied {
-            //
-            Analytics.logEvent("GA_ACTION_BUSINESS_CARD_SELECT_BUSINESS", parameters: [
-                "WE_EVENT_NAME": "GA_ACTION_BUSINESS_CARD_SELECT_BUSINESS",
-                "WE_BUSINESS_ID": "12132432432",
-                "WE_BUSINESS_NAME": "Testing",
-                "GA_EVENT_CATEGORY": "GA_CATEGORY_BUSINESS_CARD"
-            ])
-            //
             switch indexPath.row {
             case 0:
                 let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
@@ -212,6 +206,9 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 9:
                 let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 10:
+                let vc = HomeViewController.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]
