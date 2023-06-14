@@ -40,7 +40,7 @@ class NewsListVC: UIViewController {
     var error: Error?
     
     //
-    var stopScroll = 80.0
+//    var stopScroll = 80.0
     internal var containerViewMinY: Float = 0.0
     var lastContentOffset: CGFloat = 0.0
     internal var headerTitle: String = "POPULAR BUSINESS"
@@ -231,13 +231,13 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return businessHeader.frame.size.height
-//    }
-//    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return businessHeader
-//    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return businessHeader.frame.size.height
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return businessHeader
+    }
 }
 
 //MARK:- Extension NewsListViewModelDelegate
@@ -306,7 +306,7 @@ extension NewsListVC{
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
         var scrollDirection: ScrollDirection
-        
+        var stopScroll = 80.0
         if lastContentOffset > scroll.contentOffset.y {
             scrollDirection = .down
         } else {

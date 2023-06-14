@@ -102,7 +102,7 @@ class BaseNestedScrollViewController : BaseViewController, UIScrollViewDelegate 
     }
     
     func enableScrollOnChildScrollView(childScrollView:UIScrollView!) {
-        childScrollView.isScrollEnabled = true
+        self.childScrollView.isScrollEnabled = true
         _childScrollView?.bounces = true
         _childScrollView?.alwaysBounceVertical = true
     }
