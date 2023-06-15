@@ -3564,6 +3564,59 @@
             </objects>
             <point key="canvasLocation" x="3212" y="-1593"/>
         </scene>
+        <!--Sticky HeaderVC-->
+        <scene sceneID="ZCt-Zz-rPc">
+            <objects>
+                <viewController storyboardIdentifier="StickyHeaderVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="67r-0b-H47" customClass="StickyHeaderVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EEr-N6-8Av">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-im-xEL">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-KB-7S5" customClass="MXScrollView">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7pb-KB-7S5" secondAttribute="trailing" id="HyR-0i-pGj"/>
+                                    <constraint firstAttribute="bottom" secondItem="7pb-KB-7S5" secondAttribute="bottom" id="NoQ-Ie-305"/>
+                                    <constraint firstItem="7pb-KB-7S5" firstAttribute="top" secondItem="r1v-im-xEL" secondAttribute="top" id="Qty-7v-VaJ"/>
+                                    <constraint firstItem="7pb-KB-7S5" firstAttribute="leading" secondItem="r1v-im-xEL" secondAttribute="leading" id="fwZ-dn-Al1"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_oblique" translatesAutoresizingMaskIntoConstraints="NO" id="Roq-vG-Rfx">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="53"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="Lbt-yQ-dE0"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kfq-sY-DdC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="r1v-im-xEL" secondAttribute="bottom" id="6nn-sa-YBo"/>
+                            <constraint firstItem="kfq-sY-DdC" firstAttribute="trailing" secondItem="r1v-im-xEL" secondAttribute="trailing" id="9Ss-h6-E4W"/>
+                            <constraint firstItem="r1v-im-xEL" firstAttribute="top" secondItem="EEr-N6-8Av" secondAttribute="top" id="NKz-In-ay9"/>
+                            <constraint firstItem="Roq-vG-Rfx" firstAttribute="top" secondItem="EEr-N6-8Av" secondAttribute="top" id="Rle-xQ-UgO"/>
+                            <constraint firstItem="Roq-vG-Rfx" firstAttribute="leading" secondItem="kfq-sY-DdC" secondAttribute="leading" id="Rxq-HQ-Vbw"/>
+                            <constraint firstItem="Roq-vG-Rfx" firstAttribute="trailing" secondItem="kfq-sY-DdC" secondAttribute="trailing" id="dyg-By-8TH"/>
+                            <constraint firstItem="r1v-im-xEL" firstAttribute="leading" secondItem="kfq-sY-DdC" secondAttribute="leading" id="qYp-cH-bfa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fakeNavBar" destination="Roq-vG-Rfx" id="DiN-rM-Vwj"/>
+                        <outlet property="fakeNavBarHC" destination="Lbt-yQ-dE0" id="Gf3-4A-nD2"/>
+                        <outlet property="scrollView" destination="7pb-KB-7S5" id="l7L-r9-yaw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jf3-ef-g75" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5176.9230769230771" y="-1680.568720379147"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="4NT-zH-FZz">
