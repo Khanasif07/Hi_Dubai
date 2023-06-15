@@ -1744,7 +1744,7 @@
         <!--Base My Profile Tabs View Controller-->
         <scene sceneID="DPS-gB-keq">
             <objects>
-                <viewController storyboardIdentifier="BaseMyProfileTabsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xJO-SH-JUp" customClass="BaseMyProfileTabsViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseMyProfileTabsViewContrller" id="xJO-SH-JUp" customClass="BaseMyProfileTabsViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="75O-0N-JLW">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1793,8 +1793,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="targetView" destination="BGF-xU-5sf" id="TKa-On-UxK"/>
-                        <outlet property="toolBar" destination="nES-LS-l4I" id="SDt-Yg-s0V"/>
+                        <outlet property="targetView" destination="BGF-xU-5sf" id="fSP-PV-H2m"/>
+                        <outlet property="toolBar" destination="nES-LS-l4I" id="Wzy-go-oYx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r2a-Hg-5tK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3575,7 +3575,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-im-xEL">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-KB-7S5" customClass="MXScrollView">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-KB-7S5" customClass="MXScrollView">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                     </scrollView>
                                 </subviews>

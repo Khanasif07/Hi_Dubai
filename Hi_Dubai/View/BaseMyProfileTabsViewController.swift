@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 import CarbonKit
-
-@objc class BaseMyProfileTabsViewController: LightStatusBarViewController {
+class BaseMyProfileTabsViewController: LightStatusBarViewController,CarbonTabSwipeNavigationDelegate {
     
-    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var targetView: UIView!
+    @IBOutlet weak var toolBar: UIToolbar!
     //
-    private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
+    private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation? =   CarbonTabSwipeNavigation()
     private var tabs: [String]?
     //
     public var listVC: NewsListVC?
@@ -54,16 +53,17 @@ import CarbonKit
         pointsVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
         rewardsVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
         
-        carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabs, toolBar: toolBar, delegate: self)
+        carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabs, toolBar: toolBar,delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self, andTargetView: targetView)
+        carbonTabSwipeNavigation?.delegate = self
 
         let color = UIColor.midnightBlue
-           navigationController?.navigationBar.isTranslucent = true
-           navigationController?.navigationBar.tintColor = .clear
-           navigationController?.navigationBar.barTintColor = color
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .clear
+        navigationController?.navigationBar.barTintColor = color
         navigationController?.navigationBar.barStyle = .blackTranslucent
-
-            carbonTabSwipeNavigation?.toolbar.isTranslucent = false
+        
+        carbonTabSwipeNavigation?.toolbar.isTranslucent = false
             carbonTabSwipeNavigation?.setIndicatorColor(color)
             // Custimize segmented control
         

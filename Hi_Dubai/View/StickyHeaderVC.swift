@@ -41,7 +41,6 @@ class StickyHeaderVC: BaseVC {
         self.statusBarStyle = .lightContent
         //
         setNavigationBar(title: "Home", subTitle: "Home", backButton: true, titleView: false, backButtonImage: UIImage(named: "Back Icon"), buttonTitle: "", largeTitles: true, leftTitle: "")
-        
         // Do any additional setup after loading the view.
     }
     
@@ -93,7 +92,7 @@ class StickyHeaderVC: BaseVC {
         self.scrollView.parallaxHeader.minimumHeight = CGFloat(parallexHeaderMinHeight)
         self.scrollView.parallaxHeader.height = CGFloat(parallexHeaderHeight)
         //MARK: - for static stuffs in header view
-        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.topFill
+        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
         //MARK: - for image as in header view
 //        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
         self.scrollView.parallaxHeader.delegate = self
@@ -131,7 +130,7 @@ class StickyHeaderVC: BaseVC {
     private func instantiateViewController() {
         
         self.detailView.scrollView.isHidden = true
-        self.headerView.mainImgView.isHidden = true
+        self.headerView.mainImgView.isHidden = false
         initCarbonSwipeUI(targetView: self.detailView.containerView)
         self.scrollView.addSubview(self.detailView)
         //        self.configureScrollView()
