@@ -49,7 +49,6 @@ class StickyHeaderVC: BaseVC {
         super.viewDidLayoutSubviews()
         fakeNavBarHC.constant = (navigationController?.navigationBar.frame.size.height ?? 0.0) + (navigationController?.navigationBar.frame.origin.y ?? 0.0)
         view.layoutIfNeeded()
-        //        let tabBarHeight    = (self.tabBarController?.tabBar.frame.size.height == nil) ? 70 : (self.tabBarController!.tabBar.frame.size.height)
         let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         var frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         self.scrollView.frame = frame
@@ -93,7 +92,10 @@ class StickyHeaderVC: BaseVC {
         self.scrollView.delegate = self
         self.scrollView.parallaxHeader.minimumHeight = CGFloat(parallexHeaderMinHeight)
         self.scrollView.parallaxHeader.height = CGFloat(parallexHeaderHeight)
-        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
+        //MARK: - for static stuffs in header view
+        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.topFill
+        //MARK: - for image as in header view
+//        self.scrollView.parallaxHeader.mode = MXParallaxHeaderMode.fill
         self.scrollView.parallaxHeader.delegate = self
         self.scrollView.parallaxHeader.view = self.headerView
     }
@@ -118,17 +120,18 @@ class StickyHeaderVC: BaseVC {
         tabSwipe.setIndicatorColor(UIColor.blue)
         tabSwipe.view.backgroundColor = .clear
         tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
-        for i in 0..<tabs.count {
-            let screenRect = UIScreen.main.bounds
-            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
-            tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
-        }
+        //MARK:- FOR FIXED WIDTH OR LESSER TABSS
+//        for i in 0..<tabs.count {
+//            let screenRect = UIScreen.main.bounds
+//            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+//            tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
+//        }
     }
     
     private func instantiateViewController() {
         
         self.detailView.scrollView.isHidden = true
-       
+        self.headerView.mainImgView.isHidden = true
         initCarbonSwipeUI(targetView: self.detailView.containerView)
         self.scrollView.addSubview(self.detailView)
         //        self.configureScrollView()
