@@ -9,11 +9,11 @@ import UIKit
 
 class StatsVC: UIViewController, EmptyStateViewDelegate {
     func loginAction() {
-        self.fetchAPIData()
+        self.viewModel.getNewsListing()
     }
     
     func learnHowAction() {
-        self.fetchAPIData()
+        self.viewModel.getNewsListing()
     }
     
     
@@ -48,7 +48,7 @@ class StatsVC: UIViewController, EmptyStateViewDelegate {
     
     private func fetchAPIData(){
         self.viewModel.delegate = self
-        self.viewModel.getNewsListing()
+//        self.viewModel.getNewsListing()
     }
     
     private func tableViewSetUp() {

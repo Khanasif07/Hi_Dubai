@@ -11,8 +11,10 @@ import SwiftUI
 import CarbonKit
 class SuperYouHomeVC: BaseVC {
     //MARK:- Variables
-//    var searchView: UIView?
-    private var placesView: PlacesAndSuperShesView?
+    
+    private var placesView: RecentSearchVC?
+//    private var placesView: NewsListVC?
+//    private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
     var statusBarHeight : CGFloat {
@@ -109,7 +111,7 @@ class SuperYouHomeVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         statusBarHC.constant = statusBarHeight
-        self.placesView?.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+        self.placesView?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
     }
     
     override func viewDidLayoutSubviews() {
@@ -122,7 +124,6 @@ class SuperYouHomeVC: BaseVC {
         self.navigationController?.navigationBar.isHidden = true
         checkFirstTime = false
         self.dataTableView.reloadData()
-        self.addSeachTableView()
         tabVC1?.isScrollingTrue = false
         tabVC2?.isScrollingTrue = false
         tabVC3?.isScrollingTrue = false
@@ -184,16 +185,40 @@ class SuperYouHomeVC: BaseVC {
     @IBAction func cancelSearch(_ sender: Any?) {
         self.cancelBtn.isHidden = true
         closeSearchingArea(true)
-        self.placesView?.isHidden = true
+        removeChildrenVC()
         self.view.endEditing(true)
     }
     
     private  func addSeachTableView(){
-        self.placesView?.removeFromSuperview()
-        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
-        self.containerView.addSubview(placesView!)
-        self.placesView?.backgroundColor = .yellow
-        self.placesView?.isHidden = true
+//        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: self.view.bounds.height))
+//
+//        if let placeView = self.placesView {
+//            placeView.screenUsingFor = .places
+//            self.view.addSubview(placeView)
+//        }
+        let placesView = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
+        removeChildrenVC()
+        placesView.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+        self.view.addSubview(placesView.view)
+        addChild(placesView)
+    }
+    
+    func removeChildrenVC() {
+        for vc in children {
+//            if vc is NewsListVC {
+//                vc.willMove(toParent: nil)
+//                vc.view.removeFromSuperview()
+//                vc.removeFromParent()
+//            }
+            if vc is RecentSearchVC {
+                vc.willMove(toParent: nil)
+                vc.view.removeFromSuperview()
+                vc.removeFromParent()
+            }
+        }
+        //        for view in containerView?.subviews ?? [] {
+        //            view.removeFromSuperview()
+        //        }
     }
     
     private func showLoader(){
@@ -278,7 +303,7 @@ extension SuperYouHomeVC: UpdatedTopNavigationBarDelegate{
 // MARK: - WalifSearchTextFieldDelegate
 extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
     func walifSearchTextFieldBeginEditing(sender: UITextField!) {
-        self.placesView?.isHidden = false
+        addSeachTableView()
         self.cancelBtn.isHidden = false
         closeSearchingArea(false)
     }
@@ -288,7 +313,7 @@ extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
     }
     
     func walifSearchTextFieldChanged(sender: UITextField!) {
-        self.placesView?.isHidden = false
+        addSeachTableView()
         print(sender.text as Any)
     }
     

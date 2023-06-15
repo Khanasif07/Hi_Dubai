@@ -34,6 +34,7 @@
 		8470C5C72998D04F0091A7C5 /* NewsListVC+Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470C5C62998D04F0091A7C5 /* NewsListVC+Transition.swift */; };
 		8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8470C5CC299A13D30091A7C5 /* ShimmerCell.swift */; };
 		8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470C5CD299A13D30091A7C5 /* ShimmerCell.xib */; };
+		E000F2132A3BACF60017CE43 /* RecentSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E000F2122A3BACF60017CE43 /* RecentSearchVC.swift */; };
 		E004507A2A2FD93B00A9A64E /* videos.json in Resources */ = {isa = PBXBuildFile; fileRef = E00450762A2FD93B00A9A64E /* videos.json */; };
 		E004507B2A2FD93B00A9A64E /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = E00450772A2FD93B00A9A64E /* locations.json */; };
 		E004507C2A2FD93B00A9A64E /* animals.json in Resources */ = {isa = PBXBuildFile; fileRef = E00450782A2FD93B00A9A64E /* animals.json */; };
@@ -200,6 +201,7 @@
 		A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hi_Dubai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB57A206A98702F5422BADB3 /* Pods-Hi_Dubai.release (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.release (development).xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.release (development).xcconfig"; sourceTree = "<group>"; };
 		D1136F2754FE051CB0521F11 /* Pods-Hi_Dubai.debug (production).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug (production).xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug (production).xcconfig"; sourceTree = "<group>"; };
+		E000F2122A3BACF60017CE43 /* RecentSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchVC.swift; sourceTree = "<group>"; };
 		E00450762A2FD93B00A9A64E /* videos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = videos.json; path = ../../../Animals_JSON/videos.json; sourceTree = "<group>"; };
 		E00450772A2FD93B00A9A64E /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = locations.json; path = ../../../Animals_JSON/locations.json; sourceTree = "<group>"; };
 		E00450782A2FD93B00A9A64E /* animals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = animals.json; path = ../../../Animals_JSON/animals.json; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */,
 				E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */,
 				E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */,
+				E000F2122A3BACF60017CE43 /* RecentSearchVC.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 			);
 			path = View;
@@ -929,6 +932,7 @@
 				E0B6396C2A1C111C00DD4DE4 /* URLCache.swift in Sources */,
 				E004508A2A2FDBBB00A9A64E /* RestaurantModel.swift in Sources */,
 				E00DED5D2A155ED400828D34 /* HeaderScrollView.swift in Sources */,
+				E000F2132A3BACF60017CE43 /* RecentSearchVC.swift in Sources */,
 				E00DED4A2A151CD900828D34 /* SuperYouTitleTableViewCell.swift in Sources */,
 				E00450902A2FDC0800A9A64E /* DividerHeaderView.swift in Sources */,
 				E0722B8C29FFE31700BB9B6D /* AppColors.swift in Sources */,

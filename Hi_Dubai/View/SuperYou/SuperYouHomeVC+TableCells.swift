@@ -210,7 +210,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             if let superYouData = self.viewModel.superYouData {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
                 case .videoCell:
-                    return 640.0
+                    return 680.0
                 case .music:
                     let numberOfColumn: CGFloat = 3
                     let sizeForItemHeight : CGFloat = 55
