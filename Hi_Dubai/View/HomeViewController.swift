@@ -130,21 +130,6 @@ class HomeViewController: BaseVC {
         self.detailView.scrollView.isHidden = true
         initCarbonSwipeUI(targetView: self.detailView.containerView)
     }
-
-    private func configureScrollView() {
-//        self.detailView.scrollView.contentSize = CGSize(width: screen_width * 5.0, height: 1.0)
-    }
-    
-}
-extension HomeViewController : OtherArtistHeaderViewDelegate{
-    func detailBtnAction(sender: UIButton) {
-//        self.buttonTapAction(senderTag: sender.tag)
-    }
-    
-    func otherInfomation() {
-        
-    }
-    
     
     func addButtonOnRight(initial: Bool = true){
         let shareBtn : UIButton = UIButton.init(type: .custom)
@@ -192,24 +177,6 @@ extension HomeViewController : OtherArtistHeaderViewDelegate{
 extension HomeViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == self.detailView.scrollView {
-            print("DetailView ScrollView.contentOffset.y:- \(self.detailView.scrollView.contentOffset.y)")
-//            switch scrollView.contentOffset.x {
-//            case screen_width * 0:
-//                self.buttonTapAction(senderTag: 0)
-//            case screen_width * 1:
-//                self.buttonTapAction(senderTag: 1)
-//            case screen_width * 2:
-//                self.buttonTapAction(senderTag: 2)
-//            case screen_width * 3:
-//                self.buttonTapAction(senderTag: 3)
-//            case screen_width * 4:
-//                self.buttonTapAction(senderTag: 4)
-//            default:
-//                break
-//            }
-        }
-        
         if scrollView.isEqual(mainScrollView) && (!isProcess || isFirstTime){
             self.setNavBar(mainScrollView)
             if self.mainScrollView.contentOffset.y > 0.0 {
@@ -290,20 +257,38 @@ extension HomeViewController: CarbonTabSwipeNavigationDelegate{
         print("I'm on index \(String(describing: parent)) (Int(index))")
         switch index {
         case 0:
-            isProcess =  true
+//            isProcess =  true
             lastOffset = (carbonTabSwipeNavigation.viewControllers[0] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
         case 1:
-            isProcess =  true
+//            isProcess =  true
             lastOffset = (carbonTabSwipeNavigation.viewControllers[1] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
         case 2:
-            isProcess =  true
+//            isProcess =  true
             lastOffset = (carbonTabSwipeNavigation.viewControllers[2] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
         default:
             break
         }
     }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, willMoveAt index: UInt) {
-        isProcess =  true
+//        switch index {
+//        case 0:
+////            isProcess =  true
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
+////            lastOffset = (carbonTabSwipeNavigation.viewControllers[0] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//        case 1:
+//            isProcess =  true
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
+////            lastOffset = (carbonTabSwipeNavigation.viewControllers[1] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//        case 2:
+//            isProcess =  true
+//            mainScrollView.setContentOffset(CGPoint(x: 0, y: 235), animated: false)
+////            lastOffset = (carbonTabSwipeNavigation.viewControllers[2] as? StatsVC)?.mainTableView.contentOffset.y ?? 0.0
+//        default:
+//            break
+//        }
     }
 }

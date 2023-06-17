@@ -1,29 +1,22 @@
 //
-//  ViewController.swift
+//  NewsDiscoverVC.swift
 //  Hi_Dubai
 //
-//  Created by Admin on 11/02/23.
+//  Created by Asif Khan on 17/06/2023.
 //
-
 import UIKit
-import FirebaseAnalytics
-enum ScrollDirection : Int {
-    case none
-    case right
-    case left
-    case up
-    case down
-    case crazy
-}
 
-class NewsListVC: UIViewController {
+class NewsDiscoverVC: UIViewController {
     //MARK:- IBoutlets
     
-    @IBOutlet weak var popularLbl: UILabel!
+    @IBOutlet weak var statusBarHC: NSLayoutConstraint!
+    @IBOutlet weak var statusBar: UIView!
+    @IBOutlet weak var sectionCollView: UICollectionView!
+    @IBOutlet weak var sectionHeaderView: UIView!
     @IBOutlet var businessHeader: UIView!
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
-    var headerView = ArtistHeaderView.instanciateFromNib()
+//    var headerView = ArtistHeaderView.instanciateFromNib()
     var isScrollingTrue: Bool = true
     lazy var viewModel = {
         NewsListViewModel()
@@ -53,7 +46,6 @@ class NewsListVC: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
         //
-        self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
             newsTableView.sectionHeaderTopPadding = 0.0
         }
@@ -76,11 +68,17 @@ class NewsListVC: UIViewController {
             businessHeader.layer.shadowRadius = 3.0
         }
         businessHeader.backgroundColor = UIColor(named: "lightWhiteBlack")
+        statusBar.backgroundColor = UIColor(named: "lightWhiteBlack")
         //
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -92,7 +90,9 @@ class NewsListVC: UIViewController {
     }
     
     private func  initialSetup(){
+        self.statusBarHC.constant = statusBarHeight
         self.setUpTableView()
+        self.configureUI()
         //
         loadingView = LoadingView(frame: view.frame, inView: view)
         loadingView?.show()
@@ -110,15 +110,14 @@ class NewsListVC: UIViewController {
         self.newsTableView.separatorStyle = .none
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
         self.newsTableView.registerCell(with: ShimmerCell.self)
-//        self.headerSetup()
-        self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
+        self.headerSetup()
     }
     
     private func headerSetup(){
-        let parallexHeaderHeight = 250.0
-        self.headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(parallexHeaderHeight))
-        self.headerView.isUserInteractionEnabled = true
-        self.newsTableView.tableHeaderView = self.headerView
+        let parallexHeaderHeight = 88.0
+        self.businessHeader.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(parallexHeaderHeight))
+        self.businessHeader.isUserInteractionEnabled = true
+        self.newsTableView.tableHeaderView = self.businessHeader
     }
     
     private func fetchAPIData(){
@@ -128,23 +127,10 @@ class NewsListVC: UIViewController {
         self.newsTableView.reloadData()
         self.viewModel.getNewsListing()
     }
-    private func presentSecondViewController(with data: Record) {
-        let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
-        secondVC.isBackBtnShow = true
-        secondVC.transitioningDelegate = self
-        secondVC.modalPresentationStyle = .overCurrentContext
-        secondVC.viewModel.newsModel = data
-        present(secondVC, animated: true)
-    }
-    
-    @objc func refreshWhenPull(_ sender: UIRefreshControl){
-        sender.endRefreshing()
-        self.fetchAPIData()
-    }
 }
 
 //MARK:- Extension TableView Delegate and DataSource
-extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
+extension NewsDiscoverVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.newsData.isEmpty ? self.setEmptyMessage(self.viewModel.error?.localizedDescription ?? "",isTimeOutError: error?.errorCode == CustomError.timeOut.rawValue) : self.restore()
         switch self.currentShimmerStatus {
@@ -176,62 +162,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.currentShimmerStatus == .applied {
-            switch indexPath.row {
-            case 0:
-                let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
-            case 1:
-                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
-//                self.indexPath = indexPath
-//                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
-//                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
-//                presentSecondViewController(with: viewModel.newsData[indexPath.row])
-            case 2:
-                let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 3:
-                let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 4:
-                let vc = HotelResultVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 5:
-                let vc = ExploreViewController.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 6:
-                let vc = SuperSheVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 7:
-                let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 8:
-                let vc = FoodViewController()
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 9:
-                let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 10:
-                let vc = HomeViewController.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 11:
-                let vc = StickyHeaderVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            case 12:
-                let vc = NewsDiscoverVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: false)
-            default:
-                let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
-                vc.newsModel = viewModel.newsData[indexPath.row]
-                self.navigationController?.pushViewController(vc, animated: false)
-            }
-        }
-    }
-    
+
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
         let cell = tableView.cellForRow(at: indexPath)
         UIView.animate(withDuration: 0.25) {
@@ -247,16 +178,16 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return businessHeader.frame.size.height
+        return sectionHeaderView.frame.size.height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return businessHeader
+        return sectionHeaderView
     }
 }
 
 //MARK:- Extension NewsListViewModelDelegate
-extension NewsListVC: NewsListViewModelDelegate{
+extension NewsDiscoverVC: NewsListViewModelDelegate{
     func newsListingSuccess() {
         self.isHitApiInProgress = false
         DispatchQueue.main.async {
@@ -264,6 +195,7 @@ extension NewsListVC: NewsListViewModelDelegate{
             self.loadingView?.removeFromSuperview()
             self.currentShimmerStatus = .applied
             self.newsTableView.reloadData()
+            self.sectionCollView.reloadData()
         }
     }
     
@@ -278,7 +210,7 @@ extension NewsListVC: NewsListViewModelDelegate{
 }
 
 
-extension NewsListVC{
+extension NewsDiscoverVC{
     func setEmptyMessage(_ message: String = "",isTimeOutError: Bool = false) {
         // Custom way to add view
         var offset:CGFloat = 0
@@ -313,7 +245,7 @@ extension NewsListVC{
 }
 
 
-extension NewsListVC{
+extension NewsDiscoverVC{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
         (self.parent as? SearchVC)?.enableScrolling(offset,isSearchHidden)
 //        (self.parent?.parent?.parent?.parent as? HomeVCC)?.enableScrolling(offset,isSearchHidden)
@@ -356,7 +288,7 @@ extension NewsListVC{
     }
 }
 
-extension NewsListVC: EmptyStateViewDelegate{
+extension NewsDiscoverVC: EmptyStateViewDelegate{
     func loginAction() {
         self.setEmptyMessage()
         self.fetchAPIData()
@@ -368,4 +300,78 @@ extension NewsListVC: EmptyStateViewDelegate{
     }
     
     //Grouped BY:-
+}
+
+
+extension NewsDiscoverVC: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    private func configureUI() {
+        self.sectionCollView.registerCell(with: MenuItemCollectionCell.self)
+        self.sectionCollView.delegate = self
+        self.sectionCollView.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.sectionCollView.collectionViewLayout = layout
+    }
+    
+    private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
+        cell.populateSectionCell(model: self.viewModel.newsData[indexPath.row],index: indexPath.row)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.viewModel.newsData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let indexx = self.viewModel.newsData.firstIndex(where: {$0.isSelected ?? true}){
+            self.viewModel.newsData[indexx].isSelected = false
+        }
+        self.viewModel.newsData[indexPath.item].isSelected = true
+        self.sectionCollView.reloadData()
+    }
+ 
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            return self.getCategoriesCell(collectionView, indexPath: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let config = UIContextMenuConfiguration(
+            identifier: nil,
+            previewProvider: nil) { [weak self] _ in
+                let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
+//                    self?.downloadTitleAt(indexPath: indexPath)
+                }
+                return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
+            }
+        
+        return config
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
+    }
+    
+    private func cardSizeForCategoriesItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+        let dataSource = self.viewModel.newsData[indexPath.item].primaryTag
+        let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
+        return CGSize(width: textSize.width + 50.0, height: 40.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 9.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 10.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var paddingInset: CGFloat = 0.0
+        paddingInset = 9.0
+        return UIEdgeInsets(top: 0, left: paddingInset, bottom: 0, right: paddingInset)
+    }
 }

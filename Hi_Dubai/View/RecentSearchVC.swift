@@ -10,9 +10,16 @@ import UIKit
 class RecentSearchVC: UIViewController {
     
     private var placesView: PlacesAndSuperShesView?
+    lazy var viewModel = {
+        NewsListViewModel()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        self.viewModel.delegate = self
+        self.viewModel.getNewsListing()
+        //
         self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
         
         if let placeView = self.placesView {
@@ -33,4 +40,22 @@ class RecentSearchVC: UIViewController {
         self.placesView?.frame = CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height)
     }
 
+}
+
+
+//MARK:- Extension NewsListViewModelDelegate
+extension RecentSearchVC: NewsListViewModelDelegate{
+    func newsListingSuccess() {
+        DispatchQueue.main.async {
+            self.placesView?.lists = self.viewModel.newsData
+            self.placesView?.dataTableView.reloadData()
+        }
+    }
+    
+    func newsListingFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.placesView?.lists = self.viewModel.newsData
+            self.placesView?.dataTableView.reloadData()
+        }
+    }
 }

@@ -13,7 +13,6 @@ class SuperYouHomeVC: BaseVC {
     //MARK:- Variables
     
     private var placesView: RecentSearchVC?
-//    private var placesView: NewsListVC?
 //    private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
@@ -133,8 +132,6 @@ class SuperYouHomeVC: BaseVC {
         return .lightContent
     }
     
-   
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkFirstTime = true
@@ -145,8 +142,6 @@ class SuperYouHomeVC: BaseVC {
     }
     
     //MARK:- Functions
-    
-    
     internal override func registerNibs() {
         self.dataTableView.registerCell(with: SuperYouTitleTableViewCell.self)
         self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
@@ -205,11 +200,6 @@ class SuperYouHomeVC: BaseVC {
     
     func removeChildrenVC() {
         for vc in children {
-//            if vc is NewsListVC {
-//                vc.willMove(toParent: nil)
-//                vc.view.removeFromSuperview()
-//                vc.removeFromParent()
-//            }
             if vc is RecentSearchVC {
                 vc.willMove(toParent: nil)
                 vc.view.removeFromSuperview()

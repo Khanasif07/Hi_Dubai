@@ -27,7 +27,11 @@ class PlacesAndSuperShesView: UIView {
     internal var screenUsingFor: CurrentlyUsingFor = .places
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
-//    internal var viewModel = PlacesAndSuperShesVM()
+    internal var lists: [Record]?{
+        didSet{
+            self.dataTableView.reloadData()
+        }
+    }
     
 //    var lastPage = -1
     private var placesArray: [String] = []
@@ -35,11 +39,6 @@ class PlacesAndSuperShesView: UIView {
     private var lat: String?
     private var long: String?
     private var addressDetails: String?
-    internal var placeIDArray = [String]()
-    internal var resultsArray = [String]()
-    internal var primaryAddressArray = [String]()
-    internal var searchResults = [String]()
-    internal var searhPlacesName = [String]()
     internal weak var locationDelegate: LocateOnTheMap?
     internal var currentShimmerStatus: ShimmerState = .applied
     
@@ -82,9 +81,7 @@ class PlacesAndSuperShesView: UIView {
     }
     
     private func configUI() {
-//        self.viewModel.delegate = self
         self.dataTableView.registerCell(with: PlacesAndSuperShesViewTableViewCell.self)
-//        self.dataTableView.registerCell(with: PlacesTableViewCell.self)
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
     }
@@ -92,33 +89,41 @@ class PlacesAndSuperShesView: UIView {
 
 //MARK:- Extensions- UITableView Delegate and DataSource
 extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.screenUsingFor == .supershes {
             switch self.currentShimmerStatus {
             case .toBeApply:
                 return 15
             case .applied:
-                return 30
+                return lists?.count ?? 0
             case .none:
                 return 15
             }
         }
-        return 30
+        return lists?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.screenUsingFor {
         case .places:
             let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+            cell.populateCell(self.lists?[indexPath.item])
             return cell
         case .supershes:
             let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+            cell.populateCell(self.lists?[indexPath.item])
             return cell
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if lists?[indexPath.item].isSelected ==  true {
+            lists?[indexPath.item].isSelected = false
+        }else{
+            lists?[indexPath.item].isSelected = true
+        }
+//        self.dataTableView.reloadTableView()
+    }
 
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

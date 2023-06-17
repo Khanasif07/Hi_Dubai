@@ -162,6 +162,7 @@
 		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
+		E0C8A0F32A3DAD7800AD1EF4 /* NewsDiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -329,6 +330,7 @@
 		E0B639772A1DF45300DD4DE4 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
+		E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDiscoverVC.swift; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +482,7 @@
 				E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */,
 				E000F2122A3BACF60017CE43 /* RecentSearchVC.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
+				E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1034,6 +1037,7 @@
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,
 				E00450882A2FDBB300A9A64E /* FoodTopBannerModel.swift in Sources */,
 				8470C56B29974D640091A7C5 /* SceneDelegate.swift in Sources */,
+				E0C8A0F32A3DAD7800AD1EF4 /* NewsDiscoverVC.swift in Sources */,
 				E0765C1E2A272BC600574230 /* VideoPlayerView.swift in Sources */,
 				E0765C662A274DD900574230 /* MapAnnotationView.swift in Sources */,
 				E00450B12A2FE0E900A9A64E /* FooterViewCV.swift in Sources */,

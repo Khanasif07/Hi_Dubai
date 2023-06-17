@@ -28,10 +28,7 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     //MARK:- Functions
     //MARK:===========
     private func configureUI() {
-//        self.userName.text = ""
-//        self.locationName.text = ""
-//        self.heartImageView.isHidden = true
-//        self.clapBtnOutlet.isHidden = true
+
         self.profileImageView?.layer.cornerRadius = (self.profileImageView?.height ?? 0) / 2.0
         self.userName.textColor = .white
         self.locationName.textColor = UIColor.white.withAlphaComponent(0.75)
@@ -39,13 +36,12 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        self.userName.text = ""
-//        self.locationName.text = ""
-//        self.heartImageView.isHidden = true
-//        self.clapBtnOutlet.isHidden = true
-//        self.profileImageView?.image = nil
-//        self.locationName.textColor = .clear
-//        self.userName.textColor = .clear
+    }
+    
+    func populateCell(_ model: Record?){
+        profileImageView?.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
+        userName.text = model?.primaryTag ?? ""
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
     }
 }
 
