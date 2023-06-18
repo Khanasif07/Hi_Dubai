@@ -24,6 +24,7 @@ class PlacesAndSuperShesView: UIView {
     
     //MARK:- Variables
     //MARK:===========
+    var lastContentOffset: CGFloat = 0.0
     internal var screenUsingFor: CurrentlyUsingFor = .places
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
@@ -50,6 +51,8 @@ class PlacesAndSuperShesView: UIView {
             self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
+            //
+            self.dataTableView.isScrollEnabled = false
         }
     }
     
@@ -136,3 +139,33 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+
+extension PlacesAndSuperShesView{
+    func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
+        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
+    }
+    
+    func scrollViewDidScroll(_ scroll: UIScrollView) {
+        var scrollDirection: ScrollDirection
+        let stopScroll = 50.0
+        if lastContentOffset > scroll.contentOffset.y {
+            scrollDirection = .down
+        } else {
+            scrollDirection = .up
+        }
+        
+        let offsetY = scroll.contentOffset.y
+    
+        lastContentOffset = scroll.contentOffset.y
+        
+        if scrollDirection == .up {
+            if offsetY < stopScroll {
+                enableGlobalScrolling(offsetY)
+            } else {
+                enableGlobalScrolling(stopScroll,false)
+            }
+        } else if (scrollDirection == .down) && (offsetY < stopScroll) {
+            enableGlobalScrolling(offsetY)
+        }
+    }
+}

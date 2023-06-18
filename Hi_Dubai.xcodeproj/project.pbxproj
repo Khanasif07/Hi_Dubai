@@ -141,6 +141,7 @@
 		E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C672A27630B00574230 /* AnimalListItemView.swift */; };
 		E0765C6A2A28AFF200574230 /* TabGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C692A28AFF200574230 /* TabGalleryView.swift */; };
 		E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C6B2A28B6B800574230 /* GalleryView.swift */; };
+		E0781BC82A3E635D00A18A2C /* NavigationTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */; };
 		E08EC0742A3A71B2003507B9 /* ArtistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */; };
 		E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */; };
 		E08EC0782A3AF96F003507B9 /* StickyHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */; };
@@ -309,6 +310,7 @@
 		E0765C672A27630B00574230 /* AnimalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListItemView.swift; sourceTree = "<group>"; };
 		E0765C692A28AFF200574230 /* TabGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGalleryView.swift; sourceTree = "<group>"; };
 		E0765C6B2A28B6B800574230 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTypeVC.swift; sourceTree = "<group>"; };
 		E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHeaderView.swift; sourceTree = "<group>"; };
 		E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistHeaderView.xib; sourceTree = "<group>"; };
 		E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderVC.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				E000F2122A3BACF60017CE43 /* RecentSearchVC.swift */,
 				8470C58E299753CF0091A7C5 /* Xib's */,
 				E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */,
+				E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1000,6 +1003,7 @@
 				E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */,
 				E00DED5F2A155F3C00828D34 /* UpdatedTopNavigationBar.swift in Sources */,
 				E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */,
+				E0781BC82A3E635D00A18A2C /* NavigationTypeVC.swift in Sources */,
 				E032EC3D2A24E70E00337D0E /* HomeVCC.swift in Sources */,
 				8470C56929974D640091A7C5 /* AppDelegate.swift in Sources */,
 				E0765C1C2A272BA000574230 /* VideoListItemView.swift in Sources */,

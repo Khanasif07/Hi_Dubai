@@ -23,6 +23,7 @@ class NewsListViewModel{
             switch results{
             case .success(let result):
                 self.newsData = result.record
+                self.newsData.append(contentsOf: result.record)
                 //todo
                 self.newsData[0].isSelected = true
                 self.delegate?.newsListingSuccess()

@@ -13,6 +13,7 @@ class RecentSearchVC: UIViewController {
     lazy var viewModel = {
         NewsListViewModel()
     }()
+    var lastContentOffset: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()

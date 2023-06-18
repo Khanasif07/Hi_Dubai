@@ -50,6 +50,15 @@ class MenuItemCollectionCell: PagingCell {
         self.title.font =  AppFonts.BlackItalic.withSize(15.0)
     }
     
+//    override var isSelected: Bool {
+//        didSet {
+//            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+////                self.layer.zPosition = self.isSelected ? 1 : -1
+//                self.dataView.transform = self.isSelected ? CGAffineTransform(scaleX: 1.5, y: 1.5) : CGAffineTransform.identity
+//            }, completion: nil)
+//        }
+//    }
+    
     open override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options: PagingOptions) {
          if let item = pagingItem as? MenuItem {
             if let attTitle = item.attributedTitle {
@@ -73,6 +82,6 @@ class MenuItemCollectionCell: PagingCell {
         self.title.textColor = (model?.isSelected ?? false) ? AppColors.white :  AppColors.black
         self.title.text = (model?.primaryTag ?? "")
         self.dataView.backgroundColor = (model?.isSelected ?? false) ? .black : .lightGray
-        self.title.font = (model?.isSelected ?? false) ? AppFonts.BlackItalic.withSize(16.0) : AppFonts.BlackItalic.withSize(15.0)
+        self.title.font = (model?.isSelected ?? false) ? AppFonts.BlackItalic.withSize(18.0) : AppFonts.BlackItalic.withSize(15.0)
     }
 }

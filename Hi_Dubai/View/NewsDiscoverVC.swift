@@ -16,7 +16,6 @@ class NewsDiscoverVC: UIViewController {
     @IBOutlet var businessHeader: UIView!
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
-//    var headerView = ArtistHeaderView.instanciateFromNib()
     var isScrollingTrue: Bool = true
     lazy var viewModel = {
         NewsListViewModel()
@@ -324,11 +323,37 @@ extension NewsDiscoverVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //
+        let cell = collectionView.cellForItem(at: indexPath)
+        //
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
+            cell?.layer.zPosition = 1
+            cell?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: {_ in
+            cell?.layer.zPosition = -1
+            cell?.transform =  CGAffineTransform.identity
+        })
+        //
         if let indexx = self.viewModel.newsData.firstIndex(where: {$0.isSelected ?? true}){
             self.viewModel.newsData[indexx].isSelected = false
+            self.sectionCollView.reloadItems(at: [IndexPath(item: indexx, section: 0)])
         }
         self.viewModel.newsData[indexPath.item].isSelected = true
-        self.sectionCollView.reloadData()
+        self.sectionCollView.reloadItems(at: [indexPath])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+//        UIView.animate(withDuration: 0.3) {
+//            cell?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+//        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+//        UIView.animate(withDuration: 0.3) {
+//            cell?.transform = .identity
+//        }
     }
  
     
@@ -336,19 +361,19 @@ extension NewsDiscoverVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
             return self.getCategoriesCell(collectionView, indexPath: indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+//    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let config = UIContextMenuConfiguration(
-            identifier: nil,
-            previewProvider: nil) { [weak self] _ in
-                let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
-//                    self?.downloadTitleAt(indexPath: indexPath)
-                }
-                return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
-            }
-        
-        return config
-    }
+//        let config = UIContextMenuConfiguration(
+//            identifier: nil,
+//            previewProvider: nil) { [weak self] _ in
+//                let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
+////                    self?.downloadTitleAt(indexPath: indexPath)
+//                }
+//                return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
+//            }
+//
+//        return config
+//    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
