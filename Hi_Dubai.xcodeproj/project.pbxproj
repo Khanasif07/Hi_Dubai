@@ -142,6 +142,9 @@
 		E0765C6A2A28AFF200574230 /* TabGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C692A28AFF200574230 /* TabGalleryView.swift */; };
 		E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0765C6B2A28B6B800574230 /* GalleryView.swift */; };
 		E0781BC82A3E635D00A18A2C /* NavigationTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */; };
+		E0781BEE2A40A7CB00A18A2C /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0781BED2A40A7CB00A18A2C /* SettingVC.swift */; };
+		E0781BF02A40AB1C00A18A2C /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0781BEF2A40AB1C00A18A2C /* SettingTableViewCell.swift */; };
+		E0781BF22A40FF9100A18A2C /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0781BF12A40FF9100A18A2C /* SwitchTableViewCell.swift */; };
 		E08EC0742A3A71B2003507B9 /* ArtistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */; };
 		E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */; };
 		E08EC0782A3AF96F003507B9 /* StickyHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */; };
@@ -311,6 +314,9 @@
 		E0765C692A28AFF200574230 /* TabGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGalleryView.swift; sourceTree = "<group>"; };
 		E0765C6B2A28B6B800574230 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTypeVC.swift; sourceTree = "<group>"; };
+		E0781BED2A40A7CB00A18A2C /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		E0781BEF2A40AB1C00A18A2C /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		E0781BF12A40FF9100A18A2C /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHeaderView.swift; sourceTree = "<group>"; };
 		E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistHeaderView.xib; sourceTree = "<group>"; };
 		E08EC0772A3AF96F003507B9 /* StickyHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderVC.swift; sourceTree = "<group>"; };
@@ -486,6 +492,7 @@
 				8470C58E299753CF0091A7C5 /* Xib's */,
 				E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */,
 				E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */,
+				E0781BED2A40A7CB00A18A2C /* SettingVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,6 +532,8 @@
 				E00450B02A2FE0E900A9A64E /* FooterViewCV.xib */,
 				E08EC0732A3A71B2003507B9 /* ArtistHeaderView.swift */,
 				E08EC0752A3A7240003507B9 /* ArtistHeaderView.xib */,
+				E0781BEF2A40AB1C00A18A2C /* SettingTableViewCell.swift */,
+				E0781BF12A40FF9100A18A2C /* SwitchTableViewCell.swift */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -810,6 +819,7 @@
 				TargetAttributes = {
 					8470C56429974D640091A7C5 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1400;
 					};
 				};
 			};
@@ -945,6 +955,7 @@
 				E00DED312A138E9300828D34 /* RoundedView.swift in Sources */,
 				E00450962A2FDC6500A9A64E /* VeganSectionHeaderView.swift in Sources */,
 				E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */,
+				E0781BF22A40FF9100A18A2C /* SwitchTableViewCell.swift in Sources */,
 				8470C591299753EB0091A7C5 /* NewsTableViewCell.swift in Sources */,
 				E00450942A2FDC4A00A9A64E /* SectionDecorationView.swift in Sources */,
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
@@ -952,6 +963,7 @@
 				E00DED352A14B96400828D34 /* Router.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
 				E0765C582A274C2900574230 /* HeadingView.swift in Sources */,
+				E0781BF02A40AB1C00A18A2C /* SettingTableViewCell.swift in Sources */,
 				E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */,
 				E00DED632A15656600828D34 /* ApiKey.swift in Sources */,
 				8470C595299757400091A7C5 /* UIImageExtension.swift in Sources */,
@@ -989,6 +1001,7 @@
 				E00AE4EB2A0B914100A43133 /* EmptyStateView.swift in Sources */,
 				8470C58629974F0C0091A7C5 /* AppGlobals.swift in Sources */,
 				E0B639682A1C092500DD4DE4 /* ImageCache.swift in Sources */,
+				E0781BEE2A40A7CB00A18A2C /* SettingVC.swift in Sources */,
 				E00DED572A15214400828D34 /* SuperYourHomeVM.swift in Sources */,
 				E0765C1A2A272B4000574230 /* VideoListView.swift in Sources */,
 				8470C58929974F6E0091A7C5 /* AppRouter.swift in Sources */,
@@ -1192,6 +1205,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1217,6 +1231,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Tenant_AdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1228,6 +1244,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1253,6 +1270,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Tenant_AdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1325,6 +1343,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1350,6 +1369,8 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Tenant_AdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1416,6 +1437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1441,6 +1463,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Tenant_AdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

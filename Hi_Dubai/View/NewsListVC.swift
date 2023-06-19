@@ -181,8 +181,11 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         if self.currentShimmerStatus == .applied {
             switch indexPath.row {
             case 0:
-                let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
+                //
+                let vc = SettingVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
+               
+//                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
                 let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
