@@ -41,6 +41,8 @@ class SettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        self.navigationController?.navigationBar.titleTextAttributes = textAttributes
         connfigureCell()
         title = "Settings"
         view.addSubview(tableView)
@@ -49,6 +51,15 @@ class SettingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.frame = view.bounds
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .default
     }
     
     override func viewDidAppear(_ animated: Bool) {

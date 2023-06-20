@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YrT-PW-DUm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c3n-Tm-QBs">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -40,7 +40,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--News-->
+        <!--News ListVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="NewsListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="NewsListVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
@@ -62,7 +62,7 @@
                             <constraint firstItem="ZYV-Td-peW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="r5x-Nz-Q4U"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="hd7-uI-yvR"/>
+                    <navigationItem key="navigationItem" id="hd7-uI-yvR"/>
                     <connections>
                         <outlet property="businessHeader" destination="Ddq-kg-opq" id="gGE-n1-yIM"/>
                         <outlet property="newsTableView" destination="ZYV-Td-peW" id="hVC-nE-WvE"/>
@@ -92,7 +92,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="43"/>
+            <point key="canvasLocation" x="1446" y="48"/>
         </scene>
         <!--News DetailVC-->
         <scene sceneID="dhW-Rh-rEj">
@@ -176,8 +176,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c3n-Tm-QBs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytu-Lm-eVt">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ytu-Lm-eVt">
+                        <rect key="frame" x="0.0" y="47" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -190,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfE-fu-aN5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="49"/>
+            <point key="canvasLocation" x="725" y="49"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="W6V-s6-51w">

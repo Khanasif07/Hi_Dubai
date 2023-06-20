@@ -80,6 +80,7 @@ class NewsListVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
         self.navigationController?.navigationBar.isHidden = false
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
@@ -91,6 +92,12 @@ class NewsListVC: UIViewController {
         newsTableView.isScrollEnabled = isScrollingTrue
     }
     
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .default
+    }
+    
     private func  initialSetup(){
         self.setUpTableView()
         //
@@ -99,7 +106,7 @@ class NewsListVC: UIViewController {
         //
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.fetchAPIData()
         })
     }
