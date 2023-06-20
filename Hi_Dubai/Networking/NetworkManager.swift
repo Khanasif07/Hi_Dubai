@@ -83,6 +83,40 @@ class NetworkManager{
 //        }
     }
     
+    
+    func getPumpkinDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //++
+//                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+//                    print(json)
+//                }
+                //++
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
     func queryString(_ value: String, params: [String: String]) -> String? {
         var components = URLComponents(string: value)
         components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }

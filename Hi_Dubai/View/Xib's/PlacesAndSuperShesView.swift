@@ -21,6 +21,9 @@ class PlacesAndSuperShesView: UIView {
     enum CurrentlyUsingFor {
         case places,supershes
     }
+    lazy var viewModel = {
+        NewsListViewModel()
+    }()
     
     //MARK:- Variables
     //MARK:===========
@@ -28,10 +31,6 @@ class PlacesAndSuperShesView: UIView {
     internal var screenUsingFor: CurrentlyUsingFor = .places
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
-    internal var lists: [Record]?
-    
-//    var lastPage = -1
-    private var placesArray: [String] = []
     internal var isScrollEnabled: Bool = false{
         didSet{
             self.dataTableView.isScrollEnabled = isScrollEnabled
@@ -54,6 +53,14 @@ class PlacesAndSuperShesView: UIView {
             self.dataTableView.isScrollEnabled = isScrollEnabled
         }
     }
+    
+    private func footerSetup(){
+        let footerView = UIView()
+        footerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(90.0))
+        footerView.backgroundColor = .clear
+        dataTableView.tableFooterView = footerView
+    }
+    
     
     //MARK:- LifeCycle
     //MARK:===========
@@ -83,9 +90,14 @@ class PlacesAndSuperShesView: UIView {
     }
     
     private func configUI() {
+        self.dataTableView.registerCell(with: LoaderCell.self)
         self.dataTableView.registerCell(with: PlacesAndSuperShesViewTableViewCell.self)
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
+        self.footerSetup()
+        //
+        self.viewModel.delegate = self
+        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
     }
 }
 
@@ -97,49 +109,84 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             case .toBeApply:
                 return 15
             case .applied:
-                return lists?.count ?? 0
+                return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1: 0)
             case .none:
                 return 15
             }
         }
-        return lists?.count ?? 0
+        return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1: 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.screenUsingFor {
         case .places:
             let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-            cell.populateCell(self.lists?[indexPath.item])
+            cell.buttonTapped = { [weak self] (btn) in
+                guard let `self` = self else { return }
+                if self.viewModel.newsData[indexPath.item].isSelected ==  true {
+                    self.viewModel.newsData[indexPath.item].isSelected = false
+                    self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                }else{
+                    self.viewModel.newsData[indexPath.item].isSelected = true
+                    self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+            cell.populateCell(self.viewModel.newsData[indexPath.item])
             return cell
         case .supershes:
-            let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-            cell.populateCell(self.lists?[indexPath.item])
-            return cell
+            if indexPath.row == (viewModel.pumkinsData.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else{
+                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+                cell.buttonTapped = { [weak self] (btn)  in
+                    guard let `self` = self else { return }
+                    if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = false
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = true
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
+                cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
+                return cell
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if lists?[indexPath.item].isSelected ==  true {
-            lists?[indexPath.item].isSelected = false
+        if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+            self.viewModel.pumkinsData[indexPath.item].isSelected = false
             self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
         }else{
-            lists?[indexPath.item].isSelected = true
+            self.viewModel.pumkinsData[indexPath.item].isSelected = true
             self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.5
+        return 45.0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell as? LoaderCell != nil {
+            if screenUsingFor == .supershes {
+                self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+            }else {
+                self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+            }
+        }
+    }
+    
 }
 
-
+//MARK:- enableGlobalScrolling
 extension PlacesAndSuperShesView{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
         (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
@@ -166,6 +213,22 @@ extension PlacesAndSuperShesView{
             }
         } else if (scrollDirection == .down) && (offsetY < stopScroll) {
             enableGlobalScrolling(offsetY)
+        }
+    }
+}
+
+
+//MARK:- Extension NewsListViewModelDelegate
+extension PlacesAndSuperShesView: NewsListViewModelDelegate{
+    func pumpkinDataSuccess() {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func pumpkinDataFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
         }
     }
 }
