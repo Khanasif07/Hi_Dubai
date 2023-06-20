@@ -86,8 +86,6 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     
                 case .superPowers:
                     return self.getCategoriesCell(tableView, indexPath: indexPath, dataSource: superYouData)
-                default:
-                    return UITableViewCell()
                 }
             } else {
                 return UITableViewCell()
@@ -176,7 +174,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         {
             switch superYouData.tableCellAtIndexPath[section][0] {
             case .videoCell:
-                return 50.0
+                return 0.0
             case .favoritesCell:
                 return 50.0
             case .upcomingCell, .pastLive, .liveClassesCell,.featuredCell:
@@ -212,7 +210,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
             if let superYouData = self.viewModel.superYouData {
                 switch superYouData.tableCellAtIndexPath[indexPath.section][indexPath.row] {
                 case .videoCell:
-                    return 625.0
+                    return 680.0
                 case .music:
                     let numberOfColumn: CGFloat = 3
                     let sizeForItemHeight : CGFloat = 55

@@ -47,7 +47,17 @@ class MenuItemCollectionCell: PagingCell {
         //superyouhome
         self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
         self.dataView.setCircleBorder(weight: 0.75, color: .white)
+        self.title.font =  AppFonts.BlackItalic.withSize(15.0)
     }
+    
+//    override var isSelected: Bool {
+//        didSet {
+//            UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+////                self.layer.zPosition = self.isSelected ? 1 : -1
+//                self.dataView.transform = self.isSelected ? CGAffineTransform(scaleX: 1.5, y: 1.5) : CGAffineTransform.identity
+//            }, completion: nil)
+//        }
+//    }
     
     open override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options: PagingOptions) {
          if let item = pagingItem as? MenuItem {
@@ -63,7 +73,15 @@ class MenuItemCollectionCell: PagingCell {
     
     func populateCell(model: Record?, index: Int){
         self.title.textColor = AppColors.white
-        self.title.text = (model?.primaryTag ?? "") + " " + String(index)
+        self.title.text = (model?.primaryTag ?? "")
         self.dotView.isHidden = true
+    }
+    
+    func populateSectionCell(model: Record?, index: Int){
+        self.dotView.isHidden = true
+        self.title.textColor = (model?.isSelected ?? false) ? AppColors.white :  AppColors.black
+        self.title.text = (model?.primaryTag ?? "")
+        self.dataView.backgroundColor = (model?.isSelected ?? false) ? .black : .lightGray
+        self.title.font = (model?.isSelected ?? false) ? AppFonts.BlackItalic.withSize(18.0) : AppFonts.BlackItalic.withSize(15.0)
     }
 }

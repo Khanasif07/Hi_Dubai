@@ -10,10 +10,10 @@ import UIKit
 import SwiftUI
 import CarbonKit
 class SuperYouHomeVC: BaseVC {
-    
     //MARK:- Variables
-//    var searchView: UIView?
-    private var placesView: PlacesAndSuperShesView?
+    
+    private var placesView: RecentSearchVC?
+//    private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
     var statusBarHeight : CGFloat {
@@ -61,7 +61,7 @@ class SuperYouHomeVC: BaseVC {
         searchTxtFld.delegate = self
         searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
         cancelBtn.isHidden = true
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(scrollToRowMethod), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(scrollToRowMethod), userInfo: nil, repeats: false)
         //.....................................
 //        addStatusBarBackgroundView(viewController: self)
         self.dataTableView.refreshControl = refresher
@@ -101,6 +101,7 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         setNeedsStatusBarAppearanceUpdate()
         self.dataTableView.alpha = 1.0
         showLoader()
@@ -109,7 +110,7 @@ class SuperYouHomeVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         statusBarHC.constant = statusBarHeight
-        self.placesView?.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+        self.placesView?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
     }
     
     override func viewDidLayoutSubviews() {
@@ -119,9 +120,9 @@ class SuperYouHomeVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         checkFirstTime = false
         self.dataTableView.reloadData()
-        self.addSeachTableView()
         tabVC1?.isScrollingTrue = false
         tabVC2?.isScrollingTrue = false
         tabVC3?.isScrollingTrue = false
@@ -130,8 +131,6 @@ class SuperYouHomeVC: BaseVC {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-   
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -143,8 +142,6 @@ class SuperYouHomeVC: BaseVC {
     }
     
     //MARK:- Functions
-    
-    
     internal override func registerNibs() {
         self.dataTableView.registerCell(with: SuperYouTitleTableViewCell.self)
         self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
@@ -155,26 +152,29 @@ class SuperYouHomeVC: BaseVC {
     func initCarbonSwipeUI(targetView: UIView){
         let tabs: [String] = ["TRENDING", "WHAT'S NEW", "LATEST LISTS"]
         tabVC1 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC1?.isShowSectionHeader = true
+        tabVC1?.isPrefersLargeTitles = false
         tabVC2 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC2?.isShowSectionHeader = true
+        tabVC2?.isPrefersLargeTitles = false
         tabVC3 = NewsListVC.instantiate(fromAppStoryboard: .Main)
-       
+        tabVC3?.isShowSectionHeader = true
+        tabVC3?.isPrefersLargeTitles = false
+//        tabSwipe.navigationController?.navigationBar.isHidden = true
         tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
-        tabSwipe.toolbar.isTranslucent = false
-        tabSwipe.setTabBarHeight(44.0)
+        
+        tabSwipe.tabBarController?.tabBar.tintColor = .black
+        tabSwipe.setTabBarHeight(50.0)
+        tabSwipe.toolbar.tintColor = .black
         tabSwipe.setIndicatorHeight(2.5)
         tabSwipe.delegate = self
-        
         tabSwipe.toolbar.isTranslucent = false
         tabSwipe.setIndicatorColor(UIColor.blue)
-//        tabSwipe.setTabExtraWidth(30)
-//        var frameRect: CGRect = (tabSwipe.carbonSegmentedControl?.frame)!
-//        frameRect.size.width = screen_width
-//        tabSwipe.carbonSegmentedControl?.frame = frameRect
-//        tabSwipe.carbonSegmentedControl?.apportionsSegmentWidthsByContent = false
+        tabSwipe.view.backgroundColor = .clear
         tabSwipe.insert(intoRootViewController: self,andTargetView: targetView)
         for i in 0..<tabs.count {
             let screenRect = UIScreen.main.bounds
-            var width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
+            let width = CGFloat(screenRect.size.width / CGFloat(tabs.count))
             tabSwipe.carbonSegmentedControl?.setWidth(width, forSegmentAt: i)
         }
     }
@@ -186,16 +186,36 @@ class SuperYouHomeVC: BaseVC {
     @IBAction func cancelSearch(_ sender: Any?) {
         self.cancelBtn.isHidden = true
         closeSearchingArea(true)
-        self.placesView?.isHidden = true
+        removeChildrenVC()
         self.view.endEditing(true)
     }
     
     private  func addSeachTableView(){
-        self.placesView?.removeFromSuperview()
-        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
-        self.containerView.addSubview(placesView!)
-        self.placesView?.backgroundColor = .yellow
-        self.placesView?.isHidden = true
+//        self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: self.view.bounds.height))
+//
+//        if let placeView = self.placesView {
+//            placeView.screenUsingFor = .places
+//            self.view.addSubview(placeView)
+//        }
+        let placesView = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
+        placesView.placesView?.isScrollEnabled = true
+        removeChildrenVC()
+        placesView.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+        self.view.addSubview(placesView.view)
+        addChild(placesView)
+    }
+    
+    func removeChildrenVC() {
+        for vc in children {
+            if vc is RecentSearchVC {
+                vc.willMove(toParent: nil)
+                vc.view.removeFromSuperview()
+                vc.removeFromParent()
+            }
+        }
+        //        for view in containerView?.subviews ?? [] {
+        //            view.removeFromSuperview()
+        //        }
     }
     
     private func showLoader(){
@@ -280,7 +300,7 @@ extension SuperYouHomeVC: UpdatedTopNavigationBarDelegate{
 // MARK: - WalifSearchTextFieldDelegate
 extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
     func walifSearchTextFieldBeginEditing(sender: UITextField!) {
-        self.placesView?.isHidden = false
+        addSeachTableView()
         self.cancelBtn.isHidden = false
         closeSearchingArea(false)
     }
@@ -290,7 +310,7 @@ extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
     }
     
     func walifSearchTextFieldChanged(sender: UITextField!) {
-        self.placesView?.isHidden = false
+        addSeachTableView()
         print(sender.text as Any)
     }
     
@@ -327,6 +347,21 @@ extension SuperYouHomeVC: CarbonTabSwipeNavigationDelegate{
             break
         }
         return UIViewController()
+    }
+    
+    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+        let parent = self.parent as? SuperYouHomeVC
+        print("I'm on index \(parent) (Int(index))")
+        switch index {
+        case 0:
+            (carbonTabSwipeNavigation.viewControllers[0] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        case 1:
+            (carbonTabSwipeNavigation.viewControllers[1] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        case 2:
+            (carbonTabSwipeNavigation.viewControllers[2] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+        default:
+            break
+        }
     }
     
     

@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 import CarbonKit
-
-@objc class BaseMyProfileTabsViewController: LightStatusBarViewController, CarbonTabSwipeNavigationDelegate {
+class BaseMyProfileTabsViewController: LightStatusBarViewController,CarbonTabSwipeNavigationDelegate {
     
-    @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var targetView: UIView!
+    @IBOutlet weak var toolBar: UIToolbar!
     //
-    private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation?
+    private var carbonTabSwipeNavigation: CarbonTabSwipeNavigation? =   CarbonTabSwipeNavigation()
     private var tabs: [String]?
     //
     public var listVC: NewsListVC?
@@ -54,16 +53,17 @@ import CarbonKit
         pointsVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
         rewardsVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
         
-        carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabs, toolBar: toolBar, delegate: self)
+        carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabs, toolBar: toolBar,delegate: self)
         carbonTabSwipeNavigation?.insert(intoRootViewController: self, andTargetView: targetView)
+        carbonTabSwipeNavigation?.delegate = self
 
         let color = UIColor.midnightBlue
-           navigationController?.navigationBar.isTranslucent = true
-           navigationController?.navigationBar.tintColor = .clear
-           navigationController?.navigationBar.barTintColor = color
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.tintColor = .clear
+        navigationController?.navigationBar.barTintColor = color
         navigationController?.navigationBar.barStyle = .blackTranslucent
-
-            carbonTabSwipeNavigation?.toolbar.isTranslucent = false
+        
+        carbonTabSwipeNavigation?.toolbar.isTranslucent = false
             carbonTabSwipeNavigation?.setIndicatorColor(color)
             // Custimize segmented control
         
@@ -90,7 +90,7 @@ import CarbonKit
     }
 
     
-    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
+     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         switch index {
         case 0:
             // MY LISTS
@@ -117,7 +117,7 @@ import CarbonKit
         return UIViewController()
     }
     
-    func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
         
         print("I'm on index \(Int(index))")
         let parent = self.parent as? MainDetailsTableViewController

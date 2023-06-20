@@ -58,7 +58,7 @@ class CompostionalLayoutVC: BaseVC {
         super.viewDidLoad()
         title = "Compositional Layout"
         setNavigationBarHidden = false
-        setNavigationBarClear = false
+//        setNavigationBarClear = false
         // Do any additional setup after loading the view.
     }
     

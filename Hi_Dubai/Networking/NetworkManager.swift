@@ -26,11 +26,7 @@ class NetworkManager{
     static let shared = NetworkManager()
     private init(){}
     private var cache: URLCache = CacheManager.shared.cache
-//    private lazy var cache: URLCache = {
-//        let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-//        let diskCacheURL = cachesURL.appendingPathComponent("DownloadCache")
-//        return URLCache(memoryCapacity: 10_000_000, diskCapacity: 1_000_000_000, directory: diskCacheURL)
-//    }()
+
     
     
     func getDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
@@ -48,20 +44,20 @@ class NetworkManager{
         sessionConfig.urlCache = cache
         //
         //==URLCache==//
-        if let cachedData = cache.cachedResponse(for: urlRequest){
-            print("Cached data in bytes:", cachedData.data)
-            do {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(formatter)
-                let model = try decoder.decode(T.self, from: cachedData.data)
-                completion(.success(model))
-            }catch(let error){
-                print(error)
-                completion(.failure(error))
-            }
-        } else {
+//        if let cachedData = cache.cachedResponse(for: urlRequest){
+//            print("Cached data in bytes:", cachedData.data)
+//            do {
+//                let formatter = DateFormatter()
+//                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+//                let decoder = JSONDecoder()
+//                decoder.dateDecodingStrategy = .formatted(formatter)
+//                let model = try decoder.decode(T.self, from: cachedData.data)
+//                completion(.success(model))
+//            }catch(let error){
+//                print(error)
+//                completion(.failure(error))
+//            }
+//        } else {
             let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
                 if let error = error{
                     completion(.failure(error))
@@ -69,6 +65,7 @@ class NetworkManager{
                 }
                 do {
                     //==
+                    self.cache.removeAllCachedResponses()
                     self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                     //==
                     let formatter = DateFormatter()
@@ -83,7 +80,7 @@ class NetworkManager{
                 }
             }
             task.resume()
-        }
+//        }
     }
     
     func queryString(_ value: String, params: [String: String]) -> String? {

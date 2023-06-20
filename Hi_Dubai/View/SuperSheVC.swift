@@ -147,36 +147,14 @@ class SuperSheVC: BaseVC ,VCConfigurator{
 //            self.kCameraLongitude = userModel?.lng ?? 0.0
             self.backBtnOutlet.isHidden = false
             self.mapViewBottomCons.constant =  (68 +  UIDevice.bottomSafeArea)
-//            let markerView = MarkerIcon(frame: CGRect(x: 0, y: 0, width: 125, height: 125))
-//            markerView.mainImgView.setImage(imageString: self.userModel?.profilePicture ?? "", localUri: "", placeHolderImage: nil, imageQuality: .low, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//            markerView.mainImgView.contentMode = .scaleAspectFill
-//            markerView.mainImgView.layer.backgroundColor = UIColor.clear.cgColor
-//            markerView.makeCircular(borderWidth: 0, borderColor: .white)
-//            markerView.mainImgView.makeCircular(borderWidth: 2, borderColor: .white)
-//            self.behindBlurView.addGradient(colors: AppColors.lightGray)
+
             let bkgView = UIView.init(frame: CGRect(x: 0, y: 0, width: 125, height: 125))
             bkgView.backgroundColor = .clear
-//            markerView.insertSubview(bkgView, at: 0)
-//            let pulse1 = LFTPulseAnimation(repeatCount: Float.infinity, radius:125, position: markerView.center)
-//            bkgView.layer.insertSublayer(pulse1, below: markerView.layer)
-//            let gmssMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: kCameraLatitude, longitude: kCameraLongitude))
-//            self.beforeUpdatingLocationData = (kCameraLatitude,kCameraLongitude)
-//            DispatchQueue.main.async {
-//                gmssMarker.map = self.mapView
-//            }
-//            gmssMarker.iconView = markerView
-//            gmssMarker.tracksViewChanges = true
-//            gmssMarker.tracksInfoWindowChanges = true
-//            self.mapView.camera = GMSCameraPosition.camera(withLatitude: kCameraLatitude, longitude: kCameraLongitude, zoom: 15)
-//            self.setNewLocationAnimation(isLoading: false)
-//            self.AppearSetNewLocationButton()
         } else {
             self.backBtnOutlet.isHidden = false
             self.mapViewBottomCons.constant =  (68 + UIDevice.bottomSafeArea)// + self.tabBarHeight)
             self.placesAndSuperShesViewBottomCons.constant = -(screen_height - 62.0) + 68.0 + (UIDevice.bottomSafeArea)
-//            self.mapView.camera = GMSCameraPosition.camera(withLatitude: kCameraLatitude, longitude: kCameraLongitude, zoom: 10)
         }
-//        NotificationCenter.default.addObserver(self, selector: #selector(onOtherUserProficeBack), name: .onOtherUserBack, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -188,43 +166,18 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-//        self.userNewPostion = nil
-//        self.gmsMarker?.map = nil
-//        self.gmsMarkerforUser?.map = nil
         self.isDistanceFromFlg = false
-        
-//        self.kCameraLatitude = AppUserDefaults.value(forKey: .initialLat).double ?? 0.0
-//        self.kCameraLongitude = AppUserDefaults.value(forKey: .initialLong).double ?? 0.0
-//        showFlagMarkerAndCurrentUserMarker(coordinate: CLLocationCoordinate2D(latitude: self.kCameraLatitude, longitude: self.kCameraLongitude) ,isUserMarker: true)
+ 
         self.isStatusBarBlack = true
         self.setNeedsStatusBarAppearanceUpdate()
         if self.comingFrom != .otherUserProfile {
             if comeBackFromOtherUserProfile == false {
-//                self.mapView.camera = GMSCameraPosition.camera(withLatitude: kCameraLatitude, longitude: kCameraLongitude, zoom: 10)
             }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        if self.beforeUpdatingLocationData.lat != kCameraLatitude && self.beforeUpdatingLocationData.long != kCameraLongitude {
-//            //viewmodel setup
-//            self.beforeUpdatingLocationData = (kCameraLatitude,kCameraLongitude)
-//            self.viewModel.updateUserId()
-//        }
-        
-//        self.setNewLocationAnimation(isLoading: true)
-//        if self.comingFrom == .otherUserProfile {
-//            self.setNewLocationAnimation(isLoading: false)
-//            if  !self.clearMap  {
-//                self.viewModel.getUsersOnMap(longLatArray: [kCameraLongitude, kCameraLatitude], innerRadius: 0, outerRadius: self.mapView.getRadius(), currentClustringMode: .initialLocation, type :"ELASTIC")
-//            }
-//            printDebug("no need to hit api")
-//        } else {
-//            self.viewModel.getUsersOnMap(longLatArray: [kCameraLongitude, kCameraLatitude], innerRadius: 0, outerRadius: self.mapView.getRadius(), currentClustringMode: .initialLocation,type :"ELASTIC")
-//        }
-        
         if currentSliderWidth > 0.0 {
             self.sliderViewWidthConstraint.constant = currentSliderWidth
         } else {
@@ -253,17 +206,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     
     
     private func locationAccessGranted() {
-        
-//        if SharedLocationManager.locationsEnabled {
-//            // For use in foreground
-//            locationManager.requestWhenInUseAuthorization()
-//            if CLLocationManager.locationServicesEnabled() {
-//                locationManager.delegate = self
-//                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//                locationManager.distanceFilter = 100
-//                locationManager.startUpdatingLocation()
-//            }
-//        }
     }
     
     
@@ -271,14 +213,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         super.setupLayout()
         self.placesView?.frame = CGRect(x: 0.0, y: 0.0, width: screen_width, height: self.mainScrollView.height)
         self.supershesView?.frame = CGRect(x: screen_width, y: 0.0, width: screen_width, height: self.mainScrollView.height)
-//        if self.isBottomSheetOpen {
-//            self.tabBarController?.tabBar.frame.origin.y = screen_height + self.tabBarHeight
-//            print("screenHeight + self.tabBarHeight -> \(screen_height + self.tabBarHeight)")
-//        }
-//        else {
-//            self.tabBarController?.tabBar.frame.origin.y = screen_height - self.tabBarHeight
-//            print("screenHeight - self.tabBarHeight -> \(screen_height - self.tabBarHeight)")
-//        }
     }
     
     //MARK:- Functions-
@@ -296,43 +230,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         self.setNewLocationBtnOutlet.titleLabel?.size = CGSize(width: 114.0, height: 44.0)
         self.setNewLocationBtnOutlet.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -2.0, bottom: 0.0, right: 0.0)
     }
-    
-    ///Call for cluster setups
-//    private func clusterSetUp() {
-//        // Set up the cluster manager with the supplied icon generator and renderer.
-//        let iconGenerator = GMUDefaultClusterIconGenerator()
-//        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
-//        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
-//        renderer.delegate = self
-//        self.clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm, renderer: renderer)
-//
-//        // Generate and add random items to the cluster manager.
-//        self.generateClusterItems(mapUserData: self.viewModel.mapUserData)
-//
-//        self.clusterManager.setDelegate(self, mapDelegate: self)
-//        //        self.mapView.my
-//        self.mapView.isMyLocationEnabled = true
-//    }
-    
-    /// Randomly generates cluster items within some extent of the camera and adds them to the cluster manager.
-//    private func generateClusterItems(mapUserData: [MapUserModel]) {
-//
-//        for userData in mapUserData { //self.viewModel.mapUserData
-//            //TODO
-//            if UserModel.main.id != userData.userId {
-//                if  self.comingFrom == .otherUserProfile,  userData.userId != self.userModel?.id {
-//                    clusterManager.add(POIItem(position: CLLocationCoordinate2DMake( userData.lat, userData.long), name: "", imageUrl: userData.profilePictureUrl))
-//                }
-//                if self.comingFrom != .otherUserProfile {
-//                    clusterManager.add(POIItem(position: CLLocationCoordinate2DMake( userData.lat, userData.long), name: "", imageUrl: userData.profilePictureUrl))
-//                }
-//            }
-//        }
-//
-//
-//        self.clusterManager.cluster()
-//    }
-    
+ 
     ///Main scrollview setups
     private func mainScrollViewSetUp() {
         self.mainScrollView.delegate = self
@@ -476,12 +374,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
             }
             else {
                 if sSelf.activeScreen == .places {
-//                    sSelf.placesView?.clearPlaceViewData()
                 } else {
-//                    if !(sSelf.supershesView?.viewModel.didTapCluster ?? true), !(self?.searchTextField.text ?? "").isEmpty {
-//                        sSelf.supershesView?.hitApi(text: "", page: 0)
-//                        sSelf.supershesView?.dataTableView.reloadData()
-//                    }
                 }
             }
             sSelf.view.layoutIfNeeded()
@@ -574,52 +467,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         print(velocity.y)
         return
     }
-    
-    /// call to get coordinates, counrty and city details from gmap
-//    private func reverseGeocodeCoordinate(_ coordinate: CLLocationCoordinate2D) {
-//        let geocoder = GMSGeocoder()
-//        geocoder.reverseGeocodeCoordinate(coordinate) { response, error in
-//            if let address = response?.firstResult(), let lines = address.lines {
-//                printDebug(address)
-//                printDebug(lines)
-//                let cityName = lines.first?.components(separatedBy: ",")
-//                self.newLocation = cityName?.first ?? ""
-//                self.viewModel.setNewLocationApi(lat: coordinate.latitude, long: coordinate.longitude, city: cityName?.first ?? "", country: address.country ?? "")
-//            } else {
-//                self.setNewLocationAnimation(isLoading: false)
-//            }
-//        }
-//    }
-    
-    /// Call for SetNewLocation Button Animation
-//    private func setNewLocationAnimation(isLoading: Bool,isLoadingForUserData: Bool = false) {
-//        if isLoading {
-//            //            self.setNewLocationBtnOutlet.isUserInteractionEnabled = false
-//
-//            UIView.animate(withDuration: 0.25) { [weak self] in
-//                guard let sSelf = self else { return }
-//                sSelf.isSettingNewLoc = true
-//                sSelf.setNewLocationBtnOutlet.imageView?.rotate360Degrees(speed: 5)
-//                sSelf.setNewLocationBtnWidthCons.constant = 225.0
-//                if (sSelf.userNewPostion != nil && isLoadingForUserData) { sSelf.setNewLocationBtnOutlet.setTitle("Updating new location", for: .normal)
-//                } else { sSelf.setNewLocationBtnOutlet.setTitle("Fetching New Supershes", for: .normal) }
-//                sSelf.view.layoutIfNeeded()
-//            }
-//        } else {
-//            UIView.animate(withDuration: 0.25, animations: { [weak self] in
-//                guard let sSelf = self else { return }
-//                sSelf.setNewLocationBtnWidthCons.constant = 170.0
-//                sSelf.setNewLocationBtnOutlet.setTitle("Set new location", for: .normal)
-//                sSelf.view.layoutIfNeeded()
-//            }) { [weak self] (true) in
-//                guard let sSelf = self else { return }
-//                sSelf.setNewLocationBtnOutlet.imageView?.layer.removeAllAnimations()
-//                //                sSelf.setNewLocationBtnOutlet.isUserInteractionEnabled = true
-//                sSelf.isSettingNewLoc = false
-//            }
-//        }
-//    }
-    
+
     @objc func onOtherUserProficeBack() {
         comeBackFromOtherUserProfile = true
     }
@@ -714,42 +562,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         
     }
     
-//    @IBAction func setNewLocationBtnAction(_ sender: AppButton) {
-//        guard !self.isSettingNewLoc else { return }
-//        var alertMessage = ""
-//        if (self.newLocation ?? "").isEmpty && (self.deviceLocationDetail).isEmpty {
-//            alertMessage = "Do you want to set new location ?"
-//        } else {
-//            if self.isDistanceFromFlg {
-//                alertMessage = (self.newLocation ?? "").isEmpty ? "Do you want to set new location ?" : "Are you sure want to set \"\(self.newLocation ?? "")\" as a new SuperShe location ?"}
-//            else { alertMessage = (self.deviceLocationDetail).isEmpty ? "Do you want to set new location ?" : "Are you sure want to set \"\(self.deviceLocationDetail )\" as a new SuperShe location ?"
-//            }
-//        }
-//        self.showAlertWithMessage(viewController: self, title: "", message: alertMessage, style: .alert, leftButtonTitle: "Cancel", rightButtonTitle: "Ok", leftButtonStyle: .default, rightButtonStyle: .default, leftButtonHandler: {
-//
-//        }, rightButtonHandler: {
-//            self.setNewLocationAnimation(isLoading: true,isLoadingForUserData: true)
-//            if self.isDistanceFromFlg {
-//                guard let newPosition = self.userNewPostion  else {
-//                    self.setNewLocationAnimation(isLoading: false)
-//                    return
-//                }
-//                delay(delay: 0.25) { [weak self] in
-//                    guard let sSelf = self else { return }
-//                    sSelf.reverseGeocodeCoordinate(newPosition)
-//                }
-//            } else {
-//                guard let newPosition = self.deviceLocation else {
-//                    self.setNewLocationAnimation(isLoading: false)
-//                    return
-//                }
-//                delay(delay: 0.25) { [weak self] in
-//                    guard let sSelf = self else { return }
-//                    sSelf.reverseGeocodeCoordinate(newPosition)
-//                }
-//            }
-//        })
-//    }
+
 }
 
 //MARK:- UITextFieldDelegate-
@@ -760,12 +573,6 @@ extension SuperSheVC: UITextFieldDelegate {
         if !text.isEmpty, !self.applySearch  {
             self.textFieldAnimation(applySearch: true)
         }
-//        switch self.activeScreen {
-//        case .supershes:
-////           / self.supershesView?.hitApi(text: text, page: 0)
-//        case .places:
-////            self.placesView?.placeAutocompleteApi(placeName: text)
-//        }
         return true
     }
     
@@ -816,409 +623,6 @@ extension SuperSheVC: PlacesAndSuperShesViewDelegate {
     }
 }
 
-//MARK:- GMUClusterRendererDelegate-
-//extension SuperSheVC: GMUClusterRendererDelegate, GMUClusterManagerDelegate {
-//
-//    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
-//
-//        if let superSheView = self.supershesView {
-//            self.buttonsScrollView.isHidden = false
-//            superSheView.viewModel.dataModel.data.removeAll()
-//            superSheView.viewModel.clusterLat = cluster.position.latitude
-//            superSheView.viewModel.clusterLong = cluster.position.longitude
-//            superSheView.viewModel.distance = mapView.getRadius()
-//            superSheView.viewModel.didTapCluster = true
-//            self.openBottomSheet(openFor: .supershes)
-//            return true
-//        }
-//        return false
-//    }
-//
-//    func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
-//        //        var userId: String = ""
-//        //        self.viewModel.mapUserData.forEach {
-//        //            if clusterItem.position.latitude == $0.lat && clusterItem.position.longitude == $0.long {
-//        //                userId = $0.userId
-//        //            }
-//        //        }
-//
-//        let mapModel = self.viewModel.mapUserData.first(where: {($0.lat == clusterItem.position.latitude) && $0.long == clusterItem.position.longitude})
-//
-//        //        if !userId.isEmpty {
-//
-//        if let model = mapModel {
-//            let userModel = MapUserModel.getUserModelData(model: model)
-//            Router.shared.goToUserProfile(userId : userModel.id, placeHolderImage: nil, userModel: userModel)
-//            return true
-//        }
-//
-//
-//        return false
-//
-//        //        }
-//        //        for user in self.viewModel.mapUserData {
-//        //            if clusterItem.position.latitude == user.lat, clusterItem.position.longitude == user.long {
-//        //
-//        ////                Router.shared.navigate(to: OtherUserProfileVC.self, storyboard: .Chat, action: .push, navigationController: .current) { () -> OtherUserProfileVC.RequiredParams in
-//        ////                    return (ChatRoomModel(), user.userId,nil) }
-//        //            }
-//        //            printDebug(clusterItem)
-//        //            return true
-//        //        }
-//        //        return false
-//    }
-//
-//    func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
-//
-//        //        DispatchQueue.main.async { [weak self] in
-//        if let userData = marker.userData as? GMUCluster {
-//
-//            let height = 50.0
-//            let width = height + (height * 0.75 * 2)
-//            let clusterMarkerView = ClusterIcon.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
-//
-//            clusterMarkerView.clusterLabel.text = Double(userData.count - 2).kFormatted
-//
-//            clusterMarkerView.firstImageView.setImage(imageString: ((marker.userData as? GMUCluster)?.items[0] as? POIItem)?.imageUrl ?? "", localUri: "", placeHolderImage: nil, imageQuality: .low, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//            clusterMarkerView.secondImageView.setImage(imageString: ((marker.userData as? GMUCluster)?.items[1] as? POIItem)?.imageUrl ?? "", localUri: "", placeHolderImage: nil, imageQuality: .low, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//            marker.iconView = clusterMarkerView
-//
-//        }
-//
-//        //set marker icon
-//        //        DispatchQueue.main.async { [weak self] in
-//
-//        guard let data = marker.userData as? POIItem else { return }
-//
-//        let markerView = MarkerIcon(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        markerView.mainImgView.setImage(imageString: data.imageUrl, localUri: "", placeHolderImage: nil, imageQuality: .low, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//        markerView.mainImgView.contentMode = .scaleAspectFill
-//        markerView.layer.backgroundColor = UIColor.clear.cgColor
-//        markerView.makeCircular(borderWidth: 2, borderColor: .white)
-//        marker.map = self.mapView
-//        marker.iconView = markerView
-//        marker.tracksViewChanges = false
-//        marker.tracksInfoWindowChanges = false
-//
-//    }
-//}
-
-//MARK:- GMSMapViewDelegate-
-//extension SuperSheVC: GMSMapViewDelegate ,CLLocationManagerDelegate{
-//    /// MapView
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        if let poiItem = marker.userData as? POIItem {
-//            NSLog("Did tap marker for cluster item \(poiItem.name)")
-//        } else {
-//            NSLog("Did tap a normal marker")
-//        }
-//        return false
-//    }
-//
-//    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
-//        self.didTapLocation(coordinate: location)
-//    }
-//
-//    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-//
-//        let status = CLLocationManager.authorizationStatus()
-//
-//        if CLLocationManager.locationServicesEnabled() {
-//            if  status == CLAuthorizationStatus.authorizedAlways
-//                || status == CLAuthorizationStatus.authorizedWhenInUse {
-//
-//                guard let lat = self.mapView.myLocation?.coordinate.latitude,
-//                    let lng = self.mapView.myLocation?.coordinate.longitude else {
-//                        return false }
-//
-//                let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 10)
-//                self.mapView.animate(to: camera)
-//
-//                let myLocation = CLLocation(latitude: kCameraLatitude, longitude: kCameraLongitude)
-//                self.deviceLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-//                let deviceLoc = CLLocation(latitude: lat, longitude: lng)
-//                let distance = myLocation.distance(from: deviceLoc) / 1000
-//                if distance >= 5 {
-//                    self.isDistanceFromFlg = false
-//                    self.deviceLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-//                    self.AppearSetNewLocationButton()
-//                    self.setNewLocationAnimation(isLoading: false)
-//                } else {
-//                    self.setNewLocationAnimation(isLoading: false)
-//                    self.disAppearSetNewLocationButton()
-//                }
-//                self.gmsMarker?.map = nil
-//                self.isCameFromSearchPlace = true
-//                // -Fetch City and Country-
-//                getAddressFromCoordinate(coordinate: self.deviceLocation ?? CLLocationCoordinate2D(),isDeviceLocation: true)
-//                return true
-//            }
-//
-//            else {
-//                self.locationPermissonPopUp()
-//            }
-//        }
-//        else {
-//            self.locationPermissonPopUp()
-//        }
-//        return false
-//    }
-//
-//    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-//        //        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(hitAPI), object: nil)
-//        if self.comingFrom == .otherUserProfile ,self.dataLoadedFromCluster {
-//            printDebug("no need to load data")
-//            self.dataLoadedFromCluster = false
-//        }else {
-//            guard self.viewModel.totalCount > self.userCount ?? 0 else { return }
-//            if isMaptap {
-//                //                self.AppearSetNewLocationButton()
-//                //                self.setNewLocationAnimation(isLoading: true)
-//                self.viewModel.getUsersOnMap(longLatArray: [position.target.longitude, position.target.latitude], innerRadius: 0, outerRadius: mapView.getRadius(), currentClustringMode: .initialLocation,type :"ELASTIC")
-//            }
-//            self.isMaptap = true
-//        }
-//        //        self.setNewLocationAnimation(isLoading: true)
-//    }
-//
-//    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-//        self.didTapLocation(coordinate: coordinate)
-//    }
-//
-//    private func didTapLocation(coordinate: CLLocationCoordinate2D) {
-//
-//        // -Fetch City and Country-
-//        self.isCameFromSearchPlace = true
-//        getAddressFromCoordinate(coordinate: coordinate, isDeviceLocation: false)
-//        let myLocation = CLLocation(latitude: kCameraLatitude, longitude: kCameraLongitude)
-//        let tapLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//        let distance = myLocation.distance(from: tapLocation) / 1000
-//        if distance >= 1 {
-//            self.gmsMarker?.map = nil
-//            self.isDistanceFromFlg = true
-//            self.isMaptap = false
-//            self.isZoomLevelMax = false
-//            self.userNewPostion = coordinate.self
-//            showFlagMarkerAndCurrentUserMarker(coordinate: self.userNewPostion ?? CLLocationCoordinate2D())
-//            self.AppearSetNewLocationButton()
-//            self.setNewLocationAnimation(isLoading: false)
-//            UIDevice.MarkerTapVibrate()
-//        } else {
-//            self.setNewLocationAnimation(isLoading: false)
-//            self.disAppearSetNewLocationButton()}
-//        printDebug("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-//    }
-//
-//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//        printDebug(position)
-//
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//
-//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-//
-//        // -Fetch City and Country-
-//        self.deviceLocation = locValue
-//        self.isCameFromSearchPlace = true
-//        getAddressFromCoordinate(coordinate: self.deviceLocation ?? CLLocationCoordinate2D(),isDeviceLocation: true)
-//        // -Distance bw CurrentLocation to DeviceLocation
-//        let myLocation = CLLocation(latitude: kCameraLatitude, longitude: kCameraLongitude)
-//        let deviceLocation = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
-//        let distance = myLocation.distance(from: deviceLocation) / 1000
-//        if (distance >= 5 && !self.clearMap) || (self.isDistanceFromFlg) {
-//            // self.AppearSetNewLocationButton()
-//            // self.setNewLocationAnimation(isLoading: false)
-//        } else {
-//            // self.disAppearSetNewLocationButton()
-//        }
-//    }
-//
-//    ///SETUP LOCATIONS
-//    func setupLocations() {
-//
-//        let status = CLLocationManager.authorizationStatus()
-//
-//        if CLLocationManager.locationServicesEnabled() {
-//            if  status == CLAuthorizationStatus.authorizedAlways
-//                || status == CLAuthorizationStatus.authorizedWhenInUse {
-//                printDebug("All set")
-//            }
-//            else{
-//                self.locationPermissonPopUp()
-//            }
-//        }
-//        else{
-//            self.locationPermissonPopUp()
-//        }
-//    }
-//
-//
-//    private func locationPermissonPopUp() {
-//        openSettingApp(message: "We need permission to access this app")
-//        self.gmsMarker?.map = nil
-//        self.setNewLocationAnimation(isLoading: false)
-//        self.disAppearSetNewLocationButton()
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-//
-//        switch status {
-//
-//        case .authorizedAlways, .authorizedWhenInUse:
-//            self.setNewLocationAnimation(isLoading: false)
-//            self.AppearSetNewLocationButton()
-//            manager.startUpdatingLocation()
-//
-//        default:
-//            self.setupLocations()
-//        }
-//
-//    }
-//}
-//MARK:- LocateOnTheMap-
-//extension SuperSheVC: LocateOnTheMap {
-//
-//    func locateWithLatLong(lon: String, andLatitude lat: String, andAddress address: String) {
-//        guard let lat = Double(lat), let lng = Double(lon) else { return }
-//        // Distance of User from Device
-//        let myLocation = CLLocation(latitude: kCameraLatitude, longitude: kCameraLongitude)
-//        let deviceLocation = CLLocation(latitude: lat, longitude: lng)
-//        let distanceFromFlag = myLocation.distance(from: deviceLocation) / 1000
-//        if distanceFromFlag >= 1 {
-//            self.gmsMarker?.map = nil
-//            self.isZoomLevelMax = false
-//            self.isDistanceFromFlg = true
-//            self.isCameFromSearchPlace = true
-//            self.userNewPostion = CLLocationCoordinate2D(latitude: lat , longitude: lng)
-//            // -Fetch City and Country-
-//            getAddressFromCoordinate(coordinate: self.userNewPostion ?? CLLocationCoordinate2D(),isDeviceLocation: false)
-//            showFlagMarkerAndCurrentUserMarker(coordinate: self.userNewPostion ?? CLLocationCoordinate2D())
-//            AppearSetNewLocationButton()
-//        }else {
-//            self.isDistanceFromFlg = false
-//            self.isCameFromSearchPlace = false
-//            self.setNewLocationAnimation(isLoading: false)
-//            disAppearSetNewLocationButton()
-//        }
-//        self.closeBottomSheet()
-//        // self.mapView.clear()
-//        let camera = GMSCameraPosition.camera(withLatitude: lat ,longitude: lng , zoom: 10)
-//        self.mapView.animate(to: camera)
-//        self.setNewLocationAnimation(isLoading: false)
-//        self.viewModel.getUsersOnMap(longLatArray: [lng,lat], innerRadius: 0, outerRadius: self.mapView.getRadius(), currentClustringMode: .customLocation,type :"ELASTIC")
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        printDebug(error.localizedDescription)
-//    }
-//}
-
-//MARK:- SuperSheVMDelegate-
-//extension SuperSheVC: SuperSheVMDelegate {
-//
-//    func willHitMapUsesApi() {
-//
-//    }
-//
-//    func getUsersOnMapSuccess(successMsg: String, currentClustringMode: ClusteringMode, newData: [MapUserModel]) {
-//        printDebug(successMsg)
-//        self.userCount = self.viewModel.mapUserData.count
-//        let status = CLLocationManager.authorizationStatus()
-//
-//        if CLLocationManager.locationServicesEnabled() {
-//            if  status == CLAuthorizationStatus.authorizedAlways
-//                || status == CLAuthorizationStatus.authorizedWhenInUse {
-//
-//                // Distance of User from Device
-//                let myLocation = CLLocation(latitude: kCameraLatitude, longitude: kCameraLongitude)
-//                let deviceLocation = CLLocation(latitude: self.deviceLocation?.latitude ?? 0.0, longitude: self.deviceLocation?.longitude ?? 0.0)
-//                let distanceFromDevice = myLocation.distance(from: deviceLocation) / 1000
-//                if (distanceFromDevice >= 5 || self.isDistanceFromFlg) && (self.isCameFromSearchPlace) {
-//                    self.setNewLocationAnimation(isLoading: false)
-//                    self.AppearSetNewLocationButton()
-//                } else {
-//                    self.setNewLocationAnimation(isLoading: false)
-//                    self.disAppearSetNewLocationButton()
-//                }
-//            } else {
-//                self.setNewLocationAnimation(isLoading: false)
-//                self.disAppearSetNewLocationButton()
-//            }
-//        }
-//
-//        self.clearMap = false
-//        switch currentClustringMode {
-//        case .initialLocation:
-//            if self.comingFrom == .otherUserProfile && self.isZoomLevelMax{
-//                self.mapView.camera = GMSCameraPosition.camera(withLatitude: self.userModel?.lat ?? 0.0, longitude: self.userModel?.lng ?? 0.0, zoom: 10)
-//            }
-//            self.clusterSetUp()
-//            printDebug(currentClustringMode)
-//        case .currentLocation:
-//            self.clusterSetUp()
-//            //self.generateClusterItems(mapUserData: newData)
-//            printDebug(currentClustringMode)
-//        case .customLocation:
-//            self.clusterSetUp()
-//            printDebug(currentClustringMode)
-//        }
-//
-//
-//    }
-//
-//    func getUsersOnMapFailed(failedToGetData: String, currentClustringMode: ClusteringMode) {
-//        printDebug(failedToGetData)
-//        self.disAppearSetNewLocationButton()
-//        self.setNewLocationAnimation(isLoading: false)
-//        switch currentClustringMode {
-//        case .initialLocation:
-//            printDebug(currentClustringMode)
-//        case .currentLocation:
-//            printDebug(currentClustringMode)
-//        case .customLocation:
-//            printDebug(currentClustringMode)
-//        }
-//    }
-//
-//    func willHitSetNewLocApi() {
-//
-//    }
-//
-//    func setNewLocSuccess(successMsg: String, newLat: Double, newLong: Double) {
-//
-//        //R&D
-//        //self.mapView.clear()
-//        self.gmsMarker?.map = nil
-//        self.kCameraLatitude = newLat
-//        self.kCameraLongitude = newLong
-//        self.isCameFromSearchPlace = true
-//        // Distance of User from Device
-//        let myLocation = CLLocation(latitude: self.kCameraLatitude, longitude: self.kCameraLongitude)
-//        let deviceLocation = CLLocation(latitude: self.deviceLocation?.latitude ?? 0.0, longitude: self.deviceLocation?.longitude ?? 0.0)
-//        let distanceFromDeivce = myLocation.distance(from: deviceLocation) / 1000
-//        if distanceFromDeivce >= 5 {
-//            self.isDistanceFromFlg = false
-//            self.setNewLocationAnimation(isLoading: false)
-//            self.AppearSetNewLocationButton()
-//        } else {
-//            self.setNewLocationAnimation(isLoading: false)
-//            self.disAppearSetNewLocationButton()
-//        }
-//        moveMarker(coordinate: CLLocationCoordinate2D(latitude: self.kCameraLatitude, longitude: self.kCameraLongitude))
-////        let camera = GMSCameraPosition.camera(withLatitude: kCameraLatitude ,longitude: kCameraLongitude , zoom: 10)
-////        self.mapView.animate(to: camera)
-////        self.viewModel.getUsersOnMap(longLatArray: [kCameraLongitude,kCameraLatitude], innerRadius: 0, outerRadius: self.mapView.getRadius(), currentClustringMode: .currentLocation,changingMyLocation: true,type :"ELASTIC")
-////        showFlagMarkerAndCurrentUserMarker(coordinate: nil, isUserMarker: true)
-//        self.userNewPostion = nil
-//    }
-//
-//    func setNewLocFailed(failedToGetData: String) {
-//        showToast(failedToGetData, position: .top)
-//        self.setNewLocationAnimation(isLoading: false)
-//    }
-//}
-
 extension SuperSheVC {
     func AppearSetNewLocationButton() {
         self.view.layoutIfNeeded()
@@ -1238,68 +642,4 @@ extension SuperSheVC {
 //            printDebug("Do Nothing")
         }
     }
-    
-//    func getAddressFromCoordinate(coordinate: CLLocationCoordinate2D,isDeviceLocation: Bool = true){
-//        //Coordinate to Address============
-//        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//        location.convertToPlaceMark({[weak self] (placeMark) in
-//            guard let `self` = self else {
-//                return
-//            }
-//            guard let address = placeMark.addressDictionary as? JSONDictionary else {
-//                return
-//            }
-//            self.locationModel = LocationModel(geoLoc: address)
-//            guard let locationModel = self.locationModel else {return}
-//            if isDeviceLocation {
-//                self.deviceLocationDetail = "\(locationModel.name ) \(locationModel.city) \(locationModel.country ) "} else {
-//                self.newLocation = "\(locationModel.name ) \(locationModel.city) \(locationModel.country ) "
-//            }
-//        })
-//    }
-    //R&D
-//    func moveMarker(coordinate: CLLocationCoordinate2D){
-//        CATransaction.begin()
-//        CATransaction.setValue(0.33, forKey: kCATransactionAnimationDuration)
-//        self.mapView.animate(to: GMSCameraPosition.camera(withLatitude:coordinate.latitude, longitude: coordinate.longitude, zoom: 10))
-//        self.gmsMarkerforUser?.position = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//        CATransaction.commit()
-//        self.gmsMarkerforUser?.map = self.mapView
-//    }
-    
-//    func openSettingApp(message: String) {
-//
-//        self.showAlertWithMessage(viewController: self, title: "", message: message, style: .alert, leftButtonTitle: "Setting", rightButtonTitle: "Cancel", leftButtonStyle: .default, rightButtonStyle: .default, leftButtonHandler: {
-//            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-//                return
-//            }
-//            if UIApplication.shared.canOpenURL(settingsUrl) {
-//                UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-//            }
-//        }, rightButtonHandler: {
-//
-//        })
-//    }
-    
-//    func showFlagMarkerAndCurrentUserMarker(coordinate: CLLocationCoordinate2D? ,isUserMarker: Bool = false) {
-//        if isUserMarker {
-//            self.gmsMarkerforUser = GMSMarker(position: CLLocationCoordinate2D(latitude: kCameraLatitude, longitude: kCameraLongitude))
-//            self.userNewLocMarkerView = MarkerIcon(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//            self.userNewLocMarkerView?.mainImgView.makeCircular(borderWidth: 2, borderColor: .white)
-//            self.userNewLocMarkerView?.mainImgView.setImage(imageString: UserModel.main.profilePicture, localUri: "", placeHolderImage:nil , imageQuality: .high, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//            self.userNewLocMarkerView?.mainImgView.contentMode = isUserMarker ? .scaleAspectFill : .scaleAspectFit
-//            self.userNewLocMarkerView?.mainImgView.layer.backgroundColor = UIColor.clear.cgColor
-//            self.gmsMarkerforUser?.iconView = userNewLocMarkerView
-//        } else {
-//            self.gmsMarker = GMSMarker(position: CLLocationCoordinate2D(latitude: coordinate?.latitude ?? 0.0, longitude: coordinate?.longitude ?? 0.0))
-//            self.userNewLocMarkerView = MarkerIcon(frame: CGRect(x: 0, y: 0, width: 35.2, height: 44))
-//            self.userNewLocMarkerView?.mainImgView.setImage(imageString: "", localUri: "", placeHolderImage: #imageLiteral(resourceName: "flag"), imageQuality: .high, isLambdaEnable : false, backgroundColor: UIColor.darkGray)
-//            self.userNewLocMarkerView?.mainImgView.contentMode = isUserMarker ? .scaleAspectFill : .scaleAspectFit
-//            self.userNewLocMarkerView?.mainImgView.layer.backgroundColor = UIColor.clear.cgColor
-//            self.gmsMarker?.iconView = userNewLocMarkerView
-//        }
-//        DispatchQueue.main.async  {
-//            if isUserMarker { self.gmsMarkerforUser?.map = self.mapView }else { self.gmsMarker?.map = self.mapView}
-//        }
-//    }
 }

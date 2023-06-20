@@ -128,6 +128,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR BUSINESS"
                 secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
                 removeChildrenVC()
@@ -142,6 +143,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC) {
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR LISTS"
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
@@ -155,6 +157,7 @@ class SearchVC: BaseVC{
             if  children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
                 secondChildVC.headerTitle = "POPULAR PEOPLE"
+                secondChildVC.isShowSectionHeader = true
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
                 containerView?.addSubview(secondChildVC.view)
@@ -167,6 +170,7 @@ class SearchVC: BaseVC{
     func initUI(){
         if self.navBar != nil {
             let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+            secondChildVC.isShowSectionHeader = true
 //            secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
             
             if children.count == 0 {
@@ -201,24 +205,25 @@ class SearchVC: BaseVC{
                 gradient_MAX_HEIGHT = 90.0
                 if !self.searchTxtFld.isHidden && !isProcess{
                     isProcess = true
-                    UIView.animate(withDuration: 0.10) {
-                        self.searchTxtFld.isHidden = isSearchHidden
-                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-                        isProcess = false
-                        self.view.layoutIfNeeded()
-                    }
+                    //MARK: - commented for displaying search text field animation
+//                    UIView.animate(withDuration: 0.25) {
+//                        self.searchTxtFld.isHidden = isSearchHidden
+//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+//                        isProcess = false
+//                        self.view.layoutIfNeeded()
+//                    }
                 }
             }else{
                 gradient_MAX_HEIGHT = 134.0
                 if self.searchTxtFld.isHidden && !isProcess{
                     isProcess = true
-                    
-                    UIView.animate(withDuration: 0.25) {
-                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-                        self.searchTxtFld.isHidden = isSearchHidden
-                        isProcess = false
-                        self.view.layoutIfNeeded()
-                    }
+                    //MARK: - commented for displaying search text field animation
+//                    UIView.animate(withDuration: 0.25) {
+//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+//                        self.searchTxtFld.isHidden = isSearchHidden
+//                        isProcess = false
+//                        self.view.layoutIfNeeded()
+//                    }
                 }
             }
             //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);

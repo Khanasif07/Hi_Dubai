@@ -12,8 +12,17 @@ enum AppRouter {
         goToNewsVC(window)
     }
     
+    static func checkSettingFlow(_ window: UIWindow) {
+        goToSettingVC(window)
+    }
+    
     static func goToNewsVC(_ window: UIWindow){
         let scene = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        setAsWindowRoot(scene,window)
+    }
+    
+    static func goToSettingVC(_ window: UIWindow){
+        let scene = SettingVC.instantiate(fromAppStoryboard: .Main)
         setAsWindowRoot(scene,window)
     }
     

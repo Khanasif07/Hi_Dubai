@@ -8,7 +8,7 @@
 import Foundation
 
 struct News: Codable {
-    let record: [Record]
+    var record: [Record]
     let metadata: Metadata
 }
 
@@ -27,6 +27,7 @@ struct Metadata: Codable {
 
 // MARK: - Record
 struct Record: Codable {
+    var isSelected: Bool? = false
     let title: String
     let postURL: String
     let publishedAt: Date
@@ -44,6 +45,7 @@ struct Record: Codable {
         case publishedAt
         case postImageURL = "postImageUrl"
         case readTime, primaryTag, content
+        case isSelected
     }
 }
 
