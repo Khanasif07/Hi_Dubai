@@ -105,16 +105,9 @@ class PlacesAndSuperShesView: UIView {
 extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.screenUsingFor == .supershes {
-            switch self.currentShimmerStatus {
-            case .toBeApply:
-                return 15
-            case .applied:
-                return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1: 0)
-            case .none:
-                return 15
-            }
+                return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
         }
-        return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1: 0)
+        return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -177,9 +170,14 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if cell as? LoaderCell != nil {
             if screenUsingFor == .supershes {
-                self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                })
+            
             }else {
-                self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
+                    self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                })
             }
         }
     }

@@ -23,7 +23,7 @@ struct Pumpkin: Codable {
     let abv, ibu: Double?
     let targetFg: Int?
     let targetOg: Double?
-    let ebc: Int?
+    let ebc: Double?
     let srm, ph, attenuationLevel: Double?
     let volume, boilVolume: BoilVolume?
     let method: Method?
@@ -80,8 +80,8 @@ struct Ingredients: Codable {
 struct Hop: Codable {
     let name: String?
     let amount: BoilVolume?
-    let add: Add?
-    let attribute: Attribute?
+    let add: String?
+    let attribute: String?
 }
 
 enum Add: String, Codable {

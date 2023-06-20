@@ -23,8 +23,8 @@ extension NewsListViewModelDelegate{
 class NewsListViewModel{
     //Pagination
     var hideLoader: Bool = false
-    var currentPage = 2
-    var totalPages = 3
+    var currentPage = 1
+    var totalPages = 5
     var nextPageAvailable = true
     var isRequestinApi = false
     var showPaginationLoader: Bool {
