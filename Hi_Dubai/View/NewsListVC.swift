@@ -47,7 +47,13 @@ class NewsListVC: UIViewController {
 //    var stopScroll = 80.0
     internal var containerViewMinY: Float = 0.0
     var lastContentOffset: CGFloat = 0.0
-    internal var headerTitle: String = "POPULAR BUSINESS"
+    internal var headerTitle: String = "POPULAR BUSINESS"{
+        didSet{
+            if self.popularLbl != nil {
+                self.popularLbl.text = headerTitle
+            }
+        }
+    }
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,8 +92,6 @@ class NewsListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.isHidden = false
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -196,12 +200,12 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 0:
                 //
                 let vc = SettingVC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: false)
                
 //                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
                 let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: false)
 //                self.indexPath = indexPath
 //                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
 //                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)

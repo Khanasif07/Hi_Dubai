@@ -350,15 +350,19 @@ extension SuperYouHomeVC: CarbonTabSwipeNavigationDelegate{
     }
     
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, didMoveAt index: UInt) {
+        let tabs: [String] = ["TRENDING", "WHAT'S NEW", "LATEST LISTS"]
         let parent = self.parent as? SuperYouHomeVC
         print("I'm on index \(parent) (Int(index))")
         switch index {
         case 0:
             (carbonTabSwipeNavigation.viewControllers[0] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+            (carbonTabSwipeNavigation.viewControllers[0] as? NewsListVC)?.headerTitle = tabs[Int(index)]
         case 1:
             (carbonTabSwipeNavigation.viewControllers[1] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+            (carbonTabSwipeNavigation.viewControllers[1] as? NewsListVC)?.headerTitle = tabs[Int(index)]
         case 2:
             (carbonTabSwipeNavigation.viewControllers[2] as? NewsListVC)?.newsTableView.backgroundColor = .clear
+            (carbonTabSwipeNavigation.viewControllers[2] as? NewsListVC)?.headerTitle = tabs[Int(index)]
         default:
             break
         }
