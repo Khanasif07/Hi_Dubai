@@ -23,6 +23,9 @@ class NewsListVC: UIViewController {
     @IBOutlet var businessHeader: UIView!
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
+    
+    var isShowSectionHeader: Bool = false
+    var isPrefersLargeTitles: Bool = true
     var headerView = ArtistHeaderView.instanciateFromNib()
     var isScrollingTrue: Bool = true
     lazy var viewModel = {
@@ -49,9 +52,11 @@ class NewsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
+        title = "News"
         //
         self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
@@ -81,7 +86,8 @@ class NewsListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
-        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationBar.isHidden = false
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -245,22 +251,22 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.25) {
-            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath){
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.25) {
-            cell?.transform = .identity
-        }
-    }
+//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
+//        let cell = tableView.cellForRow(at: indexPath)
+//        UIView.animate(withDuration: 0.25) {
+//            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath){
+//        let cell = tableView.cellForRow(at: indexPath)
+//        UIView.animate(withDuration: 0.25) {
+//            cell?.transform = .identity
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return businessHeader.frame.size.height
+        return isShowSectionHeader ? businessHeader.frame.size.height : 0.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

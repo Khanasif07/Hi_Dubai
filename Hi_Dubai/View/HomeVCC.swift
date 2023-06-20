@@ -13,6 +13,7 @@ class HomeVCC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         setNavigationBarHidden = true
         // Do any additional setup after loading the view.
         
@@ -21,6 +22,18 @@ class HomeVCC: BaseVC {
         childView.view.frame = self.view.bounds
         containerView.addSubview(childView.view)
         childView.didMove(toParent: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        setNavigationBarHidden = false
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        setNavigationBarHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     

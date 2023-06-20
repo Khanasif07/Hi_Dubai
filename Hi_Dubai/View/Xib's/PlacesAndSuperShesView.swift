@@ -28,18 +28,17 @@ class PlacesAndSuperShesView: UIView {
     internal var screenUsingFor: CurrentlyUsingFor = .places
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
-    internal var lists: [Record]?{
-        didSet{
-            self.dataTableView.reloadData()
-        }
-    }
+    internal var lists: [Record]?
     
 //    var lastPage = -1
     private var placesArray: [String] = []
-    
+    internal var isScrollEnabled: Bool = false{
+        didSet{
+            self.dataTableView.isScrollEnabled = isScrollEnabled
+        }
+    }
     private var lat: String?
     private var long: String?
-    private var addressDetails: String?
     internal weak var locationDelegate: LocateOnTheMap?
     internal var currentShimmerStatus: ShimmerState = .applied
     
@@ -52,7 +51,7 @@ class PlacesAndSuperShesView: UIView {
             self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
             //
-            self.dataTableView.isScrollEnabled = false
+            self.dataTableView.isScrollEnabled = isScrollEnabled
         }
     }
     
@@ -122,10 +121,11 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if lists?[indexPath.item].isSelected ==  true {
             lists?[indexPath.item].isSelected = false
+            self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
         }else{
             lists?[indexPath.item].isSelected = true
+            self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
         }
-//        self.dataTableView.reloadTableView()
     }
 
     

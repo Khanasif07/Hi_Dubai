@@ -128,6 +128,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR BUSINESS"
                 secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
                 removeChildrenVC()
@@ -142,6 +143,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC) {
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR LISTS"
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
@@ -155,6 +157,7 @@ class SearchVC: BaseVC{
             if  children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
                 secondChildVC.headerTitle = "POPULAR PEOPLE"
+                secondChildVC.isShowSectionHeader = true
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
                 containerView?.addSubview(secondChildVC.view)
@@ -167,6 +170,7 @@ class SearchVC: BaseVC{
     func initUI(){
         if self.navBar != nil {
             let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+            secondChildVC.isShowSectionHeader = true
 //            secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
             
             if children.count == 0 {

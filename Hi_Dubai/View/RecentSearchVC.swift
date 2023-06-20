@@ -9,7 +9,7 @@ import UIKit
 
 class RecentSearchVC: UIViewController {
     
-    private var placesView: PlacesAndSuperShesView?
+    internal var placesView: PlacesAndSuperShesView?
     lazy var viewModel = {
         NewsListViewModel()
     }()
@@ -22,7 +22,7 @@ class RecentSearchVC: UIViewController {
         self.viewModel.getNewsListing()
         //
         self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
-        
+        self.placesView?.isScrollEnabled = true
         if let placeView = self.placesView {
             placeView.screenUsingFor = .places
             self.view.addSubview(placeView)

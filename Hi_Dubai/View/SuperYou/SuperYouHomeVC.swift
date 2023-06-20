@@ -61,7 +61,7 @@ class SuperYouHomeVC: BaseVC {
         searchTxtFld.delegate = self
         searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
         cancelBtn.isHidden = true
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(scrollToRowMethod), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(scrollToRowMethod), userInfo: nil, repeats: false)
         //.....................................
 //        addStatusBarBackgroundView(viewController: self)
         self.dataTableView.refreshControl = refresher
@@ -152,9 +152,15 @@ class SuperYouHomeVC: BaseVC {
     func initCarbonSwipeUI(targetView: UIView){
         let tabs: [String] = ["TRENDING", "WHAT'S NEW", "LATEST LISTS"]
         tabVC1 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC1?.isShowSectionHeader = true
+        tabVC1?.isPrefersLargeTitles = false
         tabVC2 = NewsListVC.instantiate(fromAppStoryboard: .Main)
+        tabVC2?.isShowSectionHeader = true
+        tabVC2?.isPrefersLargeTitles = false
         tabVC3 = NewsListVC.instantiate(fromAppStoryboard: .Main)
-        tabSwipe.navigationController?.navigationBar.isHidden = true
+        tabVC3?.isShowSectionHeader = true
+        tabVC3?.isPrefersLargeTitles = false
+//        tabSwipe.navigationController?.navigationBar.isHidden = true
         tabSwipe = CarbonTabSwipeNavigation(items: tabs, delegate: self)
         
         tabSwipe.tabBarController?.tabBar.tintColor = .black
@@ -192,6 +198,7 @@ class SuperYouHomeVC: BaseVC {
 //            self.view.addSubview(placeView)
 //        }
         let placesView = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
+        placesView.placesView?.isScrollEnabled = true
         removeChildrenVC()
         placesView.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
         self.view.addSubview(placesView.view)
