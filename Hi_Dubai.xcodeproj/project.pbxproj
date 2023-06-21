@@ -172,6 +172,7 @@
 		E0C8A0F32A3DAD7800AD1EF4 /* NewsDiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */; };
 		E0F3A6C42A42BE0D00FE73C3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */; };
 		E0F3A6C62A42BE6400FE73C3 /* UIImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */; };
+		E0F3A6C82A42C38700FE73C3 /* UrlCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C72A42C38700FE73C3 /* UrlCacheManager.swift */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +350,7 @@
 		E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDiscoverVC.swift; sourceTree = "<group>"; };
 		E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageCache.swift; sourceTree = "<group>"; };
+		E0F3A6C72A42C38700FE73C3 /* UrlCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlCacheManager.swift; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -418,6 +420,7 @@
 				8470C57F29974E340091A7C5 /* Enums.swift */,
 				E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */,
 				E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */,
+				E0F3A6C72A42C38700FE73C3 /* UrlCacheManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1069,6 +1072,7 @@
 				E00AE4E92A0B65DB00A43133 /* BaseViewControlller.swift in Sources */,
 				E0765C562A274BFC00574230 /* AnimalDetailView.swift in Sources */,
 				E00AE4F12A0BA68400A43133 /* EmptyView.swift in Sources */,
+				E0F3A6C82A42C38700FE73C3 /* UrlCacheManager.swift in Sources */,
 				E00AE4E22A0A600B00A43133 /* BaseNestedScrollViewController.swift in Sources */,
 				E0765C6C2A28B6B800574230 /* GalleryView.swift in Sources */,
 				E0722B8829FFE25500BB9B6D /* OtherArtistDetail.swift in Sources */,

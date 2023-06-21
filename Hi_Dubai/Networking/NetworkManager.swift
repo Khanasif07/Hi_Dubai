@@ -11,17 +11,7 @@ extension Error {
         return (self as NSError).code
     }
 }
-class CacheManager {
-    static let shared = CacheManager()
-    var cache: URLCache
 
-    private init() {
-        let fileManager = FileManager.default
-        let documentsDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let cacheDir = documentsDirectory.appendingPathComponent("cache")
-        cache = URLCache(memoryCapacity: 16 * 1024 * 1024, diskCapacity: 80 * 1024 * 1024, directory: cacheDir)
-    }
-}
 class NetworkManager{
     static let shared = NetworkManager()
     private init(){}
@@ -101,11 +91,10 @@ class NetworkManager{
                 return
             }
             do {
-                //++
-//                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-//                    print(json)
-//                }
-                //++
+                //==
+                self.cache.removeAllCachedResponses()
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                //==
                 let decoder = JSONDecoder()
                 let model = try decoder.decode(T.self, from: data!)
                 completion(.success(model))
