@@ -49,8 +49,8 @@ class SuperYouHomeModel {
     private (set) var newsData = [Record]()
     var error : Error?
     func getNewsListing(){
-        NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
-            switch results {
+        NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (result: Result<News,Error>) in
+            switch result{
             case .success(let result):
                 self.videoData = result.record
                 self.musicData = result.record
@@ -67,6 +67,7 @@ class SuperYouHomeModel {
                 self.error = error
                 self.newsData = []
                 self.delegate?.newsListingFailure(error: error)
+                
             }
         }
     }

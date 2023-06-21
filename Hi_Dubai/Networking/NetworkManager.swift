@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 11/02/23.
 //
-
+import Network
 import Foundation
 extension Error {
     var errorCode:Int? {
@@ -13,10 +13,23 @@ extension Error {
 }
 
 class NetworkManager{
+    let monitor = NWPathMonitor()
     static let shared = NetworkManager()
-    private init(){}
+    private init(){
+        networkConnectivity()
+    }
     private var cache: URLCache = CacheManager.shared.cache
 
+    func networkConnectivity(){
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("We're connected!")
+            } else {
+                print("No connection.")
+            }
+            print(path.isExpensive)
+        }
+    }
     
     
     func getDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
@@ -30,9 +43,12 @@ class NetworkManager{
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
         sessionConfig.timeoutIntervalForRequest  = 2.5
-        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.timeoutIntervalForResource = 30
         sessionConfig.urlCache = cache
         //
+        //+
+        sessionConfig.waitsForConnectivity = true
+        //+
         //==URLCache==//
 //        if let cachedData = cache.cachedResponse(for: urlRequest){
 //            print("Cached data in bytes:", cachedData.data)
@@ -55,7 +71,7 @@ class NetworkManager{
                 }
                 do {
                     //==
-                    self.cache.removeAllCachedResponses()
+//                    self.cache.removeAllCachedResponses()
                     self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                     //==
                     let formatter = DateFormatter()
@@ -82,8 +98,11 @@ class NetworkManager{
         urlRequest.httpMethod = requestType.rawValue
         //
         let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
         sessionConfig.timeoutIntervalForRequest  = 2.5
         sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
         //
         let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
             if let error = error{
@@ -92,7 +111,7 @@ class NetworkManager{
             }
             do {
                 //==
-                self.cache.removeAllCachedResponses()
+//                self.cache.removeAllCachedResponses()
                 self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                 //==
                 let decoder = JSONDecoder()

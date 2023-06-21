@@ -10,10 +10,10 @@ import UIKit
 
 /// Result enum is a generic for any type of value
 /// with success and failure case
-public enum ResultType<T> {
-    case success(T)
-    case failure(Error)
-}
+//public enum ResultType<T> {
+//    case success(T)
+//    case failure(Error)
+//}
 
 final class Networking: NSObject {
     
@@ -28,7 +28,7 @@ final class Networking: NSObject {
     /// downloadImage function will download the thumbnail images
     /// returns Result<Data> as completion handler
     public static func downloadImageFromCache(url: URL,
-                                     completion: @escaping (ResultType<Data>) -> Void) {
+                                     completion: @escaping (Result<Data,Error>) -> Void) {
         Networking.getData(url: url) { data, response, error in
             
             if let error = error {
