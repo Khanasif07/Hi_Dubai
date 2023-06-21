@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,17 +19,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlacesAndSuperShesViewTableViewCell" id="k50-iN-9nq" customClass="PlacesAndSuperShesViewTableViewCell" customModule="Hi_Dubai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k50-iN-9nq" id="aet-pM-lg3">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7b-d0-sDB" customClass="ShimmerContainerView" customModule="Hi_Dubai" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                        <rect key="frame" x="0.0" y="5" width="375" height="54"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ogimage-hidubai" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-Jd-09c">
-                                <rect key="frame" x="18" y="7" width="45" height="45"/>
+                                <rect key="frame" x="18" y="4.6666666666666643" width="45" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OWH-Jd-09c" secondAttribute="height" multiplier="1:1" id="CmE-sW-SEd"/>
@@ -37,7 +37,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="m81-jD-6bT">
-                                <rect key="frame" x="71" y="11" width="136" height="37.333333333333336"/>
+                                <rect key="frame" x="71" y="8.3333333333333321" width="136" height="37.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satish" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjN-gO-wDI">
                                         <rect key="frame" x="0.0" y="0.0" width="47.333333333333336" height="20"/>
@@ -75,21 +75,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OWH-Jd-09c" firstAttribute="centerY" secondItem="c7b-d0-sDB" secondAttribute="centerY" id="1Qk-Mg-dcC"/>
                             <constraint firstItem="OWH-Jd-09c" firstAttribute="leading" secondItem="c7b-d0-sDB" secondAttribute="leading" constant="18" id="6LJ-7L-2Gs"/>
                             <constraint firstAttribute="trailing" secondItem="Ole-Rs-phI" secondAttribute="trailing" constant="8" id="B8R-bJ-3dU"/>
                             <constraint firstItem="m81-jD-6bT" firstAttribute="centerY" secondItem="OWH-Jd-09c" secondAttribute="centerY" id="BPn-vG-pmJ"/>
                             <constraint firstItem="Ole-Rs-phI" firstAttribute="top" secondItem="c7b-d0-sDB" secondAttribute="top" constant="8" id="BzP-1n-CH6"/>
-                            <constraint firstAttribute="bottom" secondItem="OWH-Jd-09c" secondAttribute="bottom" constant="8" id="LlB-uW-Bw0"/>
-                            <constraint firstItem="Ole-Rs-phI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m81-jD-6bT" secondAttribute="trailing" constant="30" id="N00-uF-nwA"/>
+                            <constraint firstItem="Ole-Rs-phI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m81-jD-6bT" secondAttribute="trailing" constant="8" id="N00-uF-nwA"/>
                             <constraint firstAttribute="bottom" secondItem="Ole-Rs-phI" secondAttribute="bottom" constant="8" id="a12-aK-pyG"/>
                             <constraint firstItem="m81-jD-6bT" firstAttribute="leading" secondItem="OWH-Jd-09c" secondAttribute="trailing" constant="8" id="bN6-Ca-Rij"/>
-                            <constraint firstItem="OWH-Jd-09c" firstAttribute="top" secondItem="c7b-d0-sDB" secondAttribute="top" constant="7" id="oHQ-Wl-jN1"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="c7b-d0-sDB" firstAttribute="top" secondItem="aet-pM-lg3" secondAttribute="top" id="MDE-dd-k6N"/>
+                    <constraint firstItem="c7b-d0-sDB" firstAttribute="top" secondItem="aet-pM-lg3" secondAttribute="top" constant="5" id="MDE-dd-k6N"/>
                     <constraint firstAttribute="bottom" secondItem="c7b-d0-sDB" secondAttribute="bottom" id="dbu-uP-1va"/>
                     <constraint firstAttribute="trailing" secondItem="c7b-d0-sDB" secondAttribute="trailing" id="g23-dT-ewF"/>
                     <constraint firstItem="c7b-d0-sDB" firstAttribute="leading" secondItem="aet-pM-lg3" secondAttribute="leading" id="ofx-IH-itQ"/>
