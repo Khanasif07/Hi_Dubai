@@ -170,6 +170,8 @@
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
 		E0C8A0F32A3DAD7800AD1EF4 /* NewsDiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */; };
+		E0F3A6C42A42BE0D00FE73C3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */; };
+		E0F3A6C62A42BE6400FE73C3 /* UIImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -345,6 +347,8 @@
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
 		E0C8A0F22A3DAD7800AD1EF4 /* NewsDiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDiscoverVC.swift; sourceTree = "<group>"; };
+		E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageCache.swift; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -412,6 +416,8 @@
 			children = (
 				8470C57D29974DE30091A7C5 /* NetworkManager.swift */,
 				8470C57F29974E340091A7C5 /* Enums.swift */,
+				E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */,
+				E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -990,6 +996,7 @@
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
 				8470C56D29974D640091A7C5 /* NewsListVC.swift in Sources */,
 				E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */,
+				E0F3A6C62A42BE6400FE73C3 /* UIImageCache.swift in Sources */,
 				8470C59B2997658C0091A7C5 /* UITableViewExtension.swift in Sources */,
 				E00DED3E2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.swift in Sources */,
 				E0B6396E2A1C767500DD4DE4 /* SearchTextField.swift in Sources */,
@@ -1047,6 +1054,7 @@
 				E0781BF42A4186A900A18A2C /* Pumpkin.swift in Sources */,
 				E02CF3C42A044A4B00400F08 /* HotelFilterVC.swift in Sources */,
 				E0765C5A2A274CD300574230 /* Animal.swift in Sources */,
+				E0F3A6C42A42BE0D00FE73C3 /* Networking.swift in Sources */,
 				E00DED412A14C0E600828D34 /* AppButton.swift in Sources */,
 				8470C5AD29977C4E0091A7C5 /* NewsDetailViewModel.swift in Sources */,
 				8470C5982997651A0091A7C5 /* NewsDetailVC.swift in Sources */,

@@ -42,16 +42,19 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.userName.text = nil
+        self.locationName.text = nil
+        self.profileImageView?.image = nil
     }
     
     func populateCell(_ model: Record?){
-        profileImageView?.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
+        profileImageView?.loadThumbnail(urlSting: model?.postImageURL ?? "")
         userName.text = model?.primaryTag ?? ""
         clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
     }
     
     func populatePumpkinCell(_ model: Pumpkin?){
-        profileImageView?.setImageFromUrl(ImageURL: model?.imageURL ?? "")
+        profileImageView?.loadThumbnail(urlSting: model?.imageURL ?? "")
         userName.text = model?.name ?? ""
         locationName.text = model?.tagline ?? ""
         clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
