@@ -10,30 +10,17 @@ import UIKit
 class NavigationTypeVC: UIViewController {
     
     //
+    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var searchTxtFld: NewSearchTextField!
-    @IBOutlet weak var gradientTopDistance: NSLayoutConstraint!
-    @IBOutlet weak var gradientHeight: NSLayoutConstraint!
-    @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var scrollViewTopDistance: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var baseViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
     //
-    var gradient_MIN_HEIGHT: CGFloat = 0.0
-    var gradient_MAX_HEIGHT: CGFloat = 0.0
+    var searchTask: DispatchWorkItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
-        let swipeGesture:UISwipeGestureRecognizer! = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
-        swipeGesture.direction = .up
-        swipeGesture.delegate = self
-        self.scrollView?.addGestureRecognizer(swipeGesture)
-        let swipeGestureD:UISwipeGestureRecognizer! = UISwipeGestureRecognizer(target:self, action:#selector(handleSwipeGesture(_:)))
-        swipeGestureD.direction = .down
-        swipeGestureD.delegate = self
-        self.scrollView?.addGestureRecognizer(swipeGestureD)
-        //
+        searchTxtFld.delegate = self
+        searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
+        cancelBtn.isHidden = true
         initUI()
         //type1()
         //type2()
@@ -81,65 +68,42 @@ class NavigationTypeVC: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Type6", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.blue
     }
+    
+    @IBAction func cancelBtnAction(_ sender: UIButton) {
+        self.cancelBtn.isHidden = true
+        closeSearchingArea(true)
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
 }
 
 extension NavigationTypeVC: UIGestureRecognizerDelegate{
     func initUI(){
-        if self.navBar != nil {
-            let secondChildVC = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
-            if children.count == 0 {
-                secondChildVC.view.frame = containerView.bounds
-                containerView?.addSubview(secondChildVC.view)
-                addChild(secondChildVC)
-            }
+        let secondChildVC = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
+        secondChildVC.screenUsingFor = .searchMovie
+        if children.count == 0 {
+            secondChildVC.view.frame = containerView.bounds
+            containerView?.addSubview(secondChildVC.view)
+            addChild(secondChildVC)
         }
-    }
-    
-    @objc func handleSwipeGesture(_ sender: UISwipeGestureRecognizer) {
-        let scrollViewBottomEdge:CGFloat = self.scrollView!.contentOffset.y + CGRectGetHeight(self.scrollView!.frame)
-        //Gesture detect - swipe up/down , can be recognized direction
-        let _childScrollView = (self.children.first?.view.subviews.first as? PlacesAndSuperShesView)?.dataTableView
-        if sender.direction == .up
-        {
-            print("Direction UP")
-            
-            if scrollViewBottomEdge >= self.scrollView!.contentSize.height && (_childScrollView)!.contentOffset.y == 0.00 && _childScrollView!.frame.size.height < _childScrollView!.contentSize.height {
-                _childScrollView!.isScrollEnabled = true
-                _childScrollView!.setContentOffset(CGPointMake(0, min(_childScrollView!.contentSize.height - _childScrollView!.frame.size.height , 200)), animated:true)
-                //            }
-            }
-            else if sender.direction == .down
-            {
-                print("Direction DOWN")
-                if scrollViewBottomEdge >= self.scrollView!.contentSize.height && _childScrollView!.contentOffset.y == 0.00 && _childScrollView!.isScrollEnabled {
-                    _childScrollView!.isScrollEnabled = false
-                    self.scrollView!.setContentOffset(CGPointMake(0, max(self.scrollView!.contentOffset.y-400,100)),animated:true)
-                }
-            }}
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
-            gradient_MAX_HEIGHT = 90 + (window?.safeAreaInsets.top ?? 0.0)
-            baseViewHeight.constant = screen_height - (window?.safeAreaInsets.top ?? 0.0)
-        }
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
-            scrollViewTopDistance.constant = window?.safeAreaInsets.top ?? 0.0
-            gradientTopDistance.constant = -((window?.safeAreaInsets.top) ?? 0.0)
-            gradient_MIN_HEIGHT = 64 + (window?.safeAreaInsets.top ?? 0.0)
-            gradient_MAX_HEIGHT = 90 + (window?.safeAreaInsets.top ?? 0.0)
-        }
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -148,46 +112,67 @@ extension NavigationTypeVC: UIGestureRecognizerDelegate{
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @objc func enableScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
-        scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
-        baseViewHeight.constant = scrollView.frame.size.height + offset
-        // New Logic
-        var isProcess: Bool = false
-        if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            if isSearchHidden{
-                gradient_MAX_HEIGHT = 90.0
-                if !self.searchTxtFld.isHidden && !isProcess{
-                    isProcess = true
-                    //MARK: - commented for displaying search text field animation
-//                    UIView.animate(withDuration: 0.25) {
-//                        self.searchTxtFld.isHidden = isSearchHidden
-//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-//                        isProcess = false
-//                        self.view.layoutIfNeeded()
-//                    }
-                }
-            }else{
-                gradient_MAX_HEIGHT = 134.0
-                if self.searchTxtFld.isHidden && !isProcess{
-                    isProcess = true
-                    //MARK: - commented for displaying search text field animation
-//                    UIView.animate(withDuration: 0.25) {
-//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-//                        self.searchTxtFld.isHidden = isSearchHidden
-//                        isProcess = false
-//                        self.view.layoutIfNeeded()
-//                    }
-                }
-            }
-            //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);
-        }
-        print("----================----")
-        print("Offset:- \(offset)")
-        print("BaseViewHeight:- \(baseViewHeight.constant)")
-        print("ScrollView Content Size:- \(scrollView.contentSize)")
-        print("ScrollView Frame Size Height:- \(scrollView.frame.size.height)")
-        print("ScrollView Content Offset Y:- \(scrollView.contentOffset.y)")
-        
+}
+
+
+// MARK: - WalifSearchTextFieldDelegate
+extension NavigationTypeVC: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+        self.cancelBtn.isHidden = false
+        closeSearchingArea(false)
     }
+    
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+        closeSearchingArea(true)
+//        let searchValue = sender.text ?? ""
+//        self.searchTask?.cancel()
+//        let task = DispatchWorkItem { [weak self] in
+//            guard let `self` = self else { return }
+//            if let recentSearchVC = self.children.first as? RecentSearchVC{
+//                recentSearchVC.placesView?.searchValue = searchValue
+//                recentSearchVC.placesView?.hitApi()
+//            }
+//        }
+//        self.searchTask = task
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+    }
+    
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        let searchValue = sender.text ?? ""
+        self.searchTask?.cancel()
+        let task = DispatchWorkItem { [weak self] in
+            guard let `self` = self else { return }
+            if let recentSearchVC = self.children.first as? RecentSearchVC{
+                recentSearchVC.placesView?.searchValue = searchValue
+                recentSearchVC.placesView?.hitApi()
+            }
+        }
+        self.searchTask = task
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+    }
+    
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.searchTask?.cancel()
+        let task = DispatchWorkItem { [weak self] in
+            guard let `self` = self else { return }
+            if let recentSearchVC = self.children.first as? RecentSearchVC{
+                recentSearchVC.placesView?.searchValue = ""
+                recentSearchVC.placesView?.hitApi()
+            }
+        }
+        self.searchTask = task
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+            self.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.view.layoutIfNeeded()
+        } completion: { value in
+            self.searchTxtFld.cancelBtn.isHidden = isTrue
+            self.view.layoutIfNeeded()
+        }
+    }
+    
 }

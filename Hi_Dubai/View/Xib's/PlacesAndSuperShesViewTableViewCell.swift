@@ -60,5 +60,12 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
         clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
     }
     
+    func populateMovieCell(_ model: Movie?){
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
+        userName.text = model?.title ?? ""
+        locationName.text = model?.overview ?? ""
+        profileImageView?.loadThumbnail(urlSting: model?.posterURL ?? "")
+    }
+    
 }
 

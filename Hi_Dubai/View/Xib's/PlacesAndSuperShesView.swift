@@ -15,12 +15,14 @@ protocol LocateOnTheMap: NSObject {
     func locateWithLatLong(lon: String, andLatitude lat: String, andAddress address: String)
 }
 
+//MARK:- Enums-
+enum CurrentlyUsingFor {
+    case places,supershes,searchMovie
+}
+
 class PlacesAndSuperShesView: UIView {
     
-    //MARK:- Enums-
-    enum CurrentlyUsingFor {
-        case places,supershes
-    }
+    var searchValue: String = ""
     lazy var viewModel = {
         NewsListViewModel()
     }()
@@ -28,7 +30,7 @@ class PlacesAndSuperShesView: UIView {
     //MARK:- Variables
     //MARK:===========
     var lastContentOffset: CGFloat = 0.0
-    internal var screenUsingFor: CurrentlyUsingFor = .places
+    internal var screenUsingFor: CurrentlyUsingFor = .searchMovie
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
     internal var isScrollEnabled: Bool = false{
@@ -97,17 +99,32 @@ class PlacesAndSuperShesView: UIView {
         self.footerSetup()
         //
         self.viewModel.delegate = self
-        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
+        hitApi()
+    }
+    
+    public func hitApi(_ search: String = ""){
+        switch screenUsingFor{
+        case .places:
+            self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
+        case .supershes:
+            self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
+        case .searchMovie:
+            self.viewModel.getMovieListing(page: 1, search: searchValue)
+        }
     }
 }
 
 //MARK:- Extensions- UITableView Delegate and DataSource
 extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.screenUsingFor == .supershes {
-                return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
+        switch self.screenUsingFor {
+        case .supershes:
+            return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
+        case .searchMovie:
+            return (self.viewModel.moviesResponse?.results.count ?? 0) + (self.viewModel.showPaginationLoader ?  1 : 0)
+        default:
+            return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
         }
-        return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,15 +133,15 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
             cell.buttonTapped = { [weak self] (btn) in
                 guard let `self` = self else { return }
-                if self.viewModel.newsData[indexPath.item].isSelected ==  true {
-                    self.viewModel.newsData[indexPath.item].isSelected = false
+                if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                    self.viewModel.pumkinsData[indexPath.item].isSelected = false
                     self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
                 }else{
-                    self.viewModel.newsData[indexPath.item].isSelected = true
+                    self.viewModel.pumkinsData[indexPath.item].isSelected = true
                     self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
                 }
             }
-            cell.populateCell(self.viewModel.newsData[indexPath.item])
+            cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
             return cell
         case .supershes:
             if indexPath.row == (viewModel.pumkinsData.endIndex) {
@@ -145,16 +162,46 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
                 return cell
             }
+        case .searchMovie:
+            if indexPath.row == (self.viewModel.moviesResponse?.results.endIndex ?? 0) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else{
+                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+                cell.buttonTapped = { [weak self] (btn)  in
+                    guard let `self` = self else { return }
+                    if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
+                        self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
+                cell.populateMovieCell(self.viewModel.moviesResponse?.results[indexPath.item])
+                return cell
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
-            self.viewModel.pumkinsData[indexPath.item].isSelected = false
-            self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-        }else{
-            self.viewModel.pumkinsData[indexPath.item].isSelected = true
-            self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+        switch screenUsingFor{
+        case .supershes,.places:
+            if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                self.viewModel.pumkinsData[indexPath.item].isSelected = false
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }else{
+                self.viewModel.pumkinsData[indexPath.item].isSelected = true
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        case .searchMovie:
+            if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
+                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }else{
+                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
         }
     }
 
@@ -168,18 +215,36 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if cell as? LoaderCell != nil {
-            if screenUsingFor == .supershes {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                    self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
-                })
-            
-            }else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
-                    self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
-                })
+        //
+        switch screenUsingFor{
+        case .supershes,.places:
+            if cell as? LoaderCell != nil {
+                if screenUsingFor == .supershes {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                
+                }else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                }
+            }
+        case .searchMovie:
+            if cell as? LoaderCell != nil {
+                if screenUsingFor == .supershes {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                
+                }else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                }
             }
         }
+        //
     }
     
 }
@@ -187,7 +252,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
 //MARK:- enableGlobalScrolling
 extension PlacesAndSuperShesView{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
-        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
+//        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
@@ -225,6 +290,18 @@ extension PlacesAndSuperShesView: NewsListViewModelDelegate{
     }
     
     func pumpkinDataFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func movieDataSuccess() {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func movieDataFailure(error: Error) {
         DispatchQueue.main.async {
             self.dataTableView.reloadData()
         }

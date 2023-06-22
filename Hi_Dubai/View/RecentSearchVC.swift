@@ -10,9 +10,7 @@ import UIKit
 class RecentSearchVC: UIViewController {
     
     internal var placesView: PlacesAndSuperShesView?
-    lazy var viewModel = {
-        NewsListViewModel()
-    }()
+    var screenUsingFor: CurrentlyUsingFor = .searchMovie
     var lastContentOffset: CGFloat = 0.0
 
     override func viewDidLoad() {
@@ -23,7 +21,7 @@ class RecentSearchVC: UIViewController {
         self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
         self.placesView?.isScrollEnabled = true
         if let placeView = self.placesView {
-            placeView.screenUsingFor = .supershes
+            placeView.screenUsingFor = screenUsingFor
             self.view.addSubview(placeView)
         }
 
@@ -32,7 +30,7 @@ class RecentSearchVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        placesView?.dataTableView.reloadData()
+//        placesView?.dataTableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,20 +39,3 @@ class RecentSearchVC: UIViewController {
     }
 
 }
-
-
-////MARK:- Extension NewsListViewModelDelegate
-//extension RecentSearchVC: NewsListViewModelDelegate{
-//    func pumpkinDataSuccess() {
-//        DispatchQueue.main.async {
-//            self.placesView?.punmkinLists = self.viewModel.pumkinsData
-//            self.placesView?.dataTableView.reloadData()
-//        }
-//    }
-//    
-//    func pumpkinDataFailure(error: Error) {
-//        DispatchQueue.main.async {
-//            self.placesView?.dataTableView.reloadData()
-//        }
-//    }
-//}

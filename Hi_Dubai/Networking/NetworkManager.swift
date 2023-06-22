@@ -111,7 +111,7 @@ class NetworkManager{
             }
             do {
                 //==
-//                self.cache.removeAllCachedResponses()
+                self.cache.removeAllCachedResponses()
                 self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                 //==
                 let decoder = JSONDecoder()

@@ -11,6 +11,8 @@ protocol NewsListViewModelDelegate: NSObject {
     func newsListingFailure(error: Error)
     func pumpkinDataSuccess()
     func pumpkinDataFailure(error: Error)
+    func movieDataSuccess()
+    func movieDataFailure(error: Error)
 }
 
 extension NewsListViewModelDelegate{
@@ -18,6 +20,8 @@ extension NewsListViewModelDelegate{
     func pumpkinDataFailure(error: Error){}
     func newsListingSuccess(){}
     func newsListingFailure(error: Error){}
+    func movieDataSuccess(){}
+    func movieDataFailure(error: Error){}
 }
 
 class NewsListViewModel{
@@ -36,6 +40,7 @@ class NewsListViewModel{
     weak var delegate: NewsListViewModelDelegate?
     var newsData = [Record]()
     var pumkinsData = [Pumpkin]()
+    var moviesResponse: MoviesResponse? = nil
     var error : Error?
     func getNewsListing(){
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
@@ -85,6 +90,45 @@ class NewsListViewModel{
                 self.isRequestinApi = false
                 self.error = error
                 self.delegate?.pumpkinDataFailure(error: error)
+            }
+        }
+    }
+    
+    func getMovieListing(page: Int,loader: Bool = false,pagination: Bool = false,search: String = ""){
+        //
+        if pagination {
+            guard nextPageAvailable, !isRequestinApi else { return }
+        } else {
+            guard !isRequestinApi else { return }
+        }
+        isRequestinApi = true
+        //
+        let dict:[String:String] = ["page": "\(page)","query": search,"api_key": EndPoint.tmdb_api_key.rawValue]
+        NetworkManager.shared.getPumpkinDataFromServer(requestType: .get, endPoint: EndPoint.searchMovie.rawValue,dict) { (results : Result<MoviesResponse,Error>)  in
+            switch results{
+            case .success(let result):
+                if result.results.isEmpty {
+                    self.hideLoader = true
+                    self.moviesResponse?.results = []
+                    self.isRequestinApi = false
+                    self.delegate?.movieDataSuccess()
+                    return
+                }
+                self.currentPage = result.page ?? 0
+                self.nextPageAvailable = self.currentPage < self.totalPages
+                if self.currentPage == 1 {
+                    self.moviesResponse = result
+                } else {
+                    self.moviesResponse?.results.append(contentsOf: result.results)
+                }
+                self.currentPage += 1
+                self.totalPages = result.totalPages ?? 0
+                self.isRequestinApi = false
+                self.delegate?.movieDataSuccess()
+            case .failure(let error):
+                self.isRequestinApi = false
+                self.error = error
+                self.delegate?.movieDataFailure(error: error)
             }
         }
     }
