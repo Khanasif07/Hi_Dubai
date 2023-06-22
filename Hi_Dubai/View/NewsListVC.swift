@@ -58,11 +58,13 @@ class NewsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initialSetup()
+       
         self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
         title = "News"
+        self.title = "123223"
         //
         self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
@@ -247,6 +249,16 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             case 13:
                 let vc = NavigationTypeVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
+            case 14:
+                let vc = PresentTypeVC.instantiate(fromAppStoryboard: .Main)
+                let navController = UINavigationController(rootViewController: vc)
+                navController.isNavigationBarHidden = true
+                
+//                navController.modalPresentationStyle = .fullScreen
+//                self.navigationController?.navigationBar.isHidden = true
+//                self.navigationController?.navigationItem.title = "Hello"
+                self.navigationController?.present(navController, animated: false)
+                
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]
