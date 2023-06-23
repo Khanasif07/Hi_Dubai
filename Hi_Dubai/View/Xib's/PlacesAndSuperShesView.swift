@@ -130,19 +130,24 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.screenUsingFor {
         case .places:
-            let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-            cell.buttonTapped = { [weak self] (btn) in
-                guard let `self` = self else { return }
-                if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
-                    self.viewModel.pumkinsData[indexPath.item].isSelected = false
-                    self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-                }else{
-                    self.viewModel.pumkinsData[indexPath.item].isSelected = true
-                    self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            if indexPath.row == (viewModel.pumkinsData.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+                cell.buttonTapped = { [weak self] (btn) in
+                    guard let `self` = self else { return }
+                    if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = false
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = true
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
                 }
+                cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
+                return cell
             }
-            cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
-            return cell
         case .supershes:
             if indexPath.row == (viewModel.pumkinsData.endIndex) {
                 let cell = tableView.dequeueCell(with: LoaderCell.self)

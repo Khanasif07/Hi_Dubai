@@ -25,15 +25,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     
     //MARK:- Variables-
 //    typealias RequiredParams = (UserModel)
-    private var newLocation: String?
-    private var currentLocation: String?
-//    private var userModel: UserModel?
-    private var dataLoadedFromCluster: Bool = false
     var comingFrom: ComingFromProfile = .userProfile
-    private var isMaptap: Bool = true
-    private var isZoomLevelMax: Bool = false
-    private var userCount:Int? = 0
-
     internal var isBottomSheetOpen: Bool = false
     private var placesView: PlacesAndSuperShesView?
     private var supershesView: PlacesAndSuperShesView?
@@ -140,9 +132,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         
         
         if self.comingFrom == .otherUserProfile {
-            self.dataLoadedFromCluster = true
-            self.isZoomLevelMax = true
-            if self.userCount == 0 {self.userCount = -1}
 //            self.kCameraLatitude = userModel?.lat ?? 0.0
 //            self.kCameraLongitude = userModel?.lng ?? 0.0
             self.backBtnOutlet.isHidden = false
@@ -226,9 +215,9 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         self.setNewLocationBtnOutlet.setTitleColor(AppColors.white, for: .selected)
         self.setNewLocationBtnOutlet.clipsToBounds = true
         self.setNewLocationBtnOutlet.imageView?.size = CGSize(width: 19.0, height: 18.0)
-        self.setNewLocationBtnOutlet.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: -13.0, bottom: 0.0, right: 0.0)
+//        self.setNewLocationBtnOutlet.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: -13.0, bottom: 0.0, right: 0.0)
         self.setNewLocationBtnOutlet.titleLabel?.size = CGSize(width: 114.0, height: 44.0)
-        self.setNewLocationBtnOutlet.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -2.0, bottom: 0.0, right: 0.0)
+//        self.setNewLocationBtnOutlet.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -2.0, bottom: 0.0, right: 0.0)
     }
  
     ///Main scrollview setups
@@ -240,8 +229,8 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         
         if let placeView = self.placesView {
             placeView.screenUsingFor = .places
+            placeView.isScrollEnabled = true
             placeView.deleagte = self
-//            placeView.locationDelegate = self
             self.mainScrollView.addSubview(placeView)
         }
         
@@ -249,6 +238,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         
         if let superSheView = self.supershesView {
             superSheView.screenUsingFor = .supershes
+            superSheView.isScrollEnabled = true
             superSheView.deleagte = self
             self.mainScrollView.addSubview(superSheView)
         }
