@@ -85,6 +85,7 @@ class NewsListViewModel{
                 }
                 self.currentPage += 1
                 self.isRequestinApi = false
+                self.hideLoader = false
                 self.delegate?.pumpkinDataSuccess()
             case .failure(let error):
                 self.isRequestinApi = false
@@ -103,11 +104,11 @@ class NewsListViewModel{
         }
         isRequestinApi = true
         //
-        let dict:[String:String] = ["page": "\(page)","query": search,"api_key": EndPoint.tmdb_api_key.rawValue]
+        let dict:[String:String] = [ApiKey.page: "\(page)",ApiKey.query: search,ApiKey.api_key: EndPoint.tmdb_api_key.rawValue]
         NetworkManager.shared.getPumpkinDataFromServer(requestType: .get, endPoint: EndPoint.searchMovie.rawValue,dict) { (results : Result<MoviesResponse,Error>)  in
             switch results{
             case .success(let result):
-                if result.results.isEmpty {
+                if result.results.isEmpty && self.currentPage == 1 {
                     self.hideLoader = true
                     self.moviesResponse?.results = []
                     self.isRequestinApi = false
@@ -115,6 +116,7 @@ class NewsListViewModel{
                     return
                 }
                 self.currentPage = result.page ?? 0
+                self.totalPages = result.totalPages ?? 5
                 self.nextPageAvailable = self.currentPage < self.totalPages
                 if self.currentPage == 1 {
                     self.moviesResponse = result
@@ -122,8 +124,8 @@ class NewsListViewModel{
                     self.moviesResponse?.results.append(contentsOf: result.results)
                 }
                 self.currentPage += 1
-                self.totalPages = result.totalPages ?? 0
                 self.isRequestinApi = false
+                self.hideLoader = false
                 self.delegate?.movieDataSuccess()
             case .failure(let error):
                 self.isRequestinApi = false

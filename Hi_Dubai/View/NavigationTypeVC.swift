@@ -123,18 +123,7 @@ extension NavigationTypeVC: WalifSearchTextFieldDelegate{
     }
     
     func walifSearchTextFieldEndEditing(sender: UITextField!) {
-        closeSearchingArea(true)
-//        let searchValue = sender.text ?? ""
-//        self.searchTask?.cancel()
-//        let task = DispatchWorkItem { [weak self] in
-//            guard let `self` = self else { return }
-//            if let recentSearchVC = self.children.first as? RecentSearchVC{
-//                recentSearchVC.placesView?.searchValue = searchValue
-//                recentSearchVC.placesView?.hitApi()
-//            }
-//        }
-//        self.searchTask = task
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+        closeSearchingArea(false)
     }
     
     func walifSearchTextFieldChanged(sender: UITextField!) {

@@ -50,18 +50,18 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     func populateCell(_ model: Record?){
         profileImageView?.loadThumbnail(urlSting: model?.postImageURL ?? "")
         userName.text = model?.primaryTag ?? ""
-        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
     }
     
     func populatePumpkinCell(_ model: Pumpkin?){
         profileImageView?.loadThumbnail(urlSting: model?.imageURL ?? "")
         userName.text = model?.name ?? ""
         locationName.text = model?.tagline ?? ""
-        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
     }
     
     func populateMovieCell(_ model: Movie?){
-        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "remove_icon_blue" : "plus_blue_icon"), for: .normal)
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
         userName.text = model?.title ?? ""
         locationName.text = model?.overview ?? ""
         profileImageView?.loadThumbnail(urlSting: model?.posterURL ?? "")

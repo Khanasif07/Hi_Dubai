@@ -320,7 +320,7 @@ extension NewsListVC{
         var bottomOffset = 0.0
         var fakenavHeightRef:CGFloat = 0.0
         if #available(iOS 13.0, *) {
-            let window:UIWindow! = UIApplication.shared.keyWindow
+            let window:UIWindow! = UIApplication.shared.currentWindow
                 fakenavHeightRef =  fakenavHeightRef + window.safeAreaInsets.top
                 bottomOffset =  window.safeAreaInsets.bottom
         }else {

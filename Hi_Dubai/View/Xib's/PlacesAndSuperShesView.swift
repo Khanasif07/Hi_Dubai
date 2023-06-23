@@ -204,18 +204,17 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
+    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 59.0
+        return 65.0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 65.0
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //
         switch screenUsingFor{
         case .supershes,.places:
             if cell as? LoaderCell != nil {
@@ -223,7 +222,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
                         self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
                     })
-                
+                    
                 }else {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
                         self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
@@ -232,22 +231,15 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             }
         case .searchMovie:
             if cell as? LoaderCell != nil {
-                if screenUsingFor == .supershes {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
-                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
-                    })
-                
-                }else {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
-                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
-                    })
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                    self.viewModel.getMovieListing(page: self.viewModel.currentPage,loader: false,pagination: true,search: self.searchValue)
+                })
             }
         }
-        //
     }
-    
 }
+    
+
 
 //MARK:- enableGlobalScrolling
 extension PlacesAndSuperShesView{

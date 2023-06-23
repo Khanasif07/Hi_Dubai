@@ -15,9 +15,7 @@ class RecentSearchVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //
         self.view.backgroundColor = .black
-        //
         self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
         self.placesView?.isScrollEnabled = true
         if let placeView = self.placesView {
@@ -30,7 +28,6 @@ class RecentSearchVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        placesView?.dataTableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {

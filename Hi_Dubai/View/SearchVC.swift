@@ -57,8 +57,8 @@ class SearchVC: BaseVC{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+            let window = UIApplication.shared.currentWindow
+//            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
             print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
             print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
             print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")
@@ -74,8 +74,8 @@ class SearchVC: BaseVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+            let window = UIApplication.shared.currentWindow
+//            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
             print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
             print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
             print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")

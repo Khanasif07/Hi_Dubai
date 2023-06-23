@@ -116,6 +116,7 @@ class NetworkManager{
                 //==
                 let decoder = JSONDecoder()
                 let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
                 completion(.success(model))
             }catch(let error){
                 print(error)

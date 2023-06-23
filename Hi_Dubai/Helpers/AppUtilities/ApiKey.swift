@@ -18,6 +18,9 @@ enum ApiKey {
     static var message: String { return "message" }
     static var data: String { return "data" }
     static var page: String { return "page" }
+    static var api_key: String { return "api_key" }
+    static var query: String { return "query" }
+    
     static var nextPageStatus: String { return "nextPageStatus" }
     static var token: String { return "token" }
     static var deviceDetails: String { return "deviceDetails" }

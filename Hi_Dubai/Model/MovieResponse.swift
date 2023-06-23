@@ -13,6 +13,13 @@ public struct MoviesResponse: Codable {
     public let totalResults: Int?
     public let totalPages: Int?
     public var results: [Movie]
+    
+    enum CodingKeys: String, CodingKey {
+        case page
+        case totalResults = "total_results"
+        case totalPages = "total_pages"
+        case results
+    }
 }
 
 public struct Movie {
