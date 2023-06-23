@@ -334,7 +334,7 @@ extension NewsDiscoverVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
             cell?.transform =  CGAffineTransform.identity
         })
         //
-        if let indexx = self.viewModel.newsData.firstIndex(where: {$0.isSelected ?? true}){
+        if let indexx = self.viewModel.newsData.firstIndex(where: {$0.isSelected ?? false}){
             self.viewModel.newsData[indexx].isSelected = false
             self.sectionCollView.reloadItems(at: [IndexPath(item: indexx, section: 0)])
         }
@@ -343,14 +343,14 @@ extension NewsDiscoverVC: UICollectionViewDelegate,UICollectionViewDataSource,UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+//        let cell = collectionView.cellForItem(at: indexPath)
 //        UIView.animate(withDuration: 0.3) {
 //            cell?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
 //        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+//        let cell = collectionView.cellForItem(at: indexPath)
 //        UIView.animate(withDuration: 0.3) {
 //            cell?.transform = .identity
 //        }

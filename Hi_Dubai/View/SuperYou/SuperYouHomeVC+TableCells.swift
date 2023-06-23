@@ -95,23 +95,23 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard self.shimmerStatus == .applied else { return }
-        (cell as? SuperViewCardTableViewCell)?.cardCollectionView.contentOffset.x = self.collectionViewCachedPosition[indexPath] ?? 0.0
-
-        self.cellHeightDictionary.setObject(cell.frame.size.height, forKey: indexPath as NSCopying)
-    }
-    
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard self.shimmerStatus == .applied else { return }
-        self.collectionViewCachedPosition[indexPath] = (cell as? SuperViewCardTableViewCell)?.cardCollectionView.contentOffset.x
-//        if indexPath.section == 2 , let currentCell = cell as? SuperYouVideoTableViewCell {
-////            currentCell.player?.pause()
-//            DispatchQueue.main.async {
-//                currentCell.player?.pause()
-//            }
-//        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard self.shimmerStatus == .applied else { return }
+//        (cell as? SuperViewCardTableViewCell)?.cardCollectionView.contentOffset.x = self.collectionViewCachedPosition[indexPath] ?? 0.0
+//
+//        self.cellHeightDictionary.setObject(cell.frame.size.height, forKey: indexPath as NSCopying)
+//    }
+//
+//    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard self.shimmerStatus == .applied else { return }
+//        self.collectionViewCachedPosition[indexPath] = (cell as? SuperViewCardTableViewCell)?.cardCollectionView.contentOffset.x
+////        if indexPath.section == 2 , let currentCell = cell as? SuperYouVideoTableViewCell {
+//////            currentCell.player?.pause()
+////            DispatchQueue.main.async {
+////                currentCell.player?.pause()
+////            }
+////        }
+//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let superYouData = self.viewModel.superYouData {

@@ -10,7 +10,14 @@ import UIKit
 class RecentSearchVC: UIViewController {
     
     internal var placesView: PlacesAndSuperShesView?
-    var screenUsingFor: CurrentlyUsingFor = .searchMovie
+    var screenUsingFor: CurrentlyUsingFor = .places{
+        willSet(newValue){
+            self.placesView?.screenUsingFor = newValue
+        }
+        didSet{
+            self.placesView?.hitApi()
+        }
+    }
     var lastContentOffset: CGFloat = 0.0
 
     override func viewDidLoad() {

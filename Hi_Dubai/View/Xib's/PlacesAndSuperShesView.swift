@@ -99,15 +99,15 @@ class PlacesAndSuperShesView: UIView {
         self.footerSetup()
         //
         self.viewModel.delegate = self
-        hitApi()
+//        hitApi()
     }
     
     public func hitApi(_ search: String = ""){
         switch screenUsingFor{
         case .places:
-            self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
+            self.viewModel.getPumpkinListing(page: 1)
         case .supershes:
-            self.viewModel.getPumpkinListing(page: self.viewModel.currentPage)
+            self.viewModel.getPumpkinListing(page: 1)
         case .searchMovie:
             self.viewModel.getMovieListing(page: 1, search: searchValue)
         }

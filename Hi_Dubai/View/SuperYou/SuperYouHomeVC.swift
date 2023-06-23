@@ -12,9 +12,10 @@ import CarbonKit
 class SuperYouHomeVC: BaseVC {
     //MARK:- Variables
     
-    private var placesView: RecentSearchVC?
+    private var placesVC: RecentSearchVC?
 //    private var placesView: PlacesAndSuperShesView?
     var loadingView: LoadingView?
+    var searchTask: DispatchWorkItem?
     @State var animals: [Animal] = Bundle.main.decode("animals.json")
     var statusBarHeight : CGFloat {
         return UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
@@ -23,8 +24,8 @@ class SuperYouHomeVC: BaseVC {
     let viewModel = SuperYouHomeVM()
     var shimmerStatus: ShimmerState = .applied
     var cellHeightDictionary: NSMutableDictionary = NSMutableDictionary()
-    var collectionViewCachedPosition: [IndexPath: CGFloat] = [:]
-    var isDataInitializeFromCache: Bool = false
+//    var collectionViewCachedPosition: [IndexPath: CGFloat] = [:]
+//    var isDataInitializeFromCache: Bool = false
     var tabBarHeight: CGFloat {
         return self.tabBarController?.tabBar.frame.size.height ?? 0.0
     }
@@ -110,7 +111,7 @@ class SuperYouHomeVC: BaseVC {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         statusBarHC.constant = statusBarHeight
-        self.placesView?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+        self.placesVC?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
     }
     
     override func viewDidLayoutSubviews() {
@@ -197,13 +198,15 @@ class SuperYouHomeVC: BaseVC {
 //            placeView.screenUsingFor = .places
 //            self.view.addSubview(placeView)
 //        }
-        let placesView = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
-        placesView.placesView?.isScrollEnabled = true
-        placesView.placesView?.screenUsingFor = .supershes
-        removeChildrenVC()
-        placesView.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
-        self.view.addSubview(placesView.view)
-        addChild(placesView)
+        if !(self.children.last is RecentSearchVC) {
+            self.placesVC = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
+            placesVC?.placesView?.isScrollEnabled = true
+            placesVC?.screenUsingFor = .supershes
+            removeChildrenVC()
+            placesVC?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
+            self.view.addSubview(placesVC!.view)
+            addChild(placesVC!)
+        }
     }
     
     func removeChildrenVC() {
@@ -312,12 +315,27 @@ extension SuperYouHomeVC: WalifSearchTextFieldDelegate{
     
     func walifSearchTextFieldChanged(sender: UITextField!) {
         addSeachTableView()
-        print(sender.text as Any)
+        let searchValue = sender.text ?? ""
+        self.searchTask?.cancel()
+        let task = DispatchWorkItem { [weak self] in
+            guard let `self` = self else { return }
+            self.placesVC?.placesView?.searchValue = searchValue
+            self.placesVC?.screenUsingFor = .searchMovie
+        }
+        self.searchTask = task
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
     }
     
     func walifSearchTextFieldIconPressed(sender: UITextField!) {
         closeSearchingArea(true)
-        print(sender.text as Any)
+        self.searchTask?.cancel()
+        let task = DispatchWorkItem { [weak self] in
+            guard let `self` = self else { return }
+            self.placesVC?.placesView?.searchValue = ""
+            self.placesVC?.screenUsingFor = .supershes
+        }
+        self.searchTask = task
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
     }
     
     func closeSearchingArea(_ isTrue: Bool) {
