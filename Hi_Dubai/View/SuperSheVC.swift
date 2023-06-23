@@ -54,19 +54,8 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     //    private var isTabBarHidden: Bool = false
     
     //Map
-
-    private var isSettingNewLoc: Bool = false
-    var clearMap: Bool = true
-    private var isDistanceFromFlg: Bool = false
-    private var deviceLocationDetail: String = ""
     var comeBackFromOtherUserProfile : Bool = false
-    var isCameFromSearchPlace: Bool = true
-    
-    
-    
     //MARK:- IBOutlets-
-    
-    @IBOutlet weak var setNewLocBtnBtmCons: NSLayoutConstraint!
     @IBOutlet weak var searchTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var backBtnOutlet: UIButton!
     @IBOutlet weak var placesAndSuperShesView: UIView!
@@ -84,8 +73,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     @IBOutlet weak var sliderView: UIView!
     @IBOutlet weak var sliderViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var sliderViewLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var setNewLocationBtnOutlet: AppButton!
-    @IBOutlet weak var setNewLocationBtnWidthCons: NSLayoutConstraint!
     //Map
     @IBOutlet weak var behindBlurView: UIView!
     @IBOutlet weak var behindBlurViewHeigthCons: NSLayoutConstraint!
@@ -122,18 +109,10 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         self.sliderViewWidthConstraint.constant = self.buttonTitleWidth(button: self.placeButtonOutlet, btnName: "PLACES")
         self.placeButtonOutlet.alpha = self.maxAlpha
         self.superSheButtonOutlet.alpha = self.minAlpha
-        self.newLocationBtnSetUp()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureRecognizerHandler(_:)))
         self.placesAndSuperShesView.addGestureRecognizer(panGesture)
         self.view.layoutIfNeeded()
-//        self.mapView.settings.myLocationButton = true
-//        self.mapView.isMyLocationEnabled = true
-//        self.mapView.delegate = self
-        
-        
         if self.comingFrom == .otherUserProfile {
-//            self.kCameraLatitude = userModel?.lat ?? 0.0
-//            self.kCameraLongitude = userModel?.lng ?? 0.0
             self.backBtnOutlet.isHidden = false
             self.mapViewBottomCons.constant =  (68 +  UIDevice.bottomSafeArea)
 
@@ -155,14 +134,8 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        self.isDistanceFromFlg = false
- 
         self.isStatusBarBlack = true
         self.setNeedsStatusBarAppearanceUpdate()
-        if self.comingFrom != .otherUserProfile {
-            if comeBackFromOtherUserProfile == false {
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -205,20 +178,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     }
     
     //MARK:- Functions-
-    
-    ///New Location Btn SetUp
-    private func newLocationBtnSetUp() {
-        self.setNewLocationBtnOutlet.backgroundColor = AppColors.red
-        self.setNewLocationBtnOutlet.titleLabel?.font = AppFonts.BoldItalic.withSize(15.0)
-        self.setNewLocationBtnOutlet.cornerRadius = 22.0
-        self.setNewLocationBtnOutlet.setTitleColor(AppColors.white, for: .normal)
-        self.setNewLocationBtnOutlet.setTitleColor(AppColors.white, for: .selected)
-        self.setNewLocationBtnOutlet.clipsToBounds = true
-        self.setNewLocationBtnOutlet.imageView?.size = CGSize(width: 19.0, height: 18.0)
-//        self.setNewLocationBtnOutlet.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: -13.0, bottom: 0.0, right: 0.0)
-        self.setNewLocationBtnOutlet.titleLabel?.size = CGSize(width: 114.0, height: 44.0)
-//        self.setNewLocationBtnOutlet.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: -2.0, bottom: 0.0, right: 0.0)
-    }
  
     ///Main scrollview setups
     private func mainScrollViewSetUp() {
@@ -609,27 +568,6 @@ extension SuperSheVC: PlacesAndSuperShesViewDelegate {
     func closeTextFieldAnimation() {
         if applySearch {
             self.textFieldAnimation(applySearch: false)
-        }
-    }
-}
-
-extension SuperSheVC {
-    func AppearSetNewLocationButton() {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveEaseInOut, animations: {
-            self.setNewLocBtnBtmCons.constant = -16
-            self.view.layoutIfNeeded()
-        }) { (true) in
-//            printDebug("Do Nothing")
-        }
-    }
-    func disAppearSetNewLocationButton(){
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.6, delay: 0.1, options: .curveEaseInOut, animations: {
-            self.setNewLocBtnBtmCons.constant = 64
-            self.view.layoutIfNeeded()
-        }) { (true) in
-//            printDebug("Do Nothing")
         }
     }
 }

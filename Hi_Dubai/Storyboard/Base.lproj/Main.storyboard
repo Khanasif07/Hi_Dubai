@@ -23,9 +23,6 @@
         <array key="FranklinGotDem.ttf">
             <string>FranklinGotItcTEE-Demi</string>
         </array>
-        <array key="FranklinGotMed.ttf">
-            <string>FranklinGotItcTEE-Medi</string>
-        </array>
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
         </array>
@@ -2786,26 +2783,6 @@
                                     <constraint firstAttribute="width" constant="95" id="j8N-eF-DDY"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-Ay-7jK" customClass="AppButton" customModule="Hi_Dubai" customModuleProvider="target">
-                                <rect key="frame" x="110" y="672" width="170" height="44"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.035294117649999998" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="8ir-Cc-gu9"/>
-                                    <constraint firstAttribute="width" constant="170" id="Iul-ak-09F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FranklinGotItcTEE-Medi" family="FranklinGotItcTEEMed" pointSize="15"/>
-                                <state key="normal" title="Set new location?" image="mapFlagIcon">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <state key="selected" title="Set new location" image="globeImg">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4we-w9-oP6">
                                 <rect key="frame" x="5" y="44" width="44" height="44"/>
                                 <color key="backgroundColor" name="showcaseSecondaryTextColor"/>
@@ -2814,6 +2791,11 @@
                                     <constraint firstAttribute="height" constant="44" id="naq-uA-XSr"/>
                                 </constraints>
                                 <state key="normal" image="Back Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="BackBtnTapped:" destination="d7T-ha-SsZ" eventType="touchUpInside" id="Ysa-Yu-1Fo"/>
                                 </connections>
@@ -3015,13 +2997,11 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="IVM-Gu-pwd" secondAttribute="bottom" constant="112" id="2Ti-IF-2Lz"/>
                             <constraint firstItem="B2T-mO-ipv" firstAttribute="leading" secondItem="jOC-09-TmE" secondAttribute="leading" id="59e-c7-e8O"/>
-                            <constraint firstItem="6Aa-Ay-7jK" firstAttribute="bottom" secondItem="IVM-Gu-pwd" secondAttribute="bottom" constant="-16" id="FWB-df-Byg"/>
                             <constraint firstItem="blw-DT-fXb" firstAttribute="top" secondItem="7Qa-YK-qsa" secondAttribute="top" id="J4I-ya-tZg"/>
                             <constraint firstItem="IVM-Gu-pwd" firstAttribute="leading" secondItem="jOC-09-TmE" secondAttribute="leading" id="LXQ-SI-rBc"/>
                             <constraint firstAttribute="trailing" secondItem="X9L-3B-LR3" secondAttribute="trailing" id="MC5-ZG-2So"/>
                             <constraint firstItem="7Qa-YK-qsa" firstAttribute="trailing" secondItem="IVM-Gu-pwd" secondAttribute="trailing" id="R7W-KS-gW0"/>
                             <constraint firstItem="blw-DT-fXb" firstAttribute="centerX" secondItem="IVM-Gu-pwd" secondAttribute="centerX" id="Uvr-b8-Uzp"/>
-                            <constraint firstItem="6Aa-Ay-7jK" firstAttribute="centerX" secondItem="IVM-Gu-pwd" secondAttribute="centerX" id="Ysg-wz-u0P"/>
                             <constraint firstAttribute="trailing" secondItem="B2T-mO-ipv" secondAttribute="trailing" id="coG-CH-AZO"/>
                             <constraint firstItem="B2T-mO-ipv" firstAttribute="top" secondItem="jOC-09-TmE" secondAttribute="top" id="hla-oX-ZN0"/>
                             <constraint firstItem="IVM-Gu-pwd" firstAttribute="top" secondItem="jOC-09-TmE" secondAttribute="top" id="jbx-ci-F7W"/>
@@ -3051,9 +3031,6 @@
                         <outlet property="searchBarContainerTopCons" destination="Hjb-aQ-JkO" id="ZtE-Kw-lqZ"/>
                         <outlet property="searchTextField" destination="aCa-02-Mya" id="u1d-rb-Qvl"/>
                         <outlet property="searchTopConstraint" destination="YO4-7G-2JD" id="hjR-SV-C1x"/>
-                        <outlet property="setNewLocBtnBtmCons" destination="FWB-df-Byg" id="Hlm-gG-ipF"/>
-                        <outlet property="setNewLocationBtnOutlet" destination="6Aa-Ay-7jK" id="Oac-4q-W1d"/>
-                        <outlet property="setNewLocationBtnWidthCons" destination="Iul-ak-09F" id="FRG-ju-IOK"/>
                         <outlet property="sliderView" destination="teX-vT-gcG" id="gV3-kG-uNH"/>
                         <outlet property="sliderViewLeadingConstraint" destination="xuH-oN-7j8" id="dwK-i8-kil"/>
                         <outlet property="sliderViewWidthConstraint" destination="F9W-qS-fUy" id="2XA-zs-8yP"/>
@@ -3891,11 +3868,9 @@
         <image name="filter_new_icon" width="38" height="37"/>
         <image name="followers_icon_green" width="25" height="25"/>
         <image name="following_green_icon" width="26" height="25"/>
-        <image name="globeImg" width="20" height="20"/>
         <image name="gradient_oblique" width="250" height="189"/>
         <image name="gradient_vertical" width="250" height="2"/>
         <image name="iconfinder_cross-24_103181" width="21.333333969116211" height="21.333333969116211"/>
-        <image name="mapFlagIcon" width="20" height="20"/>
         <image name="ogimage-hidubai" width="1200" height="630"/>
         <image name="searchCountryCode" width="44" height="44"/>
         <image name="supersheLogo" width="85" height="35"/>
