@@ -3724,8 +3724,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="cancelBtnAction:" destination="N9N-TJ-qfn" eventType="touchUpInside" id="8u4-78-VJC"/>
-                                                            <action selector="cancelSearch:" destination="eXY-iG-tY6" eventType="touchUpInside" id="ISJ-4Q-FsF"/>
-                                                            <action selector="cancelSearch:" destination="5Ib-Pj-S5U" eventType="touchUpInside" id="P1T-Z5-v26"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -3778,6 +3776,97 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VwZ-vN-LQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="469" y="364"/>
+        </scene>
+        <!--CategoriesVC-->
+        <scene sceneID="yLv-vw-zbP">
+            <objects>
+                <viewController storyboardIdentifier="CategoriesVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BRa-8h-dMv" customClass="CategoriesVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sG0-on-oa0">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mud-7O-bnk">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lW-6W-RE2" customClass="HeaderScrollingView" customModule="Hi_Dubai" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7ch-Ve-u6X">
+                                                <rect key="frame" x="5" y="4" width="370" height="36"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hi-Og-L0g">
+                                                        <rect key="frame" x="0.0" y="0.0" width="25" height="36"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yt-I0-ia1">
+                                                                <rect key="frame" x="-21.666666666666668" y="-11" width="68.333333333333329" height="58"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="Back Icon"/>
+                                                                <connections>
+                                                                    <action selector="backAction:" destination="eXY-iG-tY6" eventType="touchUpInside" id="6II-pi-rGN"/>
+                                                                    <action selector="backBtnAction:" destination="BRa-8h-dMv" eventType="touchUpInside" id="nuB-6G-ixM"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="25" id="dtI-Pa-4Qt"/>
+                                                            <constraint firstItem="3Yt-I0-ia1" firstAttribute="centerX" secondItem="5Hi-Og-L0g" secondAttribute="centerX" id="oNW-Gq-RQ9"/>
+                                                            <constraint firstItem="3Yt-I0-ia1" firstAttribute="centerY" secondItem="5Hi-Og-L0g" secondAttribute="centerY" id="yC9-Ww-1OC"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7B-NT-0YD" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
+                                                        <rect key="frame" x="35" y="0.0" width="335" height="36"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="qgb-MH-23d"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="7ch-Ve-u6X" secondAttribute="trailing" constant="15" id="2Ru-D7-8jb"/>
+                                            <constraint firstAttribute="height" constant="44" id="GKQ-Md-Xtb"/>
+                                            <constraint firstItem="7ch-Ve-u6X" firstAttribute="top" secondItem="5lW-6W-RE2" secondAttribute="top" constant="4" id="Hqc-zO-bmy"/>
+                                            <constraint firstAttribute="bottom" secondItem="7ch-Ve-u6X" secondAttribute="bottom" constant="4" id="TPJ-cE-ePg"/>
+                                            <constraint firstItem="7ch-Ve-u6X" firstAttribute="leading" secondItem="5lW-6W-RE2" secondAttribute="leading" constant="5" id="byi-vc-3tq"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a75-9L-sii">
+                                        <rect key="frame" x="0.0" y="101" width="390" height="743"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5lW-6W-RE2" firstAttribute="leading" secondItem="Mud-7O-bnk" secondAttribute="leading" id="B4x-zD-6Lc"/>
+                                    <constraint firstItem="a75-9L-sii" firstAttribute="leading" secondItem="Mud-7O-bnk" secondAttribute="leading" id="J87-tj-FuB"/>
+                                    <constraint firstAttribute="trailing" secondItem="5lW-6W-RE2" secondAttribute="trailing" id="O5y-L2-3HI"/>
+                                    <constraint firstItem="a75-9L-sii" firstAttribute="top" secondItem="5lW-6W-RE2" secondAttribute="bottom" constant="10" id="Wnn-cH-Ndx"/>
+                                    <constraint firstAttribute="trailing" secondItem="a75-9L-sii" secondAttribute="trailing" id="dOl-fd-Gtr"/>
+                                    <constraint firstAttribute="bottom" secondItem="a75-9L-sii" secondAttribute="bottom" id="hkb-dv-A2b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T4X-i8-W6E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5lW-6W-RE2" firstAttribute="top" secondItem="T4X-i8-W6E" secondAttribute="top" id="DCX-Vv-iCF"/>
+                            <constraint firstItem="Mud-7O-bnk" firstAttribute="leading" secondItem="T4X-i8-W6E" secondAttribute="leading" id="DuS-26-7bD"/>
+                            <constraint firstItem="Mud-7O-bnk" firstAttribute="top" secondItem="sG0-on-oa0" secondAttribute="top" id="EMk-ZL-2Vm"/>
+                            <constraint firstAttribute="bottom" secondItem="Mud-7O-bnk" secondAttribute="bottom" id="V5K-zE-PYI"/>
+                            <constraint firstAttribute="trailing" secondItem="Mud-7O-bnk" secondAttribute="trailing" id="fJw-UV-yZo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="a75-9L-sii" id="weO-9h-fBR"/>
+                        <outlet property="searchTxtFld" destination="m7B-NT-0YD" id="Wnx-Wm-SF8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DLD-xc-dvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="673"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7ww-md-olr">

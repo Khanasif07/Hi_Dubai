@@ -101,7 +101,6 @@ class SearchVC: BaseVC{
     func showFilterVC(_ vc: BaseVC, index: Int? = nil) {
         if let obj = UIApplication.topViewController() {
             let ob = HotelFilterVC.instantiate(fromAppStoryboard: .Main)
-//            ob.delegate = vc as? HotelFilteVCDelegate
             if let idx = index {
                 ob.selectedIndex = idx
             }

@@ -250,14 +250,15 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = NavigationTypeVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = PresentTypeVC.instantiate(fromAppStoryboard: .Main)
-                let navController = UINavigationController(rootViewController: vc)
-                navController.isNavigationBarHidden = true
-                
+                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
+//                let navController = UINavigationController(rootViewController: vc)
+//                navController.isNavigationBarHidden = true
+//
 //                navController.modalPresentationStyle = .fullScreen
 //                self.navigationController?.navigationBar.isHidden = true
 //                self.navigationController?.navigationItem.title = "Hello"
-                self.navigationController?.present(navController, animated: false)
+//                self.navigationController?.present(navController, animated: false)
+                self.navigationController?.pushViewController(vc, animated: true)
                 
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)

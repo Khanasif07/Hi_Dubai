@@ -17,7 +17,7 @@ protocol LocateOnTheMap: NSObject {
 
 //MARK:- Enums-
 enum CurrentlyUsingFor {
-    case places,supershes,searchMovie
+    case places,supershes,searchMovie, categories
 }
 
 class PlacesAndSuperShesView: UIView {
@@ -29,8 +29,11 @@ class PlacesAndSuperShesView: UIView {
     
     //MARK:- Variables
     //MARK:===========
+    var hiddenSections = Set<Int>()
+    private var tableCellIndexArr: [IndexPath] = []
+    var animals: [Animal] = Bundle.main.decode("animals.json")
     var lastContentOffset: CGFloat = 0.0
-    internal var screenUsingFor: CurrentlyUsingFor = .searchMovie
+    internal var screenUsingFor: CurrentlyUsingFor = .categories
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
     internal var isScrollEnabled: Bool = false{
@@ -47,10 +50,10 @@ class PlacesAndSuperShesView: UIView {
     //MARK:===========
     @IBOutlet weak var dataTableView: UITableView! {
         didSet {
-            self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
-            self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
-            self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
-            self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
+//            self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
+//            self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
+//            self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
+//            self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
             //
             self.dataTableView.isScrollEnabled = isScrollEnabled
         }
@@ -93,13 +96,19 @@ class PlacesAndSuperShesView: UIView {
     
     private func configUI() {
         self.dataTableView.registerCell(with: LoaderCell.self)
+        self.dataTableView.registerCell(with: TitleTableViewCell.self)
         self.dataTableView.registerCell(with: PlacesAndSuperShesViewTableViewCell.self)
+        self.dataTableView.registerHeaderFooter(with: CategoriesSectionView.self)
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
-        self.footerSetup()
-        //
-        self.viewModel.delegate = self
-//        hitApi()
+        if screenUsingFor != .categories {
+            self.footerSetup()
+            self.viewModel.delegate = self
+        }else{
+            if #available(iOS 15.0, *) {
+                self.dataTableView.sectionHeaderTopPadding = 10.0
+            }
+        }
     }
     
     public func hitApi(_ search: String = ""){
@@ -110,20 +119,36 @@ class PlacesAndSuperShesView: UIView {
             self.viewModel.getPumpkinListing(page: 1)
         case .searchMovie:
             self.viewModel.getMovieListing(page: 1, search: searchValue)
+        case .categories:
+            print("Categories")
+            self.dataTableView.reloadData()
         }
     }
 }
 
 //MARK:- Extensions- UITableView Delegate and DataSource
 extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch self.screenUsingFor {
+        case .supershes,.places:
+            return 1
+        case .searchMovie:
+            return 1
+        default:
+            return animals.count
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.screenUsingFor {
-        case .supershes:
+        case .supershes,.places:
             return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
         case .searchMovie:
             return (self.viewModel.moviesResponse?.results.count ?? 0) + (self.viewModel.showPaginationLoader ?  1 : 0)
         default:
-            return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
+            if !self.hiddenSections.contains(section) {
+                return 0
+            }
+            return  animals[section].gallery.count
         }
     }
     
@@ -186,6 +211,11 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 cell.populateMovieCell(self.viewModel.moviesResponse?.results[indexPath.item])
                 return cell
             }
+        case .categories:
+            let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
+            cell.isLastRow = ((animals[indexPath.section].gallery.count - 1) == indexPath.row)
+            cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+            return cell
         }
     }
     
@@ -203,23 +233,47 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             if let id = self.viewModel.moviesResponse?.results[indexPath.item].id{
                 self.viewModel.getMovieDetail(path: String(id))
             }
-//            if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
-//                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
-//                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-//            }else{
-//                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
-//                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-//            }
+        case .categories:
+            print("Categories")
         }
     }
     
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+        return screenUsingFor != .categories ? 85 : 35.0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
+        return screenUsingFor != .categories ? 85 : 35.0
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesSectionView") as? CategoriesSectionView {
+            headerView.isRowShow    = !self.hiddenSections.contains(section)
+            headerView.buttonTapped = { [weak self] (btn) in
+                guard let `self` = self else { return }
+                self.hideSection(sender: btn,section: section)
+            }
+            headerView.titleLbl.text = animals[section].name
+            return headerView
+        }
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 54.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -243,6 +297,18 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                     self.viewModel.getMovieListing(page: self.viewModel.currentPage,loader: false,pagination: true,search: self.searchValue)
                 })
             }
+        case .categories:
+            print("Categories")
+        }
+    }
+    
+    private func hideSection(sender: UIButton,section: Int) {
+        if self.hiddenSections.contains(section) {
+            self.hiddenSections.remove(section)
+            self.dataTableView.reloadSections([section], with: .automatic)
+        } else {
+            self.hiddenSections.insert(section)
+            self.dataTableView.reloadSections([section], with: .automatic)
         }
     }
 }

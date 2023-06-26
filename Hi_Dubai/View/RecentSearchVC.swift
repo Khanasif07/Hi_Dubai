@@ -24,9 +24,9 @@ class RecentSearchVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .black
         self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
+        self.placesView?.screenUsingFor = screenUsingFor
         self.placesView?.isScrollEnabled = true
         if let placeView = self.placesView {
-            placeView.screenUsingFor = screenUsingFor
             self.view.addSubview(placeView)
         }
     }
