@@ -35,7 +35,7 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     
     private func configureUI() {
 
-        self.profileImageView?.layer.cornerRadius = (self.profileImageView?.height ?? 0) / 2.0
+        self.profileImageView?.layer.cornerRadius = 7.5
         self.userName.textColor = .white
         self.locationName.textColor = UIColor.white.withAlphaComponent(0.75)
     }
