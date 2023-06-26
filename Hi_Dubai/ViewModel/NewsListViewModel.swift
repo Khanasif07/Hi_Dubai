@@ -13,6 +13,8 @@ protocol NewsListViewModelDelegate: NSObject {
     func pumpkinDataFailure(error: Error)
     func movieDataSuccess()
     func movieDataFailure(error: Error)
+    func movieDetailSuccess()
+    func movieDetailFailure(error: Error)
 }
 
 extension NewsListViewModelDelegate{
@@ -22,6 +24,8 @@ extension NewsListViewModelDelegate{
     func newsListingFailure(error: Error){}
     func movieDataSuccess(){}
     func movieDataFailure(error: Error){}
+    func movieDetailSuccess(){}
+    func movieDetailFailure(error: Error){}
 }
 
 class NewsListViewModel{
@@ -41,6 +45,7 @@ class NewsListViewModel{
     var newsData = [Record]()
     var pumkinsData = [Pumpkin]()
     var moviesResponse: MoviesResponse? = nil
+    var moviesDetail: MovieDetail? = nil
     var error : Error?
     func getNewsListing(){
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
@@ -131,6 +136,22 @@ class NewsListViewModel{
                 self.isRequestinApi = false
                 self.error = error
                 self.delegate?.movieDataFailure(error: error)
+            }
+        }
+    }
+    
+    func getMovieDetail(path: String!){
+        let dict:[String:String] = [ApiKey.api_key: EndPoint.tmdb_api_key.rawValue]
+        NetworkManager.shared.getMovieDetailDataFromServer(requestType: .get, endPoint: EndPoint.movieDetail.rawValue,dict,path) { (results : Result<MovieDetail,Error>)   in
+            switch results{
+            case .success(let result):
+                self.moviesDetail = result
+                print("moviesDetail:-\(self.moviesDetail)")
+                self.delegate?.movieDetailSuccess()
+            case .failure(let error):
+                self.error = error
+                self.moviesDetail =  nil
+                self.delegate?.movieDetailFailure(error: error)
             }
         }
     }

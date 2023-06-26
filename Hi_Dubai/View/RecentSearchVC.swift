@@ -29,8 +29,6 @@ class RecentSearchVC: UIViewController {
             placeView.screenUsingFor = screenUsingFor
             self.view.addSubview(placeView)
         }
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {

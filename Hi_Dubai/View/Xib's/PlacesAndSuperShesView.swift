@@ -200,13 +200,16 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
             }
         case .searchMovie:
-            if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
-                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
-                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-            }else{
-                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
-                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            if let id = self.viewModel.moviesResponse?.results[indexPath.item].id{
+                self.viewModel.getMovieDetail(path: String(id))
             }
+//            if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
+//                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
+//                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+//            }else{
+//                self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
+//                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+//            }
         }
     }
     
@@ -299,6 +302,23 @@ extension PlacesAndSuperShesView: NewsListViewModelDelegate{
     }
     
     func movieDataFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func movieDetailSuccess() {
+        let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
+        secondVC.isBackBtnShow = true
+        DispatchQueue.main.async {
+            secondVC.modalPresentationStyle = .overCurrentContext
+            secondVC.viewModel.movie = self.viewModel.moviesDetail
+            (self.parentViewController?.parent as? NavigationTypeVC)?.present(secondVC, animated: true)
+            (self.parentViewController?.parent as? SuperYouHomeVC)?.present(secondVC, animated: true)
+        }
+    }
+    
+    func movieDetailFailure(error: Error) {
         DispatchQueue.main.async {
             self.dataTableView.reloadData()
         }

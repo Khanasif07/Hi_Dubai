@@ -10,9 +10,10 @@ enum EndPoint : String {
     case news        =  "https://api.jsonbin.io/v3/b/635249d865b57a31e69d9143"
     case news_updated  = "https://hidubaifocusapi.free.beeceptor.com/articles"
     case x_master_key = "$2b$10$YyUJiWKHl8CtW90XTkp7ru9ysDiWLhw5AsU4UTSSBgV5AUFPyxDfy"
-    case pumpkin     = "https://api.punkapi.com/v2/beers"
+    case pumpkin      = "https://api.punkapi.com/v2/beers"
     case searchMovie  = "https://api.themoviedb.org/3/search/movie"
     case popularMovie =  "https://api.themoviedb.org/3/movie/popular"
+    case movieDetail  = "https://api.themoviedb.org/3/movie/"
     case tmdb_api_key = "020e7b126f0ee278311159ff7dd3028c"
     case tmdb_access_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMjBlN2IxMjZmMGVlMjc4MzExMTU5ZmY3ZGQzMDI4YyIsInN1YiI6IjY0OTJhNTExNGJhNTIyMDEzOTM4NzA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CzMJ5X8uv94mXBcmqh0bQPIXwDcEUOYBC53GNiS2dcw"
 }

@@ -45,33 +45,14 @@ class NetworkManager{
         sessionConfig.timeoutIntervalForRequest  = 2.5
         sessionConfig.timeoutIntervalForResource = 30
         sessionConfig.urlCache = cache
-        //
-        //+
         sessionConfig.waitsForConnectivity = true
-        //+
-        //==URLCache==//
-//        if let cachedData = cache.cachedResponse(for: urlRequest){
-//            print("Cached data in bytes:", cachedData.data)
-//            do {
-//                let formatter = DateFormatter()
-//                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//                let decoder = JSONDecoder()
-//                decoder.dateDecodingStrategy = .formatted(formatter)
-//                let model = try decoder.decode(T.self, from: cachedData.data)
-//                completion(.success(model))
-//            }catch(let error){
-//                print(error)
-//                completion(.failure(error))
-//            }
-//        } else {
             let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
                 if let error = error{
                     completion(.failure(error))
                     return
                 }
                 do {
-                    //==
-//                    self.cache.removeAllCachedResponses()
+                    self.cache.removeAllCachedResponses()
                     self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                     //==
                     let formatter = DateFormatter()
@@ -86,13 +67,12 @@ class NetworkManager{
                 }
             }
             task.resume()
-//        }
     }
     
     
     func getPumpkinDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
-                                              endPoint: String,_ params: [String: String] = [:],_ completion: @escaping (Result<T,Error>) -> Void){
-        let urlStringWithQuery = self.queryString(endPoint, params: params)
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
         guard let url = URL(string: urlStringWithQuery!) else { return }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue
@@ -126,9 +106,56 @@ class NetworkManager{
         task.resume()
     }
     
-    func queryString(_ value: String, params: [String: String]) -> String? {
+    
+    func getMovieDetailDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //==
+                self.cache.removeAllCachedResponses()
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                //==
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func queryString(_ value: String, params: [String: String],path: String! = "") -> String? {
         var components = URLComponents(string: value)
-        components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
+        if !params.isEmpty {
+            components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
+        }
+        //== Path Parameter
+        if !(path.isEmpty) {
+            if let paramPath = components?.path {
+                components?.path = paramPath + path
+            }
+        }
+        //==
         return components?.url?.absoluteString
     }
 }
