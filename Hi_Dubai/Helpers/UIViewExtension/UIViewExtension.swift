@@ -386,3 +386,27 @@ extension UIButton {
     }
     
 }
+
+extension UIView{
+    func rotate(clockwise: Bool = true) {
+        if clockwise {
+            /// clockwise
+            let rotate = CABasicAnimation(keyPath: "transform.rotation")
+            rotate.fromValue = 0
+            rotate.toValue = CGFloat.pi
+            rotate.duration = 0.25
+            rotate.fillMode = CAMediaTimingFillMode.forwards
+            rotate.isRemovedOnCompletion = false
+            self.layer.add(rotate, forKey: "transform.rotation")
+        } else {
+            /// anticlockwise
+            let rotate = CABasicAnimation(keyPath: "transform.rotation")
+            rotate.fromValue = CGFloat.pi
+            rotate.toValue = 0
+            rotate.duration = 0.25
+            rotate.fillMode = CAMediaTimingFillMode.forwards
+            rotate.isRemovedOnCompletion = false
+            self.layer.add(rotate, forKey: "transform.rotation")
+        }
+    }
+}

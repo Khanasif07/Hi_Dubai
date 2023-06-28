@@ -72,4 +72,15 @@ class RoundedView : UIView {
         super.draw(rect)
         self.updateView()
     }
+    
+    func setCornerRadius(cornerRadius: CGFloat) {
+            self.layer.cornerRadius = cornerRadius
+            self.layer.masksToBounds = cornerRadius > 0
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadius(cornerRadius: size.height/2)
+    }
+    
 }

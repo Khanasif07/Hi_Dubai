@@ -111,6 +111,13 @@
 		E0136C0B2A49A0A1003947B6 /* CategoriesSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0136C0A2A49A0A1003947B6 /* CategoriesSectionView.xib */; };
 		E0136C0E2A49ABB1003947B6 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0136C0C2A49ABB1003947B6 /* TitleTableViewCell.swift */; };
 		E0136C0F2A49ABB1003947B6 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0136C0D2A49ABB1003947B6 /* TitleTableViewCell.xib */; };
+		E0136C112A4AFB15003947B6 /* animal.json in Resources */ = {isa = PBXBuildFile; fileRef = E0136C102A4AF81F003947B6 /* animal.json */; };
+		E0136C132A4B7517003947B6 /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0136C122A4B7517003947B6 /* CategoryHeaderView.swift */; };
+		E0136C152A4B752B003947B6 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0136C142A4B752B003947B6 /* CategoryHeaderView.xib */; };
+		E0136C182A4BE95C003947B6 /* TitleTableViewLastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0136C162A4BE95C003947B6 /* TitleTableViewLastCell.swift */; };
+		E0136C192A4BE95C003947B6 /* TitleTableViewLastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0136C172A4BE95C003947B6 /* TitleTableViewLastCell.xib */; };
+		E0136C1C2A4BEE49003947B6 /* ViewMoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0136C1A2A4BEE49003947B6 /* ViewMoreTableViewCell.swift */; };
+		E0136C1D2A4BEE49003947B6 /* ViewMoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0136C1B2A4BEE49003947B6 /* ViewMoreTableViewCell.xib */; };
 		E02BC0A92A05891600860893 /* PartnersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0A82A05891600860893 /* PartnersViewController.swift */; };
 		E02BC0AC2A0589CC00860893 /* PartnerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */; };
 		E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */; };
@@ -296,6 +303,13 @@
 		E0136C0A2A49A0A1003947B6 /* CategoriesSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesSectionView.xib; sourceTree = "<group>"; };
 		E0136C0C2A49ABB1003947B6 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		E0136C0D2A49ABB1003947B6 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		E0136C102A4AF81F003947B6 /* animal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = animal.json; sourceTree = "<group>"; };
+		E0136C122A4B7517003947B6 /* CategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
+		E0136C142A4B752B003947B6 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
+		E0136C162A4BE95C003947B6 /* TitleTableViewLastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewLastCell.swift; sourceTree = "<group>"; };
+		E0136C172A4BE95C003947B6 /* TitleTableViewLastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewLastCell.xib; sourceTree = "<group>"; };
+		E0136C1A2A4BEE49003947B6 /* ViewMoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMoreTableViewCell.swift; sourceTree = "<group>"; };
+		E0136C1B2A4BEE49003947B6 /* ViewMoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewMoreTableViewCell.xib; sourceTree = "<group>"; };
 		E02BC0A82A05891600860893 /* PartnersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnersViewController.swift; sourceTree = "<group>"; };
 		E02BC0AA2A0589CC00860893 /* PartnerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerCollectionCell.swift; sourceTree = "<group>"; };
 		E02BC0AB2A0589CC00860893 /* PartnerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerCollectionCell.xib; sourceTree = "<group>"; };
@@ -766,6 +780,12 @@
 				E0136C0A2A49A0A1003947B6 /* CategoriesSectionView.xib */,
 				E0136C0C2A49ABB1003947B6 /* TitleTableViewCell.swift */,
 				E0136C0D2A49ABB1003947B6 /* TitleTableViewCell.xib */,
+				E0136C122A4B7517003947B6 /* CategoryHeaderView.swift */,
+				E0136C142A4B752B003947B6 /* CategoryHeaderView.xib */,
+				E0136C162A4BE95C003947B6 /* TitleTableViewLastCell.swift */,
+				E0136C172A4BE95C003947B6 /* TitleTableViewLastCell.xib */,
+				E0136C1A2A4BEE49003947B6 /* ViewMoreTableViewCell.swift */,
+				E0136C1B2A4BEE49003947B6 /* ViewMoreTableViewCell.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -798,6 +818,7 @@
 				E00450792A2FD93B00A9A64E /* covers.json */,
 				E00450772A2FD93B00A9A64E /* locations.json */,
 				E00450762A2FD93B00A9A64E /* videos.json */,
+				E0136C102A4AF81F003947B6 /* animal.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -902,6 +923,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8470C57529974D660091A7C5 /* LaunchScreen.storyboard in Resources */,
+				E0136C1D2A4BEE49003947B6 /* ViewMoreTableViewCell.xib in Resources */,
 				E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */,
 				8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */,
 				E004507C2A2FD93B00A9A64E /* animals.json in Resources */,
@@ -913,11 +935,13 @@
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
 				E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */,
 				E00450A62A2FDF9800A9A64E /* PhotoCollCell.xib in Resources */,
+				E0136C192A4BE95C003947B6 /* TitleTableViewLastCell.xib in Resources */,
 				E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
 				E00DED392A14BC5B00828D34 /* PlacesAndSuperShesView.xib in Resources */,
 				8470C5B129977EC50091A7C5 /* NewsDetailTableCell.xib in Resources */,
 				E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */,
+				E0136C112A4AFB15003947B6 /* animal.json in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
 				E0136C0F2A49ABB1003947B6 /* TitleTableViewCell.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
@@ -933,6 +957,7 @@
 				E0136C0B2A49A0A1003947B6 /* CategoriesSectionView.xib in Resources */,
 				E004507D2A2FD93B00A9A64E /* covers.json in Resources */,
 				E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */,
+				E0136C152A4B752B003947B6 /* CategoryHeaderView.xib in Resources */,
 				E0B447722A307B6F00423DE2 /* Hi_Dubai_Prod.xcconfig in Resources */,
 				E00450B22A2FE0E900A9A64E /* FooterViewCV.xib in Resources */,
 				E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */,
@@ -1018,9 +1043,11 @@
 				E00450942A2FDC4A00A9A64E /* SectionDecorationView.swift in Sources */,
 				8470C5AB29976DDF0091A7C5 /* HeaderView.swift in Sources */,
 				E004508C2A2FDBC800A9A64E /* VeganRestaurantModel.swift in Sources */,
+				E0136C132A4B7517003947B6 /* CategoryHeaderView.swift in Sources */,
 				E00DED352A14B96400828D34 /* Router.swift in Sources */,
 				8470C58C299751F20091A7C5 /* NewsListViewModel.swift in Sources */,
 				E0765C582A274C2900574230 /* HeadingView.swift in Sources */,
+				E0136C182A4BE95C003947B6 /* TitleTableViewLastCell.swift in Sources */,
 				E0781BF02A40AB1C00A18A2C /* SettingTableViewCell.swift in Sources */,
 				E00DED532A1520AA00828D34 /* TalksHomeTableHeader.swift in Sources */,
 				E00DED632A15656600828D34 /* ApiKey.swift in Sources */,
@@ -1050,6 +1077,7 @@
 				E00DED5B2A1521E000828D34 /* SuperYouHomeVC+TableCells.swift in Sources */,
 				E0765C682A27630B00574230 /* AnimalListItemView.swift in Sources */,
 				E00DED2D2A138D2800828D34 /* NewSearchTextField.swift in Sources */,
+				E0136C1C2A4BEE49003947B6 /* ViewMoreTableViewCell.swift in Sources */,
 				E0B447692A30701100423DE2 /* NewBannerSupplementaryView.swift in Sources */,
 				E00AE4F72A0DF67800A43133 /* LightStatusBarViewController.swift in Sources */,
 				E0765C622A274D6B00574230 /* ExternalWeblinkView.swift in Sources */,

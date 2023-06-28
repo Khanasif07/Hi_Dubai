@@ -26,7 +26,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     @IBOutlet weak var mainTF: UITextField!
     @IBOutlet weak var icon: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    
+    @IBOutlet weak var roundedView: RoundedView!
     //MARK: - Properties
     weak var delegate:WalifSearchTextFieldDelegate?
     @IBInspectable var iconImage: UIImage!

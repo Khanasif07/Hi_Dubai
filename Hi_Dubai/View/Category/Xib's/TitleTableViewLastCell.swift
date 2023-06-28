@@ -1,13 +1,14 @@
 //
-//  TitleTableViewCell.swift
+//  TitleTableViewLastCell.swift
 //  Hi_Dubai
 //
-//  Created by Asif Khan on 26/06/2023.
+//  Created by Asif Khan on 28/06/2023.
 //
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell {
+class TitleTableViewLastCell: UITableViewCell {
+
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var outerView: UIView!
@@ -16,15 +17,11 @@ class TitleTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    var isLastRow: Bool = false{
-        didSet{
-        }
-    }
+   
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        isLastRow ? outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0) : outerView.roundCorners(.allCorners, radius: 0.0)
+       outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
     }
-
     
 }

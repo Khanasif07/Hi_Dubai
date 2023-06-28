@@ -11,16 +11,13 @@ class CategoriesVC: UIViewController {
     //
     var searchTask: DispatchWorkItem?
     internal var placesView: PlacesAndSuperShesView?
-    
-    @IBOutlet weak var searchTxtFld: NewSearchTextField!
     @IBOutlet weak var containerView: UIView!
     //
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
-        searchTxtFld.delegate = self
-        searchTxtFld.setPlaceholder(placeholder: "Find Malls, Shops, Hotels...")
+//        self.navigationController?.isNavigationBarHidden = true
+        self.title = "Categories"
         initUI()
     }
     
@@ -67,52 +64,52 @@ extension CategoriesVC: UIGestureRecognizerDelegate{
 }
 
 
-// MARK: - WalifSearchTextFieldDelegate
-extension CategoriesVC: WalifSearchTextFieldDelegate{
-    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
-        closeSearchingArea(false)
-    }
-    
-    func walifSearchTextFieldEndEditing(sender: UITextField!) {
-        closeSearchingArea(false)
-    }
-    
-    func walifSearchTextFieldChanged(sender: UITextField!) {
-        let searchValue = sender.text ?? ""
-        self.searchTask?.cancel()
-//        let task = DispatchWorkItem { [weak self] in
-//            guard let `self` = self else { return }
-//            if let recentSearchVC = self.children.first as? RecentSearchVC{
-//                recentSearchVC.placesView?.searchValue = searchValue
-//                recentSearchVC.placesView?.hitApi()
-//            }
+//// MARK: - WalifSearchTextFieldDelegate
+//extension CategoriesVC: WalifSearchTextFieldDelegate{
+//    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+//        closeSearchingArea(false)
+//    }
+//    
+//    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+//        closeSearchingArea(false)
+//    }
+//    
+//    func walifSearchTextFieldChanged(sender: UITextField!) {
+//        let searchValue = sender.text ?? ""
+//        self.searchTask?.cancel()
+////        let task = DispatchWorkItem { [weak self] in
+////            guard let `self` = self else { return }
+////            if let recentSearchVC = self.children.first as? RecentSearchVC{
+////                recentSearchVC.placesView?.searchValue = searchValue
+////                recentSearchVC.placesView?.hitApi()
+////            }
+////        }
+////        self.searchTask = task
+////        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+//    }
+//    
+//    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+//        closeSearchingArea(true)
+//        self.searchTask?.cancel()
+////        let task = DispatchWorkItem { [weak self] in
+////            guard let `self` = self else { return }
+////            if let recentSearchVC = self.children.first as? RecentSearchVC{
+////                recentSearchVC.placesView?.searchValue = ""
+////                recentSearchVC.placesView?.hitApi()
+////            }
+////        }
+////        self.searchTask = task
+////        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
+//    }
+//    
+//    func closeSearchingArea(_ isTrue: Bool) {
+//        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+//            self.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+//            self.view.layoutIfNeeded()
+//        } completion: { value in
+//            self.searchTxtFld.cancelBtn.isHidden = isTrue
+//            self.view.layoutIfNeeded()
 //        }
-//        self.searchTask = task
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
-    }
-    
-    func walifSearchTextFieldIconPressed(sender: UITextField!) {
-        closeSearchingArea(true)
-        self.searchTask?.cancel()
-//        let task = DispatchWorkItem { [weak self] in
-//            guard let `self` = self else { return }
-//            if let recentSearchVC = self.children.first as? RecentSearchVC{
-//                recentSearchVC.placesView?.searchValue = ""
-//                recentSearchVC.placesView?.hitApi()
-//            }
-//        }
-//        self.searchTask = task
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: task)
-    }
-    
-    func closeSearchingArea(_ isTrue: Bool) {
-        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
-            self.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
-            self.view.layoutIfNeeded()
-        } completion: { value in
-            self.searchTxtFld.cancelBtn.isHidden = isTrue
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-}
+//    }
+//    
+//}

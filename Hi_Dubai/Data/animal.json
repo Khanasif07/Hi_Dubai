@@ -1,0 +1,345 @@
+[
+  {
+    "id" : "lion",
+    "name" : "Animal, Pets $ Plants",
+    "headline" : "The world's most social felines, lions roam the savannas and grasslands of the African continent, hunting cooperatively and raising cubs in prides. ",
+    "description" : "ffb",
+    "link" : "https://en.wikipedia.org/wiki/Lion",
+    "image" : "lion",
+    "gallery" : [
+      "Animal Breeding Centres",
+      "Animal Shelters / Adoption Centres",
+      "Animal Training Centres",
+      "Animal Transport & Quarantine Centres",
+      "Pet Clinics & Vets",
+      "Pet Food & Accessories Stores",
+      "Pet Grooming Centres",
+      "Pet Hotels & Day Care",
+      "Plants & Gardeening Store"
+    ],
+    "fact" : [
+      "Female lions raise the cubs and are also the primary hunters.",
+      "Lions are the only cats that live in groups. A pride, can be up to 30 lions, depending on how much food and water is available.",
+      "Without their coats, lion and tiger bodies are so similar that only experts can tell them apart."
+    ]
+  },
+  {
+    "id" : "zebra",
+    "name" : "B2B Service",
+    "headline" : "rgr",
+    "description" : "bttg",
+    "link" : "https://en.wikipedia.org/wiki/Zebra",
+    "image" : "zebra",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "The zebra is actually mostly covered in white and striped with black or dark brown stripes, but underneath their coat is black skin.",
+      "Zebras are wild animals that cannot be domesticated.",
+      "A group of zebras is called a 'Dazzle’."
+    ]
+  },
+  {
+    "id" : "rhino",
+    "name" : "Beauty, Wellness & Health",
+    "headline" : "Rhinoceros any of five or six species of giant horn-bearing herbivores that include some of the largest living land mammals. Only African and Asian elephants are taller at the shoulder than the two largest rhinoceros species.",
+    "description" : "vvf",
+    "link" : "https://en.wikipedia.org/wiki/White_rhinoceros",
+    "image" : "rhino",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "The horns of a rhino are not bone and are not attached to the skull. It is made from keratin. It’s the same thing that our fingernails are made from.",
+      "The largest of the five species is the white rhino, which can grow to 1.8m tall and and weigh a massive 2,500kg – that’s the weight of 30 men!",
+      "Rhino horns grow as much as three inches a year, and have been known to grow up to five feet long."
+    ]
+  },
+  {
+    "id" : "elephant",
+    "name" : "Education",
+    "headline" : "Elephants are the largest land mammals on earth and have distinctly massive bodies, large ears, and long trunks. They use their trunks to pick up objects, trumpet warnings, greet other elephants, or suck up water for drinking or bathing, among other uses.",
+    "description" : "tymt",
+    "link" : "https://en.wikipedia.org/wiki/Elephant",
+    "image" : "elephant",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "Elephants can recognize themselves in the mirror. They join humans, apes, and dolphins as the only animals with self-awareness.",
+      "Female elephants have the longest pregnancy of any mammal. It’s a lengthy 22 months before baby elephants are ready to be born.",
+      "Elephants make sounds that we can’t even hear. Some of their calls are so low, they are below the range of human hearing."
+    ]
+  },
+  {
+    "id" : "cheetah",
+    "name" : "Finance & Legal",
+    "headline" : "The cheetah is the fastest land animal in the world, reaching speeds of up to 70 miles per hour. They can accelerate from 0 to 68 miles per hour in just three seconds.",
+    "description" : "vfv",
+    "link" : "https://en.wikipedia.org/wiki/Cheetah",
+    "image" : "cheetah",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "The black ‘tear tracks’ that line a cheetah’s face prevent the sun from infiltrating and blinding the animal whilst hunting.",
+      "The cheetah is the fastest land animal in the world, reaching speeds of up to 113km/h.",
+      "They can accelerate from 0 to 100km/h in just 3 seconds."
+    ]
+  },
+  {
+    "id" : "giraffe",
+    "name" : "Food & Beverage",
+    "headline" : "At an average height of around 5 m (16-18 ft.), the giraffe is the tallest land animal in the world. Giraffes live primarily in savanna areas in the sub-Saharan region of Africa.",
+    "description" : "vff",
+    "link" : "https://en.wikipedia.org/wiki/Giraffe",
+    "image" : "giraffe",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "Giraffes only need 5 to 30 minutes of sleep in a 24-hour period! They often achieve that in quick naps that may last only a minute or two at a time.",
+      "They can run as fast as 35 miles an hour over short distances, or cruise at 10 mph over longer distances.",
+      "Within just 10 hours of their birth, baby giraffes can run with their families without struggling."
+    ]
+  },
+  {
+    "id" : "buffalo",
+    "name" : "Government & Public Service",
+    "headline" : "The African Buffalo is a bovine species that is widely spread across Africa. It belongs to the famous \"Big Five\". Usually, African buffaloes form large herds.",
+    "description" : "fvfbv",
+    "link" : "https://en.wikipedia.org/wiki/African_buffalo",
+    "image" : "buffalo",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets"
+      ],
+    "fact" : [
+      "Buffalo are actually fantastic swimmers. They will swim through deep waters to find better grazing areas.",
+      "We refer to them as the mafia, not only because of their strong character but because they never forgive and almost always seek revenge.",
+      "African buffalo have a complex social structure based on what scientists call a “dominance hierarchy”. "
+    ]
+  },
+  {
+    "id" : "hippo",
+    "name" : "Home",
+    "headline" : "Hippos are the third-largest living land mammal, after elephants and white rhinos. They have very thick skin that is virtually hairless except for the thick bristle-like hair on their heads and tails.",
+    "description" : "dvdfvdf",
+    "link" : "https://en.wikipedia.org/wiki/Hippopotamus",
+    "image" : "hippo",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store",
+        "Animal healthcare Centres"
+      ],
+    "fact" : [
+      "Hippos can’t swim or float! They walk or stand on surfaces below the water like sandbanks. Even so, they spend most of the day in water to protect their sensitive skin from the sun.",
+      "The hippo’s closest living relatives are whales and porpoises.",
+      "Although hippos can hold their breath for approximately seven minutes, most adult hippos resurface every three to five minutes to breathe. This is an automatic process – even sleeping hippo surface to breathe without waking."
+    ]
+  },
+  {
+    "id" : "wilddog",
+    "name" : "Hotel & Tourism",
+    "headline" : "Wild dogs are social and gather in packs of around ten individuals, but some packs number more than 40. They are opportunistic predators that hunt medium-sized ruminants, such as gazelles.",
+    "description" : "dvvfd",
+    "link" : "https://en.wikipedia.org/wiki/African_wild_dog",
+    "image" : "wild-dog",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "Unlike domestic dogs, wild dogs have long legs, four toes on their front feet and large, rounded ears. Though both species descended from wolves, they are unable to interbreed.",
+      "Wild dogs live in tightly knit social groups of between two and 27 individuals. They are strongly bonded. They’ll even look after injured dogs, bringing them food until they recover.",
+      "The wild dog’s short hair is in yellow, gray, white and black patches. No two dogs have the same markings and colorations, making it easy for conservationists to identify individuals."
+    ]
+  },
+  {
+    "id" : "meerkat",
+    "name" : "Housing & Real Estate",
+    "headline" : "These gregarious animals are often seen in groups, and several families may live together in a large community. Squirrel-sized meerkats are mongooses famed for their upright posture.",
+    "description" : "fvfv",
+    "image" : "meerkat",
+    "gallery" : [
+      "meerkat-1",
+      "meerkat-2",
+      "meerkat-3",
+      "meerkat-4"
+    ],
+    "fact" : [
+      "Despite living in the desert unbelievably meerkats do not need extra water in their diets. They get all the moisture they need from the insects and grubs they eat.",
+      "Meerkats are much smarter than they look. They solve tasks with help from their mob but also a bit of independent thought. ",
+      "Meerkats have remarkable eyesight. They can spot birds miles away on the horizon! Vision is their most developed sense."
+    ]
+  },
+  {
+    "id" : "ostrich",
+    "name" : "Kids",
+    "headline" : "Massive, conspicuous, flightless bird with long neck and robust legs. Mature males have black-and-white plumage, with pinkish skin, flushed in breeding plumage. Females and immatures are duller gray-brown. They can walk up to several kilometers a day. ",
+    "description" : "fvfvf",
+    "link" : "https://en.wikipedia.org/wiki/Common_ostrich",
+    "image" : "ostrich",
+    "gallery" : [
+      "ostrich-1",
+      "ostrich-2",
+      "ostrich-3",
+      "ostrich-4"
+    ],
+    "fact" : [
+      "An ostrich can reach a speed of 70kmh. This is not only the fastest land speed of any bird, and the fastest of any two-legged creature, but also faster than most birds can fly.",
+      "An ostrich’s eggs are the largest of any bird: at up to 15cm long and weighing up to 1.4kg. They are 20 times the size of a domestic chicken’s.",
+      "Ostriches have the largest eyes of any land animal, measuring up to 5cm across. This helps them to perceive predators at a great distance. Heavy eyelashes help shield them from the sun."
+    ]
+  },
+  {
+    "id" : "gorilla",
+    "name" : "Leisure & Culture",
+    "headline" : "Gorillas are some of the most powerful and striking animals, not only for their size and force, but also for their gentle human like behavior. They play a crucial role in local biodiversity, roaming through large territories and helping, for example, to spread the seeds of the fruit they consume.",
+    "description" : "dvfddf",
+    "link" : "https://en.wikipedia.org/wiki/Gorilla",
+    "image" : "gorilla",
+    "gallery" : [
+      "gorilla-1",
+      "gorilla-2",
+      "gorilla-3",
+      "gorilla-4"
+    ],
+    "fact" : [
+      "There are two species of gorilla: eastern and western. The mountain gorilla is a sub-species of the eastern gorilla. Mountain gorillas are endangered - there are an estimated 1,063 in the wild.",
+      "People share around 98% of our DNA with gorillas. This means that exposure to human illnesses – even a cold - can have potentially detrimental impacts on gorillas.",
+      "They can eat all day long. Mountain gorillas spend about a quarter of their day eating mainly leaves and shoots, but have also been known to eat snails, ants and bark (a good source of sodium)."
+    ]
+  },
+  {
+    "id" : "zebra",
+    "name" : "Media Marketing & IT",
+    "headline" : "Each zebra has its own unique pattern of distinctive stripes, just as humans have their own unique pattern of fingerprints. Zebras stick together in herds.",
+    "description" : "fvfd  f fg",
+    "link" : "https://en.wikipedia.org/wiki/Zebra",
+    "image" : "zebra",
+    "gallery" : [
+      "zebra-1",
+      "zebra-2",
+      "zebra-3",
+      "zebra-4"
+    ],
+    "fact" : [
+      "The zebra is actually mostly covered in white and striped with black or dark brown stripes, but underneath their coat is black skin.",
+      "Zebras are wild animals that cannot be domesticated.",
+      "A group of zebras is called a 'Dazzle’."
+    ]
+  },
+  {
+    "id" : "gorilla",
+    "name" : "New Economy",
+    "headline" : "Gorillas are some of the most powerful and striking animals, not only for their size and force, but also for their gentle human like behavior. They play a crucial role in local biodiversity, roaming through large territories and helping, for example, to spread the seeds of the fruit they consume.",
+    "description" : "dcdcvd",
+    "link" : "https://en.wikipedia.org/wiki/Gorilla",
+    "image" : "gorilla",
+    "gallery" : [
+      "gorilla-1",
+      "gorilla-2",
+      "gorilla-3",
+      "gorilla-4"
+    ],
+    "fact" : [
+      "There are two species of gorilla: eastern and western. The mountain gorilla is a sub-species of the eastern gorilla. Mountain gorillas are endangered - there are an estimated 1,063 in the wild.",
+      "People share around 98% of our DNA with gorillas. This means that exposure to human illnesses – even a cold - can have potentially detrimental impacts on gorillas.",
+      "They can eat all day long. Mountain gorillas spend about a quarter of their day eating mainly leaves and shoots, but have also been known to eat snails, ants and bark (a good source of sodium)."
+    ]
+  },
+  {
+    "id" : "meerkat",
+    "name" : "Others",
+    "headline" : "These gregarious animals are often seen in groups, and several families may live together in a large community. Squirrel-sized meerkats are mongooses famed for their upright posture.",
+    "description" : "wefw fe",
+    "image" : "meerkat",
+    "gallery" : [
+      "meerkat-1",
+      "meerkat-2",
+      "meerkat-3",
+      "meerkat-4"
+    ],
+    "fact" : [
+      "Despite living in the desert unbelievably meerkats do not need extra water in their diets. They get all the moisture they need from the insects and grubs they eat.",
+      "Meerkats are much smarter than they look. They solve tasks with help from their mob but also a bit of independent thought. ",
+      "Meerkats have remarkable eyesight. They can spot birds miles away on the horizon! Vision is their most developed sense."
+    ]
+  },
+  {
+    "id" : "cheetah",
+    "name" : "Cheetah",
+    "headline" : "The cheetah is the fastest land animal in the world, reaching speeds of up to 70 miles per hour. They can accelerate from 0 to 68 miles per hour in just three seconds.",
+    "description" : "efe f f",
+    "image" : "cheetah",
+    "gallery" : [
+      "cheetah-1",
+      "cheetah-2",
+      "cheetah-3",
+      "cheetah-4"
+    ],
+    "fact" : [
+      "The black ‘tear tracks’ that line a cheetah’s face prevent the sun from infiltrating and blinding the animal whilst hunting.",
+      "The cheetah is the fastest land animal in the world, reaching speeds of up to 113km/h.",
+      "They can accelerate from 0 to 100km/h in just 3 seconds."
+    ]
+  }
+]

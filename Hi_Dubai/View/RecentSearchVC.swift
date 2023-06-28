@@ -12,7 +12,13 @@ class RecentSearchVC: UIViewController {
     internal var placesView: PlacesAndSuperShesView?
     var screenUsingFor: CurrentlyUsingFor = .places{
         willSet(newValue){
+//            self.placesView = PlacesAndSuperShesView(frame: CGRect(x: 0.0, y: 0.0, width: screen_width, height: screen_height))
             self.placesView?.screenUsingFor = newValue
+            self.placesView?.dataTableView.reloadData()
+//            self.placesView?.isScrollEnabled = true
+//            if let placeView = self.placesView {
+//                self.view.addSubview(placeView)
+//            }
         }
         didSet{
             self.placesView?.hitApi()

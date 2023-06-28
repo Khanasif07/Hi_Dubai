@@ -29,11 +29,20 @@ class PlacesAndSuperShesView: UIView {
     
     //MARK:- Variables
     //MARK:===========
+    var maxCountForViewMore: Int = 6
+    var viewMoreSelected: Bool = false
     var hiddenSections = Set<Int>()
-    private var tableCellIndexArr: [IndexPath] = []
-    var animals: [Animal] = Bundle.main.decode("animals.json")
+    var animals: [Animal] = Bundle.main.decode("animal.json")
+    var headerView = CategoryHeaderView.instanciateFromNib()
     var lastContentOffset: CGFloat = 0.0
-    internal var screenUsingFor: CurrentlyUsingFor = .categories
+    internal var screenUsingFor: CurrentlyUsingFor = .categories{
+        willSet(newValue){
+            self.screenUsingFor = newValue
+        }
+        didSet{
+            configUI()
+        }
+    }
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
     internal var isScrollEnabled: Bool = false{
@@ -50,10 +59,11 @@ class PlacesAndSuperShesView: UIView {
     //MARK:===========
     @IBOutlet weak var dataTableView: UITableView! {
         didSet {
-//            self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
-//            self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
-//            self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
-//            self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
+            self.dataTableView.backgroundColor = .clear
+            self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
+            self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
+            self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
+            self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
             //
             self.dataTableView.isScrollEnabled = isScrollEnabled
         }
@@ -65,6 +75,13 @@ class PlacesAndSuperShesView: UIView {
         footerView.backgroundColor = .clear
         dataTableView.tableFooterView = footerView
     }
+    
+    private func headerSetup(){
+        headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(78.0))
+        dataTableView.tableHeaderView = headerView
+    }
+    
+    
     
     
     //MARK:- LifeCycle
@@ -88,13 +105,15 @@ class PlacesAndSuperShesView: UIView {
         let nib = UINib(nibName: "PlacesAndSuperShesView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(view)
-        self.configUI()
+//        self.configUI()
     }
     
     private func configUI() {
+        self.dataTableView.registerCell(with: ViewMoreTableViewCell.self)
+        self.dataTableView.registerCell(with: TitleTableViewLastCell.self)
         self.dataTableView.registerCell(with: LoaderCell.self)
         self.dataTableView.registerCell(with: TitleTableViewCell.self)
         self.dataTableView.registerCell(with: PlacesAndSuperShesViewTableViewCell.self)
@@ -105,6 +124,7 @@ class PlacesAndSuperShesView: UIView {
             self.footerSetup()
             self.viewModel.delegate = self
         }else{
+            self.headerSetup()
             if #available(iOS 15.0, *) {
                 self.dataTableView.sectionHeaderTopPadding = 10.0
             }
@@ -148,38 +168,23 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             if !self.hiddenSections.contains(section) {
                 return 0
             }
-            return  animals[section].gallery.count
+            if (animals[section].gallery.count > maxCountForViewMore) && !viewMoreSelected{
+                return maxCountForViewMore
+            }else{
+                return animals[section].gallery.count
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.screenUsingFor {
-        case .places:
+        case .places,.supershes:
             if indexPath.row == (viewModel.pumkinsData.endIndex) {
                 let cell = tableView.dequeueCell(with: LoaderCell.self)
                 return cell
             }else {
                 let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
                 cell.buttonTapped = { [weak self] (btn) in
-                    guard let `self` = self else { return }
-                    if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
-                        self.viewModel.pumkinsData[indexPath.item].isSelected = false
-                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-                    }else{
-                        self.viewModel.pumkinsData[indexPath.item].isSelected = true
-                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                }
-                cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
-                return cell
-            }
-        case .supershes:
-            if indexPath.row == (viewModel.pumkinsData.endIndex) {
-                let cell = tableView.dequeueCell(with: LoaderCell.self)
-                return cell
-            }else{
-                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-                cell.buttonTapped = { [weak self] (btn)  in
                     guard let `self` = self else { return }
                     if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
                         self.viewModel.pumkinsData[indexPath.item].isSelected = false
@@ -212,10 +217,36 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         case .categories:
-            let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
-            cell.isLastRow = ((animals[indexPath.section].gallery.count - 1) == indexPath.row)
-            cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
-            return cell
+            if (animals[indexPath.section].gallery.count < maxCountForViewMore+1){
+                if ((animals[indexPath.section].gallery.count - 1) == indexPath.row){
+                    let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    return cell
+                }else{
+                    let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    return cell
+                }
+            }else{
+                if ((maxCountForViewMore-1) == indexPath.row) && !viewMoreSelected{
+                    let cell = tableView.dequeueCell(with: ViewMoreTableViewCell.self, indexPath: indexPath)
+                    cell.buttonTapped = { [weak self] (btn) in
+                        guard let `self` = self else { return }
+                        self.viewMoreSelected = true
+                        self.dataTableView.reloadSections([indexPath.section], with: .automatic)
+                    }
+                    return cell
+                }else if ((animals[indexPath.section].gallery.count - 1) == indexPath.row) && viewMoreSelected{
+                    let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    return cell
+                }else{
+                    let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    return cell
+                }
+            }
+           
         }
     }
     
@@ -240,23 +271,33 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenUsingFor != .categories ? 85 : 35.0
+        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenUsingFor != .categories ? 85 : 35.0
+        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesSectionView") as? CategoriesSectionView {
-            headerView.isRowShow    = !self.hiddenSections.contains(section)
-            headerView.buttonTapped = { [weak self] (btn) in
-                guard let `self` = self else { return }
-                self.hideSection(sender: btn,section: section)
+        if screenUsingFor == .categories {
+            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesSectionView") as? CategoriesSectionView {
+                headerView.isRowShow    = !self.hiddenSections.contains(section)
+                headerView.buttonTapped = { [weak self] (btn) in
+                    guard let `self` = self else { return }
+                    self.viewMoreSelected = !(animals[section].gallery.count > 5)
+                    //                    UIView.animate(withDuration: 1.0) {
+                    //                        headerView.arrowIcon.rotate(clockwise: !self.hiddenSections.contains(section))
+                    //                    }completion: { value in
+                    self.hideSection(sender: btn,section: section)
+                    //                    }
+                }
+                headerView.titleLbl.text = animals[section].name
+                return headerView
             }
-            headerView.titleLbl.text = animals[section].name
-            return headerView
+            return UIView()
+        }else{
+            return UIView()
         }
-        return UIView()
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
@@ -269,7 +310,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 54.0
+        return  (screenUsingFor == .categories)  ? 54.0 : 0.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -303,12 +344,26 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func hideSection(sender: UIButton,section: Int) {
+//        if self.hiddenSections.contains(section) {
+//            self.hiddenSections.remove(section)
+//            self.dataTableView.reloadSections([section], with: .automatic)
+//        } else {
+//            self.hiddenSections.insert(section)
+//            self.dataTableView.reloadSections([section], with: .automatic)
+//        }
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
             self.dataTableView.reloadSections([section], with: .automatic)
         } else {
-            self.hiddenSections.insert(section)
-            self.dataTableView.reloadSections([section], with: .automatic)
+//            UIView.animate(withDuration: 0.0,delay: 0.0, animations: {
+                let sectionn = self.hiddenSections.first ?? 0
+                self.hiddenSections.remove(sectionn)
+                self.dataTableView.reloadSections([sectionn], with: .automatic)
+//            }) { value in
+                self.hiddenSections.insert(section)
+                self.dataTableView.reloadSections([section], with: .automatic)
+                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .none, animated: true)
+//            }
         }
     }
 }

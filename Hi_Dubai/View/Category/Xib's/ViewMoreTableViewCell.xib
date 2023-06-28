@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="saf-Py-mrQ" customClass="ViewMoreTableViewCell" customModule="Hi_Dubai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="saf-Py-mrQ" id="Fnn-W5-fwR">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mm-QD-cQK">
+                        <rect key="frame" x="10" y="0.0" width="300" height="62"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOM-FC-4cU">
+                                <rect key="frame" x="12" y="22" width="74" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" systemColor="systemTealColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zOM-FC-4cU" firstAttribute="top" secondItem="8mm-QD-cQK" secondAttribute="top" constant="22" id="JlS-T1-j5O"/>
+                            <constraint firstItem="zOM-FC-4cU" firstAttribute="leading" secondItem="8mm-QD-cQK" secondAttribute="leading" constant="12" id="RqH-cd-Okj"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zOM-FC-4cU" secondAttribute="trailing" constant="10" id="WGF-FZ-JWt"/>
+                            <constraint firstAttribute="bottom" secondItem="zOM-FC-4cU" secondAttribute="bottom" constant="22" id="fGk-YC-tSy"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sue-dc-Iqy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                        <connections>
+                            <action selector="viewMoreTapped:" destination="saf-Py-mrQ" eventType="touchUpInside" id="amG-Mb-61f"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="8mm-QD-cQK" secondAttribute="trailing" constant="10" id="2oQ-zt-dMQ"/>
+                    <constraint firstAttribute="bottom" secondItem="sue-dc-Iqy" secondAttribute="bottom" id="G4z-2X-SbI"/>
+                    <constraint firstAttribute="bottom" secondItem="8mm-QD-cQK" secondAttribute="bottom" id="OkV-RZ-IQ1"/>
+                    <constraint firstAttribute="trailing" secondItem="sue-dc-Iqy" secondAttribute="trailing" id="ahS-QD-3GC"/>
+                    <constraint firstItem="8mm-QD-cQK" firstAttribute="leading" secondItem="Fnn-W5-fwR" secondAttribute="leading" constant="10" id="fUz-7H-RXr"/>
+                    <constraint firstItem="sue-dc-Iqy" firstAttribute="top" secondItem="Fnn-W5-fwR" secondAttribute="top" id="m4w-wa-cNu"/>
+                    <constraint firstItem="sue-dc-Iqy" firstAttribute="leading" secondItem="Fnn-W5-fwR" secondAttribute="leading" id="oy3-MO-Y5I"/>
+                    <constraint firstItem="8mm-QD-cQK" firstAttribute="top" secondItem="Fnn-W5-fwR" secondAttribute="top" id="tyQ-Ec-c01"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="uAA-5i-QrL"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="outerView" destination="8mm-QD-cQK" id="aQG-W4-fcb"/>
+                <outlet property="titleLbl" destination="zOM-FC-4cU" id="XCQ-MH-PVL"/>
+            </connections>
+            <point key="canvasLocation" x="41" y="20"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

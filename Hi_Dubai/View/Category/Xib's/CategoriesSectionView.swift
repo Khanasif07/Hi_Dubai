@@ -20,7 +20,7 @@ class CategoriesSectionView: UITableViewHeaderFooterView {
     var isRowShow: Bool = false{
         didSet{
             lineView.isHidden = isRowShow
-            isRowShow ? outerView.roundCorners(.allCorners, radius: 5.0) : outerView.roundCorners([.topLeft,.topRight], radius: 5.0)
+            arrowIcon.setImage(isRowShow ? UIImage(named: "icons8-arrow_up-35")! : UIImage(named: "icons8-arrow-35")! , for: .normal)
         }
     }
     

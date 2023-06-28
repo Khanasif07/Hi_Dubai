@@ -202,7 +202,7 @@ class SuperYouHomeVC: BaseVC {
             self.placesVC = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
             placesVC?.placesView?.isScrollEnabled = true
             placesVC?.screenUsingFor = .supershes
-            removeChildrenVC()
+//            removeChildrenVC()
             placesVC?.view.frame = CGRect(x: 0.0, y: statusBarHeight + navContainerView .frame.height, width: screen_width, height: screen_height -  (statusBarHeight + navContainerView.frame.height))
             self.view.addSubview(placesVC!.view)
             addChild(placesVC!)

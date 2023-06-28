@@ -24,7 +24,7 @@ struct ExternalWeblinkView: View {
         Group {
           Image(systemName: "arrow.up.right.square")
           
-          Link(animal.name, destination: (URL(string: animal.link) ?? URL(string: "https://wikipedia.org"))!)
+          Link(animal.name, destination: (URL(string: animal.link ?? "") ?? URL(string: "https://wikipedia.org"))!)
         }
         .foregroundColor(.accentColor)
       } //: HSTACK
