@@ -39,6 +39,26 @@ class NewsListViewModel{
         return  hideLoader ? false : nextPageAvailable
     }
     
+    //
+    var animals: [Animal] = Bundle.main.decode("animal.json")
+    var searchValue: String = ""{
+        didSet{
+            filteredAnimals = searchValue.isEmpty ? animals : animals.filter({(animal: Animal) -> Bool in
+                return animal.gallery.filter ({ (animal: String) -> Bool in
+                    animal.range(of: searchValue, options: .caseInsensitive) != nil
+                }).count > 0
+            }).map({ (animall:Animal) in
+                let filtered =  animall.gallery.filter { (animalll:String)->Bool in
+                    animalll.range(of: self.searchValue, options: .caseInsensitive) != nil
+                }
+                var anml = animall
+                anml.gallery = filtered
+                return anml
+            })
+        }
+    }
+    var filteredAnimals: [Animal] = []
+   
     //will implement viewmodel by implementing depedency injection like SwiftUIInUICollectionViewAndUITableView-main project
     //
     weak var delegate: NewsListViewModelDelegate?
@@ -146,7 +166,7 @@ class NewsListViewModel{
             switch results{
             case .success(let result):
                 self.moviesDetail = result
-                print("moviesDetail:-\(self.moviesDetail)")
+                print("moviesDetail:-\(String(describing: self.moviesDetail))")
                 self.delegate?.movieDetailSuccess()
             case .failure(let error):
                 self.error = error

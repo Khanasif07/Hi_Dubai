@@ -14,8 +14,6 @@ class CategoryHeaderView: UIView {
     //MARK:- IBOUTLETS
     //==================
     @IBOutlet weak var searchTxtFld: NewSearchTextField!
-    //    @IBOutlet weak var searchTxtFld: UIView!
-//    @IBOutlet weak var scrollView: UIScrollView!
     
 
     override func setNeedsLayout() {

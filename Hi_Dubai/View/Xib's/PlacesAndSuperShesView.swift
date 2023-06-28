@@ -32,7 +32,6 @@ class PlacesAndSuperShesView: UIView {
     var maxCountForViewMore: Int = 6
     var viewMoreSelected: Bool = false
     var hiddenSections = Set<Int>()
-    var animals: [Animal] = Bundle.main.decode("animal.json")
     var headerView = CategoryHeaderView.instanciateFromNib()
     var lastContentOffset: CGFloat = 0.0
     internal var screenUsingFor: CurrentlyUsingFor = .categories{
@@ -77,7 +76,8 @@ class PlacesAndSuperShesView: UIView {
     }
     
     private func headerSetup(){
-        headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(78.0))
+        headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(85.0))
+        headerView.searchTxtFld.delegate = self
         dataTableView.tableHeaderView = headerView
     }
     
@@ -123,6 +123,7 @@ class PlacesAndSuperShesView: UIView {
         if screenUsingFor != .categories {
             self.footerSetup()
             self.viewModel.delegate = self
+            self.viewModel.searchValue = ""
         }else{
             self.headerSetup()
             if #available(iOS 15.0, *) {
@@ -155,7 +156,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
         case .searchMovie:
             return 1
         default:
-            return animals.count
+            return self.viewModel.filteredAnimals.count
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,10 +169,10 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             if !self.hiddenSections.contains(section) {
                 return 0
             }
-            if (animals[section].gallery.count > maxCountForViewMore) && !viewMoreSelected{
+            if (self.viewModel.filteredAnimals[section].gallery.count > maxCountForViewMore) && !viewMoreSelected{
                 return maxCountForViewMore
             }else{
-                return animals[section].gallery.count
+                return self.viewModel.filteredAnimals[section].gallery.count
             }
         }
     }
@@ -217,14 +218,14 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         case .categories:
-            if (animals[indexPath.section].gallery.count < maxCountForViewMore+1){
-                if ((animals[indexPath.section].gallery.count - 1) == indexPath.row){
+            if (self.viewModel.filteredAnimals[indexPath.section].gallery.count < maxCountForViewMore+1){
+                if ((self.viewModel.filteredAnimals[indexPath.section].gallery.count - 1) == indexPath.row){
                     let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
                     return cell
                 }else{
                     let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
                     return cell
                 }
             }else{
@@ -236,13 +237,13 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                         self.dataTableView.reloadSections([indexPath.section], with: .automatic)
                     }
                     return cell
-                }else if ((animals[indexPath.section].gallery.count - 1) == indexPath.row) && viewMoreSelected{
+                }else if ((self.viewModel.filteredAnimals[indexPath.section].gallery.count - 1) == indexPath.row) && viewMoreSelected{
                     let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
                     return cell
                 }else{
                     let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = animals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
                     return cell
                 }
             }
@@ -284,14 +285,14 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 headerView.isRowShow    = !self.hiddenSections.contains(section)
                 headerView.buttonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
-                    self.viewMoreSelected = !(animals[section].gallery.count > 5)
+                    self.viewMoreSelected = !(self.viewModel.filteredAnimals[section].gallery.count > 5)
                     //                    UIView.animate(withDuration: 1.0) {
                     //                        headerView.arrowIcon.rotate(clockwise: !self.hiddenSections.contains(section))
                     //                    }completion: { value in
                     self.hideSection(sender: btn,section: section)
                     //                    }
                 }
-                headerView.titleLbl.text = animals[section].name
+                headerView.titleLbl.text = self.viewModel.filteredAnimals[section].name
                 return headerView
             }
             return UIView()
@@ -444,4 +445,43 @@ extension PlacesAndSuperShesView: NewsListViewModelDelegate{
             self.dataTableView.reloadData()
         }
     }
+}
+
+
+
+// MARK: - WalifSearchTextFieldDelegate
+extension PlacesAndSuperShesView: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+        closeSearchingArea(false)
+    }
+
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = searchValue
+        self.dataTableView.reloadData()
+    }
+
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        self.searchValue = sender.text ?? ""
+        self.viewModel.searchValue = searchValue
+        self.dataTableView.reloadData()
+
+    }
+
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = ""
+        self.dataTableView.reloadData()
+    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+            self.headerView.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.layoutIfNeeded()
+        } completion: { value in
+            self.headerView.searchTxtFld.cancelBtn.isHidden = isTrue
+            self.layoutIfNeeded()
+        }
+    }
+
 }
