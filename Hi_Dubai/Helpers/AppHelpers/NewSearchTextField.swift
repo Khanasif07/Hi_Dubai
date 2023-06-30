@@ -77,7 +77,12 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     
     //MARK: - Function
     func setPlaceholder(placeholder:String! = " Search...") {
-        mainTF.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.75),
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14,weight: .medium) // Note the !
+        ]
+
+        mainTF.attributedPlaceholder = NSAttributedString(string: placeholder, attributes:attributes)
     }
     
     func setPrefixOfTextField(value:String!) {

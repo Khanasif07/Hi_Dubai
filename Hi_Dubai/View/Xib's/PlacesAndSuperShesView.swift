@@ -30,16 +30,18 @@ class PlacesAndSuperShesView: UIView {
     //MARK:- Variables
     //MARK:===========
     var maxCountForViewMore: Int = 6
+    var lastContentOffset: CGFloat = 0.0
     var viewMoreSelected: Bool = false
     var hiddenSections = Set<Int>()
     var headerView = CategoryHeaderView.instanciateFromNib()
-    var lastContentOffset: CGFloat = 0.0
+    
     internal var screenUsingFor: CurrentlyUsingFor = .categories{
         willSet(newValue){
             self.screenUsingFor = newValue
         }
         didSet{
             configUI()
+            self.viewModel.searchValue = ""
         }
     }
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
@@ -286,12 +288,12 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 headerView.buttonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     self.viewMoreSelected = !(self.viewModel.filteredAnimals[section].gallery.count > 5)
-                    //                    UIView.animate(withDuration: 1.0) {
+//                    UIView.animate(withDuration: 0.4) {
                     //                        headerView.arrowIcon.rotate(clockwise: !self.hiddenSections.contains(section))
                     //                    }completion: { value in
                     self.hideSection(sender: btn,section: section)
-                    //                    }
-                }
+                                        }
+//                }
                 headerView.titleLbl.text = self.viewModel.filteredAnimals[section].name
                 return headerView
             }
@@ -345,26 +347,29 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func hideSection(sender: UIButton,section: Int) {
-//        if self.hiddenSections.contains(section) {
-//            self.hiddenSections.remove(section)
-//            self.dataTableView.reloadSections([section], with: .automatic)
-//        } else {
-//            self.hiddenSections.insert(section)
-//            self.dataTableView.reloadSections([section], with: .automatic)
-//        }
+        //        if self.hiddenSections.contains(section) {
+        //            self.hiddenSections.remove(section)
+        //            self.dataTableView.reloadSections([section], with: .automatic)
+        //        } else {
+        //            self.hiddenSections.insert(section)
+        //            self.dataTableView.reloadSections([section], with: .automatic)
+        //        }
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
             self.dataTableView.reloadSections([section], with: .automatic)
         } else {
-//            UIView.animate(withDuration: 0.0,delay: 0.0, animations: {
-                let sectionn = self.hiddenSections.first ?? 0
-                self.hiddenSections.remove(sectionn)
-                self.dataTableView.reloadSections([sectionn], with: .automatic)
-//            }) { value in
-                self.hiddenSections.insert(section)
-                self.dataTableView.reloadSections([section], with: .automatic)
-                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .none, animated: true)
-//            }
+            //            UIView.animate(withDuration: 0.0,delay: 0.0, animations: {
+            if let sectionn = self.hiddenSections.first{
+                if sectionn < self.viewModel.filteredAnimals.count{
+                    self.hiddenSections.remove(sectionn)
+                    self.dataTableView.reloadSections([sectionn], with: .automatic)
+                }
+            }
+            //            }) { value in
+            self.hiddenSections.insert(section)
+            self.dataTableView.reloadSections([section], with: .automatic)
+            //                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .none, animated: true)
+            //            }
         }
     }
 }
