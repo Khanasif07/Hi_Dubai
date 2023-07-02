@@ -77,15 +77,19 @@ class PlacesAndSuperShesView: UIView {
         dataTableView.tableFooterView = footerView
     }
     
-    private func headerSetup(){
-        headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(85.0))
-        headerView.searchTxtFld.delegate = self
-        dataTableView.tableHeaderView = headerView
+    private func headerSetup(showSearchCount: Bool = false){
+        if showSearchCount{
+            headerView.searchResultCountLbl.isHidden = false
+            let resultCount = self.viewModel.filteredAnimals.reduce(0) { $0 + $1.gallery.count }
+            headerView.searchResultCountLbl.text = "\(resultCount) results found"
+            dataTableView.tableHeaderView?.height = 109.0
+        }else{
+            headerView.searchResultCountLbl.isHidden = true
+            headerView.searchTxtFld.delegate = self
+            dataTableView.tableHeaderView = headerView
+            dataTableView.tableHeaderView?.height = 85.0
+        }
     }
-    
-    
-    
-    
     //MARK:- LifeCycle
     //MARK:===========
     //MARK:- LifeCycle -
@@ -288,12 +292,8 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 headerView.buttonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     self.viewMoreSelected = !(self.viewModel.filteredAnimals[section].gallery.count > 5)
-//                    UIView.animate(withDuration: 0.4) {
-                    //                        headerView.arrowIcon.rotate(clockwise: !self.hiddenSections.contains(section))
-                    //                    }completion: { value in
                     self.hideSection(sender: btn,section: section)
                                         }
-//                }
                 headerView.titleLbl.text = self.viewModel.filteredAnimals[section].name
                 return headerView
             }
@@ -469,6 +469,7 @@ extension PlacesAndSuperShesView: WalifSearchTextFieldDelegate{
     func walifSearchTextFieldChanged(sender: UITextField!) {
         self.searchValue = sender.text ?? ""
         self.viewModel.searchValue = searchValue
+        self.headerSetup(showSearchCount: true)
         self.dataTableView.reloadData()
 
     }
@@ -476,6 +477,7 @@ extension PlacesAndSuperShesView: WalifSearchTextFieldDelegate{
     func walifSearchTextFieldIconPressed(sender: UITextField!) {
         closeSearchingArea(true)
         self.viewModel.searchValue = ""
+        self.headerSetup()
         self.dataTableView.reloadData()
     }
     

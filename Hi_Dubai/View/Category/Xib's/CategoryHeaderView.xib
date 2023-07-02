@@ -18,29 +18,35 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7.5" translatesAutoresizingMaskIntoConstraints="NO" id="4TX-Se-Qw1">
-                            <rect key="frame" x="10" y="15" width="373" height="68.333333333333329"/>
+                            <rect key="frame" x="10" y="15" width="373" height="67.666666666666671"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore 100+ categories to find the perfect search results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsx-nH-Idh">
-                                    <rect key="frame" x="0.0" y="0.0" width="373" height="15.666666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="15"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQv-06-cA3" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="23.333333333333336" width="373" height="45.000000000000007"/>
+                                    <rect key="frame" x="0.0" y="22.666666666666664" width="373" height="44.999999999999993"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="SW8-ep-hv4"/>
                                     </constraints>
                                 </view>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="4 results found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihc-dL-42z">
+                                    <rect key="frame" x="0.0" y="67.666666666666671" width="373" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="4TX-Se-Qw1" firstAttribute="leading" secondItem="kVJ-VA-dJw" secondAttribute="leading" constant="10" id="58n-A0-lMU"/>
+                        <constraint firstItem="4TX-Se-Qw1" firstAttribute="top" secondItem="kVJ-VA-dJw" secondAttribute="top" constant="15" id="Eo2-gv-kvC"/>
                         <constraint firstAttribute="trailing" secondItem="4TX-Se-Qw1" secondAttribute="trailing" constant="10" id="QWB-21-DN8"/>
-                        <constraint firstAttribute="bottom" secondItem="4TX-Se-Qw1" secondAttribute="bottom" constant="1.6699999999999999" id="nzy-B3-UKr"/>
-                        <constraint firstItem="4TX-Se-Qw1" firstAttribute="top" secondItem="kVJ-VA-dJw" secondAttribute="top" constant="15" id="sLg-pp-X9X"/>
+                        <constraint firstAttribute="bottom" secondItem="4TX-Se-Qw1" secondAttribute="bottom" constant="2.3300000000000001" id="Su9-On-UJu"/>
                     </constraints>
                 </view>
             </subviews>
@@ -54,6 +60,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="searchResultCountLbl" destination="Ihc-dL-42z" id="dOd-4C-zBk"/>
                 <outlet property="searchTxtFld" destination="CQv-06-cA3" id="rL1-KG-VVT"/>
             </connections>
             <point key="canvasLocation" x="81.679389312977094" y="25"/>

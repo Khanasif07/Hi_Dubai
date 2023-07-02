@@ -13,6 +13,7 @@ class CategoryHeaderView: UIView {
   
     //MARK:- IBOUTLETS
     //==================
+    @IBOutlet weak var searchResultCountLbl: UILabel!
     @IBOutlet weak var searchTxtFld: NewSearchTextField!
     
 
@@ -39,7 +40,7 @@ class CategoryHeaderView: UIView {
     //=======================
     
     private func initialSetUp() {
-//        searchTxtFld.delegate = self
+        searchResultCountLbl.isHidden = true
         searchTxtFld.roundedView.backgroundColor = .black
         searchTxtFld.setPlaceholder(placeholder: "Search category...")
     }
