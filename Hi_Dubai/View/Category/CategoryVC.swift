@@ -15,8 +15,8 @@ protocol HeplerDelegate {
 
 class CategoryVC: UIViewController {
 
-   
-    @IBOutlet weak var dataTableView: UITableView!
+    var hiddenSections = Set<Int>()
+    @IBOutlet weak var dataTableView: CustomTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
@@ -58,6 +58,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell(with: CategoryTitleCell.self)
         cell.configure(withModel: sample[indexPath.row])
         cell.helperDelegate = self
+        cell.parentVC = self
         return cell
     }
     
@@ -79,8 +80,10 @@ extension CategoryVC: HeplerDelegate {
 
     }
 }
-
-extension UITableView {
+class CustomTableView:UITableView{
+    
+}
+extension CustomTableView{
     public override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return contentSize

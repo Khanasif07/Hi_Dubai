@@ -12,7 +12,8 @@ class CategoryTitleCell: UITableViewCell {
     var helperDelegate: HeplerDelegate?
     var model: Goal?
     var buttonTapped: ((UIButton) -> Void)?
-    var hiddenSections = Set<Int>()
+    var parentVC: CategoryVC?
+   
 
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var internalTableView: UITableView!
@@ -53,7 +54,7 @@ class CategoryTitleCell: UITableViewCell {
     @IBAction func sectionTapped(_ sender: UIButton) {
         let selectedIndex = (parentViewController as? CategoryVC)?.dataTableView.indexPath(forItem: sender)?.row ?? 0
         hideSection(sender: sender, section: selectedIndex)
-        self.internalTableView.isHidden = !hiddenSections.contains(selectedIndex)
+        self.internalTableView.isHidden = !(parentVC?.hiddenSections.contains(selectedIndex) ?? false)
         UIView.transition(with: containerStackView,
                           duration: 0.3,
                           options: .curveEaseInOut) {
@@ -64,13 +65,13 @@ class CategoryTitleCell: UITableViewCell {
     }
     
     private func hideSection(sender: UIButton,section: Int) {
-        if self.hiddenSections.contains(section) {
-            self.hiddenSections.remove(section)
+        if self.parentVC?.hiddenSections.contains(section) ?? false {
+            self.parentVC?.hiddenSections.remove(section)
         } else {
-            if let sectionn = self.hiddenSections.first{
-                self.hiddenSections.remove(sectionn)
+            if let sectionn = self.parentVC?.hiddenSections.first{
+                self.parentVC?.hiddenSections.remove(sectionn)
             }
-            self.hiddenSections.insert(section)
+            self.parentVC?.hiddenSections.insert(section)
         }
     }
 }
