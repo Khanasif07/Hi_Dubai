@@ -45,7 +45,10 @@ let sample = [
     Goal(title: "Learn Node.JS",
          Actions: [
             Action(title: "Learn JavaScript"),
-            Action(title: "Learn Node")
+            Action(title: "Learn Node"),
+            Action(title: "Learn JavaScript"),
+            Action(title: "Learn Node"),
+            Action(title: "Learn JavaScript")
          ]),
     Goal(title: "Learn Node.JS",
                  Actions: [
@@ -55,6 +58,10 @@ let sample = [
     Goal(title: "Learn Node.JS",
          Actions: [
             Action(title: "Learn JavaScript"),
+            Action(title: "Learn Node"),
+            Action(title: "Learn JavaScript"),
+            Action(title: "Learn Node"),
+            Action(title: "Learn JavaScript"),
             Action(title: "Learn Node")
          ]),
     Goal(title: "Learn Node.JS",
@@ -64,6 +71,8 @@ let sample = [
          ]),
     Goal(title: "Learn Node.JS",
          Actions: [
+            Action(title: "Learn JavaScript"),
+            Action(title: "Learn Node"),
             Action(title: "Learn JavaScript"),
             Action(title: "Learn Node")
          ])

@@ -6,13 +6,14 @@
 //
 
 import UIKit
-
+var maxCountForViewMore: Int = 6
+var viewMoreSelected: Bool = false
 class CategoryTitleCell: UITableViewCell {
 
     var helperDelegate: HeplerDelegate?
     var model: Goal?
     var buttonTapped: ((UIButton) -> Void)?
-//    var parentVC: CategoryVC?
+    var selectedIndexPath: IndexPath?
    
 
     @IBOutlet weak var containerStackView: UIStackView!
@@ -29,6 +30,7 @@ class CategoryTitleCell: UITableViewCell {
         internalTableView.delegate = self
         internalTableView.dataSource = self
         internalTableView.registerCell(with: SubCategoryTableViewCell.self)
+        internalTableView.registerCell(with: ViewMoreCell.self)
         internalTableView.estimatedRowHeight = 36
         internalTableView.rowHeight = UITableView.automaticDimension
         internalTableView.allowsSelection = false
@@ -55,28 +57,7 @@ class CategoryTitleCell: UITableViewCell {
         if let handle = buttonTapped{
             handle(sender)
         }
-        //        let selectedIndex = (parentViewController as? CategoryVC)?.dataTableView.indexPath(forItem: sender)?.row ?? 0
-        //        hideSection(sender: sender, section: selectedIndex)
-        //        self.internalTableView.isHidden = !(parentVC?.hiddenSections.contains(selectedIndex) ?? false)
-        //        UIView.transition(with: containerStackView,
-        //                          duration: 0.3,
-        //                          options: .curveEaseInOut) {
-        //            self.containerStackView.setNeedsLayout()
-        //            self.helperDelegate?.heightChanged()
-        //        }
-        //        self.isRowShow = !self.internalTableView.isHidden
     }
-    
-//    private func hideSection(sender: UIButton,section: Int) {
-//        if self.parentVC?.hiddenSections.contains(section) ?? false {
-//            self.parentVC?.hiddenSections.remove(section)
-//        } else {
-//            if let sectionn = self.parentVC?.hiddenSections.first{
-//                self.parentVC?.hiddenSections.remove(sectionn)
-//            }
-//            self.parentVC?.hiddenSections.insert(section)
-//        }
-//    }
 }
 
 
@@ -91,14 +72,36 @@ extension CategoryTitleCell {
 //MARK: Tableview delegates
 extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model?.Actions.count ?? 0
+        if ((model?.Actions.count ?? 0) > maxCountForViewMore) && !viewMoreSelected{
+            return maxCountForViewMore
+        }else{
+            return model?.Actions.count ?? 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: SubCategoryTableViewCell.self)
-        let action = model?.Actions[indexPath.row] ?? Action(title: "")
-        cell.configure(withModel: action)
-        return cell
+        if ((maxCountForViewMore-1) == indexPath.row) && !viewMoreSelected{
+            let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
+            cell.buttonTapped = { [weak self] (btn) in
+                guard let `self` = self else { return }
+                viewMoreSelected = true
+                UIView.transition(with: containerStackView,
+                                  duration: 0.3,
+                                  options: .curveEaseInOut) {
+                    self.containerStackView.setNeedsLayout()
+                    self.internalTableView.reloadTableView()
+                    (self.parentViewController as? CategoryVC)?.dataTableView.performBatchUpdates({
+                        (self.parentViewController as? CategoryVC)?.dataTableView.reloadRows(at: [IndexPath(row: self.selectedIndexPath?.row ?? 0, section: self.selectedIndexPath?.section ?? 0)], with: .automatic)
+                    })
+                }
+            }
+            return cell
+        }else{
+            let cell = tableView.dequeueCell(with: SubCategoryTableViewCell.self)
+            let action = model?.Actions[indexPath.row] ?? Action(title: "")
+            cell.configure(withModel: action)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

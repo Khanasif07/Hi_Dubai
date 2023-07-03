@@ -56,13 +56,15 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: CategoryTitleCell.self)
+        cell.selectedIndexPath = indexPath
         cell.configure(withModel: sample[indexPath.row])
         cell.internalTableView.isHidden = !(hiddenSections.contains(indexPath.row))
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
+            viewMoreSelected = false
             cell.internalTableView.isHidden = !cell.internalTableView.isHidden
             cell.isRowShow = !cell.internalTableView.isHidden
-            hideSection(section: indexPath.row)
+            hideSection(section: indexPath.row,cell: cell)
             UIView.transition(with: cell.containerStackView,
                               duration: 0.3,
                               options: .curveEaseInOut) {
@@ -77,18 +79,17 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
-    private func hideSection(section: Int) {
+    private func hideSection(section: Int,cell: CategoryTitleCell) {
         if self.hiddenSections.contains(section) {
             self.hiddenSections.remove(section)
         } else {
             if let sectionn = self.hiddenSections.first{
-//                dataTableView.beginUpdates()
                 self.hiddenSections.remove(sectionn)
-//                dataTableView.performBatchUpdates(nil)
+                if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
+                    cells.internalTableView.isHidden = true
+                }
             }
-//            dataTableView.beginUpdates()
             self.hiddenSections.insert(section)
-//            dataTableView.performBatchUpdates(nil)
         }
     }
 }
