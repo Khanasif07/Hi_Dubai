@@ -12,7 +12,7 @@ class CategoryTitleCell: UITableViewCell {
     var helperDelegate: HeplerDelegate?
     var model: Goal?
     var buttonTapped: ((UIButton) -> Void)?
-    var parentVC: CategoryVC?
+//    var parentVC: CategoryVC?
    
 
     @IBOutlet weak var containerStackView: UIStackView!
@@ -52,28 +52,31 @@ class CategoryTitleCell: UITableViewCell {
     
     
     @IBAction func sectionTapped(_ sender: UIButton) {
-        let selectedIndex = (parentViewController as? CategoryVC)?.dataTableView.indexPath(forItem: sender)?.row ?? 0
-        hideSection(sender: sender, section: selectedIndex)
-        self.internalTableView.isHidden = !(parentVC?.hiddenSections.contains(selectedIndex) ?? false)
-        UIView.transition(with: containerStackView,
-                          duration: 0.3,
-                          options: .curveEaseInOut) {
-            self.containerStackView.setNeedsLayout()
-            self.helperDelegate?.heightChanged()
+        if let handle = buttonTapped{
+            handle(sender)
         }
-        self.isRowShow = !self.internalTableView.isHidden
+        //        let selectedIndex = (parentViewController as? CategoryVC)?.dataTableView.indexPath(forItem: sender)?.row ?? 0
+        //        hideSection(sender: sender, section: selectedIndex)
+        //        self.internalTableView.isHidden = !(parentVC?.hiddenSections.contains(selectedIndex) ?? false)
+        //        UIView.transition(with: containerStackView,
+        //                          duration: 0.3,
+        //                          options: .curveEaseInOut) {
+        //            self.containerStackView.setNeedsLayout()
+        //            self.helperDelegate?.heightChanged()
+        //        }
+        //        self.isRowShow = !self.internalTableView.isHidden
     }
     
-    private func hideSection(sender: UIButton,section: Int) {
-        if self.parentVC?.hiddenSections.contains(section) ?? false {
-            self.parentVC?.hiddenSections.remove(section)
-        } else {
-            if let sectionn = self.parentVC?.hiddenSections.first{
-                self.parentVC?.hiddenSections.remove(sectionn)
-            }
-            self.parentVC?.hiddenSections.insert(section)
-        }
-    }
+//    private func hideSection(sender: UIButton,section: Int) {
+//        if self.parentVC?.hiddenSections.contains(section) ?? false {
+//            self.parentVC?.hiddenSections.remove(section)
+//        } else {
+//            if let sectionn = self.parentVC?.hiddenSections.first{
+//                self.parentVC?.hiddenSections.remove(sectionn)
+//            }
+//            self.parentVC?.hiddenSections.insert(section)
+//        }
+//    }
 }
 
 

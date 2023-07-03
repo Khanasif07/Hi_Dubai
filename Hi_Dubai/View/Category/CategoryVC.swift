@@ -57,13 +57,39 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: CategoryTitleCell.self)
         cell.configure(withModel: sample[indexPath.row])
-        cell.helperDelegate = self
-        cell.parentVC = self
+        cell.internalTableView.isHidden = !(hiddenSections.contains(indexPath.row))
+        cell.buttonTapped = { [weak self] (btn) in
+            guard let `self` = self else { return }
+            cell.internalTableView.isHidden = !cell.internalTableView.isHidden
+            cell.isRowShow = !cell.internalTableView.isHidden
+            hideSection(section: indexPath.row)
+            UIView.transition(with: cell.containerStackView,
+                              duration: 0.3,
+                              options: .curveEaseInOut) {
+                cell.containerStackView.setNeedsLayout()
+                self.dataTableView.performBatchUpdates(nil)
+            }
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    private func hideSection(section: Int) {
+        if self.hiddenSections.contains(section) {
+            self.hiddenSections.remove(section)
+        } else {
+            if let sectionn = self.hiddenSections.first{
+//                dataTableView.beginUpdates()
+                self.hiddenSections.remove(sectionn)
+//                dataTableView.performBatchUpdates(nil)
+            }
+//            dataTableView.beginUpdates()
+            self.hiddenSections.insert(section)
+//            dataTableView.performBatchUpdates(nil)
+        }
     }
 }
 
@@ -92,15 +118,4 @@ class CustomTableView:UITableView{
         }
     }
 }
-//extension CustomTableView{
-//    public override var intrinsicContentSize: CGSize {
-//        layoutIfNeeded()
-//        return contentSize
-//    }
-//
-//    public override var contentSize: CGSize {
-//        didSet {
-//            invalidateIntrinsicContentSize()
-//        }
-//    }
-//}
+
