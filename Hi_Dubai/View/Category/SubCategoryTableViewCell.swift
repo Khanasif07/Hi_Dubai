@@ -1,13 +1,14 @@
 //
-//  TitleTableViewCell.swift
+//  SubCategoryTableViewCell.swift
 //  Hi_Dubai
 //
-//  Created by Asif Khan on 26/06/2023.
+//  Created by Asif Khan on 03/07/2023.
 //
+
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell {
+class SubCategoryTableViewCell: UITableViewCell {
     
     var model: Action?
     @IBOutlet weak var titleLbl: UILabel!

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +18,20 @@
                     <rect key="frame" x="10" y="0.0" width="430" height="54"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animals Pets and Plants" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SYR-h0-Zwn">
-                            <rect key="frame" x="54" y="17" width="322" height="20.333333333333329"/>
+                            <rect key="frame" x="52" y="17" width="326" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2M-w5-WUz">
+                        <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2M-w5-WUz">
                             <rect key="frame" x="7.6666666666666572" y="53.333333333333336" width="415" height="0.6666666666666643"/>
-                            <color key="backgroundColor" name="whitelightBlack"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.75" id="5tG-Ce-kVP"/>
                             </constraints>
                         </view>
                         <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUR-Gr-7CK">
-                            <rect key="frame" x="382" y="12" width="30" height="30"/>
+                            <rect key="frame" x="390" y="12" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="8ib-PL-MY2"/>
                                 <constraint firstAttribute="width" constant="30" id="BMK-tS-a2N"/>
@@ -46,7 +45,7 @@
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bestseller" translatesAutoresizingMaskIntoConstraints="NO" id="2AV-Ca-YMC">
-                            <rect key="frame" x="12" y="12" width="30" height="30"/>
+                            <rect key="frame" x="10" y="12" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="KdL-Vj-pXb"/>
                                 <constraint firstAttribute="height" constant="30" id="bY2-Xc-snl"/>
@@ -58,11 +57,11 @@
                         <constraint firstItem="SYR-h0-Zwn" firstAttribute="leading" secondItem="2AV-Ca-YMC" secondAttribute="trailing" constant="12" id="3hF-Td-s40"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SYR-h0-Zwn" secondAttribute="trailing" constant="15" id="A6Y-dk-ysO"/>
                         <constraint firstItem="SYR-h0-Zwn" firstAttribute="centerY" secondItem="eoA-DI-bWb" secondAttribute="centerY" id="Q1b-fR-4nj"/>
-                        <constraint firstItem="2AV-Ca-YMC" firstAttribute="leading" secondItem="eoA-DI-bWb" secondAttribute="leading" constant="12" id="TWv-C1-qlg"/>
+                        <constraint firstItem="2AV-Ca-YMC" firstAttribute="leading" secondItem="eoA-DI-bWb" secondAttribute="leading" constant="10" id="TWv-C1-qlg"/>
                         <constraint firstItem="N2M-w5-WUz" firstAttribute="leading" secondItem="eoA-DI-bWb" secondAttribute="leading" constant="7.5" id="bIu-LQ-L0Z"/>
                         <constraint firstAttribute="bottom" secondItem="N2M-w5-WUz" secondAttribute="bottom" id="bK8-QH-9Xx"/>
                         <constraint firstItem="2AV-Ca-YMC" firstAttribute="centerY" secondItem="eoA-DI-bWb" secondAttribute="centerY" id="bSt-wD-oBT"/>
-                        <constraint firstAttribute="trailing" secondItem="HUR-Gr-7CK" secondAttribute="trailing" constant="18" id="m9T-o3-nRk"/>
+                        <constraint firstAttribute="trailing" secondItem="HUR-Gr-7CK" secondAttribute="trailing" constant="10" id="m9T-o3-nRk"/>
                         <constraint firstItem="SYR-h0-Zwn" firstAttribute="centerX" secondItem="eoA-DI-bWb" secondAttribute="centerX" id="tWh-jz-8gT"/>
                         <constraint firstItem="HUR-Gr-7CK" firstAttribute="centerY" secondItem="eoA-DI-bWb" secondAttribute="centerY" id="tst-B7-HNj"/>
                         <constraint firstAttribute="trailing" secondItem="N2M-w5-WUz" secondAttribute="trailing" constant="7.5" id="yKc-oK-d2z"/>
@@ -91,8 +90,5 @@
     <resources>
         <image name="ic_bestseller" width="296" height="274"/>
         <image name="icons8-arrow_up-35" width="35" height="35"/>
-        <namedColor name="whitelightBlack">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

@@ -3901,6 +3901,90 @@
             </objects>
             <point key="canvasLocation" x="9387.6923076923067" y="-53.317535545023695"/>
         </scene>
+        <!--CategoryVC-->
+        <scene sceneID="eMW-no-bQ5">
+            <objects>
+                <viewController storyboardIdentifier="CategoryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iu7-Sy-vRP" customClass="CategoryVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g6a-oe-IrN">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_oblique" translatesAutoresizingMaskIntoConstraints="NO" id="ryn-jd-Yzo">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="91"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guj-9U-F3L">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzx-t9-lea" customClass="HeaderScrollingView" customModule="Hi_Dubai" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD9-cW-KXA">
+                                                <rect key="frame" x="158.33333333333334" y="11.666666666666664" width="73.666666666666657" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="hD9-cW-KXA" firstAttribute="centerX" secondItem="fzx-t9-lea" secondAttribute="centerX" id="Cz0-az-Ply"/>
+                                            <constraint firstAttribute="height" constant="44" id="QCZ-KC-rlQ"/>
+                                            <constraint firstItem="hD9-cW-KXA" firstAttribute="centerY" secondItem="fzx-t9-lea" secondAttribute="centerY" id="xQz-2V-3EU"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H6j-6l-8bb">
+                                        <rect key="frame" x="0.0" y="91" width="390" height="753"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zQY-ZE-6rr">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="zQY-ZE-6rr" secondAttribute="bottom" id="9nt-P9-pms"/>
+                                            <constraint firstAttribute="trailing" secondItem="zQY-ZE-6rr" secondAttribute="trailing" id="BDm-ip-wpd"/>
+                                            <constraint firstItem="zQY-ZE-6rr" firstAttribute="leading" secondItem="H6j-6l-8bb" secondAttribute="leading" id="Do6-fx-X3W"/>
+                                            <constraint firstItem="zQY-ZE-6rr" firstAttribute="top" secondItem="H6j-6l-8bb" secondAttribute="top" id="hli-wL-bFV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="H6j-6l-8bb" firstAttribute="top" secondItem="fzx-t9-lea" secondAttribute="bottom" id="YVb-xP-IRu"/>
+                                    <constraint firstAttribute="bottom" secondItem="H6j-6l-8bb" secondAttribute="bottom" id="Zvk-go-jIO"/>
+                                    <constraint firstItem="fzx-t9-lea" firstAttribute="leading" secondItem="Guj-9U-F3L" secondAttribute="leading" id="uZ2-CA-JOI"/>
+                                    <constraint firstAttribute="trailing" secondItem="fzx-t9-lea" secondAttribute="trailing" id="v4s-lJ-4BS"/>
+                                    <constraint firstItem="H6j-6l-8bb" firstAttribute="leading" secondItem="Guj-9U-F3L" secondAttribute="leading" id="vpz-Dq-ho2"/>
+                                    <constraint firstAttribute="trailing" secondItem="H6j-6l-8bb" secondAttribute="trailing" id="yEv-aW-QeS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OMg-NT-b6D"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fzx-t9-lea" firstAttribute="top" secondItem="OMg-NT-b6D" secondAttribute="top" id="2TU-AH-cia"/>
+                            <constraint firstItem="ryn-jd-Yzo" firstAttribute="top" secondItem="g6a-oe-IrN" secondAttribute="top" id="3HZ-Fj-onr"/>
+                            <constraint firstItem="ryn-jd-Yzo" firstAttribute="leading" secondItem="OMg-NT-b6D" secondAttribute="leading" id="Bg1-Eq-DEt"/>
+                            <constraint firstItem="Guj-9U-F3L" firstAttribute="top" secondItem="g6a-oe-IrN" secondAttribute="top" id="FSS-Ec-Go6"/>
+                            <constraint firstAttribute="trailing" secondItem="Guj-9U-F3L" secondAttribute="trailing" id="I66-gS-W2i"/>
+                            <constraint firstItem="Guj-9U-F3L" firstAttribute="leading" secondItem="OMg-NT-b6D" secondAttribute="leading" id="QLg-tu-ZPr"/>
+                            <constraint firstItem="ryn-jd-Yzo" firstAttribute="bottom" secondItem="fzx-t9-lea" secondAttribute="bottom" id="Scb-Vu-Fz6"/>
+                            <constraint firstAttribute="bottom" secondItem="Guj-9U-F3L" secondAttribute="bottom" id="YIV-Bp-gVg"/>
+                            <constraint firstItem="ryn-jd-Yzo" firstAttribute="trailing" secondItem="OMg-NT-b6D" secondAttribute="trailing" id="sgE-4T-Cdh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataTableView" destination="zQY-ZE-6rr" id="nAb-8b-XBf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUO-5c-IPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="673"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="4NT-zH-FZz">

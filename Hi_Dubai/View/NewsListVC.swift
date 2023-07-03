@@ -238,7 +238,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 10:
-                let vc = HomeViewController.instantiate(fromAppStoryboard: .Main)
+                let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 11:
                 let vc = StickyHeaderVC.instantiate(fromAppStoryboard: .Main)
