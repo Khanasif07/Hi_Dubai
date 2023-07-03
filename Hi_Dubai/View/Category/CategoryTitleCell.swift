@@ -16,7 +16,7 @@ class CategoryTitleCell: UITableViewCell {
    
 
     @IBOutlet weak var containerStackView: UIStackView!
-    @IBOutlet weak var internalTableView: UITableView!
+    @IBOutlet weak var internalTableView: CustomTableView!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var outerView: UIView!
     @IBOutlet weak var arrowIcon: UIButton!

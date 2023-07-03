@@ -81,9 +81,6 @@ extension CategoryVC: HeplerDelegate {
     }
 }
 class CustomTableView:UITableView{
-    
-}
-extension CustomTableView{
     public override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return contentSize
@@ -95,3 +92,15 @@ extension CustomTableView{
         }
     }
 }
+//extension CustomTableView{
+//    public override var intrinsicContentSize: CGSize {
+//        layoutIfNeeded()
+//        return contentSize
+//    }
+//
+//    public override var contentSize: CGSize {
+//        didSet {
+//            invalidateIntrinsicContentSize()
+//        }
+//    }
+//}

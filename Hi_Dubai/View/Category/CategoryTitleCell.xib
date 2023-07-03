@@ -75,7 +75,7 @@
                                         <constraint firstItem="Rcu-qZ-0lw" firstAttribute="centerX" secondItem="ywT-0C-q2f" secondAttribute="centerX" id="u50-fu-6GB"/>
                                     </constraints>
                                 </view>
-                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-eQ-R19">
+                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-eQ-R19" customClass="CustomTableView" customModule="Hi_Dubai" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="0.0"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,7 +107,7 @@
                 <outlet property="arrowIcon" destination="u09-NI-15L" id="kjI-yV-0Rk"/>
                 <outlet property="containerStackView" destination="ekm-yh-yVn" id="zEs-HC-kwJ"/>
                 <outlet property="imgView" destination="QvP-uc-ICY" id="Tbo-t9-c7e"/>
-                <outlet property="internalTableView" destination="vzH-eQ-R19" id="sNA-Ra-3D0"/>
+                <outlet property="internalTableView" destination="vzH-eQ-R19" id="lzZ-ML-CdI"/>
                 <outlet property="lineView" destination="DNO-t8-nc8" id="mEN-bE-gwa"/>
                 <outlet property="outerView" destination="v5X-bA-2km" id="aQC-6o-ra0"/>
                 <outlet property="titleLbl" destination="Rcu-qZ-0lw" id="DU2-uU-0Pw"/>
