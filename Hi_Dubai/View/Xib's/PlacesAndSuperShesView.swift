@@ -357,20 +357,22 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
 //        DispatchQueue.main.async {
             if self.hiddenSections.contains(section) {
                 self.hiddenSections.remove(section)
+                self.dataTableView.beginUpdates()
                 self.dataTableView.reloadSections([section], with: .automatic)
+                self.dataTableView.endUpdates()
             } else {
                 //            UIView.animate(withDuration: 0.0,delay: 0.0, animations: {
                 if let sectionn = self.hiddenSections.first{
                     if sectionn < self.viewModel.filteredAnimals.count{
-                        self.dataTableView.beginUpdates()
                         self.hiddenSections.remove(sectionn)
+                        self.dataTableView.beginUpdates()
                         self.dataTableView.reloadSections([sectionn], with: .automatic)
                         self.dataTableView.endUpdates()
                     }
                 }
                 //            }) { value in
-                self.dataTableView.beginUpdates()
                 self.hiddenSections.insert(section)
+                self.dataTableView.beginUpdates()
                 self.dataTableView.reloadSections([section], with: .automatic)
                 self.dataTableView.endUpdates()
                 //                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .none, animated: true)
