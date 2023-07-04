@@ -27,7 +27,7 @@ class ViewMoreTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-       outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
+        self.outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
     }
     
 }

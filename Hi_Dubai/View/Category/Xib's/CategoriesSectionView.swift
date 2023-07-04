@@ -27,7 +27,7 @@ class CategoriesSectionView: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         imgView.layer.cornerRadius = 5.0
-        isRowShow ? outerView.roundCorners(.allCorners, radius: 5.0) : outerView.roundCorners([.topLeft,.topRight], radius: 5.0)
+        isRowShow ? self.outerView.roundCorners(.allCorners, radius: 5.0) : self.outerView.roundCorners([.topLeft,.topRight], radius: 5.0)
     }
     
     @IBAction func sectionTapped(_ sender: UIButton) {

@@ -17,14 +17,8 @@ class TitleTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    var isLastRow: Bool = false{
-        didSet{
-        }
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-//        isLastRow ? outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0) : outerView.roundCorners(.allCorners, radius: 0.0)
     }
     
     func configure(withModel model: Action) {
