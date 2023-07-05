@@ -29,10 +29,8 @@ class PlacesAndSuperShesView: UIView {
     
     //MARK:- Variables
     //MARK:===========
-    let maxCountForViewMore: Int = 7
+    let maxCountForViewMore: Int = 11
     var lastContentOffset: CGFloat = 0.0
-//    var viewMoreSelected: Bool = false
-//    var hiddenSections = Set<Int>()
     var hiddenSections = Array<(Int,Bool)>()
     var headerView = CategoryHeaderView.instanciateFromNib()
     
@@ -81,7 +79,7 @@ class PlacesAndSuperShesView: UIView {
     private func headerSetup(showSearchCount: Bool = false){
         if showSearchCount{
             headerView.searchResultCountLbl.isHidden = false
-            let resultCount = self.viewModel.filteredAnimals.reduce(0) { $0 + $1.gallery.count }
+            let resultCount = self.viewModel.categories.reduce(0) { $0 + ($1.children?.count ?? 0) }
             headerView.searchResultCountLbl.text = "\(resultCount) results found"
             dataTableView.tableHeaderView?.height = 109.0
         }else{
@@ -127,11 +125,12 @@ class PlacesAndSuperShesView: UIView {
         self.dataTableView.registerHeaderFooter(with: CategoriesSectionView.self)
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
+        self.viewModel.delegate = self
         if screenUsingFor != .categories {
             self.footerSetup()
-            self.viewModel.delegate = self
-            self.viewModel.searchValue = ""
+//            self.viewModel.searchValue = ""
         }else{
+            self.viewModel.getCategoriesListing()
             self.headerSetup()
             if #available(iOS 15.0, *) {
                 self.dataTableView.sectionHeaderTopPadding = 10.0
@@ -163,7 +162,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
         case .searchMovie:
             return 1
         default:
-            return self.viewModel.filteredAnimals.count
+            return self.viewModel.categories.count
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -179,10 +178,10 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 return 0
             }
             let index  = self.hiddenSections.firstIndex(where: {$0.0 == section})!
-            if (self.viewModel.filteredAnimals[section].gallery.count > maxCountForViewMore) && !self.hiddenSections[index].1{
+            if ((self.viewModel.categories[section].children?.count ?? 0) > maxCountForViewMore) && !self.hiddenSections[index].1{
                 return maxCountForViewMore
             }else{
-                return self.viewModel.filteredAnimals[section].gallery.count
+                return self.viewModel.categories[section].children?.count ?? 0
             }
         }
     }
@@ -228,14 +227,14 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
         case .categories:
-            if (self.viewModel.filteredAnimals[indexPath.section].gallery.count < maxCountForViewMore+1){
-                if ((self.viewModel.filteredAnimals[indexPath.section].gallery.count - 1) == indexPath.row){
+            if ((self.viewModel.categories[indexPath.section].children?.count ?? 0) < maxCountForViewMore+1){
+                if (((self.viewModel.categories[indexPath.section].children?.count ?? 0) - 1) == indexPath.row){
                     let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
                     return cell
                 }else{
                     let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
                     return cell
                 }
             }else{
@@ -253,13 +252,13 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                         }
                     }
                     return cell
-                }else if ((self.viewModel.filteredAnimals[indexPath.section].gallery.count - 1) == indexPath.row) && self.hiddenSections[index!].1{
+                }else if (((self.viewModel.categories[indexPath.section].children?.count ?? 0) - 1) == indexPath.row) && self.hiddenSections[index!].1{
                     let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
                     return cell
                 }else{
                     let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
-                    cell.titleLbl.text = self.viewModel.filteredAnimals[indexPath.section].gallery[indexPath.row]
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
                     return cell
                 }
             }
@@ -299,7 +298,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
         if screenUsingFor == .categories {
             if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesSectionView") as? CategoriesSectionView {
                 headerView.isRowShow    = !self.hiddenSections.contains(where: {$0.0 == section})
-                headerView.titleLbl.text = self.viewModel.filteredAnimals[section].name
+                headerView.titleLbl.text = self.viewModel.categories[section].name?.en ?? ""
                 //MARK: - ButtonTapped Action...
                 headerView.buttonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
@@ -374,7 +373,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             //            self.dataTableView.endUpdates()
         } else {
             if let sectionn = self.hiddenSections.first?.0{
-                if sectionn < self.viewModel.filteredAnimals.count{
+                if sectionn < self.viewModel.categories.count{
                     //                    self.hiddenSections.removeAll(where: {$0.0 == sectionn})
                     //New Logic to update only rows
                     let newCountt  = getCellCountForSection(sectionn: sectionn)
@@ -404,16 +403,16 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     private func getCellCountForSection(sectionn: Int)->Int{
         var newCountt: Int = 0
         if let indexx  = self.hiddenSections.firstIndex(where: {$0.0 == sectionn}){
-            if (self.viewModel.filteredAnimals[sectionn].gallery.count > maxCountForViewMore) && !self.hiddenSections[indexx].1{
+            if (self.viewModel.categories[sectionn].children?.count ?? 0 > maxCountForViewMore) && !self.hiddenSections[indexx].1{
                 newCountt =  maxCountForViewMore
             }else{
-                newCountt =  self.viewModel.filteredAnimals[sectionn].gallery.count
+                newCountt =  self.viewModel.categories[sectionn].children?.count ?? 0
             }
         }else{
-            if (self.viewModel.filteredAnimals[sectionn].gallery.count > maxCountForViewMore){
+            if (self.viewModel.categories[sectionn].children?.count ?? 0 > maxCountForViewMore){
                 newCountt =  maxCountForViewMore
             }else{
-                newCountt =  self.viewModel.filteredAnimals[sectionn].gallery.count
+                newCountt =  self.viewModel.categories[sectionn].children?.count ?? 0
             }
         }
         return newCountt
@@ -493,6 +492,13 @@ extension PlacesAndSuperShesView: NewsListViewModelDelegate{
     
     func movieDetailFailure(error: Error) {
         DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func newsListingSuccess() {
+        DispatchQueue.main.async {
+            self.viewModel.searchValue = ""
             self.dataTableView.reloadData()
         }
     }
@@ -597,9 +603,6 @@ extension UITableView{
         }else if(oldCount > newCount){
             deleteRows(at: changed, with: .fade)
         }
-//        if(newCount > oldCount || newCount == oldCount){
-//            insertRows(at: reload, with: .fade)
-//        }
         endUpdates()
     }
 }

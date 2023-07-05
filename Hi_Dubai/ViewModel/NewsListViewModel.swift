@@ -40,24 +40,39 @@ class NewsListViewModel{
     }
     
     //
+    var businessCategories:[Category] = []
+    var categories:[Category] = []
+    
     var animals: [Animal] = Bundle.main.decode("animal.json")
     var searchValue: String = ""{
         didSet{
-            filteredAnimals = searchValue.isEmpty ? animals : animals.filter({(animal: Animal) -> Bool in
-                return animal.gallery.filter ({ (animal: String) -> Bool in
-                    animal.range(of: searchValue, options: .caseInsensitive) != nil
-                }).count > 0
-            }).map({ (animall:Animal) in
-                let filtered =  animall.gallery.filter { (animalll:String)->Bool in
-                    animalll.range(of: self.searchValue, options: .caseInsensitive) != nil
-                }
-                var anml = animall
-                anml.gallery = filtered
-                return anml
-            })
+            //            animalCategories = searchValue.isEmpty ? animals : animals.filter({(animal: Animal) -> Bool in
+            //                return animal.gallery.filter ({ (animal: String) -> Bool in
+            //                    animal.range(of: searchValue, options: .caseInsensitive) != nil
+            //                }).count > 0
+            //            }).map({ (animall:Animal) in
+            //                let filtered =  animall.gallery.filter { (animalll:String)->Bool in
+            //                    animalll.range(of: self.searchValue, options: .caseInsensitive) != nil
+            //                }
+            //                var anml = animall
+            //                anml.gallery = filtered
+            //                return anml
+            //            })
+            categories = searchValue.isEmpty ? businessCategories : businessCategories.filter({(category: Category) -> Bool in
+                return category.children?.filter ({ (subCategory: Child) -> Bool in
+                                subCategory.name?.en?.range(of: searchValue, options: .caseInsensitive) != nil
+                }).count ?? 0 > 0
+                        }).map({ (subCategories:Category) in
+                            let filtered =  subCategories.children?.filter { (subCategoriesName:Child)->Bool in
+                                subCategoriesName.name?.en?.range(of: self.searchValue, options: .caseInsensitive) != nil
+                            }
+                            var category = subCategories
+                            category.children = filtered
+                            return category
+                        })
         }
     }
-    var filteredAnimals: [Animal] = []
+    var animalCategories: [Animal] = []
    
     //will implement viewmodel by implementing depedency injection like SwiftUIInUICollectionViewAndUITableView-main project
     //
@@ -76,6 +91,21 @@ class NewsListViewModel{
             case .failure(let error):
                 self.error = error
                 self.newsData = []
+                self.delegate?.newsListingFailure(error: error)
+            }
+        }
+    }
+    
+    
+    func getCategoriesListing(){
+        NetworkManager.shared.getCategoriesDataFromServer(requestType: .get, endPoint: EndPoint.hidubai_categories.rawValue) { (results : Result<Categories,Error>)  in
+            switch results{
+            case .success(let result):
+                print(result)
+                self.businessCategories = result.categories ?? []
+                self.delegate?.newsListingSuccess()
+            case .failure(let error):
+                self.error = error
                 self.delegate?.newsListingFailure(error: error)
             }
         }

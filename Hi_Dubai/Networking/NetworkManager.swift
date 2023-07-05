@@ -106,6 +106,43 @@ class NetworkManager{
         task.resume()
     }
     
+    func getCategoriesDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+        urlRequest.allHTTPHeaderFields = ["Content-Type":"application/json","Accept":"application/json","WL-GuestUserId":"64a3e672dc1907771db37113","Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2xhZGVwMzEzQHJ4Y2F5LmNvbSIsImZpcnN0TmFtZSI6IlNuZWhhIiwibGFzdE5hbWUiOiJFbWFpbFVzZXIiLCJhdWRpZW5jZSI6IndlYiIsInBhc3N3b3JkIjoiJDJhJDEwJGlibnVBMjk4R09UWm1wRXZnU0doVk9LWlBJQWwvL0tpS0V2MVJLZm9ialJWcERINnpJN1htIiwicm9sZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfQlVTSU5FU1NfT1dORVIifSx7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwibWlkZGxlTmFtZSI6IiIsImV4cCI6MTY5MTE0Mjg4NiwidXVpZCI6IjU0NTViNDExLThiMWEtNDcwNi1hOWIwLTcyZjk4ZGVhMjI2MSIsImVuYWJsZWQiOnRydWUsImVtYWlsIjoiYm9sYWRlcDMxM0ByeGNheS5jb20iLCJzdGF0dXMiOjF9.8iLVwEuZHTZhx8UcKudUhd-oK6dOyN8tguz4XmGFqCQ1vdNvai9xV73telzZmO86a5qbuD1FAfaYneHZmZUEyg","WL-Channel":"ma"]
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //==
+                self.cache.removeAllCachedResponses()
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                //==
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
     
     func getMovieDetailDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
                                               endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){

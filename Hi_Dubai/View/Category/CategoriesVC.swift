@@ -13,10 +13,8 @@ class CategoriesVC: UIViewController {
     internal var placesView: PlacesAndSuperShesView?
     @IBOutlet weak var containerView: UIView!
     //
-
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.isNavigationBarHidden = true
         self.title = "Categories"
         initUI()
     }
