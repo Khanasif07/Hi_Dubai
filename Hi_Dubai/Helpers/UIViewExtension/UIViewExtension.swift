@@ -391,22 +391,30 @@ extension UIView{
     func rotate(clockwise: Bool = true) {
         if clockwise {
             /// clockwise
+//            let radians = 180.0 / 180.0 * CGFloat.pi
+//            let rotation = CGAffineTransformRotate(self.transform, radians)
+//            self.transform = rotation
+            let radians = 180.0 / 180.0 * CGFloat.pi
             let rotate = CABasicAnimation(keyPath: "transform.rotation")
-            rotate.fromValue = 0
-            rotate.toValue = CGFloat.pi
+            rotate.fromValue = radians
+            rotate.toValue = 0
             rotate.duration = 0.25
             rotate.fillMode = CAMediaTimingFillMode.forwards
             rotate.isRemovedOnCompletion = false
             self.layer.add(rotate, forKey: "transform.rotation")
         } else {
             /// anticlockwise
+            let radians = -(180.0 / 180.0 * CGFloat.pi)
             let rotate = CABasicAnimation(keyPath: "transform.rotation")
-            rotate.fromValue = CGFloat.pi
+            rotate.fromValue = radians
             rotate.toValue = 0
             rotate.duration = 0.25
             rotate.fillMode = CAMediaTimingFillMode.forwards
             rotate.isRemovedOnCompletion = false
             self.layer.add(rotate, forKey: "transform.rotation")
+//            let radians = 180.0 / 180.0 * CGFloat.pi
+//            let rotation = CGAffineTransformRotate(self.transform, radians)
+//            self.transform = rotation
         }
     }
 }
