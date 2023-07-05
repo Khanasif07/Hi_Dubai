@@ -29,7 +29,7 @@ class PlacesAndSuperShesView: UIView {
     
     //MARK:- Variables
     //MARK:===========
-    var maxCountForViewMore: Int = 9
+    let maxCountForViewMore: Int = 7
     var lastContentOffset: CGFloat = 0.0
 //    var viewMoreSelected: Bool = false
 //    var hiddenSections = Set<Int>()
@@ -245,12 +245,12 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                     cell.buttonTapped = { [weak self] (btn) in
                         guard let `self` = self else { return }
                         self.hiddenSections[index!].1 = true
-                        //
                         let newCount  = getCellCountForSection(sectionn: indexPath.section)
-                        self.dataTableView.reloadRowsInSection(section: indexPath.section, oldCount: 9, newCount: newCount)
-                        self.dataTableView.performBatchUpdates(nil)
-                        //
-//                        self.dataTableView.reloadSections([indexPath.section], with: .automatic)
+                        self.dataTableView.reloadRowsInSectionn(section: indexPath.section, oldCount: maxCountForViewMore, newCount: newCount)
+                        self.dataTableView.performBatchUpdates {
+                            let indexes = (0..<self.maxCountForViewMore).map { IndexPath(row: $0, section: indexPath.section) }
+                            self.dataTableView.reloadRows(at: indexes, with: .none)
+                        }
                     }
                     return cell
                 }else if ((self.viewModel.filteredAnimals[indexPath.section].gallery.count - 1) == indexPath.row) && self.hiddenSections[index!].1{
@@ -306,7 +306,8 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
 //                    self.viewMoreSelected = !(self.viewModel.filteredAnimals[section].gallery.count > maxCountForViewMore)
                     self.hideSection(sender: btn,section: section)
                     //Responsible for making header plane from rounded when rows are visible
-                    headerView.isRowShow    = !self.hiddenSections.contains(where: {$0.0 == section})
+                    headerView.isRowShow = !self.hiddenSections.contains(where: {$0.0 == section})
+                    //Responsible for roation of arrow icons in section
                     headerView.arrowIcon.rotate(clockwise: self.hiddenSections.contains(where: {$0.0 == section}))
                 }
                 return headerView
@@ -572,4 +573,33 @@ extension UITableView{
         endUpdates()
     }
 
+    func reloadRowsInSectionn(section: Int, oldCount:Int, newCount: Int){
+        
+        let maxCount = max(oldCount, newCount)
+        let minCount = min(oldCount, newCount)
+        
+        var changed = [IndexPath]()
+        
+        for i in minCount..<maxCount {
+            let indexPath = IndexPath(row: i, section: section)
+            changed.append(indexPath)
+        }
+        
+        var reload = [IndexPath]()
+        for i in 0..<minCount{
+            let indexPath = IndexPath(row: i, section: section)
+            reload.append(indexPath)
+        }
+        
+        beginUpdates()
+        if(newCount > oldCount){
+            insertRows(at: changed, with: .fade)
+        }else if(oldCount > newCount){
+            deleteRows(at: changed, with: .fade)
+        }
+//        if(newCount > oldCount || newCount == oldCount){
+//            insertRows(at: reload, with: .fade)
+//        }
+        endUpdates()
+    }
 }
