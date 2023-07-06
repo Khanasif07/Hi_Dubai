@@ -238,7 +238,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 10:
-                let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
+                let vc = NavigationTypeVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 11:
                 let vc = StickyHeaderVC.instantiate(fromAppStoryboard: .Main)
@@ -247,10 +247,10 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = NewsDiscoverVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 13:
-                let vc = NavigationTypeVC.instantiate(fromAppStoryboard: .Main)
+                let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
+                let vc = BusinessCategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let navController = UINavigationController(rootViewController: vc)
 //                navController.isNavigationBarHidden = true
 //

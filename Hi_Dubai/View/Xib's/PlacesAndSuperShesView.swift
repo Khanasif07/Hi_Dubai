@@ -287,11 +287,29 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
+        if screenUsingFor != .categories{
+            return 85
+        }else{
+            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+                return UITableView.automaticDimension
+            }else{
+                return 0.0
+            }
+        }
+//        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
+        if screenUsingFor != .categories{
+            return 85
+        }else{
+            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+                return UITableView.automaticDimension
+            }else{
+                return 0.0
+            }
+        }
+//        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -302,7 +320,6 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                 //MARK: - ButtonTapped Action...
                 headerView.buttonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
-//                    self.viewMoreSelected = !(self.viewModel.filteredAnimals[section].gallery.count > maxCountForViewMore)
                     self.hideSection(sender: btn,section: section)
                     //Responsible for making header plane from rounded when rows are visible
                     headerView.isRowShow = !self.hiddenSections.contains(where: {$0.0 == section})
@@ -318,7 +335,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat.leastNonzeroMagnitude
+        return (screenUsingFor == .categories) ? 54.0 : CGFloat.leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
@@ -424,30 +441,34 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
 //MARK:- enableGlobalScrolling
 extension PlacesAndSuperShesView{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
-//        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
+        //        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
-        var scrollDirection: ScrollDirection
-        let stopScroll = 50.0
-        if lastContentOffset > scroll.contentOffset.y {
-            scrollDirection = .down
-        } else {
-            scrollDirection = .up
-        }
-        
-        let offsetY = scroll.contentOffset.y
-    
-        lastContentOffset = scroll.contentOffset.y
-        
-        if scrollDirection == .up {
-            if offsetY < stopScroll {
-                enableGlobalScrolling(offsetY)
+        if screenUsingFor == .categories{
+           
+        }else {
+            var scrollDirection: ScrollDirection
+            let stopScroll = 50.0
+            if lastContentOffset > scroll.contentOffset.y {
+                scrollDirection = .down
             } else {
-                enableGlobalScrolling(stopScroll,false)
+                scrollDirection = .up
             }
-        } else if (scrollDirection == .down) && (offsetY < stopScroll) {
-            enableGlobalScrolling(offsetY)
+            
+            let offsetY = scroll.contentOffset.y
+            
+            lastContentOffset = scroll.contentOffset.y
+            
+            if scrollDirection == .up {
+                if offsetY < stopScroll {
+                    enableGlobalScrolling(offsetY)
+                } else {
+                    enableGlobalScrolling(stopScroll,false)
+                }
+            } else if (scrollDirection == .down) && (offsetY < stopScroll) {
+                enableGlobalScrolling(offsetY)
+            }
         }
     }
 }
@@ -569,12 +590,12 @@ extension UITableView{
         
         beginUpdates()
         if(newCount > oldCount){
-            insertRows(at: changed, with: .fade)
+            insertRows(at: changed, with: .automatic)
         }else if(oldCount > newCount){
             deleteRows(at: changed, with: .fade)
         }
         if(newCount > oldCount || newCount == oldCount){
-            insertRows(at: reload, with: .fade)
+            insertRows(at: reload, with: .automatic)
         }
         endUpdates()
     }
@@ -604,5 +625,13 @@ extension UITableView{
             deleteRows(at: changed, with: .fade)
         }
         endUpdates()
+    }
+    
+    func scrollToEnd(_ inSection: Int) {
+        if numberOfRows(inSection: inSection) > 0 {
+//            let index = NSIndexPath(row: 0, section: inSection) as IndexPath
+//            self.scrollToRow(at: index, at: .none, animated: false)
+            self.scrollToNearestSelectedRow(at: .none, animated: false)
+        }
     }
 }

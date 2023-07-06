@@ -52,7 +52,7 @@ class NetworkManager{
                     return
                 }
                 do {
-                    self.cache.removeAllCachedResponses()
+//                    self.cache.removeAllCachedResponses()
                     self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                     //==
                     let formatter = DateFormatter()
@@ -91,7 +91,7 @@ class NetworkManager{
             }
             do {
                 //==
-                self.cache.removeAllCachedResponses()
+//                self.cache.removeAllCachedResponses()
                 self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                 //==
                 let decoder = JSONDecoder()
@@ -128,8 +128,13 @@ class NetworkManager{
             }
             do {
                 //==
-                self.cache.removeAllCachedResponses()
-                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+//                self.cache.removeCachedResponse(for: urlRequest)
+                let currentDate = Date()
+                var dateComponent = DateComponents()
+                dateComponent.second = -60
+                let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+//                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                self.cache.removeCachedResponses(since: futureDate!)
                 //==
                 let decoder = JSONDecoder()
                 let model = try decoder.decode(T.self, from: data!)
@@ -165,7 +170,7 @@ class NetworkManager{
             }
             do {
                 //==
-                self.cache.removeAllCachedResponses()
+//                self.cache.removeAllCachedResponses()
                 self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                 //==
                 let decoder = JSONDecoder()

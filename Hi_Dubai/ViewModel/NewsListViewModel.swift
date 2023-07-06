@@ -60,16 +60,16 @@ class NewsListViewModel{
             //            })
             categories = searchValue.isEmpty ? businessCategories : businessCategories.filter({(category: Category) -> Bool in
                 return category.children?.filter ({ (subCategory: Child) -> Bool in
-                                subCategory.name?.en?.range(of: searchValue, options: .caseInsensitive) != nil
+                    subCategory.name?.en?.range(of: searchValue, options: .caseInsensitive) != nil
                 }).count ?? 0 > 0
-                        }).map({ (subCategories:Category) in
-                            let filtered =  subCategories.children?.filter { (subCategoriesName:Child)->Bool in
-                                subCategoriesName.name?.en?.range(of: self.searchValue, options: .caseInsensitive) != nil
-                            }
-                            var category = subCategories
-                            category.children = filtered
-                            return category
-                        })
+            }).map({ (subCategories:Category) in
+                let filtered =  subCategories.children?.filter { (subCategoriesName:Child)->Bool in
+                    subCategoriesName.name?.en?.range(of: self.searchValue, options: .caseInsensitive) != nil
+                }
+                var category = subCategories
+                category.children = filtered
+                return category
+            })
         }
     }
     var animalCategories: [Animal] = []
