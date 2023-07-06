@@ -23,11 +23,14 @@ class BusinessCategoriesVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingView = LoadingView(frame: containerView.frame, inView: view)
+        loadingView?.show()
         self.configUI()
         self.setUpView()
         // Do any additional setup after loading the view.
     }
     
+    var loadingView: LoadingView?
     var searchValue: String = ""
     lazy var viewModel = {
         NewsListViewModel()
@@ -82,6 +85,7 @@ class BusinessCategoriesVC: UIViewController {
     private func setUpView() {
         containerView.backgroundColor = .white
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        hitApi()
     }
     
     private func configUI() {
@@ -92,7 +96,6 @@ class BusinessCategoriesVC: UIViewController {
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
         self.viewModel.delegate = self
-        self.viewModel.getCategoriesListing()
         self.headerSetup()
         if #available(iOS 15.0, *) {
             self.dataTableView.sectionHeaderTopPadding = 10.0
@@ -100,7 +103,9 @@ class BusinessCategoriesVC: UIViewController {
     }
     
     public func hitApi(_ search: String = ""){
-            self.dataTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.viewModel.getCategoriesListing()
+        })
     }
 }
 
@@ -285,6 +290,17 @@ extension BusinessCategoriesVC: UITableViewDelegate, UITableViewDataSource {
 extension BusinessCategoriesVC: NewsListViewModelDelegate{
     func newsListingSuccess() {
         DispatchQueue.main.async {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
+            self.viewModel.searchValue = ""
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func newsListingFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
             self.viewModel.searchValue = ""
             self.dataTableView.reloadData()
         }
