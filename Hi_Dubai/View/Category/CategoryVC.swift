@@ -12,59 +12,106 @@ protocol HeplerDelegate {
     func cellAdded()
     func cellDeleted()
 }
-
+var hiddenSections = Array<(Int,Bool)>()
 class CategoryVC: UIViewController {
 
-    var hiddenSections = Set<Int>()
-    @IBOutlet weak var dataTableView: CustomTableView!
+    var loadingView: LoadingView?
+//    var hiddenSections = Set<Int>()
+    
+    var searchValue: String = ""
+    lazy var viewModel = {
+        NewsListViewModel()
+    }()
+    var headerView = CategoryHeaderView.instanciateFromNib()
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var dataTableView: CustomTableView!{
+        didSet {
+//            self.dataTableView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+            self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
+            self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
+            self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
+            self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
+            dataTableView.tableHeaderView?.height = 85.0
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         commonInit()
-        dataTableView.separatorStyle = .none
-        dataTableView.backgroundColor =  UIColor.clear
-        self.navigationController?.isNavigationBarHidden = true
-        // Do any additional setup after loading the view.
+        hitApi()
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    public func hitApi(_ search: String = ""){
+        containerView.backgroundColor = .white
+//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        self.viewModel.delegate = self
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            self.viewModel.getCategoriesListing()
+        })
+    }
 }
 
-private extension CategoryVC {
+ extension CategoryVC {
     func commonInit() {
+        loadingView = LoadingView(frame: containerView.frame, inView: view)
+        loadingView?.show()
         setUI()
-        setConstraints()
+        self.headerSetup()
+        self.headerView.backgroundColor = .white
     }
 
     func setUI() {
         dataTableView.dataSource = self
         dataTableView.delegate = self
         dataTableView.registerCell(with: CategoryTitleCell.self)
-        self.view.backgroundColor = UIColor.clear
     }
 
-    func setConstraints() {
-//        tableView.edgesToSuperview(usingSafeArea: true)
-    }
+
+     public func viewMorebtnAction(section: Int){
+         if let cell = self.dataTableView.cellForRow(at: IndexPath(row: section, section: 0)) as? CategoryTitleCell{
+             DispatchQueue.main.async {
+                 UIView.transition(with: cell.containerStackView,
+                                   duration: 0.3,
+                                   options: .curveEaseInOut) {
+                     cell.containerStackView.setNeedsLayout()
+                                     cell.internalTableView.reloadTableView()
+                     self.dataTableView.performBatchUpdates({
+                                             self.dataTableView.reloadData()
+                     })
+                 }
+             }
+         }
+     }
 }
 
 
 //MARK: Tableview delegates
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sample.count
+        return self.viewModel.categories.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: CategoryTitleCell.self)
+        //
+        cell.isRowShow    = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.selectedIndexPath = indexPath
-        cell.configure(withModel: sample[indexPath.row])
-        cell.internalTableView.isHidden = !(hiddenSections.contains(indexPath.row))
+//        cell.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        cell.configuree(withModel: self.viewModel.categories[indexPath.row])
+        cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
-            viewMoreSelected = false
-            cell.internalTableView.isHidden = !cell.internalTableView.isHidden
-            cell.isRowShow = !cell.internalTableView.isHidden
-            hideSection(section: indexPath.row,cell: cell)
+            hideSection(section: indexPath.row)
+            cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
+            cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
+            cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
+           
             UIView.transition(with: cell.containerStackView,
                               duration: 0.3,
                               options: .curveEaseInOut) {
@@ -79,17 +126,18 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
-    private func hideSection(section: Int,cell: CategoryTitleCell) {
-        if self.hiddenSections.contains(section) {
-            self.hiddenSections.remove(section)
+    private func hideSection(section: Int) {
+        if hiddenSections.contains(where: {$0.0 == section}) {
+            hiddenSections.removeAll(where: {$0.0 == section})
         } else {
-            if let sectionn = self.hiddenSections.first{
-                self.hiddenSections.remove(sectionn)
+            if let sectionn = hiddenSections.first?.0{
+                hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
-                    cells.internalTableView.isHidden = true
+                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
+                    cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
                 }
             }
-            self.hiddenSections.insert(section)
+            hiddenSections.append((section,false))
         }
     }
 }
@@ -107,7 +155,7 @@ extension CategoryVC: HeplerDelegate {
 
     }
 }
-class CustomTableView:UITableView{
+class CustomTableView: UITableView{
     public override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return contentSize
@@ -120,3 +168,83 @@ class CustomTableView:UITableView{
     }
 }
 
+
+
+extension CategoryVC: NewsListViewModelDelegate{
+    func newsListingSuccess() {
+        DispatchQueue.main.async {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
+            self.viewModel.searchValue = ""
+            self.headerSetup()
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func newsListingFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.loadingView?.hide()
+            self.loadingView?.removeFromSuperview()
+            self.viewModel.searchValue = ""
+            self.dataTableView.reloadData()
+        }
+    }
+}
+
+
+// MARK: - WalifSearchTextFieldDelegate
+extension CategoryVC: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+        closeSearchingArea(false)
+    }
+
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = searchValue
+        self.headerSetup(showSearchCount: !self.viewModel.searchValue.isEmpty)
+        self.dataTableView.reloadData()
+    }
+
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        self.searchValue = sender.text ?? ""
+        self.viewModel.searchValue = searchValue
+        self.headerSetup(showSearchCount: true)
+        self.dataTableView.reloadData()
+
+    }
+
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = ""
+        self.headerSetup()
+        self.dataTableView.reloadData()
+    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+            self.headerView.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.view.layoutIfNeeded()
+        } completion: { value in
+            self.headerView.searchTxtFld.cancelBtn.isHidden = isTrue
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func headerSetup(showSearchCount: Bool = false){
+        if showSearchCount{
+            headerView.searchResultCountLbl.isHidden = false
+            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: 109.0))
+            let resultCount = self.viewModel.categories.reduce(0) { $0 + ($1.children?.count ?? 0) }
+            headerView.searchResultCountLbl.text = "\(resultCount) results found"
+            dataTableView.tableHeaderView?.height = 109.0
+        }else{
+            headerView.searchTxtFld.delegate = self
+            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height:  85.0))
+            dataTableView.tableHeaderView = headerView
+            headerView.searchResultCountLbl.isHidden = true
+            dataTableView.tableHeaderView?.height = 85.0
+        }
+        self.dataTableView.reloadData()
+    }
+
+}

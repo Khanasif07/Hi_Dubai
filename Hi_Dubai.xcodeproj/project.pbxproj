@@ -561,7 +561,6 @@
 				E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */,
 				E0781BED2A40A7CB00A18A2C /* SettingVC.swift */,
 				E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */,
-				E0C8A2BE2A56A61F0039E555 /* BusinessCategoriesVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -792,6 +791,7 @@
 				E0136C072A499F3E003947B6 /* Xib's */,
 				E0136C052A499ADB003947B6 /* CategoriesVC.swift */,
 				E0D3AD8B2A52972C0006C839 /* CategoryVC.swift */,
+				E0C8A2BE2A56A61F0039E555 /* BusinessCategoriesVC.swift */,
 				E0D3AD8D2A5298BE0006C839 /* CategoryTitleCell.swift */,
 				E0D3AD8E2A5298BE0006C839 /* CategoryTitleCell.xib */,
 				E0D3AD912A5299820006C839 /* Goal.swift */,

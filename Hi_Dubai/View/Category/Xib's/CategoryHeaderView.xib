@@ -11,29 +11,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CategoryHeaderView" customModule="Hi_Dubai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVJ-VA-dJw">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="109"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7.5" translatesAutoresizingMaskIntoConstraints="NO" id="4TX-Se-Qw1">
-                            <rect key="frame" x="10" y="15" width="373" height="67.666666666666671"/>
+                            <rect key="frame" x="10" y="15" width="373" height="91.666666666666671"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore 100+ categories to find the perfect search results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsx-nH-Idh">
-                                    <rect key="frame" x="0.0" y="0.0" width="373" height="15"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="373" height="39"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQv-06-cA3" customClass="NewSearchTextField" customModule="Hi_Dubai" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="22.666666666666664" width="373" height="44.999999999999993"/>
+                                    <rect key="frame" x="0.0" y="46.666666666666657" width="373" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="SW8-ep-hv4"/>
                                     </constraints>
                                 </view>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="4 results found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihc-dL-42z">
-                                    <rect key="frame" x="0.0" y="67.666666666666671" width="373" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="91.666666666666671" width="373" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>

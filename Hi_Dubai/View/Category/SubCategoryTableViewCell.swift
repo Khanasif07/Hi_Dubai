@@ -11,6 +11,7 @@ import UIKit
 class SubCategoryTableViewCell: UITableViewCell {
     
     var model: Action?
+    var modele: Child?
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var outerView: UIView!
     override func awakeFromNib() {
@@ -33,5 +34,9 @@ class SubCategoryTableViewCell: UITableViewCell {
         self.titleLbl.text = model.title
     }
 
+    func configuree(withModel model: Child) {
+        self.modele = model
+        self.titleLbl.text = model.name?.en ?? ""
+    }
     
 }

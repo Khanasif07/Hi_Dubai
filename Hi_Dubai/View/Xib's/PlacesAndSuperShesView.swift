@@ -627,11 +627,11 @@ extension UITableView{
         endUpdates()
     }
     
-    func scrollToEnd(_ inSection: Int) {
-        if numberOfRows(inSection: inSection) > 0 {
-//            let index = NSIndexPath(row: 0, section: inSection) as IndexPath
-//            self.scrollToRow(at: index, at: .none, animated: false)
-            self.scrollToNearestSelectedRow(at: .none, animated: false)
-        }
-    }
+//    func scrollToEnd(_ inSection: Int) {
+//        if numberOfRows(inSection: inSection) > 0 {
+////            let index = NSIndexPath(row: 0, section: inSection) as IndexPath
+////            self.scrollToRow(at: index, at: .none, animated: false)
+//            self.scrollToNearestSelectedRow(at: .none, animated: false)
+//        }
+//    }
 }

@@ -9,7 +9,7 @@ import UIKit
 class CategoriesVC: UIViewController {
     
     //
-    var searchTask: DispatchWorkItem?
+//    var searchTask: DispatchWorkItem?
     internal var placesView: PlacesAndSuperShesView?
     @IBOutlet weak var containerView: UIView!
     //

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CategoryTitleCell" id="5K4-51-Iu0" customClass="CategoryTitleCell" customModule="Hi_Dubai" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="CategoryTitleCell" id="5K4-51-Iu0" customClass="CategoryTitleCell" customModule="Hi_Dubai" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -75,7 +75,7 @@
                                         <constraint firstItem="Rcu-qZ-0lw" firstAttribute="centerX" secondItem="ywT-0C-q2f" secondAttribute="centerX" id="u50-fu-6GB"/>
                                     </constraints>
                                 </view>
-                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-eQ-R19" customClass="CustomTableView" customModule="Hi_Dubai" customModuleProvider="target">
+                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-eQ-R19" customClass="CustomTableView" customModule="Hi_Dubai" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="0.0"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,7 +95,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="lSH-HA-1TH"/>
-            <color key="backgroundColor" systemColor="systemYellowColor"/>
+            <color key="backgroundColor" systemColor="systemPinkColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="v5X-bA-2km" secondAttribute="trailing" constant="10" id="LpW-48-P1D"/>
                 <constraint firstItem="v5X-bA-2km" firstAttribute="leading" secondItem="5K4-51-Iu0" secondAttribute="leading" constant="10" id="P1i-32-nRw"/>
@@ -103,6 +103,10 @@
                 <constraint firstAttribute="bottom" secondItem="v5X-bA-2km" secondAttribute="bottom" id="pP4-NU-93p"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="arrowIcon" destination="u09-NI-15L" id="kjI-yV-0Rk"/>
                 <outlet property="containerStackView" destination="ekm-yh-yVn" id="zEs-HC-kwJ"/>
@@ -121,8 +125,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

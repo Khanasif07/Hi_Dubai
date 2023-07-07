@@ -8,6 +8,9 @@
 import UIKit
 
 class BusinessCategoriesVC: UIViewController {
+    
+    var heightCache: [IndexPath: CGFloat] = [:]
+    private var frozenContentOffsetForRowAnimation: CGPoint?
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dataTableView: UITableView! {
@@ -173,19 +176,21 @@ extension BusinessCategoriesVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if hiddenSections.contains(where: {$0.0 == indexPath.section}){
-            return UITableView.automaticDimension
-        }else{
-            return 0.0
-        }
+//        if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+//            return UITableView.automaticDimension
+//        }else{
+//            return 0.0
+//        }
+        return heightCache[indexPath] ?? UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
-                return UITableView.automaticDimension
-            }else{
-                return 0.0
-            }
+//            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+//                return UITableView.automaticDimension
+//            }else{
+//                return 0.0
+//            }
+        return heightCache[indexPath] ?? UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -225,6 +230,7 @@ extension BusinessCategoriesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
             print("Categories")
+        heightCache[indexPath] = cell.bounds.size.height
     }
     
     private func hideSection(sender: UIButton,section: Int) {
@@ -345,4 +351,22 @@ extension BusinessCategoriesVC: WalifSearchTextFieldDelegate{
         }
     }
 
+}
+
+
+extension BusinessCategoriesVC{
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        frozenContentOffsetForRowAnimation = nil
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if let overrideOffset = frozenContentOffsetForRowAnimation, scrollView.contentOffset != overrideOffset {
+//            scrollView.setContentOffset(overrideOffset, animated: false)
+//        }
+        print("ScrollView_OffSet.y:-\(scrollView.contentOffset.y)")
+        print("===")
+        print("ScrollView_Content_size:-\(scrollView.contentSize)")
+        print("===")
+        print("ScrollView_frame:-\(scrollView.frame)")
+    }
 }
