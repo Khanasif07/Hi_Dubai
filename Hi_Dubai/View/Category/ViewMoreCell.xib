@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgS-HA-Sw1">
-                                <rect key="frame" x="12" y="9" width="74" height="18"/>
+                                <rect key="frame" x="10" y="18" width="74" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <color key="textColor" systemColor="systemTealColor"/>
                                 <nil key="highlightedColor"/>
@@ -30,11 +30,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CgS-HA-Sw1" firstAttribute="top" secondItem="FFb-O4-sYB" secondAttribute="top" constant="9" id="Gec-eN-Gug"/>
-                            <constraint firstAttribute="bottom" secondItem="CgS-HA-Sw1" secondAttribute="bottom" constant="9" id="KDX-8d-LKd"/>
-                            <constraint firstItem="CgS-HA-Sw1" firstAttribute="leading" secondItem="FFb-O4-sYB" secondAttribute="leading" constant="12" id="YNy-XV-aqo"/>
+                            <constraint firstAttribute="bottom" secondItem="CgS-HA-Sw1" secondAttribute="bottom" id="KDX-8d-LKd"/>
+                            <constraint firstItem="CgS-HA-Sw1" firstAttribute="leading" secondItem="FFb-O4-sYB" secondAttribute="leading" constant="10" id="YNy-XV-aqo"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CgS-HA-Sw1" secondAttribute="trailing" constant="10" id="m4h-i9-Rhf"/>
-                            <constraint firstItem="CgS-HA-Sw1" firstAttribute="centerY" secondItem="FFb-O4-sYB" secondAttribute="centerY" id="yCR-Le-j5B"/>
+                            <constraint firstItem="CgS-HA-Sw1" firstAttribute="top" secondItem="FFb-O4-sYB" secondAttribute="top" constant="18" id="uZP-dJ-mKF"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5d3-Ck-1gl">

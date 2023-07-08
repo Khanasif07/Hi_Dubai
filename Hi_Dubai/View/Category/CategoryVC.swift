@@ -77,10 +77,10 @@ class CategoryVC: UIViewController {
                                    duration: 0.3,
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
-                                     cell.internalTableView.reloadTableView()
-                     self.dataTableView.performBatchUpdates({
-                                             self.dataTableView.reloadData()
-                     })
+                     cell.internalTableView.reloadTableView()
+//                     self.dataTableView.performBatchUpdates({
+                         self.dataTableView.reloadTableView()
+//                     })
                  }
              }
          }
@@ -106,6 +106,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
             hideSection(section: indexPath.row)
             cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
             cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
+            //ToDo:- hiding tableview...
             UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.3 : 0.0) {
                 cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
             }
@@ -120,7 +121,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return hiddenSections.contains(where: {$0.0 == indexPath.row}) ? UITableView.automaticDimension : 64.0
     }
     
     private func hideSection(section: Int) {

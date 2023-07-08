@@ -34,10 +34,12 @@ class CategoryTitleCell: UITableViewCell {
         internalTableView.registerCell(with: SubCategoryTableViewCell.self)
         internalTableView.registerCell(with: ViewMoreCell.self)
         internalTableView.estimatedRowHeight = 36
+        self.internalTableView.tableFooterView?.height = 18.0
         internalTableView.rowHeight = UITableView.automaticDimension
         internalTableView.allowsSelection = false
-//        internalTableView.backgroundColor =  UIColor.black.withAlphaComponent(0.75)
+        internalTableView.backgroundColor =  UIColor.black.withAlphaComponent(0.75)
         self.isRowShow = !self.internalTableView.isHidden
+        self.footerView()
         // Initialization code
     }
     
@@ -76,6 +78,13 @@ extension CategoryTitleCell {
         self.titleLbl.text = modele?.name?.en ?? ""
         self.internalTableView.reloadData()
     }
+    
+    func footerView() {
+        let view = UIView(frame: CGRect.init(origin: CGPoint.zero, size: CGSize(width: self.contentView.frame.width, height: 18.0)))
+        view.backgroundColor = UIColor.clear
+        self.internalTableView.tableFooterView = view
+    }
+
 }
 
 //MARK: Tableview delegates
@@ -135,7 +144,7 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
                                       duration: 0.3,
                                       options: .curveEaseInOut) {
                         self.containerStackView.setNeedsLayout()
-                        self.internalTableView.reloadTableView()
+//                        self.internalTableView.reloadTableView()
                         (self.parentViewController as? CategoryVC)?.dataTableView.performBatchUpdates({
                             (self.parentViewController as? CategoryVC)?.dataTableView.reloadRows(at: [IndexPath(row: self.selectedIndexPath?.row ?? 0, section: self.selectedIndexPath?.section ?? 0)], with: .automatic)
                         })
