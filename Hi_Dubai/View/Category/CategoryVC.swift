@@ -16,8 +16,6 @@ var hiddenSections = Array<(Int,Bool)>()
 class CategoryVC: UIViewController {
 
     var loadingView: LoadingView?
-//    var hiddenSections = Set<Int>()
-    
     var searchValue: String = ""
     lazy var viewModel = {
         NewsListViewModel()
@@ -27,7 +25,7 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dataTableView: CustomTableView!{
         didSet {
-//            self.dataTableView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+            self.dataTableView.backgroundColor = UIColor.black.withAlphaComponent(0.75)
             self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
             self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
@@ -48,8 +46,8 @@ class CategoryVC: UIViewController {
     }
     
     public func hitApi(_ search: String = ""){
-        containerView.backgroundColor = .white
-//        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        containerView.backgroundColor = UIColor(named: "whitelightBlack")
+        self.headerView.backgroundColor = UIColor.clear
         self.viewModel.delegate = self
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             self.viewModel.getCategoriesListing()
@@ -63,7 +61,6 @@ class CategoryVC: UIViewController {
         loadingView?.show()
         setUI()
         self.headerSetup()
-        self.headerView.backgroundColor = .white
     }
 
     func setUI() {
@@ -102,16 +99,16 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         //
         cell.isRowShow    = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.selectedIndexPath = indexPath
-//        cell.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         cell.configuree(withModel: self.viewModel.categories[indexPath.row])
         cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
             hideSection(section: indexPath.row)
             cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
-            cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
             cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
-           
+            UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.3 : 0.0) {
+                cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
+            }
             UIView.transition(with: cell.containerStackView,
                               duration: 0.3,
                               options: .curveEaseInOut) {
@@ -133,8 +130,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
             if let sectionn = hiddenSections.first?.0{
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
-                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
                     cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
+                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
                 }
             }
             hiddenSections.append((section,false))

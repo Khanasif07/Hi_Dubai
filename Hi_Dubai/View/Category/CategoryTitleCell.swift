@@ -6,7 +6,7 @@
 //
 
 import UIKit
-var maxCountForViewMore: Int = 11
+var maxCountForViewMore: Int = 10
 var viewMoreSelected: Bool = false
 class CategoryTitleCell: UITableViewCell {
 
@@ -27,6 +27,7 @@ class CategoryTitleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .clear
         internalTableView.isHidden = true
         internalTableView.delegate = self
         internalTableView.dataSource = self
@@ -35,7 +36,7 @@ class CategoryTitleCell: UITableViewCell {
         internalTableView.estimatedRowHeight = 36
         internalTableView.rowHeight = UITableView.automaticDimension
         internalTableView.allowsSelection = false
-        internalTableView.backgroundColor =  UIColor.black.withAlphaComponent(0.75)
+//        internalTableView.backgroundColor =  UIColor.black.withAlphaComponent(0.75)
         self.isRowShow = !self.internalTableView.isHidden
         // Initialization code
     }

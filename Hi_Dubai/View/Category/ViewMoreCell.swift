@@ -15,6 +15,7 @@ class ViewMoreCell: UITableViewCell {
     @IBOutlet weak var outerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .clear
         // Initialization code
     }
     
@@ -28,7 +29,7 @@ class ViewMoreCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-       outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
+//        outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
     }
     
 }
