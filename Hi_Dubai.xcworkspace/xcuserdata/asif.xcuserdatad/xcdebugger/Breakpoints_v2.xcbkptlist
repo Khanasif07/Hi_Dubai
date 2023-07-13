@@ -3,4 +3,102 @@
    uuid = "2BDFEF65-015D-4F25-956F-E16FE98B2A9E"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D56FF4A-8FD9-47ED-8A43-F671834CB4BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "cardSizeForCategoriesItemAt(_:layout:indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89903BEB-6923-49E1-8DC9-04074E44DC8F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/Xib&apos;s/MenuItemCollectionCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "sizeThatFits(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "89903BEB-6923-49E1-8DC9-04074E44DC8F - bc321b3c061f865b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hi_Dubai.MenuItemCollectionCell.sizeThatFits(__C.CGSize) -&gt; __C.CGSize"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/Xib&apos;s/MenuItemCollectionCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "89903BEB-6923-49E1-8DC9-04074E44DC8F - bc321b3c061f865b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hi_Dubai.MenuItemCollectionCell.sizeThatFits(__C.CGSize) -&gt; __C.CGSize"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/Xib&apos;s/MenuItemCollectionCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0907E6D5-66CF-419B-A926-6354975D5418"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/Xib&apos;s/MenuItemCollectionCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "sizeThatFits(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E060C90-37F2-4187-99D7-5E299CCE7AB4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/Xib&apos;s/MenuItemCollectionCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "sizeThatFits(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

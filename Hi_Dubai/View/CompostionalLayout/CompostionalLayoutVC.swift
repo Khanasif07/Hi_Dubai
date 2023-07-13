@@ -53,6 +53,33 @@ class CompostionalLayoutVC: BaseVC {
         return UICollectionViewCompositionalLayout(section: section)
     }()
     
+    func  compositionalLayout1() -> UICollectionViewLayout {
+        var layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            
+            let layoutSize = NSCollectionLayoutSize(
+                widthDimension: .estimated(100),
+                heightDimension: .absolute(44)
+            )
+            
+            let group = NSCollectionLayoutGroup.horizontal(
+                layoutSize: .init(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: layoutSize.heightDimension
+                ),
+                subitems: [.init(layoutSize: layoutSize)]
+            )
+            group.interItemSpacing = .fixed(8)
+            
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+            section.interGroupSpacing = 8
+            
+            return .init(section)
+        }
+//        layout.estimatedItemSize =  UICollectionViewFlowLayout.automaticSize
+        return layout
+    }
+    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +98,12 @@ class CompostionalLayoutVC: BaseVC {
         cardCollView.register(UINib(nibName: "FooterViewCV", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterViewCV")
         cardCollView.register(UINib(nibName: "NewBannerSupplementaryView", bundle: nil), forSupplementaryViewOfKind: "new-banner", withReuseIdentifier: "NewBannerSupplementaryView")
         cardCollView.registerCell(with: PhotoCollCell.self)
+        cardCollView.registerCell(with: MenuItemCollectionCell.self)
+        
         cardCollView.delegate = self
         cardCollView.dataSource = self
-        cardCollView.collectionViewLayout = compositionalLayout
+//        cardCollView.collectionViewLayout = compositionalLayout
+        cardCollView.collectionViewLayout = compositionalLayout1()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +112,7 @@ class CompostionalLayoutVC: BaseVC {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        cardCollView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -107,12 +138,13 @@ extension CompostionalLayoutVC: UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = cardCollView.dequeueCell(with: PhotoCollCell.self, indexPath: indexPath)
-        //
-        cell.dataView.isHidden = false
-        cell.dataView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
-        //
+        let cell = cardCollView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
+        cell.populateCells(model: animals[indexPath.row],index: indexPath.row)
         return cell
+//        let cell = cardCollView.dequeueCell(with: PhotoCollCell.self, indexPath: indexPath)
+//        cell.dataView.isHidden = false
+//        cell.dataView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
+//        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -141,4 +173,10 @@ extension CompostionalLayoutVC: UICollectionViewDelegate,UICollectionViewDataSou
         return CGSize(width: self.cardCollView.frame.width, height: 44)
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let dataSource = animals[indexPath.item].name
+        let textSize = "\(String(describing: dataSource))".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
+        return CGSize(width: textSize.width + 50.0, height: 40.0)
+    }
 }

@@ -353,5 +353,181 @@
       "The cheetah is the fastest land animal in the world, reaching speeds of up to 113km/h.",
       "They can accelerate from 0 to 100km/h in just 3 seconds."
     ]
+  },
+  {
+    "id" : "lion",
+    "name" : "Animal, Pets $ Plants",
+    "headline" : "The world's most social felines, lions roam the savannas and grasslands of the African continent, hunting cooperatively and raising cubs in prides. ",
+    "description" : "ffb",
+    "link" : "https://en.wikipedia.org/wiki/Lion",
+    "image" : "lion",
+    "gallery" : [
+      "Animal Breeding Centres",
+      "Animal Shelters / Adoption Centres",
+      "Animal Training Centres",
+      "Animal Transport & Quarantine Centres",
+      "Pet Clinics & Vets",
+      "Pet Food & Accessories Stores",
+      "Pet Grooming Centres",
+      "Pet Hotels & Day Care",
+      "Plants & Gardeening Store"
+    ],
+    "fact" : [
+      "Female lions raise the cubs and are also the primary hunters.",
+      "Lions are the only cats that live in groups. A pride, can be up to 30 lions, depending on how much food and water is available.",
+      "Without their coats, lion and tiger bodies are so similar that only experts can tell them apart."
+    ]
+  },
+  {
+    "id" : "zebra",
+    "name" : "B2B Service",
+    "headline" : "rgr",
+    "description" : "bttg",
+    "link" : "https://en.wikipedia.org/wiki/Zebra",
+    "image" : "zebra",
+    "gallery" : [ "Business Consultation Services",
+    "Business Incubators And Co-working Spaces",
+    "Business Process Outsourcing Services",
+    "Construction & Building Material Trading",
+    "Courier & Delivery Services",
+    "Distributors & Wholesalers",
+    "Engineering Consultants",
+    "Event Management",
+    "Financial Consultants",
+    "Food Stuff Trading",
+    "Holding Companies",
+    "Human Resource Consultants",
+    "Human Resource Management",
+    "IT Services",
+    "Legal Consultants",
+    "Management Consultants",
+    "Manufacturing",
+    "Office Furniture, Plants & Décor",
+    "Office Supplies & Stationery",
+    "PROs",
+    "Printing & Typing Services",
+    "Safety & Security",]
+,
+    "fact" : [
+      "The zebra is actually mostly covered in white and striped with black or dark brown stripes, but underneath their coat is black skin.",
+      "Zebras are wild animals that cannot be domesticated.",
+      "A group of zebras is called a 'Dazzle’."
+    ]
+  },
+  {
+    "id" : "rhino",
+    "name" : "Beauty, Wellness & Health",
+    "headline" : "Rhinoceros any of five or six species of giant horn-bearing herbivores that include some of the largest living land mammals. Only African and Asian elephants are taller at the shoulder than the two largest rhinoceros species.",
+    "description" : "vvf",
+    "link" : "https://en.wikipedia.org/wiki/White_rhinoceros",
+    "image" : "rhino",
+    "gallery" : [
+        "Beauty & Cosmetics Products Manufacturers",
+        "Beauty & Cosmetics Stores",
+        "Beauty Salons",
+        "Homeopathy & Alternative Medicine",
+        "Hospitals & Clinics",
+        "Labs & Medical Test Centres",
+        "Pharmacy",
+        "Specialty Clinics",
+        "Wellness Services & Spas"
+      ],
+    "fact" : [
+      "The horns of a rhino are not bone and are not attached to the skull. It is made from keratin. It’s the same thing that our fingernails are made from.",
+      "The largest of the five species is the white rhino, which can grow to 1.8m tall and and weigh a massive 2,500kg – that’s the weight of 30 men!",
+      "Rhino horns grow as much as three inches a year, and have been known to grow up to five feet long."
+    ]
+  },
+  {
+    "id" : "elephant",
+    "name" : "Education",
+    "headline" : "Elephants are the largest land mammals on earth and have distinctly massive bodies, large ears, and long trunks. They use their trunks to pick up objects, trumpet warnings, greet other elephants, or suck up water for drinking or bathing, among other uses.",
+    "description" : "tymt",
+    "link" : "https://en.wikipedia.org/wiki/Elephant",
+    "image" : "elephant",
+    "gallery" : [
+        "Colleges & Universities",
+        "Daycare Centres & Playschools",
+        "Driving Schools",
+        "Edtech",
+        "Hobby Centres",
+        "Religious Schools",
+        "Schools",
+        "Training & Learning Centres",
+
+      ],
+    "fact" : [
+      "Elephants can recognize themselves in the mirror. They join humans, apes, and dolphins as the only animals with self-awareness.",
+      "Female elephants have the longest pregnancy of any mammal. It’s a lengthy 22 months before baby elephants are ready to be born.",
+      "Elephants make sounds that we can’t even hear. Some of their calls are so low, they are below the range of human hearing."
+    ]
+  },
+  {
+    "id" : "cheetah",
+    "name" : "Finance & Legal",
+    "headline" : "The cheetah is the fastest land animal in the world, reaching speeds of up to 70 miles per hour. They can accelerate from 0 to 68 miles per hour in just three seconds.",
+    "description" : "vfv",
+    "link" : "https://en.wikipedia.org/wiki/Cheetah",
+    "image" : "cheetah",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "The black ‘tear tracks’ that line a cheetah’s face prevent the sun from infiltrating and blinding the animal whilst hunting.",
+      "The cheetah is the fastest land animal in the world, reaching speeds of up to 113km/h.",
+      "They can accelerate from 0 to 100km/h in just 3 seconds."
+    ]
+  },
+  {
+    "id" : "giraffe",
+    "name" : "Food & Beverage",
+    "headline" : "At an average height of around 5 m (16-18 ft.), the giraffe is the tallest land animal in the world. Giraffes live primarily in savanna areas in the sub-Saharan region of Africa.",
+    "description" : "vff",
+    "link" : "https://en.wikipedia.org/wiki/Giraffe",
+    "image" : "giraffe",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets",
+        "Pet Food & Accessories Stores",
+        "Pet Grooming Centres",
+        "Pet Hotels & Day Care",
+        "Plants & Gardeening Store"
+      ],
+    "fact" : [
+      "Giraffes only need 5 to 30 minutes of sleep in a 24-hour period! They often achieve that in quick naps that may last only a minute or two at a time.",
+      "They can run as fast as 35 miles an hour over short distances, or cruise at 10 mph over longer distances.",
+      "Within just 10 hours of their birth, baby giraffes can run with their families without struggling."
+    ]
+  },
+  {
+    "id" : "buffalo",
+    "name" : "Government & Public Service",
+    "headline" : "The African Buffalo is a bovine species that is widely spread across Africa. It belongs to the famous \"Big Five\". Usually, African buffaloes form large herds.",
+    "description" : "fvfbv",
+    "link" : "https://en.wikipedia.org/wiki/African_buffalo",
+    "image" : "buffalo",
+    "gallery" : [
+        "Animal Breeding Centres",
+        "Animal Shelters / Adoption Centres",
+        "Animal Training Centres",
+        "Animal Transport & Quarantine Centres",
+        "Pet Clinics & Vets"
+      ],
+    "fact" : [
+      "Buffalo are actually fantastic swimmers. They will swim through deep waters to find better grazing areas.",
+      "We refer to them as the mafia, not only because of their strong character but because they never forgive and almost always seek revenge.",
+      "African buffalo have a complex social structure based on what scientists call a “dominance hierarchy”. "
+    ]
   }
 ]

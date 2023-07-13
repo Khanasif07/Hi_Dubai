@@ -19,7 +19,7 @@ enum TableViewCell {
 }
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
-   
+    var animals: [Animal] = Bundle.main.decode("animal.json")
     var tableCellAtIndexPath: [[TableViewCell]] = []
     var sectionData: [Int] = []
     var cardData: SuperYouCardData?
@@ -32,7 +32,8 @@ class SuperYouHomeModel {
     var mostLovedArr: [Record] = []
     var featuredDataArr: [Record] = []
     var pastLiveData: [Record] = []
-    var categories: [Record] = []
+//    var categories: [Record] = []
+    var categories: [Animal] = []
     var musicData: [Record] = []
     var isFirstTime: Bool = false
     
@@ -59,7 +60,8 @@ class SuperYouHomeModel {
                 self.liveNowDataArr = result.record
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
                 self.newSuperShesArr = result.record
-                self.categories =  result.record
+//                self.categories =  result.record
+                self.categories =  self.animals
                 self.pastLiveData = result.record
                 self.isFirstTime =  !self.isFirstTime
                 self.delegate?.newsListingSuccess()

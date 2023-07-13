@@ -68,22 +68,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.emptyView.delegate = self
         self.flowLayoutSetup()
     }
-    //MARK: - Two column only collectionViewFlowLayout
-    func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(44))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        let spacing = CGFloat(10)
-        group.interItemSpacing = .fixed(spacing)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
+    
     
     ///Call to populates data
     func configureCell() {
@@ -116,7 +101,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
+            self.cardCollectionView.collectionViewLayout = createLayoutt1()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -127,7 +112,6 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
             layoutt.scrollDirection = .horizontal
-//            self.configureCollectionViewLayoutItemSize(forCollectionViewLayout: layoutt)
             self.cardCollectionView.collectionViewLayout = layoutt
         default:
             self.pageControl.isHidden = true
@@ -217,7 +201,8 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.categories[indexPath.row],index: indexPath.row)
+//        cell.populateCell(model: superYouData?.categories[indexPath.row],index: indexPath.row)
+        cell.populateCells(model: superYouData?.categories[indexPath.row],index: indexPath.row)
         return cell
     }
 }
@@ -338,13 +323,19 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .video:
             return CGSize.zero
         case .categories:
+//            return CGSize(width: cardCollectionView.bounds.height, height: cardCollectionView.bounds.height)
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
     }
     
     private func cardSizeForCategoriesItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+//        if let cardData =  superYouData?.categories, self.shimmerStatus == .applied {
+//            let dataSource = cardData[indexPath.item].primaryTag
+//            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
+//            return CGSize(width: textSize.width + 50.0, height: 40.0)
+//        }
         if let cardData =  superYouData?.categories, self.shimmerStatus == .applied {
-            let dataSource = cardData[indexPath.item].primaryTag
+            let dataSource = cardData[indexPath.item].name + " \(indexPath.item)"
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
             return CGSize(width: textSize.width + 50.0, height: 40.0)
         }
@@ -402,6 +393,10 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             print("newSuperSheCell_paddingInset:-\(paddingInset)")
         case .categories:
             paddingInset = 9.0
+        case .upcomingCell:
+            paddingInset = 9.0
+        case .music:
+            paddingInset = 0.0
         default:
             paddingInset = 0.0
             //whatsNewCell, superPowers, yourClassesCell, newSuperSheCell, savedClassesCell, upcomingCell, favoritesCell, talksCell,
@@ -483,15 +478,20 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     func manageScroll(_ scrollView: UIScrollView) {
         if scrollView === self.cardCollectionView {
             switch self.currentCell{
-//            case .newSuperSheCell:
-//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
-//                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
+            case .newSuperSheCell:
+                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
             case .featuredCell:
                 let offset = scrollView.contentOffset
                 let page = offset.x / self.bounds.width
                 self.pageControl.currentPage = Int(page)
                 self.currentItem = Int(page)
+            case .categories:
+//                let contentSizeWidth = self.cardCollectionView.contentSize.width/2
+                print("self.cardCollectionView.contentSize.width\(self.cardCollectionView.contentSize.width)")
+//                self.cardCollectionView.contentSize.width = 1800.0
             default:
+                
                 print("")
             }
         }
@@ -625,6 +625,74 @@ class PinterestLayout: UICollectionViewLayout {
 
 }
 
+//MARK: - Two column only collectionViewFlowLayout
+func createLayout() -> UICollectionViewLayout {
+    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                          heightDimension: .fractionalHeight(1.0))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                           heightDimension: .absolute(44))
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+    let spacing = CGFloat(10)
+    group.interItemSpacing = .fixed(spacing)
+    let section = NSCollectionLayoutSection(group: group)
+    section.interGroupSpacing = spacing
+    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+    let layout = UICollectionViewCompositionalLayout(section: section)
+    return layout
+}
+
+private func createLayoutt() -> UICollectionViewLayout {
+  let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+
+    guard let sectionKind = SectionKind(rawValue: sectionIndex) else { return nil }
+
+      let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(180.0), heightDimension: .absolute(44))
+    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+    let itemSpacing: CGFloat = 10
+      item.contentInsets = NSDirectionalEdgeInsets(top: 2.5, leading: itemSpacing, bottom: 2.5, trailing: itemSpacing)
+
+    let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
+    let innerGroup = NSCollectionLayoutGroup.vertical(layoutSize: innerGroupSize, subitem: item, count: sectionKind.itemCount)
+
+      let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
+    let nestedGroup = NSCollectionLayoutGroup.horizontal(layoutSize: nestedGroupSize, subitems: [innerGroup])
+
+    let section = NSCollectionLayoutSection(group: nestedGroup)
+//    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+    section.interGroupSpacing = 20
+    section.orthogonalScrollingBehavior = sectionKind.orthogonalBehaviour
+    return section
+  }
+  return layout
+}
+
+private func createLayoutt1()-> UICollectionViewLayout{
+    let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+        
+        let layoutSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(100),
+            heightDimension: .absolute(44)
+        )
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: layoutSize.heightDimension
+            ),
+            subitems: [.init(layoutSize: layoutSize)]
+        )
+        group.interItemSpacing = .fixed(8)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.interGroupSpacing = 8
+        
+        return .init(section)
+    }
+    return layout
+}
+
 class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
    var photoHeight: CGFloat = 0.0
 
@@ -658,17 +726,17 @@ extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
 class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     required override init() {super.init(); common()}
-        required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
-        
-        private func common() {
-            scrollDirection = .horizontal
-            estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            minimumLineSpacing = 10
-            minimumInteritemSpacing = 8
-        }
-        
-        override func layoutAttributesForElements(
-                        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
+    
+    private func common() {
+        scrollDirection = .horizontal
+        estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        minimumLineSpacing = 10
+        minimumInteritemSpacing = 9
+    }
+    
+    override func layoutAttributesForElements(
+        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
             
             guard let att = super.layoutAttributesForElements(in: rect) else {return []}
             
@@ -687,6 +755,10 @@ class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout 
             }
             return att
         }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
 }
 
 extension Array {
@@ -712,7 +784,7 @@ extension Array {
 extension SuperViewCardTableViewCell{
     //Setting the inset
    func calculateSectionInset(forCollectionViewLayout collectionViewLayout: UICollectionViewFlowLayout, numberOfCells: Int) -> CGFloat {
-       let inset = (cardCollectionView.frame.width) / CGFloat(6)
+       let inset = (cardCollectionView.frame.width) / CGFloat(5)
        return inset
    }
     
@@ -746,7 +818,7 @@ extension SuperViewCardTableViewCell{
       let swipeVelocityThreshold: CGFloat = 0.5
 
       let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
-      let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < 15 && velocity.x > swipeVelocityThreshold
+      let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < 5 && velocity.x > swipeVelocityThreshold
       let hasEnoughVelocityToSlideToThePreviousCell = ((indexOfCellBeforeDragging - 1) >= 0) && (velocity.x < -swipeVelocityThreshold)
 
       let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
@@ -766,5 +838,41 @@ extension SuperViewCardTableViewCell{
           let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
           layoutt.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
       }
+  }
+}
+
+
+enum SectionKind: Int, CaseIterable {
+  case first
+  case second
+  case third
+
+  var itemCount: Int {
+    switch self {
+    case .first:
+      return 2
+    default:
+      return 1
+    }
+  }
+
+  var innerGroupHeight: NSCollectionLayoutDimension {
+    switch self {
+    case .first:
+        return .fractionalWidth(0.3)
+    default:
+      return .fractionalWidth(0.45)
+    }
+  }
+
+  var orthogonalBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior {
+    switch self {
+    case .first:
+      return .continuous
+    case .second:
+      return .groupPaging
+    case .third:
+      return .groupPagingCentered
+    }
   }
 }
