@@ -48,10 +48,11 @@ class AppMediumTableCell: UICollectionViewCell, SelfConfiguringCell {
         ])
     }
 
-    func configure(with app: App) {
+    func configure(with app: App, index: IndexPath) {
         name.text = app.name
         subtitle.text = app.subheading
         imageView.image = UIImage(named: app.image)
+        self.backgroundColor = UIColor(hue: CGFloat(index.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
     }
 
     required init?(coder: NSCoder) {

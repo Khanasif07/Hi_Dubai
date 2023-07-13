@@ -11,7 +11,7 @@ import Foundation
 
 protocol SelfConfiguringCell {
     static var reuseIdentifier: String { get }
-    func configure(with app: App)
+    func configure(with app: App, index: IndexPath)
 }
 struct AppSection: Codable, Hashable {
     let id: Int
@@ -55,8 +55,7 @@ class AppsViewController: UIViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Unable to dequeue \(cellType)")
         }
-
-        cell.configure(with: app)
+        cell.configure(with: app, index: indexPath)
         return cell
     }
 
