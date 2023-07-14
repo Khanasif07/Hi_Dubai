@@ -56,6 +56,7 @@ class SuperYouHomeVC: BaseVC {
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         self.cellType = (self.viewModel.superYouData?.tableCellAtIndexPath.randomElement())!
         self.navigationController?.navigationBar.isHidden = true
         self.viewModel.superYouData?.delegate = self
@@ -122,6 +123,7 @@ class SuperYouHomeVC: BaseVC {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isTranslucent = false
         checkFirstTime = false
         self.dataTableView.reloadData()
         tabVC1?.isScrollingTrue = false

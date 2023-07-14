@@ -81,12 +81,12 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
         case .music:
-            self.cardCollectionView.decelerationRate = .fast
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
 //            let layout = UICollectionViewFlowLayout()
 //            layout.scrollDirection = .horizontal
 //            self.cardCollectionView.collectionViewLayout = layout
+//            self.cardCollectionView.decelerationRate = .fast
             self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusic()
         case .cardCell:
             self.pageControl.isHidden = true
