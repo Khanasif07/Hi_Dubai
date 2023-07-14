@@ -229,7 +229,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .liveClassesCell:
                     return TalksTablePropertyHeight.tableFooter
                 case .pastLive:
-                    return TalksTablePropertyHeight.discussedCellHeight
+                    return TalksTablePropertyHeight.featuredHomeCellHeight
                 case .favoritesCell:
                     return 220.0
                 case .mostLovedClassesCell:

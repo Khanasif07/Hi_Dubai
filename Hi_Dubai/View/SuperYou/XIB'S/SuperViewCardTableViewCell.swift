@@ -84,6 +84,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.cardCollectionView.decelerationRate = .fast
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
+            self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusic()
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -101,7 +105,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            self.cardCollectionView.collectionViewLayout = createLayoutt1()
+            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -113,6 +117,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
             self.cardCollectionView.isPagingEnabled = false
             layoutt.scrollDirection = .horizontal
             self.cardCollectionView.collectionViewLayout = layoutt
+        case .pastLive:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+            self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -875,4 +883,71 @@ enum SectionKind: Int, CaseIterable {
       return .groupPagingCentered
     }
   }
+}
+
+
+extension SuperViewCardTableViewCell{
+    func createCompositionalLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            switch sectionIndex {
+            case 0:
+                return self.createPastLiveVids(using: sectionIndex)
+            default:
+                return self.createPastLiveVids(using: sectionIndex)
+            }
+        }
+
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+        layout.configuration = config
+        return layout
+    }
+    
+    func createPastLiveVids(using section: Int) -> NSCollectionLayoutSection {
+        //TODO: - to show 3 rows...
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
+        //TODO: - to show 1 rows...
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .fractionalHeight(1))
+        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
+
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+
+//        let layoutSectionHeader = createSectionHeader()
+//        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
+
+        return layoutSection
+    }
+
+}
+
+extension SuperViewCardTableViewCell{
+    func createCompositionalLayoutForMusic() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+                return self.createMusicLayout(using: sectionIndex)
+        }
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20.0
+        layout.configuration = config
+        return layout
+    }
+    
+    func createMusicLayout(using section: Int) -> NSCollectionLayoutSection {
+        //TODO: - to show 3 rows...
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
+        
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
+
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalHeight(1))
+        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
+
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+        return layoutSection
+    }
 }

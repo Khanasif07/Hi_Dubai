@@ -91,6 +91,7 @@ class MenuItemCollectionCell: PagingCell {
         self.title.textColor = AppColors.black
         self.title.text = (model?.name ?? "") + (" \(index)")
         self.dotView.isHidden = true
+        self.dataView.backgroundColor = .white
     }
     
     func populateSectionCell(model: Record?, index: Int){
@@ -101,34 +102,34 @@ class MenuItemCollectionCell: PagingCell {
         self.title.font = (model?.isSelected ?? false) ? AppFonts.BlackItalic.withSize(18.0) : AppFonts.BlackItalic.withSize(15.0)
     }
     
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        super.sizeThatFits(size)
-        
-        let cardData =  title.text
-        let dataSource = cardData
-        let textSize = "\(String(describing: dataSource))".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
-        return CGSize(width: textSize.width + 50.0, height: 40.0)
-        //        return CGSize(width: 50.0, height: 40.0)
-        //        guard let text = self.title. else { return .zero } // You might not need this
-        
-        //        let superHeight = super.sizeThatFits(size).height
-        //        let verticalPadding = padding * 2
-        //
-        //        descriptionLabel.text = title.text
-        //        descriptionLabel.font = UIFont.rpx.regular14
-        
-        //        let labelHeight = title.text?.boundingRect(
-        //            with: CGSize(width: size.width, height: size.height),
-        //            options: .usesLineFragmentOrigin,
-        //            context: nil
-        //        ).size.height ?? size.height
-        
-    }
+//    override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        super.sizeThatFits(size)
+//
+//        let cardData =  title.text
+//        let dataSource = cardData
+//        let textSize = "\(String(describing: dataSource))".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
+//        return CGSize(width: textSize.width + 50.0, height: 40.0)
+//        //        return CGSize(width: 50.0, height: 40.0)
+//        //        guard let text = self.title. else { return .zero } // You might not need this
+//
+//        //        let superHeight = super.sizeThatFits(size).height
+//        //        let verticalPadding = padding * 2
+//        //
+//        //        descriptionLabel.text = title.text
+//        //        descriptionLabel.font = UIFont.rpx.regular14
+//
+//        //        let labelHeight = title.text?.boundingRect(
+//        //            with: CGSize(width: size.width, height: size.height),
+//        //            options: .usesLineFragmentOrigin,
+//        //            context: nil
+//        //        ).size.height ?? size.height
+//
+//    }
     
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        super.preferredLayoutAttributesFitting(layoutAttributes)
-        let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
-        layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
-        return layoutAttributes
-    }
+//    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+//        super.preferredLayoutAttributesFitting(layoutAttributes)
+//        let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
+//        layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+//        return layoutAttributes
+//    }
 }
