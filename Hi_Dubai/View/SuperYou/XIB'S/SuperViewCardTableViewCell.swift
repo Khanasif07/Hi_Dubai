@@ -14,7 +14,9 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     //MARK:- Variables
     var indexOfCellBeforeDragging: Int = 0
-    let layoutt = UICollectionViewFlowLayout()
+    lazy var layoutt:UICollectionViewFlowLayout = {
+        return UICollectionViewFlowLayout()
+    }()
     // Velocity is measured in points per millisecond.
     private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
     var cardData: SuperYouCardData? = SuperYouCardData()
@@ -67,6 +69,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.emptyView.isHidden = true
         self.emptyView.delegate = self
         self.flowLayoutSetup()
+//        configureCell()
     }
     
     

@@ -23,10 +23,13 @@ extension SuperYouHomeVC {
     
     /// Get Card Cell
     internal func getMusicCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-        cell.currentCell = .music
+//        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+//        cell.currentCell = .music
+//        cell.superYouData = dataSource
+//        cell.configureCell()
+//        return cell
+        let cell = tableView.dequeueCell(with: SuperYouMusicTableCell.self, indexPath: indexPath)
         cell.superYouData = dataSource
-        cell.configureCell()
         return cell
     }
     

@@ -103,6 +103,7 @@ class NewsListViewModel{
             case .success(let result):
                 print(result)
                 self.businessCategories = result.categories ?? []
+                print(self.businessCategories)
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error
