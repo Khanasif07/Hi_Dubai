@@ -13,14 +13,20 @@ class SuperViewCardTableViewCell: UITableViewCell {
     }
     
     //MARK:- Variables
-    var indexOfCellBeforeDragging: Int = 0
+//    lazy var indexOfCellBeforeDragging: Int = {
+//        return 0
+//    }()
     lazy var layoutt:UICollectionViewFlowLayout = {
         return UICollectionViewFlowLayout()
     }()
     // Velocity is measured in points per millisecond.
-    private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
+//    private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
     var cardData: SuperYouCardData? = SuperYouCardData()
-    var currentCell: CellContents = .cardCell
+    var currentCell: CellContents = .cardCell{
+        didSet{
+            configureCell()
+        }
+    }
     var superYouData: SuperYouHomeModel?
     var shimmerStatus: ShimmerState = .applied
     private var itemWidth: CGFloat = 0.0
@@ -53,7 +59,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.configureCollectionViewLayoutItemSize(forCollectionViewLayout: layoutt)
+//        self.configureCollectionViewLayoutItemSize(forCollectionViewLayout: layoutt)
     }
     //MARK:- Functions
     
@@ -68,8 +74,8 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.dataSource = self
         self.emptyView.isHidden = true
         self.emptyView.delegate = self
-        self.flowLayoutSetup()
-//        configureCell()
+//        self.flowLayoutSetup()
+        configureCell()
     }
     
     
@@ -90,7 +96,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
 //            layout.scrollDirection = .horizontal
 //            self.cardCollectionView.collectionViewLayout = layout
 //            self.cardCollectionView.decelerationRate = .fast
-            self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusic()
+//            self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusic()
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -118,12 +124,19 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .newSuperSheCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            layoutt.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layoutt
+//            layoutt.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layoutt
+            self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
         case .pastLive:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
             self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
+        case .mostLovedClassesCell:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+//            let layout = UICollectionViewFlowLayout()
+            layoutt.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layoutt
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -152,9 +165,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     ///Get UpcomingCell
     private func getUpcomingCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.upcomingDataArr[indexPath.row])
-        cell.bgView1StackBtmCost.constant = 12.0
+        let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
+        cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
+//        cell.populateCell(model: superYouData?.upcomingDataArr[indexPath.row])
+//        cell.bgView1StackBtmCost.constant = 12.0
         return cell
     }
     
@@ -315,15 +329,16 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
         case .upcomingCell:
-            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 215.0)
+            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 125.0)
         case .liveClassesCell, .pastLive:
             return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
         case .favoritesCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
         case .newSuperSheCell:
-            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
-            print("newSuperSheCell_sizeforitem:-\(cardCollectionView.frame.size.width - inset / 2)")
-            return CGSize(width: cardCollectionView.frame.size.width - inset / 2, height: cardCollectionView.bounds.height)
+            return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
+//            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
+//            print("newSuperSheCell_sizeforitem:-\(cardCollectionView.frame.size.width - inset / 2)")
+//            return CGSize(width: cardCollectionView.frame.size.width - inset / 2, height: cardCollectionView.bounds.height)
         case .mostLovedClassesCell:
             return CGSize(width: ClassInitalLayoutConstants.mostLovedHomeCollCellWidth, height: collectionView.bounds.height)
         case .featuredCell:
@@ -360,7 +375,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .featuredCell:
             return 0.0
         case .newSuperSheCell:
-            return 0.0
+            return 9.0
         default : // .cardCell, .liveClassesCell, .mostLovedClassesCell, .newSuperSheCell, .whatsNewCell, .yourClassesCell, .savedClassesCell
             return 9.0
         }
@@ -373,7 +388,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .music:
             return 10.0
         case .newSuperSheCell:
-            return 0.0
+            return 10.0
         default:
             return 10.0
         }
@@ -399,9 +414,10 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             paddingInset = 9.0
             
         case .newSuperSheCell:
-            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
-            paddingInset =  inset/4
-            print("newSuperSheCell_paddingInset:-\(paddingInset)")
+//            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
+//            paddingInset =  inset/4
+//            print("newSuperSheCell_paddingInset:-\(paddingInset)")
+            paddingInset = 0.0
         case .categories:
             paddingInset = 9.0
         case .upcomingCell:
@@ -424,9 +440,9 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
 //        self.manageScroll(scrollView)
         if scrollView === self.cardCollectionView {
             switch self.currentCell{
-            case .newSuperSheCell:
-                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
-                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
+//            case .newSuperSheCell:
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
             case .featuredCell:
                 let offset = scrollView.contentOffset
                 let page = offset.x / self.bounds.width
@@ -446,52 +462,52 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         self.manageScroll(scrollView)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard self.shimmerStatus == .applied else { return }
-        if scrollView === self.cardCollectionView {
-            switch self.currentCell{
-            case .music:
-                let layout = self.cardCollectionView.collectionViewLayout
-                let bounds = scrollView.bounds
-                let xTarget = targetContentOffset.pointee.x
-                // This is the max contentOffset.x to allow. With this as contentOffset.x, the right edge of the last column of cells is at the right edge of the collection view's frame.
-                let xMax = scrollView.contentSize.width - scrollView.bounds.width
-                if abs(velocity.x) <= snapToMostVisibleColumnVelocityThreshold {
-                    let xCenter = scrollView.bounds.midX
-                    let poses = layout.layoutAttributesForElements(in: bounds) ?? []
-                    // Find the column whose center is closest to the collection view's visible rect's center.
-                    let x = poses.min(by: { abs($0.center.x - xCenter) < abs($1.center.x - xCenter) })?.frame.origin.x ?? 0
-                    targetContentOffset.pointee.x = x
-                } else if velocity.x > 0 {
-                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
-                    // Find the leftmost column beyond the current position.
-                    let xCurrent = scrollView.contentOffset.x
-                    let x = poses.filter({ $0.frame.origin.x > xCurrent}).min(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? xMax
-                    targetContentOffset.pointee.x = min(x, xMax)
-                } else {
-                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget - bounds.size.width, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
-                    // Find the rightmost column.
-                    let x = poses.max(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? 0
-                    targetContentOffset.pointee.x = max(x, 0)
-                }
-            case .newSuperSheCell:
-                //Stop scrollView sliding:
-                targetContentOffset.pointee = scrollView.contentOffset
-                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
-                handleDraggingWillEndForScrollView(scrollView, inside: layoutt, withVelocity: velocity, usingIndexOfMajorCell: indexOfMajorCell)
-            default:
-                print("")
-            }
-        }
-    }
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        guard self.shimmerStatus == .applied else { return }
+//        if scrollView === self.cardCollectionView {
+//            switch self.currentCell{
+//            case .music:
+//                let layout = self.cardCollectionView.collectionViewLayout
+//                let bounds = scrollView.bounds
+//                let xTarget = targetContentOffset.pointee.x
+//                // This is the max contentOffset.x to allow. With this as contentOffset.x, the right edge of the last column of cells is at the right edge of the collection view's frame.
+//                let xMax = scrollView.contentSize.width - scrollView.bounds.width
+//                if abs(velocity.x) <= snapToMostVisibleColumnVelocityThreshold {
+//                    let xCenter = scrollView.bounds.midX
+//                    let poses = layout.layoutAttributesForElements(in: bounds) ?? []
+//                    // Find the column whose center is closest to the collection view's visible rect's center.
+//                    let x = poses.min(by: { abs($0.center.x - xCenter) < abs($1.center.x - xCenter) })?.frame.origin.x ?? 0
+//                    targetContentOffset.pointee.x = x
+//                } else if velocity.x > 0 {
+//                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+//                    // Find the leftmost column beyond the current position.
+//                    let xCurrent = scrollView.contentOffset.x
+//                    let x = poses.filter({ $0.frame.origin.x > xCurrent}).min(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? xMax
+//                    targetContentOffset.pointee.x = min(x, xMax)
+//                } else {
+//                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget - bounds.size.width, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+//                    // Find the rightmost column.
+//                    let x = poses.max(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? 0
+//                    targetContentOffset.pointee.x = max(x, 0)
+//                }
+//            case .newSuperSheCell:
+//                //Stop scrollView sliding:
+//                targetContentOffset.pointee = scrollView.contentOffset
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                handleDraggingWillEndForScrollView(scrollView, inside: layoutt, withVelocity: velocity, usingIndexOfMajorCell: indexOfMajorCell)
+//            default:
+//                print("")
+//            }
+//        }
+//    }
    
 
     func manageScroll(_ scrollView: UIScrollView) {
         if scrollView === self.cardCollectionView {
             switch self.currentCell{
-            case .newSuperSheCell:
-                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
-                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
+//            case .newSuperSheCell:
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
             case .featuredCell:
                 let offset = scrollView.contentOffset
                 let page = offset.x / self.bounds.width
@@ -509,11 +525,11 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
    
-    func flowLayoutSetup() {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
-    }
+//    func flowLayoutSetup() {
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
+//    }
     
 }
 
@@ -816,40 +832,40 @@ extension SuperViewCardTableViewCell{
         return Int(round(proportionalLayout))
     }
     
-    func setIndexOfCellBeforeStartingDragging(indexOfMajorCell: Int) {
-        indexOfCellBeforeDragging = indexOfMajorCell
-    }
+//    func setIndexOfCellBeforeStartingDragging(indexOfMajorCell: Int) {
+//        indexOfCellBeforeDragging = indexOfMajorCell
+//    }
     
     //Handling dragging end of a scroll view
-  func handleDraggingWillEndForScrollView(_ scrollView: UIScrollView, inside collectionViewLayout: UICollectionViewFlowLayout, withVelocity velocity: CGPoint, usingIndexOfMajorCell indexOfMajorCell: Int) {
-
-      //Calculating where scroll view should snap
-      let indexOfMajorCell = indexOfMajorCell
-
-      let swipeVelocityThreshold: CGFloat = 0.5
-
-      let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
-      let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < 5 && velocity.x > swipeVelocityThreshold
-      let hasEnoughVelocityToSlideToThePreviousCell = ((indexOfCellBeforeDragging - 1) >= 0) && (velocity.x < -swipeVelocityThreshold)
-
-      let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
-
-      if didUseSwipeToSkipCell {
-
-          let snapToIndex = indexOfCellBeforeDragging + (hasEnoughVelocityToSlideToTheNextCell ? 1 : -1)
-          let toValue = collectionViewLayout.itemSize.width * CGFloat(snapToIndex)
-
-          // Damping equal 1 => no oscillations => decay animation
-          UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
-              scrollView.contentOffset = CGPoint(x: toValue, y: 0)
-              scrollView.layoutIfNeeded()
-          }, completion: nil)
-
-      } else {
-          let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-          layoutt.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-      }
-  }
+//  func handleDraggingWillEndForScrollView(_ scrollView: UIScrollView, inside collectionViewLayout: UICollectionViewFlowLayout, withVelocity velocity: CGPoint, usingIndexOfMajorCell indexOfMajorCell: Int) {
+//
+//      //Calculating where scroll view should snap
+//      let indexOfMajorCell = indexOfMajorCell
+//
+//      let swipeVelocityThreshold: CGFloat = 0.5
+//
+//      let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
+//      let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < 5 && velocity.x > swipeVelocityThreshold
+//      let hasEnoughVelocityToSlideToThePreviousCell = ((indexOfCellBeforeDragging - 1) >= 0) && (velocity.x < -swipeVelocityThreshold)
+//
+//      let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
+//
+//      if didUseSwipeToSkipCell {
+//
+//          let snapToIndex = indexOfCellBeforeDragging + (hasEnoughVelocityToSlideToTheNextCell ? 1 : -1)
+//          let toValue = collectionViewLayout.itemSize.width * CGFloat(snapToIndex)
+//
+//          // Damping equal 1 => no oscillations => decay animation
+//          UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
+//              scrollView.contentOffset = CGPoint(x: toValue, y: 0)
+//              scrollView.layoutIfNeeded()
+//          }, completion: nil)
+//
+//      } else {
+//          let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+//          layoutt.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//      }
+//  }
 }
 
 
@@ -901,7 +917,8 @@ extension SuperViewCardTableViewCell{
         }
 
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        config.interSectionSpacing = 0
+//        config.scrollDirection = .horizontal
         layout.configuration = config
         return layout
     }
@@ -912,8 +929,11 @@ extension SuperViewCardTableViewCell{
         //TODO: - to show 1 rows...
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
-
+        if currentCell == .pastLive {
+            layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        }else{
+            layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        }
         let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .fractionalHeight(1))
         let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
 
@@ -928,29 +948,29 @@ extension SuperViewCardTableViewCell{
 
 }
 
-extension SuperViewCardTableViewCell{
-    func createCompositionalLayoutForMusic() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-                return self.createMusicLayout(using: sectionIndex)
-        }
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20.0
-        layout.configuration = config
-        return layout
-    }
-    
-    func createMusicLayout(using section: Int) -> NSCollectionLayoutSection {
-        //TODO: - to show 3 rows...
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
-        
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
-
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalHeight(1))
-        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
-
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
-        return layoutSection
-    }
-}
+//extension SuperViewCardTableViewCell{
+//    func createCompositionalLayoutForMusic() -> UICollectionViewLayout {
+//        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+//                return self.createMusicLayout(using: sectionIndex)
+//        }
+//        let config = UICollectionViewCompositionalLayoutConfiguration()
+//        config.interSectionSpacing = 20.0
+//        layout.configuration = config
+//        return layout
+//    }
+//
+//    func createMusicLayout(using section: Int) -> NSCollectionLayoutSection {
+//        //TODO: - to show 3 rows...
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
+//
+//        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+//        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
+//
+//        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalHeight(1))
+//        let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
+//
+//        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+//        layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+//        return layoutSection
+//    }
+//}

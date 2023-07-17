@@ -38,7 +38,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .upcomingCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -47,7 +47,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .liveClassesCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -57,12 +57,13 @@ extension SuperYouHomeVC {
         cell.currentCell = .mostLovedClassesCell
         //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+            
             cell.superYouData = dataSource
+//            cell.configureCell()
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
         return cell
     }
@@ -72,7 +73,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .favoritesCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -82,12 +83,12 @@ extension SuperYouHomeVC {
         cell.currentCell = .newSuperSheCell
         //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+//            cell.configureCell()
             cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
         //
         return cell
@@ -100,12 +101,12 @@ extension SuperYouHomeVC {
         
 //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+//            cell.configureCell()
             cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
 //
         cell.emptyView.isHidden = !dataSource.featuredDataArr.isEmpty
@@ -118,7 +119,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .categories
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -127,7 +128,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .pastLive
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
 }

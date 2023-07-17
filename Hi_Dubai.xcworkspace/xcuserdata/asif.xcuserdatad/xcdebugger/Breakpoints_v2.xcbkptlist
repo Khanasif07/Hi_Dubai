@@ -87,17 +87,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "573E932B-4C43-4F13-9EC3-6F497FC88E85"
+            uuid = "81968D6C-7A16-42AE-A0E9-2088E33CD4B4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+            filePath = "Hi_Dubai/ViewModel/NewsListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "451"
-            endingLineNumber = "451"
-            landmarkName = "scrollViewWillEndDragging(_:withVelocity:targetContentOffset:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "getCategoriesListing()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "81968D6C-7A16-42AE-A0E9-2088E33CD4B4 - f7abebcc8375582b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Hi_Dubai.Categories, Swift.Error&gt;) -&gt; () in Hi_Dubai.NewsListViewModel.getCategoriesListing() -&gt; ()"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/ViewModel/NewsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "1628">
+               </Location>
+               <Location
+                  uuid = "81968D6C-7A16-42AE-A0E9-2088E33CD4B4 - f7abebcc8375582b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Hi_Dubai.Categories, Swift.Error&gt;) -&gt; () in Hi_Dubai.NewsListViewModel.getCategoriesListing() -&gt; ()"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/ViewModel/NewsListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "1540">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

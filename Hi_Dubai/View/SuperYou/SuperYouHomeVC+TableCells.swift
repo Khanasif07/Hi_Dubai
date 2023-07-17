@@ -221,7 +221,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .upcomingCell:
                     // double height + gap * 1
                     let numberOfColumn: CGFloat = 2
-                    let sizeForItemHeight : CGFloat = 215.0
+                    let sizeForItemHeight : CGFloat = 125.0
                     let spacing: CGFloat = 10.0 // mininteritemspacing
                     let availableHeight = (sizeForItemHeight * numberOfColumn) + spacing * (numberOfColumn - 1)
                     // triple height + gap * 2
