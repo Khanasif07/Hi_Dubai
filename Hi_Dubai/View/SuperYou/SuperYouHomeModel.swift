@@ -59,7 +59,7 @@ class SuperYouHomeModel {
                 self.upcomingDataArr = result.record
                 self.liveNowDataArr = result.record
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
-                self.newSuperShesArr = result.record
+//                self.newSuperShesArr = result.record
 //                self.categories =  result.record
                 self.categories =  self.animals
                 self.pastLiveData = result.record
@@ -82,22 +82,22 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
-            self.tableCellAtIndexPath.append([.newSuperShesCell])
+//            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.upcomingCell])
-            self.tableCellAtIndexPath.append([.pastLive])
+//            self.tableCellAtIndexPath.append([.pastLive])
             self.tableCellAtIndexPath.append([.categories])
         }else{
             self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
-            self.tableCellAtIndexPath.append([.newSuperShesCell])
+//            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.featuredCell])
-            self.tableCellAtIndexPath.append([.newSuperShesCell])
+//            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.upcomingCell])
-            self.tableCellAtIndexPath.append([.pastLive])
+//            self.tableCellAtIndexPath.append([.pastLive])
         }
         
         getNewsListing()

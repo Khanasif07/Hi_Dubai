@@ -74,7 +74,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.dataSource = self
         self.emptyView.isHidden = true
         self.emptyView.delegate = self
-//        self.flowLayoutSetup()
+        self.flowLayoutSetup()
         configureCell()
     }
     
@@ -100,17 +100,17 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         case .featuredCell:
             self.cardCollectionView.isPagingEnabled = true
             self.pageControl.isHidden = false
             self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
             self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -118,9 +118,9 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         case .newSuperSheCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -140,9 +140,9 @@ class SuperViewCardTableViewCell: UITableViewCell {
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         }
         self.cardCollectionView.reloadData()
     }
@@ -525,11 +525,11 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
    
-//    func flowLayoutSetup() {
-//            let layout = UICollectionViewFlowLayout()
-//            layout.scrollDirection = .horizontal
-//            self.cardCollectionView.collectionViewLayout = layout
-//    }
+    func flowLayoutSetup() {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            self.cardCollectionView.collectionViewLayout = layout
+    }
     
 }
 
