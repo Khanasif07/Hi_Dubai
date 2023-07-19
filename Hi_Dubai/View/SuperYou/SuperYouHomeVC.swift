@@ -146,6 +146,7 @@ class SuperYouHomeVC: BaseVC {
     
     //MARK:- Functions
     internal override func registerNibs() {
+        self.dataTableView.registerCell(with: SuperYouCategoriesTableCell.self)
         self.dataTableView.registerCell(with: SuperYouPastLivTableCell.self)
         self.dataTableView.registerCell(with: SuperYouMusicTableCell.self)
         self.dataTableView.registerCell(with: SuperYouTitleTableViewCell.self)

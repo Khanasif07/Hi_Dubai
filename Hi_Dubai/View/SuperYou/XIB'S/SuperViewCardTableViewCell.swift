@@ -113,7 +113,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
+//            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
@@ -749,44 +749,44 @@ extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
         (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
 }
-// MARK: - LeftAlignedHorizontalCollectionViewFlowLayout
-class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
-    required override init() {super.init(); common()}
-    required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
-    
-    private func common() {
-        scrollDirection = .horizontal
-//        estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        minimumLineSpacing = 10
-//        minimumInteritemSpacing = 9
-    }
-    
-    override func layoutAttributesForElements(
-        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-            
-            guard let att = super.layoutAttributesForElements(in: rect) else {return []}
-            
-            let group = att.group(by: {$0.frame.origin.y})
-            print("group:-\(group)")
-            var x: CGFloat = sectionInset.left
-            
-            for attr in group {
-                print("attr:-\(attr)")
-                x = sectionInset.left
-                for (_,a) in attr.enumerated() {
-                    if a.representedElementCategory != .cell { continue }
-                    a.frame.origin.x = x
-                    x += a.frame.width + minimumInteritemSpacing
-                }
-            }
-            return att
-        }
-    
-    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        return true
-    }
-}
+//// MARK: - LeftAlignedHorizontalCollectionViewFlowLayout
+//class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+//    
+//    required override init() {super.init(); common()}
+//    required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
+//    
+//    private func common() {
+//        scrollDirection = .horizontal
+////        estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+////        minimumLineSpacing = 10
+////        minimumInteritemSpacing = 9
+//    }
+//    
+//    override func layoutAttributesForElements(
+//        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//            
+//            guard let att = super.layoutAttributesForElements(in: rect) else {return []}
+//            
+//            let group = att.group(by: {$0.frame.origin.y})
+//            print("group:-\(group)")
+//            var x: CGFloat = sectionInset.left
+//            
+//            for attr in group {
+//                print("attr:-\(attr)")
+//                x = sectionInset.left
+//                for (_,a) in attr.enumerated() {
+//                    if a.representedElementCategory != .cell { continue }
+//                    a.frame.origin.x = x
+//                    x += a.frame.width + minimumInteritemSpacing
+//                }
+//            }
+//            return att
+//        }
+//    
+//    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+//        return true
+//    }
+//}
 
 extension Array {
     func group<T: Hashable>(by key: (_ element: Element) -> T) -> [[Element]] {

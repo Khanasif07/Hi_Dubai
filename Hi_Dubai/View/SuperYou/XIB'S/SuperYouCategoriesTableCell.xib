@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="jBh-Uz-SvA" customClass="SuperYouCategoriesTableCell" customModule="Hi_Dubai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-fd-aZZ">
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5aS-oj-WL0">
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tGF-eY-X1j">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwB-MR-NGq" customClass="EmptyView" customModule="Hi_Dubai" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="5aS-oj-WL0" firstAttribute="leading" secondItem="bKo-fd-aZZ" secondAttribute="leading" id="5SW-0x-A5w"/>
+                        <constraint firstAttribute="bottom" secondItem="DwB-MR-NGq" secondAttribute="bottom" id="7IB-sF-muA"/>
+                        <constraint firstAttribute="trailing" secondItem="DwB-MR-NGq" secondAttribute="trailing" id="U2a-cc-qdD"/>
+                        <constraint firstAttribute="bottom" secondItem="5aS-oj-WL0" secondAttribute="bottom" id="Wlf-DC-3s8"/>
+                        <constraint firstItem="DwB-MR-NGq" firstAttribute="top" secondItem="bKo-fd-aZZ" secondAttribute="top" id="no8-Jm-pHd"/>
+                        <constraint firstItem="5aS-oj-WL0" firstAttribute="top" secondItem="bKo-fd-aZZ" secondAttribute="top" id="o1n-8Q-i7y"/>
+                        <constraint firstAttribute="trailing" secondItem="5aS-oj-WL0" secondAttribute="trailing" id="ym2-Xj-Rix"/>
+                        <constraint firstItem="DwB-MR-NGq" firstAttribute="leading" secondItem="bKo-fd-aZZ" secondAttribute="leading" id="zdl-es-jmR"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="RKH-Wn-CWM"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="top" secondItem="jBh-Uz-SvA" secondAttribute="top" id="2a5-zU-Wnp"/>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="leading" secondItem="RKH-Wn-CWM" secondAttribute="leading" id="4i9-ar-5Q5"/>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="bottom" secondItem="jBh-Uz-SvA" secondAttribute="bottom" id="O8c-TL-WNY"/>
+                <constraint firstItem="RKH-Wn-CWM" firstAttribute="trailing" secondItem="bKo-fd-aZZ" secondAttribute="trailing" id="fxO-12-JyM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cardCollectionView" destination="5aS-oj-WL0" id="Nlu-AT-t8w"/>
+                <outlet property="emptyView" destination="DwB-MR-NGq" id="yMn-Hd-kQi"/>
+            </connections>
+            <point key="canvasLocation" x="-416.03053435114504" y="-244.36619718309859"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

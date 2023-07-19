@@ -184,6 +184,8 @@
 		E0B639722A1CCEDC00DD4DE4 /* UserTagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */; };
 		E0B639762A1DF44000DD4DE4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B639752A1DF44000DD4DE4 /* LoadingView.swift */; };
 		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
+		E0BC10AF2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */; };
+		E0BC10B02A67D2930000D3BE /* SuperYouCategoriesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */; };
 		E0BCF9A62A44389F003ED010 /* PresentTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */; };
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
@@ -398,6 +400,8 @@
 		E0B639712A1CCEDC00DD4DE4 /* UserTagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagLabel.swift; sourceTree = "<group>"; };
 		E0B639752A1DF44000DD4DE4 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E0B639772A1DF45300DD4DE4 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouCategoriesTableCell.swift; sourceTree = "<group>"; };
+		E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperYouCategoriesTableCell.xib; sourceTree = "<group>"; };
 		E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTypeVC.swift; sourceTree = "<group>"; };
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
@@ -812,6 +816,8 @@
 				E04C22562A656B3A009BA4AE /* SuperYouMusicTableCell.xib */,
 				E04C22592A66B84A009BA4AE /* SuperYouPastLivTableCell.swift */,
 				E04C225A2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib */,
+				E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */,
+				E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */,
 			);
 			path = "XIB'S";
 			sourceTree = "<group>";
@@ -1024,6 +1030,7 @@
 				E0136C0F2A49ABB1003947B6 /* TitleTableViewCell.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
 				E004507B2A2FD93B00A9A64E /* locations.json in Resources */,
+				E0BC10B02A67D2930000D3BE /* SuperYouCategoriesTableCell.xib in Resources */,
 				E004507A2A2FD93B00A9A64E /* videos.json in Resources */,
 				E00DED2F2A138D8400828D34 /* NewSearchTextField.xib in Resources */,
 				E0C8A2C52A5A162A0039E555 /* StuffCollCell.xib in Resources */,
@@ -1097,6 +1104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0C8A2E32A5FC0150039E555 /* AppsViewController.swift in Sources */,
+				E0BC10AF2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift in Sources */,
 				E00450842A2FDBA200A9A64E /* AppLayout.swift in Sources */,
 				E04C225B2A66B84A009BA4AE /* SuperYouPastLivTableCell.swift in Sources */,
 				E00AE4FB2A0DFF7300A43133 /* PresentationHeaderViewController.swift in Sources */,
