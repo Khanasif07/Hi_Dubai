@@ -743,10 +743,10 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
 
 extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
     func loginAction(){
-        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
     func learnHowAction(){
-        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
 }
 // MARK: - LeftAlignedHorizontalCollectionViewFlowLayout
