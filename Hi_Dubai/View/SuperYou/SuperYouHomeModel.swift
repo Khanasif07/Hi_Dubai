@@ -61,7 +61,7 @@ class SuperYouHomeModel {
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
 //                self.newSuperShesArr = result.record
 //                self.categories =  result.record
-                self.categories =  self.animals
+                self.categories =  self.isFirstTime ? [] : self.animals
                 self.pastLiveData = result.record
                 self.isFirstTime =  !self.isFirstTime
                 self.delegate?.newsListingSuccess()
@@ -83,7 +83,7 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
-            self.tableCellAtIndexPath.append([.categories])
+//            self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
 //            self.tableCellAtIndexPath.append([.categories])
