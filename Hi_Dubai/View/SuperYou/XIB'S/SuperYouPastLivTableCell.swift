@@ -1,12 +1,12 @@
 //
-//  SuperYouMusicTableCell.swift
+//  SuperYouPastLivTableCell.swift
 //  Hi_Dubai
 //
-//  Created by Asif Khan on 17/07/2023.
+//  Created by Asif Khan on 18/07/2023.
 //
 
 import UIKit
-class SuperYouMusicTableCell: UITableViewCell {
+class SuperYouPastLivTableCell: UITableViewCell {
     
     //MARK:- Variables
     let layoutt = UICollectionViewFlowLayout()
@@ -36,7 +36,7 @@ class SuperYouMusicTableCell: UITableViewCell {
     
     /// Call to configure ui
     private func configureUI() {
-        self.cardCollectionView.registerCell(with: MusicCollCell.self)
+        self.cardCollectionView.registerCell(with: PartnerCollectionCell.self)
         self.cardCollectionView.delegate = self
         self.cardCollectionView.dataSource = self
         self.emptyView.isHidden = true
@@ -47,29 +47,28 @@ class SuperYouMusicTableCell: UITableViewCell {
     ///Call to populates data
     func configureCell() {
         self.cardCollectionView.isPagingEnabled = false
-        self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusicc()
+        self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
         self.cardCollectionView.reloadData()
     }
     
 
     ///Get Music Cell
-    private func getMusicCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: MusicCollCell.self, indexPath: indexPath)
-        cell.titleLabel.text = "Awesome App #\(indexPath.item)"
-        cell.iconView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
+    private func getPastLiveCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
+        cell.populateCell(model: superYouData?.pastLiveData[indexPath.row])
         return cell
     }
 }
 
 //MARK:- UICollectionView Extensions
-extension SuperYouMusicTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SuperYouPastLivTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.superYouData?.musicData.count ?? 0
+        return self.superYouData?.pastLiveData.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            return self.getMusicCell(collectionView, indexPath: indexPath)
+            return self.getPastLiveCell(collectionView, indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -88,10 +87,7 @@ extension SuperYouMusicTableCell: UICollectionViewDelegate, UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let numberOfColumn: CGFloat = 3
-            let spacing: CGFloat = 10.0 // mininteritemspacing
-            let availableWidth = screen_width - spacing * (numberOfColumn - 1)
-            return CGSize(width: availableWidth, height: 55.0)
+        return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -103,36 +99,47 @@ extension SuperYouMusicTableCell: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
         var paddingInset: CGFloat = 0.0
         return UIEdgeInsets(top: 0, left: paddingInset, bottom: 0, right: paddingInset)
     }
 }
 
-
-extension SuperYouMusicTableCell{
-    func createCompositionalLayoutForMusicc() -> UICollectionViewLayout {
+extension SuperYouPastLivTableCell{
+    func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-                return self.createMusicLayoutt(using: sectionIndex)
+            switch sectionIndex {
+            case 0:
+                return self.createPastLiveVids(using: sectionIndex)
+            default:
+                return self.createPastLiveVids(using: sectionIndex)
+            }
         }
+
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20.0
+        config.interSectionSpacing = 0
+//        config.scrollDirection = .horizontal
         layout.configuration = config
         return layout
     }
     
-    func createMusicLayoutt(using section: Int) -> NSCollectionLayoutSection {
+    func createPastLiveVids(using section: Int) -> NSCollectionLayoutSection {
         //TODO: - to show 3 rows...
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
-        
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
+        //TODO: - to show 1 rows...
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
-
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalHeight(1))
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.93), heightDimension: .fractionalHeight(1))
         let layoutGroup = NSCollectionLayoutGroup.vertical(layoutSize: layoutGroupSize, subitems: [layoutItem])
 
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
         layoutSection.orthogonalScrollingBehavior = .groupPagingCentered
+
+//        let layoutSectionHeader = createSectionHeader()
+//        layoutSection.boundarySupplementaryItems = [layoutSectionHeader]
+
         return layoutSection
     }
+
 }
+

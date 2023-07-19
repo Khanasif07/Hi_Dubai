@@ -64,7 +64,6 @@ class NewsListVC: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
         title = "News"
-        self.title = "123223"
         //
         self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
@@ -93,6 +92,8 @@ class NewsListVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.title = "News"
+        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
         setNeedsStatusBarAppearanceUpdate()
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
@@ -105,7 +106,12 @@ class NewsListVC: UIViewController {
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = ""
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .default
     }

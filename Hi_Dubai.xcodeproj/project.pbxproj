@@ -131,6 +131,8 @@
 		E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA762A03A2DC00C98601 /* SearchVC.swift */; };
 		E04C22572A656B3A009BA4AE /* SuperYouMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C22552A656B3A009BA4AE /* SuperYouMusicTableCell.swift */; };
 		E04C22582A656B3A009BA4AE /* SuperYouMusicTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E04C22562A656B3A009BA4AE /* SuperYouMusicTableCell.xib */; };
+		E04C225B2A66B84A009BA4AE /* SuperYouPastLivTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C22592A66B84A009BA4AE /* SuperYouPastLivTableCell.swift */; };
+		E04C225C2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E04C225A2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib */; };
 		E0722B7E29FFDBC500BB9B6D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B7D29FFDBC500BB9B6D /* HomeVC.swift */; };
 		E0722B8029FFDC9D00BB9B6D /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B7F29FFDC9D00BB9B6D /* BaseVC.swift */; };
 		E0722B8229FFDE2E00BB9B6D /* StatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0722B8129FFDE2E00BB9B6D /* StatsVC.swift */; };
@@ -343,6 +345,8 @@
 		E041CA762A03A2DC00C98601 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		E04C22552A656B3A009BA4AE /* SuperYouMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouMusicTableCell.swift; sourceTree = "<group>"; };
 		E04C22562A656B3A009BA4AE /* SuperYouMusicTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperYouMusicTableCell.xib; sourceTree = "<group>"; };
+		E04C22592A66B84A009BA4AE /* SuperYouPastLivTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouPastLivTableCell.swift; sourceTree = "<group>"; };
+		E04C225A2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperYouPastLivTableCell.xib; sourceTree = "<group>"; };
 		E0722B7D29FFDBC500BB9B6D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E0722B7F29FFDC9D00BB9B6D /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		E0722B8129FFDE2E00BB9B6D /* StatsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsVC.swift; sourceTree = "<group>"; };
@@ -806,6 +810,8 @@
 				E0C8A2C32A5A162A0039E555 /* StuffCollCell.xib */,
 				E04C22552A656B3A009BA4AE /* SuperYouMusicTableCell.swift */,
 				E04C22562A656B3A009BA4AE /* SuperYouMusicTableCell.xib */,
+				E04C22592A66B84A009BA4AE /* SuperYouPastLivTableCell.swift */,
+				E04C225A2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib */,
 			);
 			path = "XIB'S";
 			sourceTree = "<group>";
@@ -994,6 +1000,7 @@
 				E0136C1D2A4BEE49003947B6 /* ViewMoreTableViewCell.xib in Resources */,
 				E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */,
 				8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */,
+				E04C225C2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib in Resources */,
 				E004507C2A2FD93B00A9A64E /* animals.json in Resources */,
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
 				E0B447702A307B5500423DE2 /* Hi_Dubai.xcconfig in Resources */,
@@ -1091,6 +1098,7 @@
 			files = (
 				E0C8A2E32A5FC0150039E555 /* AppsViewController.swift in Sources */,
 				E00450842A2FDBA200A9A64E /* AppLayout.swift in Sources */,
+				E04C225B2A66B84A009BA4AE /* SuperYouPastLivTableCell.swift in Sources */,
 				E00AE4FB2A0DFF7300A43133 /* PresentationHeaderViewController.swift in Sources */,
 				8470C58329974E890091A7C5 /* News.swift in Sources */,
 				E0D3AD8F2A5298BE0006C839 /* CategoryTitleCell.swift in Sources */,

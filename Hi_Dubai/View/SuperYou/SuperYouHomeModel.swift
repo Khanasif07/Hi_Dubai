@@ -85,8 +85,8 @@ class SuperYouHomeModel {
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.upcomingCell])
-//            self.tableCellAtIndexPath.append([.pastLive])
-            self.tableCellAtIndexPath.append([.categories])
+            self.tableCellAtIndexPath.append([.pastLive])
+//            self.tableCellAtIndexPath.append([.categories])
         }else{
             self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
@@ -97,7 +97,7 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.featuredCell])
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.upcomingCell])
-//            self.tableCellAtIndexPath.append([.pastLive])
+            self.tableCellAtIndexPath.append([.pastLive])
         }
         
         getNewsListing()
