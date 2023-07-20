@@ -186,6 +186,8 @@
 		E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B639772A1DF45300DD4DE4 /* LoadingView.xib */; };
 		E0BC10AF2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */; };
 		E0BC10B02A67D2930000D3BE /* SuperYouCategoriesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */; };
+		E0BC10B22A690DF90000D3BE /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10B12A690DF90000D3BE /* MenuItemView.swift */; };
+		E0BC10B42A690E0B0000D3BE /* MenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10B32A690E0B0000D3BE /* MenuItemView.xib */; };
 		E0BCF9A62A44389F003ED010 /* PresentTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */; };
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
@@ -402,6 +404,8 @@
 		E0B639772A1DF45300DD4DE4 /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouCategoriesTableCell.swift; sourceTree = "<group>"; };
 		E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuperYouCategoriesTableCell.xib; sourceTree = "<group>"; };
+		E0BC10B12A690DF90000D3BE /* MenuItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		E0BC10B32A690E0B0000D3BE /* MenuItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemView.xib; sourceTree = "<group>"; };
 		E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTypeVC.swift; sourceTree = "<group>"; };
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
@@ -818,6 +822,8 @@
 				E04C225A2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib */,
 				E0BC10AD2A67D2930000D3BE /* SuperYouCategoriesTableCell.swift */,
 				E0BC10AE2A67D2930000D3BE /* SuperYouCategoriesTableCell.xib */,
+				E0BC10B12A690DF90000D3BE /* MenuItemView.swift */,
+				E0BC10B32A690E0B0000D3BE /* MenuItemView.xib */,
 			);
 			path = "XIB'S";
 			sourceTree = "<group>";
@@ -1006,6 +1012,7 @@
 				E0136C1D2A4BEE49003947B6 /* ViewMoreTableViewCell.xib in Resources */,
 				E00DED4B2A151CD900828D34 /* SuperYouTitleTableViewCell.xib in Resources */,
 				8470C5CF299A13D30091A7C5 /* ShimmerCell.xib in Resources */,
+				E0BC10B42A690E0B0000D3BE /* MenuItemView.xib in Resources */,
 				E04C225C2A66B84A009BA4AE /* SuperYouPastLivTableCell.xib in Resources */,
 				E004507C2A2FD93B00A9A64E /* animals.json in Resources */,
 				8470C5A929976DC60091A7C5 /* HeaderView.xib in Resources */,
@@ -1131,6 +1138,7 @@
 				E00450962A2FDC6500A9A64E /* VeganSectionHeaderView.swift in Sources */,
 				E0C8A2E72A5FC0E50039E555 /* AppSectionHeader.swift in Sources */,
 				E00AE4FD2A0EF23000A43133 /* HotelResultVC.swift in Sources */,
+				E0BC10B22A690DF90000D3BE /* MenuItemView.swift in Sources */,
 				E0781BF22A40FF9100A18A2C /* SwitchTableViewCell.swift in Sources */,
 				8470C591299753EB0091A7C5 /* NewsTableViewCell.swift in Sources */,
 				E00450942A2FDC4A00A9A64E /* SectionDecorationView.swift in Sources */,

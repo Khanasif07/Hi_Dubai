@@ -114,13 +114,25 @@ extension SuperYouHomeVC {
         return cell
     }
     
-    /// Get SuperPowers
+    /// Get Categories
     internal func getCategoriesCell(_ tableView: UITableView, indexPath: IndexPath,dataSource: SuperYouHomeModel) -> UITableViewCell {
 //        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
 //        cell.currentCell = .categories
 //        cell.superYouData = dataSource
 //        cell.configureCell()
         let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
+        cell.superYouData = dataSource
+        return cell
+    }
+    
+    /// Get BusinessCategorie
+    internal func getBusinessCategoriesCell(_ tableView: UITableView, indexPath: IndexPath,dataSource: SuperYouHomeModel) -> UITableViewCell {
+//        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+       
+//        cell.superYouData = dataSource
+//        cell.configureCell()
+        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+        cell.currentCell = .businessCategories
         cell.superYouData = dataSource
         return cell
     }

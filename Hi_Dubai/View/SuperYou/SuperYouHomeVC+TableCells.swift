@@ -79,7 +79,10 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                     return self.getFeaturedCell(tableView, indexPath: indexPath, dataSource: superYouData)
                     
                 case .categories:
-                    return self.getCategoriesCell(tableView, indexPath: indexPath,dataSource: superYouData )
+                    return self.getCategoriesCell(tableView, indexPath: indexPath,dataSource: superYouData)
+                    
+                case .businessCategories:
+                    return self.getBusinessCategoriesCell(tableView, indexPath: indexPath,dataSource: superYouData )
                     
                 case .pastLive:
                     return self.getpastLiveClassesCell(tableView, indexPath: indexPath, dataSource: superYouData)
@@ -150,6 +153,10 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .categories:
                     headerView.headerViewSetUpForSuperYou(title: "Categories", toShowSeeAll: superYouData.categories.count > 2)
                     return headerView
+                    
+                case .businessCategories:
+                    headerView.headerViewSetUpForSuperYou(title: "Business Categories", toShowSeeAll: superYouData.categories.count > 2)
+                    return headerView
                 case .music:
                     headerView.headerViewSetUpForSuperYou(title: "Music", toShowSeeAll: superYouData.categories.count > 2)
                     return headerView
@@ -183,7 +190,7 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 return 50.0
             case .newSuperShesCell:
                 return 50.0
-            case .categories:
+            case .categories,.businessCategories:
                 return 50.0
             case .music:
                 return 50.0
@@ -239,8 +246,9 @@ extension SuperYouHomeVC: UITableViewDelegate, UITableViewDataSource {
                 case .featuredCell:
                     return TalksTablePropertyHeight.featuredHomeCellHeight
                 case .categories:
-                    return  self.viewModel.superYouData!.isFirstTime ? 90.0
-                    : 45.0
+                    return  90.0
+                case .businessCategories:
+                    return  45.0
                 default:
                     return 220.0
                 }

@@ -9,7 +9,7 @@ import UIKit
 class SuperViewCardTableViewCell: UITableViewCell {
     
     enum CellContents {
-        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive , music,video
+        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, businessCategories,pastLive , music,video
     }
     
     //MARK:- Variables
@@ -110,7 +110,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
 //            let layout = UICollectionViewFlowLayout()
 //            layout.scrollDirection = .horizontal
 //            self.cardCollectionView.collectionViewLayout = layout
-        case .categories:
+        case .categories,.businessCategories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
 //            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
@@ -253,7 +253,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
                 return  self.superYouData?.newSuperShesArr.count ?? 0
             case .featuredCell:
                 return self.superYouData?.featuredDataArr.count ?? 0
-            case .categories:
+            case .categories,.businessCategories:
                 return self.superYouData?.categories.count ?? 0
             case .pastLive:
                 return self.superYouData?.pastLiveData.count ?? 0
@@ -293,7 +293,10 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .featuredCell:
             return self.getFeaturedCell(collectionView, indexPath: indexPath)
             
-        case .categories:
+        case .categories,.businessCategories:
+            return self.getCategoriesCell(collectionView, indexPath: indexPath)
+            
+        case .businessCategories:
             return self.getCategoriesCell(collectionView, indexPath: indexPath)
             
         case .video:
@@ -348,7 +351,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return CGSize(width: availableWidth, height: collectionView.bounds.height)
         case .video:
             return CGSize.zero
-        case .categories:
+        case .categories,.businessCategories:
 //            return CGSize(width: cardCollectionView.bounds.height, height: cardCollectionView.bounds.height)
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
@@ -418,7 +421,7 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
 //            paddingInset =  inset/4
 //            print("newSuperSheCell_paddingInset:-\(paddingInset)")
             paddingInset = 0.0
-        case .categories:
+        case .categories,.businessCategories:
             paddingInset = 9.0
         case .upcomingCell:
             paddingInset = 9.0

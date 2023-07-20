@@ -15,7 +15,7 @@ typealias FailureResponse = (NSError) -> (Void)
 typealias ResponseMessage = (_ message : String) -> ()
 // Enums
 enum TableViewCell {
-    case videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
+    case videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music , businessCategories
 }
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
@@ -32,7 +32,7 @@ class SuperYouHomeModel {
     var mostLovedArr: [Record] = []
     var featuredDataArr: [Record] = []
     var pastLiveData: [Record] = []
-//    var categories: [Record] = []
+    var businessCategories: [Record] = []
     var categories: [Animal] = []
     var musicData: [Record] = []
     var isFirstTime: Bool = false
@@ -60,7 +60,7 @@ class SuperYouHomeModel {
                 self.liveNowDataArr = result.record
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
 //                self.newSuperShesArr = result.record
-//                self.categories =  result.record
+                self.businessCategories =  result.record
                 self.categories =  self.isFirstTime ? [] : self.animals
                 self.pastLiveData = result.record
                 self.isFirstTime =  !self.isFirstTime
@@ -83,7 +83,7 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
-//            self.tableCellAtIndexPath.append([.categories])
+            self.tableCellAtIndexPath.append([.businessCategories])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
 //            self.tableCellAtIndexPath.append([.categories])
@@ -95,6 +95,7 @@ class SuperYouHomeModel {
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.featuredCell])
+            self.tableCellAtIndexPath.append([.businessCategories])
 //            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])

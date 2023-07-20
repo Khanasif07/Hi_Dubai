@@ -20,7 +20,7 @@ class SuperYouHomeVC: BaseVC {
     var statusBarHeight : CGFloat {
         return UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
     }
-    var cellType : [TableViewCell] = [.categories]
+    var cellType : [TableViewCell] = [.businessCategories]
     let viewModel = SuperYouHomeVM()
     var shimmerStatus: ShimmerState = .applied
     var cellHeightDictionary: NSMutableDictionary = NSMutableDictionary()
@@ -57,7 +57,7 @@ class SuperYouHomeVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNeedsStatusBarAppearanceUpdate()
-        self.cellType = (self.viewModel.superYouData?.tableCellAtIndexPath.randomElement())!
+        self.cellType = (self.viewModel.superYouData?.tableCellAtIndexPath.randomElement()) ?? [.businessCategories]
         self.navigationController?.navigationBar.isHidden = true
         self.viewModel.superYouData?.delegate = self
         searchTxtFld.delegate = self
