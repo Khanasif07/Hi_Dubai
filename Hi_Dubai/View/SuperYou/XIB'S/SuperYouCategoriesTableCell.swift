@@ -50,6 +50,10 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         
         var previousAnchor = cardScrollView.leadingAnchor
         let totalCount = (self.superYouData?.categories.count ?? 0)
+        if totalCount == 0{
+            self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
+            return
+        }
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
             menuView.titlelbl.text = self.superYouData?.categories[i].name ?? ""
