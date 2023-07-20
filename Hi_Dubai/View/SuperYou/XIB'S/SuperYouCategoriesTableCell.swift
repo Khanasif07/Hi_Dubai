@@ -56,10 +56,10 @@ class SuperYouCategoriesTableCell: UITableViewCell {
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesItemAt(indexPath: i)
-            if i == (totalCount/2)+2{
+            if i == (totalCount/2){
                 previousAnchor = cardScrollView.leadingAnchor
             }
-            if i <= (totalCount/2)+1 {
+            if i < (totalCount/2){
                 NSLayoutConstraint.activate([
                     menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
                     menuView.heightAnchor.constraint(equalToConstant: itemSize.height),

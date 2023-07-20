@@ -20,7 +20,7 @@ class MenuItemView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
-//        self.dataView.setCircleBorder(weight: 0.75, color: .black)
+        self.dataView.setCircleBorder(weight: 0.75, color: .black)
     }
     
     //MARK:- VIEW LIFE CYCLE
