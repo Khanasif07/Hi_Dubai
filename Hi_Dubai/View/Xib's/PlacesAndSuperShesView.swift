@@ -491,12 +491,22 @@ extension PlacesAndSuperShesView: NewsListViewModelDelegate{
     func movieDataSuccess() {
         DispatchQueue.main.async {
             self.dataTableView.reloadData()
+            if (self.viewModel.moviesResponse?.results.count ?? 0) == 0 {
+                (self.parentViewController?.parent as? NavigationTypeVC)?.showEmptyView()
+            }else{
+                (self.parentViewController?.parent as? NavigationTypeVC)?.hideEmptyView()
+            }
         }
     }
     
     func movieDataFailure(error: Error) {
         DispatchQueue.main.async {
             self.dataTableView.reloadData()
+            if (self.viewModel.moviesResponse?.results.count ?? 0) == 0 {
+                (self.parentViewController?.parent as? NavigationTypeVC)?.showEmptyView()
+            }else{
+                (self.parentViewController?.parent as? NavigationTypeVC)?.hideEmptyView()
+            }
         }
     }
     

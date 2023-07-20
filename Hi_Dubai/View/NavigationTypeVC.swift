@@ -14,6 +14,7 @@ class NavigationTypeVC: UIViewController {
     @IBOutlet weak var searchTxtFld: NewSearchTextField!
     @IBOutlet weak var containerView: UIView!
     //
+    var emptyViewPersonal: EmptyView?
     var searchTask: DispatchWorkItem?
 
     override func viewDidLoad() {
@@ -97,6 +98,31 @@ extension NavigationTypeVC: UIGestureRecognizerDelegate{
         }
     }
     
+    func showEmptyView(){
+        // Custom way to add view
+        if emptyViewPersonal == nil{
+            emptyViewPersonal?.removeFromSuperview()
+            emptyViewPersonal = EmptyView(frame: CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height), inView: self.containerView, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal?.loginBtn.isHidden = true
+            emptyViewPersonal?.learnHow.isHidden = true
+            emptyViewPersonal?.text.text = "Sorry, We could not find any results"
+            emptyViewPersonal?.whiteContainer.backgroundColor = .clear
+            emptyViewPersonal?.show()
+        }else{
+            emptyViewPersonal?.removeFromSuperview()
+            emptyViewPersonal = EmptyView(frame: CGRect(x: 0, y: 0, width: self.containerView.frame.width, height: self.containerView.frame.height), inView: self.containerView, centered: true, icon: UIImage(named: ""), message: "")
+            emptyViewPersonal?.loginBtn.isHidden = true
+            emptyViewPersonal?.learnHow.isHidden = true
+            emptyViewPersonal?.text.text = "Sorry, We could not find any results"
+            emptyViewPersonal?.whiteContainer.backgroundColor = .clear
+            emptyViewPersonal?.show()
+        }
+    }
+    
+    func hideEmptyView(){
+        emptyViewPersonal?.hide()
+        emptyViewPersonal?.removeFromSuperview()
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
