@@ -59,7 +59,7 @@ class SuperYouHomeModel {
                 self.upcomingDataArr = result.record
                 self.liveNowDataArr = result.record
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
-//                self.newSuperShesArr = result.record
+                self.newSuperShesArr = result.record
                 self.businessCategories =  result.record
                 self.categories =  self.isFirstTime ? [] : self.animals
                 self.pastLiveData = result.record
@@ -82,7 +82,7 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
-//            self.tableCellAtIndexPath.append([.newSuperShesCell])
+            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.businessCategories])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
@@ -92,11 +92,10 @@ class SuperYouHomeModel {
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
-//            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.featuredCell])
             self.tableCellAtIndexPath.append([.businessCategories])
-//            self.tableCellAtIndexPath.append([.newSuperShesCell])
+            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
         }

@@ -110,11 +110,11 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     
     
     ///Get Music Cell
-//    private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
-//        cell.populateCells(model: superYouData?.categories[indexPath.row],index: indexPath.row)
-//        return cell
-//    }
+    //    private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
+    //        let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
+    //        cell.populateCells(model: superYouData?.categories[indexPath.row],index: indexPath.row)
+    //        return cell
+    //    }
 }
 
 //MARK:- UICollectionView Extensions
