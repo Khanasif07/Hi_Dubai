@@ -51,6 +51,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="gradientView" destination="1N0-EW-KOs" id="1E3-nj-V7p"/>
                 <outlet property="titleLbl" destination="fbm-ZZ-c9h" id="bXY-7r-j0S"/>
             </connections>
             <point key="canvasLocation" x="-21.374045801526716" y="-333.0985915492958"/>

@@ -87,6 +87,7 @@ PODS:
     - PromiseKit/CorePromise
   - PromisesObjC (2.2.0)
   - SkeletonView (1.30.4)
+  - SwiftLint (0.52.4)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
@@ -97,6 +98,7 @@ DEPENDENCIES:
   - Parchment (~> 3.2)
   - PromiseKit (~> 6.8)
   - SkeletonView
+  - SwiftLint
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -115,6 +117,7 @@ SPEC REPOS:
     - PromiseKit
     - PromisesObjC
     - SkeletonView
+    - SwiftLint
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -132,8 +135,9 @@ SPEC CHECKSUMS:
   PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
+  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 270e4d46d9161c74976bf8e4f547b8097ea8a759
+PODFILE CHECKSUM: 2f3effc51ec46ed47e6e4ac6bf2284ef62d7f49b
 
 COCOAPODS: 1.12.1

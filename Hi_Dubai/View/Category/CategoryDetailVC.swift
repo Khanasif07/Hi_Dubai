@@ -49,7 +49,7 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
         self.dataTableView.registerCell(with: CategoryCardViewTableCell.self)
         self.dataTableView.registerCell(with: SuperYouCategoriesTableCell.self)
         self.dataTableView.registerCell(with: CategoryAdvTableCell.self)
-        
+        self.dataTableView.registerCell(with: CategoryViewAllCell.self)
     }
 }
 
@@ -65,11 +65,11 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         case .section1:
             return 1
         case .section2:
-            return 2
+            return 3
         case .section3:
-            return 1
+            return 2
         case .section4:
-            return 1
+            return 2
         case .section5:
             return 2
         case .section6:
@@ -83,21 +83,27 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesDetailSectionView") as? CategoriesDetailSectionView
         switch vm.categoryData?.tableCellAtIndexPath[section][0]{
         case .section1:
+            headerView?.gradientView.isHidden = true
             headerView?.titleLbl.text = "TOP 10 RESTAURANTS YOU MIGHT LIKE"
             return headerView
         case .section2:
+            headerView?.gradientView.isHidden = false
             headerView?.titleLbl.text = "NEW RESTAURANTS IN THE CITY"
             return headerView
         case .section3:
+            headerView?.gradientView.isHidden = false
             headerView?.titleLbl.text = "EXCLUSIVE DEALS FOR YOU"
             return headerView
         case .section4:
+            headerView?.gradientView.isHidden = false
             headerView?.titleLbl.text = "NEAR BY RESTAURANTS"
             return headerView
         case .section5:
+            headerView?.gradientView.isHidden = false
             headerView?.titleLbl.text = "BLOGS"
             return headerView
         case .section6:
+            headerView?.gradientView.isHidden = false
             headerView?.titleLbl.text = "OTHER CATEGORIES"
             return headerView
         case .none:
@@ -110,15 +116,28 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         case .section1:
             return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
         case .section2:
-            if indexPath.row == 0 {
+            switch indexPath.row{
+            case 0:
                 return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
-            }else{
-                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+            case 1:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+            default:
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
             }
         case .section3:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+            switch indexPath.row{
+            case 0:
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+            default:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+            }
         case .section4:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+            switch indexPath.row{
+            case 0:
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+            default:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+            }
         case .section5:
             if indexPath.row == 0 {
                 return  getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
@@ -152,17 +171,31 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
         case .section1:
-            return 210.0
+            return 220.0
         case .section2:
-            if indexPath.row == 0 {
+            switch indexPath.row{
+            case 0:
                 return 250.0
-            }else{
+            case 1:
+                return 59.0
+            default:
                 return 120.0
+                
             }
         case .section3:
-            return 250.0
+            switch indexPath.row{
+            case 0:
+                return 250.0
+            default:
+                return 59.0
+            }
         case .section4:
-            return 250.0
+            switch indexPath.row{
+            case 0:
+                return 250.0
+            default:
+                return 59.0
+            }
         case .section5:
             if indexPath.row == 0 {
                 return 325.0
@@ -197,9 +230,12 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueCell(with: CategoryAdvTableCell.self, indexPath: indexPath)
         return cell
     }
-}
-
-
-extension CategoryDetailVC: CategoryDetailVMDelegate{
     
+    private func getCategoriesSeeMoreCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryViewAllCell.self, indexPath: indexPath)
+        cell.seeMoreBtnTapped = { seeMoreBtn in
+            print("See More Button Tapped..")
+        }
+        return cell
+    }
 }

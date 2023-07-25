@@ -9,6 +9,7 @@ import UIKit
 
 class CategoriesDetailSectionView: UITableViewHeaderFooterView {
 
+    @IBOutlet weak var gradientView: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
 
 }
