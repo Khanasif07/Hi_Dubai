@@ -5,29 +5,29 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="jBh-Uz-SvA" customClass="SuperYouCategoriesTableCell" customModule="Hi_Dubai" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="401" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-fd-aZZ">
-                    <rect key="frame" x="0.0" y="0.0" width="401" height="90"/>
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLG-nj-ld2">
-                            <rect key="frame" x="0.0" y="0.0" width="401" height="90"/>
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </scrollView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="RKH-Wn-CWM"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="bKo-fd-aZZ" firstAttribute="top" secondItem="jBh-Uz-SvA" secondAttribute="top" id="2a5-zU-Wnp"/>
                 <constraint firstItem="bKo-fd-aZZ" firstAttribute="leading" secondItem="RKH-Wn-CWM" secondAttribute="leading" id="4i9-ar-5Q5"/>
@@ -41,9 +41,4 @@
             <point key="canvasLocation" x="-416.03053435114504" y="-244.36619718309859"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

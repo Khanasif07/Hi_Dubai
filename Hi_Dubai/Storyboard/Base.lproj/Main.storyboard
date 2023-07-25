@@ -3546,7 +3546,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1K4-He-oFT"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Z0Q-i1-mSD" secondAttribute="bottom" id="3Ni-9v-kjE"/>
                             <constraint firstItem="Z0Q-i1-mSD" firstAttribute="top" secondItem="hW9-Pz-WPM" secondAttribute="top" id="3yH-pA-qlY"/>

@@ -20,7 +20,7 @@ class MenuItemView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
-        self.dataView.setCircleBorder(weight: 0.75, color: .black)
+        self.dataView.setCircleBorder(weight: 0.75, color: .green)
     }
     
     //MARK:- VIEW LIFE CYCLE
@@ -28,6 +28,12 @@ class MenuItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.dataView.backgroundColor = .white
+    }
+    
+    func configureCell(){
+        self.dataView.backgroundColor = .black
+        self.titlelbl.textColor = .green
+        self.dataView.setCircleBorder(weight: 0.75, color: .green)
     }
     
     

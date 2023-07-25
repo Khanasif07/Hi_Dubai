@@ -193,6 +193,10 @@
 		E0BC10BA2A6E951E0000D3BE /* CategoriesDetailSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10B92A6E951E0000D3BE /* CategoriesDetailSectionView.xib */; };
 		E0BC10CF2A6F40E40000D3BE /* CategoryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10CE2A6F40E40000D3BE /* CategoryDetailModel.swift */; };
 		E0BC10D12A6F41F60000D3BE /* CategoryDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10D02A6F41F60000D3BE /* CategoryDetailVM.swift */; };
+		E0BC10D82A6F97BD0000D3BE /* CategoryCardViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10D62A6F97BD0000D3BE /* CategoryCardViewTableCell.swift */; };
+		E0BC10D92A6F97BD0000D3BE /* CategoryCardViewTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10D72A6F97BD0000D3BE /* CategoryCardViewTableCell.xib */; };
+		E0BC10DC2A6FBDAA0000D3BE /* CategoryAdvTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BC10DA2A6FBDAA0000D3BE /* CategoryAdvTableCell.swift */; };
+		E0BC10DD2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0BC10DB2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib */; };
 		E0BCF9A62A44389F003ED010 /* PresentTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */; };
 		E0BFB8762A29BE05004B7CEE /* PageViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */; };
 		E0BFB8782A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */; };
@@ -416,6 +420,10 @@
 		E0BC10B92A6E951E0000D3BE /* CategoriesDetailSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesDetailSectionView.xib; sourceTree = "<group>"; };
 		E0BC10CE2A6F40E40000D3BE /* CategoryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailModel.swift; sourceTree = "<group>"; };
 		E0BC10D02A6F41F60000D3BE /* CategoryDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVM.swift; sourceTree = "<group>"; };
+		E0BC10D62A6F97BD0000D3BE /* CategoryCardViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardViewTableCell.swift; sourceTree = "<group>"; };
+		E0BC10D72A6F97BD0000D3BE /* CategoryCardViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCardViewTableCell.xib; sourceTree = "<group>"; };
+		E0BC10DA2A6FBDAA0000D3BE /* CategoryAdvTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAdvTableCell.swift; sourceTree = "<group>"; };
+		E0BC10DB2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryAdvTableCell.xib; sourceTree = "<group>"; };
 		E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentTypeVC.swift; sourceTree = "<group>"; };
 		E0BFB8752A29BE05004B7CEE /* PageViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewControllers.swift; sourceTree = "<group>"; };
 		E0BFB8772A29CAD8004B7CEE /* ProfileHeaderPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPagerViewController.swift; sourceTree = "<group>"; };
@@ -874,6 +882,10 @@
 				E0136C1B2A4BEE49003947B6 /* ViewMoreTableViewCell.xib */,
 				E0BC10B72A6E950E0000D3BE /* CategoriesDetailSectionView.swift */,
 				E0BC10B92A6E951E0000D3BE /* CategoriesDetailSectionView.xib */,
+				E0BC10D62A6F97BD0000D3BE /* CategoryCardViewTableCell.swift */,
+				E0BC10D72A6F97BD0000D3BE /* CategoryCardViewTableCell.xib */,
+				E0BC10DA2A6FBDAA0000D3BE /* CategoryAdvTableCell.swift */,
+				E0BC10DB2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib */,
 			);
 			path = "Xib's";
 			sourceTree = "<group>";
@@ -1035,11 +1047,13 @@
 				E00450AE2A2FE09A00A9A64E /* HeaderViewCV.xib in Resources */,
 				E00450AA2A2FDFB600A9A64E /* MusicCollCell.xib in Resources */,
 				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
+				E0BC10DD2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib in Resources */,
 				E0D3AD962A52AC9A0006C839 /* SubCategoryTableViewCell.xib in Resources */,
 				E0D3AD9A2A52FA040006C839 /* ViewMoreCell.xib in Resources */,
 				E00DED552A1520CD00828D34 /* TalksHomeTableHeader.xib in Resources */,
 				E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */,
 				E00450A62A2FDF9800A9A64E /* PhotoCollCell.xib in Resources */,
+				E0BC10D92A6F97BD0000D3BE /* CategoryCardViewTableCell.xib in Resources */,
 				E0136C192A4BE95C003947B6 /* TitleTableViewLastCell.xib in Resources */,
 				E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
@@ -1182,6 +1196,7 @@
 				E0722B8E29FFE83100BB9B6D /* OtherArtistHeaderView.swift in Sources */,
 				E00DED292A13732300828D34 /* WalifTheme.swift in Sources */,
 				E0136BFD2A4500B7003947B6 /* MovieResponse.swift in Sources */,
+				E0BC10D82A6F97BD0000D3BE /* CategoryCardViewTableCell.swift in Sources */,
 				E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */,
 				8470C56D29974D640091A7C5 /* NewsListVC.swift in Sources */,
 				E0B639652A1B85BF00DD4DE4 /* RoundedButton.swift in Sources */,
@@ -1221,6 +1236,7 @@
 				E00450A52A2FDF9800A9A64E /* PhotoCollCell.swift in Sources */,
 				E0B6396A2A1C095B00DD4DE4 /* ImageLoader.swift in Sources */,
 				E0BC10B82A6E950E0000D3BE /* CategoriesDetailSectionView.swift in Sources */,
+				E0BC10DC2A6FBDAA0000D3BE /* CategoryAdvTableCell.swift in Sources */,
 				E00DED4D2A151DB600828D34 /* SuperYouHomeVC+Delegates.swift in Sources */,
 				8470C5CE299A13D30091A7C5 /* ShimmerCell.swift in Sources */,
 				E00AE4F52A0DF62200A43133 /* BaseMyProfileTabsViewController.swift in Sources */,

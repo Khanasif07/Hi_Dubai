@@ -7,25 +7,18 @@
 
 import Foundation
 enum TableViewCells {
-    case videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, categories
+    case section1, section2, section3,section4, section5, section6
 }
 class CategoryDetailModel {
+    var animals: [Animal] = Bundle.main.decode("animal.json")
     //now talksCell is most discussed cell
     var tableCellAtIndexPath: [[TableViewCells]] = []
-    var sectionData: [Int] = []
-    var cardData: SuperYouCardData?
-    var videoData: [Record] = []
-    var upcomingDataArr: [Record] = []
-    var liveNowDataArr: [Record] = []
-    var favouriteDataArr: [Record] = []
-    var newSuperShesArr: [Record] = []
-    var mostDiscussedTalks: [Record] = []
-    var mostLovedArr: [Record] = []
-    var featuredDataArr: [Record] = []
-    var pastLiveData: [Record] = []
-    var businessCategories: [Record] = []
-    var categories: [Record] = []
-    var musicData: [Record] = []
+    var section1Data: [Record] = []
+    var section2Data: [Record] = []
+    var section3Data: [Record] = []
+    var section4Data: [Record] = []
+    var section5Data: [Record] = []
+    var section6Data: [Animal] = []
     var isFirstTime: Bool = false
     
     convenience init(nextPageStatus: Bool) {
@@ -33,7 +26,6 @@ class CategoryDetailModel {
     }
     
     init(jsonArr: [JSONDictionary], nextPageStatus: Bool) {
-        
         self.dataMappingInModel(jsonArr: jsonArr)
     }
     // api....
@@ -44,17 +36,12 @@ class CategoryDetailModel {
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (result: Result<News,Error>) in
             switch result{
             case .success(let result):
-                self.videoData = result.record
-                self.musicData = result.record
-                self.mostLovedArr = result.record
-                self.upcomingDataArr = result.record
-                self.liveNowDataArr = result.record
-                self.featuredDataArr = self.isFirstTime ? [] : result.record
-                self.newSuperShesArr = result.record
-                self.businessCategories =  result.record
-                self.categories =  result.record
-                self.pastLiveData = result.record
-                self.isFirstTime =  !self.isFirstTime
+                self.section1Data = result.record
+                self.section2Data = result.record
+                self.section3Data = result.record
+                self.section4Data = result.record
+                self.section5Data = result.record
+                self.section6Data = self.animals
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error
@@ -68,17 +55,18 @@ class CategoryDetailModel {
     func dataMappingInModel(jsonArr: [JSONDictionary]) {
         self.tableCellAtIndexPath.removeAll()
         if isFirstTime{
-            self.tableCellAtIndexPath.append([.videoCell])
-            self.tableCellAtIndexPath.append([.mostLovedClassesCell])
-            self.tableCellAtIndexPath.append([.liveClassesCell])
-            self.tableCellAtIndexPath.append([.upcomingCell])
-            self.tableCellAtIndexPath.append([.categories])
+            self.tableCellAtIndexPath.append([.section1])
+            self.tableCellAtIndexPath.append([.section2])
+            self.tableCellAtIndexPath.append([.section3])
+            self.tableCellAtIndexPath.append([.section4])
+            self.tableCellAtIndexPath.append([.section5])
         }else{
-            self.tableCellAtIndexPath.append([.videoCell])
-            self.tableCellAtIndexPath.append([.mostLovedClassesCell])
-            self.tableCellAtIndexPath.append([.liveClassesCell])
-            self.tableCellAtIndexPath.append([.categories])
-            self.tableCellAtIndexPath.append([.upcomingCell])
+            self.tableCellAtIndexPath.append([.section1])
+            self.tableCellAtIndexPath.append([.section2])
+            self.tableCellAtIndexPath.append([.section3])
+            self.tableCellAtIndexPath.append([.section4])
+            self.tableCellAtIndexPath.append([.section5])
+            self.tableCellAtIndexPath.append([.section6])
         }
         getNewsListing()
     }

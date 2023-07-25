@@ -15,13 +15,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVP-uT-cXR">
-                    <rect key="frame" x="7.6666666666666643" y="0.0" width="110" height="40"/>
+                    <rect key="frame" x="3.6666666666666643" y="0.0" width="118" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhY-xi-bN7">
-                            <rect key="frame" x="0.0" y="0.0" width="110" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7F7-7G-ziu">
-                                    <rect key="frame" x="39" y="9.9999999999999982" width="32" height="20.333333333333329"/>
+                                    <rect key="frame" x="43" y="9.9999999999999982" width="32" height="20.333333333333329"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -47,8 +47,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="iVP-uT-cXR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2Zp-kW-Qgx"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iVP-uT-cXR" secondAttribute="trailing" constant="7.5" id="5Z8-v3-43A"/>
-                <constraint firstItem="iVP-uT-cXR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="7.5" id="bNv-0n-uiu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iVP-uT-cXR" secondAttribute="trailing" constant="3.5" id="5Z8-v3-43A"/>
+                <constraint firstItem="iVP-uT-cXR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="3.5" id="bNv-0n-uiu"/>
                 <constraint firstAttribute="bottom" secondItem="iVP-uT-cXR" secondAttribute="bottom" id="fTY-0r-yZb"/>
                 <constraint firstItem="iVP-uT-cXR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fxs-06-Ft5"/>
             </constraints>

@@ -46,7 +46,10 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
         self.dataTableView.separatorColor = .clear
         self.dataTableView.separatorStyle = .none
         self.dataTableView.registerHeaderFooter(with: CategoriesDetailSectionView.self)
-        self.dataTableView.registerCell(with: SuperViewCardTableViewCell.self)
+        self.dataTableView.registerCell(with: CategoryCardViewTableCell.self)
+        self.dataTableView.registerCell(with: SuperYouCategoriesTableCell.self)
+        self.dataTableView.registerCell(with: CategoryAdvTableCell.self)
+        
     }
 }
 
@@ -58,28 +61,43 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch vm.categoryData?.tableCellAtIndexPath[section][0]{
+        case .section1:
+            return 1
+        case .section2:
+            return 1
+        case .section3:
+            return 1
+        case .section4:
+            return 1
+        case .section5:
+            return 2
+        case .section6:
+            return 1
+        case .none:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesDetailSectionView") as? CategoriesDetailSectionView
         switch vm.categoryData?.tableCellAtIndexPath[section][0]{
-        case .videoCell:
+        case .section1:
             headerView?.titleLbl.text = "TOP 10 RESTAURANTS YOU MIGHT LIKE"
             return headerView
-        case .upcomingCell:
+        case .section2:
             headerView?.titleLbl.text = "NEW RESTAURANTS IN THE CITY"
             return headerView
-        case .favoritesCell:
+        case .section3:
             headerView?.titleLbl.text = "EXCLUSIVE DEALS FOR YOU"
             return headerView
-        case .liveClassesCell:
+        case .section4:
             headerView?.titleLbl.text = "NEAR BY RESTAURANTS"
             return headerView
-        case .mostLovedClassesCell:
+        case .section5:
             headerView?.titleLbl.text = "BLOGS"
             return headerView
-        case .categories:
+        case .section6:
             headerView?.titleLbl.text = "OTHER CATEGORIES"
             return headerView
         case .none:
@@ -89,20 +107,24 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
-        case .videoCell:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .videoCell)
-        case .upcomingCell:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .upcomingCell)
-        case .favoritesCell:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .favoritesCell)
-        case .liveClassesCell:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .liveClassesCell)
-        case .mostLovedClassesCell:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .mostLovedClassesCell)
-        case .categories:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .categories)
+        case .section1:
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
+        case .section2:
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+        case .section3:
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+        case .section4:
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+        case .section5:
+            if indexPath.row == 0 {
+                return  getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+            }else{
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+            }
+        case .section6:
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section6)
         case .none:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .videoCell)
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
         }
     }
     
@@ -125,30 +147,46 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
-        case .videoCell:
+        case .section1:
             return 200.0
-        case .upcomingCell:
+        case .section2:
             return 240.0
-        case .favoritesCell:
+        case .section3:
             return 240.0
-        case .liveClassesCell:
+        case .section4:
             return 220.0
-        case .mostLovedClassesCell:
-            return 220.0
-        case .categories:
-            return 260.0
+        case .section5:
+            if indexPath.row == 0 {
+                return 325.0
+            }else{
+                return 120.0
+            }
+        case .section6:
+            return 108.0
         case .none:
             return 0.0
         }
     }
     
-    func getCardCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: TableViewCells) -> UITableViewCell{
-        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-        cell.cardCollectionView.backgroundColor = .black.withAlphaComponent(0.75)
-//        cell.currentCell = cellType
+    private func getCardCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryCardViewTableCell.self, indexPath: indexPath)
+        cell.currentCell = cellType
         if let _ = self.vm.categoryData{
             cell.categoryData = dataSource
         }
+        return cell
+    }
+    
+    private func getCategoriesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
+        if let _ = self.vm.categoryData{
+            cell.categoriesData = dataSource
+        }
+        return cell
+    }
+    
+    private func getCategoriesAdvertismentCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryAdvTableCell.self, indexPath: indexPath)
         return cell
     }
 }

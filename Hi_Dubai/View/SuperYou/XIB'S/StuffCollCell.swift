@@ -14,5 +14,9 @@ class StuffCollCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func populateCell(model: Record?){
+        
+    }
 
 }
