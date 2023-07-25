@@ -10,7 +10,7 @@ var maxCountForViewMore: Int = 10
 var viewMoreSelected: Bool = false
 class CategoryTitleCell: UITableViewCell {
 
-    var helperDelegate: HeplerDelegate?
+    weak var helperDelegate: HeplerDelegate?
     var model: Goal?
     var modele: Category?
     var buttonTapped: ((UIButton) -> Void)?
@@ -36,7 +36,7 @@ class CategoryTitleCell: UITableViewCell {
         internalTableView.estimatedRowHeight = 36
         self.internalTableView.tableFooterView?.height = 18.0
         internalTableView.rowHeight = UITableView.automaticDimension
-        internalTableView.allowsSelection = false
+        internalTableView.allowsSelection = true
         internalTableView.backgroundColor =  UIColor.black.withAlphaComponent(0.75)
         self.isRowShow = !self.internalTableView.isHidden
         self.footerView()
@@ -163,5 +163,11 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 36.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectedIndexPath = selectedIndexPath   {
+            self.helperDelegate?.cellSelected(selectedIndexPath,index: indexPath)
+        }
     }
 }

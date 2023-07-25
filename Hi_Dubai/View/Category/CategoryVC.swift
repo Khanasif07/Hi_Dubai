@@ -7,9 +7,10 @@
 
 import UIKit
 
-protocol HeplerDelegate {
+protocol HeplerDelegate: NSObject {
     func heightChanged()
     func cellAdded()
+    func cellSelected(_ selectedIndexPath:IndexPath, index: IndexPath)
     func cellDeleted()
 }
 var hiddenSections = Array<(Int,Bool)>()
@@ -98,6 +99,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: CategoryTitleCell.self)
+        cell.helperDelegate = self
         //
         cell.isRowShow    = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.selectedIndexPath = indexPath
@@ -149,6 +151,15 @@ extension CategoryVC: HeplerDelegate {
 
     func cellAdded() {
 
+    }
+    
+    func cellSelected(_ selectedIndexPath: IndexPath,index: IndexPath) {
+//        let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
+//        vc.titleMsg =  self.viewModel.categories[index.row].name?.en ?? ""
+//        self.navigationController?.pushViewController(vc, animated: false)
+        let vc = CategoryDetailVC.instantiate(fromAppStoryboard: .Main)
+        vc.titleMsg =  self.viewModel.categories[selectedIndexPath.row].children?[index.row].name?.en ?? ""
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 
     func cellDeleted() {
@@ -231,7 +242,7 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
     }
     
     private func headerSetup(showSearchCount: Bool = false){
-        if showSearchCount{
+        if showSearchCount && !searchValue.isEmpty{
             headerView.searchResultCountLbl.isHidden = false
             headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: 109.0))
             let resultCount = self.viewModel.categories.reduce(0) { $0 + ($1.children?.count ?? 0) }

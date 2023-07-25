@@ -28,6 +28,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
         }
     }
     var superYouData: SuperYouHomeModel?
+    var categoryData: CategoryDetailModel?
     var shimmerStatus: ShimmerState = .applied
     private var itemWidth: CGFloat = 0.0
     private var currentItem: Int = 0
@@ -379,6 +380,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return 0.0
         case .newSuperSheCell:
             return 9.0
+        case .categories,.businessCategories:
+            return 0.0
         default : // .cardCell, .liveClassesCell, .mostLovedClassesCell, .newSuperSheCell, .whatsNewCell, .yourClassesCell, .savedClassesCell
             return 9.0
         }
@@ -392,6 +395,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return 10.0
         case .newSuperSheCell:
             return 10.0
+        case .categories,.businessCategories:
+            return 0.0
         default:
             return 10.0
         }

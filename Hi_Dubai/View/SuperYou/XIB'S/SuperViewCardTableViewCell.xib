@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,12 +35,12 @@
                                 <constraint firstAttribute="height" constant="25" id="KZY-IT-jMS"/>
                             </constraints>
                         </pageControl>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf4-Aa-Q4K" customClass="EmptyView" customModule="Hi_Dubai" customModuleProvider="target">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf4-Aa-Q4K" customClass="EmptyView" customModule="Hi_Dubai" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="401" height="198"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
                     <constraints>
                         <constraint firstItem="Wf4-Aa-Q4K" firstAttribute="leading" secondItem="U5q-2M-N7X" secondAttribute="leading" id="2Mm-eI-OTJ"/>
                         <constraint firstAttribute="trailing" secondItem="8NL-qD-AIS" secondAttribute="trailing" constant="100" id="BM2-Jc-T3P"/>
@@ -57,7 +57,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="nz6-hL-UfP"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="U5q-2M-N7X" firstAttribute="leading" secondItem="nz6-hL-UfP" secondAttribute="leading" id="H7A-E9-J1B"/>
                 <constraint firstItem="nz6-hL-UfP" firstAttribute="trailing" secondItem="U5q-2M-N7X" secondAttribute="trailing" id="hyR-cp-FQe"/>
@@ -76,8 +76,8 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

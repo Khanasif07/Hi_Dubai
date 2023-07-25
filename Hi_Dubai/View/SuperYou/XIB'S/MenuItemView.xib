@@ -38,7 +38,6 @@
                     <constraints>
                         <constraint firstItem="VhY-xi-bN7" firstAttribute="top" secondItem="iVP-uT-cXR" secondAttribute="top" id="2Kd-6n-34V"/>
                         <constraint firstAttribute="bottom" secondItem="VhY-xi-bN7" secondAttribute="bottom" id="7s0-SD-DCj"/>
-                        <constraint firstAttribute="height" constant="40" id="989-xY-McX"/>
                         <constraint firstAttribute="trailing" secondItem="VhY-xi-bN7" secondAttribute="trailing" id="lBZ-0v-62H"/>
                         <constraint firstItem="VhY-xi-bN7" firstAttribute="leading" secondItem="iVP-uT-cXR" secondAttribute="leading" id="pZM-8c-Ih7"/>
                     </constraints>

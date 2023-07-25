@@ -33,6 +33,7 @@ class SuperYouHomeVC: BaseVC {
     var tabVC1: NewsListVC?
     var tabVC2: NewsListVC?
     var tabVC3: NewsListVC?
+    var titleMsg: String = ""
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

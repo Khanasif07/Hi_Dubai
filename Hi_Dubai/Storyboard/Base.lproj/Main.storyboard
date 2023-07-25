@@ -3499,6 +3499,73 @@
             </objects>
             <point key="canvasLocation" x="10316.923076923076" y="-53.317535545023695"/>
         </scene>
+        <!--Category DetailVC-->
+        <scene sceneID="Mbv-3c-qOU">
+            <objects>
+                <viewController storyboardIdentifier="CategoryDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xvb-Mo-5r6" customClass="CategoryDetailVC" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hW9-Pz-WPM">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Q-i1-mSD">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJl-uC-4gU">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ni3-Ts-q8O">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Ni3-Ts-q8O" firstAttribute="top" secondItem="mJl-uC-4gU" secondAttribute="top" id="5Se-VB-XfS"/>
+                                            <constraint firstItem="Ni3-Ts-q8O" firstAttribute="leading" secondItem="mJl-uC-4gU" secondAttribute="leading" id="LvF-wn-2hb"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ni3-Ts-q8O" secondAttribute="trailing" id="OmA-RL-2vG"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ni3-Ts-q8O" secondAttribute="bottom" id="x8y-z4-z0N"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="mJl-uC-4gU" firstAttribute="top" secondItem="Z0Q-i1-mSD" secondAttribute="top" id="Ejs-tC-63F"/>
+                                    <constraint firstAttribute="bottom" secondItem="mJl-uC-4gU" secondAttribute="bottom" id="Huk-Uy-uIG"/>
+                                    <constraint firstAttribute="trailing" secondItem="mJl-uC-4gU" secondAttribute="trailing" id="Yx4-Fm-PFE"/>
+                                    <constraint firstItem="mJl-uC-4gU" firstAttribute="leading" secondItem="Z0Q-i1-mSD" secondAttribute="leading" id="nCS-JM-crn"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient_oblique" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-Bu-yYd">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="91"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="aFP-Yg-65s"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1K4-He-oFT"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Z0Q-i1-mSD" secondAttribute="bottom" id="3Ni-9v-kjE"/>
+                            <constraint firstItem="Z0Q-i1-mSD" firstAttribute="top" secondItem="hW9-Pz-WPM" secondAttribute="top" id="3yH-pA-qlY"/>
+                            <constraint firstItem="Z0Q-i1-mSD" firstAttribute="trailing" secondItem="1K4-He-oFT" secondAttribute="trailing" id="do0-2e-bmr"/>
+                            <constraint firstItem="Z0Q-i1-mSD" firstAttribute="leading" secondItem="1K4-He-oFT" secondAttribute="leading" id="g9W-jF-C6x"/>
+                            <constraint firstItem="aRv-Bu-yYd" firstAttribute="trailing" secondItem="1K4-He-oFT" secondAttribute="trailing" id="heB-73-b6g"/>
+                            <constraint firstItem="aRv-Bu-yYd" firstAttribute="leading" secondItem="1K4-He-oFT" secondAttribute="leading" id="qt5-bU-dHa"/>
+                            <constraint firstItem="aRv-Bu-yYd" firstAttribute="top" secondItem="hW9-Pz-WPM" secondAttribute="top" id="vKU-yw-qjh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataTableView" destination="Ni3-Ts-q8O" id="TBj-La-aNi"/>
+                        <outlet property="navBarheightConst" destination="aFP-Yg-65s" id="eHb-wa-KgM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kbe-ak-yxx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11837" y="-68"/>
+        </scene>
         <!--News DiscoverVC-->
         <scene sceneID="RBk-VD-hOY">
             <objects>
