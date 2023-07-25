@@ -7,6 +7,7 @@
 import UIKit
 class MenuItemView: UIView {
 
+    let color = UIColor(red: CGFloat(93/255.0),green: CGFloat(132/255.0),blue: CGFloat(171/255.0), alpha: CGFloat(1.0))
     //MARK:- IBOUTLETS
     //==================
     @IBOutlet weak var dataView: UIView!
@@ -20,7 +21,7 @@ class MenuItemView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
-        self.dataView.setCircleBorder(weight: 0.75, color: .green)
+        self.dataView.setCircleBorder(weight: 0.75, color: color)
     }
     
     //MARK:- VIEW LIFE CYCLE
@@ -32,8 +33,7 @@ class MenuItemView: UIView {
     
     func configureCell(){
         self.dataView.backgroundColor = .black
-        self.titlelbl.textColor = .green
-        self.dataView.setCircleBorder(weight: 0.75, color: .green)
+        self.titlelbl.textColor = color
     }
     
     

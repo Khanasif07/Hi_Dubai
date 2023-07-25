@@ -188,7 +188,7 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
         case .section3:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 18)
         case .section4:
-            return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height - 18)
+            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 18)
         case .section5:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 18)
         case .section6:

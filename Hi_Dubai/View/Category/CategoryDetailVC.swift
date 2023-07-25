@@ -65,7 +65,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         case .section1:
             return 1
         case .section2:
-            return 1
+            return 2
         case .section3:
             return 1
         case .section4:
@@ -110,7 +110,11 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         case .section1:
             return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
         case .section2:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+            if indexPath.row == 0 {
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+            }else{
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+            }
         case .section3:
             return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
         case .section4:
@@ -148,13 +152,17 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
         case .section1:
-            return 200.0
+            return 210.0
         case .section2:
-            return 240.0
+            if indexPath.row == 0 {
+                return 250.0
+            }else{
+                return 120.0
+            }
         case .section3:
-            return 240.0
+            return 250.0
         case .section4:
-            return 220.0
+            return 250.0
         case .section5:
             if indexPath.row == 0 {
                 return 325.0
