@@ -9,7 +9,7 @@ import UIKit
 
 class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
     var titleMsg: String = ""
-    var vm = CategoryDetailVM()
+    var viewModel = CategoryDetailVM()
     @IBOutlet weak var navBarheightConst: NSLayoutConstraint!
     @IBOutlet weak var dataTableView: UITableView!
     
@@ -24,8 +24,8 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
     }
     
     func hitApi() {
-        self.vm.delegate = self
-        self.vm.categoryData?.dataMappingInModel(jsonArr: [])
+        self.viewModel.delegate = self
+        self.viewModel.categoryData?.dataMappingInModel(jsonArr: [])
     }
     
     internal override func initialSetup() {
@@ -57,11 +57,11 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
 extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return  vm.categoryData?.tableCellAtIndexPath.count ?? 0
+        return  viewModel.categoryData?.tableCellAtIndexPath.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch vm.categoryData?.tableCellAtIndexPath[section][0]{
+        switch viewModel.categoryData?.tableCellAtIndexPath[section][0]{
         case .section1:
             return 1
         case .section2:
@@ -81,7 +81,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesDetailSectionView") as? CategoriesDetailSectionView
-        switch vm.categoryData?.tableCellAtIndexPath[section][0]{
+        switch viewModel.categoryData?.tableCellAtIndexPath[section][0]{
         case .section1:
             headerView?.gradientView.isHidden = true
             headerView?.titleLbl.text = "TOP 10 RESTAURANTS YOU MIGHT LIKE"
@@ -112,42 +112,42 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
+        switch viewModel.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
         case .section1:
-            return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section1)
         case .section2:
             switch indexPath.row{
             case 0:
-                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
             case 1:
-                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
             default:
-                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section2)
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
             }
         case .section3:
             switch indexPath.row{
             case 0:
-                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section3)
             default:
-                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section3)
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section3)
             }
         case .section4:
             switch indexPath.row{
             case 0:
-                return getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
             default:
-                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section4)
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
             }
         case .section5:
             if indexPath.row == 0 {
-                return  getCardCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+                return  getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section5)
             }else{
-                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section5)
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section5)
             }
         case .section6:
-            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section6)
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section6)
         case .none:
-            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.vm.categoryData!, .section1)
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section1)
         }
     }
     
@@ -169,7 +169,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch vm.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
+        switch viewModel.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
         case .section1:
             return 220.0
         case .section2:
@@ -212,7 +212,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     private func getCardCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
         let cell = tableView.dequeueCell(with: CategoryCardViewTableCell.self, indexPath: indexPath)
         cell.currentCell = cellType
-        if let _ = self.vm.categoryData{
+        if let _ = self.viewModel.categoryData{
             cell.categoryData = dataSource
         }
         return cell
@@ -220,7 +220,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     private func getCategoriesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
         let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
-        if let _ = self.vm.categoryData{
+        if let _ = self.viewModel.categoryData{
             cell.categoriesData = dataSource
         }
         return cell
@@ -238,4 +238,9 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         }
         return cell
     }
+}
+
+
+extension CategoryDetailVC: CategoryDetailVMDelegate{
+    
 }

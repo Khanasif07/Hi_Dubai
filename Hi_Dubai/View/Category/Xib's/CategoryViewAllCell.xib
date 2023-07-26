@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="40" id="zuW-8h-Skd"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="SEE MORE">
+                                <buttonConfiguration key="configuration" style="plain" title="VIEW ALL" cornerStyle="capsule">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>

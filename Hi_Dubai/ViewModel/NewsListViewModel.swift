@@ -46,18 +46,6 @@ class NewsListViewModel{
     var animals: [Animal] = Bundle.main.decode("animal.json")
     var searchValue: String = ""{
         didSet{
-            //            animalCategories = searchValue.isEmpty ? animals : animals.filter({(animal: Animal) -> Bool in
-            //                return animal.gallery.filter ({ (animal: String) -> Bool in
-            //                    animal.range(of: searchValue, options: .caseInsensitive) != nil
-            //                }).count > 0
-            //            }).map({ (animall:Animal) in
-            //                let filtered =  animall.gallery.filter { (animalll:String)->Bool in
-            //                    animalll.range(of: self.searchValue, options: .caseInsensitive) != nil
-            //                }
-            //                var anml = animall
-            //                anml.gallery = filtered
-            //                return anml
-            //            })
             categories = searchValue.isEmpty ? businessCategories : businessCategories.filter({(category: Category) -> Bool in
                 return category.children?.filter ({ (subCategory: Child) -> Bool in
                     subCategory.name?.en?.range(of: searchValue, options: .caseInsensitive) != nil
