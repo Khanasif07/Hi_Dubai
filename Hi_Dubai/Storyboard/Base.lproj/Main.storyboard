@@ -1970,7 +1970,7 @@
         <!--Profile Header Pager View Controller-->
         <scene sceneID="7bq-sF-nUM">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="p5t-Sw-1HY" customClass="ProfileHeaderPagerViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="ProfileHeaderPagerViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="p5t-Sw-1HY" customClass="ProfileHeaderPagerViewController" customModule="Hi_Dubai" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PyE-6O-R5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3757" y="-956"/>

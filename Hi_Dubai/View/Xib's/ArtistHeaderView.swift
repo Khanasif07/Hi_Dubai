@@ -22,11 +22,13 @@ class ArtistHeaderView: UIView {
     
     weak var delegate: ArtistHeaderViewDelegate?
     var mainIMgContainerView : UIView?
+    var headerVC: ProfileHeaderPagerViewController?
     
     //MARK:- IBOUTLETS
     //==================
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var mainImgView: UIImageView!
-   
+    @IBOutlet weak var pageControl: UIPageControl!
     
     override func setNeedsLayout() {
         super.setNeedsLayout()
@@ -40,7 +42,11 @@ class ArtistHeaderView: UIView {
     //=====================
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+        mainImgView.isHidden = true
+        headerVC = ProfileHeaderPagerViewController.instantiate(fromAppStoryboard: .Main)
+        headerVC?.headerView = self
+        headerVC?.view.frame = containerView.bounds
+        containerView.addSubview((headerVC?.view!)!)
     }
     
     

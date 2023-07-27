@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,12 +22,27 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                             <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
+                        <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FaY-VC-yh9">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                        </containerView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="eyp-cq-iDR">
+                            <rect key="frame" x="138.33333333333334" y="295" width="98.666666666666657" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="0pH-oM-y0e"/>
+                            </constraints>
+                        </pageControl>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemMintColor"/>
                     <constraints>
+                        <constraint firstItem="FaY-VC-yh9" firstAttribute="top" secondItem="ZQw-87-uxB" secondAttribute="top" id="2CQ-vq-mVW"/>
+                        <constraint firstItem="eyp-cq-iDR" firstAttribute="centerX" secondItem="ZQw-87-uxB" secondAttribute="centerX" id="326-6l-off"/>
                         <constraint firstAttribute="trailing" secondItem="jgA-UO-If0" secondAttribute="trailing" id="9r1-d6-Fyz"/>
+                        <constraint firstItem="FaY-VC-yh9" firstAttribute="leading" secondItem="ZQw-87-uxB" secondAttribute="leading" id="B5j-PW-euX"/>
                         <constraint firstItem="jgA-UO-If0" firstAttribute="top" secondItem="ZQw-87-uxB" secondAttribute="top" id="DXd-sb-DnX"/>
+                        <constraint firstAttribute="bottom" secondItem="eyp-cq-iDR" secondAttribute="bottom" id="J8I-xm-wQk"/>
+                        <constraint firstAttribute="trailing" secondItem="FaY-VC-yh9" secondAttribute="trailing" id="R8X-FI-ywR"/>
                         <constraint firstAttribute="bottom" secondItem="jgA-UO-If0" secondAttribute="bottom" id="grt-LQ-SSJ"/>
+                        <constraint firstAttribute="bottom" secondItem="FaY-VC-yh9" secondAttribute="bottom" id="hpe-1U-4wW"/>
                         <constraint firstItem="jgA-UO-If0" firstAttribute="leading" secondItem="ZQw-87-uxB" secondAttribute="leading" id="prI-bz-Ccx"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -56,7 +71,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="containerView" destination="FaY-VC-yh9" id="wtO-0C-6IY"/>
                 <outlet property="mainImgView" destination="jgA-UO-If0" id="6Ot-V2-Zrt"/>
+                <outlet property="pageControl" destination="eyp-cq-iDR" id="Czi-Wp-ftJ"/>
             </connections>
             <point key="canvasLocation" x="3.8461538461538458" y="-185.54502369668245"/>
         </view>
