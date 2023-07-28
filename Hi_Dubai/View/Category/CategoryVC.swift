@@ -134,6 +134,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
+            if hiddenSections.contains(where: {$0.0 == indexPath.row}) { return }
             DispatchQueue.main.async {
                 self.hideSection(section: indexPath.row)
                 cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
@@ -246,6 +247,7 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
 
     func walifSearchTextFieldEndEditing(sender: UITextField!) {
         closeSearchingArea(true)
+        self.searchValue = sender.text ?? ""
         self.viewModel.searchValue = searchValue
         self.headerSetup(showSearchCount: !self.viewModel.searchValue.isEmpty)
         self.dataTableView.reloadData()
