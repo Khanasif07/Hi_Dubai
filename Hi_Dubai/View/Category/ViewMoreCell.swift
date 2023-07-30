@@ -9,27 +9,34 @@
 import UIKit
 
 class ViewMoreCell: UITableViewCell {
-    var buttonTapped: ((UIButton) -> Void)?
-
+    var ViewMoreButtonTapped: ((UIButton) -> Void)?
+    var ViewLessButtonTapped: ((UIButton) -> Void)?
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var outerView: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
-        // Initialization code
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     
     @IBAction func viewMoreTapped(_ sender: UIButton) {
-        if let handle = buttonTapped{
-            handle(sender)
+        if titleLbl.text == "View More"{
+            if let handle = ViewMoreButtonTapped{
+                handle(sender)
+            }
+        }else{
+            if let handle = ViewLessButtonTapped{
+                handle(sender)
+            }
         }
     }
     
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        outerView.roundCorners([.bottomLeft,.bottomRight], radius: 5.0)
-    }
-    
+  
 }

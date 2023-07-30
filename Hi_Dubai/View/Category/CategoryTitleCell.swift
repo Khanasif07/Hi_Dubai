@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import FontAwesome_swift
 var maxCountForViewMore: Int = 10
 var viewMoreSelected: Bool = false
 class CategoryTitleCell: UITableViewCell {
 
+    //MARK: - Properties
     weak var helperDelegate: HeplerDelegate?
     var model: Goal?
     var modele: Category?
     var buttonTapped: ((UIButton) -> Void)?
     var selectedIndexPath: IndexPath?
    
-
+    //MARK: - IBOutlets
     @IBOutlet weak var containerStackView: UIStackView!
     @IBOutlet weak var internalTableView: CustomTableView!
     @IBOutlet weak var lineView: UIView!
@@ -25,6 +27,7 @@ class CategoryTitleCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
     
+    //MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .clear
@@ -56,7 +59,7 @@ class CategoryTitleCell: UITableViewCell {
         outerView.layer.cornerRadius = 5.0
     }
     
-    
+    //MARK: - IBActions
     @IBAction func sectionTapped(_ sender: UIButton) {
         if let handle = buttonTapped{
             handle(sender)
@@ -64,8 +67,8 @@ class CategoryTitleCell: UITableViewCell {
     }
 }
 
-
-//MARK: Configure
+    //MARK: - Extension
+    //MARK: Configure
 extension CategoryTitleCell {
     func configure(withModel model: Goal) {
         self.model = model
@@ -76,6 +79,23 @@ extension CategoryTitleCell {
     func configuree(withModel model: Category) {
         self.modele = model
         self.titleLbl.text = modele?.name?.en ?? ""
+        //
+        let classNameArr = modele?.classImage?.components(separatedBy: " ")
+        switch classNameArr?.first{
+        case  "fa-solid":
+            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
+        case "fa-brands":
+            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .brands, textColor: .white, size: CGSize(width: 30, height: 30))
+        case "fa-light":
+            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .light, textColor: .red, size: CGSize(width: 30, height: 30))
+        case "fa-thin":
+            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
+        default:
+            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
+        }
+        if self.imgView.image ==  nil {
+            self.imgView.image = UIImage(named: "ic_bestseller") 
+        }
         self.internalTableView.reloadData()
     }
     
@@ -87,19 +107,25 @@ extension CategoryTitleCell {
 
 }
 
-//MARK: Tableview delegates
+   //MARK: - Tableview delegates
 extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let index  = hiddenSections.firstIndex(where: {$0.0 == selectedIndexPath?.row ?? 0}){
             if ((modele?.children?.count ?? 0) > maxCountForViewMore) && !hiddenSections[index].1{
                 return maxCountForViewMore
             }else{
+                if ((modele?.children?.count ?? 0) > maxCountForViewMore){
+                    return modele?.children?.count ?? 0 + 1
+                }
                 return modele?.children?.count ?? 0
             }
         }else{
             if ((modele?.children?.count ?? 0) > maxCountForViewMore){
                 return maxCountForViewMore
             }else{
+                if ((modele?.children?.count ?? 0) > maxCountForViewMore){
+                    return modele?.children?.count ?? 0 + 1
+                }
                 return modele?.children?.count ?? 0
             }
         }
@@ -109,19 +135,20 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
         if let index = hiddenSections.firstIndex(where: {$0.0 == selectedIndexPath?.row ?? 0}){
             if ((maxCountForViewMore-1) == indexPath.row) && !hiddenSections[index].1{
                 let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
-                cell.buttonTapped = { [weak self] (btn) in
+                cell.titleLbl.text = "View More"
+                cell.ViewMoreButtonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     hiddenSections[index].1 = true
                     (self.parentViewController as? CategoryVC)?.viewMorebtnAction(section: selectedIndexPath?.row ?? 0)
-//                    UIView.transition(with: containerStackView,
-//                                      duration: 0.3,
-//                                      options: .curveEaseInOut) {
-//                        self.containerStackView.setNeedsLayout()
-//                        self.internalTableView.reloadTableView()
-//                        (self.parentViewController as? CategoryVC)?.dataTableView.performBatchUpdates({
-//                            (self.parentViewController as? CategoryVC)?.dataTableView.reloadRows(at: [IndexPath(row: self.selectedIndexPath?.row ?? 0, section: self.selectedIndexPath?.section ?? 0)], with: .automatic)
-//                        })
-//                    }
+                }
+                return cell
+            }else if ((modele?.children?.count ?? 0) > maxCountForViewMore) && (indexPath.row == ((modele?.children?.count ?? 0)-1)){
+                let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
+                cell.titleLbl.text = "View Less"
+                cell.ViewLessButtonTapped = { [weak self] (btn) in
+                    guard let `self` = self else { return }
+                    hiddenSections[index].1 = false
+                    (self.parentViewController as? CategoryVC)?.viewLessbtnAction(section: selectedIndexPath?.row ?? 0)
                 }
                 return cell
             }else{
@@ -133,7 +160,8 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
         }else{
             if ((maxCountForViewMore-1) == indexPath.row){
                 let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
-                cell.buttonTapped = { [weak self] (btn) in
+                cell.titleLbl.text = "View More"
+                cell.ViewMoreButtonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     if let index = hiddenSections.firstIndex(where: {$0.0 == self.selectedIndexPath?.row ?? 0}){
                         hiddenSections[index].1 = true

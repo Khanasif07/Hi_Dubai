@@ -13,6 +13,7 @@ target 'Hi_Dubai' do
   pod "PromiseKit", "~> 6.8"
   pod 'FirebaseAnalytics'
   pod 'SwiftLint'
+  pod 'FontAwesome.swift'
   # Pods for Hi_Dubai
   
 end

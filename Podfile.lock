@@ -29,6 +29,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FontAwesome.swift (1.9.1)
   - GoogleAppMeasurement (10.10.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -93,6 +94,7 @@ PODS:
 DEPENDENCIES:
   - CarbonKit
   - FirebaseAnalytics
+  - FontAwesome.swift
   - MXParallaxHeader
   - ParallaxHeader (~> 3.0.0)
   - Parchment (~> 3.2)
@@ -108,6 +110,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreInternal
     - FirebaseInstallations
+    - FontAwesome.swift
     - GoogleAppMeasurement
     - GoogleUtilities
     - MXParallaxHeader
@@ -126,6 +129,7 @@ SPEC CHECKSUMS:
   FirebaseCore: d027ff503d37edb78db98429b11f580a24a7df2a
   FirebaseCoreInternal: 971029061d326000d65bfdc21f5502c75c8b0893
   FirebaseInstallations: 52153982b057d3afcb4e1fbb3eb0b6d00611e681
+  FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   GoogleAppMeasurement: bbbfd4bcb2b40ae9b772c3b0823a58c1e3d618f9
   GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
   MXParallaxHeader: de3c867e10ba46e8f6e20c8ee1f2a910372b3b94
@@ -138,6 +142,6 @@ SPEC CHECKSUMS:
   SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 2f3effc51ec46ed47e6e4ac6bf2284ef62d7f49b
+PODFILE CHECKSUM: 2d7c430b3e7842426bc8cb3c9be15ddeac782515
 
 COCOAPODS: 1.12.1

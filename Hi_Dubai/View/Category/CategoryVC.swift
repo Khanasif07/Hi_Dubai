@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FontAwesome_swift
 protocol HeplerDelegate: NSObject {
     func heightChanged()
     func cellAdded()
@@ -86,11 +86,11 @@ class CategoryVC: UIViewController {
                  cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
                  cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                  //ToDo:- hiding tableview...
-                 UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.3 : 0.0) {
+                 UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.01 : 0.01) {
                      cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                  }
                  UIView.transition(with: cell.containerStackView,
-                                   duration: 0.3,
+                                   duration: 0.5,
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
                      self.dataTableView.performBatchUpdates(nil)
@@ -107,9 +107,25 @@ class CategoryVC: UIViewController {
                                    duration: 0.3,
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
-                     cell.internalTableView.reloadTableView()
+                     cell.internalTableView.reloadData()
                      //                     self.dataTableView.performBatchUpdates({
-                     self.dataTableView.reloadTableView()
+                     self.dataTableView.reloadData()
+                     //                     })
+                 }
+             }
+         }
+     }
+     
+     public func viewLessbtnAction(section: Int){
+         if let cell = self.dataTableView.cellForRow(at: IndexPath(row: section, section: 0)) as? CategoryTitleCell{
+             DispatchQueue.main.async {
+                 UIView.transition(with: cell.containerStackView,
+                                   duration: 0.3,
+                                   options: .curveEaseInOut) {
+                     cell.containerStackView.setNeedsLayout()
+                     cell.internalTableView.reloadData()
+                     //                     self.dataTableView.performBatchUpdates({
+                     self.dataTableView.reloadData()
                      //                     })
                  }
              }
@@ -134,24 +150,23 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
+            //
             if hiddenSections.contains(where: {$0.0 == indexPath.row}) { return }
+            //
             DispatchQueue.main.async {
                 self.hideSection(section: indexPath.row)
                 cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
                 cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                 //ToDo:- hiding tableview...
-                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.3 : 0.0) {
+                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.01 : 0.01) {
                     cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                 }
                 UIView.transition(with: cell.containerStackView,
-                                  duration: 0.3,
+                                  duration: 0.5,
                                   options: .curveEaseInOut) {
                     cell.containerStackView.setNeedsLayout()
                     self.dataTableView.performBatchUpdates(nil)
                 }
-//                UIView.animate(withDuration: 0.2,delay: 1.0) {
-//                    self.dataTableView.reloadData()
-//                }
             }
         }
         return cell
@@ -163,13 +178,14 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     
     private func hideSection(section: Int) {
         if hiddenSections.contains(where: {$0.0 == section}) {
-//            hiddenSections.removeAll(where: {$0.0 == section})
+            //            hiddenSections.removeAll(where: {$0.0 == section})
         } else {
             if let sectionn = hiddenSections.first?.0{
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
+                    //ToDo:- hiding tableview...
+//                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
                     cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
-                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
                 }
             }
             hiddenSections.append((section,false))
@@ -246,8 +262,8 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
     }
 
     func walifSearchTextFieldEndEditing(sender: UITextField!) {
-        closeSearchingArea(true)
         self.searchValue = sender.text ?? ""
+        closeSearchingArea(self.searchValue.isEmpty)
         self.viewModel.searchValue = searchValue
         self.headerSetup(showSearchCount: !self.viewModel.searchValue.isEmpty)
         self.dataTableView.reloadData()
@@ -268,11 +284,12 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
     }
 
     func walifSearchTextFieldIconPressed(sender: UITextField!) {
-        closeSearchingArea(true)
+        self.searchValue = sender.text ?? ""
+        self.viewModel.searchValue = searchValue
+        closeSearchingArea(self.searchValue.isEmpty)
         //
         hiddenSections = []
         //
-        self.viewModel.searchValue = ""
         self.headerSetup()
         self.dataTableView.reloadData()
         //
