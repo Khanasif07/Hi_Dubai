@@ -191,7 +191,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
                     //ToDo:- hiding tableview...
-                    UIView.animate(withDuration: 0.6) {
+                    UIView.animate(withDuration: 0.6,delay: 0.01) {
+                        cells.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == section}))
                         cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
                     }
                 }
