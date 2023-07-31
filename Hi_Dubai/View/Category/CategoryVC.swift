@@ -31,7 +31,7 @@ class CategoryVC: UIViewController {
             self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
-            dataTableView.tableHeaderView?.height = 85.0
+            dataTableView.tableHeaderView?.height = 87.0
         }
     }
     
@@ -184,7 +184,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
                     //ToDo:- hiding tableview...
-//                    cells.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == sectionn})
                     cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
                 }
             }
@@ -284,6 +283,7 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
     }
 
     func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        self.headerView.searchTxtFld.mainTF.text = ""
         self.searchValue = sender.text ?? ""
         self.viewModel.searchValue = searchValue
         closeSearchingArea(self.searchValue.isEmpty)
@@ -312,16 +312,16 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
     private func headerSetup(showSearchCount: Bool = false){
         if showSearchCount && !searchValue.isEmpty{
             headerView.searchResultCountLbl.isHidden = false
-            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: 109.0))
+            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height: 113.0))
             let resultCount = self.viewModel.categories.reduce(0) { $0 + ($1.children?.count ?? 0) }
             headerView.searchResultCountLbl.text = "\(resultCount) results found"
-            dataTableView.tableHeaderView?.height = 109.0
+            dataTableView.tableHeaderView?.height = 113.0
         }else{
             headerView.searchTxtFld.delegate = self
-            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height:  85.0))
+            headerView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: self.view.frame.width, height:  87.0))
             dataTableView.tableHeaderView = headerView
             headerView.searchResultCountLbl.isHidden = true
-            dataTableView.tableHeaderView?.height = 85.0
+            dataTableView.tableHeaderView?.height = 87.0
         }
     }
 

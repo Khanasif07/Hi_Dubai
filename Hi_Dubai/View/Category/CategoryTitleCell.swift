@@ -80,14 +80,21 @@ extension CategoryTitleCell {
         self.modele = model
         self.titleLbl.text = modele?.name?.en ?? ""
         //
-        let classNameArr = modele?.classImage?.components(separatedBy: " ")
+        var classNameArr: [String]? = []
+        if ((modele?.classImage?.contains(" ")) != nil){
+            classNameArr = modele?.classImage?.components(separatedBy: " ") ?? []
+        }else{
+            classNameArr = [modele?.classImage ?? ""]
+        }
         switch classNameArr?.first{
         case  "fa-solid":
-            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
+            self.imgView.image =
+            UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
+            //            UIImage.fontAwesomeIcon(name: FontAwesome.monkey, style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
         case "fa-brands":
             self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .brands, textColor: .white, size: CGSize(width: 30, height: 30))
         case "fa-light":
-            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .light, textColor: .red, size: CGSize(width: 30, height: 30))
+            self.imgView.image = UIImage.fontAwesomeIcon(code: FontAwesome.icons.rawValue, style: .light, textColor: .red, size: CGSize(width: 30, height: 30))
         case "fa-thin":
             self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
         default:
@@ -96,6 +103,8 @@ extension CategoryTitleCell {
         if self.imgView.image ==  nil {
             self.imgView.image = UIImage(named: "ic_bestseller") 
         }
+        print(modele?.name?.en ?? "")
+        print(modele?.classImage ?? "")
         self.internalTableView.reloadData()
     }
     
