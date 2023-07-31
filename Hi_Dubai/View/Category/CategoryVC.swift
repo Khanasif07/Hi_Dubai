@@ -107,7 +107,7 @@ class CategoryVC: UIViewController {
      }
 
 
-     public func viewMorebtnAction(section: Int){
+     public func viewMoreLessbtnAction(section: Int){
          if let cell = self.dataTableView.cellForRow(at: IndexPath(row: section, section: 0)) as? CategoryTitleCell{
              DispatchQueue.main.async {
                  UIView.transition(with: cell.containerStackView,
@@ -123,24 +123,7 @@ class CategoryVC: UIViewController {
          }
      }
      
-     public func viewLessbtnAction(section: Int){
-         if let cell = self.dataTableView.cellForRow(at: IndexPath(row: section, section: 0)) as? CategoryTitleCell{
-             DispatchQueue.main.async {
-                 UIView.transition(with: cell.containerStackView,
-                                   duration: 0.3,
-                                   options: .curveEaseInOut) {
-                     cell.containerStackView.setNeedsLayout()
-                     cell.internalTableView.reloadData()
-                     //                     self.dataTableView.performBatchUpdates({
-                     self.dataTableView.reloadData()
-                     //                     })
-                 }
-             }
-         }
-     }
 }
-
-
 //MARK: Tableview delegates
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -191,7 +174,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
                     //ToDo:- hiding tableview...
-                    UIView.animate(withDuration: 0.6,delay: 0.01) {
+                    UIView.animate(withDuration: 0.5,delay: 0.01) {
                         cells.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == section}))
                         cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
                     }

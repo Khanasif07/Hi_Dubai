@@ -154,19 +154,21 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
             if ((maxCountForViewMore-1) == indexPath.row) && !hiddenSections[index].1{
                 let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
                 cell.titleLbl.text = "View More"
+                //MARK: - Cell Button Action
                 cell.ViewMoreButtonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     hiddenSections[index].1 = true
-                    (self.parentViewController as? CategoryVC)?.viewMorebtnAction(section: selectedIndexPath?.row ?? 0)
+                    (self.parentViewController as? CategoryVC)?.viewMoreLessbtnAction(section: selectedIndexPath?.row ?? 0)
                 }
                 return cell
             }else if ((modele?.children?.count ?? 0) > maxCountForViewMore) && (indexPath.row == ((modele?.children?.count ?? 0)-1)){
                 let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
                 cell.titleLbl.text = "View Less"
+                //MARK: - Cell Button Action
                 cell.ViewLessButtonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     hiddenSections[index].1 = false
-                    (self.parentViewController as? CategoryVC)?.viewLessbtnAction(section: selectedIndexPath?.row ?? 0)
+                    (self.parentViewController as? CategoryVC)?.viewMoreLessbtnAction(section: selectedIndexPath?.row ?? 0)
                 }
                 return cell
             }else{
@@ -179,18 +181,16 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
             if ((maxCountForViewMore-1) == indexPath.row){
                 let cell = tableView.dequeueCell(with: ViewMoreCell.self, indexPath: indexPath)
                 cell.titleLbl.text = "View More"
+                //MARK: - Cell Button Action
                 cell.ViewMoreButtonTapped = { [weak self] (btn) in
                     guard let `self` = self else { return }
                     if let index = hiddenSections.firstIndex(where: {$0.0 == self.selectedIndexPath?.row ?? 0}){
                         hiddenSections[index].1 = true
-                    }else{
-                        
                     }
                     UIView.transition(with: containerStackView,
                                       duration: 0.3,
                                       options: .curveEaseInOut) {
                         self.containerStackView.setNeedsLayout()
-//                        self.internalTableView.reloadTableView()
                         (self.parentViewController as? CategoryVC)?.dataTableView.performBatchUpdates({
                             (self.parentViewController as? CategoryVC)?.dataTableView.reloadRows(at: [IndexPath(row: self.selectedIndexPath?.row ?? 0, section: self.selectedIndexPath?.section ?? 0)], with: .automatic)
                         })
