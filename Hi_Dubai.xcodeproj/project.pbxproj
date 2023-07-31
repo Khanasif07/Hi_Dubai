@@ -224,6 +224,15 @@
 		E0F3A6C42A42BE0D00FE73C3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */; };
 		E0F3A6C62A42BE6400FE73C3 /* UIImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */; };
 		E0F3A6C82A42C38700FE73C3 /* UrlCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F3A6C72A42C38700FE73C3 /* UrlCacheManager.swift */; };
+		E0FB1BDF2A77AF98003DF469 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BD62A77AF96003DF469 /* fa-solid-900.ttf */; };
+		E0FB1BE02A77AF98003DF469 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BD72A77AF96003DF469 /* fa-brands-400.ttf */; };
+		E0FB1BE12A77AF98003DF469 /* fa-sharp-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BD82A77AF96003DF469 /* fa-sharp-regular-400.ttf */; };
+		E0FB1BE22A77AF98003DF469 /* fa-light-300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BD92A77AF97003DF469 /* fa-light-300.ttf */; };
+		E0FB1BE32A77AF98003DF469 /* fa-sharp-light-300.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BDA2A77AF97003DF469 /* fa-sharp-light-300.ttf */; };
+		E0FB1BE42A77AF98003DF469 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BDB2A77AF97003DF469 /* fa-regular-400.ttf */; };
+		E0FB1BE52A77AF98003DF469 /* fa-sharp-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BDC2A77AF98003DF469 /* fa-sharp-solid-900.ttf */; };
+		E0FB1BE62A77AF98003DF469 /* fa-thin-100.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BDD2A77AF98003DF469 /* fa-thin-100.ttf */; };
+		E0FB1BE72A77AF98003DF469 /* fa-duotone-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0FB1BDE2A77AF98003DF469 /* fa-duotone-900.ttf */; };
 		F804BC2D339FBC70936550EC /* Pods_Hi_Dubai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385E5D7ACA10E7F1147C1EF /* Pods_Hi_Dubai.framework */; };
 /* End PBXBuildFile section */
 
@@ -453,6 +462,15 @@
 		E0F3A6C32A42BE0D00FE73C3 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		E0F3A6C52A42BE6400FE73C3 /* UIImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageCache.swift; sourceTree = "<group>"; };
 		E0F3A6C72A42C38700FE73C3 /* UrlCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlCacheManager.swift; sourceTree = "<group>"; };
+		E0FB1BD62A77AF96003DF469 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
+		E0FB1BD72A77AF96003DF469 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
+		E0FB1BD82A77AF96003DF469 /* fa-sharp-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-sharp-regular-400.ttf"; sourceTree = "<group>"; };
+		E0FB1BD92A77AF97003DF469 /* fa-light-300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-light-300.ttf"; sourceTree = "<group>"; };
+		E0FB1BDA2A77AF97003DF469 /* fa-sharp-light-300.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-sharp-light-300.ttf"; sourceTree = "<group>"; };
+		E0FB1BDB2A77AF97003DF469 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
+		E0FB1BDC2A77AF98003DF469 /* fa-sharp-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-sharp-solid-900.ttf"; sourceTree = "<group>"; };
+		E0FB1BDD2A77AF98003DF469 /* fa-thin-100.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-thin-100.ttf"; sourceTree = "<group>"; };
+		E0FB1BDE2A77AF98003DF469 /* fa-duotone-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-duotone-900.ttf"; sourceTree = "<group>"; };
 		FB34BA523CE1ED752D4B1DBA /* Pods-Hi_Dubai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hi_Dubai.debug.xcconfig"; path = "Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -497,6 +515,7 @@
 		8470C56729974D640091A7C5 /* Hi_Dubai */ = {
 			isa = PBXGroup;
 			children = (
+				E0FB1BC32A779528003DF469 /* Fonts */,
 				E0B447732A30836500423DE2 /* Build Config */,
 				E00450802A2FDB6B00A9A64E /* Swiggy */,
 				E0765C212A272C2100574230 /* Data */,
@@ -980,6 +999,22 @@
 			path = AppStore;
 			sourceTree = "<group>";
 		};
+		E0FB1BC32A779528003DF469 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E0FB1BD72A77AF96003DF469 /* fa-brands-400.ttf */,
+				E0FB1BDE2A77AF98003DF469 /* fa-duotone-900.ttf */,
+				E0FB1BD92A77AF97003DF469 /* fa-light-300.ttf */,
+				E0FB1BDB2A77AF97003DF469 /* fa-regular-400.ttf */,
+				E0FB1BDA2A77AF97003DF469 /* fa-sharp-light-300.ttf */,
+				E0FB1BD82A77AF96003DF469 /* fa-sharp-regular-400.ttf */,
+				E0FB1BDC2A77AF98003DF469 /* fa-sharp-solid-900.ttf */,
+				E0FB1BD62A77AF96003DF469 /* fa-solid-900.ttf */,
+				E0FB1BDD2A77AF98003DF469 /* fa-thin-100.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1053,6 +1088,7 @@
 				E0B447702A307B5500423DE2 /* Hi_Dubai.xcconfig in Resources */,
 				E00450AE2A2FE09A00A9A64E /* HeaderViewCV.xib in Resources */,
 				E00450AA2A2FDFB600A9A64E /* MusicCollCell.xib in Resources */,
+				E0FB1BE02A77AF98003DF469 /* fa-brands-400.ttf in Resources */,
 				E00DED3F2A14BF7000828D34 /* PlacesAndSuperShesViewTableViewCell.xib in Resources */,
 				E0BC10DD2A6FBDAA0000D3BE /* CategoryAdvTableCell.xib in Resources */,
 				E0D3AD962A52AC9A0006C839 /* SubCategoryTableViewCell.xib in Resources */,
@@ -1061,6 +1097,7 @@
 				E0B4476A2A30701100423DE2 /* NewBannerSupplementaryView.xib in Resources */,
 				E00450A62A2FDF9800A9A64E /* PhotoCollCell.xib in Resources */,
 				E0BC10D92A6F97BD0000D3BE /* CategoryCardViewTableCell.xib in Resources */,
+				E0FB1BE42A77AF98003DF469 /* fa-regular-400.ttf in Resources */,
 				E0136C192A4BE95C003947B6 /* TitleTableViewLastCell.xib in Resources */,
 				E08EC0762A3A7240003507B9 /* ArtistHeaderView.xib in Resources */,
 				E0B639702A1C787900DD4DE4 /* SearchTextField.xib in Resources */,
@@ -1069,16 +1106,20 @@
 				E0B639782A1DF45300DD4DE4 /* LoadingView.xib in Resources */,
 				E04C22582A656B3A009BA4AE /* SuperYouMusicTableCell.xib in Resources */,
 				E0136C112A4AFB15003947B6 /* animal.json in Resources */,
+				E0FB1BE32A77AF98003DF469 /* fa-sharp-light-300.ttf in Resources */,
 				E0722B8629FFE1FB00BB9B6D /* OtherArtistDetail.xib in Resources */,
+				E0FB1BE12A77AF98003DF469 /* fa-sharp-regular-400.ttf in Resources */,
 				E0136C0F2A49ABB1003947B6 /* TitleTableViewCell.xib in Resources */,
 				E02BC0AD2A0589CC00860893 /* PartnerCollectionCell.xib in Resources */,
 				E004507B2A2FD93B00A9A64E /* locations.json in Resources */,
+				E0FB1BE72A77AF98003DF469 /* fa-duotone-900.ttf in Resources */,
 				E0BC10B02A67D2930000D3BE /* SuperYouCategoriesTableCell.xib in Resources */,
 				E004507A2A2FD93B00A9A64E /* videos.json in Resources */,
 				E00DED2F2A138D8400828D34 /* NewSearchTextField.xib in Resources */,
 				E0C8A2C52A5A162A0039E555 /* StuffCollCell.xib in Resources */,
 				E00AE4ED2A0B919D00A43133 /* EmptyStateView.xib in Resources */,
 				8470C57229974D660091A7C5 /* Assets.xcassets in Resources */,
+				E0FB1BE22A77AF98003DF469 /* fa-light-300.ttf in Resources */,
 				E0781BF82A41938C00A18A2C /* LoaderCell.xib in Resources */,
 				E00DED512A151DD700828D34 /* SuperViewCardTableViewCell.xib in Resources */,
 				8470C592299753EB0091A7C5 /* NewsTableViewCell.xib in Resources */,
@@ -1086,12 +1127,15 @@
 				E0136C0B2A49A0A1003947B6 /* CategoriesSectionView.xib in Resources */,
 				E004507D2A2FD93B00A9A64E /* covers.json in Resources */,
 				E00AE4EF2A0BA62200A43133 /* EmptyView.xib in Resources */,
+				E0FB1BE52A77AF98003DF469 /* fa-sharp-solid-900.ttf in Resources */,
 				E0136C152A4B752B003947B6 /* CategoryHeaderView.xib in Resources */,
 				E0B447722A307B6F00423DE2 /* Hi_Dubai_Prod.xcconfig in Resources */,
 				E00450B22A2FE0E900A9A64E /* FooterViewCV.xib in Resources */,
 				E0D3AD902A5298BE0006C839 /* CategoryTitleCell.xib in Resources */,
 				E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */,
+				E0FB1BE62A77AF98003DF469 /* fa-thin-100.ttf in Resources */,
 				8470C57029974D640091A7C5 /* Main.storyboard in Resources */,
+				E0FB1BDF2A77AF98003DF469 /* fa-solid-900.ttf in Resources */,
 				E0BC10BA2A6E951E0000D3BE /* CategoriesDetailSectionView.xib in Resources */,
 				E0722B8429FFE00900BB9B6D /* OtherArtistHeaderView.xib in Resources */,
 				E0C8A2E52A5FC0810039E555 /* appstore.json in Resources */,
@@ -1465,10 +1509,22 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TAZWCSKDQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hi_Dubai/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(productName)";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to and share information with other apple devices.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow HiDubai to access your camera to take and upload pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow HiDubai to access your microphone to take and upload videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow HiDubai to access your photo library to save the attachments";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow HiDubai to access your photo library to choose and upload pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1504,10 +1560,22 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TAZWCSKDQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hi_Dubai/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(productName)";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to and share information with other apple devices.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow HiDubai to access your camera to take and upload pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow HiDubai to access your microphone to take and upload videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow HiDubai to access your photo library to save the attachments";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow HiDubai to access your photo library to choose and upload pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1603,10 +1671,22 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TAZWCSKDQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hi_Dubai/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(productName)";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to and share information with other apple devices.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow HiDubai to access your camera to take and upload pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow HiDubai to access your microphone to take and upload videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow HiDubai to access your photo library to save the attachments";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow HiDubai to access your photo library to choose and upload pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1697,10 +1777,22 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = TAZWCSKDQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hi_Dubai/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(productName)";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "This app uses Bluetooth to connect to and share information with other apple devices.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow HiDubai to access your camera to take and upload pictures";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your current location will be displayed on the map and used for nearby results";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow HiDubai to access your microphone to take and upload videos";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow HiDubai to access your photo library to save the attachments";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow HiDubai to access your photo library to choose and upload pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

@@ -39,6 +39,13 @@ class CategoryVC: UIViewController {
         super.viewDidLoad()
         commonInit()
         hitApi()
+        
+        
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family) Font names: \(names)")
+//        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +191,9 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
                     //ToDo:- hiding tableview...
-                    cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
+                    UIView.animate(withDuration: 0.6) {
+                        cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
+                    }
                 }
             }
             hiddenSections.append((section,false))

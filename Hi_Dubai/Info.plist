@@ -6,22 +6,6 @@
 	<string>${buildType}</string>
 	<key>BUNDLE_ID</key>
 	<string>com.google.samples.quickstart.SignInExample</string>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleDisplayName</key>
-	<string>$(productName)</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>$(productName)</string>
-	<key>CFBundlePackageType</key>
-	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -79,8 +63,6 @@
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CLIENT_ID</key>
 	<string>${clientId}</string>
 	<key>FIRTimeInterval</key>
@@ -122,29 +104,11 @@
 		<string>fb</string>
 		<string>whatsapp</string>
 	</array>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>This app uses Bluetooth to connect to and share information with other apple devices.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow HiDubai to access your camera to take and upload pictures</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Your current location will be displayed on the map and used for nearby results</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Your current location will be displayed on the map and used for nearby results</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your current location will be displayed on the map and used for nearby results</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow HiDubai to access your microphone to take and upload videos</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Allow HiDubai to access your photo library to save the attachments</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow HiDubai to access your photo library to choose and upload pictures</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).business</string>
@@ -157,6 +121,15 @@
 	<string>${reversedClientId}</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>fa-brands-400.ttf</string>
+		<string>fa-duotone-900.ttf</string>
+		<string>fa-light-300.ttf</string>
+		<string>fa-regular-400.ttf</string>
+		<string>fa-sharp-light-300.ttf</string>
+		<string>fa-sharp-regular-400.ttf</string>
+		<string>fa-sharp-solid-900.ttf</string>
+		<string>fa-solid-900.ttf</string>
+		<string>fa-thin-100.ttf</string>
 		<string>Cairo-Bold.ttf</string>
 		<string>Cairo-Regular.ttf</string>
 		<string>Cairo-SemiBold.ttf</string>
@@ -164,39 +137,6 @@
 		<string>OpenSans-Regular.ttf</string>
 		<string>OpenSans-Semibold.ttf</string>
 	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>remote-notification</string>
-	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UIRequiresFullScreen</key>
-	<true/>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
-	<key>UIStatusBarTintParameters</key>
-	<dict>
-		<key>UINavigationBar</key>
-		<dict>
-			<key>Style</key>
-			<string>UIBarStyleDefault</string>
-			<key>Translucent</key>
-			<false/>
-		</dict>
-	</dict>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -216,5 +156,22 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UIStatusBarTintParameters</key>
+	<dict>
+		<key>UINavigationBar</key>
+		<dict>
+			<key>Style</key>
+			<string>UIBarStyleDefault</string>
+			<key>Translucent</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

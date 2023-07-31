@@ -78,7 +78,15 @@ extension CategoryTitleCell {
     
     func configuree(withModel model: Category) {
         self.modele = model
+        
+//        let myChar: UniChar = 0xf48b
+//        let fontref = UIFont(name: CustomFonts.FASharpLight, size: 20.0)
+//        self.titleLbl.font = fontref
+//        self.titleLbl.text = String(format: "%C", myChar)
         self.titleLbl.text = modele?.name?.en ?? ""
+//        String(format: "%C", myChar) //modele?.name?.en ?? ""
+//        self.titleLbl.textColor = .blue
+        //
         //
         var classNameArr: [String]? = []
         if ((modele?.classImage?.contains(" ")) != nil){
@@ -86,20 +94,21 @@ extension CategoryTitleCell {
         }else{
             classNameArr = [modele?.classImage ?? ""]
         }
-        switch classNameArr?.first{
-        case  "fa-solid":
-            self.imgView.image =
-            UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
-            //            UIImage.fontAwesomeIcon(name: FontAwesome.monkey, style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
-        case "fa-brands":
-            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .brands, textColor: .white, size: CGSize(width: 30, height: 30))
-        case "fa-light":
-            self.imgView.image = UIImage.fontAwesomeIcon(code: FontAwesome.icons.rawValue, style: .light, textColor: .red, size: CGSize(width: 30, height: 30))
-        case "fa-thin":
-            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
-        default:
-            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
-        }
+//        switch classNameArr?.first{
+//        case  "fa-solid":
+//
+//            self.imgView.image =
+//            UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
+//            //            UIImage.fontAwesomeIcon(name: FontAwesome.monkey, style: .solid, textColor: .white, size: CGSize(width: 30, height: 30))
+//        case "fa-brands":
+//            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .brands, textColor: .white, size: CGSize(width: 30, height: 30))
+//        case "fa-light":
+//            self.imgView.image = UIImage.fontAwesomeIcon(code: FontAwesome.icons.rawValue, style: .light, textColor: .red, size: CGSize(width: 30, height: 30))
+//        case "fa-thin":
+//            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
+//        default:
+//            self.imgView.image = UIImage.fontAwesomeIcon(code: classNameArr?.last ?? "", style: .regular, textColor: .white, size: CGSize(width: 30, height: 30))
+//        }
         if self.imgView.image ==  nil {
             self.imgView.image = UIImage(named: "ic_bestseller") 
         }
@@ -207,4 +216,17 @@ extension CategoryTitleCell: UITableViewDelegate, UITableViewDataSource {
             self.helperDelegate?.cellSelected(selectedIndexPath,index: indexPath)
         }
     }
+}
+
+
+struct CustomFonts {
+    static let FAProBrands = "FontAwesome6Brands-Regular"
+    static let FAProDuotone = "FontAwesome6Pro-Duotone"
+    static let FAProLight = "FontAwesome6Pro-Light"
+    static let FAProRegular = "FontAwesome6Pro-Regular"
+    static let FASharpLight = "FontAwesome6Sharp-Light"
+    static let FASharpRegular = "FontAwesome6Sharp-Regular"
+    static let FASharpSolid = "FontAwesome6Sharp-Solid"
+    static let FASolid = "FontAwesome6Pro-Solid"
+    static let FAThin = "FontAwesome6Pro-Thin"
 }

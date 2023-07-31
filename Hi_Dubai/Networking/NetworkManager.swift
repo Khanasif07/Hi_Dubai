@@ -115,7 +115,8 @@ class NetworkManager{
         urlRequest.allHTTPHeaderFields = ["Content-Type":"application/json","Accept":"application/json","WL-GuestUserId":"64a3e672dc1907771db37113","Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2xhZGVwMzEzQHJ4Y2F5LmNvbSIsImZpcnN0TmFtZSI6IlNuZWhhIiwibGFzdE5hbWUiOiJFbWFpbFVzZXIiLCJhdWRpZW5jZSI6IndlYiIsInBhc3N3b3JkIjoiJDJhJDEwJGlibnVBMjk4R09UWm1wRXZnU0doVk9LWlBJQWwvL0tpS0V2MVJLZm9ialJWcERINnpJN1htIiwicm9sZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfQlVTSU5FU1NfT1dORVIifSx7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwibWlkZGxlTmFtZSI6IiIsImV4cCI6MTY5MTE0Mjg4NiwidXVpZCI6IjU0NTViNDExLThiMWEtNDcwNi1hOWIwLTcyZjk4ZGVhMjI2MSIsImVuYWJsZWQiOnRydWUsImVtYWlsIjoiYm9sYWRlcDMxM0ByeGNheS5jb20iLCJzdGF0dXMiOjF9.8iLVwEuZHTZhx8UcKudUhd-oK6dOyN8tguz4XmGFqCQ1vdNvai9xV73telzZmO86a5qbuD1FAfaYneHZmZUEyg","WL-Channel":"ma"]
         //
         let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+//        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.requestCachePolicy = .useProtocolCachePolicy
         sessionConfig.timeoutIntervalForRequest  = 2.5
         sessionConfig.timeoutIntervalForResource = 2.5
         sessionConfig.urlCache = cache
