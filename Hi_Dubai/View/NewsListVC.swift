@@ -256,7 +256,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = AppsViewController()
+                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let vc = BusinessCategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let navController = UINavigationController(rootViewController: vc)
 //                navController.isNavigationBarHidden = true

@@ -70,6 +70,12 @@ class CategoryVC: UIViewController {
             self.viewModel.getCategoriesListing()
         })
     }
+    
+    private func reloadTableView(){
+        UIView.animate(withDuration: 0.3) {
+            self.dataTableView.reloadData()
+        }
+    }
 }
 
  extension CategoryVC {
@@ -115,9 +121,7 @@ class CategoryVC: UIViewController {
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
                      cell.internalTableView.reloadData()
-                     //                     self.dataTableView.performBatchUpdates({
-                     self.dataTableView.reloadData()
-                     //                     })
+                     self.reloadTableView()
                  }
              }
          }
@@ -141,14 +145,14 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         cell.buttonTapped = { [weak self] (btn) in
             guard let `self` = self else { return }
             //
-            if hiddenSections.contains(where: {$0.0 == indexPath.row}) { return }
+//            if hiddenSections.contains(where: {$0.0 == indexPath.row}) { return }
             //
             DispatchQueue.main.async {
                 self.hideSection(section: indexPath.row)
                 cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
                 cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                 //ToDo:- hiding tableview...
-                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.01 : 0.01) {
+                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.5 : 0.01) {
                     cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                 }
                 UIView.transition(with: cell.containerStackView,
@@ -168,7 +172,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     
     private func hideSection(section: Int) {
         if hiddenSections.contains(where: {$0.0 == section}) {
-            //            hiddenSections.removeAll(where: {$0.0 == section})
+            hiddenSections.removeAll(where: {$0.0 == section})
         } else {
             if let sectionn = hiddenSections.first?.0{
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
@@ -204,7 +208,8 @@ extension CategoryVC: HeplerDelegate {
 
     }
 }
-class CustomTableView: UITableView{
+//MARK: - Custom Table View..
+class CustomTableView: UITableView {
     public override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return contentSize
@@ -217,8 +222,7 @@ class CustomTableView: UITableView{
     }
 }
 
-
-
+//MARK: - NewsListViewModelDelegate
 extension CategoryVC: NewsListViewModelDelegate{
     func newsListingSuccess() {
         DispatchQueue.main.async {
@@ -226,7 +230,7 @@ extension CategoryVC: NewsListViewModelDelegate{
             self.loadingView?.removeFromSuperview()
             self.viewModel.searchValue = ""
             self.headerSetup()
-            self.dataTableView.reloadData()
+            self.reloadTableView()
             //
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
                 self.initSetUp()
@@ -241,7 +245,7 @@ extension CategoryVC: NewsListViewModelDelegate{
             self.loadingView?.hide()
             self.loadingView?.removeFromSuperview()
             self.viewModel.searchValue = ""
-            self.dataTableView.reloadData()
+            self.reloadTableView()
         }
     }
 }
@@ -258,7 +262,7 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
         closeSearchingArea(self.searchValue.isEmpty)
         self.viewModel.searchValue = searchValue
         self.headerSetup(showSearchCount: !self.viewModel.searchValue.isEmpty)
-        self.dataTableView.reloadData()
+        self.reloadTableView()
     }
 
     func walifSearchTextFieldChanged(sender: UITextField!) {
@@ -271,7 +275,9 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
         }
         //
         self.headerSetup(showSearchCount: true)
-        self.dataTableView.reloadData()
+        self.reloadTableView()
+        //Equatable Logic..
+        print("Is Equal:-\(self.viewModel.businessCategories == self.viewModel.categories)")
 
     }
 
@@ -284,7 +290,7 @@ extension CategoryVC: WalifSearchTextFieldDelegate{
         hiddenSections = []
         //
         self.headerSetup()
-        self.dataTableView.reloadData()
+        self.reloadTableView()
         //
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
             self.initSetUp()

@@ -59,7 +59,7 @@ struct BusinessSuggestionKey: Codable {
 //import Foundation
 
 // MARK: - Label
-struct Label: Codable {
+struct Label: Codable, Equatable {
     var ar, en: String?
 }
 
@@ -73,7 +73,7 @@ struct Label: Codable {
 //import Foundation
 
 // MARK: - Link
-struct Link: Codable {
+struct Link: Codable, Equatable {
     var rel: Rel?
     var href: String?
 }
@@ -96,7 +96,19 @@ enum Rel: String, Codable {
 //import Foundation
 
 // MARK: - Category
-struct Category: Codable {
+struct Category: Codable,Equatable {
+    static func == (lhs: Category, rhs: Category) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.id == rhs.id &&
+        lhs.type == rhs.type &&
+        lhs.uuid == rhs.uuid &&
+        lhs.children == rhs.children &&
+        lhs.position == rhs.position &&
+        lhs.preferred == rhs.preferred &&
+        lhs.links == rhs.links &&
+        lhs.classImage == rhs.classImage
+    }
+    
     var uuid: String?
     var name: Label?
     var type: CategoryType?
@@ -118,7 +130,23 @@ struct Category: Codable {
 //import Foundation
 
 // MARK: - Child
-struct Child: Codable {
+struct Child: Codable, Equatable {
+    static func == (lhs: Child, rhs: Child) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.id == rhs.id &&
+        lhs.type == rhs.type &&
+        lhs.uuid == rhs.uuid &&
+        lhs.children == rhs.children &&
+        lhs.masterID == rhs.masterID &&
+        lhs.preferred == rhs.preferred &&
+        lhs.links == rhs.links &&
+        lhs.classImage == rhs.classImage &&
+        lhs.description == rhs.description &&
+        lhs.categoryKeywords == rhs.categoryKeywords &&
+        lhs.friendlyURLName == rhs.friendlyURLName
+        
+    }
+    
     var uuid: String?
     var name: Description?
     var type: ChildType?
@@ -149,7 +177,7 @@ struct Child: Codable {
 //import Foundation
 
 // MARK: - CategoryKeywords
-struct CategoryKeywords: Codable {
+struct CategoryKeywords: Codable , Equatable{
     var ar: [JSONAny]?
     var en: [String]?
 }
@@ -164,7 +192,7 @@ struct CategoryKeywords: Codable {
 //import Foundation
 
 // MARK: - Description
-struct Description: Codable {
+struct Description: Codable, Equatable {
     var en: String?
 }
 
@@ -172,7 +200,7 @@ struct Description: Codable {
 
 //import Foundation
 
-enum ChildType: String, Codable {
+enum ChildType: String, Codable, Equatable {
     case macro = "MACRO"
 }
 
@@ -180,7 +208,7 @@ enum ChildType: String, Codable {
 
 //import Foundation
 
-enum CategoryType: String, Codable {
+enum CategoryType: String, Codable, Equatable {
     case master = "MASTER"
 }
 

@@ -25,7 +25,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="54"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animals Pets and Plants" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rcu-qZ-0lw">
-                                            <rect key="frame" x="52" y="17" width="251" height="20.333333333333329"/>
+                                            <rect key="frame" x="10" y="17" width="181.66666666666666" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                                                 <action selector="sectionTapped:" destination="5K4-51-Iu0" eventType="touchUpInside" id="QGy-uZ-1mK"/>
                                             </connections>
                                         </button>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bestseller" translatesAutoresizingMaskIntoConstraints="NO" id="QvP-uc-ICY">
+                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bestseller" translatesAutoresizingMaskIntoConstraints="NO" id="QvP-uc-ICY">
                                             <rect key="frame" x="10" y="12" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="aWF-4s-OeC"/>
@@ -61,18 +61,17 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Rcu-qZ-0lw" firstAttribute="leading" secondItem="QvP-uc-ICY" secondAttribute="trailing" constant="12" id="1S8-JK-Iwp"/>
                                         <constraint firstItem="QvP-uc-ICY" firstAttribute="centerY" secondItem="ywT-0C-q2f" secondAttribute="centerY" id="5iw-4R-J3Y"/>
                                         <constraint firstAttribute="height" constant="54" id="6gJ-40-zoM"/>
                                         <constraint firstItem="Rcu-qZ-0lw" firstAttribute="centerY" secondItem="ywT-0C-q2f" secondAttribute="centerY" id="CK0-rg-Bf3"/>
                                         <constraint firstAttribute="trailing" secondItem="u09-NI-15L" secondAttribute="trailing" constant="10" id="K9z-c9-Pj1"/>
+                                        <constraint firstItem="Rcu-qZ-0lw" firstAttribute="leading" secondItem="ywT-0C-q2f" secondAttribute="leading" constant="10" id="ezJ-xt-2WC"/>
                                         <constraint firstAttribute="bottom" secondItem="DNO-t8-nc8" secondAttribute="bottom" id="fna-1y-NPA"/>
                                         <constraint firstAttribute="trailing" secondItem="DNO-t8-nc8" secondAttribute="trailing" constant="10" id="gjV-5N-gie"/>
                                         <constraint firstItem="QvP-uc-ICY" firstAttribute="leading" secondItem="ywT-0C-q2f" secondAttribute="leading" constant="10" id="hRw-gh-b0c"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rcu-qZ-0lw" secondAttribute="trailing" constant="15" id="lkp-4f-oBB"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Rcu-qZ-0lw" secondAttribute="trailing" constant="50" id="lkp-4f-oBB"/>
                                         <constraint firstItem="DNO-t8-nc8" firstAttribute="leading" secondItem="ywT-0C-q2f" secondAttribute="leading" constant="10" id="qCJ-JH-ebl"/>
                                         <constraint firstItem="u09-NI-15L" firstAttribute="centerY" secondItem="ywT-0C-q2f" secondAttribute="centerY" id="tTV-GE-WJ9"/>
-                                        <constraint firstItem="Rcu-qZ-0lw" firstAttribute="centerX" secondItem="ywT-0C-q2f" secondAttribute="centerX" id="u50-fu-6GB"/>
                                     </constraints>
                                 </view>
                                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vzH-eQ-R19" customClass="CustomTableView" customModule="Hi_Dubai" customModuleProvider="target">
