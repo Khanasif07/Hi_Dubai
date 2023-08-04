@@ -72,7 +72,7 @@ class CategoryVC: UIViewController {
     }
     
     private func reloadTableView(){
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.5) {
             self.dataTableView.reloadData()
         }
     }
@@ -103,7 +103,7 @@ class CategoryVC: UIViewController {
                      cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                  }
                  UIView.transition(with: cell.containerStackView,
-                                   duration: 0.5,
+                                   duration: 0.4,
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
                      self.dataTableView.performBatchUpdates(nil)
@@ -117,7 +117,7 @@ class CategoryVC: UIViewController {
          if let cell = self.dataTableView.cellForRow(at: IndexPath(row: section, section: 0)) as? CategoryTitleCell{
              DispatchQueue.main.async {
                  UIView.transition(with: cell.containerStackView,
-                                   duration: 0.3,
+                                   duration: 0.4,
                                    options: .curveEaseInOut) {
                      cell.containerStackView.setNeedsLayout()
                      cell.internalTableView.reloadData()
@@ -152,12 +152,13 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 cell.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == indexPath.row}))
                 cell.isRowShow = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                 //ToDo:- hiding tableview...
-                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.5 : 0.01) {
-                    cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
-                }
+//                UIView.animate(withDuration: !hiddenSections.contains(where: {$0.0 == indexPath.row}) ? 0.4 : 0.01) {
+//                    cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
+//                }
                 UIView.transition(with: cell.containerStackView,
-                                  duration: 0.5,
+                                  duration: 0.4,
                                   options: .curveEaseInOut) {
+                    cell.internalTableView.isHidden = !hiddenSections.contains(where: {$0.0 == indexPath.row})
                     cell.containerStackView.setNeedsLayout()
                     self.dataTableView.performBatchUpdates(nil)
                 }
@@ -167,7 +168,30 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return hiddenSections.contains(where: {$0.0 == indexPath.row}) ? UITableView.automaticDimension : 64.0
+//        return hiddenSections.contains(where: {$0.0 == indexPath.row}) ? UITableView.automaticDimension : 64.0
+        if hiddenSections.contains(where: {$0.0 == indexPath.row}) {
+            if let index  = hiddenSections.firstIndex(where: {$0.0 == indexPath.row}){
+                if ((self.viewModel.categories[indexPath.row].children?.count ?? 0) > maxCountForViewMore) && !hiddenSections[index].1{
+                    return CGFloat(maxCountForViewMore) * 36.0 + 82.0
+                }else{
+                    if ((self.viewModel.categories[indexPath.row].children?.count ?? 0) > maxCountForViewMore){
+                        return CGFloat(self.viewModel.categories[indexPath.row].children?.count ?? 0 + 1) * 36.0 + 82.0
+                    }
+                    return CGFloat((self.viewModel.categories[indexPath.row].children?.count ?? 0)) * 36.0 + 82.0
+                }
+            }else{
+                if ((self.viewModel.categories[indexPath.row].children?.count ?? 0) > maxCountForViewMore){
+                    return CGFloat(maxCountForViewMore) * 36.0 + 82.0
+                }else{
+                    if ((self.viewModel.categories[indexPath.row].children?.count ?? 0) > maxCountForViewMore){
+                        return CGFloat(self.viewModel.categories[indexPath.row].children?.count ?? 0 + 1) * 36.0 + 82.0
+                    }
+                    return CGFloat((self.viewModel.categories[indexPath.row].children?.count ?? 0)) * 36.0 + 82.0
+                }
+            }
+        }else{
+            return 64.0
+        }
     }
     
     private func hideSection(section: Int) {
@@ -178,7 +202,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
                 hiddenSections.removeAll(where: {$0.0 == sectionn})
                 if let cells = dataTableView.cellForRow(at: IndexPath(row: sectionn, section: 0)) as? CategoryTitleCell{
                     //ToDo:- hiding tableview...
-                    UIView.animate(withDuration: 0.5,delay: 0.01) {
+                    UIView.animate(withDuration: 0.4,delay: 0.01) {
                         cells.arrowIcon.rotate(clockwise: hiddenSections.contains(where: {$0.0 == section}))
                         cells.isRowShow = !hiddenSections.contains(where: {$0.0 == sectionn})
                     }

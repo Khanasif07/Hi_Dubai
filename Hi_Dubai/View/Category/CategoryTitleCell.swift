@@ -88,12 +88,12 @@ extension CategoryTitleCell {
 //        self.titleLbl.textColor = .blue
         //
         //
-        var classNameArr: [String]? = []
-        if ((modele?.classImage?.contains(" ")) != nil){
-            classNameArr = modele?.classImage?.components(separatedBy: " ") ?? []
-        }else{
-            classNameArr = [modele?.classImage ?? ""]
-        }
+//        var classNameArr: [String]? = []
+//        if ((modele?.classImage?.contains(" ")) != nil){
+//            classNameArr = modele?.classImage?.components(separatedBy: " ") ?? []
+//        }else{
+//            classNameArr = [modele?.classImage ?? ""]
+//        }
 //        switch classNameArr?.first{
 //        case  "fa-solid":
 //
