@@ -35,10 +35,8 @@ extension UIView{
 
 
 class GradientView: UIView {
-    
-    
-    
-    var colors: [CGColor] = UIColor.AppColor.otherUserProfileGradientColors { didSet { self.setNeedsDisplay()} }
+
+    var colors: [CGColor] = UIColor.AppColor.categoryGradientColors { didSet { self.setNeedsDisplay()} }
     
     private var gradientLayer: CAGradientLayer!
     
@@ -76,6 +74,48 @@ class GradientView: UIView {
         self.layer.addSublayer(gradientLayer)
     }
 }
+
+class BottomGradientView: UIView {
+
+    var colors: [CGColor] = UIColor.AppColor.bottomGradientColors { didSet { self.setNeedsDisplay()} }
+    
+    private var gradientLayer: CAGradientLayer!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = .clear
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.createGradientLayer()
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            self.createGradientLayer()
+        }
+    }
+    
+    
+
+    
+    ///draw gradient on the top layer
+    func createGradientLayer() {
+        for layer in layer.sublayers ?? [] {
+            if layer is CAGradientLayer {
+                layer.removeFromSuperlayer()
+            }
+        }
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        self.layer.addSublayer(gradientLayer)
+    }
+}
+
 
 extension UIView {
     
@@ -418,3 +458,42 @@ extension UIView{
         }
     }
 }
+
+
+//@IBDesignable
+//public class Gradient: UIView {
+//    @IBInspectable var startColor:   UIColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 0) { didSet { updateColors() }}
+//    @IBInspectable var endColor:     UIColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 1) { didSet { updateColors() }}
+//    @IBInspectable var startLocation: Double =   0.05 { didSet { updateLocations() }}
+//    @IBInspectable var endLocation:   Double =   0.95 { didSet { updateLocations() }}
+//    @IBInspectable var horizontalMode:  Bool =  true { didSet { updatePoints() }}
+//    @IBInspectable var diagonalMode:    Bool =  false { didSet { updatePoints() }}
+//
+//    override public class var layerClass: AnyClass { CAGradientLayer.self }
+//
+//    var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
+//
+//    func updatePoints() {
+//        if horizontalMode {
+//            gradientLayer.startPoint = diagonalMode ? .init(x: 1, y: 0) : .init(x: 0, y: 0)
+//            gradientLayer.endPoint   = diagonalMode ? .init(x: 0, y: 1) : .init(x: 0, y: 1)
+//        } else {
+//            gradientLayer.startPoint = diagonalMode ? .init(x: 0, y: 0) : .init(x: 0.5, y: 0)
+//            gradientLayer.endPoint   = diagonalMode ? .init(x: 1, y: 1) : .init(x: 0.5, y: 1)
+//        }
+//    }
+//    func updateLocations() {
+//        gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
+//    }
+//    func updateColors() {
+//        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+//    }
+//    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//        updatePoints()
+//        updateLocations()
+//        updateColors()
+//    }
+//
+//}
+//

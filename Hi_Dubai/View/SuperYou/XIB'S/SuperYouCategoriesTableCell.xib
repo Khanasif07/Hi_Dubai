@@ -23,7 +23,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </scrollView>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75504449503311255" colorSpace="custom" customColorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="RKH-Wn-CWM"/>

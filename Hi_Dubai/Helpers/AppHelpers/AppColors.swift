@@ -99,6 +99,11 @@ extension UIColor {
         
         static let otherUserProfileGradientColors = [UIColor.init(r: 0, g: 0, b: 0, alpha: 0.43).cgColor,UIColor.init(r: 52, g: 60, b: 82, alpha: 0.0).cgColor,UIColor.init(r: 46, g: 51, b: 73, alpha: 0.0).cgColor,UIColor.init(r: 14, g: 19, b: 22, alpha: 1.0).cgColor]
         
+        static let categoryGradientColors = [UIColor.init(r: 38, g: 193, b: 188, alpha: 1).cgColor,UIColor.init(r: 39, g: 193, b: 188, alpha: 0.7).cgColor,UIColor.init(r: 26, g: 123, b: 160, alpha: 0.0).cgColor]
+        
+        static let bottomGradientColors = [UIColor.init(r: 0, g: 0, b: 0, alpha: 0).cgColor,UIColor.init(r: 0, g: 0, b: 0, alpha: 1).cgColor]
+        
+        
         static let artistHeaderGradientColors = [UIColor.init(r: 44, g: 175, b: 205, alpha: 1.0).cgColor,UIColor.init(r: 15, g: 76, b: 130, alpha: 1.0).cgColor]
         
         static let progressBarColors = [UIColor.init(r: 33, g: 100, b: 171, alpha: 1.0),UIColor.init(r: 1, g: 183, b: 203, alpha: 1.0)]

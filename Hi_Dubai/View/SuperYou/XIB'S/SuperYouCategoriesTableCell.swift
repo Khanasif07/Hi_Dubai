@@ -24,6 +24,12 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         }
     }
     
+    var categoriesNeighboursData: CategoryDetailModel? {
+        didSet{
+            configureCategoriesNeighboursUI()
+        }
+    }
+    
     //MARK:- IBOutlets
     @IBOutlet weak var cardScrollView: UIScrollView!
     //MARK:- LifeCycle
@@ -93,6 +99,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
             self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
             return
         }
+        self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
             menuView.configureCell()
@@ -121,6 +128,52 @@ class SuperYouCategoriesTableCell: UITableViewCell {
                     menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -9.0)
                 ])
             }
+            previousAnchor = menuView.trailingAnchor
+        }
+        
+        previousAnchor.constraint(equalTo: cardScrollView.trailingAnchor, constant: -10).isActive = true
+        //        configureCell()
+    }
+    
+    /// Call to configure ui
+    private func configureCategoriesNeighboursUI() {
+        var previousAnchor = cardScrollView.leadingAnchor
+        let totalCount = (self.categoriesNeighboursData?.section6Data.count ?? 0)
+        if totalCount == 0{
+            self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
+            return
+        }
+        self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
+        //
+        let menuView = MenuItemView.instanciateFromNib()
+        menuView.configureCellWithTitle()
+        menuView.titlelbl.text = "Popular Neighborhoods:"
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        cardScrollView.addSubview(menuView)
+        let itemSize = titleSize(item:  "Popular Neighborhoods:")
+        NSLayoutConstraint.activate([
+            menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
+            menuView.heightAnchor.constraint(equalToConstant: itemSize.height),
+            menuView.widthAnchor.constraint(equalToConstant: itemSize.width),
+            menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 0),
+            menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -17)
+        ])
+        previousAnchor = menuView.trailingAnchor
+        //
+        for i in 0..<totalCount{
+            let menuView = MenuItemView.instanciateFromNib()
+            menuView.configureCell()
+            menuView.titlelbl.text = self.categoriesNeighboursData?.section6Data[i].primaryTag ?? ""
+            menuView.translatesAutoresizingMaskIntoConstraints = false
+            cardScrollView.addSubview(menuView)
+            let itemSize = cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: i)
+            NSLayoutConstraint.activate([
+                menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
+                menuView.heightAnchor.constraint(equalToConstant: itemSize.height),
+                menuView.widthAnchor.constraint(equalToConstant: itemSize.width),
+                menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 0),
+                menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -17)
+            ])
             previousAnchor = menuView.trailingAnchor
         }
         
@@ -164,8 +217,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
                     menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
                     menuView.heightAnchor.constraint(equalToConstant: itemSize.height),
                     menuView.widthAnchor.constraint(equalToConstant: itemSize.width),
-                    menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 9.0),
-                    menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -59)
+                    menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 12.0),
+                    menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -53.0)
                 ])
                 totalWidth += itemSize.width
             }
@@ -174,8 +227,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
                     menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
                     menuView.heightAnchor.constraint(equalToConstant: itemSize.height),
                     menuView.widthAnchor.constraint(equalToConstant: itemSize.width),
-                    menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 59.0),
-                    menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -9.0)
+                    menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 53.0),
+                    menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -12.0)
                 ])
             }
             previousAnchor = menuView.trailingAnchor
@@ -187,10 +240,10 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         cardScrollView.addSubview(menuView)
         NSLayoutConstraint.activate([
             menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
-            menuView.heightAnchor.constraint(equalToConstant: 40.0),
+            menuView.heightAnchor.constraint(equalToConstant: 33.0),
             menuView.widthAnchor.constraint(equalToConstant: lastItemWidth + 85.0),
-            menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 59.0),
-            menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -9.0)
+            menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 53.0),
+            menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -12.0)
         ])
         previousAnchor = menuView.trailingAnchor
         //
@@ -209,9 +262,23 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     private func cardSizeForCategoriesItemAtForCategories(indexPath: Int) -> CGSize {
         if let cardData =  categoriesData?.section6Data{
             let dataSource = cardData[indexPath].primaryTag
-            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
-            return CGSize(width: textSize.width + 80.0, height: 40.0)
+            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
+            return CGSize(width: textSize.width + 70.0, height: 33.0)
         }
-        return CGSize(width: 50.0, height: 40.0)
+        return CGSize(width: 50.0, height: 33.0)
+    }
+    
+    private func cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: Int) -> CGSize {
+        if let cardData =  categoriesNeighboursData?.section6Data{
+            let dataSource = cardData[indexPath].primaryTag
+            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
+            return CGSize(width: textSize.width + 60.0, height: 33.0)
+        }
+        return CGSize(width: 50.0, height: 33.0)
+    }
+    
+    private func titleSize(item: String) -> CGSize {
+        let textSize = "\(item)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
+        return CGSize(width: textSize.width + 60.0, height: 33.0)
     }
 }

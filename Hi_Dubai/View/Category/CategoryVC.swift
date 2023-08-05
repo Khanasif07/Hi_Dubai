@@ -66,7 +66,7 @@ class CategoryVC: UIViewController {
         containerView.backgroundColor = UIColor(named: "whitelightBlack")
         self.headerView.backgroundColor = UIColor.clear
         self.viewModel.delegate = self
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0, execute: {
             self.viewModel.getCategoriesListing()
         })
     }

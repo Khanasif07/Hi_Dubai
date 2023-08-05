@@ -250,7 +250,8 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = StickyHeaderVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 12:
-                let vc = NewsDiscoverVC.instantiate(fromAppStoryboard: .Main)
+                let vc = CategoryDetailVC.instantiate(fromAppStoryboard: .Main)
+//                vc.titleMsg =  self.viewModel.categories[selectedIndexPath.row].children?[index.row].name?.en ?? ""
                 self.navigationController?.pushViewController(vc, animated: false)
             case 13:
                 let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)

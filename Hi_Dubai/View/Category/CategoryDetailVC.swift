@@ -32,6 +32,7 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
         registercell()
         self.navigationController?.navigationBar.isHidden = false
         addRightButtonToNavigation(image:UIImage(named: "search"), tintColor: .white)
+        footerViewSetUp()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,7 +70,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         case .section3:
             return 2
         case .section4:
-            return 2
+            return 3
         case .section5:
             return 2
         case .section6:
@@ -135,8 +136,10 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row{
             case 0:
                 return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
-            default:
+            case 1:
                 return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
+            default:
+                return getCategoriesNeighboursCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section6)
             }
         case .section5:
             if indexPath.row == 0 {
@@ -161,7 +164,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 48.0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -171,39 +174,42 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch viewModel.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
         case .section1:
-            return 220.0
+            return 214.0
         case .section2:
             switch indexPath.row{
             case 0:
-                return 250.0
+                return 257.0
             case 1:
-                return 59.0
+                return 54.0
             default:
-                return 120.0
+                return 107.0
                 
             }
         case .section3:
             switch indexPath.row{
             case 0:
-                return 250.0
+                return 257.0
             default:
-                return 59.0
+                return 54.0
             }
         case .section4:
             switch indexPath.row{
             case 0:
-                return 250.0
+                return 257.0
+            case 1:
+                return 54.0
             default:
-                return 59.0
+                return 50.0
             }
         case .section5:
-            if indexPath.row == 0 {
+            switch indexPath.row{
+            case 0:
                 return 325.0
-            }else{
-                return 120.0
+            default:
+                return 107.0
             }
         case .section6:
-            return 108.0
+            return 98.0
         case .none:
             return 0.0
         }
@@ -226,6 +232,14 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
+    private func getCategoriesNeighboursCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
+        if let _ = self.viewModel.categoryData{
+            cell.categoriesNeighboursData = dataSource
+        }
+        return cell
+    }
+    
     private func getCategoriesAdvertismentCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
         let cell = tableView.dequeueCell(with: CategoryAdvTableCell.self, indexPath: indexPath)
         return cell
@@ -237,6 +251,13 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
             print("See More Button Tapped..")
         }
         return cell
+    }
+    
+    private func footerViewSetUp() {
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 100.0))
+        footerView.backgroundColor = .clear
+        self.dataTableView.tableFooterView?.frame = footerView.frame
+        self.dataTableView.tableFooterView = footerView
     }
 }
 

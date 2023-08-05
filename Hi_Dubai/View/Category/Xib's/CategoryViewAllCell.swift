@@ -18,7 +18,7 @@ class CategoryViewAllCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        seeMoreBtn.layer.cornerRadius = 20.0
+        seeMoreBtn.layer.cornerRadius = self.seeMoreBtn.frame.height/2
     }
 
     @IBAction func seeMoreBtnAction(_ sender: UIButton) {

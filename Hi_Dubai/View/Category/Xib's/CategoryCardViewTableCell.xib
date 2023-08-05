@@ -39,7 +39,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75532905629139069" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="OTt-Fl-YOm" firstAttribute="top" secondItem="Ft2-OT-HUK" secondAttribute="top" id="0K0-p1-tnZ"/>
                         <constraint firstItem="yq6-Z2-GUv" firstAttribute="top" secondItem="Ft2-OT-HUK" secondAttribute="top" id="1yg-oP-7Ud"/>

@@ -34,6 +34,14 @@ class MenuItemView: UIView {
     func configureCell(){
         self.dataView.backgroundColor = .black
         self.titlelbl.textColor = color
+        self.dataView.backgroundColor = .white
+    }
+    
+    func configureCellWithTitle(){
+        self.titlelbl.textColor = color
+        self.titlelbl.textColor = .white
+        self.dataView.backgroundColor = .clear
+        self.dataView.setCircleBorder(weight: 0.0, color: .clear)
     }
     
     

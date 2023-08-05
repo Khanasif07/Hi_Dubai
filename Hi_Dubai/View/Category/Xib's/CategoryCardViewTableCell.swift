@@ -182,9 +182,9 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch self.currentCell {
         case .section1:
-            return CGSize(width: 140.0, height: collectionView.bounds.height - 18)
+            return CGSize(width: 144.0, height: collectionView.bounds.height - 24)
         case .section2:
-            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 18)
+            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 24)
         case .section3:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height - 18)
         case .section4:
@@ -208,30 +208,30 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
         case .section1 :
-            return 9.0
+            return 7.0
         case .section2:
             return 0.0
         case .section3:
-            return 9.0
+            return 7.0
         case .section4,.section5:
-            return 9.0
+            return 7.0
         default :
-            return 9.0
+            return 7.0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
         case .section1:
-            return 10.0
+            return 7.0
         case .section2:
-            return 10.0
+            return 7.0
         case .section3:
-            return 10.0
+            return 7.0
         case .section4,.section5:
-            return 10.0
+            return 7.0
         default:
-            return 10.0
+            return 7.0
         }
     }
     
@@ -251,7 +251,7 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
         case .section6:
             paddingInset = 5.0
         }
-        return UIEdgeInsets(top: 9.0, left: paddingInset, bottom: 9.0, right: paddingInset)
+        return UIEdgeInsets(top: paddingInset, left: paddingInset, bottom: paddingInset, right: paddingInset)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
