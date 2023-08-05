@@ -18,8 +18,8 @@ class CategoryDetailModel {
     var section3Data: [Record] = []
     var section4Data: [Record] = []
     var section5Data: [Record] = []
-//    var section6Data: [Animal] = []
-    var section6Data: [Record] = []
+    var section6Data: [Animal] = []
+//    var section6Data: [Record] = []
     var isFirstTime: Bool = false
     
     convenience init(nextPageStatus: Bool) {
@@ -43,8 +43,9 @@ class CategoryDetailModel {
                 self.section4Data = result.record
                 self.section5Data = result.record
 //                self.section6Data = self.animals
-                self.section6Data = result.record
-                self.section6Data.append(contentsOf: result.record)
+                self.section6Data = self.animals
+//                self.section6Data.append(contentsOf: result.record)
+//                self.section6Data.append(contentsOf: result.record)
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error

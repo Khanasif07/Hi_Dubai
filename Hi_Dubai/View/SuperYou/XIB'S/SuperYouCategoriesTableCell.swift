@@ -103,7 +103,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
             menuView.configureCell()
-            menuView.titlelbl.text = self.categoriesData?.section6Data[i].title ?? ""
+            menuView.titlelbl.text = self.categoriesData?.section6Data[i].name ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesItemAtForCategories(indexPath: i)
@@ -163,7 +163,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
             menuView.configureCell()
-            menuView.titlelbl.text = self.categoriesNeighboursData?.section6Data[i].primaryTag ?? ""
+            menuView.titlelbl.text = self.categoriesNeighboursData?.section6Data[i].name ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: i)
@@ -191,8 +191,10 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         }
         //
         var totalWidth: CGFloat = 0.0
+        var secondTotalWidth: CGFloat = 0.0
         for (index,_)in  self.categoriesData!.section6Data.enumerated(){
             totalWidth += cardSizeForCategoriesItemAtForCategories(indexPath: index).width
+            print(cardSizeForCategoriesItemAtForCategories(indexPath: index).width)
         }
         let halfWidth = totalWidth/2
         totalWidth = 0
@@ -202,14 +204,13 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
             menuView.configureCell()
-            menuView.titlelbl.text = self.categoriesData?.section6Data[i].primaryTag ?? ""
+            menuView.titlelbl.text = self.categoriesData?.section6Data[i].name ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesItemAtForCategories(indexPath: i)
             if totalWidth > halfWidth && !isMeanItem{
                 previousAnchor = cardScrollView.leadingAnchor
                 isMeanItem = true
-                //
                 lastItemWidth = (totalWidth - halfWidth)
             }
             if totalWidth <= halfWidth{
@@ -230,10 +231,13 @@ class SuperYouCategoriesTableCell: UITableViewCell {
                     menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 53.0),
                     menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -12.0)
                 ])
+                secondTotalWidth += itemSize.width
             }
             previousAnchor = menuView.trailingAnchor
         }
+        
         //
+        let finalWidth = (halfWidth - secondTotalWidth) + lastItemWidth
         let menuView = MenuItemView.instanciateFromNib()
         menuView.dataView.isHidden = true
         menuView.translatesAutoresizingMaskIntoConstraints = false
@@ -241,7 +245,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         NSLayoutConstraint.activate([
             menuView.leadingAnchor.constraint(equalTo: previousAnchor, constant: 0),
             menuView.heightAnchor.constraint(equalToConstant: 33.0),
-            menuView.widthAnchor.constraint(equalToConstant: lastItemWidth + 85.0),
+            menuView.widthAnchor.constraint(equalToConstant: finalWidth),
             menuView.topAnchor.constraint(equalTo: cardScrollView.topAnchor, constant: 53.0),
             menuView.bottomAnchor.constraint(equalTo: cardScrollView.bottomAnchor, constant: -12.0)
         ])
@@ -261,7 +265,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     
     private func cardSizeForCategoriesItemAtForCategories(indexPath: Int) -> CGSize {
         if let cardData =  categoriesData?.section6Data{
-            let dataSource = cardData[indexPath].primaryTag
+            let dataSource = cardData[indexPath].name
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
             return CGSize(width: textSize.width + 70.0, height: 33.0)
         }
@@ -270,7 +274,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     
     private func cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: Int) -> CGSize {
         if let cardData =  categoriesNeighboursData?.section6Data{
-            let dataSource = cardData[indexPath].primaryTag
+            let dataSource = cardData[indexPath].name
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
             return CGSize(width: textSize.width + 60.0, height: 33.0)
         }

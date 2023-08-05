@@ -45,6 +45,7 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
         self.dataTableView.separatorColor = .clear
+        self.dataTableView.backgroundColor = .clear
         self.dataTableView.separatorStyle = .none
         self.dataTableView.registerHeaderFooter(with: CategoriesDetailSectionView.self)
         self.dataTableView.registerCell(with: CategoryCardViewTableCell.self)
@@ -255,7 +256,7 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     private func footerViewSetUp() {
         let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 100.0))
-        footerView.backgroundColor = .clear
+        footerView.backgroundColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 0.76)
         self.dataTableView.tableFooterView?.frame = footerView.frame
         self.dataTableView.tableFooterView = footerView
     }

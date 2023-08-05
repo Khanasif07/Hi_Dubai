@@ -198,7 +198,7 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
     
     private func cardSizeForCategoriesItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
         if let cardData =  categoryData?.section6Data{
-            let dataSource = cardData[indexPath.item].title + " \(indexPath.item)"
+            let dataSource = cardData[indexPath.item].name + " \(indexPath.item)"
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
             return CGSize(width: textSize.width + 50.0, height: 40.0)
         }
