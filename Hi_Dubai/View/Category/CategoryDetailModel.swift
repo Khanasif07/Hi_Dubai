@@ -65,11 +65,11 @@ class CategoryDetailModel {
             self.tableCellAtIndexPath.append([.section4])
             self.tableCellAtIndexPath.append([.section5])
         }else{
-            self.tableCellAtIndexPath.append([.section1])
-            self.tableCellAtIndexPath.append([.section2])
-            self.tableCellAtIndexPath.append([.section3])
-            self.tableCellAtIndexPath.append([.section4])
-            self.tableCellAtIndexPath.append([.section5])
+//            self.tableCellAtIndexPath.append([.section1])
+//            self.tableCellAtIndexPath.append([.section2])
+//            self.tableCellAtIndexPath.append([.section3])
+//            self.tableCellAtIndexPath.append([.section4])
+//            self.tableCellAtIndexPath.append([.section5])
             self.tableCellAtIndexPath.append([.section6])
         }
         getNewsListing()

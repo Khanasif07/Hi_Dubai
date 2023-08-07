@@ -13,7 +13,42 @@
 //   let categories = try? newJSONDecoder().decode(Categories.self, from: jsonData)
 
 import Foundation
+// MARK: - Welcome
+struct CategoriesList: Codable {
+    let embedded: Embedded
+    let links: Links
+    let page: Page
 
+    enum CodingKeys: String, CodingKey {
+        case embedded = "_embedded"
+        case links = "_links"
+        case page
+    }
+}
+
+// MARK: - SelfClass
+struct SelfClass: Codable {
+    let href: String
+}
+
+// MARK: - Links
+struct Links: Codable {
+    let linksSelf: SelfClass
+
+    enum CodingKeys: String, CodingKey {
+        case linksSelf = "self"
+    }
+}
+
+// MARK: - Page
+struct Page: Codable {
+    let size, totalElements, totalPages, number: Int
+}
+
+// MARK: - Embedded
+struct Embedded: Codable {
+    let categories: [Category]
+}
 // MARK: - Categories
 struct Categories: Codable {
     var postURL: [String]?

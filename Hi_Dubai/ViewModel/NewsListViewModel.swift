@@ -86,11 +86,11 @@ class NewsListViewModel{
     
     
     func getCategoriesListing(){
-        NetworkManager.shared.getCategoriesDataFromServer(requestType: .get, endPoint: EndPoint.hidubai_categories.rawValue) { (results : Result<Categories,Error>)  in
+        NetworkManager.shared.getCategoriesDataFromServer(requestType: .get, endPoint: EndPoint.hidubai_categories.rawValue) { (results : Result<CategoriesList,Error>)  in
             switch results{
             case .success(let result):
                 print(result)
-                self.businessCategories = result.categories ?? []
+                self.businessCategories = result.embedded.categories ?? []
                 print(self.businessCategories)
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
