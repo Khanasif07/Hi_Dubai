@@ -29,6 +29,7 @@ class MenuItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.dataView.backgroundColor = .white
+        self.titlelbl.font =  UIFont(name: "Helvetica Neue Medium", size: 12.0)
     }
     
     func configureCell(){

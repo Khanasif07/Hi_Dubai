@@ -18,7 +18,7 @@ class CategoryDetailModel {
     var section3Data: [Record] = []
     var section4Data: [Record] = []
     var section5Data: [Record] = []
-    var section6Data: [Animal] = []
+    var section6Data: [Category] = []
 //    var section6Data: [Record] = []
     var isFirstTime: Bool = false
     
@@ -43,13 +43,28 @@ class CategoryDetailModel {
                 self.section4Data = result.record
                 self.section5Data = result.record
 //                self.section6Data = self.animals
-                self.section6Data = self.animals
+//                self.section6Data = self.animals
 //                self.section6Data.append(contentsOf: result.record)
 //                self.section6Data.append(contentsOf: result.record)
-                self.delegate?.newsListingSuccess()
+                self.getCategoriesListing()
+//                self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error
                 self.newsData = []
+                self.delegate?.newsListingFailure(error: error)
+                
+            }
+        }
+    }
+    
+    func getCategoriesListing(){
+        NetworkManager.shared.getCategoriesDataFromServer(requestType: .get, endPoint: EndPoint.hidubai_categories.rawValue) { (result: Result<CategoriesList,Error>) in
+            switch result{
+            case .success(let result):
+                self.section6Data = result.embedded.categories
+                self.delegate?.newsListingSuccess()
+            case .failure(let error):
+                self.error = error
                 self.delegate?.newsListingFailure(error: error)
                 
             }
@@ -72,6 +87,7 @@ class CategoryDetailModel {
 //            self.tableCellAtIndexPath.append([.section5])
             self.tableCellAtIndexPath.append([.section6])
         }
-        getNewsListing()
+        getCategoriesListing()
+//        getNewsListing()
     }
 }

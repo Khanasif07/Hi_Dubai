@@ -25,6 +25,7 @@ class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
     
     func hitApi() {
         self.viewModel.delegate = self
+        self.viewModel.categoryData?.delegate = self
         self.viewModel.categoryData?.dataMappingInModel(jsonArr: [])
     }
     
@@ -265,4 +266,12 @@ extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
 
 extension CategoryDetailVC: CategoryDetailVMDelegate{
     
+}
+
+extension CategoryDetailVC: NewsListViewModelDelegate{
+    func newsListingSuccess(){
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
 }
