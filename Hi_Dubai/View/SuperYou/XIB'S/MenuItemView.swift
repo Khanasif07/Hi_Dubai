@@ -5,9 +5,14 @@
 //  Created by Asif Khan on 20/07/2023.
 //
 import UIKit
+protocol MenuItemViewDelegate: NSObject{
+    func categorySelected(_ model: Category)
+}
 class MenuItemView: UIView {
-
-    let color = UIColor(red: CGFloat(93/255.0),green: CGFloat(132/255.0),blue: CGFloat(171/255.0), alpha: CGFloat(1.0))
+    var category: Category?
+    weak var delegate: MenuItemViewDelegate?
+    let color = UIColor(r: 38, g: 193, b: 188, alpha: 1.0)
+//    UIColor(red: CGFloat(38),green: CGFloat(193),blue: CGFloat(188), alpha: CGFloat(1.0))
     //MARK:- IBOUTLETS
     //==================
     @IBOutlet weak var dataView: UIView!
@@ -21,27 +26,27 @@ class MenuItemView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.dataView.layer.cornerRadius = self.dataView.frame.height / 2.0
-        self.dataView.setCircleBorder(weight: 0.75, color: color)
     }
     
     //MARK:- VIEW LIFE CYCLE
     //=====================
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.dataView.backgroundColor = .white
         self.titlelbl.font =  UIFont(name: "Helvetica Neue Medium", size: 12.0)
     }
     
-    func configureCell(){
+    func configureCell(_ model: Category?){
+        self.category = model
         self.dataView.backgroundColor = .black
         self.titlelbl.textColor = color
-        self.dataView.backgroundColor = .white
+        self.dataView.setCircleBorder(weight: 1.0, color: color)
+       
     }
     
-    func configureCellWithTitle(){
-        self.titlelbl.textColor = color
-        self.titlelbl.textColor = .white
+    func configureCellWithTitle(_ model: Category?){
+        self.category = model
         self.dataView.backgroundColor = .clear
+        self.titlelbl.textColor = color
         self.dataView.setCircleBorder(weight: 0.0, color: .clear)
     }
     
@@ -54,6 +59,9 @@ class MenuItemView: UIView {
     
     //MARK:- IBACTIONS
     //==================
+    @IBAction func btnTapped(_ sender: UIButton) {
+        self.delegate?.categorySelected(category ?? Category())
+    }
     
    
     class func instanciateFromNib() -> MenuItemView {

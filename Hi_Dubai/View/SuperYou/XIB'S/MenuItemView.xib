@@ -26,11 +26,23 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfY-vl-fh9">
+                                    <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="btnTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="tD2-qt-D8M"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="yfY-vl-fh9" firstAttribute="top" secondItem="VhY-xi-bN7" secondAttribute="top" id="9Mz-7T-vn3"/>
                                 <constraint firstItem="7F7-7G-ziu" firstAttribute="centerY" secondItem="VhY-xi-bN7" secondAttribute="centerY" id="HaA-zb-Mzc"/>
+                                <constraint firstAttribute="trailing" secondItem="yfY-vl-fh9" secondAttribute="trailing" id="gtO-3R-JUd"/>
                                 <constraint firstItem="7F7-7G-ziu" firstAttribute="centerX" secondItem="VhY-xi-bN7" secondAttribute="centerX" id="tAk-wF-TBt"/>
+                                <constraint firstAttribute="bottom" secondItem="yfY-vl-fh9" secondAttribute="bottom" id="tRa-I1-xL5"/>
+                                <constraint firstItem="yfY-vl-fh9" firstAttribute="leading" secondItem="VhY-xi-bN7" secondAttribute="leading" id="xPP-vU-DZ5"/>
                             </constraints>
                         </view>
                     </subviews>

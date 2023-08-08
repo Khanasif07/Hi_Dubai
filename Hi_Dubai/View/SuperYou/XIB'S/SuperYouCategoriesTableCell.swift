@@ -102,8 +102,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
-            menuView.configureCell()
-            menuView.titlelbl.text = self.categoriesData?.section6Data[i].name?.ar ?? ""
+            menuView.configureCell(self.categoriesData?.section6Data[i])
+            menuView.titlelbl.text = self.categoriesData?.section6Data[i].name?.en ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesItemAtForCategories(indexPath: i)
@@ -146,7 +146,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
         //
         let menuView = MenuItemView.instanciateFromNib()
-        menuView.configureCellWithTitle()
+        menuView.configureCellWithTitle(self.categoriesData?.section6Data[0])
         menuView.titlelbl.text = "Popular Neighborhoods:"
         menuView.translatesAutoresizingMaskIntoConstraints = false
         cardScrollView.addSubview(menuView)
@@ -162,8 +162,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         //
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
-            menuView.configureCell()
-            menuView.titlelbl.text = self.categoriesNeighboursData?.section6Data[i].name?.ar ?? ""
+            menuView.configureCell(self.categoriesData?.section6Data[i])
+            menuView.titlelbl.text = self.categoriesNeighboursData?.section6Data[i].name?.en ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
             let itemSize = cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: i)
@@ -189,6 +189,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
             return
         }
         //
+        self.cardScrollView.subviews.forEach({$0.removeFromSuperview()})
         var previousAnchor = cardScrollView.leadingAnchor
         var totalWidth: CGFloat = 0.0
         var secondHalfTotalWidth: CGFloat = 0.0
@@ -202,7 +203,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
         //
         for i in 0..<totalCount{
             let menuView = MenuItemView.instanciateFromNib()
-            menuView.configureCell()
+            menuView.configureCell(self.categoriesData?.section6Data[i])
+            menuView.delegate = self
             menuView.titlelbl.text = self.categoriesData?.section6Data[i].name?.en ?? ""
             menuView.translatesAutoresizingMaskIntoConstraints = false
             cardScrollView.addSubview(menuView)
@@ -235,6 +237,8 @@ class SuperYouCategoriesTableCell: UITableViewCell {
             previousAnchor = menuView.trailingAnchor
         }
         
+       
+
         //
         let finalWidth = (totalHalfWidth - secondHalfTotalWidth) + lastItemWidth
         let menuView = MenuItemView.instanciateFromNib()
@@ -274,7 +278,7 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     private func cardSizeForCategoriesNeighboursItemAtForCategories(indexPath: Int) -> CGSize {
         if let cardData =  categoriesNeighboursData?.section6Data{
             let dataSource = cardData[indexPath].name
-            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
+            let textSize = "\(dataSource?.en ?? "")".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
             return CGSize(width: textSize.width + 60.0, height: 33.0)
         }
         return CGSize(width: 50.0, height: 33.0)
@@ -282,6 +286,13 @@ class SuperYouCategoriesTableCell: UITableViewCell {
     
     private func titleSize(item: String) -> CGSize {
         let textSize = "\(item)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 33.0))
-        return CGSize(width: textSize.width + 60.0, height: 33.0)
+        return CGSize(width: textSize.width + 15.0, height: 33.0)
+    }
+}
+
+//MARK: - MenuItemViewDelegate
+extension SuperYouCategoriesTableCell: MenuItemViewDelegate{
+    func categorySelected(_ model: Category){
+        print(model)
     }
 }
