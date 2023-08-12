@@ -1,10 +1,12 @@
 ${PODS_ROOT}/Target Support Files/Pods-Hi_Dubai/Pods-Hi_Dubai-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework
+${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
 ${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework
 ${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework
 ${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework

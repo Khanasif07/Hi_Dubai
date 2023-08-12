@@ -42,6 +42,7 @@ class NewsListVC: UIViewController {
     private var indexPath: IndexPath?
     internal var currentShimmerStatus: ShimmerState = .toBeApply
     var error: Error?
+    var cgmDataArray : [ShareGlucoseData] = []
     
     //
 //    var stopScroll = 80.0
@@ -57,6 +58,7 @@ class NewsListVC: UIViewController {
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        cgmDataArray = [ShareGlucoseData(sgv: 100, date: TimeInterval(), direction: "Jan"),ShareGlucoseData(sgv: 150, date: TimeInterval(), direction: "Feb"),ShareGlucoseData(sgv: 170, date: TimeInterval(), direction: "March"),ShareGlucoseData(sgv: 180, date: TimeInterval(), direction: "April"),ShareGlucoseData(sgv: 190, date: TimeInterval(), direction: "May"),ShareGlucoseData(sgv: 200, date: TimeInterval(), direction: "June")]
         self.initialSetup()
        
         self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
@@ -134,6 +136,7 @@ class NewsListVC: UIViewController {
         self.newsTableView.separatorColor = .clear
         self.newsTableView.separatorStyle = .none
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
+        self.newsTableView.registerCell(with: ChartsTableViewCell.self)
         self.newsTableView.registerCell(with: ShimmerCell.self)
 //        self.headerSetup()
         self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
@@ -188,10 +191,16 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ShimmerCell.self)
             return cell
         case .applied:
-            let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
-            let cellVM = viewModel.getCellViewModel(at: indexPath)
-            cell.cellViewModel = cellVM
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueCell(with: ChartsTableViewCell.self)
+                cell.cgmData = cgmDataArray
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
+                let cellVM = viewModel.getCellViewModel(at: indexPath)
+                cell.cellViewModel = cellVM
+                return cell
+            }
         case .none:
             let cell = UITableViewCell()
             return cell
@@ -199,7 +208,12 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if indexPath.row == 0 {
+            return 300.0
+        }
+        else {
+            return UITableView.automaticDimension
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -207,7 +221,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 //
-                let vc = SettingVC.instantiate(fromAppStoryboard: .Main)
+                let vc = IQKeyboardVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
                
 //                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)

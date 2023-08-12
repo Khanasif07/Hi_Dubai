@@ -250,6 +250,7 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
                             let indexes = (0..<self.maxCountForViewMore).map { IndexPath(row: $0, section: indexPath.section) }
                             self.dataTableView.reloadRows(at: indexes, with: .none)
                         }
+                        self.dataTableView.scrollToRow(at: indexPath, at: .top, animated: true)
                     }
                     return cell
                 }else if (((self.viewModel.categories[indexPath.section].children?.count ?? 0) - 1) == indexPath.row) && self.hiddenSections[index!].1{
@@ -414,7 +415,13 @@ extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
             //            self.dataTableView.reloadSections([section], with: .automatic)
             //            self.dataTableView.endUpdates()
         }
-        self.dataTableView.performBatchUpdates(nil)
+        self.dataTableView.performBatchUpdates({
+           
+        },completion: { value in
+            UIView.animate(withDuration: 0.4) {
+                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
+            }
+        })
     }
     
     private func getCellCountForSection(sectionn: Int)->Int{
@@ -448,27 +455,33 @@ extension PlacesAndSuperShesView{
         if screenUsingFor == .categories{
            
         }else {
-            var scrollDirection: ScrollDirection
-            let stopScroll = 50.0
-            if lastContentOffset > scroll.contentOffset.y {
-                scrollDirection = .down
-            } else {
-                scrollDirection = .up
+            print(scroll.contentOffset.y)
+            if scroll.contentOffset.y <= 0.0{
+                self.dataTableView.isScrollEnabled = false
+            }else{
+                self.dataTableView.isScrollEnabled = true
             }
-            
-            let offsetY = scroll.contentOffset.y
-            
-            lastContentOffset = scroll.contentOffset.y
-            
-            if scrollDirection == .up {
-                if offsetY < stopScroll {
-                    enableGlobalScrolling(offsetY)
-                } else {
-                    enableGlobalScrolling(stopScroll,false)
-                }
-            } else if (scrollDirection == .down) && (offsetY < stopScroll) {
-                enableGlobalScrolling(offsetY)
-            }
+//            var scrollDirection: ScrollDirection
+//            let stopScroll = 50.0
+//            if lastContentOffset > scroll.contentOffset.y {
+//                scrollDirection = .down
+//            } else {
+//                scrollDirection = .up
+//            }
+//
+//            let offsetY = scroll.contentOffset.y
+//
+//            lastContentOffset = scroll.contentOffset.y
+//
+//            if scrollDirection == .up {
+//                if offsetY < stopScroll {
+//                    enableGlobalScrolling(offsetY)
+//                } else {
+//                    enableGlobalScrolling(stopScroll,false)
+//                }
+//            } else if (scrollDirection == .down) && (offsetY < stopScroll) {
+//                enableGlobalScrolling(offsetY)
+//            }
         }
     }
 }

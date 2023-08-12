@@ -177,11 +177,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug (Development)" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework"
@@ -193,11 +195,13 @@ if [[ "$CONFIGURATION" == "Debug (Development)" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Debug (Production)" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework"
@@ -209,11 +213,13 @@ if [[ "$CONFIGURATION" == "Debug (Production)" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release (Development)" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework"
@@ -225,11 +231,13 @@ if [[ "$CONFIGURATION" == "Release (Development)" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release (Production)" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/CarbonKit/CarbonKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DGCharts/DGCharts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MXParallaxHeader/MXParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ParallaxHeader/ParallaxHeader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework"

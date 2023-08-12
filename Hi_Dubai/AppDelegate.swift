@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 11/02/23.
 //
-
+import IQKeyboardManagerSwift
 import UIKit
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 @main
@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Environment.shared.configuration(.buildType)
+        IQKeyboardManager.shared.enable = true
         return true
     }
 

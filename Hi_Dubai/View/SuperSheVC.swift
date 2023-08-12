@@ -94,6 +94,7 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     }
     override func initialSetup() {
         super.initialSetup()
+        
 //        self.mapView.clear()
         self.isStatusBarBlack = true
         self.setNeedsStatusBarAppearanceUpdate()
@@ -201,11 +202,15 @@ class SuperSheVC: BaseVC ,VCConfigurator{
             superSheView.deleagte = self
             self.mainScrollView.addSubview(superSheView)
         }
+        
+        self.placesView?.dataTableView.isScrollEnabled = false
+        self.supershesView?.dataTableView.isScrollEnabled = false
     }
     
     ///Call to open Bottom sheet
     internal func openBottomSheet(withAnimation: Bool = true, duration: TimeInterval = 0.5, openFor: AvailableViews = .places, applySearch: Bool = true) {
-        
+        self.placesView?.dataTableView.isScrollEnabled = true
+        self.supershesView?.dataTableView.isScrollEnabled = true
         self.isStatusBarBlack = false
         if openFor == .supershes {
             self.searchTextField.resignFirstResponder()
@@ -250,15 +255,16 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         self.searchTextField.resignFirstResponder()
         self.textFieldCancelButton.isHidden = true
         self.isStatusBarBlack = true
-        
+        self.placesView?.dataTableView.isScrollEnabled = false
+        self.supershesView?.dataTableView.isScrollEnabled = false
         if withAnimation {
             UIView.animate(withDuration: duration, animations: { [weak self] in
                 self?.buttonsContainerHeighttCons.constant = 0.0
                 
                 if self?.comingFrom == .otherUserProfile {
-                    self?.placesAndSuperShesViewBottomCons.constant = -(screen_height - 62.0) + 68.0 + UIDevice.bottomSafeArea
+                    self?.placesAndSuperShesViewBottomCons.constant = -(screen_height - (screen_height/2))
                 } else {
-                    self?.placesAndSuperShesViewBottomCons.constant = -(screen_height - 62.0) + 68.0 + (UIDevice.bottomSafeArea)
+                    self?.placesAndSuperShesViewBottomCons.constant = -(screen_height - (screen_height/2))
                 }
 //                self?.tabBarController?.tabBar.frame.origin.y = screen_height - (self?.tabBarHeight ?? 0.0)
                 self?.setNeedsStatusBarAppearanceUpdate()
@@ -389,10 +395,10 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     private func panGestureFinalAnimation(velocity: CGPoint,touchPoint: CGPoint) {
         //Down Direction
         if velocity.y < 0 {
-            if velocity.y < -300 {
+            if velocity.y < -screen_height/2 {
                 self.openBottomSheet(applySearch: false)
             } else {
-                if touchPoint.y <= (screen_height - 62.0)/2 {
+                if touchPoint.y <= (screen_height - screen_height/2)/2 {
                     self.openBottomSheet(applySearch: false)
                 } else {
                     self.behindBlurView.isHidden = true
@@ -402,11 +408,11 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         }
             //Up Direction
         else {
-            if velocity.y > 300 {
+            if velocity.y > screen_height/2 {
                 self.behindBlurView.isHidden = true
                 self.closeBottomSheet()
             } else {
-                if touchPoint.y <= (screen_height - 62.0)/2 {
+                if touchPoint.y <= (screen_height - screen_height/2)/2 {
                     self.openBottomSheet()
                 } else {
                     self.closeBottomSheet()
@@ -461,9 +467,6 @@ class SuperSheVC: BaseVC ,VCConfigurator{
     @IBAction func textFieldCancelBtnAction(_ sender: UIButton) {
         self.searchTextField.text = ""
         self.textFieldAnimation(applySearch: false)
-//        self.supershesView?.clearSuperSheViewData()
-//        self.placesView?.clearPlaceViewData()
-//        self.supershesView?.getData(text: "", page: 0)
         self.supershesView?.dataTableView.reloadData()
     }
     
@@ -479,27 +482,13 @@ class SuperSheVC: BaseVC ,VCConfigurator{
         case .began:
             self.initialTouchPoint = touchPoint
         case .changed:
+            print(self.placesAndSuperShesViewBottomCons.constant)
             let touchPointDiffY = initialTouchPoint.y - touchPoint.y
-            print(touchPointDiffY)
-            if  touchPoint.y > 62.0 {
-                if touchPointDiffY > 0, !isBottomSheetOpen {
-                    self.placesAndSuperShesViewBottomCons.constant = -(screen_height - 62.0) + (68.0) + (UIDevice.bottomSafeArea) + touchPointDiffY
-//                    self.tabBarController?.tabBar.frame.origin.y += touchPointDiffY/10.0
-                }
-                else if touchPointDiffY < -68.0, isBottomSheetOpen {
-                    print("touchPoint.y -> \(touchPoint.y) and (screenHeight - 62.0) + (68.0) -> \((screen_height - 62.0) + (68.0))")
-                    if touchPoint.y >= (screen_height - 62.0) - (UIDevice.bottomSafeArea) - (68.0) {
-                        print(touchPoint)
-                        self.panGestureFinalAnimation(velocity: velocity,touchPoint: touchPoint)
-                        sender.state = .ended
-                        return
-                    }
-                    self.behindBlurView.isHidden = true
-                    self.placesAndSuperShesViewBottomCons.constant = touchPointDiffY
-//                    if touchPoint.y > screen_height - self.tabBarHeight {
-//                        self.tabBarController?.tabBar.frame.origin.y -= touchPointDiffY/10.0
-//                    }
-                }
+            print("touchPointDiffY\(initialTouchPoint)")
+            if touchPointDiffY > 0, !isBottomSheetOpen {
+                self.placesAndSuperShesViewBottomCons.constant = -(screen_height - screen_height/2) + touchPointDiffY
+            }else if touchPointDiffY < 0, isBottomSheetOpen{
+                self.placesAndSuperShesViewBottomCons.constant = touchPointDiffY
             }
         case .ended:
             self.panGestureFinalAnimation(velocity: velocity,touchPoint: touchPoint)
@@ -535,6 +524,7 @@ extension SuperSheVC {
     
    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+       print(scrollView.contentOffset.y)
         guard scrollView === self.mainScrollView else { return }
         if (scrollView.contentOffset.x - lastContentOffsetX) > 0 {
             if lastContentOffsetX > 0.0, lastContentOffsetX < screen_width * 0.75 {

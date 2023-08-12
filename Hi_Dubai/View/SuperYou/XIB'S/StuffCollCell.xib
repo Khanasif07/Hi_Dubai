@@ -118,7 +118,11 @@
             </constraints>
             <size key="customSize" width="317" height="204"/>
             <connections>
+                <outlet property="businessNameLbl" destination="eJ5-2K-BvV" id="ijC-ul-nTh"/>
+                <outlet property="imgView" destination="AHo-ln-u9f" id="404-SY-0ad"/>
+                <outlet property="locationLbl" destination="ZgV-4B-BzR" id="FCI-oD-dXu"/>
                 <outlet property="outerView" destination="m1I-TF-G4d" id="LfC-o4-Gt5"/>
+                <outlet property="topCountLbl" destination="B1Y-6h-EkB" id="Mmw-r9-If6"/>
             </connections>
             <point key="canvasLocation" x="242.74809160305344" y="73.943661971830991"/>
         </collectionViewCell>

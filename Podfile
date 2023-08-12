@@ -14,6 +14,8 @@ target 'Hi_Dubai' do
   pod 'FirebaseAnalytics'
   pod 'SwiftLint'
   pod 'FontAwesome.swift'
+  pod 'IQKeyboardManagerSwift'
+  pod 'DGCharts'
   # Pods for Hi_Dubai
   
 end

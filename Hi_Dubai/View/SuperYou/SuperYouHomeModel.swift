@@ -61,7 +61,7 @@ class SuperYouHomeModel {
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
                 self.newSuperShesArr = result.record
                 self.businessCategories =  result.record
-                self.categories =  self.isFirstTime ? [] : self.animals
+                self.categories =  self.animals
                 self.pastLiveData = result.record
                 self.isFirstTime =  !self.isFirstTime
                 self.delegate?.newsListingSuccess()

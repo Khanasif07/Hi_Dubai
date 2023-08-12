@@ -84,18 +84,13 @@ class CategoryCardViewTableCell: UITableViewCell {
         }
         self.cardCollectionView.reloadData()
     }
-    ///Get UpcomingCell
-    private func getUpcomingCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
-        cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
-        return cell
-    }
-    
     ///Get LiveNow cell
     private func getSection1Cell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
-        cell.populateCell(model: categoryData?.section1Data[indexPath.row])
+        cell.populateCellBusiness(model: categoryData?.section1Data[indexPath.row])
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+//        cell.alpha = 0
         return cell
     }
     
@@ -104,6 +99,8 @@ class CategoryCardViewTableCell: UITableViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         cell.populateCell(model: categoryData?.section2Data[indexPath.row])
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        cell.alpha = 0
         return cell
     }
     
@@ -112,6 +109,8 @@ class CategoryCardViewTableCell: UITableViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         cell.populateCell(model: categoryData?.section3Data[indexPath.row])
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        cell.alpha = 0
         return cell
     }
     
@@ -120,6 +119,8 @@ class CategoryCardViewTableCell: UITableViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         cell.populateCell(model: categoryData?.section4Data[indexPath.row])
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        cell.alpha = 0
         return cell
     }
     
@@ -127,12 +128,16 @@ class CategoryCardViewTableCell: UITableViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         cell.populateCell(model:  categoryData?.section5Data[indexPath.row])
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        cell.alpha = 0
         return cell
     }
     
     private func getSection6Cell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
         cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
+        cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        cell.alpha = 0
         return cell
     }
 }
@@ -208,7 +213,7 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
         case .section1 :
-            return 7.0
+            return 0.0
         case .section2:
             return 0.0
         case .section3:
@@ -223,7 +228,7 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch self.currentCell {
         case .section1:
-            return 7.0
+            return 0.0
         case .section2:
             return 7.0
         case .section3:
@@ -252,6 +257,31 @@ extension CategoryCardViewTableCell: UICollectionViewDelegate, UICollectionViewD
             paddingInset = 5.0
         }
         return UIEdgeInsets(top: paddingInset, left: paddingInset, bottom: paddingInset, right: paddingInset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: [], animations: {
+          cell.alpha = 1
+          cell.transform = .identity
+        })
+    }
+    
+    // touchUpOutside
+    public func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+       if let cell = collectionView.cellForItem(at: indexPath) as? StuffCollCell{
+            UIView.animate(withDuration: 0.5, delay: 0, options: .beginFromCurrentState, animations: {
+                cell.transform = .identity
+            })
+        }
+    }
+    
+    // touchDown
+    public func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? StuffCollCell{
+            UIView.animate(withDuration: 0.5, delay: 0, options: .beginFromCurrentState, animations: {
+                cell.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+            })
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

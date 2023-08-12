@@ -43,6 +43,12 @@ class MenuItemView: UIView {
        
     }
     
+    func configureCellAnimal(_ model: Animal?){
+        self.dataView.backgroundColor = .black
+        self.titlelbl.textColor = color
+        self.dataView.setCircleBorder(weight: 1.0, color: color)
+    }
+    
     func configureCellWithTitle(_ model: Category?){
         self.category = model
         self.dataView.backgroundColor = .clear
