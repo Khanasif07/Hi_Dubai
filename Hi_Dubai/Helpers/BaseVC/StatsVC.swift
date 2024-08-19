@@ -167,13 +167,19 @@ extension StatsVC{
 extension StatsVC{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
         (self.parent as? HomeViewController)?.enableScrolling(offset,isSearchHidden)
+        (self.parent as? HomeComingVC)?.enableScrolling(offset,isSearchHidden)
         (self.parent?.parent?.parent as? HomeViewController)?.enableScrolling(offset,isSearchHidden)
         
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
         var scrollDirection: ScrollDirection
-        
+        if scroll.contentOffset.y <=  0{
+            self.mainTableView.isScrollEnabled = false
+        }else{
+            self.mainTableView.isScrollEnabled = true
+        }
+        print("scrollDirection:-\(scroll.contentOffset.y)")
         if lastContentOffset > scroll.contentOffset.y {
             scrollDirection = .down
         } else {

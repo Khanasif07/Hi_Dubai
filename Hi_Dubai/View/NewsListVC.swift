@@ -226,15 +226,15 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                
 //                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
-                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
+                let vc = NoonHomeVC.instantiate(fromAppStoryboard: .Home)
                 self.navigationController?.pushViewController(vc, animated: false)
 //                self.indexPath = indexPath
 //                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
 //                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
 //                presentSecondViewController(with: viewModel.newsData[indexPath.row])
             case 2:
-                let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
+                let vc = HomeComingVC.instantiate(fromAppStoryboard: .Main)
+//                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 3:
                 let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
@@ -271,7 +271,10 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
+                let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
+                vc.newsModel = viewModel.newsData[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: false)
+//                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let vc = BusinessCategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let navController = UINavigationController(rootViewController: vc)
 //                navController.isNavigationBarHidden = true
@@ -280,7 +283,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
 //                self.navigationController?.navigationBar.isHidden = true
 //                self.navigationController?.navigationItem.title = "Hello"
 //                self.navigationController?.present(navController, animated: false)
-                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
                 
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)

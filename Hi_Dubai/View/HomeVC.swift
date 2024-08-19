@@ -73,6 +73,7 @@ class HomeVC: BaseVC {
         self.mainScrollView.contentSize = frame.size
         frame = CGRect(x: 0, y: 0, width: screen_width, height: screen_height)
         frame.size.height = frame.size.height - (self.mainScrollView.parallaxHeader.minimumHeight + statusBarHeight - 55.0)
+        print("self.mainScrollView.parallaxHeader.minimumHeight\(self.mainScrollView.parallaxHeader.minimumHeight)")
         self.detailView.frame = frame
         scrollFrameSetup()
         

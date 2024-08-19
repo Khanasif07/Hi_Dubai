@@ -128,7 +128,8 @@ class PlacesAndSuperShesView: UIView {
         self.viewModel.delegate = self
         if screenUsingFor != .categories {
             self.footerSetup()
-//            self.viewModel.searchValue = ""
+            self.viewModel.searchValue = ""
+//            self.viewModel.getCategoriesListing()
         }else{
             self.viewModel.getCategoriesListing()
             self.headerSetup()
@@ -136,6 +137,7 @@ class PlacesAndSuperShesView: UIView {
                 self.dataTableView.sectionHeaderTopPadding = 10.0
             }
         }
+        hitApi()
     }
     
     public func hitApi(_ search: String = ""){
