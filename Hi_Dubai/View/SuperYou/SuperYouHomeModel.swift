@@ -23,18 +23,18 @@ class SuperYouHomeModel {
     var tableCellAtIndexPath: [[TableViewCell]] = []
     var sectionData: [Int] = []
     var cardData: SuperYouCardData?
-    var videoData: [Record] = []
-    var upcomingDataArr: [Record] = []
-    var liveNowDataArr: [Record] = []
-    var favouriteDataArr: [Record] = []
-    var newSuperShesArr: [Record] = []
-    var mostDiscussedTalks: [Record] = []
-    var mostLovedArr: [Record] = []
-    var featuredDataArr: [Record] = []
-    var pastLiveData: [Record] = []
-    var businessCategories: [Record] = []
+    var videoData: [NewsModel] = []
+    var upcomingDataArr: [NewsModel] = []
+    var liveNowDataArr: [NewsModel] = []
+    var favouriteDataArr: [NewsModel] = []
+    var newSuperShesArr: [NewsModel] = []
+    var mostDiscussedTalks: [NewsModel] = []
+    var mostLovedArr: [NewsModel] = []
+    var featuredDataArr: [NewsModel] = []
+    var pastLiveData: [NewsModel] = []
+    var businessCategories: [NewsModel] = []
     var categories: [Animal] = []
-    var musicData: [Record] = []
+    var musicData: [NewsModel] = []
     var isFirstTime: Bool = false
     
     convenience init(nextPageStatus: Bool) {
@@ -47,7 +47,7 @@ class SuperYouHomeModel {
     }
     // api....
     weak var delegate: NewsListViewModelDelegate?
-    private (set) var newsData = [Record]()
+    private (set) var newsData = [NewsModel]()
     var error : Error?
     func getNewsListing(){
         NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (result: Result<News,Error>) in
@@ -498,12 +498,12 @@ struct MyProfileModel {
     }
     
     var tableCellAtIndexPath: [[TableViewCell]] = []
-    var whatsNewData: [Record] = []
-    var yourClassesData: [Record] = []
-    var yourTalksData: [Record] = []
-    var savedClassesData: [Record] = []
-    var savedTalksData: [Record] = []
-    var superPowerData: [Record] = []
+    var whatsNewData: [NewsModel] = []
+    var yourClassesData: [NewsModel] = []
+    var yourTalksData: [NewsModel] = []
+    var savedClassesData: [NewsModel] = []
+    var savedTalksData: [NewsModel] = []
+    var superPowerData: [NewsModel] = []
     
     init() {
         self.init(jsonArr: [[:]])

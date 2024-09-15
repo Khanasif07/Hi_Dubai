@@ -21,7 +21,7 @@ class StuffCollCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func populateCell(model: Record?){
+    func populateCell(model: NewsModel?){
         
     }
     

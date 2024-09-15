@@ -29,3 +29,10 @@ extension CDNews {
 extension CDNews : Identifiable {
 
 }
+
+extension CDNews{
+    func convertToNews() -> NewsModel
+    {
+        return NewsModel(title: self.title!, postURL: self.postURL!, publishedAt: self.publishedAt!, postImageURL: self.postImageURL!, readTime: self.readTime!, primaryTag: self.primaryTag!, content: self.content!)
+    }
+}

@@ -21,7 +21,7 @@ class NewsDetailVC: BaseViewController {
     var backButton: UIButton?
 
     
-    init(user: Record) {
+    init(user: NewsModel) {
         self.viewModel.newsModel = user
         super.init(nibName: nil, bundle: nil)
     }
@@ -130,6 +130,6 @@ extension NewsDetailVC: UITableViewDelegate,UITableViewDataSource{
 // MARK: actions
 extension NewsDetailVC {
     @objc func backButtonHandler() {
-        dismiss(animated: true)
+        dismiss(animated: false)
     }
 }

@@ -6,7 +6,7 @@
         <attribute name="posterPath" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="CDNews" representedClassName="CDNews" syncable="YES" codeGenerationType="class">
+    <entity name="CDNews" representedClassName="CDNews" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="postImageURL" optional="YES" attributeType="String"/>
         <attribute name="postURL" optional="YES" attributeType="String"/>

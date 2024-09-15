@@ -17,7 +17,7 @@ final class PersistentStorage
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
 
-        let container = NSPersistentContainer(name: "Hi_Dubai")
+        let container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
 

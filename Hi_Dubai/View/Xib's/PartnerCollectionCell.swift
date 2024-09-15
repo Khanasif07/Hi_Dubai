@@ -199,7 +199,7 @@ class PartnerCollectionCell: UICollectionViewCell {
         self.titleLabel1.text = model?.businessName.en ?? ""
     }
     
-    func populateCell(model: Record?){
+    func populateCell(model: NewsModel?){
         cancellable = loadImage(for: model).sink { [unowned self] image in self.showImage(image: image) }
 //        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
         self.titleLabel1.text = model?.title ?? ""
@@ -214,7 +214,7 @@ class PartnerCollectionCell: UICollectionViewCell {
         })
     }
     
-    private func loadImage(for movie: Record?) -> AnyPublisher<UIImage?, Never> {
+    private func loadImage(for movie: NewsModel?) -> AnyPublisher<UIImage?, Never> {
         return Just(movie?.postImageURL ?? "")
             .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
                 let url = URL(string: movie?.postImageURL ?? "")!

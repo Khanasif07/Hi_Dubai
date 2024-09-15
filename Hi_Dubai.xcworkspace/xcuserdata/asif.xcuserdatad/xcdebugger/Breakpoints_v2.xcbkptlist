@@ -1,213 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "2BDFEF65-015D-4F25-956F-E16FE98B2A9E"
+   uuid = "08539945-585C-4B22-BF77-E2350BF6BE5D"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6B7201AC-9A22-4CE3-8878-13AC16B11F49"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "getCategoriesCell(_:indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "62B9D44E-5C41-40CD-923C-20237242D19B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "getCategoriesCell(_:indexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4 - 427830f809a9d064"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "340">
-               </Location>
-               <Location
-                  uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4 - 427830f809a9d064"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "332">
-               </Location>
-               <Location
-                  uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4 - cf669a3cb858631f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "332">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947 - 427830f809a9d11e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "308"
-                  endingLineNumber = "308"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947 - 427830f809a9d1fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947 - cf669a3cb8587cb2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "305"
-                  endingLineNumber = "305"
-                  offsetFromSymbolStart = "356">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0148DE7B-B40E-4B39-8E94-71C74A440381"
+            uuid = "AA41CA9C-91DE-44D9-B445-774880ED93D9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hi_Dubai/ViewModel/NewsListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "getPumpkinListing(page:loader:pagination:)"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "getNewsListingRecord(completionHandler:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0148DE7B-B40E-4B39-8E94-71C74A440381 - a6a98b27a7d38097"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Hi_Dubai.Pumpkin&gt;, Swift.Error&gt;) -&gt; () in Hi_Dubai.NewsListViewModel.getPumpkinListing(page: Swift.Int, loader: Swift.Bool, pagination: Swift.Bool) -&gt; ()"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/ViewModel/NewsListViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "88">
-               </Location>
-               <Location
-                  uuid = "0148DE7B-B40E-4B39-8E94-71C74A440381 - a6a98b27a7d38097"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;Hi_Dubai.Pumpkin&gt;, Swift.Error&gt;) -&gt; () in Hi_Dubai.NewsListViewModel.getPumpkinListing(page: Swift.Int, loader: Swift.Bool, pagination: Swift.Bool) -&gt; ()"
-                  moduleName = "Hi_Dubai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/ViewModel/NewsListViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116"
-                  offsetFromSymbolStart = "112">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "305F0A7B-ECCE-4979-9164-381ED3F018F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/NewsListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -459,9 +459,9 @@ extension PlacesAndSuperShesView{
         }else {
             print(scroll.contentOffset.y)
             if scroll.contentOffset.y <= 0.0{
-                self.dataTableView.isScrollEnabled = false
+//                self.dataTableView.isScrollEnabled = false
             }else{
-                self.dataTableView.isScrollEnabled = true
+//                self.dataTableView.isScrollEnabled = true
             }
 //            var scrollDirection: ScrollDirection
 //            let stopScroll = 50.0

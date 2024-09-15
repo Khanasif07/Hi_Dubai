@@ -80,7 +80,7 @@ class MenuItemCollectionCell: PagingCell {
         }
      }
     
-    func populateCell(model: Record?, index: Int){
+    func populateCell(model: NewsModel?, index: Int){
         self.title.textColor = AppColors.white
         self.title.text = (model?.primaryTag ?? "")
         self.dotView.isHidden = true
@@ -94,7 +94,7 @@ class MenuItemCollectionCell: PagingCell {
         self.dataView.backgroundColor = .white
     }
     
-    func populateSectionCell(model: Record?, index: Int){
+    func populateSectionCell(model: NewsModel?, index: Int){
         self.dotView.isHidden = true
         self.title.textColor = (model?.isSelected ?? false) ? AppColors.white :  AppColors.black
         self.title.text = (model?.primaryTag ?? "")

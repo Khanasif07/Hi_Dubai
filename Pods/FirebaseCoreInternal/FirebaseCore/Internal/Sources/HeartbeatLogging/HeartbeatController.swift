@@ -22,7 +22,7 @@ public final class HeartbeatController {
   private let heartbeatsStorageCapacity: Int = 30
   /// Current date provider. It is used for testability.
   private let dateProvider: () -> Date
-  /// Used for standardizing dates for calendar-day comparision.
+  /// Used for standardizing dates for calendar-day comparison.
   static let dateStandardizer: (Date) -> (Date) = {
     var calendar = Calendar(identifier: .iso8601)
     calendar.locale = Locale(identifier: "en_US_POSIX")
@@ -36,7 +36,8 @@ public final class HeartbeatController {
     self.init(id: id, dateProvider: Date.init)
   }
 
-  /// Convenience initializer. Mirrors the semantics of the public initializer with the added benefit of
+  /// Convenience initializer. Mirrors the semantics of the public initializer with the added
+  /// benefit of
   /// injecting a custom date provider for improved testability.
   /// - Parameters:
   ///   - id: The id to associate this controller's heartbeat storage with.
@@ -59,7 +60,8 @@ public final class HeartbeatController {
   /// Asynchronously logs a new heartbeat, if needed.
   ///
   /// - Note: This API is thread-safe.
-  /// - Parameter agent: The string agent (i.e. Firebase User Agent) to associate the logged heartbeat with.
+  /// - Parameter agent: The string agent (i.e. Firebase User Agent) to associate the logged
+  /// heartbeat with.
   public func log(_ agent: String) {
     let date = dateProvider()
 

@@ -65,7 +65,7 @@ class NewsListViewModel{
     //will implement viewmodel by implementing depedency injection like SwiftUIInUICollectionViewAndUITableView-main project
     //
     weak var delegate: NewsListViewModelDelegate?
-    var newsData = [Record]()
+    var newsData = [NewsModel]()
     var pumkinsData = [Pumpkin]()
     var moviesResponse: MoviesResponse? = nil
     var moviesDetail: MovieDetail? = nil
@@ -75,6 +75,7 @@ class NewsListViewModel{
             switch results{
             case .success(let result):
                 self.newsData = result.record
+                _ = self._cdNewsDataRepository.insertNewsRecords(records: result.record)
                 self.delegate?.newsListingSuccess()
             case .failure(let error):
                 self.error = error
@@ -84,6 +85,27 @@ class NewsListViewModel{
         }
     }
     
+    //
+    private let _cdMovieDataRepository : MovieDataRepository = MovieDataRepository()
+    private let _cdNewsDataRepository : NewsDataRepository = NewsDataRepository()
+//    private let _movieApiRepository: AnimalApiResourceRepository = AnimalApiRepository()
+
+    func getNewsListingRecord(completionHandler:@escaping(_ result: Array<NewsModel>?)-> Void) {
+
+        _cdNewsDataRepository.getNewsRecords { response in
+            if(response != nil && response?.count != 0){
+                // return response to the view controller
+                self.newsData = response ?? []
+                self.delegate?.newsListingSuccess()
+                completionHandler(response)
+            }else {
+                // call the api
+                self.getNewsListing()
+            }
+        }
+
+    }
+    //
     
     func getCategoriesListing(){
         NetworkManager.shared.getCategoriesDataFromServer(requestType: .get, endPoint: EndPoint.hidubai_categories.rawValue) { (results : Result<CategoriesList,Error>)  in
@@ -149,7 +171,7 @@ class NewsListViewModel{
         isRequestinApi = true
         //
         let dict:[String:String] = [ApiKey.page: "\(page)",ApiKey.query: search,ApiKey.api_key: EndPoint.tmdb_api_key.rawValue]
-        NetworkManager.shared.getPumpkinDataFromServer(requestType: .get, endPoint: EndPoint.searchMovie.rawValue,dict) { (results : Result<MoviesResponse,Error>)  in
+        NetworkManager.shared.getPumpkinDataFromServer(requestType: .get, endPoint: search.isEmpty ? EndPoint.popularMovie.rawValue : EndPoint.searchMovie.rawValue,dict) { (results : Result<MoviesResponse,Error>)  in
             switch results{
             case .success(let result):
                 if result.results.isEmpty && self.currentPage == 1 {
@@ -195,7 +217,7 @@ class NewsListViewModel{
         }
     }
     
-    func getCellViewModel(at indexpath: IndexPath) -> Record{
+    func getCellViewModel(at indexpath: IndexPath) -> NewsModel{
         return newsData[indexpath.row]
     }
 }
