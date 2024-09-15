@@ -18,7 +18,7 @@ class LoginNavigator: Navigator {
     // enum, and we can also use associated values to add support
     // for passing arguments from one screen to another.
     enum Destination {
-        case loginCompleted(user: Record)
+        case loginCompleted(user: NewsModel)
         case forgotPassword
         case signup
     }

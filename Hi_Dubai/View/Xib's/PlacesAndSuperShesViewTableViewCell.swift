@@ -47,7 +47,7 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
         self.profileImageView?.image = nil
     }
     
-    func populateCell(_ model: Record?){
+    func populateCell(_ model: NewsModel?){
         profileImageView?.loadThumbnail(urlSting: model?.postImageURL ?? "")
         userName.text = model?.primaryTag ?? ""
         clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)

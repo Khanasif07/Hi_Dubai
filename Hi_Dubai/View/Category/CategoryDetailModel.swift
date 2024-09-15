@@ -15,10 +15,10 @@ class CategoryDetailModel {
     //now talksCell is most discussed cell
     var tableCellAtIndexPath: [[TableViewCells]] = []
     var section1Data: [Business] = []
-    var section2Data: [Record] = []
-    var section3Data: [Record] = []
-    var section4Data: [Record] = []
-    var section5Data: [Record] = []
+    var section2Data: [NewsModel] = []
+    var section3Data: [NewsModel] = []
+    var section4Data: [NewsModel] = []
+    var section5Data: [NewsModel] = []
     var section6Data: [Category] = []
 //    var section6Data: [Record] = []
     var isFirstTime: Bool = false
@@ -32,7 +32,7 @@ class CategoryDetailModel {
     }
     // api....
     weak var delegate: NewsListViewModelDelegate?
-    private (set) var newsData = [Record]()
+    private (set) var newsData = [NewsModel]()
     var error : Error?
 //    func getNewsListing(){
 //        NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (result: Result<News,Error>) in

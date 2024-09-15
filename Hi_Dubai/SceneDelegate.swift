@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         launchVC?.overrideUserInterfaceStyle = .light
         window?.rootViewController = launchVC
         self.setupDashBoard()
-        print("Current configuration: \(BuildConfiguration.shared.environment)")
+        //print("Current configuration: \(BuildConfiguration.shared.environment)")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

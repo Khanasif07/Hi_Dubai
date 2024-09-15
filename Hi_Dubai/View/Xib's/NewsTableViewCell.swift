@@ -59,7 +59,7 @@ class NewsTableViewCell: UITableViewCell{
         titleLbl.textColor = .black
     }
     
-    var cellViewModel: Record?{
+    var cellViewModel: NewsModel?{
         didSet{
             tagLbl.setUserType(usertype: cellViewModel?.primaryTag ?? "")
             titleLbl.text = cellViewModel?.title
@@ -80,7 +80,7 @@ class NewsTableViewCell: UITableViewCell{
 //        })
     }
     
-    private func loadImage(for movie: Record?) -> AnyPublisher<UIImage?, Never> {
+    private func loadImage(for movie: NewsModel?) -> AnyPublisher<UIImage?, Never> {
         return Just(movie?.postImageURL ?? "")
             .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
                 let url = URL(string: movie?.postImageURL ?? "")!

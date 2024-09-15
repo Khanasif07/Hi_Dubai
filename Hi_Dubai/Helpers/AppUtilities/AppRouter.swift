@@ -47,7 +47,7 @@ extension UIViewController{
 }
 
 enum AppStoryboard : String {
-    case Main
+    case Main, Home
 }
 extension AppStoryboard {
     var instance : UIStoryboard {

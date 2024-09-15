@@ -17,7 +17,7 @@ import Foundation
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var newsModel: Record?
+    var newsModel: NewsModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

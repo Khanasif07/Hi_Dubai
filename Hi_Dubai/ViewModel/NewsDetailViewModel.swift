@@ -7,9 +7,9 @@
 
 import Foundation
 class NewsDetailViewModel{
-    var newsModel: Record?
+    var newsModel: NewsModel?
     var movie    : MovieDetail?
-    func getCellViewModel() -> Record?{
+    func getCellViewModel() -> NewsModel?{
         return newsModel
     }
 }

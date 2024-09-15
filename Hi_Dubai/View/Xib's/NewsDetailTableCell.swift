@@ -46,7 +46,7 @@ class NewsDetailTableCell: UITableViewCell {
         self.tagView.backgroundColor = .orange
     }
     
-    var cellViewModel: Record?{
+    var cellViewModel: NewsModel?{
         didSet{
             titleLbl.text = cellViewModel?.title
             dateLbl.text  = cellViewModel?.dateString

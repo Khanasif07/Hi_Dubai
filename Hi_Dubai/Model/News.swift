@@ -8,7 +8,7 @@
 import Foundation
 
 struct News: Codable {
-    var record: [Record]
+    var record: [NewsModel]
     let metadata: Metadata
 }
 
@@ -26,7 +26,7 @@ struct Metadata: Codable {
 }
 
 // MARK: - Record
-struct Record: Codable {
+struct NewsModel: Codable {
     var isSelected: Bool? = false
     let title: String
     let postURL: String

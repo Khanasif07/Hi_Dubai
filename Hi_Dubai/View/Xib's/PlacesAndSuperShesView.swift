@@ -128,7 +128,8 @@ class PlacesAndSuperShesView: UIView {
         self.viewModel.delegate = self
         if screenUsingFor != .categories {
             self.footerSetup()
-//            self.viewModel.searchValue = ""
+            self.viewModel.searchValue = ""
+//            self.viewModel.getCategoriesListing()
         }else{
             self.viewModel.getCategoriesListing()
             self.headerSetup()
@@ -136,6 +137,7 @@ class PlacesAndSuperShesView: UIView {
                 self.dataTableView.sectionHeaderTopPadding = 10.0
             }
         }
+        hitApi()
     }
     
     public func hitApi(_ search: String = ""){
@@ -457,9 +459,9 @@ extension PlacesAndSuperShesView{
         }else {
             print(scroll.contentOffset.y)
             if scroll.contentOffset.y <= 0.0{
-                self.dataTableView.isScrollEnabled = false
+//                self.dataTableView.isScrollEnabled = false
             }else{
-                self.dataTableView.isScrollEnabled = true
+//                self.dataTableView.isScrollEnabled = true
             }
 //            var scrollDirection: ScrollDirection
 //            let stopScroll = 50.0

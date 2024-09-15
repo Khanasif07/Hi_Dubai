@@ -58,10 +58,10 @@ class NewsListVC: UIViewController {
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        cgmDataArray = [ShareGlucoseData(sgv: 100, date: TimeInterval(), direction: "Jan"),ShareGlucoseData(sgv: 150, date: TimeInterval(), direction: "Feb"),ShareGlucoseData(sgv: 170, date: TimeInterval(), direction: "March"),ShareGlucoseData(sgv: 180, date: TimeInterval(), direction: "April"),ShareGlucoseData(sgv: 190, date: TimeInterval(), direction: "May"),ShareGlucoseData(sgv: 200, date: TimeInterval(), direction: "June")]
+//        cgmDataArray = [ShareGlucoseData(sgv: 100, date: TimeInterval(), direction: "Jan"),ShareGlucoseData(sgv: 150, date: TimeInterval(), direction: "Feb"),ShareGlucoseData(sgv: 170, date: TimeInterval(), direction: "March"),ShareGlucoseData(sgv: 180, date: TimeInterval(), direction: "April"),ShareGlucoseData(sgv: 190, date: TimeInterval(), direction: "May"),ShareGlucoseData(sgv: 200, date: TimeInterval(), direction: "June")]
         self.initialSetup()
        
-        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
+//        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         newsTableView.isScrollEnabled = true
@@ -95,8 +95,8 @@ class NewsListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "News"
-        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
-        setNeedsStatusBarAppearanceUpdate()
+//        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
+//        setNeedsStatusBarAppearanceUpdate()
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
@@ -136,7 +136,7 @@ class NewsListVC: UIViewController {
         self.newsTableView.separatorColor = .clear
         self.newsTableView.separatorStyle = .none
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
-        self.newsTableView.registerCell(with: ChartsTableViewCell.self)
+//        self.newsTableView.registerCell(with: ChartsTableViewCell.self)
         self.newsTableView.registerCell(with: ShimmerCell.self)
 //        self.headerSetup()
         self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
@@ -154,9 +154,12 @@ class NewsListVC: UIViewController {
         self.emptyView?.hide()
         self.currentShimmerStatus = .toBeApply
         self.newsTableView.reloadData()
-        self.viewModel.getNewsListing()
+//        self.viewModel.getNewsListing()
+        self.viewModel.getNewsListingRecord { result in
+            print(result)
+        }
     }
-    private func presentSecondViewController(with data: Record) {
+    private func presentSecondViewController(with data: NewsModel) {
         let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
         secondVC.isBackBtnShow = true
         secondVC.transitioningDelegate = self
@@ -191,16 +194,16 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ShimmerCell.self)
             return cell
         case .applied:
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueCell(with: ChartsTableViewCell.self)
-                cell.cgmData = cgmDataArray
-                return cell
-            }else {
+//            if indexPath.row == 0 {
+//                let cell = tableView.dequeueCell(with: ChartsTableViewCell.self)
+//                cell.cgmData = cgmDataArray
+//                return cell
+//            }else {
                 let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
                 let cellVM = viewModel.getCellViewModel(at: indexPath)
                 cell.cellViewModel = cellVM
                 return cell
-            }
+//            }
         case .none:
             let cell = UITableViewCell()
             return cell
@@ -208,12 +211,12 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 300.0
-        }
-        else {
-            return UITableView.automaticDimension
-        }
+        //        if indexPath.row == 0 {
+        //            return 300.0
+        //        }
+        //        else {
+        return UITableView.automaticDimension
+        //        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -221,20 +224,20 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 //
-                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
+                let vc = IQKeyboardVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
                
 //                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
-                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
+                let vc = NoonHomeVC.instantiate(fromAppStoryboard: .Home)
                 self.navigationController?.pushViewController(vc, animated: false)
 //                self.indexPath = indexPath
 //                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
 //                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
 //                presentSecondViewController(with: viewModel.newsData[indexPath.row])
             case 2:
-                let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
+                let vc = HomeComingVC.instantiate(fromAppStoryboard: .Main)
+//                vc.headerView.mainImgView.setImageFromUrl(ImageURL: viewModel.getCellViewModel(at: indexPath).postImageURL)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 3:
                 let vc = SearchVC.instantiate(fromAppStoryboard: .Main)
@@ -271,7 +274,10 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: true)
             case 14:
-                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
+                let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
+                vc.newsModel = viewModel.newsData[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: false)
+//                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let vc = BusinessCategoriesVC.instantiate(fromAppStoryboard: .Main)
 //                let navController = UINavigationController(rootViewController: vc)
 //                navController.isNavigationBarHidden = true
@@ -280,7 +286,7 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
 //                self.navigationController?.navigationBar.isHidden = true
 //                self.navigationController?.navigationItem.title = "Hello"
 //                self.navigationController?.present(navController, animated: false)
-                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
                 
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
