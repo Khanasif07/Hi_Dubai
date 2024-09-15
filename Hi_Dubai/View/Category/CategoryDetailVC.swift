@@ -1,0 +1,277 @@
+//
+//  CategoryDetailVC.swift
+//  Hi_Dubai
+//
+//  Created by Asif Khan on 24/07/2023.
+//
+
+import UIKit
+
+class CategoryDetailVC: BaseVC ,UINavigationBarDelegate{
+    var titleMsg: String = ""
+    var viewModel = CategoryDetailVM()
+    @IBOutlet weak var navBarheightConst: NSLayoutConstraint!
+    @IBOutlet weak var dataTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title  = titleMsg
+        if #available(iOS 15.0, *) {
+            dataTableView.sectionHeaderTopPadding = 0.0
+            dataTableView.sectionFooterHeight = 0.0
+        }
+        hitApi()
+    }
+    
+    func hitApi() {
+        self.viewModel.delegate = self
+        self.viewModel.categoryData?.delegate = self
+        self.viewModel.categoryData?.dataMappingInModel(jsonArr: [])
+    }
+    
+    internal override func initialSetup() {
+        registercell()
+        self.navigationController?.navigationBar.isHidden = false
+        addRightButtonToNavigation(image:UIImage(named: "search"), tintColor: .white)
+        footerViewSetUp()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        navBarheightConst.constant = (navigationController?.navigationBar.frame.size.height ?? 0.0) + (navigationController?.navigationBar.frame.origin.y ?? 0.0)
+        view.layoutIfNeeded()
+    }
+    
+    private func registercell(){
+        self.dataTableView.delegate = self
+        self.dataTableView.dataSource = self
+        self.dataTableView.separatorColor = .clear
+        self.dataTableView.backgroundColor = .clear
+        self.dataTableView.separatorStyle = .none
+        self.dataTableView.registerHeaderFooter(with: CategoriesDetailSectionView.self)
+        self.dataTableView.registerCell(with: CategoryCardViewTableCell.self)
+        self.dataTableView.registerCell(with: SuperYouCategoriesTableCell.self)
+        self.dataTableView.registerCell(with: CategoryAdvTableCell.self)
+        self.dataTableView.registerCell(with: CategoryViewAllCell.self)
+    }
+}
+
+
+extension CategoryDetailVC: UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return  viewModel.categoryData?.tableCellAtIndexPath.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch viewModel.categoryData?.tableCellAtIndexPath[section][0]{
+        case .section1:
+            return 1
+        case .section2:
+            return 3
+        case .section3:
+            return 2
+        case .section4:
+            return 3
+        case .section5:
+            return 2
+        case .section6:
+            return 1
+        case .none:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesDetailSectionView") as? CategoriesDetailSectionView
+        switch viewModel.categoryData?.tableCellAtIndexPath[section][0]{
+        case .section1:
+            headerView?.gradientView.isHidden = true
+            headerView?.titleLbl.text = "TOP 10 RESTAURANTS YOU MIGHT LIKE"
+            return headerView
+        case .section2:
+            headerView?.gradientView.isHidden = false
+            headerView?.titleLbl.text = "NEW RESTAURANTS IN THE CITY"
+            return headerView
+        case .section3:
+            headerView?.gradientView.isHidden = false
+            headerView?.titleLbl.text = "EXCLUSIVE DEALS FOR YOU"
+            return headerView
+        case .section4:
+            headerView?.gradientView.isHidden = false
+            headerView?.titleLbl.text = "NEAR BY RESTAURANTS"
+            return headerView
+        case .section5:
+            headerView?.gradientView.isHidden = false
+            headerView?.titleLbl.text = "BLOGS"
+            return headerView
+        case .section6:
+            headerView?.gradientView.isHidden = false
+            headerView?.titleLbl.text = "OTHER CATEGORIES"
+            return headerView
+        case .none:
+            return headerView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch viewModel.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
+        case .section1:
+            return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section1)
+        case .section2:
+            switch indexPath.row{
+            case 0:
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
+            case 1:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
+            default:
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section2)
+            }
+        case .section3:
+            switch indexPath.row{
+            case 0:
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section3)
+            default:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section3)
+            }
+        case .section4:
+            switch indexPath.row{
+            case 0:
+                return getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
+            case 1:
+                return getCategoriesSeeMoreCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section4)
+            default:
+                return getCategoriesNeighboursCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section6)
+            }
+        case .section5:
+            if indexPath.row == 0 {
+                return  getCardCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section5)
+            }else{
+                return getCategoriesAdvertismentCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section5)
+            }
+        case .section6:
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section6)
+        case .none:
+            return getCategoriesCell(tableView, indexPath: indexPath, dataSource: self.viewModel.categoryData!, .section1)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 48.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch viewModel.categoryData?.tableCellAtIndexPath[indexPath.section][0]{
+        case .section1:
+            return 214.0
+        case .section2:
+            switch indexPath.row{
+            case 0:
+                return 257.0
+            case 1:
+                return 54.0
+            default:
+                return 107.0
+                
+            }
+        case .section3:
+            switch indexPath.row{
+            case 0:
+                return 257.0
+            default:
+                return 54.0
+            }
+        case .section4:
+            switch indexPath.row{
+            case 0:
+                return 257.0
+            case 1:
+                return 54.0
+            default:
+                return 50.0
+            }
+        case .section5:
+            switch indexPath.row{
+            case 0:
+                return 325.0
+            default:
+                return 107.0
+            }
+        case .section6:
+            return 98.0
+        case .none:
+            return 0.0
+        }
+    }
+    
+    private func getCardCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryCardViewTableCell.self, indexPath: indexPath)
+        cell.currentCell = cellType
+        if let _ = self.viewModel.categoryData{
+            cell.categoryData = dataSource
+        }
+        return cell
+    }
+    
+    private func getCategoriesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
+        if let _ = self.viewModel.categoryData{
+            cell.categoriesData = dataSource
+        }
+        return cell
+    }
+    
+    private func getCategoriesNeighboursCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
+        if let _ = self.viewModel.categoryData{
+            cell.categoriesNeighboursData = dataSource
+        }
+        return cell
+    }
+    
+    private func getCategoriesAdvertismentCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryAdvTableCell.self, indexPath: indexPath)
+        return cell
+    }
+    
+    private func getCategoriesSeeMoreCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: CategoryDetailModel,_ cellType: CellContents) -> UITableViewCell{
+        let cell = tableView.dequeueCell(with: CategoryViewAllCell.self, indexPath: indexPath)
+        cell.seeMoreBtnTapped = { seeMoreBtn in
+            print("See More Button Tapped..")
+        }
+        return cell
+    }
+    
+    private func footerViewSetUp() {
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 100.0))
+        footerView.backgroundColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 0.76)
+        self.dataTableView.tableFooterView?.frame = footerView.frame
+        self.dataTableView.tableFooterView = footerView
+    }
+}
+
+
+extension CategoryDetailVC: CategoryDetailVMDelegate{
+    
+}
+
+extension CategoryDetailVC: NewsListViewModelDelegate{
+    func newsListingSuccess(){
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+}

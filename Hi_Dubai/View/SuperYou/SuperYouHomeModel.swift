@@ -13,17 +13,17 @@ typealias JSONDictionaryArray = [JSONDictionary]
 typealias SuccessJSONResponse = (_ json : JSON) -> Void
 typealias FailureResponse = (NSError) -> (Void)
 typealias ResponseMessage = (_ message : String) -> ()
+// Enums
+enum TableViewCell {
+    case videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music , businessCategories
+}
 class SuperYouHomeModel {
     //now talksCell is most discussed cell
-    enum TableViewCell {
-        case titleAndSubTitle, videoCell, upcomingCell, favoritesCell,liveClassesCell, mostLovedClassesCell, newSuperShesCell, featuredCell, superPowers, pastLive, categories , music
-    }
-    
+    var animals: [Animal] = Bundle.main.decode("animal.json")
     var tableCellAtIndexPath: [[TableViewCell]] = []
     var sectionData: [Int] = []
-    var titleData: SuperYouHomeTitleData?
     var cardData: SuperYouCardData?
-    var videoData: SuperYouVideoData?
+    var videoData: [Record] = []
     var upcomingDataArr: [Record] = []
     var liveNowDataArr: [Record] = []
     var favouriteDataArr: [Record] = []
@@ -32,9 +32,10 @@ class SuperYouHomeModel {
     var mostLovedArr: [Record] = []
     var featuredDataArr: [Record] = []
     var pastLiveData: [Record] = []
-    var categories: [Record] = []
+    var businessCategories: [Record] = []
+    var categories: [Animal] = []
     var musicData: [Record] = []
-    var isFirstTime: Bool = true
+    var isFirstTime: Bool = false
     
     convenience init(nextPageStatus: Bool) {
         self.init(jsonArr: [[:]], isDataFromLocalDB: false, nextPageStatus: nextPageStatus)
@@ -49,16 +50,18 @@ class SuperYouHomeModel {
     private (set) var newsData = [Record]()
     var error : Error?
     func getNewsListing(){
-        NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (results : Result<News,Error>)  in
-            switch results {
+        NetworkManager.shared.getDataFromServer(requestType: .get, endPoint: EndPoint.news.rawValue) { (result: Result<News,Error>) in
+            switch result{
             case .success(let result):
+                self.videoData = result.record
                 self.musicData = result.record
                 self.mostLovedArr = result.record
                 self.upcomingDataArr = result.record
                 self.liveNowDataArr = result.record
                 self.featuredDataArr = self.isFirstTime ? [] : result.record
                 self.newSuperShesArr = result.record
-                self.categories =  result.record
+                self.businessCategories =  result.record
+                self.categories =  self.animals
                 self.pastLiveData = result.record
                 self.isFirstTime =  !self.isFirstTime
                 self.delegate?.newsListingSuccess()
@@ -66,6 +69,7 @@ class SuperYouHomeModel {
                 self.error = error
                 self.newsData = []
                 self.delegate?.newsListingFailure(error: error)
+                
             }
         }
     }
@@ -73,23 +77,24 @@ class SuperYouHomeModel {
     func dataMappingInModel(jsonArr: [JSONDictionary]) {
         self.tableCellAtIndexPath.removeAll()
         if isFirstTime{
+            self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
             self.tableCellAtIndexPath.append([.featuredCell])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
-            self.tableCellAtIndexPath.append([.categories])
+            self.tableCellAtIndexPath.append([.businessCategories])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])
             self.tableCellAtIndexPath.append([.categories])
         }else{
-           
+            self.tableCellAtIndexPath.append([.videoCell])
             self.tableCellAtIndexPath.append([.mostLovedClassesCell])
             self.tableCellAtIndexPath.append([.liveClassesCell])
             self.tableCellAtIndexPath.append([.music])
-            self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.categories])
             self.tableCellAtIndexPath.append([.featuredCell])
+            self.tableCellAtIndexPath.append([.businessCategories])
             self.tableCellAtIndexPath.append([.newSuperShesCell])
             self.tableCellAtIndexPath.append([.upcomingCell])
             self.tableCellAtIndexPath.append([.pastLive])

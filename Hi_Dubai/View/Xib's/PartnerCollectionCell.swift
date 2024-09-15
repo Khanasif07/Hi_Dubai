@@ -193,6 +193,12 @@ class PartnerCollectionCell: UICollectionViewCell {
 
     }
     
+    func populateCellBusiness(model: Business?){
+        cancellable = loadImageForBusiness(for: model).sink { [unowned self] image in self.showImage(image: image) }
+//        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
+        self.titleLabel1.text = model?.businessName.en ?? ""
+    }
+    
     func populateCell(model: Record?){
         cancellable = loadImage(for: model).sink { [unowned self] image in self.showImage(image: image) }
 //        self.photo1.setImageFromUrl(ImageURL: model?.postImageURL ?? "")
@@ -212,6 +218,15 @@ class PartnerCollectionCell: UICollectionViewCell {
         return Just(movie?.postImageURL ?? "")
             .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
                 let url = URL(string: movie?.postImageURL ?? "")!
+                return ImageLoader.shared.loadImage(from: url)
+            })
+            .eraseToAnyPublisher()
+    }
+    
+    private func loadImageForBusiness(for movie: Business?) -> AnyPublisher<UIImage?, Never> {
+        return Just(movie?.thumbnailURL ?? "")
+            .flatMap({ poster -> AnyPublisher<UIImage?, Never> in
+                let url = URL(string: movie?.thumbnailURL ?? "")!
                 return ImageLoader.shared.loadImage(from: url)
             })
             .eraseToAnyPublisher()

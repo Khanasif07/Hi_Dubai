@@ -1,0 +1,22 @@
+//
+//  Hi_Dubai_Prod.xcconfig
+//  Hi_Dubai
+//
+//  Created by Asif Khan on 07/06/2023.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+clientId = 680560028799-lvchpfcslil9e9ctsqf2sr961pejh2mc.apps.googleusercontent.com
+facebookAppId = 663649493841807
+reversedClientId = com.googleusercontent.apps.680560028799-lvchpfcslil9e9ctsqf2sr961pejh2mc
+wegLicenseCode = ~134105251
+productName = HiDubai Prod
+productBundleIdentifier = com.hidubai.app.prod
+buildType = BUILD_PROD
+googleAppId = 1:680560028799:ios:8edc6308ae14745f
+handOffBundleId = com.hidubai.app.prod
+firTimeInterval = 900
+applinkId = www.hidubai.com
+fireworkVideoAppID = 8701806b337dec1326ee8cb2c90d1627aa92247ff17cfdb1c5c2b4d46a39fafe
+facebookClientToken = b8ba7b57e64af650044936ae7d1e58a5

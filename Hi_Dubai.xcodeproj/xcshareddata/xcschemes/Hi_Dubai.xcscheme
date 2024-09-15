@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8470C56429974D640091A7C5"
-               BuildableName = "Hi_Dubai Dev.app"
+               BuildableName = "Hi_Dubai.app"
                BlueprintName = "Hi_Dubai"
                ReferencedContainer = "container:Hi_Dubai.xcodeproj">
             </BuildableReference>
@@ -23,7 +23,7 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug Development"
+      buildConfiguration = "Debug (Development)"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug Development"
+      buildConfiguration = "Debug (Development)"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -45,14 +45,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8470C56429974D640091A7C5"
-            BuildableName = "Hi_Dubai Dev.app"
+            BuildableName = "Hi_Dubai.app"
             BlueprintName = "Hi_Dubai"
             ReferencedContainer = "container:Hi_Dubai.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Debug Development"
+      buildConfiguration = "Release (Development)"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -62,18 +62,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8470C56429974D640091A7C5"
-            BuildableName = "Hi_Dubai Dev.app"
+            BuildableName = "Hi_Dubai.app"
             BlueprintName = "Hi_Dubai"
             ReferencedContainer = "container:Hi_Dubai.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug Development">
+      buildConfiguration = "Debug (Development)">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug Development"
-      customArchiveName = "Hi_Dubai Development"
+      buildConfiguration = "Release (Development)"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

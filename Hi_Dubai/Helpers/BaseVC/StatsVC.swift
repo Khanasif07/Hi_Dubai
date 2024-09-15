@@ -9,11 +9,11 @@ import UIKit
 
 class StatsVC: UIViewController, EmptyStateViewDelegate {
     func loginAction() {
-        self.fetchAPIData()
+        self.viewModel.getNewsListing()
     }
     
     func learnHowAction() {
-        self.fetchAPIData()
+        self.viewModel.getNewsListing()
     }
     
     
@@ -48,7 +48,7 @@ class StatsVC: UIViewController, EmptyStateViewDelegate {
     
     private func fetchAPIData(){
         self.viewModel.delegate = self
-        self.viewModel.getNewsListing()
+//        self.viewModel.getNewsListing()
     }
     
     private func tableViewSetUp() {
@@ -59,9 +59,9 @@ class StatsVC: UIViewController, EmptyStateViewDelegate {
     }
     
     private func footerViewSetUp() {
-        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 181.0))
-        self.mainTableView.tableFooterView?.height = 181.0
-        self.mainTableView.tableFooterView = footerView
+//        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 181.0))
+//        self.mainTableView.tableFooterView?.height = 181.0
+//        self.mainTableView.tableFooterView = footerView
     }
     
     private func registerXib(){
@@ -167,6 +167,8 @@ extension StatsVC{
 extension StatsVC{
     func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
         (self.parent as? HomeViewController)?.enableScrolling(offset,isSearchHidden)
+        (self.parent?.parent?.parent as? HomeViewController)?.enableScrolling(offset,isSearchHidden)
+        
     }
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
@@ -179,11 +181,8 @@ extension StatsVC{
         }
         
         let offsetY = scroll.contentOffset.y
-        var stopScroll: CGFloat = 170.0
+        var stopScroll: CGFloat = 235.0
         
-        if UIDevice.current.hasNotch{
-            stopScroll += 10.0
-        }
         lastContentOffset = scroll.contentOffset.y
         
         if scrollDirection == .up {

@@ -26,7 +26,7 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     @IBOutlet weak var mainTF: UITextField!
     @IBOutlet weak var icon: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    
+    @IBOutlet weak var roundedView: RoundedView!
     //MARK: - Properties
     weak var delegate:WalifSearchTextFieldDelegate?
     @IBInspectable var iconImage: UIImage!
@@ -77,7 +77,12 @@ protocol WalifSearchTextFieldDelegate : NSObject {
     
     //MARK: - Function
     func setPlaceholder(placeholder:String! = " Search...") {
-        mainTF.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.75),
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14,weight: .medium) // Note the !
+        ]
+
+        mainTF.attributedPlaceholder = NSAttributedString(string: placeholder, attributes:attributes)
     }
     
     func setPrefixOfTextField(value:String!) {

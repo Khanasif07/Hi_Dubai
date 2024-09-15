@@ -57,8 +57,8 @@ class SearchVC: BaseVC{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+            let window = UIApplication.shared.currentWindow
+//            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
             print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
             print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
             print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")
@@ -74,8 +74,8 @@ class SearchVC: BaseVC{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if #available(iOS 11.0, *) {
-            let window = UIApplication.shared.windows.first
-            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
+            let window = UIApplication.shared.currentWindow
+//            let topInset: CGFloat =  window?.safeAreaInsets.top ?? UIApplication.shared.statusBarFrame.size.height
             print("safeAreaInsets.top =\(window?.safeAreaInsets.top ?? 0.0)")
             print("safeAreaInsets.scrollViewTopDistance =\(scrollViewTopDistance.constant)")
             print("safeAreaInsets.screen szie =\(UIScreen.main.nativeBounds.size.height)")
@@ -101,7 +101,6 @@ class SearchVC: BaseVC{
     func showFilterVC(_ vc: BaseVC, index: Int? = nil) {
         if let obj = UIApplication.topViewController() {
             let ob = HotelFilterVC.instantiate(fromAppStoryboard: .Main)
-//            ob.delegate = vc as? HotelFilteVCDelegate
             if let idx = index {
                 ob.selectedIndex = idx
             }
@@ -128,6 +127,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR BUSINESS"
                 secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
                 removeChildrenVC()
@@ -142,6 +142,7 @@ class SearchVC: BaseVC{
             setColorsOfDefaultButton(peopleSearchBtn)
             if children.count == 1 || !(children[0] is NewsListVC) {
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                secondChildVC.isShowSectionHeader = true
                 secondChildVC.headerTitle = "POPULAR LISTS"
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
@@ -155,6 +156,7 @@ class SearchVC: BaseVC{
             if  children.count == 1 || !(children[0] is NewsListVC){
                 let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
                 secondChildVC.headerTitle = "POPULAR PEOPLE"
+                secondChildVC.isShowSectionHeader = true
                 removeChildrenVC()
                 secondChildVC.view.frame = containerView.bounds
                 containerView?.addSubview(secondChildVC.view)
@@ -167,6 +169,7 @@ class SearchVC: BaseVC{
     func initUI(){
         if self.navBar != nil {
             let secondChildVC = NewsListVC.instantiate(fromAppStoryboard: .Main)
+            secondChildVC.isShowSectionHeader = true
 //            secondChildVC.containerViewMinY = Float(containerView?.frame.minY ?? 0.0)
             
             if children.count == 0 {
@@ -201,24 +204,25 @@ class SearchVC: BaseVC{
                 gradient_MAX_HEIGHT = 90.0
                 if !self.searchTxtFld.isHidden && !isProcess{
                     isProcess = true
-                    UIView.animate(withDuration: 0.10) {
-                        self.searchTxtFld.isHidden = isSearchHidden
-                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-                        isProcess = false
-                        self.view.layoutIfNeeded()
-                    }
+                    //MARK: - commented for displaying search text field animation
+//                    UIView.animate(withDuration: 0.25) {
+//                        self.searchTxtFld.isHidden = isSearchHidden
+//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+//                        isProcess = false
+//                        self.view.layoutIfNeeded()
+//                    }
                 }
             }else{
                 gradient_MAX_HEIGHT = 134.0
                 if self.searchTxtFld.isHidden && !isProcess{
                     isProcess = true
-                    
-                    UIView.animate(withDuration: 0.25) {
-                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
-                        self.searchTxtFld.isHidden = isSearchHidden
-                        isProcess = false
-                        self.view.layoutIfNeeded()
-                    }
+                    //MARK: - commented for displaying search text field animation
+//                    UIView.animate(withDuration: 0.25) {
+//                        self.gradientHeight.constant = self.gradient_MAX_HEIGHT + (window?.safeAreaInsets.top ?? 0.0)
+//                        self.searchTxtFld.isHidden = isSearchHidden
+//                        isProcess = false
+//                        self.view.layoutIfNeeded()
+//                    }
                 }
             }
             //self.searchGradientTopDistance.constant = -(window.safeAreaInsets.top);

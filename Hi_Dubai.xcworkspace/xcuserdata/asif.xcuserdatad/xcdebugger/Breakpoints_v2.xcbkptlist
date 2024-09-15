@@ -1,53 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "186230F3-970A-4CAE-83BF-D875FDF9272E"
+   uuid = "2BDFEF65-015D-4F25-956F-E16FE98B2A9E"
    type = "0"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA"
+            uuid = "6B7201AC-9A22-4CE3-8878-13AC16B11F49"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Hi_Dubai/Networking/NetworkManager.swift"
+            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "getDataFromServer(requestType:endPoint:_:_:)"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "getCategoriesCell(_:indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62B9D44E-5C41-40CD-923C-20237242D19B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "getCategoriesCell(_:indexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 1c19f6977844ce30"
+                  uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4 - 427830f809a9d064"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Hi_Dubai_Dev.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai_Dev.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Hi_Dubai Dev"
+                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Hi_Dubai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2252">
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "340">
                </Location>
                <Location
-                  uuid = "2BE65B1F-2ACE-4EBE-A686-5D33802CB2AA - 77d4e7d760373254"
+                  uuid = "02941D7B-23C6-4EAF-BB37-093C5A5A4FD4 - 427830f809a9d064"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Hi_Dubai_Dev.NetworkManager.getDataFromServer&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable, &#x3c4;_0_0: Swift.Encodable&gt;(requestType: Hi_Dubai_Dev.AppNetworkingHttpMethods, endPoint: Swift.String, _: Swift.Dictionary&lt;Swift.String, Swift.String&gt;, _: (Swift.Result&lt;&#x3c4;_0_0, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Hi_Dubai Dev"
+                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Hi_Dubai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/asif/Documents/Old_Projects/Hi_Dubai/Hi_Dubai/Networking/NetworkManager.swift"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "648">
+                  startingLineNumber = "302"
+                  endingLineNumber = "302"
+                  offsetFromSymbolStart = "332">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947 - 427830f809a9d11e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "308"
+                  endingLineNumber = "308"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "45F45410-2494-4E44-9A6F-B10F5ADB3947 - 427830f809a9d1fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Hi_Dubai.SuperViewCardTableViewCell.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "Hi_Dubai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/asif/Desktop/Hi_Dubai/Hi_Dubai/View/SuperYou/XIB&apos;S/SuperViewCardTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "305"
+                  endingLineNumber = "305"
+                  offsetFromSymbolStart = "356">
                </Location>
             </Locations>
          </BreakpointContent>

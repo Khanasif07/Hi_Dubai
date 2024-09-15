@@ -39,6 +39,13 @@ extension Bundle {
     // 3. Create a decoder
     let decoder = JSONDecoder()
     
+      
+      do {
+          let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+          print(json)
+      } catch {
+          print("errorMsg")
+      }
     // 4. Create a property for the decoded data
     guard let loaded = try? decoder.decode(T.self, from: data) else {
       fatalError("Failed to decode \(file) from bundle.")

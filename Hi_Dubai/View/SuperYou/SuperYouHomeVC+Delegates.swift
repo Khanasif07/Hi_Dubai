@@ -13,17 +13,23 @@ import SwiftUI
 extension SuperYouHomeVC {
     
     /// Get Title Cell
-    internal func getTitleCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeTitleData) -> UITableViewCell {
+    internal func getTitleCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: SuperYouTitleTableViewCell.self, indexPath: indexPath)
+        if cell.containerView.subviews.isEmpty{
+            initCarbonSwipeUI(targetView: cell.containerView)
+        }
         return cell
     }
     
     /// Get Card Cell
     internal func getMusicCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-        cell.currentCell = .music
+//        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+//        cell.currentCell = .music
+//        cell.superYouData = dataSource
+//        cell.configureCell()
+//        return cell
+        let cell = tableView.dequeueCell(with: SuperYouMusicTableCell.self, indexPath: indexPath)
         cell.superYouData = dataSource
-        cell.configureCell()
         return cell
     }
     
@@ -32,7 +38,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .upcomingCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -41,7 +47,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .liveClassesCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -51,12 +57,13 @@ extension SuperYouHomeVC {
         cell.currentCell = .mostLovedClassesCell
         //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+            
             cell.superYouData = dataSource
+//            cell.configureCell()
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
         return cell
     }
@@ -66,7 +73,7 @@ extension SuperYouHomeVC {
         let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
         cell.currentCell = .favoritesCell
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
     
@@ -76,12 +83,12 @@ extension SuperYouHomeVC {
         cell.currentCell = .newSuperSheCell
         //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+//            cell.configureCell()
             cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
         //
         return cell
@@ -94,12 +101,12 @@ extension SuperYouHomeVC {
         
 //
         if #available(iOS 16.0, *) {
-            cell.configureCell()
+//            cell.configureCell()
             cell.superYouData = dataSource
         } else {
             // Fallback on earlier versions
             cell.superYouData = dataSource
-            cell.configureCell()
+//            cell.configureCell()
         }
 //
         cell.emptyView.isHidden = !dataSource.featuredDataArr.isEmpty
@@ -107,21 +114,35 @@ extension SuperYouHomeVC {
         return cell
     }
     
-    /// Get SuperPowers
+    /// Get Categories
     internal func getCategoriesCell(_ tableView: UITableView, indexPath: IndexPath,dataSource: SuperYouHomeModel) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-        cell.currentCell = .categories
+//        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+//        cell.currentCell = .categories
+//        cell.superYouData = dataSource
+//        cell.configureCell()
+        let cell = tableView.dequeueCell(with: SuperYouCategoriesTableCell.self, indexPath: indexPath)
         cell.superYouData = dataSource
-        cell.configureCell()
+        return cell
+    }
+    
+    /// Get BusinessCategorie
+    internal func getBusinessCategoriesCell(_ tableView: UITableView, indexPath: IndexPath,dataSource: SuperYouHomeModel) -> UITableViewCell {
+//        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+       
+//        cell.superYouData = dataSource
+//        cell.configureCell()
+        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
+        cell.currentCell = .businessCategories
+        cell.superYouData = dataSource
         return cell
     }
     
     /// Get Past Live Cell
     internal func getpastLiveClassesCell(_ tableView: UITableView, indexPath: IndexPath, dataSource: SuperYouHomeModel) -> UITableViewCell {
-        let cell = tableView.dequeueCell(with: SuperViewCardTableViewCell.self, indexPath: indexPath)
-        cell.currentCell = .pastLive
+        let cell = tableView.dequeueCell(with: SuperYouPastLivTableCell.self, indexPath: indexPath)
+//        cell.currentCell = .pastLive
         cell.superYouData = dataSource
-        cell.configureCell()
+//        cell.configureCell()
         return cell
     }
 }

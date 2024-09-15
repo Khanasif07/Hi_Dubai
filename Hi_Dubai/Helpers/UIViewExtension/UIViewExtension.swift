@@ -35,10 +35,8 @@ extension UIView{
 
 
 class GradientView: UIView {
-    
-    
-    
-    var colors: [CGColor] = UIColor.AppColor.otherUserProfileGradientColors { didSet { self.setNeedsDisplay()} }
+
+    var colors: [CGColor] = UIColor.AppColor.categoryGradientColors { didSet { self.setNeedsDisplay()} }
     
     private var gradientLayer: CAGradientLayer!
     
@@ -76,6 +74,48 @@ class GradientView: UIView {
         self.layer.addSublayer(gradientLayer)
     }
 }
+
+class BottomGradientView: UIView {
+
+    var colors: [CGColor] = UIColor.AppColor.bottomGradientColors { didSet { self.setNeedsDisplay()} }
+    
+    private var gradientLayer: CAGradientLayer!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = .clear
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.createGradientLayer()
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            self.createGradientLayer()
+        }
+    }
+    
+    
+
+    
+    ///draw gradient on the top layer
+    func createGradientLayer() {
+        for layer in layer.sublayers ?? [] {
+            if layer is CAGradientLayer {
+                layer.removeFromSuperlayer()
+            }
+        }
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        self.layer.addSublayer(gradientLayer)
+    }
+}
+
 
 extension UIView {
     
@@ -297,8 +337,39 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
+extension UIView {
+    
+    func setUp(to superView: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
+    }
+    
+    func setGradient(withColors colors: [CGColor] , startPoint: CGPoint , endPoint: CGPoint) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = colors
+        gradient.startPoint = startPoint
+        gradient.endPoint = endPoint
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
+        self.layer.insertSublayer(gradient, at: 0)
+    }
+}
 
-
+struct windowConstant {
+    
+    private static let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+    
+    static var getTopPadding: CGFloat {
+        return window?.safeAreaInsets.top ?? 0
+    }
+    
+    static var getBottomPadding: CGFloat {
+        return window?.safeAreaInsets.bottom ?? 0
+    }
+    
+}
 
 
 extension NSTextAttachment {
@@ -356,36 +427,92 @@ extension UIButton {
     
 }
 
-extension UIView {
-    
-    func setUp(to superView: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
-        leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
-    }
-    
-    func setGradient(withColors colors: [CGColor] , startPoint: CGPoint , endPoint: CGPoint) {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = colors
-        gradient.startPoint = startPoint
-        gradient.endPoint = endPoint
-        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.frame.size.width, height: self.frame.size.height)
-        self.layer.insertSublayer(gradient, at: 0)
+extension UIView{
+    func rotate(clockwise: Bool = true) {
+        if clockwise {
+            /// clockwise
+//            let radians = 180.0 / 180.0 * CGFloat.pi
+//            let rotation = CGAffineTransformRotate(self.transform, radians)
+//            self.transform = rotation
+            let radians = 180.0 / 180.0 * CGFloat.pi
+            let rotate = CABasicAnimation(keyPath: "transform.rotation")
+            rotate.fromValue = radians
+            rotate.toValue = 0
+            rotate.duration = 0.25
+            rotate.fillMode = CAMediaTimingFillMode.forwards
+            rotate.isRemovedOnCompletion = false
+            self.layer.add(rotate, forKey: "transform.rotation")
+        } else {
+            /// anticlockwise
+            let radians = -(180.0 / 180.0 * CGFloat.pi)
+            let rotate = CABasicAnimation(keyPath: "transform.rotation")
+            rotate.fromValue = radians
+            rotate.toValue = 0
+            rotate.duration = 0.25
+            rotate.fillMode = CAMediaTimingFillMode.forwards
+            rotate.isRemovedOnCompletion = false
+            self.layer.add(rotate, forKey: "transform.rotation")
+//            let radians = 180.0 / 180.0 * CGFloat.pi
+//            let rotation = CGAffineTransformRotate(self.transform, radians)
+//            self.transform = rotation
+        }
     }
 }
 
-struct windowConstant {
-    
-    private static let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-    
-    static var getTopPadding: CGFloat {
-        return window?.safeAreaInsets.top ?? 0
+
+//@IBDesignable
+//public class Gradient: UIView {
+//    @IBInspectable var startColor:   UIColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 0) { didSet { updateColors() }}
+//    @IBInspectable var endColor:     UIColor = UIColor.init(r: 0, g: 0, b: 0, alpha: 1) { didSet { updateColors() }}
+//    @IBInspectable var startLocation: Double =   0.05 { didSet { updateLocations() }}
+//    @IBInspectable var endLocation:   Double =   0.95 { didSet { updateLocations() }}
+//    @IBInspectable var horizontalMode:  Bool =  true { didSet { updatePoints() }}
+//    @IBInspectable var diagonalMode:    Bool =  false { didSet { updatePoints() }}
+//
+//    override public class var layerClass: AnyClass { CAGradientLayer.self }
+//
+//    var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
+//
+//    func updatePoints() {
+//        if horizontalMode {
+//            gradientLayer.startPoint = diagonalMode ? .init(x: 1, y: 0) : .init(x: 0, y: 0)
+//            gradientLayer.endPoint   = diagonalMode ? .init(x: 0, y: 1) : .init(x: 0, y: 1)
+//        } else {
+//            gradientLayer.startPoint = diagonalMode ? .init(x: 0, y: 0) : .init(x: 0.5, y: 0)
+//            gradientLayer.endPoint   = diagonalMode ? .init(x: 1, y: 1) : .init(x: 0.5, y: 1)
+//        }
+//    }
+//    func updateLocations() {
+//        gradientLayer.locations = [startLocation as NSNumber, endLocation as NSNumber]
+//    }
+//    func updateColors() {
+//        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+//    }
+//    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        super.traitCollectionDidChange(previousTraitCollection)
+//        updatePoints()
+//        updateLocations()
+//        updateColors()
+//    }
+//
+//}
+//
+
+
+class TransparentView: UIView {
+
+    override init(frame: CGRect) {
+        super.init(frame: frame);
+
+        self.isOpaque = false;  //Use this..
     }
-    
-    static var getBottomPadding: CGFloat {
-        return window?.safeAreaInsets.bottom ?? 0
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
+    override func draw(_ rect: CGRect) {
+        UIColor.clear.setFill()
+        UIRectFill(rect)
+    }
 }

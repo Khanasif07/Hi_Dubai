@@ -4,33 +4,32 @@
 //
 //  Created by Admin on 11/02/23.
 //
-
+import Network
 import Foundation
 extension Error {
     var errorCode:Int? {
         return (self as NSError).code
     }
 }
-class CacheManager {
-    static let shared = CacheManager()
-    var cache: URLCache
 
-    private init() {
-        let fileManager = FileManager.default
-        let documentsDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let cacheDir = documentsDirectory.appendingPathComponent("cache")
-        cache = URLCache(memoryCapacity: 16 * 1024 * 1024, diskCapacity: 80 * 1024 * 1024, directory: cacheDir)
-    }
-}
 class NetworkManager{
+    let monitor = NWPathMonitor()
     static let shared = NetworkManager()
-    private init(){}
+    private init(){
+        networkConnectivity()
+    }
     private var cache: URLCache = CacheManager.shared.cache
-//    private lazy var cache: URLCache = {
-//        let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-//        let diskCacheURL = cachesURL.appendingPathComponent("DownloadCache")
-//        return URLCache(memoryCapacity: 10_000_000, diskCapacity: 1_000_000_000, directory: diskCacheURL)
-//    }()
+
+    func networkConnectivity(){
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("We're connected!")
+            } else {
+                print("No connection.")
+            }
+            print(path.isExpensive)
+        }
+    }
     
     
     func getDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
@@ -44,31 +43,16 @@ class NetworkManager{
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
         sessionConfig.timeoutIntervalForRequest  = 2.5
-        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.timeoutIntervalForResource = 30
         sessionConfig.urlCache = cache
-        //
-        //==URLCache==//
-        if let cachedData = cache.cachedResponse(for: urlRequest){
-            print("Cached data in bytes:", cachedData.data)
-            do {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(formatter)
-                let model = try decoder.decode(T.self, from: cachedData.data)
-                completion(.success(model))
-            }catch(let error){
-                print(error)
-                completion(.failure(error))
-            }
-        } else {
+        sessionConfig.waitsForConnectivity = true
             let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
                 if let error = error{
                     completion(.failure(error))
                     return
                 }
                 do {
-                    //==
+//                    self.cache.removeAllCachedResponses()
                     self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
                     //==
                     let formatter = DateFormatter()
@@ -83,12 +67,139 @@ class NetworkManager{
                 }
             }
             task.resume()
-        }
     }
     
-    func queryString(_ value: String, params: [String: String]) -> String? {
+    
+    func getPumpkinDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //==
+//                self.cache.removeAllCachedResponses()
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                //==
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    func getCategoriesDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+//        urlRequest.allHTTPHeaderFields = ["Content-Type":"application/json","Accept":"application/json","WL-GuestUserId":"64cb9dffdc190765e3650901","Authorization":"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2xhZGVwMzEzQHJ4Y2F5LmNvbSIsImZpcnN0TmFtZSI6IlNuZWhhIiwibGFzdE5hbWUiOiJFbWFpbFVzZXIiLCJhdWRpZW5jZSI6IndlYiIsInBhc3N3b3JkIjoiJDJhJDEwJGlibnVBMjk4R09UWm1wRXZnU0doVk9LWlBJQWwvL0tpS0V2MVJLZm9ialJWcERINnpJN1htIiwicm9sZXMiOlt7ImF1dGhvcml0eSI6IlJPTEVfQlVTSU5FU1NfT1dORVIifSx7ImF1dGhvcml0eSI6IlJPTEVfVVNFUiJ9XSwibWlkZGxlTmFtZSI6IiIsImV4cCI6MTY5MTE0Mjg4NiwidXVpZCI6IjU0NTViNDExLThiMWEtNDcwNi1hOWIwLTcyZjk4ZGVhMjI2MSIsImVuYWJsZWQiOnRydWUsImVtYWlsIjoiYm9sYWRlcDMxM0ByeGNheS5jb20iLCJzdGF0dXMiOjF9.8iLVwEuZHTZhx8UcKudUhd-oK6dOyN8tguz4XmGFqCQ1vdNvai9xV73telzZmO86a5qbuD1FAfaYneHZmZUEyg","WL-Channel":"ma"]
+        urlRequest.allHTTPHeaderFields = ["Content-Type":"application/json","Accept":"application/json","WL-GuestUserId":"64cb9dffdc190765e3650901","WL-Channel":"ma"]
+        //
+        let sessionConfig = URLSessionConfiguration.default
+//        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.requestCachePolicy = .useProtocolCachePolicy
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //==
+//                self.cache.removeCachedResponse(for: urlRequest)
+//                let currentDate = Date()
+//                var dateComponent = DateComponents()
+//                dateComponent.second = -60
+//                let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+//                self.cache.removeCachedResponses(since: futureDate!)
+                //==
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func getMovieDetailDataFromServer<T: Codable>(requestType: AppNetworkingHttpMethods,
+                                              endPoint: String,_ params: [String: String] = [:],_ path: String = "",_ completion: @escaping (Result<T,Error>) -> Void){
+        let urlStringWithQuery = self.queryString(endPoint, params: params,path: path)
+        guard let url = URL(string: urlStringWithQuery!) else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = requestType.rawValue
+        //
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.requestCachePolicy = .returnCacheDataElseLoad
+        sessionConfig.timeoutIntervalForRequest  = 2.5
+        sessionConfig.timeoutIntervalForResource = 2.5
+        sessionConfig.urlCache = cache
+        sessionConfig.waitsForConnectivity = true
+        //
+        let task = URLSession(configuration: sessionConfig).dataTask(with: urlRequest) { data, response, error in
+            if let error = error{
+                completion(.failure(error))
+                return
+            }
+            do {
+                //==
+//                self.cache.removeAllCachedResponses()
+                self.cache.storeCachedResponse(CachedURLResponse(response: response!, data: data!), for: urlRequest)
+                //==
+                let decoder = JSONDecoder()
+                let model = try decoder.decode(T.self, from: data!)
+                print("model:\(model)")
+                completion(.success(model))
+            }catch(let error){
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func queryString(_ value: String, params: [String: String],path: String! = "") -> String? {
         var components = URLComponents(string: value)
-        components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
+        if !params.isEmpty {
+            components?.queryItems = params.map { element in URLQueryItem(name: element.key, value: element.value) }
+        }
+        //== Path Parameter
+        if !(path.isEmpty) {
+            if let paramPath = components?.path {
+                components?.path = paramPath + path
+            }
+        }
+        //==
         return components?.url?.absoluteString
     }
 }

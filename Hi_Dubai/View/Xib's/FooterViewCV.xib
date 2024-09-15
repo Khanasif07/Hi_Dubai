@@ -11,28 +11,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FooterViewCV" id="U6b-Vx-4bR" customClass="FooterViewCV" customModule="Hi_Dubai_Dev" customModuleProvider="target">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FooterViewCV" id="sNS-jq-eZS" customClass="FooterViewCV" customModule="Hi_Dubai_Dev" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3p-h7-NJv">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bc-CW-Fzb">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <color key="backgroundColor" systemColor="systemPinkColor"/>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <viewLayoutGuide key="safeArea" id="I5q-H6-zOb"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="L3p-h7-NJv" secondAttribute="bottom" id="RX0-oa-MKJ"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="L3p-h7-NJv" secondAttribute="trailing" id="Zby-WF-nso"/>
-                <constraint firstItem="L3p-h7-NJv" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="gGS-lE-xpv"/>
-                <constraint firstItem="L3p-h7-NJv" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="wY7-ap-glc"/>
+                <constraint firstAttribute="bottom" secondItem="2bc-CW-Fzb" secondAttribute="bottom" id="7SL-Fu-rxM"/>
+                <constraint firstItem="2bc-CW-Fzb" firstAttribute="top" secondItem="sNS-jq-eZS" secondAttribute="top" id="eH0-o9-Zj3"/>
+                <constraint firstItem="2bc-CW-Fzb" firstAttribute="leading" secondItem="I5q-H6-zOb" secondAttribute="leading" id="gm0-GL-mYt"/>
+                <constraint firstItem="I5q-H6-zOb" firstAttribute="trailing" secondItem="2bc-CW-Fzb" secondAttribute="trailing" id="tgA-IW-zrj"/>
             </constraints>
             <point key="canvasLocation" x="26" y="20"/>
         </collectionReusableView>
     </objects>
     <resources>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

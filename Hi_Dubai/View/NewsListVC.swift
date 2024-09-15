@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 enum ScrollDirection : Int {
     case none
     case right
@@ -22,6 +23,11 @@ class NewsListVC: UIViewController {
     @IBOutlet var businessHeader: UIView!
     @IBOutlet weak var newsTableView: UITableView!
     //MARK:- IBProperties
+    
+    var isShowSectionHeader: Bool = false
+    var isPrefersLargeTitles: Bool = true
+    var headerView = ArtistHeaderView.instanciateFromNib()
+    var isScrollingTrue: Bool = true
     lazy var viewModel = {
         NewsListViewModel()
     }()
@@ -36,16 +42,30 @@ class NewsListVC: UIViewController {
     private var indexPath: IndexPath?
     internal var currentShimmerStatus: ShimmerState = .toBeApply
     var error: Error?
+    var cgmDataArray : [ShareGlucoseData] = []
     
     //
-    var stopScroll = 80.0
+//    var stopScroll = 80.0
     internal var containerViewMinY: Float = 0.0
     var lastContentOffset: CGFloat = 0.0
-    internal var headerTitle: String = "POPULAR BUSINESS"
+    internal var headerTitle: String = "POPULAR BUSINESS"{
+        didSet{
+            if self.popularLbl != nil {
+                self.popularLbl.text = headerTitle
+            }
+        }
+    }
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        cgmDataArray = [ShareGlucoseData(sgv: 100, date: TimeInterval(), direction: "Jan"),ShareGlucoseData(sgv: 150, date: TimeInterval(), direction: "Feb"),ShareGlucoseData(sgv: 170, date: TimeInterval(), direction: "March"),ShareGlucoseData(sgv: 180, date: TimeInterval(), direction: "April"),ShareGlucoseData(sgv: 190, date: TimeInterval(), direction: "May"),ShareGlucoseData(sgv: 200, date: TimeInterval(), direction: "June")]
         self.initialSetup()
+       
+        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        newsTableView.isScrollEnabled = true
+        title = "News"
         //
         self.popularLbl.text = headerTitle
         if #available(iOS 15.0, *) {
@@ -69,26 +89,43 @@ class NewsListVC: UIViewController {
             businessHeader.layer.shadowOpacity = 1.0
             businessHeader.layer.shadowRadius = 3.0
         }
-        newsTableView.isScrollEnabled = true
         businessHeader.backgroundColor = UIColor(named: "lightWhiteBlack")
         //
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.title = "News"
+        self.navigationController?.navigationBar.prefersLargeTitles = isPrefersLargeTitles
+        setNeedsStatusBarAppearanceUpdate()
         if let indexPath = indexPath{
             self.newsTableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        newsTableView.isScrollEnabled = isScrollingTrue
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = ""
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .default
+    }
+    
     private func  initialSetup(){
+        self.setUpTableView()
         //
         loadingView = LoadingView(frame: view.frame, inView: view)
         loadingView?.show()
         //
         self.viewModel.delegate = self
         self.emptyViewPersonal?.delegate = self
-        self.setUpTableView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.fetchAPIData()
         })
@@ -99,8 +136,17 @@ class NewsListVC: UIViewController {
         self.newsTableView.separatorColor = .clear
         self.newsTableView.separatorStyle = .none
         self.newsTableView.registerCell(with: NewsTableViewCell.self)
+        self.newsTableView.registerCell(with: ChartsTableViewCell.self)
         self.newsTableView.registerCell(with: ShimmerCell.self)
+//        self.headerSetup()
         self.newsTableView.enablePullToRefresh(tintColor: .orange, target: self, selector: #selector(refreshWhenPull(_:)))
+    }
+    
+    private func headerSetup(){
+        let parallexHeaderHeight = 250.0
+        self.headerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(parallexHeaderHeight))
+        self.headerView.isUserInteractionEnabled = true
+        self.newsTableView.tableHeaderView = self.headerView
     }
     
     private func fetchAPIData(){
@@ -145,10 +191,16 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueCell(with: ShimmerCell.self)
             return cell
         case .applied:
-            let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
-            let cellVM = viewModel.getCellViewModel(at: indexPath)
-            cell.cellViewModel = cellVM
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueCell(with: ChartsTableViewCell.self)
+                cell.cgmData = cgmDataArray
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: NewsTableViewCell.self)
+                let cellVM = viewModel.getCellViewModel(at: indexPath)
+                cell.cellViewModel = cellVM
+                return cell
+            }
         case .none:
             let cell = UITableViewCell()
             return cell
@@ -156,18 +208,26 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if indexPath.row == 0 {
+            return 300.0
+        }
+        else {
+            return UITableView.automaticDimension
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.currentShimmerStatus == .applied {
             switch indexPath.row {
             case 0:
-                let vc = PageViewControllers.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
+                //
+                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+               
+//                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
-                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
-                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
 //                self.indexPath = indexPath
 //                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
 //                selectedCellImageViewSnapshot = selectedCell?.newsImgView.snapshotView(afterScreenUpdates: false)
@@ -192,9 +252,36 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
                 let vc = SuperYouHomeVC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
             case 8:
-//                let vc = UINavigationController(rootViewController: FoodViewController())
                 let vc = FoodViewController()
                 self.navigationController?.pushViewController(vc, animated: false)
+            case 9:
+                let vc = CompostionalLayoutVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 10:
+                let vc = NavigationTypeVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 11:
+                let vc = StickyHeaderVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 12:
+                let vc = CategoryDetailVC.instantiate(fromAppStoryboard: .Main)
+//                vc.titleMsg =  self.viewModel.categories[selectedIndexPath.row].children?[index.row].name?.en ?? ""
+                self.navigationController?.pushViewController(vc, animated: false)
+            case 13:
+                let vc = CategoryVC.instantiate(fromAppStoryboard: .Main)
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 14:
+                let vc = CategoriesVC.instantiate(fromAppStoryboard: .Main)
+//                let vc = BusinessCategoriesVC.instantiate(fromAppStoryboard: .Main)
+//                let navController = UINavigationController(rootViewController: vc)
+//                navController.isNavigationBarHidden = true
+//
+//                navController.modalPresentationStyle = .fullScreen
+//                self.navigationController?.navigationBar.isHidden = true
+//                self.navigationController?.navigationItem.title = "Hello"
+//                self.navigationController?.present(navController, animated: false)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
             default:
                 let vc = MainDetailsTableViewController.instantiate(fromAppStoryboard: .Main)
                 vc.newsModel = viewModel.newsData[indexPath.row]
@@ -203,27 +290,27 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.25) {
-            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath){
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.25) {
-            cell?.transform = .identity
-        }
+//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath){
+//        let cell = tableView.cellForRow(at: indexPath)
+//        UIView.animate(withDuration: 0.25) {
+//            cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath){
+//        let cell = tableView.cellForRow(at: indexPath)
+//        UIView.animate(withDuration: 0.25) {
+//            cell?.transform = .identity
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return isShowSectionHeader ? businessHeader.frame.size.height : 0.0
     }
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return businessHeader.frame.size.height
-//    }
-//    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return businessHeader
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return businessHeader
+    }
 }
 
 //MARK:- Extension NewsListViewModelDelegate
@@ -292,7 +379,7 @@ extension NewsListVC{
     
     func scrollViewDidScroll(_ scroll: UIScrollView) {
         var scrollDirection: ScrollDirection
-        
+        var stopScroll = 80.0
         if lastContentOffset > scroll.contentOffset.y {
             scrollDirection = .down
         } else {

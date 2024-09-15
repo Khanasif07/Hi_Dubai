@@ -7,74 +7,80 @@
 
 import Foundation
 import UIKit
-@IBDesignable class RoundedView : UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.updateView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.updateView()
-    }
-    
-    override func prepareForInterfaceBuilder() {
+@IBDesignable
+class RoundedView : UIView {
 
-    }
-    
-    @IBInspectable var corner_Radius: CGFloat = 0.0{
-        didSet{
-            self.layer.cornerRadius = self.corner_Radius
-            self.layer.masksToBounds = self.corner_Radius > 0
+    @IBInspectable private var _cornerRadius: CGFloat = 0.0
+    @IBInspectable override var cornerRadius: CGFloat {
+        get { return _cornerRadius }
+        set(cornerRadius) {
+            _cornerRadius = cornerRadius
+            self.updateView()
         }
     }
-    
-    @IBInspectable var border_Width: CGFloat = 0.0{
-        didSet{
-            self.layer.borderWidth = self.border_Width
+    @IBInspectable private var _borderWidth: CGFloat = 0.0
+    @IBInspectable override var borderWidth: CGFloat {
+        get { return _borderWidth }
+        set(borderWidth) {
+            _borderWidth = borderWidth
+            self.updateView()
         }
     }
-    
-    @IBInspectable  var border_Color: UIColor = .red {
-        didSet{
-            self.layer.borderColor = self.border_Color.cgColor
+    @IBInspectable private var _borderColor: UIColor! = UIColor.separator
+    @IBInspectable override var borderColor: UIColor! {
+        get { return _borderColor }
+        set(borderColor) {
+            _borderColor = borderColor
+            self.updateView()
         }
     }
-    
-    @IBInspectable  var circle_Border: Bool = false {
-        didSet{
-            if self.circle_Border {
-                self.layer.cornerRadius = self.layer.frame.size.height/2
-                self.layer.masksToBounds = true
-            }
+    @IBInspectable private var _circleBorder: Bool = true
+    @IBInspectable var circleBorder: Bool {
+        get { return _circleBorder }
+        set(circleBorder) {
+            _circleBorder = circleBorder
+            self.updateView()
         }
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.updateView()
-    }
-    
-    @IBInspectable var keyValue: NSMutableString!
-    
+
     // `setCornerRadius:` has moved as a setter.
-    
+
     // `setBorderWidth:` has moved as a setter.
-    
+
     // `setBorderColor:` has moved as a setter.
-    
+
     // `setCircleBorder:` has moved as a setter.
-    
+
     func updateView() {
-        self.layer.cornerRadius = self.corner_Radius
-        self.layer.masksToBounds = self.corner_Radius > 0
-        self.layer.borderWidth = self.border_Width
-        self.layer.borderColor = self.border_Color.cgColor
-        if self.circle_Border {
+        self.layer.cornerRadius = self.cornerRadius
+        self.layer.masksToBounds = self.cornerRadius > 0
+        self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor.cgColor
+        if !self.borderColor.isEqual(UIColor.clear) && !self.borderColor.isEqual(WalifTheme.defaultBlue()) {
+            self.layer.borderColor = UIColor(named: "separatorColor")?.cgColor
+        }
+        if self.tag == 100 {
+            self.layer.borderColor = UIColor.white.cgColor
+        }
+        if (self.circleBorder) {
             self.layer.cornerRadius = self.layer.frame.size.height/2
             self.layer.masksToBounds = true
         }
     }
-}
 
+    func drawRect(rect:CGRect) {
+        super.draw(rect)
+        self.updateView()
+    }
+    
+    func setCornerRadius(cornerRadius: CGFloat) {
+            self.layer.cornerRadius = cornerRadius
+            self.layer.masksToBounds = cornerRadius > 0
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setCornerRadius(cornerRadius: size.height/2)
+    }
+    
+}

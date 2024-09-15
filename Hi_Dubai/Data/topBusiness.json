@@ -1,0 +1,202 @@
+{
+    "data": [
+        {
+            "localBusinessSeq": 1,
+            "businessName": {
+                "ar": "",
+                "en": "Ossiano"
+            },
+            "id": "58904a20e4b069f02df100d1",
+            "friendlyUrl": "ossiano-food-beverage-restaurants-bars-the-palm-jumeirah-nakhlat-jumeirah-dubai-2",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/22917191-de7d-4078-8bbf-5d3f2e547525-t.png",
+            "plainNeighborhood": {
+                "id": "5878dceae4b0e1e4ea8cd6dd",
+                "name": {
+                    "en": "The Palm Jumeirah (Nakhlat Jumeirah)"
+                },
+                "district": {
+                    "ar": "جميرا",
+                    "en": "Jumeirah"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 2,
+            "businessName": {
+                "ar": "زوما",
+                "en": "Zuma"
+            },
+            "id": "587907cce4b01d34728750e1",
+            "friendlyUrl": "zuma-food-beverage-restaurants-bars-dubai-international-financial-centre-zaabeel-2-dubai-2",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/66f199ae-b5e7-4818-8cea-c4ea4f1258a9-t.png",
+            "plainNeighborhood": {
+                "id": "5878dcebe4b01d3472868a48",
+                "name": {
+                    "en": "Dubai International Financial Centre (Zaa'beel 2)"
+                },
+                "district": {
+                    "ar": "زعبيل",
+                    "en": "Zaabeel"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 3,
+            "businessName": {
+                "ar": "مطعم دامبا للمأكولات البحرية",
+                "en": "Dampa Seafood Restaurant"
+            },
+            "id": "5878f6cce4b0e1e4ea8d562a",
+            "friendlyUrl": "dampa-seafood-restaurant-food-beverage-restaurants-bars-port-saeed-dubai-2",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/e40cbe18-1fc5-4284-ab2c-24d57db5f887-t.png",
+            "plainNeighborhood": {
+                "id": "5878dcece4b01d3472868a4f",
+                "name": {
+                    "en": "Port Saeed"
+                },
+                "district": {
+                    "ar": "ديرة",
+                    "en": "Deira"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 4,
+            "businessName": {
+                "ar": "",
+                "en": "The Cheesecake Factory"
+            },
+            "id": "58ce816ae4b0824545a6cd71",
+            "friendlyUrl": "the-cheesecake-factory-food-beverage-restaurants-bars-jumeirah-beach-residence-marsa-dubai-dubai-2",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/3bde85a3-ca93-4a01-b434-ae7f1207361a-t.png",
+            "plainNeighborhood": {
+                "id": "5878dceae4b0e1e4ea8cd6db",
+                "name": {
+                    "en": "Jumeirah Beach Residence (Marsa Dubai)"
+                },
+                "district": {
+                    "ar": "جميرا",
+                    "en": "Jumeirah"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 5,
+            "businessName": {
+                "ar": "مطعم و كافيه بي دي بي ذ.م.م",
+                "en": "Bar Du Port"
+            },
+            "id": "623c6a6f458905154bc3f41d",
+            "friendlyUrl": "bar-du-port-food-beverage-restaurants-bars-dubai-marina-marsa-dubai-dubai",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/bd5ccd5e-03d5-4c46-b6b0-22cd4df589db-t.png",
+            "plainNeighborhood": {
+                "id": "5878dceae4b0c0742c50b650",
+                "name": {
+                    "en": "Dubai Marina (Marsa Dubai)"
+                },
+                "district": {
+                    "ar": "جميرا",
+                    "en": "Jumeirah"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 6,
+            "businessName": {
+                "ar": "",
+                "en": "Shri Krishna Bhavan Restaurant"
+            },
+            "id": "5a8aab02e4b09f615d819c8e",
+            "friendlyUrl": "shri-krishna-bhavan-restaurant-food-beverage-restaurants-bars-al-karama-dubai-4",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/3119af4c-18a5-4156-8fc1-5862207f75f6-t.png",
+            "plainNeighborhood": {
+                "id": "5878dcf0e4b0e1e4ea8cd705",
+                "name": {
+                    "en": "Al Karama"
+                },
+                "district": {
+                    "en": "Bur Dubai"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 7,
+            "businessName": {
+                "ar": "مطعم ومقهى اريبيان تي هاوس (فرع)",
+                "en": "Arabian Tea House Restaurant & Cafe"
+            },
+            "id": "62b06121f4c03a73f261a7bb",
+            "friendlyUrl": "arabian-tea-house-restaurant-cafe-food-beverage-restaurants-bars-jumeirah-1-dubai",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/b93ce2e6-35b8-49d2-a69f-c9c3820c1a4a-t.png",
+            "plainNeighborhood": {
+                "id": "5878dceae4b0f09f93382fd1",
+                "name": {
+                    "en": "Jumeirah 1"
+                },
+                "district": {
+                    "ar": "جميرا",
+                    "en": "Jumeirah"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 8,
+            "businessName": {
+                "ar": "مطعم جست فيجان",
+                "en": "Just Vegan Restaurant"
+            },
+            "id": "6284926a458905092adabd3e",
+            "friendlyUrl": "just-vegan-restaurant-food-beverage-restaurants-bars-dubai-marina-marsa-dubai-dubai",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/0a3b966b-a017-45e5-abd3-ed6d2b0f669a-t.png",
+            "plainNeighborhood": {
+                "id": "5878dceae4b0c0742c50b650",
+                "name": {
+                    "en": "Dubai Marina (Marsa Dubai)"
+                },
+                "district": {
+                    "ar": "جميرا",
+                    "en": "Jumeirah"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 9,
+            "businessName": {
+                "ar": "",
+                "en": "Armani Privé"
+            },
+            "id": "5961e0c4e4b03568466f5f35",
+            "friendlyUrl": "armani-prive-leisure-culture-nightclubs-downtown-dubai-dubai",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/0ff0af06-5f7e-4464-b237-0740378ae51a-t.jpeg",
+            "plainNeighborhood": {
+                "id": "5878dcf2e4b0c0742c50b687",
+                "name": {
+                    "en": "Downtown Dubai"
+                },
+                "district": {
+                    "ar": "زعبيل",
+                    "en": "Zaabeel"
+                }
+            }
+        },
+        {
+            "localBusinessSeq": 10,
+            "businessName": {
+                "ar": "مطعم جعفر بهايز",
+                "en": "Jaffer Bhais Restaurant"
+            },
+            "id": "5879055fe4b0c0742c51743e",
+            "friendlyUrl": "jaffer-bhais-restaurant-food-beverage-restaurants-bars-al-karama-dubai-2",
+            "thumbnailUrl": "https://wl-img-prd.s3-accelerate.amazonaws.com/00323a9d-6293-45f2-a497-d405a5595199-t.png",
+            "plainNeighborhood": {
+                "id": "5878dcf0e4b0e1e4ea8cd705",
+                "name": {
+                    "en": "Al Karama"
+                },
+                "district": {
+                    "en": "Bur Dubai"
+                }
+            }
+        }
+    ]
+}

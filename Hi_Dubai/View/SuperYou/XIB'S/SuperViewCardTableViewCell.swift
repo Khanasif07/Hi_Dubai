@@ -9,15 +9,26 @@ import UIKit
 class SuperViewCardTableViewCell: UITableViewCell {
     
     enum CellContents {
-        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, pastLive , music
+        case cardCell , upcomingCell, liveClassesCell, favoritesCell, mostLovedClassesCell, newSuperSheCell, featuredCell,categories, businessCategories,pastLive , music,video
     }
     
     //MARK:- Variables
+//    lazy var indexOfCellBeforeDragging: Int = {
+//        return 0
+//    }()
+    lazy var layoutt:UICollectionViewFlowLayout = {
+        return UICollectionViewFlowLayout()
+    }()
     // Velocity is measured in points per millisecond.
-    private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
+//    private var snapToMostVisibleColumnVelocityThreshold: CGFloat { return 0.3 }
     var cardData: SuperYouCardData? = SuperYouCardData()
-    var currentCell: CellContents = .cardCell
+    var currentCell: CellContents = .cardCell{
+        didSet{
+            configureCell()
+        }
+    }
     var superYouData: SuperYouHomeModel?
+    var categoryData: CategoryDetailModel?
     var shimmerStatus: ShimmerState = .applied
     private var itemWidth: CGFloat = 0.0
     private var currentItem: Int = 0
@@ -47,6 +58,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.configureUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        self.configureCollectionViewLayoutItemSize(forCollectionViewLayout: layoutt)
+    }
     //MARK:- Functions
     
     /// Call to configure ui
@@ -54,28 +69,16 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionView.registerCell(with: MusicCollCell.self)
         self.cardCollectionView.registerCell(with: PartnerCollectionCell.self)
         self.cardCollectionView.registerCell(with: MenuItemCollectionCell.self)
+        self.cardCollectionView.registerCell(with: StuffCollCell.self)
+        
         self.cardCollectionView.delegate = self
         self.cardCollectionView.dataSource = self
         self.emptyView.isHidden = true
         self.emptyView.delegate = self
         self.flowLayoutSetup()
+        configureCell()
     }
-    //MARK: - Two column only collectionViewFlowLayout
-    func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(44))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        let spacing = CGFloat(10)
-        group.interItemSpacing = .fixed(spacing)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = spacing
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
+    
     
     ///Call to populates data
     func configureCell() {
@@ -83,42 +86,67 @@ class SuperViewCardTableViewCell: UITableViewCell {
         self.cardCollectionViewBottomCons.constant = 0.0
         self.cardCollectionView.isHidden = false
         switch self.currentCell {
+        case .video:
+            self.cardCollectionView.isHidden = true
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
         case .music:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
+//            self.cardCollectionView.decelerationRate = .fast
+//            self.cardCollectionView.collectionViewLayout = createCompositionalLayoutForMusic()
         case .cardCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         case .featuredCell:
             self.cardCollectionView.isPagingEnabled = true
-            self.pageControl.isHidden = false
+            self.pageControl.isHidden =  (self.superYouData?.featuredDataArr.count ?? 0) < 2
             self.pageControl.numberOfPages = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) : 0
-            self.pageControl.isHidden = (self.currentCell == .featuredCell) ? (self.superYouData?.featuredDataArr.count ?? 0) < 2 : true
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         case .categories:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-//            self.cardCollectionView.collectionViewLayout = createLayout()
+            self.cardCollectionView.collectionViewLayout = LeftAlignedHorizontalCollectionViewFlowLayout()
+        case .businessCategories:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+            self.cardCollectionView.collectionViewLayout = UICollectionViewLayout()
         case .upcomingCell:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
+        case .newSuperSheCell:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+//            layoutt.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layoutt
+//            self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
+        case .pastLive:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+//            self.cardCollectionView.collectionViewLayout = createCompositionalLayout()
+        case .mostLovedClassesCell:
+            self.pageControl.isHidden = true
+            self.cardCollectionView.isPagingEnabled = false
+//            let layout = UICollectionViewFlowLayout()
+//            layoutt.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layoutt
         default:
             self.pageControl.isHidden = true
             self.cardCollectionView.isPagingEnabled = false
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            self.cardCollectionView.collectionViewLayout = layout
         }
         self.cardCollectionView.reloadData()
     }
@@ -128,6 +156,7 @@ class SuperViewCardTableViewCell: UITableViewCell {
     private func getMusicCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: MusicCollCell.self, indexPath: indexPath)
         cell.titleLabel.text = "Awesome App #\(indexPath.item)"
+        cell.iconView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         return cell
     }
     
@@ -140,9 +169,10 @@ class SuperViewCardTableViewCell: UITableViewCell {
     
     ///Get UpcomingCell
     private func getUpcomingCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.upcomingDataArr[indexPath.row])
-        cell.bgView1StackBtmCost.constant = 12.0
+        let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
+        cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
+//        cell.populateCell(model: superYouData?.upcomingDataArr[indexPath.row])
+//        cell.bgView1StackBtmCost.constant = 12.0
         return cell
     }
     
@@ -186,22 +216,23 @@ class SuperViewCardTableViewCell: UITableViewCell {
     }
     
     private func getNewSuperShesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.newSuperShesArr[indexPath.row])
-        cell.bgView1StackBtmCost.constant = 12.0
+        let cell = collectionView.dequeueCell(with: StuffCollCell.self, indexPath: indexPath)
+        cell.outerView.backgroundColor = UIColor(hue: CGFloat(indexPath.item) / 20.0, saturation: 0.8, brightness: 0.9, alpha: 1)
         return cell
     }
     
     private func getFeaturedCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: PartnerCollectionCell.self, indexPath: indexPath)
         cell.populateCell(model: superYouData?.featuredDataArr[indexPath.row])
+        self.pageControl.isHidden = false
         cell.bgView1StackBtmCost.constant = 30.0
         return cell
     }
     
     private func getCategoriesCell(_ collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(with: MenuItemCollectionCell.self, indexPath: indexPath)
-        cell.populateCell(model: superYouData?.categories[indexPath.row])
+//        cell.populateCell(model: superYouData?.categories[indexPath.row],index: indexPath.row)
+        cell.populateCells(model: superYouData?.categories[indexPath.row],index: indexPath.row)
         return cell
     }
 }
@@ -227,14 +258,16 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
                 return  self.superYouData?.newSuperShesArr.count ?? 0
             case .featuredCell:
                 return self.superYouData?.featuredDataArr.count ?? 0
-            case .categories:
+            case .categories,.businessCategories:
                 return self.superYouData?.categories.count ?? 0
             case .pastLive:
                 return self.superYouData?.pastLiveData.count ?? 0
             case .music:
                 return self.superYouData?.musicData.count ?? 0
+            case .video:
+                return self.superYouData?.musicData.count ?? 0
             }
-        case .none:
+        default:
             return 0
         }
     }
@@ -268,6 +301,11 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .categories:
             return self.getCategoriesCell(collectionView, indexPath: indexPath)
             
+        case .businessCategories:
+            return self.getCategoriesCell(collectionView, indexPath: indexPath)
+            
+        case .video:
+            return UICollectionViewCell()
         case .pastLive:
             return self.getPastLiveNowCell(collectionView, indexPath: indexPath)
         }
@@ -275,16 +313,16 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        
+
         let config = UIContextMenuConfiguration(
             identifier: nil,
-            previewProvider: nil) {[weak self] _ in
+            previewProvider: nil) { [weak self] _ in
                 let downloadAction = UIAction(title: "Download", subtitle: nil, image: nil, identifier: nil, discoverabilityTitle: nil, state: .off) { _ in
 //                    self?.downloadTitleAt(indexPath: indexPath)
                 }
                 return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [downloadAction])
             }
-        
+
         return config
     }
     
@@ -292,31 +330,46 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch self.currentCell {
         case .music:
-            return CGSize(width: 250.0, height: 55.0)
+            let numberOfColumn: CGFloat = 3
+            let spacing: CGFloat = 10.0 // mininteritemspacing
+            let availableWidth = screen_width - spacing * (numberOfColumn - 1)
+            return CGSize(width: availableWidth, height: 55.0)
         case .cardCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
         case .upcomingCell:
-            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 215.0)
-
+            return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: 125.0)
         case .liveClassesCell, .pastLive:
             return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
-            
-        case .favoritesCell, .newSuperSheCell:
+        case .favoritesCell:
             return CGSize(width: ClassInitalLayoutConstants.collUpcomingCellWidth, height: collectionView.bounds.height)
-            
+        case .newSuperSheCell:
+            return CGSize(width: ClassInitalLayoutConstants.collLiveCellWidth, height: collectionView.bounds.height)
+//            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
+//            print("newSuperSheCell_sizeforitem:-\(cardCollectionView.frame.size.width - inset / 2)")
+//            return CGSize(width: cardCollectionView.frame.size.width - inset / 2, height: cardCollectionView.bounds.height)
         case .mostLovedClassesCell:
             return CGSize(width: ClassInitalLayoutConstants.mostLovedHomeCollCellWidth, height: collectionView.bounds.height)
-            
         case .featuredCell:
-            return CGSize(width: collectionView.bounds.width - 10, height: collectionView.bounds.height)
-        case .categories:
+            let numberOfColumn: CGFloat = 2
+            let spacing: CGFloat = 10.0 // mininteritemspacing
+            let availableWidth = screen_width - spacing * (numberOfColumn - 1)
+            return CGSize(width: availableWidth, height: collectionView.bounds.height)
+        case .video:
+            return CGSize.zero
+        case .categories,.businessCategories:
+//            return CGSize(width: cardCollectionView.bounds.height, height: cardCollectionView.bounds.height)
             return cardSizeForCategoriesItemAt(collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
     }
     
     private func cardSizeForCategoriesItemAt(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath: IndexPath) -> CGSize {
+//        if let cardData =  superYouData?.categories, self.shimmerStatus == .applied {
+//            let dataSource = cardData[indexPath.item].primaryTag
+//            let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
+//            return CGSize(width: textSize.width + 50.0, height: 40.0)
+//        }
         if let cardData =  superYouData?.categories, self.shimmerStatus == .applied {
-            let dataSource = cardData[indexPath.item].primaryTag
+            let dataSource = cardData[indexPath.item].name + " \(indexPath.item)"
             let textSize = "\(dataSource)".sizeCount(withFont: AppFonts.BoldItalic.withSize(12.0), boundingSize: CGSize(width: 10000.0, height: 40.0))
             return CGSize(width: textSize.width + 50.0, height: 40.0)
         }
@@ -329,6 +382,10 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
             return 9.0
         case .featuredCell:
             return 0.0
+        case .newSuperSheCell:
+            return 9.0
+        case .categories,.businessCategories:
+            return 0.0
         default : // .cardCell, .liveClassesCell, .mostLovedClassesCell, .newSuperSheCell, .whatsNewCell, .yourClassesCell, .savedClassesCell
             return 9.0
         }
@@ -338,7 +395,11 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         switch self.currentCell {
         case .featuredCell:
             return 10.0
-        case .cardCell:
+        case .music:
+            return 10.0
+        case .newSuperSheCell:
+            return 10.0
+        case .categories,.businessCategories:
             return 0.0
         default:
             return 10.0
@@ -350,7 +411,8 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         var paddingInset: CGFloat = 0.0
         
         switch self.currentCell {
-            
+        case .liveClassesCell:
+            paddingInset = 9.0
         case .mostLovedClassesCell:
             paddingInset = 9.0
             
@@ -360,11 +422,20 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         case .cardCell:
             paddingInset = 9.0
             
-        case .favoritesCell, .newSuperSheCell:
+        case .favoritesCell:
             paddingInset = 9.0
             
-        case .categories:
+        case .newSuperSheCell:
+//            let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: layoutt, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
+//            paddingInset =  inset/4
+//            print("newSuperSheCell_paddingInset:-\(paddingInset)")
+            paddingInset = 0.0
+        case .categories,.businessCategories:
             paddingInset = 9.0
+        case .upcomingCell:
+            paddingInset = 9.0
+        case .music:
+            paddingInset = 0.0
         default:
             paddingInset = 0.0
             //whatsNewCell, superPowers, yourClassesCell, newSuperSheCell, savedClassesCell, upcomingCell, favoritesCell, talksCell,
@@ -378,7 +449,21 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.manageScroll(scrollView)
+//        self.manageScroll(scrollView)
+        if scrollView === self.cardCollectionView {
+            switch self.currentCell{
+//            case .newSuperSheCell:
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
+            case .featuredCell:
+                let offset = scrollView.contentOffset
+                let page = offset.x / self.bounds.width
+                self.pageControl.currentPage = Int(page)
+                self.currentItem = Int(page)
+            default:
+                print("")
+            }
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -389,209 +474,446 @@ extension SuperViewCardTableViewCell: UICollectionViewDelegate, UICollectionView
         self.manageScroll(scrollView)
     }
     
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        guard self.shimmerStatus == .applied else { return }
+//        if scrollView === self.cardCollectionView {
+//            switch self.currentCell{
+//            case .music:
+//                let layout = self.cardCollectionView.collectionViewLayout
+//                let bounds = scrollView.bounds
+//                let xTarget = targetContentOffset.pointee.x
+//                // This is the max contentOffset.x to allow. With this as contentOffset.x, the right edge of the last column of cells is at the right edge of the collection view's frame.
+//                let xMax = scrollView.contentSize.width - scrollView.bounds.width
+//                if abs(velocity.x) <= snapToMostVisibleColumnVelocityThreshold {
+//                    let xCenter = scrollView.bounds.midX
+//                    let poses = layout.layoutAttributesForElements(in: bounds) ?? []
+//                    // Find the column whose center is closest to the collection view's visible rect's center.
+//                    let x = poses.min(by: { abs($0.center.x - xCenter) < abs($1.center.x - xCenter) })?.frame.origin.x ?? 0
+//                    targetContentOffset.pointee.x = x
+//                } else if velocity.x > 0 {
+//                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+//                    // Find the leftmost column beyond the current position.
+//                    let xCurrent = scrollView.contentOffset.x
+//                    let x = poses.filter({ $0.frame.origin.x > xCurrent}).min(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? xMax
+//                    targetContentOffset.pointee.x = min(x, xMax)
+//                } else {
+//                    let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget - bounds.size.width, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
+//                    // Find the rightmost column.
+//                    let x = poses.max(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? 0
+//                    targetContentOffset.pointee.x = max(x, 0)
+//                }
+//            case .newSuperSheCell:
+//                //Stop scrollView sliding:
+//                targetContentOffset.pointee = scrollView.contentOffset
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                handleDraggingWillEndForScrollView(scrollView, inside: layoutt, withVelocity: velocity, usingIndexOfMajorCell: indexOfMajorCell)
+//            default:
+//                print("")
+//            }
+//        }
+//    }
+   
+
     func manageScroll(_ scrollView: UIScrollView) {
         if scrollView === self.cardCollectionView {
-            guard self.currentCell == .featuredCell  else { return }
-            let offset = scrollView.contentOffset
-            let page = offset.x / self.bounds.width
-            self.pageControl.currentPage = Int(page)
-            self.currentItem = Int(page)
+            switch self.currentCell{
+//            case .newSuperSheCell:
+//                let indexOfMajorCell = indexOfMajorCell(in: layoutt)
+//                   setIndexOfCellBeforeStartingDragging(indexOfMajorCell: indexOfMajorCell)
+            case .featuredCell:
+                let offset = scrollView.contentOffset
+                let page = offset.x / self.bounds.width
+                self.pageControl.currentPage = Int(page)
+                self.currentItem = Int(page)
+            case .categories:
+//                let contentSizeWidth = self.cardCollectionView.contentSize.width/2
+                print("self.cardCollectionView.contentSize.width\(self.cardCollectionView.contentSize.width)")
+//                self.cardCollectionView.contentSize.width = 1800.0
+            default:
+                
+                print("")
+            }
         }
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        guard self.currentCell == .music else { return }
-        
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        let bounds = scrollView.bounds
-        let xTarget = targetContentOffset.pointee.x
-        
-        // This is the max contentOffset.x to allow. With this as contentOffset.x, the right edge of the last column of cells is at the right edge of the collection view's frame.
-        let xMax = scrollView.contentSize.width - scrollView.bounds.width
-        
-        if abs(velocity.x) <= snapToMostVisibleColumnVelocityThreshold {
-            let xCenter = scrollView.bounds.midX
-            let poses = layout.layoutAttributesForElements(in: bounds) ?? []
-            // Find the column whose center is closest to the collection view's visible rect's center.
-            let x = poses.min(by: { abs($0.center.x - xCenter) < abs($1.center.x - xCenter) })?.frame.origin.x ?? 0
-            targetContentOffset.pointee.x = x
-        } else if velocity.x > 0 {
-            let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
-            // Find the leftmost column beyond the current position.
-            let xCurrent = scrollView.contentOffset.x
-            let x = poses.filter({ $0.frame.origin.x > xCurrent}).min(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? xMax
-            targetContentOffset.pointee.x = min(x, xMax)
-        } else {
-            let poses = layout.layoutAttributesForElements(in: CGRect(x: xTarget - bounds.size.width, y: 0, width: bounds.size.width, height: bounds.size.height)) ?? []
-            // Find the rightmost column.
-            let x = poses.max(by: { $0.center.x < $1.center.x })?.frame.origin.x ?? 0
-            targetContentOffset.pointee.x = max(x, 0)
-        }
-    }
-    
+   
     func flowLayoutSetup() {
-//        if self.currentCell == .categories {
-//            let layout: UICollectionViewFlowLayout = LeftAlignedCollectionViewFlowLayout()
-////            itemWidth = UIScreen.main.bounds.width - 36
-//            layout.scrollDirection = .horizontal
-//            cardCollectionView.collectionViewLayout = layout
-//            cardCollectionView?.decelerationRate = UIScrollView.DecelerationRate.normal
-//        }
-//        else {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            self.cardCollectionView.collectionViewLayout = layout
-//        }
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        self.cardCollectionView.collectionViewLayout = layout
     }
     
 }
 
 
-// MARK: - UICollectionViewFlowLayout
+// MARK: -  LeftAlignedVerticalCollectionViewFlowLayout
 //===========================
-public class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        let attributes = super.layoutAttributesForElements(in: rect)
-        
-        var leftMargin = sectionInset.left
-        var maxY: CGFloat = -1.0
-        attributes?.forEach { layoutAttribute in
-            if layoutAttribute.frame.origin.y >= maxY {
-                leftMargin = sectionInset.left
-            }
-            layoutAttribute.frame.origin.x = leftMargin
-            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-            maxY = max(layoutAttribute.frame.maxY , maxY)
-        }
-        
-        return attributes
-    }
-}
+//public class LeftAlignedVerticalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+//
+//    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//        let attributes = super.layoutAttributesForElements(in: rect)
+//
+//        var leftMargin = sectionInset.left
+//        var maxY: CGFloat = -1.0
+//        attributes?.forEach { layoutAttribute in
+//            if layoutAttribute.frame.origin.y >= maxY {
+//                leftMargin = sectionInset.left
+//            }
+//            layoutAttribute.frame.origin.x = leftMargin
+//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+//            maxY = max(layoutAttribute.frame.maxY , maxY)
+//        }
+//
+//        return attributes
+//    }
+//}
 
 
-class DynamicHeightCollectionView: UICollectionView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if bounds.size != intrinsicContentSize {
-            self.invalidateIntrinsicContentSize()
-        }
-    }
-    override var intrinsicContentSize: CGSize {
-        return collectionViewLayout.collectionViewContentSize
-    }
-}
+//class DynamicHeightCollectionView: UICollectionView {
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        if bounds.size != intrinsicContentSize {
+//            self.invalidateIntrinsicContentSize()
+//        }
+//    }
+//    override var intrinsicContentSize: CGSize {
+//        return collectionViewLayout.collectionViewContentSize
+//    }
+//}
 
 
-protocol PinterestLayoutDelegate {
-   func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
-}
+//protocol PinterestLayoutDelegate {
+//   func collectionView(collectionView: UICollectionView, heightForPhotoAt indexPath: IndexPath, with width: CGFloat) -> CGFloat
+//}
 
-class PinterestLayout: UICollectionViewLayout {
+//class PinterestLayout: UICollectionViewLayout {
+//
+//   var delegate: PinterestLayoutDelegate?
+//
+//   var controller: SuperYouHomeVC?
+//   var numberOfColumns: CGFloat = 2
+//   var cellPadding: CGFloat = 5.0
+//
+//   private var contentHeight: CGFloat = 0.0
+//   private var contentWidth: CGFloat {
+//      let insets = collectionView!.contentInset
+//      return (collectionView!.bounds.width - (insets.left + insets.right))
+//   }
+//
+//   private var attributesCache = [PinterestLayoutAttributes]()
+//
+//   override func prepare() {
+//      if attributesCache.isEmpty {
+//         let columnWidth = contentWidth / numberOfColumns
+//         var xOffsets = [CGFloat]()
+//         for column in 0 ..< Int(numberOfColumns) {
+//            xOffsets.append(CGFloat(column) * columnWidth)
+//         }
+//
+//         var column = 0
+//         var yOffsets = [CGFloat](repeating: 0, count: Int(numberOfColumns))
+//
+//         for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
+//            let indexPath = IndexPath(item: item, section: 0)
+//
+//             let width = columnWidth - cellPadding * 2
+//
+//            // Calculate the frame
+//             let photoHeight: CGFloat = Double.random(in: 220...400)
+////             (delegate?.collectionView(collectionView: collectionView!, heightForPhotoAt: indexPath, with: width))!
+//
+//
+//            let height = cellPadding + photoHeight + cellPadding
+//            let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
+//            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+//
+//            // Create layout attributes
+//            let attributes = PinterestLayoutAttributes(forCellWith: indexPath)
+//            attributes.photoHeight = photoHeight
+//            attributes.frame = insetFrame
+//            attributesCache.append(attributes)
+//
+//            // Update column, yOffest
+//            contentHeight = max(contentHeight, frame.maxY)
+//            yOffsets[column] = yOffsets[column] + height
+//
+//            if column >= Int(numberOfColumns - 1) {
+//               column = 0
+//            } else {
+//               column += 1
+//            }
+//         }
+//      }
+//   }
+//
+//   override var collectionViewContentSize: CGSize {
+//      return CGSize(width: contentWidth, height: contentHeight)
+//   }
+//
+//   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//      var layoutAttributes = [UICollectionViewLayoutAttributes]()
+//
+//      for attributes in attributesCache {
+//         if attributes.frame.intersects(rect) {
+//            layoutAttributes.append(attributes)
+//         }
+//      }
+//
+//      return layoutAttributes
+//   }
+//
+//}
 
-   var delegate: PinterestLayoutDelegate?
+//MARK: - Two column only collectionViewFlowLayout
+//func createLayout() -> UICollectionViewLayout {
+//    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+//                                          heightDimension: .fractionalHeight(1.0))
+//    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+//                                           heightDimension: .absolute(44))
+//    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+//    let spacing = CGFloat(10)
+//    group.interItemSpacing = .fixed(spacing)
+//    let section = NSCollectionLayoutSection(group: group)
+//    section.interGroupSpacing = spacing
+//    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+//    let layout = UICollectionViewCompositionalLayout(section: section)
+//    return layout
+//}
 
-   var controller: SuperYouHomeVC?
-   var numberOfColumns: CGFloat = 2
-   var cellPadding: CGFloat = 5.0
+//private func createLayoutt() -> UICollectionViewLayout {
+//  let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+//
+//    guard let sectionKind = SectionKind(rawValue: sectionIndex) else { return nil }
+//
+//      let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(180.0), heightDimension: .absolute(44))
+//    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//    let itemSpacing: CGFloat = 10
+//      item.contentInsets = NSDirectionalEdgeInsets(top: 2.5, leading: itemSpacing, bottom: 2.5, trailing: itemSpacing)
+//
+//    let innerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
+//    let innerGroup = NSCollectionLayoutGroup.vertical(layoutSize: innerGroupSize, subitem: item, count: sectionKind.itemCount)
+//
+//      let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1.0))
+//    let nestedGroup = NSCollectionLayoutGroup.horizontal(layoutSize: nestedGroupSize, subitems: [innerGroup])
+//
+//    let section = NSCollectionLayoutSection(group: nestedGroup)
+////    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0)
+//    section.interGroupSpacing = 20
+//    section.orthogonalScrollingBehavior = sectionKind.orthogonalBehaviour
+//    return section
+//  }
+//  return layout
+//}
 
-   private var contentHeight: CGFloat = 0.0
-   private var contentWidth: CGFloat {
-      let insets = collectionView!.contentInset
-      return (collectionView!.bounds.width - (insets.left + insets.right))
-   }
+//private func createLayoutt1()-> UICollectionViewLayout{
+//    let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+//
+//        let layoutSize = NSCollectionLayoutSize(
+//            widthDimension: .estimated(100),
+//            heightDimension: .absolute(44)
+//        )
+//
+//        let group = NSCollectionLayoutGroup.horizontal(
+//            layoutSize: .init(
+//                widthDimension: .fractionalWidth(1.0),
+//                heightDimension: layoutSize.heightDimension
+//            ),
+//            subitems: [.init(layoutSize: layoutSize)]
+//        )
+//        group.interItemSpacing = .fixed(8)
+//
+//        let section = NSCollectionLayoutSection(group: group)
+//        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+//        section.interGroupSpacing = 8
+//
+//        return .init(section)
+//    }
+//    return layout
+//}
 
-   private var attributesCache = [PinterestLayoutAttributes]()
-
-   override func prepare() {
-      if attributesCache.isEmpty {
-         let columnWidth = contentWidth / numberOfColumns
-         var xOffsets = [CGFloat]()
-         for column in 0 ..< Int(numberOfColumns) {
-            xOffsets.append(CGFloat(column) * columnWidth)
-         }
-
-         var column = 0
-         var yOffsets = [CGFloat](repeating: 0, count: Int(numberOfColumns))
-
-         for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
-            let indexPath = IndexPath(item: item, section: 0)
-
-             let width = columnWidth - cellPadding * 2
-
-            // Calculate the frame
-             let photoHeight: CGFloat = Double.random(in: 220...400)
-//             (delegate?.collectionView(collectionView: collectionView!, heightForPhotoAt: indexPath, with: width))!
-
-
-            let height = cellPadding + photoHeight + cellPadding
-            let frame = CGRect(x: xOffsets[column], y: yOffsets[column], width: columnWidth, height: height)
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-
-            // Create layout attributes
-            let attributes = PinterestLayoutAttributes(forCellWith: indexPath)
-            attributes.photoHeight = photoHeight
-            attributes.frame = insetFrame
-            attributesCache.append(attributes)
-
-            // Update column, yOffest
-            contentHeight = max(contentHeight, frame.maxY)
-            yOffsets[column] = yOffsets[column] + height
-
-            if column >= Int(numberOfColumns - 1) {
-               column = 0
-            } else {
-               column += 1
-            }
-         }
-      }
-   }
-
-   override var collectionViewContentSize: CGSize {
-      return CGSize(width: contentWidth, height: contentHeight)
-   }
-
-   override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-      var layoutAttributes = [UICollectionViewLayoutAttributes]()
-
-      for attributes in attributesCache {
-         if attributes.frame.intersects(rect) {
-            layoutAttributes.append(attributes)
-         }
-      }
-
-      return layoutAttributes
-   }
-
-}
-
-class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
-   var photoHeight: CGFloat = 0.0
-
-   override func copy(with zone: NSZone? = nil) -> Any {
-      let copy = super.copy(with: zone) as! PinterestLayoutAttributes
-      copy.photoHeight = photoHeight
-      return copy
-   }
-
-   override func isEqual(_ object: Any?) -> Bool {
-      if let attributes = object as? PinterestLayoutAttributes {
-         if attributes.photoHeight == photoHeight {
-            return super.isEqual(object)
-         }
-      }
-
-      return false
-   }
-}
+//class PinterestLayoutAttributes : UICollectionViewLayoutAttributes {
+//   var photoHeight: CGFloat = 0.0
+//
+//   override func copy(with zone: NSZone? = nil) -> Any {
+//      let copy = super.copy(with: zone) as! PinterestLayoutAttributes
+//      copy.photoHeight = photoHeight
+//      return copy
+//   }
+//
+//   override func isEqual(_ object: Any?) -> Bool {
+//      if let attributes = object as? PinterestLayoutAttributes {
+//         if attributes.photoHeight == photoHeight {
+//            return super.isEqual(object)
+//         }
+//      }
+//
+//      return false
+//   }
+//}
 
 
 extension SuperViewCardTableViewCell: EmptyStateViewDelegate{
     func loginAction(){
-        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
     func learnHowAction(){
-        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.getNewsListing()
+        (self.parentViewController as? SuperYouHomeVC)?.viewModel.superYouData?.dataMappingInModel(jsonArr: [])
     }
 }
+//// MARK: - LeftAlignedHorizontalCollectionViewFlowLayout
+class LeftAlignedHorizontalCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
+    required override init() {super.init(); common()}
+    required init?(coder aDecoder: NSCoder) {super.init(coder: aDecoder); common()}
+    
+    private func common() {
+        scrollDirection = .horizontal
+//        estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        minimumLineSpacing = 10
+//        minimumInteritemSpacing = 9
+    }
+    
+    override func layoutAttributesForElements(
+        in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+            
+            guard let att = super.layoutAttributesForElements(in: rect) else {return []}
+            
+            let group = att.group(by: {$0.frame.origin.y})
+            print("group:-\(group)")
+            var x: CGFloat = sectionInset.left
+            
+            for attr in group {
+                print("attr:-\(attr)")
+                x = sectionInset.left
+                for (_,a) in attr.enumerated() {
+                    if a.representedElementCategory != .cell { continue }
+                    a.frame.origin.x = x
+                    x += a.frame.width + minimumInteritemSpacing
+                }
+            }
+            return att
+        }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+}
+
+extension Array {
+    func group<T: Hashable>(by key: (_ element: Element) -> T) -> [[Element]] {
+        var categories: [T: [Element]] = [:]
+        var groups = [[Element]]()
+        for element in self {
+            let key = key(element)
+            if case nil = categories[key]?.append(element) {
+                categories[key] = [element]
+            }
+        }
+        categories.keys.forEach { key in
+            if let group = categories[key] {
+                groups.append(group)
+            }
+        }
+        return groups
+    }
+}
+
+
+//extension SuperViewCardTableViewCell{
+//    //Setting the inset
+//   func calculateSectionInset(forCollectionViewLayout collectionViewLayout: UICollectionViewFlowLayout, numberOfCells: Int) -> CGFloat {
+//       let inset = (cardCollectionView.frame.width) / CGFloat(5)
+//       return inset
+//   }
+//
+//    func configureCollectionViewLayoutItemSize(forCollectionViewLayout collectionViewLayout: UICollectionViewFlowLayout) {
+//        guard self.currentCell == .newSuperSheCell else {return}
+//        let inset: CGFloat = calculateSectionInset(forCollectionViewLayout: collectionViewLayout, numberOfCells:  self.superYouData?.newSuperShesArr.count ?? 0)
+//        layoutt.sectionInset = UIEdgeInsets(top: 0, left: inset/4, bottom: 0, right: inset/4)
+//
+//        layoutt.itemSize = CGSize(width: cardCollectionView.frame.size.width - inset / 2, height: cardCollectionView.frame.size.height)
+//        layoutt.collectionView?.reloadData()
+//        self.cardCollectionView.collectionViewLayout = layoutt
+//    }
+//
+//    //Getting the index of the major cell
+//    func indexOfMajorCell(in collectionViewLayout: UICollectionViewFlowLayout) -> Int {
+//        let itemWidth = collectionViewLayout.itemSize.width
+//        let proportionalLayout = collectionViewLayout.collectionView!.contentOffset.x / itemWidth
+//        return Int(round(proportionalLayout))
+//    }
+//
+//    func setIndexOfCellBeforeStartingDragging(indexOfMajorCell: Int) {
+//        indexOfCellBeforeDragging = indexOfMajorCell
+//    }
+//
+//    Handling dragging end of a scroll view
+//  func handleDraggingWillEndForScrollView(_ scrollView: UIScrollView, inside collectionViewLayout: UICollectionViewFlowLayout, withVelocity velocity: CGPoint, usingIndexOfMajorCell indexOfMajorCell: Int) {
+//
+//      //Calculating where scroll view should snap
+//      let indexOfMajorCell = indexOfMajorCell
+//
+//      let swipeVelocityThreshold: CGFloat = 0.5
+//
+//      let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
+//      let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < 5 && velocity.x > swipeVelocityThreshold
+//      let hasEnoughVelocityToSlideToThePreviousCell = ((indexOfCellBeforeDragging - 1) >= 0) && (velocity.x < -swipeVelocityThreshold)
+//
+//      let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
+//
+//      if didUseSwipeToSkipCell {
+//
+//          let snapToIndex = indexOfCellBeforeDragging + (hasEnoughVelocityToSlideToTheNextCell ? 1 : -1)
+//          let toValue = collectionViewLayout.itemSize.width * CGFloat(snapToIndex)
+//
+//          // Damping equal 1 => no oscillations => decay animation
+//          UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
+//              scrollView.contentOffset = CGPoint(x: toValue, y: 0)
+//              scrollView.layoutIfNeeded()
+//          }, completion: nil)
+//
+//      } else {
+//          let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+//          layoutt.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+//      }
+//  }
+//}
+
+
+enum SectionKind: Int, CaseIterable {
+  case first
+  case second
+  case third
+
+  var itemCount: Int {
+    switch self {
+    case .first:
+      return 2
+    default:
+      return 1
+    }
+  }
+
+  var innerGroupHeight: NSCollectionLayoutDimension {
+    switch self {
+    case .first:
+        return .fractionalWidth(0.3)
+    default:
+      return .fractionalWidth(0.45)
+    }
+  }
+
+  var orthogonalBehaviour: UICollectionLayoutSectionOrthogonalScrollingBehavior {
+    switch self {
+    case .first:
+      return .continuous
+    case .second:
+      return .groupPaging
+    case .third:
+      return .groupPagingCentered
+    }
+  }
+}
+
+

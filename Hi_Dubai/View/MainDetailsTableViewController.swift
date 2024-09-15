@@ -14,8 +14,6 @@ import Foundation
     @IBOutlet weak var tabContainer: UIView!
     @IBOutlet weak var tabContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var  fakeNavBar: UIImageView!
-    @IBOutlet weak var fakeNavBarHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -24,30 +22,21 @@ import Foundation
     override func viewDidLoad() {
         super.viewDidLoad()
         super.navbar = navBar
-        var topPaddingRef: CGFloat = 0.0
-        if #available(iOS 13.0, *) {
-            let window = UIApplication.shared.windows.first
-            if let topPadding = window?.safeAreaInsets.top{
-                topPaddingRef = topPadding + 0.0
-                navBarTopConstraint.constant = topPaddingRef
-                fakeNavBarHeightConstraint.constant = topPaddingRef + self.navBar.height //44 is nav bar height
-                fakeNavBar.layoutIfNeeded()
-                navBar.layoutIfNeeded()
-            }
-        }
-//        tabContainerHeightConstraint.constant = UIScreen.main.bounds.size.height - 52 - 49 - bottomoffset - topoffset
-           view.layoutIfNeeded()
-        setUIObjectsScrollView(scrollView: scrollView, tabContainer: tabContainer, heightConstraint: tabContainerHeightConstraint, fakeNavBar: fakeNavBar, titleLabel: titleLabel)
-        scrollView.isScrollEnabled = false
-
-        // Do any additional setup after loading the view.
+        self.navigationItem.hidesBackButton = false
+        UINavigationBar.appearance().tintColor = UIColor.white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainImgView.setImageFromUrl(ImageURL: self.newsModel?.postImageURL ?? "")
+        view.layoutIfNeeded()
+        setUIObjectsScrollView(scrollView: scrollView, tabContainer: tabContainer, heightConstraint: tabContainerHeightConstraint, fakeNavBar: fakeNavBar, titleLabel: titleLabel)
+        scrollView.isScrollEnabled = false
     }
     
+    @IBAction func backBtnAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -55,8 +44,6 @@ import Foundation
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //        parent?.navigationController?.isNavigationBarHidden = false
-        //        navigationController?.isNavigationBarHidden = false
     }
 }
 

@@ -16,6 +16,7 @@ import UIKit
     private var pages: [UIViewController]?
     private var page1: PresentationHeaderViewController?
     private var page2: UserInfoHeaderViewController?
+    internal var headerView: ArtistHeaderView?
     private var entered = false
     
     
@@ -88,7 +89,8 @@ import UIKit
         if let vc = pages?.firstIndex(of: pageContentView) {
             (parent as? MainDetailsTableViewController)?.pageControl.currentPage = vc
         }
-        
-        
+        if let vc = pages?.firstIndex(of: pageContentView) {
+            headerView?.pageControl.currentPage = vc
+        }
     }
 }

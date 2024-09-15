@@ -142,22 +142,22 @@ class HotelFilterVC: BaseVC {
         
         for i in 0..<allTabsStr.count{
             if i == 1 {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             } else if i == 2 {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             } else if i == 3 {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             } else if i == 4 {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             } else if i == 5 {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             } else {
-                let vc = NewsListVC.instantiate(fromAppStoryboard: .Main)
+                let vc = RecentSearchVC.instantiate(fromAppStoryboard: .Main)
                 self.allChildVCs.append(vc)
             }
         }

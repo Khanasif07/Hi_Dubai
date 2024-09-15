@@ -15,31 +15,43 @@ protocol LocateOnTheMap: NSObject {
     func locateWithLatLong(lon: String, andLatitude lat: String, andAddress address: String)
 }
 
+//MARK:- Enums-
+enum CurrentlyUsingFor {
+    case places,supershes,searchMovie, categories
+}
+
 class PlacesAndSuperShesView: UIView {
     
-    //MARK:- Enums-
-    enum CurrentlyUsingFor {
-        case places,supershes
-    }
+    var searchValue: String = ""
+    lazy var viewModel = {
+        NewsListViewModel()
+    }()
     
     //MARK:- Variables
     //MARK:===========
-    internal var screenUsingFor: CurrentlyUsingFor = .places
+    let maxCountForViewMore: Int = 11
+    var lastContentOffset: CGFloat = 0.0
+    var hiddenSections = Array<(Int,Bool)>()
+    var headerView = CategoryHeaderView.instanciateFromNib()
+    
+    internal var screenUsingFor: CurrentlyUsingFor = .categories{
+        willSet(newValue){
+            self.screenUsingFor = newValue
+        }
+        didSet{
+            configUI()
+            self.viewModel.searchValue = ""
+        }
+    }
     internal weak var deleagte: PlacesAndSuperShesViewDelegate?
     
-//    internal var viewModel = PlacesAndSuperShesVM()
-    
-//    var lastPage = -1
-    private var placesArray: [String] = []
-    
+    internal var isScrollEnabled: Bool = false{
+        didSet{
+            self.dataTableView.isScrollEnabled = isScrollEnabled
+        }
+    }
     private var lat: String?
     private var long: String?
-    private var addressDetails: String?
-    internal var placeIDArray = [String]()
-    internal var resultsArray = [String]()
-    internal var primaryAddressArray = [String]()
-    internal var searchResults = [String]()
-    internal var searhPlacesName = [String]()
     internal weak var locationDelegate: LocateOnTheMap?
     internal var currentShimmerStatus: ShimmerState = .applied
     
@@ -47,13 +59,36 @@ class PlacesAndSuperShesView: UIView {
     //MARK:===========
     @IBOutlet weak var dataTableView: UITableView! {
         didSet {
+            self.dataTableView.backgroundColor = .clear
             self.dataTableView.sectionHeaderHeight          = 0.0//CGFloat.zero
             self.dataTableView.sectionFooterHeight          = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionHeaderHeight = 0.0//CGFloat.zero
             self.dataTableView.estimatedSectionFooterHeight = 0.0//CGFloat.zero
+            //
+            self.dataTableView.isScrollEnabled = isScrollEnabled
         }
     }
     
+    private func footerSetup(){
+        let footerView = UIView()
+        footerView.frame = CGRect(x: 0, y: 0, width: Int(screen_width), height: Int(90.0))
+        footerView.backgroundColor = .clear
+        dataTableView.tableFooterView = footerView
+    }
+    
+    private func headerSetup(showSearchCount: Bool = false){
+        if showSearchCount{
+            headerView.searchResultCountLbl.isHidden = false
+            let resultCount = self.viewModel.categories.reduce(0) { $0 + ($1.children?.count ?? 0) }
+            headerView.searchResultCountLbl.text = "\(resultCount) results found"
+            dataTableView.tableHeaderView?.height = 109.0
+        }else{
+            headerView.searchResultCountLbl.isHidden = true
+            headerView.searchTxtFld.delegate = self
+            dataTableView.tableHeaderView = headerView
+            dataTableView.tableHeaderView?.height = 85.0
+        }
+    }
     //MARK:- LifeCycle
     //MARK:===========
     //MARK:- LifeCycle -
@@ -75,298 +110,551 @@ class PlacesAndSuperShesView: UIView {
         let nib = UINib(nibName: "PlacesAndSuperShesView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.addSubview(view)
-        self.configUI()
+//        self.configUI()
     }
     
     private func configUI() {
-//        self.viewModel.delegate = self
+        self.dataTableView.registerCell(with: ViewMoreTableViewCell.self)
+        self.dataTableView.registerCell(with: TitleTableViewLastCell.self)
+        self.dataTableView.registerCell(with: LoaderCell.self)
+        self.dataTableView.registerCell(with: TitleTableViewCell.self)
         self.dataTableView.registerCell(with: PlacesAndSuperShesViewTableViewCell.self)
-//        self.dataTableView.registerCell(with: PlacesTableViewCell.self)
+        self.dataTableView.registerHeaderFooter(with: CategoriesSectionView.self)
         self.dataTableView.delegate = self
         self.dataTableView.dataSource = self
+        self.viewModel.delegate = self
+        if screenUsingFor != .categories {
+            self.footerSetup()
+//            self.viewModel.searchValue = ""
+        }else{
+            self.viewModel.getCategoriesListing()
+            self.headerSetup()
+            if #available(iOS 15.0, *) {
+                self.dataTableView.sectionHeaderTopPadding = 10.0
+            }
+        }
     }
     
-//    internal func hitApi(text: String, page: Int? = nil) {
-////        if self.currentShimmerStatus == .toBeApply {
-////            self.viewModel.dataModel.data = []
-////            self.shimmerSetUp()
-////        }
-//
-////        if !self.viewModel.didTapCluster {
-////            self.viewModel.clusterLat = 0.0
-////            self.viewModel.clusterLong = 0.0
-////            self.viewModel.didTapCluster = false
-////        }
-//
-//        if self.currentShimmerStatus == .toBeApply {
-////            delay(delay: 0.25) { [weak self] in
-////                self?.getData(text: text, page: 0)
-////            }
-//        }
-//        else {
-////            if self.viewModel.lastPage == -1 {
-////                self.getData(text: text, page: 0)
-////            } else {
-////                self.getData(text: text, page: page)
-////            }
-//        }
-//    }
-    
-//    public func getData(text: String, page: Int?) {
-//        self.viewModel.getSuperShesUsers(text: text, page: page)
-//    }
-    
-//    private func shimmerSetUp() {
-//        self.dataTableView.reloadData()
-//        self.dataTableView.addShimmerOnTableViewWithTotalCells()
-//    }
-    
-    
-//    internal func emptyStateForPlaces() {
-//        if self.screenUsingFor == .places, self.resultsArray.count == 0 {
-//            self.layoutIfNeeded()
-//            self.dataTableView.setEmptyMessage("", heading: "Search Places".uppercased(), image: #imageLiteral(resourceName: "group16"), textColor: AppColors.superWhite, headingColor:  AppColors.superWhite, imageWidth: 127.0, imageHeight:  100.0, isScreenSpecific: true)
-//        }
-//    }
-    
-    //function for autocomplete
-//    internal func placeAutocompleteApi(placeName: String) {
-//        let filter = GMSAutocompleteFilter()
-//        let placesClient = GMSPlacesClient()
-//        filter.type = .establishment
-//
-//        placesClient.autocompleteQuery(placeName, bounds: nil, filter: filter) { [weak self] (results, error) -> Void in
-//            guard let sSelf = self else { return }
-//            sSelf.placeIDArray.removeAll() //array that stores the place ID
-//            sSelf.resultsArray.removeAll() // array that stores the results obtained
-//            sSelf.primaryAddressArray.removeAll() //array storing the primary address of the place.
-//            if let error = error {
-//                sSelf.emptyStateForPlaces()
-//                printDebug("Autocomplete error \(error)")
-//                return
-//            }
-//            if let results = results {
-//                for result in results {
-//                    sSelf.primaryAddressArray.append(result.attributedPrimaryText.string)
-//                    sSelf.resultsArray.append(result.attributedFullText.string)
-//                    sSelf.primaryAddressArray.append(result.attributedPrimaryText.string)
-//                    sSelf.placeIDArray.append(result.placeID)
-//                }
-//            }
-//            if sSelf.screenUsingFor == .places {
-//                sSelf.dataTableView.restore()
-//            }
-//            printDebug("\(sSelf.resultsArray)\n\(sSelf.primaryAddressArray)\n\(sSelf.placeIDArray)")
-//            sSelf.searchResults = sSelf.resultsArray
-//            sSelf.searhPlacesName = sSelf.primaryAddressArray
-//            if sSelf.searhPlacesName.count == 0 {
-//                sSelf.emptyStateForPlaces()
-//            }else {
-//                sSelf.dataTableView.restore()
-//            }
-//            sSelf.dataTableView.reloadData()
-//        }
-//    }
-    
-    /// call to clear all place view data
-//    internal func clearSuperSheViewData() {
-//        self.viewModel.dataModel.data.removeAll()
-//
-//        self.currentShimmerStatus = .none
-//        self.dataTableView.reloadData()
-//        self.viewModel.clusterLat = 0.0
-//        self.viewModel.clusterLong = 0.0
-//        self.viewModel.distance = 0.0
-//        self.viewModel.didTapCluster = false
-//        self.dataTableView.reloadData()
-//    }
-    
-    /// call to clear all place view data
-//    internal func clearPlaceViewData() {
-//        self.placeIDArray.removeAll() //array that stores the place ID
-//        self.resultsArray.removeAll() // array that stores the results obtained
-//        self.primaryAddressArray.removeAll() //array storing the primary address of the place.
-//        self.searchResults.removeAll()
-//        self.searhPlacesName.removeAll()
-//        self.dataTableView.reloadData()
-//        self.emptyStateForPlaces()
-//    }
-    
-    
-    //MARK:- IBActions
-    //MARK:===========
+    public func hitApi(_ search: String = ""){
+        switch screenUsingFor{
+        case .places:
+            self.viewModel.getPumpkinListing(page: 1)
+        case .supershes:
+            self.viewModel.getPumpkinListing(page: 1)
+        case .searchMovie:
+            self.viewModel.getMovieListing(page: 1, search: searchValue)
+        case .categories:
+            print("Categories")
+            self.dataTableView.reloadData()
+        }
+    }
 }
 
 //MARK:- Extensions- UITableView Delegate and DataSource
 extension PlacesAndSuperShesView: UITableViewDelegate, UITableViewDataSource {
-    
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch self.screenUsingFor {
+        case .supershes,.places:
+            return 1
+        case .searchMovie:
+            return 1
+        default:
+            return self.viewModel.categories.count
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.screenUsingFor == .supershes {
-            
-            switch self.currentShimmerStatus {
-                
-            case .toBeApply:
-                return 15
-            case .applied:
-                return 15
-            case .none:
-                return 15
+        switch self.screenUsingFor {
+        case .supershes,.places:
+            return self.viewModel.pumkinsData.count + (self.viewModel.showPaginationLoader ?  1 : 0)
+        case .searchMovie:
+            return (self.viewModel.moviesResponse?.results.count ?? 0) + (self.viewModel.showPaginationLoader ?  1 : 0)
+        default:
+            if !self.hiddenSections.contains(where: { hiddenSection in
+                hiddenSection.0 == section
+            }) {
+                return 0
+            }
+            let index  = self.hiddenSections.firstIndex(where: {$0.0 == section})!
+            if ((self.viewModel.categories[section].children?.count ?? 0) > maxCountForViewMore) && !self.hiddenSections[index].1{
+                return maxCountForViewMore
+            }else{
+                return self.viewModel.categories[section].children?.count ?? 0
             }
         }
-        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.screenUsingFor {
-        case .places:
-            let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-//            cell.configureCell(placeName: self.searchResults[indexPath.row])
-            return cell
-        case .supershes:
-//            if indexPath.row == self.viewModel.dataModel.data.count - 1, self.viewModel.lastPage != -1 {
-//                self.currentShimmerStatus = .applied
-//                self.hitApi(text: "", page: nil)
-//            }
-            let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
-//            cell.delegate = self
-//            cell.locationName.isHidden = !self.viewModel.didTapCluster
-//            if self.viewModel.dataModel.data.count > 0, currentShimmerStatus == .applied {
-//                let loc: String = self.viewModel.didTapCluster ? self.viewModel.dataModel.data[indexPath.row].locCity + ", " + self.viewModel.dataModel.data[indexPath.row].locCountry : ""
-//                cell.configureCell(model: self.viewModel.dataModel.data[indexPath.row], location: loc)
-//            }
-            return cell
+        case .places,.supershes:
+            if indexPath.row == (viewModel.pumkinsData.endIndex) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else {
+                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+                cell.buttonTapped = { [weak self] (btn) in
+                    guard let `self` = self else { return }
+                    if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = false
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        self.viewModel.pumkinsData[indexPath.item].isSelected = true
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
+                cell.populatePumpkinCell(self.viewModel.pumkinsData[indexPath.item])
+                return cell
+            }
+        case .searchMovie:
+            if indexPath.row == (self.viewModel.moviesResponse?.results.endIndex ?? 0) {
+                let cell = tableView.dequeueCell(with: LoaderCell.self)
+                return cell
+            }else{
+                let cell = tableView.dequeueCell(with: PlacesAndSuperShesViewTableViewCell.self, indexPath: indexPath)
+                cell.buttonTapped = { [weak self] (btn)  in
+                    guard let `self` = self else { return }
+                    if self.viewModel.moviesResponse?.results[indexPath.item].isSelected ==  true {
+                        self.viewModel.moviesResponse?.results[indexPath.item].isSelected = false
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }else{
+                        self.viewModel.moviesResponse?.results[indexPath.item].isSelected = true
+                        self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                }
+                cell.populateMovieCell(self.viewModel.moviesResponse?.results[indexPath.item])
+                return cell
+            }
+        case .categories:
+            if ((self.viewModel.categories[indexPath.section].children?.count ?? 0) < maxCountForViewMore+1){
+                if (((self.viewModel.categories[indexPath.section].children?.count ?? 0) - 1) == indexPath.row){
+                    let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
+                    return cell
+                }else{
+                    let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
+                    return cell
+                }
+            }else{
+                let index = self.hiddenSections.firstIndex(where: {$0.0 == indexPath.section})
+                if ((maxCountForViewMore-1) == indexPath.row) && !self.hiddenSections[index!].1{
+                    let cell = tableView.dequeueCell(with: ViewMoreTableViewCell.self, indexPath: indexPath)
+                    cell.buttonTapped = { [weak self] (btn) in
+                        guard let `self` = self else { return }
+                        self.hiddenSections[index!].1 = true
+                        let newCount  = getCellCountForSection(sectionn: indexPath.section)
+                        self.dataTableView.reloadRowsInSectionn(section: indexPath.section, oldCount: maxCountForViewMore, newCount: newCount)
+                        self.dataTableView.performBatchUpdates {
+                            let indexes = (0..<self.maxCountForViewMore).map { IndexPath(row: $0, section: indexPath.section) }
+                            self.dataTableView.reloadRows(at: indexes, with: .none)
+                        }
+                        self.dataTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                    }
+                    return cell
+                }else if (((self.viewModel.categories[indexPath.section].children?.count ?? 0) - 1) == indexPath.row) && self.hiddenSections[index!].1{
+                    let cell = tableView.dequeueCell(with: TitleTableViewLastCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
+                    return cell
+                }else{
+                    let cell = tableView.dequeueCell(with: TitleTableViewCell.self, indexPath: indexPath)
+                    cell.titleLbl.text = self.viewModel.categories[indexPath.section].children?[indexPath.row].name?.en ?? ""
+                    return cell
+                }
+            }
+           
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        switch self.screenUsingFor {
-//        case .places:
-//            guard let correctedAddress = self.resultsArray[indexPath.row].addingPercentEncoding(withAllowedCharacters: .symbols) else {
-//                return
-//            }
-//
-//            let urlString =  "https://maps.googleapis.com/maps/api/geocode/json?address=\(correctedAddress)&sensor=false&key=\(AppGlobals.shared.googleApiKey)"
-//
-//            guard let url = URL(string: urlString) else { break }
-//
-//            Alamofire.request(url, method: .get, headers: nil)
-//                .validate()
-//                .responseJSON { (response) in
-//                    switch response.result {
-//                    case.success(let value):
-//                        let json = JSON(value)
-//                        printDebug(json)
-//
-//                        let lat = json["results"][0]["geometry"]["location"]["lat"].rawString()
-//                        let lng = json["results"][0]["geometry"]["location"]["lng"].rawString()
-//                        let formattedAddress = json["results"][0]["formatted_address"].rawString()
-//
-//                        self.lat = lat
-//                        self.long = lng
-//                        self.addressDetails = formattedAddress
-//
-//                        printDebug("\(lat ?? ""),\(lng ?? ""),\(formattedAddress ?? "")")
-//                        self.locationDelegate?.locateWithLatLong(lon: self.long ?? "", andLatitude: self.lat ?? "", andAddress: formattedAddress ?? "")
-//                    case.failure(let error):
-////                        self.emptyStateForPlaces()
-//                        printDebug("\(error.localizedDescription)")
-//                    }
-//            }
-//        case .supershes:
-//            if let cell = tableView.cellForRow(at: indexPath) as? PlacesAndSuperShesViewTableViewCell {
-//                Router.shared.goToUserProfile(userId: self.viewModel.dataModel.data[indexPath.row].id, placeHolderImage: cell.profileImageView?.image, userModel: self.viewModel.dataModel.data[indexPath.row])
-//            }
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch screenUsingFor{
+        case .supershes,.places:
+            if self.viewModel.pumkinsData[indexPath.item].isSelected ==  true {
+                self.viewModel.pumkinsData[indexPath.item].isSelected = false
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }else{
+                self.viewModel.pumkinsData[indexPath.item].isSelected = true
+                self.dataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        case .searchMovie:
+            if let id = self.viewModel.moviesResponse?.results[indexPath.item].id{
+                self.viewModel.getMovieDetail(path: String(id))
+            }
+        case .categories:
+            print("Categories")
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44.5
+        if screenUsingFor != .categories{
+            return 85
+        }else{
+            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+                return UITableView.automaticDimension
+            }else{
+                return 0.0
+            }
+        }
+//        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        if screenUsingFor != .categories{
+            return 85
+        }else{
+            if hiddenSections.contains(where: {$0.0 == indexPath.section}){
+                return UITableView.automaticDimension
+            }else{
+                return 0.0
+            }
+        }
+//        return screenUsingFor != .categories ? 85 : UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if screenUsingFor == .categories {
+            if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CategoriesSectionView") as? CategoriesSectionView {
+                headerView.isRowShow    = !self.hiddenSections.contains(where: {$0.0 == section})
+                headerView.titleLbl.text = self.viewModel.categories[section].name?.en ?? ""
+                //MARK: - ButtonTapped Action...
+                headerView.buttonTapped = { [weak self] (btn) in
+                    guard let `self` = self else { return }
+                    self.hideSection(sender: btn,section: section)
+                    //Responsible for making header plane from rounded when rows are visible
+                    headerView.isRowShow = !self.hiddenSections.contains(where: {$0.0 == section})
+                    //Responsible for roation of arrow icons in section
+                    headerView.arrowIcon.rotate(clockwise: self.hiddenSections.contains(where: {$0.0 == section}))
+                }
+                return headerView
+            }
+            return UIView()
+        }else{
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return (screenUsingFor == .categories) ? 54.0 : CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return  (screenUsingFor == .categories)  ? 54.0 : 0.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch screenUsingFor{
+        case .supershes,.places:
+            if cell as? LoaderCell != nil {
+                if screenUsingFor == .supershes {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                    
+                }else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                        self.viewModel.getPumpkinListing(page: self.viewModel.currentPage,loader: false,pagination: true)
+                    })
+                }
+            }
+        case .searchMovie:
+            if cell as? LoaderCell != nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
+                    self.viewModel.getMovieListing(page: self.viewModel.currentPage,loader: false,pagination: true,search: self.searchValue)
+                })
+            }
+        case .categories:
+            print("Categories")
+        }
+    }
+    
+    private func hideSection(sender: UIButton,section: Int) {
+        //New Logic to update only rows
+        let newCount  = getCellCountForSection(sectionn: section)
+        if self.hiddenSections.contains(where: {$0.0 == section}) {
+            self.hiddenSections.removeAll(where: {$0.0 == section})
+            //New Logic to update only rows
+            self.dataTableView.reloadRowsInSection(section: section, oldCount: newCount, newCount: 0)
+            //Old Logic
+            //            self.dataTableView.beginUpdates()
+            //            self.dataTableView.reloadSections([section], with: .automatic)
+            //            self.dataTableView.endUpdates()
+        } else {
+            if let sectionn = self.hiddenSections.first?.0{
+                if sectionn < self.viewModel.categories.count{
+                    //                    self.hiddenSections.removeAll(where: {$0.0 == sectionn})
+                    //New Logic to update only rows
+                    let newCountt  = getCellCountForSection(sectionn: sectionn)
+                    self.hiddenSections.removeAll(where: {$0.0 == sectionn})
+                    //New Logic to hide  line view for previous open visible section..
+                    if let headerView = self.dataTableView.headerView(forSection: sectionn) as? CategoriesSectionView {
+                        headerView.isRowShow = !self.hiddenSections.contains(where: {$0.0 == sectionn})
+                    }
+                    self.dataTableView.reloadRowsInSection(section: sectionn, oldCount: newCountt, newCount: 0)
+                    //Old Logic
+                    //                    self.dataTableView.beginUpdates()
+                    //                    self.dataTableView.reloadSections([sectionn], with: .automatic)
+                    //                    self.dataTableView.endUpdates()
+                }
+            }
+            self.hiddenSections.append((section,false))
+            //New Logic to update only rows
+            self.dataTableView.reloadRowsInSection(section: section, oldCount: 0, newCount: newCount)
+            //Old Logic
+            //            self.dataTableView.beginUpdates()
+            //            self.dataTableView.reloadSections([section], with: .automatic)
+            //            self.dataTableView.endUpdates()
+        }
+        self.dataTableView.performBatchUpdates({
+           
+        },completion: { value in
+            UIView.animate(withDuration: 0.4) {
+                self.dataTableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
+            }
+        })
+    }
+    
+    private func getCellCountForSection(sectionn: Int)->Int{
+        var newCountt: Int = 0
+        if let indexx  = self.hiddenSections.firstIndex(where: {$0.0 == sectionn}){
+            if (self.viewModel.categories[sectionn].children?.count ?? 0 > maxCountForViewMore) && !self.hiddenSections[indexx].1{
+                newCountt =  maxCountForViewMore
+            }else{
+                newCountt =  self.viewModel.categories[sectionn].children?.count ?? 0
+            }
+        }else{
+            if (self.viewModel.categories[sectionn].children?.count ?? 0 > maxCountForViewMore){
+                newCountt =  maxCountForViewMore
+            }else{
+                newCountt =  self.viewModel.categories[sectionn].children?.count ?? 0
+            }
+        }
+        return newCountt
+    }
+}
+    
+
+
+//MARK:- enableGlobalScrolling
+extension PlacesAndSuperShesView{
+    func enableGlobalScrolling(_ offset: CGFloat,_ isSearchHidden: Bool = true) {
+        //        (self.parentViewController?.parent as? NavigationTypeVC)?.enableScrolling(offset,isSearchHidden)
+    }
+    
+    func scrollViewDidScroll(_ scroll: UIScrollView) {
+        if screenUsingFor == .categories{
+           
+        }else {
+            print(scroll.contentOffset.y)
+            if scroll.contentOffset.y <= 0.0{
+                self.dataTableView.isScrollEnabled = false
+            }else{
+                self.dataTableView.isScrollEnabled = true
+            }
+//            var scrollDirection: ScrollDirection
+//            let stopScroll = 50.0
+//            if lastContentOffset > scroll.contentOffset.y {
+//                scrollDirection = .down
+//            } else {
+//                scrollDirection = .up
+//            }
+//
+//            let offsetY = scroll.contentOffset.y
+//
+//            lastContentOffset = scroll.contentOffset.y
+//
+//            if scrollDirection == .up {
+//                if offsetY < stopScroll {
+//                    enableGlobalScrolling(offsetY)
+//                } else {
+//                    enableGlobalScrolling(stopScroll,false)
+//                }
+//            } else if (scrollDirection == .down) && (offsetY < stopScroll) {
+//                enableGlobalScrolling(offsetY)
+//            }
+        }
+    }
 }
 
 
-//extension PlacesAndSuperShesView: PlacesAndSuperShesVMDelegate {
-//
-////    func superShesGetData(isFirstPage: Bool) {
-////        if self.currentShimmerStatus == .toBeApply {
-////            //            isRemoveImgBg = true
-////            self.dataTableView.removeShimmerOnTableViewWithTotalCells()
-////        }
-////        self.currentShimmerStatus = .applied
-////        if self.screenUsingFor == .supershes, self.viewModel.dataModel.data.count == 0 {
-////            self.dataTableView.setEmptyMessage("", heading: "NO SUPERSHES FOUND!".uppercased(), image: #imageLiteral(resourceName: "group999"), textColor: AppColors.superWhite, headingColor:  AppColors.superWhite, imageWidth: 127.0, imageHeight: 100.0, isScreenSpecific: true)
-////        } else {
-////            self.dataTableView.restore()
-////        }
-////        self.screenUsingFor = .supershes
-////        self.dataTableView.reloadData()
-////    }
-//
-////    func superShesDidFailedToGetData(_ msg: String,errorType: ErrorType) {
-////        if self.currentShimmerStatus == .toBeApply {
-////            //            isRemoveImgBg = true
-////            self.dataTableView.removeShimmerOnTableViewWithTotalCells()
-////            if self.viewModel.lastPage > 1 {
-////                self.currentShimmerStatus = .applied
-////            } else {
-////                self.currentShimmerStatus = .none
-////            }
-////        }
-////        if self.screenUsingFor == .supershes {
-////
-////            dataTableView.setEmptyMessage(msg, retry: true, retryAction: {[weak self] in
-////                if self?.currentShimmerStatus != .toBeApply {
-////                   self?.currentShimmerStatus = .toBeApply
-////                   self?.shimmerSetUp()
-////                }
-////
-////                }, errorType: errorType)
-//////            self.dataTableView.setEmptyMessage("", heading: " There is no internet connection!".uppercased(), image: #imageLiteral(resourceName: "oops"), textColor: AppColors.superWhite, headingColor:  AppColors.superWhite, imageWidth: 127.0, imageHeight: 100.0, isScreenSpecific: true)
-////        } else {
-////            self.dataTableView.restore()
-////        }
-////        self.dataTableView.reloadData()
-////    }
-//}
+//MARK:- Extension NewsListViewModelDelegate
+extension PlacesAndSuperShesView: NewsListViewModelDelegate{
+    func pumpkinDataSuccess() {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func pumpkinDataFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func movieDataSuccess() {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+            if (self.viewModel.moviesResponse?.results.count ?? 0) == 0 {
+                (self.parentViewController?.parent as? NavigationTypeVC)?.showEmptyView()
+            }else{
+                (self.parentViewController?.parent as? NavigationTypeVC)?.hideEmptyView()
+            }
+        }
+    }
+    
+    func movieDataFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+            if (self.viewModel.moviesResponse?.results.count ?? 0) == 0 {
+                (self.parentViewController?.parent as? NavigationTypeVC)?.showEmptyView()
+            }else{
+                (self.parentViewController?.parent as? NavigationTypeVC)?.hideEmptyView()
+            }
+        }
+    }
+    
+    func movieDetailSuccess() {
+        let secondVC = NewsDetailVC.instantiate(fromAppStoryboard: .Main)
+        secondVC.isBackBtnShow = true
+        DispatchQueue.main.async {
+            secondVC.modalPresentationStyle = .overCurrentContext
+            secondVC.viewModel.movie = self.viewModel.moviesDetail
+            (self.parentViewController?.parent as? NavigationTypeVC)?.present(secondVC, animated: true)
+            (self.parentViewController?.parent as? SuperYouHomeVC)?.present(secondVC, animated: true)
+        }
+    }
+    
+    func movieDetailFailure(error: Error) {
+        DispatchQueue.main.async {
+            self.dataTableView.reloadData()
+        }
+    }
+    
+    func newsListingSuccess() {
+        DispatchQueue.main.async {
+            self.viewModel.searchValue = ""
+            self.dataTableView.reloadData()
+        }
+    }
+}
 
-//extension PlacesAndSuperShesView: PlacesAndSuperShesViewTableViewCellDelegate {
-//
-////    func chatWithUser(forIndex indexPath: IndexPath) {
-////        // open chat conversation Screen
-////        guard UserModel.main.id != self.viewModel.dataModel.data[indexPath.row].id else { return }
-////        self.parentViewController?.view.endEditing(true)
-////
-////        let fireUser = FireUserModel.init(qid: self.viewModel.dataModel.data[indexPath.row].qBloxId, fireUserFullName: /self.viewModel.dataModel.data[indexPath.row].fullName, fireUserId: /self.viewModel.dataModel.data[indexPath.row].id, fireUserProfilePic: /self.viewModel.dataModel.data[indexPath.row].profilePicture)
-////
-////        FireUserModel.main.findOrCreateSingleChatRoom(with: fireUser) { (room) in
-////            Router.shared.navigate(to: ChatVC.self, storyboard: .Chat, action: .push, navigationController: .current) { () -> ChatVC.RequiredParams in
-////                return (room , .recentSearch, self.viewModel.dataModel.data[indexPath.row].locCity + "," + self.viewModel.dataModel.data[indexPath.row].locCountry )
-////            }
-////        }
-////    }
-//
-////    func openProfileVC(forIndex indexPath: IndexPath,image: UIImage) {
-////        self.parentViewController?.view.endEditing(true)
-////
-////        if UserModel.main.id == self.viewModel.dataModel.data[indexPath.row].id {
-////            Router.shared.navigate(to: MyProfileVC.self, storyboard: .SuperYou, action: .push, navigationController: .current) {() -> MyProfileVC.RequiredParams in
-////                return
-////            }
-////        }
-////        else {
-////            Router.shared.navigate(to: OtherUserProfileVC.self, storyboard: .Chat, action: .push, navigationController: .current) { () -> OtherUserProfileVC.RequiredParams in
-////                return (ChatRoomModel(), /self.viewModel.dataModel.data[indexPath.row].id,nil,image,self.viewModel.dataModel.data[indexPath.row])
-////            }
-////        }
-////    }
-//}
+
+
+// MARK: - WalifSearchTextFieldDelegate
+extension PlacesAndSuperShesView: WalifSearchTextFieldDelegate{
+    func walifSearchTextFieldBeginEditing(sender: UITextField!) {
+        closeSearchingArea(false)
+    }
+
+    func walifSearchTextFieldEndEditing(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = searchValue
+        self.headerSetup(showSearchCount: !self.viewModel.searchValue.isEmpty)
+        self.dataTableView.reloadData()
+    }
+
+    func walifSearchTextFieldChanged(sender: UITextField!) {
+        self.searchValue = sender.text ?? ""
+        self.viewModel.searchValue = searchValue
+        self.headerSetup(showSearchCount: true)
+        self.dataTableView.reloadData()
+
+    }
+
+    func walifSearchTextFieldIconPressed(sender: UITextField!) {
+        closeSearchingArea(true)
+        self.viewModel.searchValue = ""
+        self.headerSetup()
+        self.dataTableView.reloadData()
+    }
+    
+    func closeSearchingArea(_ isTrue: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0.1,options: .curveEaseInOut) {
+            self.headerView.searchTxtFld.crossBtnWidthConstant.constant = isTrue ? 0.0 : 50.0
+            self.layoutIfNeeded()
+        } completion: { value in
+            self.headerView.searchTxtFld.cancelBtn.isHidden = isTrue
+            self.layoutIfNeeded()
+        }
+    }
+
+}
+
+//MARK:- UITableView Extension to reload the tableview rows without reloading header...
+extension UITableView{
+
+    func reloadRowsInSection(section: Int, oldCount:Int, newCount: Int){
+        
+        let maxCount = max(oldCount, newCount)
+        let minCount = min(oldCount, newCount)
+        
+        var changed = [IndexPath]()
+        
+        for i in minCount..<maxCount {
+            let indexPath = IndexPath(row: i, section: section)
+            changed.append(indexPath)
+        }
+        
+        var reload = [IndexPath]()
+        for i in 0..<minCount{
+            let indexPath = IndexPath(row: i, section: section)
+            reload.append(indexPath)
+        }
+        
+        beginUpdates()
+        if(newCount > oldCount){
+            insertRows(at: changed, with: .automatic)
+        }else if(oldCount > newCount){
+            deleteRows(at: changed, with: .fade)
+        }
+        if(newCount > oldCount || newCount == oldCount){
+            insertRows(at: reload, with: .automatic)
+        }
+        endUpdates()
+    }
+
+    func reloadRowsInSectionn(section: Int, oldCount:Int, newCount: Int){
+        
+        let maxCount = max(oldCount, newCount)
+        let minCount = min(oldCount, newCount)
+        
+        var changed = [IndexPath]()
+        
+        for i in minCount..<maxCount {
+            let indexPath = IndexPath(row: i, section: section)
+            changed.append(indexPath)
+        }
+        
+        var reload = [IndexPath]()
+        for i in 0..<minCount{
+            let indexPath = IndexPath(row: i, section: section)
+            reload.append(indexPath)
+        }
+        
+        beginUpdates()
+        if(newCount > oldCount){
+            insertRows(at: changed, with: .fade)
+        }else if(oldCount > newCount){
+            deleteRows(at: changed, with: .fade)
+        }
+        endUpdates()
+    }
+    
+//    func scrollToEnd(_ inSection: Int) {
+//        if numberOfRows(inSection: inSection) > 0 {
+////            let index = NSIndexPath(row: 0, section: inSection) as IndexPath
+////            self.scrollToRow(at: index, at: .none, animated: false)
+//            self.scrollToNearestSelectedRow(at: .none, animated: false)
+//        }
+//    }
+}

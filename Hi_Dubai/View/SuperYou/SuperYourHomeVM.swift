@@ -96,7 +96,7 @@ struct ClassInitalLayoutConstants {
     static let collMyFavCellHeight = CGFloat((300/812) * screen_height)
     static let newCollLiveCellHeight = CGFloat((293/812) * screen_height) < 270 ? 270 : CGFloat((293/812) * screen_height)
     static let collCellWidth = CGFloat((276/375) * screen_width)
-    static let collUpcomingCellWidth = CGFloat((220.0/375) * screen_width)
+    static let collUpcomingCellWidth = CGFloat((220.0/360.0) * screen_width)
     static let collUpcomingCellHeight = CGFloat((329/812) * screen_height) < 300 ? 300 : CGFloat((329/812) * screen_height)
     static let collCellHeight = CGFloat((447/812) * screen_height)
     static let mostLovedHomeCollCellHeight = CGFloat((349/812) * screen_height) < 320 ? 320 : CGFloat((349/812) * screen_height)

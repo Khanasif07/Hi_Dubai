@@ -163,6 +163,7 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
             emptyViewPersonal = EmptyView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: self.topBigView.frame.width, height: self.topBigView.frame.height)), inView: topBigView, centered: true, icon: UIImage(named: ""), message: "")
             emptyViewPersonal?.show()
         }
+        self.scrollViewDidScroll(self.scrollView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -172,7 +173,7 @@ class ExploreViewController: UIViewController,UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        scrollView.setContentOffset(CGPoint.init(x: 0, y: 1), animated: true)
+        self.scrollViewDidScroll(self.scrollView)
     }
     
     @IBAction func cancelSearch(_ sender: Any?) {

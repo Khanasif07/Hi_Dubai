@@ -9,7 +9,7 @@ import UIKit
 class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     //MARK: - Variables
     //MARK: ===========
-    
+    var buttonTapped: ((UIButton) -> Void)?
     //MARK:- IBOutlets
     //MARK:===========
     @IBOutlet weak var containerView: UIView!
@@ -27,25 +27,45 @@ class PlacesAndSuperShesViewTableViewCell: UITableViewCell {
     
     //MARK:- Functions
     //MARK:===========
+    @IBAction func btnAction(_ sender: UIButton) {
+        if let handle = buttonTapped{
+            handle(sender)
+        }
+    }
+    
     private func configureUI() {
-//        self.userName.text = ""
-//        self.locationName.text = ""
-//        self.heartImageView.isHidden = true
-//        self.clapBtnOutlet.isHidden = true
-        self.profileImageView?.layer.cornerRadius = (self.profileImageView?.height ?? 0) / 2.0
+
+        self.profileImageView?.layer.cornerRadius = 7.5
         self.userName.textColor = .white
         self.locationName.textColor = UIColor.white.withAlphaComponent(0.75)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        self.userName.text = ""
-//        self.locationName.text = ""
-//        self.heartImageView.isHidden = true
-//        self.clapBtnOutlet.isHidden = true
-//        self.profileImageView?.image = nil
-//        self.locationName.textColor = .clear
-//        self.userName.textColor = .clear
+        self.userName.text = nil
+        self.locationName.text = nil
+        self.profileImageView?.image = nil
     }
+    
+    func populateCell(_ model: Record?){
+        profileImageView?.loadThumbnail(urlSting: model?.postImageURL ?? "")
+        userName.text = model?.primaryTag ?? ""
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
+    }
+    
+    func populatePumpkinCell(_ model: Pumpkin?){
+        profileImageView?.loadThumbnail(urlSting: model?.imageURL ?? "")
+        userName.text = model?.name ?? ""
+        locationName.text = model?.tagline ?? ""
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
+    }
+    
+    func populateMovieCell(_ model: Movie?){
+        clapBtnOutlet.setImage(UIImage(named: model?.isSelected ?? false ? "following" : "plus_blue_icon"), for: .normal)
+        userName.text = model?.title ?? ""
+        locationName.text = model?.overview ?? ""
+        profileImageView?.loadThumbnail(urlSting: model?.posterURL ?? "")
+    }
+    
 }
 

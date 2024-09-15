@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="170" id="KGk-i7-Jjw" customClass="CategoryAdvTableCell" customModule="Hi_Dubai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hX8-em-gPg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Rf-YiZ">
+                                <rect key="frame" x="10" y="9" width="300" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advertisement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgh-Hx-vvq">
+                                        <rect key="frame" x="100.33333333333331" y="31" width="99.666666666666686" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="floatingText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cgh-Hx-vvq" firstAttribute="centerX" secondItem="itN-Rf-YiZ" secondAttribute="centerX" id="9QI-Py-y2J"/>
+                                    <constraint firstItem="cgh-Hx-vvq" firstAttribute="centerY" secondItem="itN-Rf-YiZ" secondAttribute="centerY" id="UCh-b1-mlP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.76456436258278149" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="itN-Rf-YiZ" firstAttribute="top" secondItem="hX8-em-gPg" secondAttribute="top" constant="9" id="9br-gp-6TI"/>
+                            <constraint firstItem="itN-Rf-YiZ" firstAttribute="leading" secondItem="hX8-em-gPg" secondAttribute="leading" constant="10" id="E3O-y1-nXm"/>
+                            <constraint firstAttribute="trailing" secondItem="itN-Rf-YiZ" secondAttribute="trailing" constant="10" id="aCY-S5-82m"/>
+                            <constraint firstAttribute="bottom" secondItem="itN-Rf-YiZ" secondAttribute="bottom" constant="18" id="b4y-sH-2xh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="hX8-em-gPg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Grc-kh-fMZ"/>
+                    <constraint firstItem="hX8-em-gPg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jhT-01-nq2"/>
+                    <constraint firstAttribute="trailing" secondItem="hX8-em-gPg" secondAttribute="trailing" id="tQ9-VO-pJK"/>
+                    <constraint firstAttribute="bottom" secondItem="hX8-em-gPg" secondAttribute="bottom" id="yVv-WB-Uvq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="advView" destination="itN-Rf-YiZ" id="2HO-B2-u7T"/>
+            </connections>
+            <point key="canvasLocation" x="42.748091603053432" y="64.08450704225352"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="floatingText">
+            <color red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

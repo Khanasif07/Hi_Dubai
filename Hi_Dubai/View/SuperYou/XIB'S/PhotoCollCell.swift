@@ -2,7 +2,7 @@
 //  PhotoCollCell.swift
 //  Hi_Dubai
 //
-//  Created by Asif Khan on 06/06/2023.
+//  Created by Asif Khan on 07/06/2023.
 //
 
 import UIKit
@@ -20,9 +20,9 @@ class PhotoCollCell: UICollectionViewCell {
        
     override func awakeFromNib() {
         super.awakeFromNib()
-        dataView.isHidden = true
-        host?.view.frame = self.contentView.bounds
-        contentView.addSubview((host?.view)!)
+//        dataView.isHidden = true
+//        host?.view.frame = self.contentView.bounds
+//        contentView.addSubview((host?.view)!)
         // Initialization code
     }
     

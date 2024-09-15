@@ -21,11 +21,11 @@ struct ExternalWeblinkView: View {
         Text("Wikipedia")
         Spacer()
         
-        Group {
-          Image(systemName: "arrow.up.right.square")
-          
-          Link(animal.name, destination: (URL(string: animal.link) ?? URL(string: "https://wikipedia.org"))!)
-        }
+//        Group {
+//          Image(systemName: "icons8-arrow_up-35")
+//
+//          Link(animal.name, destination: (URL(string: animal.link ?? "") ?? URL(string: "https://wikipedia.org"))!)
+//        }
         .foregroundColor(.accentColor)
       } //: HSTACK
     } //: BOX

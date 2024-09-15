@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class WalifTheme : NSObject {
+@objc class WalifTheme : NSObject {
 
     class func walifGreen() -> UIColor! {
         return UIColor(red:0.61, green:0.85, blue:0.21, alpha:1.00)

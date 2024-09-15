@@ -11,14 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoCollCell" customModule="Hi_Dubai_Dev" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rYA-4W-qFw" customClass="PhotoCollCell" customModule="Hi_Dubai_Dev" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="185" height="101"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="185" height="101"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDB-s6-rH3" customClass="RoundedView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oc8-8y-SD3" customClass="RoundedView" customModule="Hi_Dubai_Dev" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="185" height="101"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <userDefinedRuntimeAttributes>
@@ -29,16 +29,16 @@
                     </view>
                 </subviews>
             </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <viewLayoutGuide key="safeArea" id="IXT-iV-UaE"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="YDB-s6-rH3" secondAttribute="trailing" id="KXg-vE-thi"/>
-                <constraint firstItem="YDB-s6-rH3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eFv-K1-luf"/>
-                <constraint firstAttribute="bottom" secondItem="YDB-s6-rH3" secondAttribute="bottom" id="sKG-td-d0K"/>
-                <constraint firstItem="YDB-s6-rH3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="shx-8d-IQx"/>
+                <constraint firstAttribute="trailing" secondItem="Oc8-8y-SD3" secondAttribute="trailing" id="Aaj-1z-96i"/>
+                <constraint firstItem="Oc8-8y-SD3" firstAttribute="top" secondItem="rYA-4W-qFw" secondAttribute="top" id="as1-Q9-KSL"/>
+                <constraint firstItem="Oc8-8y-SD3" firstAttribute="leading" secondItem="rYA-4W-qFw" secondAttribute="leading" id="bvC-uj-dZM"/>
+                <constraint firstAttribute="bottom" secondItem="Oc8-8y-SD3" secondAttribute="bottom" id="z17-Np-p4f"/>
             </constraints>
             <size key="customSize" width="185" height="101"/>
             <connections>
-                <outlet property="dataView" destination="YDB-s6-rH3" id="U3y-2j-LRj"/>
+                <outlet property="dataView" destination="Oc8-8y-SD3" id="ibv-MK-kfs"/>
             </connections>
             <point key="canvasLocation" x="93.89312977099236" y="85.563380281690144"/>
         </collectionViewCell>

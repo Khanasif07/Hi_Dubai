@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="jBh-Uz-SvA" customClass="SuperYouCategoriesTableCell" customModule="Hi_Dubai" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKo-fd-aZZ">
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLG-nj-ld2">
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="108"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75504449503311255" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="nLG-nj-ld2" secondAttribute="trailing" id="7BB-h4-B3T"/>
+                        <constraint firstItem="nLG-nj-ld2" firstAttribute="top" secondItem="bKo-fd-aZZ" secondAttribute="top" id="KqJ-JP-SNx"/>
+                        <constraint firstAttribute="bottom" secondItem="nLG-nj-ld2" secondAttribute="bottom" id="Qs7-2H-wHk"/>
+                        <constraint firstItem="nLG-nj-ld2" firstAttribute="leading" secondItem="bKo-fd-aZZ" secondAttribute="leading" id="tD3-0r-EL7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="RKH-Wn-CWM"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="top" secondItem="jBh-Uz-SvA" secondAttribute="top" id="2a5-zU-Wnp"/>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="leading" secondItem="jBh-Uz-SvA" secondAttribute="leading" id="4i9-ar-5Q5"/>
+                <constraint firstItem="bKo-fd-aZZ" firstAttribute="bottom" secondItem="jBh-Uz-SvA" secondAttribute="bottom" id="O8c-TL-WNY"/>
+                <constraint firstAttribute="trailing" secondItem="bKo-fd-aZZ" secondAttribute="trailing" id="fxO-12-JyM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cardScrollView" destination="nLG-nj-ld2" id="tew-80-9AL"/>
+            </connections>
+            <point key="canvasLocation" x="-416.03053435114504" y="-244.36619718309859"/>
+        </view>
+    </objects>
+</document>

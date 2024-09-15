@@ -44,7 +44,7 @@ class HomeVC: BaseVC {
         navTitle = "Home"
         self.statusBarStyle = .lightContent
         //
-        setNavigationBar(title: "Home", subTitle: "Home", backButton: true, titleView: false, backButtonImage: UIImage(named: "back"), buttonTitle: "", largeTitles: true, leftTitle: "")
+        setNavigationBar(title: "Home", subTitle: "Home", backButton: true, titleView: false, backButtonImage: UIImage(named: "Back Icon"), buttonTitle: "", largeTitles: true, leftTitle: "")
         //
     }
     
@@ -52,6 +52,8 @@ class HomeVC: BaseVC {
         super.viewWillAppear(animated)
         self.statusBarStyle = .lightContent
         self.navigationController?.navigationBar.isHidden = false
+        //MARK: - it is causing the issue of naviagtion bar title and buttons
+//        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -213,9 +215,6 @@ class HomeVC: BaseVC {
 
 
 extension HomeVC : MXParallaxHeaderDelegate ,MXScrollViewDelegate {
-    
-    
-    
     func parallaxHeaderDidScroll(_ parallaxHeader: MXParallaxHeader) {
           print(parallaxHeader.progress)
         let prallexProgress = parallaxHeader.progress
@@ -282,20 +281,6 @@ extension HomeVC {
                 break
             }
         }
-       
-//        if scrollView.isEqual(mainScrollView) {
-//            print("Main ScrollView.contentOffset.y:- \(mainScrollView.contentOffset.y)")
-//            let offsetY: CGFloat = mainScrollView.contentOffset.y
-//            if (offsetY) > CGFloat(NAVBAR_CHANGE_POINT) + 297.0{
-////                let value = CGFloat(64)
-////                let offsetVal = CGFloat((value + CGFloat(64.0) - offsetY))
-//                let alpha:CGFloat = min(1, 1 - ((NAVBAR_CHANGE_POINT + 79 - (offsetY)) / 79))
-////                let alpha = min(1, 1 - (offsetVal / 64))
-//                fakeNavBar.alpha = alpha
-//            } else {
-//                fakeNavBar.alpha = 0
-//            }
-//        }
         if UIDevice.current.hasNotch {
             //... consider notch
         } else {
@@ -330,11 +315,9 @@ extension HomeVC {
     }
     
     @objc func gotSharePage() {
-//        CommonFunctions.shareWithActivityViewController(VC: self)
     }
     
     @objc func gotSearchPage() {
-       //TODO -
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 import ParallaxHeader
-class NewsDetailVC: UIViewController {
+class NewsDetailVC: BaseViewController {
     //MARK:- IBoutlets
     @IBOutlet weak var mainTableViewTopConst: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
@@ -19,7 +19,7 @@ class NewsDetailVC: UIViewController {
     }()
     var isBackBtnShow: Bool = true
     var backButton: UIButton?
-//    private let navigator: LoginNavigator?
+
     
     init(user: Record) {
         self.viewModel.newsModel = user
@@ -78,8 +78,11 @@ class NewsDetailVC: UIViewController {
     private func headerViewDataSetup(){
         self.headerView.backBtn.isHidden = !isBackBtnShow
         self.headerView.backBtn.addTarget(self, action: #selector(self.backButtonHandler), for: .touchUpInside)
-        self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.newsModel?.postImageURL ?? "")
-        self.headerView.tagLbl.text = self.viewModel.newsModel?.primaryTag ?? ""
+//        self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.newsModel?.postImageURL ?? "")
+      
+        self.headerView.playerImageView.setImageFromUrl(ImageURL: self.viewModel.movie?.posterURL ?? "")
+//        self.headerView.tagLbl.text = self.viewModel.newsModel?.primaryTag ?? ""
+        self.headerView.tagLbl.text = self.viewModel.movie?.genres?.first?.name ?? ""
     }
     //MARK: - Navigator
     private func handleLoginButtonTap() {
@@ -111,8 +114,11 @@ extension NewsDetailVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(with: NewsDetailTableCell.self)
-        let cellVM = viewModel.getCellViewModel()
-        cell.cellViewModel = cellVM
+//        let cellVM = viewModel.getCellViewModel()
+//        cell.cellViewModel = cellVM
+        cell.descLbl.text = self.viewModel.movie?.overview ?? ""
+        cell.titleLbl.text = self.viewModel.movie?.originalTitle ?? ""
+        cell.tagLbl.text = self.viewModel.movie?.spokenLanguages?.first?.englishName ?? ""
         return cell
     }
     
