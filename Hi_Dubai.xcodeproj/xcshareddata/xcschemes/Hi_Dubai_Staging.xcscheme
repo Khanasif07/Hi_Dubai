@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8470C56429974D640091A7C5"
-               BuildableName = "Hi_Dubai Dev.app"
+               BuildableName = "Hi_Dubai.app"
                BlueprintName = "Hi_Dubai"
                ReferencedContainer = "container:Hi_Dubai.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8470C56429974D640091A7C5"
-            BuildableName = "Hi_Dubai Dev.app"
+            BuildableName = "Hi_Dubai.app"
             BlueprintName = "Hi_Dubai"
             ReferencedContainer = "container:Hi_Dubai.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8470C56429974D640091A7C5"
-            BuildableName = "Hi_Dubai Dev.app"
+            BuildableName = "Hi_Dubai.app"
             BlueprintName = "Hi_Dubai"
             ReferencedContainer = "container:Hi_Dubai.xcodeproj">
          </BuildableReference>
