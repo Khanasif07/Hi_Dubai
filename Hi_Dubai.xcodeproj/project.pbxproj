@@ -127,6 +127,7 @@
 		E02CF3C82A044B9B00400F08 /* MenuItemCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */; };
 		E02CF3CA2A0450DC00400F08 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02CF3C92A0450DC00400F08 /* AppFonts.swift */; };
 		E032EC3D2A24E70E00337D0E /* HomeVCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032EC3C2A24E70E00337D0E /* HomeVCC.swift */; };
+		E03A5D762B4D52CC003D1430 /* StickyHeader1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03A5D752B4D52CC003D1430 /* StickyHeader1VC.swift */; };
 		E041CA752A010BD700C98601 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA742A010BD700C98601 /* ExploreViewController.swift */; };
 		E041CA772A03A2DC00C98601 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E041CA762A03A2DC00C98601 /* SearchVC.swift */; };
 		E04C22572A656B3A009BA4AE /* SuperYouMusicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04C22552A656B3A009BA4AE /* SuperYouMusicTableCell.swift */; };
@@ -372,6 +373,7 @@
 		E02CF3C62A044B9B00400F08 /* MenuItemCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemCollectionCell.xib; sourceTree = "<group>"; };
 		E02CF3C92A0450DC00400F08 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		E032EC3C2A24E70E00337D0E /* HomeVCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVCC.swift; sourceTree = "<group>"; };
+		E03A5D752B4D52CC003D1430 /* StickyHeader1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeader1VC.swift; sourceTree = "<group>"; };
 		E041CA742A010BD700C98601 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		E041CA762A03A2DC00C98601 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		E04C22552A656B3A009BA4AE /* SuperYouMusicTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperYouMusicTableCell.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				E0781BC72A3E635D00A18A2C /* NavigationTypeVC.swift */,
 				E0781BED2A40A7CB00A18A2C /* SettingVC.swift */,
 				E0BCF9A52A44389F003ED010 /* PresentTypeVC.swift */,
+				E03A5D752B4D52CC003D1430 /* StickyHeader1VC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1296,6 +1299,7 @@
 				E00450A22A2FDD1F00A9A64E /* FoodViewController+Extension.swift in Sources */,
 				E00DED262A13440200828D34 /* Navigator.swift in Sources */,
 				E004509E2A2FDCD300A9A64E /* RestaurantVeganCollectionViewCell.swift in Sources */,
+				E03A5D762B4D52CC003D1430 /* StickyHeader1VC.swift in Sources */,
 				E0D3AD8C2A52972C0006C839 /* CategoryVC.swift in Sources */,
 				E0765C5E2A274D3000574230 /* InsetFactView.swift in Sources */,
 				E0765C6A2A28AFF200574230 /* TabGalleryView.swift in Sources */,

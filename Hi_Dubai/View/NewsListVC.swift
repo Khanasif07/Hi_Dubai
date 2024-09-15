@@ -221,12 +221,12 @@ extension NewsListVC: UITableViewDelegate,UITableViewDataSource{
             switch indexPath.row {
             case 0:
                 //
-                let vc = IQKeyboardVC.instantiate(fromAppStoryboard: .Main)
+                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
                
 //                AppRouter.checkSettingFlow(UIApplication.shared.currentWindow!)
             case 1:
-                let vc = HomeVCC.instantiate(fromAppStoryboard: .Main)
+                let vc = StickyHeader1VC.instantiate(fromAppStoryboard: .Main)
                 self.navigationController?.pushViewController(vc, animated: false)
 //                self.indexPath = indexPath
 //                selectedCell = tableView.cellForRow(at: indexPath) as? NewsTableViewCell
